@@ -3,10 +3,10 @@ Progetto di TecWeb - Museo
 
 # Partecipanti
 
-Elia Bergamin : 206823
-Samuele Corradin : 206823
-Riccardo Milan : 206823
-Uncas Peruzzi : 2068239
+Elia Bergamin : 206823<br>
+Samuele Corradin : 206823<br>
+Riccardo Milan : 206823<br>
+Uncas Peruzzi : 2068239<br>
 
 
 # Come avviare il progetto
@@ -16,7 +16,7 @@ Eseguire il comando nella directory principale:
 docker compose up -d
 ```
 
-Per spegnere il container
+Per spegnere il container :
 
 ```
 docker compose down
