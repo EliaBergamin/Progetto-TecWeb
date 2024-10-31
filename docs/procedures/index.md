@@ -1,0 +1,7 @@
+# Procedure
+## _TODO: probabilmente il file sarà da scorporare in più files, per ora che ci sono poche procedure butto tutto qua_
+
+## Workflow ##
+Usiamo **github flow**, quindi teniamo un solo branch principale con la versione funzionante del progetto. C'è una regola github che permette di proteggere il main branch, quindi per avere sempre un ramo stabile da cui staccare i branch per sviluppare nuove features, **non** si pusha direttamente nel main _(a meno di emergenze particolari con push --force)_, ma si segue il seguente flow:
+- in fase di analisi si crea una issue per ogni task e si assegna a un membro del gruppo. Eventualmente se qualcuno trova un bug si può aprire issue senza parlarne o analizzare con l'apposita label _bug_.
+- chi deve sviluppare parte da una issue, crea un branch staccando dal main _(TODO: decidere convenzione nomi branch e poi riportare anche in convenzioni)_, e crea un pull request a partire da qual branch. Dopo che il lavoro è finito si mette un altro membro come revisore della merge che la revisiona e la mergia nel main se non ci sono problemi. Per chiudere la issue al termine del lavoro è sufficiente scrivere _closes #[numero della issue]_ nella descrizione della pull request.
