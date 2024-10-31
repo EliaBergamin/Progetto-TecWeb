@@ -5,7 +5,7 @@ Progetto di TecWeb - Museo
 
 Elia Bergamin : 2068230<br>
 Samuele Corradin : 2068235<br>
-Riccardo Milan : 206823<br>
+Riccardo Milan : 2068231<br>
 Uncas Peruzzi : 2068239<br>
 
 
