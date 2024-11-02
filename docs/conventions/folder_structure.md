@@ -7,6 +7,7 @@
 ├── /public             # Cartella pubblica accessibile via web
 │   ├── /css           # File CSS
 │   ├── /js            # File JavaScript
+│   ├── /html           # File JavaScript
 │   ├── /images        # Immagini
 │   ├── index.php      # Pagina principale
 │
