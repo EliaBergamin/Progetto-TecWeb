@@ -1,29 +1,33 @@
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
     <meta charset="UTF-8">
     <title>Registrazione</title>
-    <meta name="description" content="Pagina di registrazione 
-    per poter usufruire dei servizi del museo">
+    <meta name="description" content="Pagina di registrazione per poter usufruire dei servizi del museo">
     <meta name="keywords" content="registrazione,signup,museo,cardgame,virtual tour,prenota,visita">
     <link rel="stylesheet" href="style.css" media="screen">
     <link rel="icon" href="../images/pokeball.ico" type="image/x-icon">
-    
+
 </head>
+
 <body>
     <header></header>
-    <nav id="breadcrumb"></nav>
+    <nav id="breadcrumb">
+        <p>
+            Ti trovi in: <a href="../index.html" lang="en">Home</a> &gt; Registrazione
+        </p>
+    </nav>
     <nav id="menu"></nav>
     <main>
         <h1>Registrazione</h1>
-        <form action="registra.php" method="post">
+        <form action="../../src/registra.php" method="post">
             <label for="nome">Nome: </label>
             <input type="text" name="nome" id="nome" required>
             <label for="cognome">Cognome: </label>
             <input type="text" name="cognome" id="cognome" required>
             <label for="email">Email: </label>
-            <input type="email" name="email" id="email" required
-                data-msg-required="L'email è obbligatoria!"
+            <input type="email" name="email" id="email" required data-msg-required="L'email è obbligatoria!"
                 data-msg-invalid="Email non valida">
             <label for="password">Password: </label>
             <input type="password" name="password" id="password" required
@@ -33,5 +37,6 @@
         </form>
     </main>
     <footer></footer>
-</body> 
+</body>
+
 </html>
