@@ -13,6 +13,7 @@
 
 - **pagina dettaglio opera**: descrizione di un'opera specifica o di una stanza
 - **pagina per prenotazione biglietto**: fa scegliere una data e guarda nel db se ce effettiva disponibilità solo per utenti registrati
-- **pagina per recensioni**: solo gli utenti registrati possono lasciare recensioni, ma tutti possono vederle
+- **pagina per recensioni**: solo gli utenti registrati possono lasciare recensioni, ma tutti possono vederle. Le recensioni possono essere per il tour virtuale o per il museo.
+- **pagina dettaglio sala**: descrive una specifica sala elencando le opere presenti in essa e permettendo di accedere al dettaglio di ciascuna
 - **pagina per le mostre**: le mostre verranno ospitate in un piano del museo e non saranno visibili nel tour online, per quanto riguarda la gestione delle prenotazioni dei biglietti per le visite fisiche, esse non tengono conto delle mostre
 - **area personale**: ogni utente vede le proprie prenotazioni, l'admin aggiunge e toglie opere e mostre
