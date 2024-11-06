@@ -23,11 +23,11 @@
 
     <nav id="menu">
         <ul>
-            <li id="currentLink" lang="en">Home</li>
+            <li><a href="../index.html" lang="en">Home</a></li>
             <li><a href="mostre.html">Le mostre</a></li>
             <li><a href="virtualTour.html" lang="en">Virtual Tour</a></li>
             <li><a href="prenotazione.html">Prenotazione</a></li>
-            <li><a href="recensioni.html">Recensioni</a></li>
+            <li id="currentLink">Recensioni</li>
             <li><a href="registrazione.html">Registrazione</a></li>
         </ul>
     </nav>
@@ -35,12 +35,13 @@
     <main>
         <h1>Recensioni</h1>
         <a href="recensisci.html">Scrivi una recensione</a>
-        <h2>Recensioni del museo</h2>
-        <a href="#virtual">Vai alle recensioni del <span lang="en">virtual tour</span></a>
+        <h2 id="titolo-recens-museo">Recensioni del museo</h2>
+        <a href="#titolo-recens-virtual">Vai alle recensioni del <span lang="en">Virtual Tour</span></a>
         <ul id="recens-museo">
             <li>
                 <p>NomeUtente</p>
-                <svg viewBox="0 0 128 24" width="88" height="16">
+                <label for="rev-1">Punteggio 5 su 5</label>
+                <svg id="rev-1" viewBox="0 0 128 24" width="88" height="16">
                     <title>Punteggio 5 su 5</title>
                     <path d="M 12 0C5.388 0 0 5.388 0 12s5.388 12 12 12 12-5.38
                     12-12c0-6.612-5.38-12-12-12z"></path>
@@ -59,11 +60,12 @@
                     maxime in tempore.</p>
             </li>
         </ul>
-        <h2 id="virtual">Recensioni del <span lang="en">virtual tour</span></h2>
+        <h2 id="titolo-recens-virtual">Recensioni del <span lang="en">Virtual Tour</span></h2>
         <ul id="recens-virtual">
             <li>
-                <p>NomeUtente</p>
-                <svg viewBox="0 0 128 24" width="88" height="16">
+                <p aria-label="user">NomeUtente</p>
+                <label for="rev-2">Punteggio 5 su 5</label>
+                <svg viewBox="0 0 128 24" id="rev-2" width="88" height="16" aria-label="Punteggio 5 su 5">
                     <title>Punteggio 5 su 5</title>
                     <path d="M 12 0C5.388 0 0 5.388 0 12s5.388 12 12 12 12-5.38
                     12-12c0-6.612-5.38-12-12-12z"></path>
