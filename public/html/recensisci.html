@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Scrivi una recensione</title>
+    <meta name="description" content="Questa pagina mostra le recensioni
+    degli utenti che hanno visitato il museo o hanno fatto il
+    virtual tour">
+    <meta name="keywords" content="recensione,museo,virtual tour,visita,cardgame">
+    <link rel="stylesheet" href="style.css" media="screen">
+    <link rel="icon" href="../images/pokeball.ico" type="image/x-icon">
+</head>
+
+<body>
+    <header>
+        <h1>Museo Cartoni Animati</h1>
+    </header>
+
+    <nav id="breadcrumb">
+        <p>
+            Ti trovi in: <a lang="en" href="../index.html">Home</a> &gt;
+            <a href="recensioni.html">Recensioni</a> &gt; Scrivi una recensione
+        </p>
+    </nav>
+
+    <nav id="menu">
+        <ul>
+            <li><a href="../index.html" lang="en">Home</a></li>
+            <li><a href="mostre.html">Le mostre</a></li>
+            <li><a href="virtualTour.html" lang="en">Virtual Tour</a></li>
+            <li><a href="prenotazione.html">Prenotazione</a></li>
+            <li><a href="recensioni.html">Recensioni</a></li>
+            <li><a href="registrazione.html">Registrazione</a></li>
+        </ul>
+    </nav>
+    <main>
+        <form action="../../src/recensisci.php" method="post">
+            <fieldset>
+                <legend>La tua visita</legend>
+                <fieldset>
+                    <legend>Come hai visitato il museo?</legend>
+                    <input type="radio" name="tipo" id="tipo-museo" value="museo" required>
+                    <label for="tipo-museo">Sono andato al museo</label>
+                    <input type="radio" name="tipo" id="tipo-virtual" value="virtual">
+                    <label for="tipo-virtual">Ho scelto il Virtual Tour</label>
+                </fieldset>
+                <label for="data-visita">Quando hai effettuato la visita?</label>
+                <input type="date" name="data-visita" id="data-visita" required>
+                <fieldset>
+                    <legend>Come valuteresti la tua esperienza?</legend>
+                    <label for="voto-1">Voto 1 su 5</label>
+                    <input type="radio" name="voto" id="voto-1" value="1" required>
+                    <label for="voto-2">Voto 2 su 5</label>
+                    <input type="radio" name="voto" id="voto-2" value="2">
+                    <label for="voto-3">Voto 3 su 5</label>
+                    <input type="radio" name="voto" id="voto-3" value="3">
+                    <label for="voto-4">Voto 4 su 5</label>
+                    <input type="radio" name="voto" id="voto-4" value="4">
+                    <label for="voto-5">Voto 5 su 5</label>
+                    <input type="radio" name="voto" id="voto-5" value="5">
+                </fieldset>
+                <label for="descrizione">Descrivi la tua visita</label>
+                <textarea name="descrizione" id="descrizione" rows="10" cols="100" placeholder="L'opera che mi ha colpito di più è stata..."></textarea>
+                <input type="submit" value="Invia" aria-label="Invia">
+            </fieldset>
+        </form>
+    </main>
