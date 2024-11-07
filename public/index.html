@@ -9,8 +9,7 @@
     <meta name="keywords" content="Museo,Mostre,Animazione,Cartoni Animati,cardgame,prenota,visita,informazioni">
     <link rel="stylesheet" href="style.css" media="screen">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="./images/museumicon.png" type="image/x-icon">
-
+    <link rel="icon" href="../images/pokeball.ico" type="image/x-icon">
 </head>
 
 <body>
@@ -32,20 +31,19 @@
             <li><a href="html/registrazione.html">Registrazione</a></li>
 
         </ul>
-    </nav>    
-
-    <div id="caroselloHomePage">
-        <div class="immaginiCarosello">
-            <div>
+    </nav>
+    <main>
+        <ol class="immaginiCarosello">
+            <li>
                 <img src="./images/carosello1" alt="Prima Immagine Carosello">
-            </div>
-            <div>
+            </li>
+            <li>
                 <img src="./images/carosello2" alt="Seconda Immagine Carosello">
-            </div>
-            <div>
+            </li>
+            <li>
                 <img src="./images/carosello3" alt="Terza Immagine Carosello">
-            </div>
-        </div>
+            </li>
+        </ol>
         <button id="caroselloIndietro" type="button" aria-label="Immagine precedente" onclick="funzionejs">&lt;</button>
         <button id="caroselloAvanti" type="button" aria-label="Immagine successiva" onclick="funzionejs">&gt;</button>
         <ol class="puntiniCarosello">
@@ -56,13 +54,9 @@
                 <button type="button" aria-label="Scorri all'immagine numero 2" onclick="funzionejs">2</button>
             </li>
             <li>
-                <button type="button" aria-label="Scorri all'immagine numero 1" onclick="funzionejs">3</button>
+                <button type="button" aria-label="Scorri all'immagine numero 3" onclick="funzionejs">3</button>
             </li>
         </ol>
-
-    </div>
-
-    <main>
         <h1>Il museo dei cartoni animati internazionali più famosi</h1>
         <p>
             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
@@ -82,60 +76,51 @@
         </p>
     </main>
     <footer>
-        <div class="footerContainer">
-            <div id="logoAndInfo">
-                <img src="./images/logoMuseo.png" alt="Logo del Museo">
-
-                <dl>
-                    <dt> <abbr title="telefono">Tel</abbr> : </dt>
-                    <dd><a href="tel:+39123456789">123456789</a> </dd>
-                    <dt> <span lang="en">Email : </span> </dt>
-                    <dd> <a href="mailto:info@dominioImmaginario.com">info@dominioImmaginario.comm</a> </dd>
-                    <dt> Indirizzo : </dt>
-                    <dd>
-                        <a href="https://maps.app.goo.gl/xqD3pfvXG4ockxUeA">Via Luigi Luzzatti,<abbr
-                                title="Numero civico"> n.</abbr> 8, 35121 Padova <abbr
-                                title="Provincia di Padova">PD</abbr></a>
-                    </dd>
-                </dl>
-
-                <a href="" lang="en">Privacy Link TODO</a>
-           </div>
-            <div id="tabella-orari">
-                <table title="orari-museo">
-                    <caption>Orari del Museo</caption>
-                    <thead>
-                        <tr>
-                            <td></td>
-                            <th scope="col">Mattina</th>
-                            <th scope="col">Pomeriggio</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">Lunedì</th>
-                            <td><time>09:00</time> - <time>12:00</time></td>
-                            <td><time>14:00</time> - <time>19:00</time></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Martedì</th>
-                            <td><time>09:00</time> - <time>12:00</time></td>
-                            <td><time>14:00</time> - <time>19:00</time></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Sabato</th>
-                            <td><time>08:00</time> - <time>13:00</time></td>
-                            <td><time>14:00</time> - <time>20:00</time></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Domenica</th>
-                            <td><time>08:00</time> - <time>13:00</time></td>
-                            <td><time>14:00</time> - <time>22:00</time></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+        <img src="./images/logoMuseo.png" alt="Logo del Museo">
+        <dl>
+            <dt> <abbr title="telefono">Tel</abbr> : </dt>
+            <dd><a href="tel:+39123456789">123456789</a> </dd>
+            <dt> <span lang="en">Email : </span> </dt>
+            <dd> <a href="mailto:info@dominioImmaginario.com">info@dominioImmaginario.comm</a> </dd>
+            <dt> Indirizzo : </dt>
+            <dd>
+                <a href="https://maps.app.goo.gl/xqD3pfvXG4ockxUeA">Via Luigi Luzzatti,<abbr title="Numero civico">
+                        n.</abbr> 8, 35121 Padova <abbr title="Provincia di Padova">PD</abbr></a>
+            </dd>
+        </dl>
+        <a href="" lang="en">Privacy Link TODO</a>
+        <table title="orari-museo">
+            <caption>Orari del Museo</caption>
+            <thead>
+                <tr>
+                    <td></td>
+                    <th scope="col">Mattina</th>
+                    <th scope="col">Pomeriggio</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">Lunedì</th>
+                    <td><time>09:00</time> - <time>12:00</time></td>
+                    <td><time>14:00</time> - <time>19:00</time></td>
+                </tr>
+                <tr>
+                    <th scope="row">Martedì</th>
+                    <td><time>09:00</time> - <time>12:00</time></td>
+                    <td><time>14:00</time> - <time>19:00</time></td>
+                </tr>
+                <tr>
+                    <th scope="row">Sabato</th>
+                    <td><time>08:00</time> - <time>13:00</time></td>
+                    <td><time>14:00</time> - <time>20:00</time></td>
+                </tr>
+                <tr>
+                    <th scope="row">Domenica</th>
+                    <td><time>08:00</time> - <time>13:00</time></td>
+                    <td><time>14:00</time> - <time>22:00</time></td>
+                </tr>
+            </tbody>
+        </table>
     </footer>
 
 </body>
