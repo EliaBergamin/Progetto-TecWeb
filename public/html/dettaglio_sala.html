@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="utf-8">
+    <title>Museo Cartoni Animati</title>
+    <meta name="description"
+        content="La pagina dedicata all'esplorazione approfondita delle varie opere che si trovano nella sala">
+    <meta name="keywords" content="Sala,Opere,Museo,Mostre,Animazione,Cartoni Animati,cardgame">
+    <link rel="stylesheet" href="style.css" media="screen">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./images/museumicon.png" type="image/x-icon">
+
+</head>
+
+<body>
+    <header>
+        <h1>Museo Cartoni Animati</h1>
+    </header>
+
+    <nav id="breadcrumb">
+        <p>
+            Ti trovi in: <a href="../index.html" lang="en">Home</a> &gt;
+            <a href="mostre.html" lang="en">Le mostre</a> &gt;
+            <a href="dettaglio_sala.html">Dettaglio sala x
+        </p>
+    </nav>
+
+    <nav id="menu">
+        <ul>
+            <li><a href="../index.html" lang="en">Home</a></li>
+            <li><a href="mostre.html">Le mostre</a></li>
+            <li><a href="virtualTour.html" lang="en">Virtual Tour</a></li>
+            <li><a href="prenotazione.html">Prenotazione</a></li>
+            <li><a href="recensioni.html">Recensioni</a></li>
+            <li id="currentLink">Dettaglio Sala</li>
+
+        </ul>
+    </nav>
+
+    <main>
+        <div id="descrizioneSala">
+            <h2> La sala TagPhp</h2>
+            <p> In questa pagina carierà il proprio codice html in base a quale delle quattro sale cliccate
+                questo si puo fare grazie a php.Quindi si prendera prima i dati dal database tramite una query
+            </p>
+            <p>Mettiamo per esempio nome sala, descrizione sala e immagine(che è un URI) a quel punto grazie a php 
+                riusciremo a generare il tutto in automatico,anche le immagini qui sotto e le relative descrizioni,
+                quelle probabilmente con una join visto che saranno in due table diverse ma vedremo.e
+            </p>
+            <p><strong>Ora la lista di tutte le opere che potrai trovare nella sala</strong></p>
+        </div>
+        <div id="listaOpere">
+            <!-- Anche questa parte sara generata in automatico in base a quante opere nel db per ora facciamo finta ce ne siano tre-->
+             <!-- Ricordando che per ogni opera ci sara una brevissima descrizione e il bottone che porta a dettaglio carta -->
+            <li>
+                <img src="./images/opera1" alt="Prima Opera">
+                <h3>Opera 1</h3>
+                <p>Goku ssj4<br>
+                Edizione Limitata</p>
+                <a href="dettaglio_carta.html" aria-label="Vedi l'opera in dettaglio">Esplora</a>
+            </li>
+            <li>
+                <img src="./images/opera2" alt="Seconda Opera">
+                <h3>Opera 2</h3>
+                <p>Bulma<br>
+                First Season</p>
+                <a href="dettaglio_carta.html" aria-label="Vedi l'opera in dettaglio">Esplora</a>
+
+            </li>
+            <li>
+                <img src="./images/opera3" alt="Terza Opera">
+                <h3>Opera 3</h3>
+                <p>Crilin<br>
+                Calve hero</p>
+
+                <a href="dettaglio_carta.html" aria-label="Vedi l'opera in dettaglio">Esplora</a>
+            </li>
+        </div>
+    </main>
+    <footer>
+        <div class="footerContainer">
+            <div id="logoAndInfo">
+                <img src="./images/logoMuseo.png" alt="Logo del Museo">
+
+                <dl>
+                    <dt> <abbr title="telefono">Tel</abbr> : </dt>
+                    <dd><a href="tel:+39123456789">123456789</a> </dd>
+                    <dt> <span lang="en">Email : </span> </dt>
+                    <dd> <a href="mailto:info@dominioImmaginario.com">info@dominioImmaginario.comm</a> </dd>
+                    <dt> Indirizzo : </dt>
+                    <dd>
+                        <a href="https://maps.app.goo.gl/xqD3pfvXG4ockxUeA">Via Luigi Luzzatti,<abbr
+                                title="Numero civico"> n.</abbr> 8, 35121 Padova <abbr
+                                title="Provincia di Padova">PD</abbr></a>
+                    </dd>
+                </dl>
+
+                <a href="" lang="en">Privacy Link TODO</a>
+           </div>
+            <div id="tabella-orari">
+                <table title="orari-museo">
+                    <caption>Orari del Museo</caption>
+                    <thead>
+                        <tr>
+                            <td></td>
+                            <th scope="col">Mattina</th>
+                            <th scope="col">Pomeriggio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Lunedì</th>
+                            <td><time>09:00</time> - <time>12:00</time></td>
+                            <td><time>14:00</time> - <time>19:00</time></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Martedì</th>
+                            <td><time>09:00</time> - <time>12:00</time></td>
+                            <td><time>14:00</time> - <time>19:00</time></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Sabato</th>
+                            <td><time>08:00</time> - <time>13:00</time></td>
+                            <td><time>14:00</time> - <time>20:00</time></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Domenica</th>
+                            <td><time>08:00</time> - <time>13:00</time></td>
+                            <td><time>14:00</time> - <time>22:00</time></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
+
+
+
+<!-- 
+    PER PRENDERE LE IMMAGINI IN AUTOMATICO E METTERLE IN COLONNA DI 3 MI ASPETTERO QUALCOSA DI QUESTO GENERE
+    INOLTRE DOVRO TENERE CONTO CHE PER I PICCOLI SCHERMI DOVRO DIMINUIRE LE COLONNE DI 1 IN BASE ALLA WIDTH
+
+<div class="gallery">
+    <?php
+    // Esempio di recupero delle immagini dal database
+    $sql = "SELECT immagine FROM opzioni";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        while($row = $result->fetch_assoc()) {
+            echo '<div class="image-item">';
+            echo '<img src="images/' . htmlspecialchars($row['immagine']) . '" alt="Immagine">';
+            echo '</div>';
+        }
+    } else {
+        echo "Nessuna immagine disponibile.";
+    }
+    ?>
+</div>
+/* Impostazioni di base per la gallery */
+.gallery {
+    display: grid;                     /* Usa Grid Layout */
+    grid-template-columns: repeat(3, 1fr); /* Crea 3 colonne uguali */
+    gap: 16px;                          /* Distanza tra gli elementi */
+    margin: 20px;                       /* Distanza esterna */
+}
+
+/* Stile per le singole immagini */
+.image-item {
+    border: 1px solid #ddd;             /* Bordo per le immagini (facoltativo) */
+    padding: 8px;                       /* Distanza tra immagine e bordo */
+    background-color: #f8f8f8;          /* Colore di sfondo (facoltativo) */
+    text-align: center;                 /* Allineamento dell'immagine al centro */
+}
+
+/* Assicurati che le immagini siano responsive */
+.image-item img {
+    width: 100%;                        /* L'immagine occupa tutta la larghezza disponibile */
+    height: auto;                       /* Mantieni il rapporto di aspetto */
+    display: block;                     /* Elimina gli spazi sotto l'immagine */
+}
+/* Per schermi più piccoli, 2 colonne */
+@media (max-width: 768px) {
+    .gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Per dispositivi ancora più piccoli, 1 colonna */
+@media (max-width: 480px) {
+    .gallery {
+        grid-template-columns: 1fr;
+    }
+} -->
