@@ -4,25 +4,26 @@ on:
   push:
     branches:
       - main
-      - '**'   # Esegui il check HTML su tutti i branch al push
 
 jobs:
-  # Job per il deploy su Altervista
   deploy:
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'  # Esegui solo sul branch `main`
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      - name: Install FTP Client
+        run: sudo apt-get install -y lftp
+
       - name: Deploy to Altervista
         env:
+          FTP_HOST: ${{ secrets.FTP_HOST }}
           FTP_USERNAME: ${{ secrets.ALTERVISTA_USERNAME }}
           FTP_PASSWORD: ${{ secrets.ALTERVISTA_PASSWORD }}
         run: |
           echo "Starting deploy to Altervista"
-          lftp -u "$FTP_USERNAME","$FTP_PASSWORD" ftp://ftp.altervista.org <<EOF
+          lftp -u "$FTP_USERNAME","$FTP_PASSWORD" "$FTP_HOST" <<EOF
           mirror -R ./ / # Sincronizza la directory corrente con il server Altervista
           quit
           EOF
