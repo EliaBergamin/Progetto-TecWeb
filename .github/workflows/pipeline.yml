@@ -1,0 +1,42 @@
+name: Validate and Deploy
+
+on:
+  push:
+    branches:
+      - main
+      - '**'   # Esegui il check HTML su tutti i branch al push
+
+jobs:
+  # Job per la validazione HTML
+  html-validation:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Validate HTML
+        uses: chris48s/w3c-html-validator-action@v1
+        with:
+          root: ./public/  # Imposta la directory root con il codice HTML da validare
+        # Questo usa un'azione GitHub Actions di validazione HTML che fa una richiesta al servizio W3C
+
+  # Job per il deploy su Altervista
+  deploy:
+    needs: html-validation  # Questo fa in modo che il deploy si esegua solo se la validazione è passata
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'  # Esegui solo sul branch `main`
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Deploy to Altervista
+        env:
+          FTP_USERNAME: ${{ secrets.ALTERVISTA_USERNAME }}
+          FTP_PASSWORD: ${{ secrets.ALTERVISTA_PASSWORD }}
+        run: |
+          echo "Starting deploy to Altervista"
+          lftp -u "$FTP_USERNAME","$FTP_PASSWORD" ftp://ftp.altervista.org <<EOF
+          mirror -R ./ / # Sincronizza la directory corrente con il server Altervista
+          quit
+          EOF
