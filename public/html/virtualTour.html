@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Tour virtuale</title>
+    <meta name="description" content="Pagina per effettuare il tour virtuale del museo">
+    <meta name="keywords" content="carta,card,monster,museo,cardgame,virtual tour,prenota,visita">
+    <link rel="stylesheet" href="../css/style.css" media="screen">
+    <link rel="icon" href="../images/pokeball.ico" type="image/x-icon">
+
+</head>
+
+<body>
+    <header>
+        <h1>Museo Cartoni Animati</h1>
+    </header>
+
+    <nav id="breadcrumb">
+        <p>
+            Ti trovi in: <a href="../index.html" lang="en">Home</a> &gt;
+            <a href="#" lang="en">Virtual Tour</a>
+        </p>
+    </nav>
+
+    <nav id="menu">
+        <ul>
+            <li><a href="../index.html" lang="en">Home</a></li>
+            <li><a href="mostre.html">Le mostre</a></li>
+            <li><a href="#" lang="en">Virtual Tour</a></li>
+            <li><a href="prenotazione.html">Prenotazione</a></li>
+            <li><a href="recensioni.html">Recensioni</a></li>
+            <li><a href="registrazione.html">Registrazione</a></li>
+
+        </ul>
+    </nav>
+
+    <main>
+        <h1>Tour virtuale</h1>
+
+        <!-- Sulla parte sinistra delle pagina la cartina con le stanze cliccabili -->
+        <nav id="mappa"> 
+            <ul>
+                <!-- Al click su una sala deve aprirsi sulla destra titolo, breve descrizione e bottone per pagina dettaglio di quella sala -->
+                <li><a href="#">Sala 1</a></li>
+                <li><a href="#">Sala 2</a></li>
+                <li><a href="#">Sala 3</a></li>
+                <li><a href="#">Sala 4</a></li>
+            </ul>
+        </nav>
+    
+        <!-- Sulla parte destra della pagina (per ora sotto perché non c'è lo stile) la stanza (titolo, breve descrizione e bottone per pagina dettaglio di quella sala) -->
+        <section id="dettaglio-sala">
+            <h2 id="titolo-sala">Sala dei pokemon</h1>
+            <p id="descrizione-sala">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus viverra sem eros, vitae sagittis urna sollicitudin quis. Quisque hendrerit nisi diam. Quisque a molestie sem. Vivamus ac congue lectus. Suspendisse ac orci purus. Etiam tempor lorem ac rhoncus facilisis. Proin vel ipsum ut urna posuere dignissim. Cras eu purus massa. Integer molestie, augue vitae faucibus elementum, nulla justo egestas dui, ut volutpat augue metus placerat sem. Morbi porttitor est et purus tincidunt dignissim. Praesent ac felis blandit, lacinia dolor in, porta ligula. Integer euismod arcu at ipsum consectetur aliquet. Nunc sit amet diam id mi aliquet iaculis. In scelerisque risus mauris, luctus posuere lorem dictum a.
+                Donec consequat erat eget scelerisque fermentum. Nullam pharetra risus et sollicitudin scelerisque. Integer metus libero, malesuada id tincidunt id, semper quis ligula. Aenean efficitur porta elit in vestibulum. Sed lectus felis, placerat id tellus ut, iaculis congue lectus. Morbi fermentum pellentesque nulla at ultricies. Maecenas nisi est, vulputate id ex ut, laoreet placerat ipsum. Etiam tincidunt pretium hendrerit. Sed convallis neque quis maximus ornare. Vestibulum in tellus porta, sollicitudin lorem eget, aliquet massa. Donec consectetur augue sed laoreet vestibulum. Sed viverra eget orci et feugiat. Sed viverra a risus ut pharetra. In porta volutpat finibus. Fusce vitae euismod enim, nec suscipit elit. Nunc eleifend vestibulum lorem sit amet tempus.
+            </p>
+            <a id="bottone-sala" href="dettaglio_sala.html" class="button">Vai alla pagina della sala</a>
+        </section>
+    </main>
+
+    <footer>
+        <img src="../images/logoMuseo.png" alt="Logo del Museo">
+        <dl>
+            <dt> <abbr title="telefono">Tel</abbr> : </dt>
+            <dd><a href="tel:+39123456789">123456789</a> </dd>
+            <dt> <span lang="en">Email : </span> </dt>
+            <dd> <a href="mailto:info@dominioImmaginario.com">info@dominioImmaginario.comm</a> </dd>
+            <dt> Indirizzo : </dt>
+            <dd>
+                <a href="https://maps.app.goo.gl/xqD3pfvXG4ockxUeA">Via Luigi Luzzatti,<abbr title="Numero civico">
+                        n.</abbr> 8, 35121 Padova <abbr title="Provincia di Padova">PD</abbr></a>
+            </dd>
+        </dl>
+        <a href="" lang="en">Privacy Link TODO</a>
+        <table title="orari-museo">
+            <caption>Orari del Museo</caption>
+            <thead>
+                <tr>
+                    <td></td>
+                    <th scope="col">Mattina</th>
+                    <th scope="col">Pomeriggio</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">Lunedì</th>
+                    <td><time datetime="09:00">09:00</time> - <time datetime="12:00">12:00</time></td>
+                    <td><time datetime="14:00">14:00</time> - <time datetime="19:00">19:00</time></td>
+                </tr>
+                <tr>
+                    <th scope="row">Martedì</th>
+                    <td><time datetime="09:00">09:00</time> - <time datetime="12:00">12:00</time></td>
+                    <td><time datetime="14:00">14:00</time> - <time datetime="19:00">19:00</time></td>
+                </tr>
+                <tr>
+                    <th scope="row">Sabato</th>
+                    <td><time datetime="08:00">08:00</time> - <time datetime="13:00">13:00</time></td>
+                    <td><time datetime="14:00">14:00</time> - <time datetime="20:00">20:00</time></td>
+                </tr>
+                <tr>
+                    <th scope="row">Domenica</th>
+                    <td><time datetime="08:00">08:00</time> - <time datetime="13:00">13:00</time></td>
+                    <td><time datetime="14:00">14:00</time> - <time datetime="22:00">22:00</time></td>
+                </tr>
+            </tbody>
+        </table>
+    </footer>
+</body>
+
+</html>
