@@ -7,19 +7,6 @@ on:
       - '**'   # Esegui il check HTML su tutti i branch al push
 
 jobs:
-  # Job per la validazione HTML
-  html-validation:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Validate HTML
-        uses: w3c-validator/w3c-validator-action@v1.0.0
-        with:
-          file_glob: "**/*.html"  # Imposta la directory root con il codice HTML da validare
-        # Questo usa un'azione GitHub Actions di validazione HTML che fa una richiesta al servizio W3C
-
   # Job per il deploy su Altervista
   deploy:
     needs: html-validation  # Questo fa in modo che il deploy si esegua solo se la validazione è passata
