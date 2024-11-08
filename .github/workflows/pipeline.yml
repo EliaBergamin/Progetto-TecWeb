@@ -9,7 +9,6 @@ on:
 jobs:
   # Job per il deploy su Altervista
   deploy:
-    needs: html-validation  # Questo fa in modo che il deploy si esegua solo se la validazione è passata
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'  # Esegui solo sul branch `main`
 
