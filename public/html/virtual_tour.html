@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
-    <title>Prenotazione</title>
     <meta charset="UTF-8">
-    <meta name="description" content="Pagina per prenotare una visita al museo">
-    <meta name="keywords" content="museo,prenotazione,visita,disponibilità,giorno,carte,cartoni,biglietto">
-    <link rel="stylesheet" href="../css/style.ccs" media="screen">
+    <title lang="en">Virtual Tour</title>
+    <meta name="description" content="Pagina per effettuare il tour virtuale del museo">
+    <meta name="keywords" content="carta,card,monster,museo,cardgame,virtual tour,prenota,visita">
+    <link rel="stylesheet" href="../css/style.css" media="screen">
     <link rel="icon" href="../images/pokeball.ico" type="image/x-icon">
+
 </head>
+
 <body>
     <header>
         <h1>Museo Cartoni Animati</h1>
@@ -15,7 +18,8 @@
 
     <nav id="breadcrumb">
         <p>
-            Ti trovi in: <a href="../index.html" lang="en">Home</a> &gt; Prenotazione
+            Ti trovi in: <a href="../index.html" lang="en">Home</a> &gt;
+            <span lang="en">Virtual Tour</span>
         </p>
     </nav>
 
@@ -23,8 +27,8 @@
         <ul>
             <li><a href="../index.html" lang="en">Home</a></li>
             <li><a href="mostre.html">Le mostre</a></li>
-            <li><a href="virtual_tour.html" lang="en">Virtual Tour</a></li>
-            <li id="currentLink">Prenotazione</li>
+            <li lang="en">Virtual Tour</li>
+            <li><a href="prenotazione.html">Prenotazione</a></li>
             <li><a href="recensioni.html">Recensioni</a></li>
             <li><a href="registrazione.html">Registrazione</a></li>
 
@@ -32,27 +36,37 @@
     </nav>
 
     <main>
-        <h1>Prenotazione visita Museo x</h1>
-        <form action="../../src/prenota.php" method="post">
-            <label for="giorno">Giorno </label>
-            <!-- da mettere come minimo il giorno odierno -->
-            <input type="date" name="giorno" id="giorno" required data-msg-required="Per favore, selezionare il giorno della visita" data-msg-invalid="Giorno non valido">
-            <label for="orario">Fascia oraria </label>
-            <select name="orario" id="orario" required>
-                <option value="" disabled selected>Seleziona una fascia oraria</option>
-                <option value="09"><time datetime="09:00">09:00</time> - <time datetime="10:30">10:30</time></option>
-                <option value="10_30"><time datetime="10:30">10:30</time> - <time datetime="12:00">12:00</time></option>
-                <option value="12"><time datetime="12:00">12:00</time> - <time datetime="13:30">13:30</time></option>
-                <option value="13_30"><time datetime="13:30">13:30</time> - <time datetime="15:00">15:00</time></option>
-                <option value="15"><time datetime="15:00">15:00</time> - <time datetime="16:30">16:30</time></option>
-                <option value="16_30"><time datetime="16:30">16:30</time> - <time datetime="18:00">18:00</time></option>
-            </select>
-            <label for="visitatori">Numero di visitatori </label>
-            <!-- max 15 valore da decidere -->
-            <input type="number" name="visitatori" id="visitatori" min="1" max="15" required data-msg-required="Per favore, selezionare il numero di visitatori" data-msg-invalid="Massimo x visitatori">
-            <input type="submit" value="Prenota">
-        </form>
+        <h1 lang="en">Virtual Tour</h1>
+
+        <!-- Sulla parte sinistra delle pagina la cartina con le stanze cliccabili -->
+        <nav id="mappa">
+            <ul>
+                <!-- Al click su una sala deve aprirsi sulla destra titolo, breve descrizione e bottone per pagina dettaglio di quella sala -->
+                <li><a href="#">Sala 1</a></li>
+                <li><a href="#">Sala 2</a></li>
+                <li><a href="#">Sala 3</a></li>
+                <li><a href="#">Sala 4</a></li>
+            </ul>
+        </nav>
+
+        <!-- Sulla parte destra della pagina (per ora sotto perché non c'è lo stile) la stanza (titolo, breve descrizione e bottone per pagina dettaglio di quella sala) -->
+        <section id="dettaglio-sala">
+            <h2 id="titolo-sala">Sala dei pokemon</h2>
+                <p id="descrizione-sala">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus viverra sem eros, vitae sagittis
+                    urna sollicitudin quis. Quisque hendrerit nisi diam. Quisque a molestie sem. Vivamus ac congue
+                    lectus. Suspendisse ac orci purus. Etiam tempor lorem ac rhoncus facilisis. Proin vel ipsum ut urna
+                    posuere dignissim. Cras eu purus massa. Integer molestie, augue vitae faucibus elementum, nulla
+                    justo egestas dui, ut volutpat augue metus placerat sem. Morbi porttitor est et purus tincidunt
+                    dignissim. Praesent ac felis blandit, lacinia dolor in, porta ligula. Integer euismod arcu at ipsum
+                    consectetur aliquet. Nunc sit amet diam id mi aliquet iaculis. In scelerisque risus mauris, luctus
+                    posuere lorem dictum a.
+                </p>
+                <a id="bottone-sala" href="dettaglio_sala.html" class="btn">Vai alla pagina della sala</a>
+        </section>
+        <a href="recensisci.html" class="btn">Lascia una recensione</a>
     </main>
+
     <footer>
         <img src="../images/logoMuseo.png" alt="Logo del Museo">
         <dl>
@@ -101,4 +115,5 @@
         </table>
     </footer>
 </body>
+
 </html>
