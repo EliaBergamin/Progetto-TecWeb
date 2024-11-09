@@ -8,7 +8,7 @@
     degli utenti che hanno visitato il museo o hanno fatto il
     virtual tour">
     <meta name="keywords" content="recensioni,museo,virtual tour,visita,cardgame">
-    <!--link rel="stylesheet" href="style.css" media="screen"-->
+    <link rel="stylesheet" href="../css/style.css" media="screen">
     <link rel="icon" href="../images/pokeball.ico" type="image/x-icon">
 </head>
 
@@ -25,7 +25,7 @@
         <ul>
             <li><a href="../index.html" lang="en">Home</a></li>
             <li><a href="mostre.html">Le mostre</a></li>
-            <li><a href="virtualTour.html" lang="en">Virtual Tour</a></li>
+            <li><a href="virtual_tour.html" lang="en">Virtual Tour</a></li>
             <li><a href="prenotazione.html">Prenotazione</a></li>
             <li id="currentLink">Recensioni</li>
             <li><a href="registrazione.html">Registrazione</a></li>
@@ -40,9 +40,10 @@
         <ul id="recens-museo">
             <li>
                 <p>NomeUtente</p>
-                <label id="lbl-rev-1">Punteggio 5 su 5</label>
+                <label id="lbl-rev-1">Punteggio 4 su 5</label>
                 <svg id="rev-1" viewBox="0 0 128 24" width="88" height="16" aria-labelledby="lbl-rev-1">
                     <title>Punteggio 5 su 5</title>
+                    <!--attributo d da modificare con js per riempire il numero giusto di pallini-->
                     <path d="M 12 0C5.388 0 0 5.388 0 12s5.388 12 12 12 12-5.38
                     12-12c0-6.612-5.38-12-12-12z"></path>
                     <path d="M 12 0C5.388 0 0 5.388 0 12s5.388 12 12 12 12-5.38
@@ -51,8 +52,9 @@
                     12-12c0-6.612-5.38-12-12-12z" transform="translate (52 0)"></path>
                     <path d="M 12 0C5.388 0 0 5.388 0 12s5.388 12 12 12 12-5.38
                     12-12c0-6.612-5.38-12-12-12z" transform="translate (78 0)"></path>
-                    <path d="M 12 0C5.388 0 0 5.388 0 12s5.388 12 12 12 12-5.38
-                    12-12c0-6.612-5.38-12-12-12z" transform="translate (104 0)"></path>
+                    <path d="M 12 0C5.388 0 0 5.388 0 12s5.388 12 12 12 12-5.38 
+                    12-12c0-6.612-5.38-12-12-12zm0 2a9.983 9.983 0 019.995 10 10 
+                    10 0 01-10 10A10 10 0 012 12 10 10 0 0112 2z" transform="translate (104 0)"></path>
                 </svg>
                 <time datetime="2024-11-02">2 Novembre 2024</time>
                 <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsum quidem esse neque. Magnam assumenda
