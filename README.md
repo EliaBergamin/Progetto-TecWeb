@@ -18,7 +18,7 @@ docker compose up -d
 Per spegnere il container :
 
 ```
-docker compose down
+docker compose down --volumes
 ```
 
 # Documentazione 
