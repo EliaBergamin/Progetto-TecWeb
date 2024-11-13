@@ -2,4 +2,47 @@
   position:absolute;
  left:-999em;
 } */
+main{
+  margin-left: 10em;
+  margin-right: 10em;
+}
+.puntiniCarosello button{
+  cursor: pointer;
+  align-items: center;
+  text-indent: -9999em;
+  background-color: black;
+  border-radius: 50%;
+  height: 1.5rem;
+  width: 1.5rem;
+  
+}
+.puntiniCarosello{
+  display: grid;
+  grid-template-columns: repeat(3,1.5rem);
+  grid-gap: 2rem;
+  justify-content: center;
+  align-content: center;
+  list-style-type: none;
+  right: 0%;
+  left: 0%;
+}
+ol.puntiniCarosello{
+  margin: 0;
+  padding: 0;
+}
 
+#caroselloIndietro, #caroselloAvanti{
+  cursor: pointer;
+  height: 3rem;
+  width: 3rem;
+  margin: .4rem;
+  border-radius: 60%;
+  background-color: red;
+  justify-content: center;
+  display: inline-flex;
+  align-items: center;
+}
+
+#caroselloAvanti{
+  float: right;
+}
