@@ -9,6 +9,7 @@
     <link rel="icon" href="../images/pokeball.ico" type="image/x-icon">
 </head>
 <body>
+    <a class="nascosto" href="#primoContenuto">Vai al contenuto</a>
     <header>
         <h1>Museo Cartoni Animati</h1>
     </header>
@@ -32,7 +33,7 @@
     </nav>
 
     <main>
-        <h1>Prenotazione visita Museo x</h1>
+        <h1 id="primoContenuto">Prenotazione visita Museo x</h1>
         <form action="../../src/prenota.php" method="post">
             <label for="giorno">Giorno </label>
             <!-- da mettere come minimo il giorno odierno -->
@@ -53,6 +54,7 @@
             <input type="submit" value="Prenota">
         </form>
     </main>
+    <a href="#" aria-label="Torna su">⇪</a>
     <footer>
         <img src="../images/logoMuseo.png" alt="Logo del Museo">
         <dl>
