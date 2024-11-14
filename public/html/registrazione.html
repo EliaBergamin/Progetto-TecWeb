@@ -12,6 +12,7 @@
 </head>
 
 <body>
+    <a class="nascosto" href="#primoContenuto">Vai al contenuto</a>
     <header>
         <h1>Museo Cartoni Animati</h1>
     </header>
@@ -35,7 +36,7 @@
     </nav>
 
     <main>
-        <h1>Registrazione</h1>
+        <h1 id="primoContenuto">Registrazione</h1>
         <form action="../../src/registra.php" method="post">
             <label for="nome">Nome: </label>
             <input type="text" name="nome" id="nome" required>
@@ -51,6 +52,7 @@
             <input type="submit" value="Registrati">
         </form>
     </main>
+    <a href="#" aria-label="Torna su">⇪</a>
     <footer>
         <img src="../images/logoMuseo.png" alt="Logo del Museo">
         <dl>
