@@ -34,30 +34,37 @@
         </ul>
     </nav>
     <main>
-        <ol id="primoContenuto" class="immaginiCarosello">
-            <li>
-                <img src="./images/carosello1" alt="Prima Immagine Carosello">
-            </li>
-            <li>
-                <img src="./images/carosello2" alt="Seconda Immagine Carosello">
-            </li>
-            <li>
-                <img src="./images/carosello3" alt="Terza Immagine Carosello">
-            </li>
-        </ol>
-        <button id="caroselloIndietro" type="button" aria-label="Immagine precedente" onclick="funzionejs">&lt;</button>
-        <button id="caroselloAvanti" type="button" aria-label="Immagine successiva" onclick="funzionejs">&gt;</button>
-        <ol class="puntiniCarosello">
-            <li>
-                <button type="button" aria-label="Scorri all'immagine numero 1" onclick="funzionejs">1</button>
-            </li>
-            <li>
-                <button type="button" aria-label="Scorri all'immagine numero 2" onclick="funzionejs">2</button>
-            </li>
-            <li>
-                <button type="button" aria-label="Scorri all'immagine numero 3" onclick="funzionejs">3</button>
-            </li>
-        </ol>
+        <div id="carosello">
+            <ol id="primoContenuto" class="immaginiCarosello">
+                <li>
+                    <img src="./images/immcarosello1.jpg" alt="Prima Immagine Carosello">
+                </li>
+                <li>
+                    <img src="./images/immcarosello2.jpg" alt="Seconda Immagine Carosello">
+                </li>
+                <li>
+                    <img src="./images/immcarosello3.jpg" alt="Terza Immagine Carosello">
+                </li>
+            </ol>
+            <button id="caroselloIndietro" type="button" aria-label="Immagine precedente" onclick="funzionejs">&lt;</button>
+            <button id="caroselloAvanti" type="button" aria-label="Immagine successiva" onclick="funzionejs">&gt;</button>
+            <ol class="puntiniCarosello">
+                <li>
+                    <button type="button" aria-label="Scorri all'immagine numero 1" onclick="funzionejs">1</button>
+                </li>
+                <li>
+                    <button type="button" aria-label="Scorri all'immagine numero 2" onclick="funzionejs">2</button>
+                </li>
+                <li>
+                    <button type="button" aria-label="Scorri all'immagine numero 3" onclick="funzionejs">3</button>
+                </li>
+            </ol>
+        </div>
+        <script>
+            let indiceSlide = 1;
+            let slides = document.querySelectorAll("#primoContenuto img")
+            slides[0].style.display = "block";
+        </script>
         <h1>Il museo dei cartoni animati internazionali più famosi</h1>
         <p>
             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
