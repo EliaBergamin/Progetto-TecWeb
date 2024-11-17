@@ -13,6 +13,7 @@
 </head>
 
 <body>
+    <a class="nascosto" href="#primoContenuto">Vai al contenuto</a>
     <header>
         <h1>Museo Cartoni Animati</h1>
     </header>
@@ -33,7 +34,7 @@
     </nav>
 
     <main>
-        <h1>Recensioni</h1>
+        <h1 id="primoContenuto">Recensioni</h1>
         <a href="recensisci.html">Scrivi una recensione</a>
         <h2 id="titolo-recens-museo">Recensioni del museo</h2>
         <a href="#titolo-recens-virtual">Vai alle recensioni del <span lang="en">Virtual Tour</span></a>
@@ -87,7 +88,54 @@
             </li>
         </ul>
     </main>
-    <footer></footer>
+    <a href="#" aria-label="Torna su">⇪</a>
+    <footer>
+        <img src="../images/logoMuseo.png" alt="Logo del Museo">
+        <dl>
+            <dt> <abbr title="telefono">Tel</abbr> : </dt>
+            <dd><a href="tel:+39123456789">123456789</a> </dd>
+            <dt> <span lang="en">Email : </span> </dt>
+            <dd> <a href="mailto:info@dominioImmaginario.com">info@dominioImmaginario.comm</a> </dd>
+            <dt> Indirizzo : </dt>
+            <dd>
+                <a href="https://maps.app.goo.gl/xqD3pfvXG4ockxUeA">Via Luigi Luzzatti,<abbr title="Numero civico">
+                        n.</abbr> 8, 35121 Padova <abbr title="Provincia di Padova">PD</abbr></a>
+            </dd>
+        </dl>
+        <a href="" lang="en">Privacy Link TODO</a>
+        <table title="orari-museo">
+            <caption>Orari del Museo</caption>
+            <thead>
+                <tr>
+                    <td></td>
+                    <th scope="col">Mattina</th>
+                    <th scope="col">Pomeriggio</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">Lunedì</th>
+                    <td><time datetime="09:00">09:00</time> - <time datetime="12:00">12:00</time></td>
+                    <td><time datetime="14:00">14:00</time> - <time datetime="19:00">19:00</time></td>
+                </tr>
+                <tr>
+                    <th scope="row">Martedì</th>
+                    <td><time datetime="09:00">09:00</time> - <time datetime="12:00">12:00</time></td>
+                    <td><time datetime="14:00">14:00</time> - <time datetime="19:00">19:00</time></td>
+                </tr>
+                <tr>
+                    <th scope="row">Sabato</th>
+                    <td><time datetime="08:00">08:00</time> - <time datetime="13:00">13:00</time></td>
+                    <td><time datetime="14:00">14:00</time> - <time datetime="20:00">20:00</time></td>
+                </tr>
+                <tr>
+                    <th scope="row">Domenica</th>
+                    <td><time datetime="08:00">08:00</time> - <time datetime="13:00">13:00</time></td>
+                    <td><time datetime="14:00">14:00</time> - <time datetime="22:00">22:00</time></td>
+                </tr>
+            </tbody>
+        </table>
+    </footer>
 </body>
 
 </html>
