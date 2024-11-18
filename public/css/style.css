@@ -1,5 +1,71 @@
-/* #rating-fs label {
-  position:absolute;
- left:-999em;
-} */
+main {
+  color: var(--newstxtcolor);
+  background-color: var(--contentbgcolor);
+  margin: 2em auto; 
+  width: 70%; 
+  padding: 1.75em;
+  border: 1px solid var(--contentxtcolor);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+  border-radius: 8px; 
+}
 
+main h1 {
+  padding: 0.7em;
+  padding-top: 0.1em;
+  text-align: center;
+  line-height: 1.5em;
+}
+
+main h2 {
+  padding-top: 0.7em;
+  padding-bottom: 0.7em;
+  text-align: center;
+  text-decoration: underline;
+}
+
+#carta-immagine img {
+  display: block;
+  margin: 0 auto;
+  border: 1px solid var(--contentxtcolor);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#carta-descrizione {
+  margin-top: 2em;
+}
+
+#carta-descrizione p {
+  text-align: justify;
+  line-height: 1.8;
+  margin: 0 1em;
+  font-size: 1.1em;
+}
+
+#carta-dettagli {
+  margin-top: 2em;
+}
+
+#carta-dettagli dl {
+  width: 90%;
+  margin: 0 auto;
+}
+
+#carta-dettagli dt {
+  background-image: url('../images/pokeball.ico');
+  background-size: 2em;
+  background-repeat: no-repeat;
+  font-size: 1.1em;
+  padding-left: 2.5em;
+}
+
+#carta-dettagli dd {
+  padding: 0.5em;
+  padding-left: 2.5em;
+  margin-left: 1.5em;
+  font-size: 1em;
+}
+
+#carta-dettagli dd:last-child {
+  border-radius: 0 0 4px 4px;
+}
