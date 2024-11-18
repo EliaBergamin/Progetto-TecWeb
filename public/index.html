@@ -7,9 +7,9 @@
     <meta name="description"
         content="Il sito ufficiale per il Museo di cartoni animati. Informazioni, contatti e prenotazioni per il Museo dei cartoni animati.">
     <meta name="keywords" content="Museo,Mostre,Animazione,Cartoni Animati,cardgame,prenota,visita,informazioni">
-    <link rel="stylesheet" href="style.css" media="screen">
+    <link rel="stylesheet" href="css/style.css" media="screen">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="../images/pokeball.ico" type="image/x-icon">
+    <link rel="icon" href="images/pokeball.ico" type="image/x-icon">
 </head>
 
 <body>
@@ -21,7 +21,6 @@
     <nav id="breadcrumb">
         <p>Ti trovi in: <span lang="en">Home</span></p>
     </nav>
-
     <nav id="menu">
         <ul>
             <li id="currentLink" lang="en">Home</li>
@@ -33,6 +32,7 @@
 
         </ul>
     </nav>
+
     <main>
         <ol id="primoContenuto" class="immaginiCarosello">
             <li>
@@ -76,22 +76,24 @@
             of Good and Evil) by Cicero, written in
         </p>
     </main>
-    <a href="#" aria-label="Torna su">⇪</a>
+    <a id="torna-su" href="#" aria-label="Torna su">⇪</a>
     <footer>
-        <img src="./images/logoMuseo.png" alt="Logo del Museo">
+        <h2>Museo Cartoni Animati</h2>
         <dl>
-            <dt> <abbr title="telefono">Tel</abbr> : </dt>
+            <dt> <abbr title="telefono">Tel</abbr>: </dt>
             <dd><a href="tel:+39123456789">123456789</a> </dd>
-            <dt> <span lang="en">Email : </span> </dt>
+            <dt> <span lang="en">Email: </span> </dt>
             <dd> <a href="mailto:info@dominioImmaginario.com">info@dominioImmaginario.comm</a> </dd>
-            <dt> Indirizzo : </dt>
+            <dt> Indirizzo: </dt>
             <dd>
-                <a href="https://maps.app.goo.gl/xqD3pfvXG4ockxUeA">Via Luigi Luzzatti,<abbr title="Numero civico">
-                        n.</abbr> 8, 35121 Padova <abbr title="Provincia di Padova">PD</abbr></a>
+                <a href="https://maps.app.goo.gl/xqD3pfvXG4ockxUeA">Via Luigi Luzzatti,
+                    <abbr title="Numero civico">n.</abbr> 8, 35121 Padova</a>
             </dd>
         </dl>
-        <a href="" lang="en">Privacy Link TODO</a>
-        <table title="orari-museo">
+        <!--         <a href="" lang="en">Privacy Link TODO</a>
+ -->
+        <p id="tab-descr" class="nascosto">La tabella contiene gli orari di apertura del museo</p>
+        <table id="orari-museo" title="Orari del museo" aria-describedby="tab-descr">
             <caption>Orari del Museo</caption>
             <thead>
                 <tr>

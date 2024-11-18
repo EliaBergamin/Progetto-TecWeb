@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
     <title>Prenotazione</title>
     <meta charset="UTF-8">
     <meta name="description" content="Pagina per prenotare una visita al museo">
     <meta name="keywords" content="museo,prenotazione,visita,disponibilità,giorno,carte,cartoni,biglietto">
-    <link rel="stylesheet" href="../css/style.ccs" media="screen">
+    <link rel="stylesheet" href="../css/style.css" media="screen">
     <link rel="icon" href="../images/pokeball.ico" type="image/x-icon">
 </head>
+
 <body>
     <a class="nascosto" href="#primoContenuto">Vai al contenuto</a>
     <header>
@@ -37,39 +39,44 @@
         <form action="../../src/prenota.php" method="post">
             <label for="giorno">Giorno </label>
             <!-- da mettere come minimo il giorno odierno -->
-            <input type="date" name="giorno" id="giorno" required data-msg-required="Per favore, selezionare il giorno della visita" data-msg-invalid="Giorno non valido">
+            <input type="date" name="giorno" id="giorno" required
+                data-msg-required="Per favore, selezionare il giorno della visita" data-msg-invalid="Giorno non valido">
             <label for="orario">Fascia oraria </label>
             <select name="orario" id="orario" required>
                 <option value="" disabled selected>Seleziona una fascia oraria</option>
-                <option value="09"><time datetime="09:00">09:00</time> - <time datetime="10:30">10:30</time></option>
-                <option value="10_30"><time datetime="10:30">10:30</time> - <time datetime="12:00">12:00</time></option>
-                <option value="12"><time datetime="12:00">12:00</time> - <time datetime="13:30">13:30</time></option>
-                <option value="13_30"><time datetime="13:30">13:30</time> - <time datetime="15:00">15:00</time></option>
-                <option value="15"><time datetime="15:00">15:00</time> - <time datetime="16:30">16:30</time></option>
-                <option value="16_30"><time datetime="16:30">16:30</time> - <time datetime="18:00">18:00</time></option>
+                <option value="09">09:00 - 10:30</option>
+                <option value="10_30">10:30 - 12:00</option>
+                <option value="12">12:00 - 13:30</option>
+                <option value="13_30">13:30 - 15:00</option>
+                <option value="15">15:00 - 16:30</option>
+                <option value="16_30">16:30 - 18:00</option>
             </select>
             <label for="visitatori">Numero di visitatori </label>
             <!-- max 15 valore da decidere -->
-            <input type="number" name="visitatori" id="visitatori" min="1" max="15" required data-msg-required="Per favore, selezionare il numero di visitatori" data-msg-invalid="Massimo x visitatori">
+            <input type="number" name="visitatori" id="visitatori" min="1" max="15" required
+                data-msg-required="Per favore, selezionare il numero di visitatori"
+                data-msg-invalid="Massimo x visitatori">
             <input type="submit" value="Prenota">
         </form>
     </main>
-    <a href="#" aria-label="Torna su">⇪</a>
+    <a id="torna-su" href="#" aria-label="Torna su">⇪</a>
     <footer>
-        <img src="../images/logoMuseo.png" alt="Logo del Museo">
+        <h2>Museo Cartoni Animati</h2>
         <dl>
-            <dt> <abbr title="telefono">Tel</abbr> : </dt>
+            <dt> <abbr title="telefono">Tel</abbr>: </dt>
             <dd><a href="tel:+39123456789">123456789</a> </dd>
-            <dt> <span lang="en">Email : </span> </dt>
+            <dt> <span lang="en">Email: </span> </dt>
             <dd> <a href="mailto:info@dominioImmaginario.com">info@dominioImmaginario.comm</a> </dd>
-            <dt> Indirizzo : </dt>
+            <dt> Indirizzo: </dt>
             <dd>
-                <a href="https://maps.app.goo.gl/xqD3pfvXG4ockxUeA">Via Luigi Luzzatti,<abbr title="Numero civico">
-                        n.</abbr> 8, 35121 Padova <abbr title="Provincia di Padova">PD</abbr></a>
+                <a href="https://maps.app.goo.gl/xqD3pfvXG4ockxUeA">Via Luigi Luzzatti,
+                    <abbr title="Numero civico">n.</abbr> 8, 35121 Padova</a>
             </dd>
         </dl>
-        <a href="" lang="en">Privacy Link TODO</a>
-        <table title="orari-museo">
+        <!--         <a href="" lang="en">Privacy Link TODO</a>
+ -->
+        <p id="tab-descr" class="nascosto">La tabella contiene gli orari di apertura del museo</p>
+        <table id="orari-museo" title="Orari del museo" aria-describedby="tab-descr">
             <caption>Orari del Museo</caption>
             <thead>
                 <tr>
@@ -103,4 +110,5 @@
         </table>
     </footer>
 </body>
+
 </html>
