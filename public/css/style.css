@@ -3,3 +3,94 @@
  left:-999em;
 } */
 
+/* Versione 1 senza cambiare main */
+
+#primoContenuto {
+  text-align: center;
+}
+
+#formPrenotazione {
+  margin-top: 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#formPrenotazione input, select {
+  margin-bottom: 1.5em;
+  box-sizing: border-box;
+  padding: 0.4em;
+  border: solid 2px #000;
+  width: 10em;
+  border-radius: 5px;
+}
+
+#formPrenotazione input[type="submit"] {
+  margin-top: 1em;
+  background-color: green;
+  color: white;
+  padding: 0.6em;
+  width: auto;
+  font-size: 1em;
+}
+
+#formPrenotazione label {
+  margin-bottom: 0.5em;
+  font-size: 1.2em;
+}
+
+
+
+/* Versione 2 cambiando main (decommenta div)*/
+
+/* main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("../images/mostra.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+
+#contenitorePrenotazione {
+  width: 35%;
+  padding: 1.5em;
+  background-color: white;
+  border-radius: 10px;
+  opacity: 0.85;
+}
+
+#primoContenuto {
+  text-align: center;
+}
+
+#formPrenotazione input, select {
+  margin-bottom: 1.5em;
+  box-sizing: border-box;
+  padding: 0.4em;
+  border: solid 2px #000;
+  width: 10em;
+  border-radius: 5px;
+  display: block;
+  margin-left: 1.5em;
+}
+
+#formPrenotazione input[type="submit"] {
+  background-color: green;
+  color: white;
+  padding: 0.6em;
+  width: auto;
+  font-size: 1em;
+  margin-left: auto;
+  margin-bottom: 0;
+}
+
+#formPrenotazione label {
+  margin-bottom: 0.5em;
+  font-size: 1.2em;
+  margin-left: 1em;
+}  */
+
