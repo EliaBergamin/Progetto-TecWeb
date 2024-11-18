@@ -1,5 +1,129 @@
-/* #rating-fs label {
-  position:absolute;
- left:-999em;
-} */
+/* Stile generale per il main */
+main {
+  background-color: var(--contentbgcolor);
+  color: var(--contenttxtcolor);
+  padding: 1.75em;
+  display: grid;
+  grid-template-columns: 1fr 2fr; 
+  gap: 1em;
+}
 
+/* Titolo principale */
+main h1 {
+  grid-column: span 2;
+  text-align: center;
+  margin-bottom: 1em;
+  line-height: 1.5em;
+  font-size: 1.8em;
+  border-bottom: 2px solid var(--contenttxtcolor);
+  padding-bottom: 0.5em;
+}
+
+/* Sezione mappa (immagini delle sale) */
+#mappa {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); 
+  gap: 1em;
+  align-items: center;
+  justify-items: center;
+  background-color: var(--breadcolor);
+  padding: 1em;
+  border-radius: 8px;
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--contenttxtcolor);
+}
+
+#mappa ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); 
+  gap: 1em;
+}
+
+#mappa li img {
+  width: 100%;
+  max-width: 150px;
+  height: auto;
+  border: 2px solid var(--contenttxtcolor);
+  border-radius: 8px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#mappa li img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Dettaglio sala */
+#dettaglio-sala {
+  background-color: var(--contentbgcolor);
+  padding: 1.5em;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--contenttxtcolor);
+}
+
+#dettaglio-sala h2 {
+  font-size: 1.5em;
+  text-align: center;
+  margin-bottom: 0.5em;
+  padding-bottom: 0.5em;
+  border-bottom: 2px solid var(--contenttxtcolor);
+}
+
+#dettaglio-sala p {
+  margin-top: 1em;
+  line-height: 1.5em;
+  text-align: justify;
+}
+
+#bottone-sala {
+  display: block;
+  text-align: center;
+  background-color: var(--contenttxtcolor);
+  color: var(--newstxtcolor);
+  padding: 0.8em 1.5em;
+  margin-top: 1em;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+#bottone-sala:hover {
+  background-color: var(--newstxtcolor);
+  color: var(--contentbgcolor);
+}
+
+/* Bottone recensione */
+main > .btn {
+  display: block;
+  text-align: center;
+  background-color: var(--contenttxtcolor);
+  color: var(--newstxtcolor);
+  padding: 0.8em 1.5em;
+  margin: 2em auto 0;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  width: fit-content;
+}
+
+main > .btn:hover {
+  background-color: var(--newstxtcolor);
+  color: var(--contentbgcolor);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  main {
+      grid-template-columns: 1fr; /* Singola colonna */
+  }
+
+  #mappa ul {
+      grid-template-columns: 1fr; /* Una colonna per le immagini */
+  }
+}
