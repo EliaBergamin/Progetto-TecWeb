@@ -3,8 +3,8 @@
  left:-999em;
 } */
 main{
-  margin-left: 10em;
-  margin-right: 10em;
+  margin-left: 15em;
+  margin-right: 15em;
 }
 #carosello{
   position: relative;
@@ -26,14 +26,15 @@ main{
   z-index: 0;
 }
 
-.puntiniCarosello button{
+.puntiniCarosello li button{
   cursor: pointer;
   align-items: center;
   text-indent: -9999em;
-  background-color: white;
+  background-color: rgb(232, 225, 225);
   border-radius: 50%;
   height: 1.5rem;
   width: 1.5rem;
+  border: none;
   
 }
 .puntiniCarosello{
@@ -50,10 +51,16 @@ main{
   z-index: 1;
 
 }
+
 ol.puntiniCarosello{
   margin: 0;
   padding: 0;
 }
+
+ol li .active, .puntiniCarosello button:hover {
+  background-color: #717171;
+}
+
 
 #caroselloIndietro, #caroselloAvanti{
   cursor: pointer;

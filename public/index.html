@@ -46,24 +46,49 @@
                     <img src="./images/immcarosello3.jpg" alt="Terza Immagine Carosello">
                 </li>
             </ol>
-            <button id="caroselloIndietro" type="button" aria-label="Immagine precedente" onclick="funzionejs">&lt;</button>
-            <button id="caroselloAvanti" type="button" aria-label="Immagine successiva" onclick="funzionejs">&gt;</button>
+            <button id="caroselloIndietro" type="button" aria-label="Immagine precedente" onclick="prossimaSlide(-1)">&lt;</button>
+            <button id="caroselloAvanti" type="button" aria-label="Immagine successiva" onclick="prossimaSlide(1)">&gt;</button>
             <ol class="puntiniCarosello">
                 <li>
-                    <button type="button" aria-label="Scorri all'immagine numero 1" onclick="funzionejs">1</button>
+                    <button class="" type="button" aria-label="Scorri all'immagine numero 1" onclick="currentSlide(1)">1</button>
                 </li>
                 <li>
-                    <button type="button" aria-label="Scorri all'immagine numero 2" onclick="funzionejs">2</button>
+                    <button class="" type="button" aria-label="Scorri all'immagine numero 2" onclick="currentSlide(2)">2</button>
                 </li>
                 <li>
-                    <button type="button" aria-label="Scorri all'immagine numero 3" onclick="funzionejs">3</button>
+                    <button class="" type="button" aria-label="Scorri all'immagine numero 3" onclick="currentSlide(3)">3</button>
                 </li>
             </ol>
         </div>
         <script>
-            let indiceSlide = 1;
-            let slides = document.querySelectorAll("#primoContenuto img")
-            slides[0].style.display = "block";
+            let indiceSlide = 0;
+            mostraSlide(indiceSlide);
+
+            function prossimaSlide(n) {
+            mostraSlide(indiceSlide += n);
+            }
+
+            function currentSlide(n) {
+            mostraSlide(indiceSlide = n);
+            }
+
+            function mostraSlide(n) {
+            let i;
+            let slides = document.querySelectorAll("#primoContenuto img");
+            console.log(slides)
+            let dots = document.querySelectorAll(".puntiniCarosello button");
+            
+            if (n > slides.length) {indiceSlide = 1}    
+            if (n < 1) {indiceSlide = slides.length}
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace("active", "");
+            }
+            slides[indiceSlide-1].style.display = "block";  
+            dots[indiceSlide-1].className += "active";
+            }
         </script>
         <h1>Il museo dei cartoni animati internazionali più famosi</h1>
         <p>
