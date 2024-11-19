@@ -4,9 +4,9 @@
 }
 
 :root {
-  --headerbgcolor: #423c38;
-  --headercolor: #fff;
-  --bgcolor: #a3a3a3;
+  --headerbgcolor: #95e98a;
+  --headercolor: #205d86;
+  --bgcolor: #fff;
   --txtcolor: #000;
   --breadcolor: #163F77;
   --newscolor: #F3C42B;
@@ -26,13 +26,13 @@
 
 .nascosto {
   position: absolute;
-  left: -999em;
+  left: -999rem;
 }
 
 html {
   font-size: 100%;
   font-family: "Lexend", sans-serif;
-  line-height: 1.5em;
+  line-height: 1.5rem;
   color: var(--txtcolor);
   background-color: var(--bgcolor);
   border: 0;
@@ -42,7 +42,7 @@ html {
 
 body {
   display: grid;
-  grid-template-columns: 1fr 8fr; 
+  grid-template-columns: 1fr 8fr;
   overflow-x: hidden;
 }
 
@@ -72,9 +72,9 @@ header {
 }
 
 header h1 {
-  
+
   position: absolute;
-  text-indent: -999em;
+  text-indent: -999rem;
   color: var(--headercolor);
   display: inline;
   vertical-align: middle;
@@ -103,15 +103,27 @@ utile per fissare il menu in modo che non scrolli
 #menu {
   background: var(--headerbgcolor);
   color: var(--headercolor);
-  padding: 0.5rem;
   grid-row: 1;
   grid-column: 2;
   width: auto;
 }
 
 #menu li {
+  padding: 0.5rem;
   display: inline;
-  margin: 1.4em;
+  vertical-align: middle;
+  height: 100%;
+}
+
+#currentLink {
+  background: var(--headercolor);
+  color: var(--headerbgcolor);
+}
+
+#menu a {
+  color: var(--headercolor);
+  text-decoration: none;
+  margin: 0;
 }
 
 /* BREADCRUMB */
@@ -119,12 +131,13 @@ utile per fissare il menu in modo che non scrolli
 #breadcrumb {
   grid-row: 2;
   grid-column: 1/3;
-  background-color: var(--newscolor);
+  background-color: var(--headercolor);
+  color: var(--headerbgcolor);
   padding: 0.2rem;
 }
 
 #breadcrumb a:visited {
-  color: var(--headercolor);
+  color: var(--contentbgcolor);
 }
 
 /* MAIN */
@@ -137,12 +150,12 @@ main {
   grid-row: 4;
   grid-column: 1/3;
   width: 100%;
-  height: 4em;
-  text-indent: -999em;
+  height: 3rem;
+  text-indent: -999rem;
   display: block;
   background: url(../images/back-to-top-icon.png) no-repeat center;
   background-size: contain;
-  margin: 0.5em auto;
+  margin: 0.5rem auto;
 }
 
 /* FOOTER */
@@ -151,11 +164,13 @@ footer {
   grid-row: 5;
   grid-column: 1/3;
   display: flex;
+  justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
   background-color: var(--headerbgcolor);
   color: var(--headercolor);
-  font-size: 0.75em;
-  padding: 0 10%;
+  font-size: 0.75rem;
+  padding: 0 6%;
 }
 
 footer a {
@@ -163,46 +178,51 @@ footer a {
 }
 
 footer dl {
-  min-width: 23em;
-  margin: 0.4em 1.5%;
+  min-width: 14rem;
+  margin: 0.4rem 1.5%;
   flex: 1 0 30%;
-  padding: 3em 0;
+  padding: 3rem 0;
 }
 
 footer dt {
   float: left;
-  padding-right: 0.2em;
+  padding-right: 0.2rem;
 }
 
 footer h2 {
-  flex: 0 0 18%;
+  flex: 1 0 18%;
   background-image: url('../images/logoMuseo2.png');
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
-  text-indent: -999em;
+  text-indent: -999rem;
+  min-height: 8rem;
 }
 
 /* TABELLA ORARI MUSEO */
 
 #orari-museo {
-  max-width: 30em;
-  border-collapse: collapse;
+  max-width: 30rem; 
   text-align: center;
-  margin: 0.4em 1.5%;
+  margin: 0.3rem 1.5%;
   flex: 1 0 40%;
 }
 
-#orari-museo td {
-  min-width: 8.5em;
+#orari-museo caption {
+  font-weight: bold;
+  font-size: 1rem;
 }
+
+#orari-museo td {
+  min-width: 8rem;
+}
+
 #orari-museo tr:nth-child(even),
 #orari-museo thead th,
-#orari-museo thead td  {
+#orari-museo thead td {
   background-color: #f2f2f2;
-  color: var(--txtcolor);
 }
 
 #orari-museo tr:nth-child(odd) {
-  background-color: #8b7d7d;
+  background-color: var(--headerbgcolor);
 }
