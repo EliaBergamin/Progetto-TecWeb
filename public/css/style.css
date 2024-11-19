@@ -3,3 +3,73 @@
  left:-999em;
 } */
 
+* {
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  margin-left: 3%;
+  margin-right: 3%;
+}
+
+#primoContenuto {
+  text-align: center;
+  font-size: 3em;
+}
+
+.tipoMostre {
+  font-size: 2em;
+  font-weight: bold;
+  margin: 1.5em 0;
+}
+
+.nomeMostra {
+  margin: 1.5em 5%;
+  font-size: 1.5em;
+  background-image: url("../images/pokeball.ico");
+  background-size: 1.3em;
+  background-repeat: no-repeat;
+  padding-left: 2em;
+}
+
+/* l'idea sarebbe renderla simile ad una carta ma work in progress */
+.infoMostra {
+  display: flex;
+  flex-direction: column;
+  padding: 1.5em;
+  border: 2px solid #ccc;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  margin: 1.5em 0;
+}
+
+.infoMostra > img {
+  display: block;
+  margin: auto;
+  width: 70%;
+  max-width: 700px;
+  border-radius: 10px;
+}
+
+/* con questo vengono sommati i due margini tra bot del primo e top del secondo risolvi */
+.infoMostra > p {
+  margin: 1em 15%;
+}
+
+.infoMostra time {
+  font-weight: bold;
+}
+
+.button {
+  align-self: flex-end;
+  padding: 0.6em;
+  font-size: 1em;
+  border: 2px solid #000;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  color: black;
+  text-decoration: none;
+}

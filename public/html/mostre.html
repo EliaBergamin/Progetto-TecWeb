@@ -33,30 +33,34 @@
     <main>
         <h1 id="primoContenuto">Le mostre</h1>
         <dl>
-            <dt>In corso</dt>
-            <dd>
-                <h2>Nome mostra</h2>
-                <p>Da <time datetime="2024-10-01">01 Ottobre 2024</time> a <time datetime="2024-12-01">01 Dicembre 2024</time></p>
-                <!-- io lascerei alt vuoto -->
-                <img src="../images/mostra.jpg" alt="">
-                <p>Descrizione mostra: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque quam ante, ornare sed urna sed, molestie volutpat turpis. Duis et nunc in purus lacinia euismod. Suspendisse potenti. Duis tempus purus elit. Curabitur scelerisque iaculis orci vitae gravida. Maecenas laoreet faucibus sodales. Aenean ultricies sodales ante eu efficitur. Phasellus eu ante rutrum, maximus est et, sodales tellus. Nullam dapibus massa viverra, gravida risus vel, hendrerit ipsum. Fusce laoreet et est at cursus. Sed pellentesque ac enim sed maximus. Aliquam mattis, diam eget maximus fringilla, diam ex facilisis mauris, id mollis est magna vel velit.</p>
-                <a href="prenotazione.html">Prenota visita</a>
-            </dd>
-            <dt>Mostre in programma</dt>
+            <dt class="tipoMostre">Mostre in corso</dt>
             <dd>
                 <dl>
-                    <dt>Nome mostra futura 1</dt>
-                    <dd>
-                        <p>Da <time datetime="2025-01-01">01 Gennaio 2025</time> a <time datetime="2025-02-01">01 Febbraio 2025</time></p>
+                    <dt class="nomeMostra">Nome mostra</dt>
+                    <dd class="infoMostra">
+                        <img src="../images/mostra.jpg" alt="">
+                        <p>Descrizione mostra: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque quam ante, ornare sed urna sed, molestie volutpat turpis. Duis et nunc in purus lacinia euismod. Suspendisse potenti. Duis tempus purus elit. Curabitur scelerisque iaculis orci vitae gravida. Maecenas laoreet faucibus sodales. Aenean ultricies sodales ante eu efficitur. Phasellus eu ante rutrum, maximus est et, sodales tellus. Nullam dapibus massa viverra, gravida risus vel, hendrerit ipsum. Fusce laoreet et est at cursus. Sed pellentesque ac enim sed maximus. Aliquam mattis, diam eget maximus fringilla, diam ex facilisis mauris, id mollis est magna vel velit.</p>
+                        <p>Da <time datetime="2024-10-01">01 Ottobre 2024</time> a <time datetime="2024-12-01">01 Dicembre 2024</time></p>
+                        <a href="prenotazione.html" class="button">Prenota visita</a>
+                    </dd>
+                </dl>
+            </dd>
+            <dt class="tipoMostre">Mostre in programma</dt>
+            <dd>
+                <dl>
+                    <dt class="nomeMostra">Nome mostra futura 1</dt>
+                    <dd class="infoMostra">
                         <img src="../images/mostra.jpg" alt="">
                         <p>Descrizione mostra: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque quam ante, ornare sed urna sed, molestie volutpat turpis. Duis et nunc in purus lacinia euismod. Suspendisse potenti. Duis tempus purus elit. Curabitur scelerisque iaculis orci vitae graw</p>
-                        <a href="prenotazione.html">Prenota visita</a>
-                    <dt>Nome mostra futura 2</dt>
-                    <dd>
-                        <p>Da <time datetime="2025-04-01">01 Aprile 2025</time> a <time datetime="2025-06-01">01 Giugno 2025</time></p>
+                        <p>Da <time datetime="2025-01-01">01 Gennaio 2025</time> a <time datetime="2025-02-01">01 Febbraio 2025</time></p>
+                        <a href="prenotazione.html" class="button">Prenota visita</a>
+                    </dd>
+                    <dt class="nomeMostra">Nome mostra futura 2</dt>
+                    <dd class="infoMostra">
                         <img src="../images/mostra.jpg" alt="">
                         <p>Descrizione mostra: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque quam ante, ornare sed urna sed, molestie volutpat turpis. Duis et nunc in purus lacinia euismod. Suspendisse potenti. Duis tempus purus elit. Curabitur scelerisque iaculis orci vitae grav</p>
-                        <a href="prenotazione.html">Prenota visita</a>
+                        <p>Da <time datetime="2025-04-01">01 Aprile 2025</time> a <time datetime="2025-06-01">01 Giugno 2025</time></p>
+                        <a href="prenotazione.html" class="button">Prenota visita</a>
                     </dd>
                 </dl>
             </dd>
@@ -64,16 +68,17 @@
             <dt><button class="accordion">Mostre passate</button></dt>
             <dd class="accordion-panel">
                 <dl>
-                    <dt>Nome mostra passata 1</dt>
-                    <dd>
+                    <dt class="nomeMostra">Nome mostra passata 1</dt>
+                    <dd class="infoMostra">
+                        <img src="../images/mostra.jpg" alt="">
+                        <p>Descrizione mostra: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque quam ante, ornare sed urna sed, molestie volutpat turpis. Duis et nunc in purus lacinia euismod. Suspendisse potenti. Duis tempus purus elit. Curabitur scelerisque iaculis orci vitae grav</p>
                         <p>Conclusa <time datetime="2024-06-01">01 Giugno 2024</time></p>
+                    </dd>
+                    <dt class="nomeMostra">Nome mostra passata 2</dt>
+                    <dd class="infoMostra">
                         <img src="../images/mostra.jpg" alt="">
                         <p>Descrizione mostra: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque quam ante, ornare sed urna sed, molestie volutpat turpis. Duis et nunc in purus lacinia euismod. Suspendisse potenti. Duis tempus purus elit. Curabitur scelerisque iaculis orci vitae grav</p>
-                    <dt>Nome mostra passata 2</dt>
-                    <dd>
                         <p>Conclusa <time datetime="2024-02-01">01 Febbraio 2024</time></p>
-                        <img src="../images/mostra.jpg" alt="">
-                        <p>Descrizione mostra: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque quam ante, ornare sed urna sed, molestie volutpat turpis. Duis et nunc in purus lacinia euismod. Suspendisse potenti. Duis tempus purus elit. Curabitur scelerisque iaculis orci vitae grav</p>
                     </dd>
                 </dl>                       
             </dd>
