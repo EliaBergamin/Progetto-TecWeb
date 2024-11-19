@@ -3,3 +3,76 @@
  left:-999em;
 } */
 
+.dettaglioSala{
+  margin: 2% 7% 2% 7%;
+  background-color: #f2f4f7;
+  border-radius: 1em ;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+
+.dettaglioSala h1{
+  text-align: center;
+  font-size: 2rem;
+  padding: 1rem;
+  margin-bottom: 0;
+}
+.dettaglioSala p{
+  margin: 1em;
+  padding: 1em;
+  font-size: 1.1rem ;
+}
+
+#titoloListaOpere{
+  text-align: center;
+  font-size: 2rem;
+  padding: 1rem;
+  
+}
+
+#listaOpere{
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  grid-gap: 5em;
+  list-style-type: none;
+  margin: 0 5em 0 5em;
+  padding: 0;
+}
+#listaOpere li{
+  
+  
+  display: flex;
+  flex-direction: column; /* Imposta una colonna di layout per ciascun elemento */
+  align-items: center; 
+  text-align: left; /* Allinea il testo a sinistra */
+}
+
+#listaOpere li img{
+  height: 69%;
+  width: auto;
+  background-size: contain;
+  margin: 0;
+  
+}
+@media (max-width: 1225px) {
+  #listaOpere{
+    grid-template-columns: repeat(2,1fr);
+  }
+}
+/*trasforma la tabella e la fa diventare di una sola colonna in caso di schermi piccoli*/
+@media (max-width: 855px) {
+  #listaOpere{
+    grid-template-columns: repeat(1,1fr);
+  }
+}
+
+
+
+#listaOpere li h3{
+  font-style: italic;
+  align-self: flex-start; /* Allinea il titolo a sinistra */
+  margin-bottom: 0;
+}
+
+
+
