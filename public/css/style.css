@@ -142,7 +142,7 @@ main {
   display: block;
   background: url(../images/back-to-top-icon.png) no-repeat center;
   background-size: contain;
-  margin: 1em auto;
+  margin: 0.5em auto;
 }
 
 /* FOOTER */

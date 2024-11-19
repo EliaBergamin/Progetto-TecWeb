@@ -12,19 +12,23 @@
     <link rel="stylesheet" href="../css/mini.css" media="screen and (max-width: 1024px)">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../images/pokeball.ico" type="image/x-icon">
+    <script type="text/javascript" src="../js/script.js"></script>
 </head>
 
 <body>
     <a class="nascosto" href="#primoContenuto">Vai al contenuto</a>
     <header>
         <h1>Museo Cartoni Animati</h1>
+        <button id="hamb" class="hamToggle" data-hambOn="false" type="button" onclick="hambToggle()">Menù</button>
     </header>
 
     <nav id="breadcrumb">
-        <p>Ti trovi in: <a lang="en" href="../index.html">Home</a> &gt; Recensioni</p>
+        <p>
+            Ti trovi in: <a lang="en" href="../index.html">Home</a> &gt;
+        </p>
     </nav>
 
-    <nav id="menu">
+    <nav id="menu" class="hamToggle" data-hambOn="false">
         <ul>
             <li><a href="../index.html" lang="en">Home</a></li>
             <li><a href="mostre.html">Le mostre</a></li>
@@ -60,7 +64,8 @@
                     10 0 01-10 10A10 10 0 012 12 10 10 0 0112 2z" transform="translate (104 0)"></path>
                 </svg>
                 <time datetime="2024-11-02">2 Novembre 2024</time>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsum quidem esse neque. Magnam assumenda
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsum quidem esse neque. Magnam
+                    assumenda
                     possimus qui aperiam perferendis sit! Sed harum enim deserunt aperiam labore suscipit, debitis
                     maxime in tempore.</p>
             </li>
@@ -85,7 +90,8 @@
                 </svg>
                 <time datetime="2024-11-02">2 Novembre 2024</time>
                 <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facere aperiam voluptas et blanditiis
-                    dolores, cum magni. Fuga accusamus illo perspiciatis cum aliquam autem, ea velit porro, architecto
+                    dolores, cum magni. Fuga accusamus illo perspiciatis cum aliquam autem, ea velit porro,
+                    architecto
                     aperiam suscipit dolorem?</p>
             </li>
         </ul>

@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="../css/mini.css" media="screen and (max-width: 1024px)">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="../images/pokeball.ico" type="image/x-icon">
+  <script type="text/javascript" src="../js/script.js"></script>
   <!-- <script>
     console.log(document.getElementsByName("rating"));
     function reset_span() {
@@ -68,6 +69,7 @@
   <a class="nascosto" href="#primoContenuto">Vai al contenuto</a>
   <header>
     <h1>Museo Cartoni Animati</h1>
+    <button id="hamb" class="hamToggle" data-hambOn="false" type="button" onclick="hambToggle()">Menù</button>
   </header>
 
   <nav id="breadcrumb">
@@ -77,7 +79,7 @@
     </p>
   </nav>
 
-  <nav id="menu">
+  <nav id="menu" class="hamToggle" data-hambOn="false">
     <ul>
       <li><a href="../index.html" lang="en">Home</a></li>
       <li><a href="mostre.html">Le mostre</a></li>
@@ -87,6 +89,7 @@
       <li><a href="registrazione.html">Registrazione</a></li>
     </ul>
   </nav>
+
   <main>
     <form id="primoContenuto" action="../../src/recensisci.php" method="post">
       <fieldset>
