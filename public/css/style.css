@@ -28,11 +28,12 @@
 
 #formPrenotazione input[type="submit"] {
   margin-top: 1em;
-  background-color: green;
+  background-color: rgb(40, 212, 40);
   color: white;
   padding: 0.6em;
   width: auto;
   font-size: 1em;
+  color: black;
 }
 
 #formPrenotazione label {
@@ -48,7 +49,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: url("../images/mostra.jpg");
+  background-image: url("../images/sala.webp");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -56,11 +57,11 @@
 }
 
 #contenitorePrenotazione {
-  width: 35%;
+  width: 30%;
   padding: 1.5em;
   background-color: white;
   border-radius: 10px;
-  opacity: 0.85;
+  opacity: 0.9;
 }
 
 #primoContenuto {
@@ -79,13 +80,14 @@
 }
 
 #formPrenotazione input[type="submit"] {
-  background-color: green;
+  background-color: rgb(40, 212, 40);
   color: white;
   padding: 0.6em;
   width: auto;
   font-size: 1em;
   margin-left: auto;
   margin-bottom: 0;
+  color: black;
 }
 
 #formPrenotazione label {
