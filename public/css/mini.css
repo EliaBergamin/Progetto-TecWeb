@@ -30,7 +30,7 @@ header {
 }
 
 #menu {
-    position: absolute;
+    position: fixed;
     top: 3.2rem;
     right: 0;
     width: 10rem;
@@ -41,7 +41,7 @@ header {
     z-index: 100;
     transform: translate(11rem);
     transition: 1s ease-in-out;
-    position: absolute;
+    position: fixed;
 }
 
 #menu li {
