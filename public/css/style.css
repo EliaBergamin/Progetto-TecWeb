@@ -4,8 +4,8 @@
 }
 
 :root {
-  --headerbgcolor: #95e98a;
-  --headercolor: #205d86;
+  --headerbgcolor: #AEE8FC;
+  --headercolor: #37474F;
   --bgcolor: #fff;
   --txtcolor: #000;
   --breadcolor: #163F77;
@@ -148,18 +148,18 @@ main {
 
 /* CAROSELLO */
 
-#carosello{
+#carosello {
   position: relative;
   margin: 2% 7% 2% 7%;
 }
 
-#primoContenuto{
+#primoContenuto {
   list-style-type: none;
   position: relative;
-  padding: 0;  
+  padding: 0;
 }
 
-#primoContenuto img{
+#primoContenuto img {
   background-size: contain;
   display: none;
   width: 100%;
@@ -172,7 +172,7 @@ main {
   box-shadow: 7px 7px 25px rgba(0, 0, 0, 0.2);
 }
 
-.puntiniCarosello li button{
+.puntiniCarosello li button {
   cursor: pointer;
   align-items: center;
   text-indent: -9999em;
@@ -181,33 +181,35 @@ main {
   height: 1.5rem;
   width: 1.5rem;
   border: none;
-  
+
 }
 
-.puntiniCarosello{
+.puntiniCarosello {
   display: grid;
-  grid-template-columns: repeat(3,1.5rem);
+  grid-template-columns: repeat(3, 1.5rem);
   grid-gap: 2rem;
   justify-content: center;
   align-content: center;
   list-style-type: none;
   right: 0%;
   left: 0%;
-  position: absolute; 
+  position: absolute;
   bottom: 10%;
   z-index: 1;
 }
 
-ol.puntiniCarosello{
+ol.puntiniCarosello {
   margin: 0;
   padding: 0;
 }
 
-ol li .active, .puntiniCarosello button:hover {
+ol li .active,
+.puntiniCarosello button:hover {
   background-color: #717171;
 }
 
-#caroselloIndietro, #caroselloAvanti{
+#caroselloIndietro,
+#caroselloAvanti {
   cursor: pointer;
   height: 3rem;
   width: 3rem;
@@ -219,22 +221,23 @@ ol li .active, .puntiniCarosello button:hover {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  position: absolute; 
+  position: absolute;
   bottom: 42%;
   z-index: 1;
-  border:none;  
+  border: none;
 }
 
-#caroselloIndietro:hover, #caroselloAvanti:hover {
-  background-color: rgba(0,0,0,0.8);
+#caroselloIndietro:hover,
+#caroselloAvanti:hover {
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
-#caroselloIndietro{
+#caroselloIndietro {
   left: 1em;
   border-radius: 0.8em 0.2em 0.2em 0.8em;
 }
 
-#caroselloAvanti{
+#caroselloAvanti {
   right: 1em;
   left: auto;
   border-radius: 0.2em 0.8em 0.8em 0.2em;
@@ -245,22 +248,22 @@ ol li .active, .puntiniCarosello button:hover {
 .mainSection {
   margin: 2% 7% 2% 7%;
   background-color: #f2f4f7;
-  border-radius: 1em ;
+  border-radius: 1em;
   box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
 }
 
-.mainSection h1{
+.mainSection h1 {
   text-align: center;
   font-size: 2rem;
   padding: 1rem;
   margin-bottom: 0;
-  
+
 }
 
-.mainSection p{
+.mainSection p {
   margin: 1em;
   padding: 1em;
-  font-size: 1.1rem ;
+  font-size: 1.1rem;
 }
 
 #torna-su {
@@ -319,7 +322,7 @@ footer h2 {
 /* TABELLA ORARI MUSEO */
 
 #orari-museo {
-  max-width: 30rem; 
+  max-width: 30rem;
   text-align: center;
   margin: 0.3rem 1.5%;
   flex: 1 0 40%;

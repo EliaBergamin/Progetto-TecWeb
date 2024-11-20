@@ -38,10 +38,10 @@ header {
     transition: 1s ease-in-out;
     border: 2.5px solid var(--headercolor);
     border-right: none;
+    z-index: 100;
 }
 
 #menu[data-hambOn="false"] {
-    z-index: 100;
     transform: translate(11rem);
     transition: 1s ease-in-out;
     position: fixed;
