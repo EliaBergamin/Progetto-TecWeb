@@ -1,0 +1,80 @@
+/* MENU */
+
+header {
+    background-color: var(--headerbgcolor);
+    min-height: 3.2rem;
+    position: fixed;
+    width: 100%;
+    border-bottom:solid var(--headercolor);
+}
+
+#hamb {
+    cursor: pointer;
+    transition-duration: 0.2s;
+    border: none;
+    border-radius: 50%;
+    display: inline-flex;
+    height: 2.8rem;
+    width: 2.8rem;
+    margin: 0.2rem;
+    background-image: url(../images/hamb.webp);
+    text-indent: -9999em;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    vertical-align: middle;
+    float: right;
+}
+
+#hamb[data-hambOn="true"] {
+    background-image: url(../images/hamb_on.png);
+}
+
+#menu {
+    position: fixed;
+    top: 3.2rem;
+    right: 0;
+    width: 10rem;
+    transition: 1s ease-in-out;
+    border: 2.5px solid var(--headercolor);
+    border-right: none;
+}
+
+#menu[data-hambOn="false"] {
+    z-index: 100;
+    transform: translate(11rem);
+    transition: 1s ease-in-out;
+    position: fixed;
+}
+
+#menu li {
+    display: block;
+    margin: 0;
+}
+
+/* BREADCRUMB */
+
+#breadcrumb {
+    margin-top: 3.2rem;
+}
+
+main {
+    margin-left: 0;
+}
+
+footer {
+    padding: 0.5em 2%;
+}
+
+footer h2 {
+    display: none;
+}
+
+footer dl {
+    padding: 0;
+    margin: auto;
+}
+
+#orari-museo {
+    margin: 0.4em 0;
+}

@@ -8,7 +8,11 @@
     se hai visitato il museo o hai fatto il virtual tour">
   <meta name="keywords" content="recensione,museo,virtual tour,visita,cardgame">
   <link rel="stylesheet" href="../css/style.css" media="screen">
+  <link rel="stylesheet" href="../css/middle.css" media="screen and (max-width: 1024px)">
+  <link rel="stylesheet" href="../css/mini.css" media="screen and (max-width: 768px)">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="../images/pokeball.ico" type="image/x-icon">
+  <script type="text/javascript" src="../js/script.js"></script>
   <!-- <script>
     console.log(document.getElementsByName("rating"));
     function reset_span() {
@@ -66,6 +70,7 @@
   <a class="nascosto" href="#primoContenuto">Vai al contenuto</a>
   <header>
     <h1>Museo Cartoni Animati</h1>
+    <button id="hamb" class="hamToggle" data-hambOn="false" type="button" onclick="hambToggle()">Menù</button>
   </header>
 
   <nav id="breadcrumb">
@@ -75,7 +80,7 @@
     </p>
   </nav>
 
-  <nav id="menu">
+  <nav id="menu" class="hamToggle" data-hambOn="false">
     <ul>
       <li><a href="../index.html" lang="en">Home</a></li>
       <li><a href="mostre.html">Le mostre</a></li>
@@ -85,6 +90,7 @@
       <li><a href="registrazione.html">Registrazione</a></li>
     </ul>
   </nav>
+
   <main>
     <form id="primoContenuto" action="../../src/recensisci.php" method="post">
       <fieldset>
@@ -101,15 +107,15 @@
         <fieldset id="rating-fs">
           <legend>Come valuteresti la tua esperienza?</legend>
           <input type="radio" name="rating" class="ahead" id="voto-1" value="1">
-          <label for="voto-1">Terribile</label>
+          <label for="voto-1" class="nascosto">Terribile</label>
           <input type="radio" name="rating" class="ahead" id="voto-2" value="2">
-          <label for="voto-2">Non soddisfacente</label>
+          <label for="voto-2" class="nascosto">Non soddisfacente</label>
           <input type="radio" name="rating" class="ahead" id="voto-3" value="3">
-          <label for="voto-3">Nella media</label>
+          <label for="voto-3" class="nascosto">Nella media</label>
           <input type="radio" name="rating" class="ahead" id="voto-4" value="4">
-          <label for="voto-4">Molto soddisfacente</label>
+          <label for="voto-4" class="nascosto">Molto soddisfacente</label>
           <input type="radio" name="rating" class="ahead" id="voto-5" value="5">
-          <label for="voto-5">Eccellente</label>
+          <label for="voto-5" class="nascosto">Eccellente</label>
           <span id="giudizio"></span>
         </fieldset>
         <label for="descrizione">Descrivi la tua visita</label>
@@ -119,22 +125,24 @@
       </fieldset>
     </form>
   </main>
-  <a href="#" aria-label="Torna su">⇪</a>
+  <a id="torna-su" href="#" aria-label="Torna su">⇪</a>
   <footer>
-    <img src="../images/logoMuseo.png" alt="Logo del Museo">
+    <h2>Museo Cartoni Animati</h2>
     <dl>
-      <dt> <abbr title="telefono">Tel</abbr> : </dt>
+      <dt> <abbr title="telefono">Tel</abbr>: </dt>
       <dd><a href="tel:+39123456789">123456789</a> </dd>
-      <dt> <span lang="en">Email : </span> </dt>
+      <dt> <span lang="en">Email: </span> </dt>
       <dd> <a href="mailto:info@dominioImmaginario.com">info@dominioImmaginario.comm</a> </dd>
-      <dt> Indirizzo : </dt>
+      <dt> Indirizzo: </dt>
       <dd>
-        <a href="https://maps.app.goo.gl/xqD3pfvXG4ockxUeA">Via Luigi Luzzatti,<abbr title="Numero civico">
-            n.</abbr> 8, 35121 Padova <abbr title="Provincia di Padova">PD</abbr></a>
+        <a href="https://maps.app.goo.gl/xqD3pfvXG4ockxUeA">Via Luigi Luzzatti,
+          <abbr title="Numero civico">n.</abbr> 8, 35121 Padova</a>
       </dd>
     </dl>
-    <a href="" lang="en">Privacy Link TODO</a>
-    <table title="orari-museo">
+    <!--         <a href="" lang="en">Privacy Link TODO</a>
+-->
+    <p id="tab-descr" class="nascosto">La tabella contiene gli orari di apertura del museo</p>
+    <table id="orari-museo" title="Orari del museo" aria-describedby="tab-descr">
       <caption>Orari del Museo</caption>
       <thead>
         <tr>
