@@ -8,6 +8,7 @@
   background-color: #f2f4f7;
   border-radius: 1em ;
   box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
+  overflow: auto;
 }
 
 
@@ -15,12 +16,12 @@
   text-align: center;
   font-size: 2rem;
   padding: 1rem;
-  margin-bottom: 0;
+  margin: 0;
 }
 .dettaglioSala p{
-  margin: 1em;
-  padding: 1em;
+  padding: 1.1rem;
   font-size: 1.1rem ;
+  margin: 0;
 }
 
 #titoloListaOpere{
@@ -57,7 +58,7 @@
 
 #listaOpere li img{
   max-height: fit-content;
-  max-width: 15em;
+  max-width: 17em;
   background-size: contain;
   margin: 0;
   margin-top: 1em;
@@ -76,7 +77,16 @@
     grid-template-columns: repeat(1,1fr);
     max-height: fit-content;
     width: auto;
-    margin: 0 2em 0 2em;
+    margin: 0 auto 0 auto;
+  }
+
+  #listaOpere li img{
+    max-height: fit-content;
+    width: auto;
+    background-size: contain;
+    margin: 0;
+    margin-top: 1em;
+    
   }
 }
 
@@ -89,13 +99,11 @@
 }
 
 #listaOpere li p{
-  font-style: italic;
   align-self: flex-start; /* Allinea il titolo a sinistra */
-  margin-bottom: 0;
+  margin-bottom: 0.1;
 }
 
 #listaOpere li a{
-  font-style: italic;
   align-self: flex-start; /* Allinea il titolo a sinistra */
   margin-bottom: 0;
 }
