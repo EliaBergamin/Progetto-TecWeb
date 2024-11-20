@@ -48,14 +48,18 @@ main {
 .infoMostra > img {
   display: block;
   margin: auto;
-  width: 70%;
-  max-width: 700px;
+  width: 80%;
+  max-width: 800px;
   border-radius: 10px;
 }
 
 /* con questo vengono sommati i due margini tra bot del primo e top del secondo risolvi */
 .infoMostra > p {
-  margin: 1em 15%;
+  margin: 1em 10%;
+}
+
+.giorniMostra {
+  text-align: center;
 }
 
 .infoMostra time {
@@ -72,4 +76,22 @@ main {
   text-align: center;
   color: black;
   text-decoration: none;
+}
+
+.accordion {
+  width: 100%;
+  padding: 0.6em;
+  font-size: 1em;
+  background-color: white;
+  color: black;
+  cursor: pointer;
+  border: 1px solid #000;
+  border-radius: 5px;
+}
+
+.accordion::after {
+  content: "\002B";
+  color: black;
+  font-weight: bold;
+  float: right;
 }
