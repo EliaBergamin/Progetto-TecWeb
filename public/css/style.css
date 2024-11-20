@@ -20,7 +20,6 @@ main h2 {
   padding-top: 0.7em;
   padding-bottom: 0.7em;
   text-align: center;
-  text-decoration: underline;
 }
 
 #carta-immagine img {
@@ -53,7 +52,7 @@ main h2 {
 
 #carta-dettagli dt {
   background-image: url('../images/pokeball.ico');
-  background-size: 2em;
+  background-size: 1em;
   background-repeat: no-repeat;
   font-size: 1.1em;
   padding-left: 2.5em;
