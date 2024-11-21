@@ -59,9 +59,9 @@ a:visited {
   color: var(--visitedcolor);
 }
 
-//////////////
+/*////////////*/
 /* HEADER */
-//////////////
+/*////////////*/
 
 header {
   grid-row: 1;
@@ -100,9 +100,9 @@ utile per fissare il menu in modo che non scrolli
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 } */
 
-//////////////
+/*////////////*/
 /* MENU */
-//////////////
+/*////////////*/
 
 #menu {
   background: var(--headerbgcolor);
@@ -130,9 +130,9 @@ utile per fissare il menu in modo che non scrolli
   margin: 0;
 }
 
-//////////////
+/*////////////*/
 /* BREADCRUMB */
-//////////////
+/*////////////*/
 
 #breadcrumb {
   grid-row: 2;
@@ -146,9 +146,9 @@ utile per fissare il menu in modo che non scrolli
   color: var(--contentbgcolor);
 }
 
-//////////////
+/*////////////*/
 /* MAIN */
-//////////////
+/*////////////*/
 
 main {
   grid-row: 3;
@@ -157,9 +157,9 @@ main {
   margin-right: 3%;
 }
 
-//////////////
+/*////////////*/
 /* CAROSELLO */
-//////////////
+/*////////////*/
 
 #carosello {
   position: relative;
@@ -252,9 +252,9 @@ ol li .active, .puntiniCarosello button:hover {
   border-radius: 0.2em 0.8em 0.8em 0.2em;
 }
 
-//////////////
+/*////////////*/
 /* SECTION */
-//////////////
+/*////////////*/
 
 .mainSection {
   margin: 2% 7% 2% 7%;
@@ -289,9 +289,9 @@ ol li .active, .puntiniCarosello button:hover {
   margin: 0.5rem auto;
 }
 
-//////////////
+/*////////////*/
 /* FOOTER */
-//////////////
+/*////////////*/
 
 footer {
   grid-row: 5;
@@ -332,9 +332,9 @@ footer h2 {
   min-height: 8rem;
 }
 
-////////////////////////////
+/*//////////////////////////*/
 /* TABELLA ORARI MUSEO */
-////////////////////////////
+/*//////////////////////////*/
 
 #orari-museo {
   max-width: 30rem; 
@@ -363,9 +363,9 @@ footer h2 {
 }
 
 
-//////////////
+/*////////////*/
 /* MOSTRE */
-//////////////
+/*////////////*/
 main h1 {
   text-align: center;
   font-size: 3em;
