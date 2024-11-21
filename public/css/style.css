@@ -1,6 +1,6 @@
 * {
-  padding: 0em;
-  margin: 0em;
+  padding: 0;
+  margin: 0;
 }
 
 :root {
@@ -59,7 +59,9 @@ a:visited {
   color: var(--visitedcolor);
 }
 
+//////////////
 /* HEADER */
+//////////////
 
 header {
   grid-row: 1;
@@ -98,7 +100,9 @@ utile per fissare il menu in modo che non scrolli
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 } */
 
+//////////////
 /* MENU */
+//////////////
 
 #menu {
   background: var(--headerbgcolor);
@@ -126,7 +130,9 @@ utile per fissare il menu in modo che non scrolli
   margin: 0;
 }
 
+//////////////
 /* BREADCRUMB */
+//////////////
 
 #breadcrumb {
   grid-row: 2;
@@ -140,26 +146,33 @@ utile per fissare il menu in modo che non scrolli
   color: var(--contentbgcolor);
 }
 
+//////////////
 /* MAIN */
+//////////////
+
 main {
   grid-row: 3;
   grid-column: 1/3;
+  margin-left: 3%;
+  margin-right: 3%;
 }
 
+//////////////
 /* CAROSELLO */
+//////////////
 
-#carosello{
+#carosello {
   position: relative;
   margin: 2% 7% 2% 7%;
 }
 
-#primoContenuto{
+.immaginiCarosello {
   list-style-type: none;
   position: relative;
   padding: 0;  
 }
 
-#primoContenuto img{
+.immaginiCarosello img {
   background-size: contain;
   display: none;
   width: 100%;
@@ -172,7 +185,7 @@ main {
   box-shadow: 7px 7px 25px rgba(0, 0, 0, 0.2);
 }
 
-.puntiniCarosello li button{
+.puntiniCarosello li button {
   cursor: pointer;
   align-items: center;
   text-indent: -9999em;
@@ -180,8 +193,7 @@ main {
   border-radius: 50%;
   height: 1.5rem;
   width: 1.5rem;
-  border: none;
-  
+  border: none; 
 }
 
 .puntiniCarosello{
@@ -240,7 +252,9 @@ ol li .active, .puntiniCarosello button:hover {
   border-radius: 0.2em 0.8em 0.8em 0.2em;
 }
 
+//////////////
 /* SECTION */
+//////////////
 
 .mainSection {
   margin: 2% 7% 2% 7%;
@@ -275,7 +289,9 @@ ol li .active, .puntiniCarosello button:hover {
   margin: 0.5rem auto;
 }
 
+//////////////
 /* FOOTER */
+//////////////
 
 footer {
   grid-row: 5;
@@ -316,7 +332,9 @@ footer h2 {
   min-height: 8rem;
 }
 
+////////////////////////////
 /* TABELLA ORARI MUSEO */
+////////////////////////////
 
 #orari-museo {
   max-width: 30rem; 
@@ -342,4 +360,100 @@ footer h2 {
 
 #orari-museo tr:nth-child(odd) {
   background-color: var(--headerbgcolor);
+}
+
+
+//////////////
+/* MOSTRE */
+//////////////
+main h1 {
+  text-align: center;
+  font-size: 3em;
+}
+
+.tipoMostre {
+  font-size: 2em;
+  font-weight: bold;
+  margin: 1.5em 0;
+}
+
+.nomeMostra {
+  margin: 1.5em 5%;
+  font-size: 1.5em;
+  background-image: url("../images/pokeball.ico");
+  background-size: 1.3em;
+  background-repeat: no-repeat;
+  padding-left: 2em;
+}
+
+/* l'idea sarebbe renderla simile ad una carta ma work in progress */
+.infoMostra {
+  display: flex;
+  flex-direction: column;
+  padding: 1.5em;
+  border: 2px solid #ccc;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  margin: 1.5em 0;
+}
+
+.infoMostra > img {
+  display: block;
+  margin: auto;
+  width: 80%;
+  max-width: 800px;
+  border-radius: 10px;
+}
+
+/* con questo vengono sommati i due margini tra bot del primo e top del secondo risolvi */
+.infoMostra > p {
+  margin: 1em 10%;
+}
+
+.giorniMostra {
+  text-align: center;
+}
+
+.infoMostra time {
+  font-weight: bold;
+}
+
+.button {
+  align-self: flex-end;
+  padding: 0.6em;
+  font-size: 1em;
+  border: 2px solid #000;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  color: black;
+  text-decoration: none;
+}
+
+.accordion {
+  width: 100%;
+  padding: 0.6em;
+  font-size: 1.3em;
+  font-weight: bold;
+  background-color: white;
+  color: black;
+  cursor: pointer;
+  border: 1px solid #000;
+  border-radius: 5px;
+}
+
+.accordion::after {
+  content: "\002B";
+  color: black;
+  font-weight: bold;
+  float: right;
+}
+
+.active:after {
+  content: "\2212";
+}
+
+.accordion-panel {
+  display: none;
 }
