@@ -6,6 +6,7 @@ header {
     position: fixed;
     width: 100%;
     border-bottom:solid var(--headercolor);
+    z-index: 50;
 }
 
 #hamb {
@@ -31,6 +32,7 @@ header {
 }
 
 #menu {
+    z-index: 100;
     position: fixed;
     top: 3.2rem;
     right: 0;
@@ -58,10 +60,10 @@ header {
     margin-top: 3.2rem;
 }
 
-main {
+/* main {
     margin-left: 0;
 }
-
+ */
 footer {
     padding: 0.5em 2%;
 }
