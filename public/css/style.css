@@ -366,7 +366,7 @@ footer h2 {
 /*////////////*/
 /* MOSTRE */
 /*////////////*/
-main h1 {
+#mostre h1 {
   text-align: center;
   font-size: 3em;
 }
@@ -499,7 +499,7 @@ main h1 {
   margin-bottom: 0.5em;
   font-size: 1.2em;
 } */
-main {
+#prenotazione {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -519,7 +519,7 @@ main {
   opacity: 0.9;
 }
 
-#primoContenuto h1 {
+#prenotazione h1 {
   text-align: center;
   font-size: 2em;
 }
