@@ -40,29 +40,32 @@
     </nav>
 
     <main id="primoContenuto">
-        <h1>Prenotazione visita Museo x</h1>
-        <form action="../../src/prenota.php" method="post">
-            <label for="giorno">Giorno </label>
-            <!-- da mettere come minimo il giorno odierno -->
-            <input type="date" name="giorno" id="giorno" required
-                data-msg-required="Per favore, selezionare il giorno della visita" data-msg-invalid="Giorno non valido">
-            <label for="orario">Fascia oraria </label>
-            <select name="orario" id="orario" required>
-                <option value="" disabled selected>Seleziona una fascia oraria</option>
-                <option value="09">09:00 - 10:30</option>
-                <option value="10_30">10:30 - 12:00</option>
-                <option value="12">12:00 - 13:30</option>
-                <option value="13_30">13:30 - 15:00</option>
-                <option value="15">15:00 - 16:30</option>
-                <option value="16_30">16:30 - 18:00</option>
-            </select>
-            <label for="visitatori">Numero di visitatori </label>
-            <!-- max 15 valore da decidere -->
-            <input type="number" name="visitatori" id="visitatori" min="1" max="15" required
-                data-msg-required="Per favore, selezionare il numero di visitatori"
-                data-msg-invalid="Massimo x visitatori">
-            <input type="submit" value="Prenota">
-        </form>
+        <div id="contenitorePrenotazione">
+            <h1>Prenota la tua visita al museo</h1>
+            <form action="../../src/prenota.php" method="post" id="formPrenotazione">
+                <label for="giorno">Giorno</label>
+                <!-- da mettere come minimo il giorno odierno -->
+                <input type="date" name="giorno" id="giorno" required data-msg-required="Per favore, selezionare il giorno della visita" data-msg-invalid="Giorno non valido">
+                <label for="orario">Fascia oraria</label>
+                <select name="orario" id="orario" required>
+                    <option value="" disabled selected>Seleziona</option>
+                    <optgroup label="mattina">
+                        <option value="09">09:00 - 10:30</option>
+                        <option value="10_30">10:30 - 12:00</option>
+                    </optgroup>
+                    <optgroup label="pomeriggio">
+                        <option value="12">12:00 - 13:30</option>
+                        <option value="13_30">13:30 - 15:00</option>
+                        <option value="15">15:00 - 16:30</option>
+                        <option value="16_30">16:30 - 18:00</option>
+                    </optgroup>
+                </select>
+                <label for="visitatori">Numero di visitatori</label>
+                <!-- max 15 valore da decidere -->
+                <input type="number" name="visitatori" id="visitatori" min="1" max="15" required data-msg-required="Per favore, selezionare il numero di visitatori" data-msg-invalid="Massimo x visitatori">
+                <input type="submit" value="Prenota">
+            </form>
+        </div>
     </main>
     <a id="torna-su" href="#" aria-label="Torna su">⇪</a>
     <footer>
@@ -93,23 +96,23 @@
             <tbody>
                 <tr>
                     <th scope="row">Lunedì</th>
-                    <td><time datetime="09:00">09:00</time> - <time datetime="12:00">12:00</time></td>
-                    <td><time datetime="14:00">14:00</time> - <time datetime="19:00">19:00</time></td>
+                    <td>09:00 - 12:00</td>
+                    <td>14:00 - 19:00</td>
                 </tr>
                 <tr>
                     <th scope="row">Martedì</th>
-                    <td><time datetime="09:00">09:00</time> - <time datetime="12:00">12:00</time></td>
-                    <td><time datetime="14:00">14:00</time> - <time datetime="19:00">19:00</time></td>
+                    <td>09:00 - 12:00</td>
+                    <td>14:00 - 19:00</td>
                 </tr>
                 <tr>
                     <th scope="row">Sabato</th>
-                    <td><time datetime="08:00">08:00</time> - <time datetime="13:00">13:00</time></td>
-                    <td><time datetime="14:00">14:00</time> - <time datetime="20:00">20:00</time></td>
+                    <td>08:00 - 13:00</td>
+                    <td>14:00 - 20:00</td>
                 </tr>
                 <tr>
                     <th scope="row">Domenica</th>
-                    <td><time datetime="08:00">08:00</time> - <time datetime="13:00">13:00</time></td>
-                    <td><time datetime="14:00">14:00</time> - <time datetime="22:00">22:00</time></td>
+                    <td>08:00 - 13:00</td>
+                    <td>14:00 - 22:00</td>
                 </tr>
             </tbody>
         </table>

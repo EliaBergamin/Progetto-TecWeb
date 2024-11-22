@@ -457,3 +457,102 @@ main h1 {
 .accordion-panel {
   display: none;
 }
+
+/*///////////////*/
+/* PRENOTAZIONI */
+/*///////////////*/
+
+/* Versione 1 senza cambiare main */
+
+/* #primoContenuto H1 {
+  text-align: center;
+}
+
+#formPrenotazione {
+  margin-top: 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#formPrenotazione input, select {
+  margin-bottom: 1.5em;
+  box-sizing: border-box;
+  padding: 0.4em;
+  border: solid 2px #000;
+  width: 10em;
+  border-radius: 5px;
+}
+
+#formPrenotazione input[type="submit"] {
+  margin-top: 1em;
+  background-color: rgb(40, 212, 40);
+  color: white;
+  padding: 0.6em;
+  width: auto;
+  font-size: 1em;
+  color: black;
+}
+
+#formPrenotazione label {
+  margin-bottom: 0.5em;
+  font-size: 1.2em;
+} */
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("../images/sala.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+
+#contenitorePrenotazione {
+  width: 30%;
+  min-width: 12em;
+  padding: 1.5em;
+  background-color: white;
+  border-radius: 10px;
+  opacity: 0.9;
+}
+
+#primoContenuto h1 {
+  text-align: center;
+  font-size: 2em;
+}
+
+#formPrenotazione {
+  margin-top: 1em;
+}
+
+#formPrenotazione input, select {
+  margin: auto;
+  margin-bottom: 1.5em;
+  box-sizing: border-box;
+  padding: 0.4em;
+  border: solid 2px #000;
+  width: 10em;
+  border-radius: 5px;
+  display: block;
+}
+
+#formPrenotazione input[type="submit"] {
+  background-color: rgb(40, 212, 40);
+  color: white;
+  padding: 0.6em;
+  width: auto;
+  font-size: 1em;
+  margin-bottom: 0;
+  color: black;
+}
+
+#formPrenotazione label {
+  display: block;
+  margin: auto;
+  margin-bottom: 0.5em;
+  font-size: 1.2em;
+  text-align: center;
+} 
