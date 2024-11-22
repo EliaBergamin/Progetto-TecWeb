@@ -12,8 +12,8 @@
   --newscolor: #F3C42B;
   --contenttxtcolor: #000;
   --contentbgcolor: #FFF;
-  --linkcolor: #1a32cb;
-  --visitedcolor: #F3C42B;
+  --linkcolor: #fff;
+  --visitedcolor: #38f689;
 }
 
 @font-face {
@@ -143,7 +143,7 @@ utile per fissare il menu in modo che non scrolli
 }
 
 #breadcrumb a:visited {
-  color: var(--contentbgcolor);
+  color: var(--visitedcolor);
 }
 
 /*////////////*/
@@ -460,6 +460,7 @@ footer h2 {
 
 /*///////////////*/
 /* PRENOTAZIONI */
+/* REGISTRAZIONE */
 /*///////////////*/
 
 /* Versione 1 senza cambiare main */
@@ -468,7 +469,7 @@ footer h2 {
   text-align: center;
 }
 
-#formPrenotazione {
+.formcompilazione {
   margin-top: 2em;
   display: flex;
   flex-direction: column;
@@ -476,7 +477,7 @@ footer h2 {
   justify-content: center;
 }
 
-#formPrenotazione input, select {
+.formcompilazione input, select {
   margin-bottom: 1.5em;
   box-sizing: border-box;
   padding: 0.4em;
@@ -485,7 +486,7 @@ footer h2 {
   border-radius: 5px;
 }
 
-#formPrenotazione input[type="submit"] {
+.formcompilazione input[type="submit"] {
   margin-top: 1em;
   background-color: rgb(40, 212, 40);
   color: white;
@@ -495,11 +496,11 @@ footer h2 {
   color: black;
 }
 
-#formPrenotazione label {
+.formcompilazione label {
   margin-bottom: 0.5em;
   font-size: 1.2em;
 } */
-#prenotazione {
+.compilazione {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -508,9 +509,11 @@ footer h2 {
   background-position: center;
   background-repeat: no-repeat;
   height: 100vh;
+  margin-top: 1.5em;
+  border-radius: 3em;
 }
 
-#contenitorePrenotazione {
+.contenitoreCompilazione {
   width: 30%;
   min-width: 12em;
   padding: 1.5em;
@@ -519,16 +522,16 @@ footer h2 {
   opacity: 0.9;
 }
 
-#prenotazione h1 {
+.compilazione h1 {
   text-align: center;
-  font-size: 2em;
+  line-height: 1.5em;
 }
 
-#formPrenotazione {
+.formCompilazione {
   margin-top: 1em;
 }
 
-#formPrenotazione input, select {
+.formCompilazione input, select {
   margin: auto;
   margin-bottom: 1.5em;
   box-sizing: border-box;
@@ -539,7 +542,7 @@ footer h2 {
   display: block;
 }
 
-#formPrenotazione input[type="submit"] {
+.formCompilazione input[type="submit"] {
   background-color: rgb(40, 212, 40);
   color: white;
   padding: 0.6em;
@@ -549,7 +552,7 @@ footer h2 {
   color: black;
 }
 
-#formPrenotazione label {
+.formCompilazione label {
   display: block;
   margin: auto;
   margin-bottom: 0.5em;
