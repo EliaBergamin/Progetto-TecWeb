@@ -1,17 +1,24 @@
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
     <title>Prenotazione</title>
     <meta charset="UTF-8">
     <meta name="description" content="Pagina per prenotare una visita al museo">
     <meta name="keywords" content="museo,prenotazione,visita,disponibilità,giorno,carte,cartoni,biglietto">
     <link rel="stylesheet" href="../css/style.css" media="screen">
+    <link rel="stylesheet" href="../css/middle.css" media="screen and (max-width: 1024px)">
+    <link rel="stylesheet" href="../css/mini.css" media="screen and (max-width: 768px)">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../images/pokeball.ico" type="image/x-icon">
+    <script type="text/javascript" src="../js/script.js"></script>
 </head>
+
 <body>
     <a class="nascosto" href="#primoContenuto">Vai al contenuto</a>
     <header>
         <h1>Museo Cartoni Animati</h1>
+        <button id="hamb" class="hamToggle" data-hambOn="false" type="button" onclick="hambToggle()">Menù</button>
     </header>
 
     <nav id="breadcrumb">
@@ -20,7 +27,7 @@
         </p>
     </nav>
 
-    <nav id="menu">
+    <nav id="menu" class="hamToggle" data-hambOn="false">
         <ul>
             <li><a href="../index.html" lang="en">Home</a></li>
             <li><a href="mostre.html">Le mostre</a></li>
@@ -60,22 +67,24 @@
             </form>
         </div>
     </main>
-    <a href="#" aria-label="Torna su">⇪</a>
+    <a id="torna-su" href="#" aria-label="Torna su">⇪</a>
     <footer>
-        <img src="../images/logoMuseo.png" alt="Logo del Museo">
+        <h2>Museo Cartoni Animati</h2>
         <dl>
-            <dt> <abbr title="telefono">Tel</abbr> : </dt>
+            <dt> <abbr title="telefono">Tel</abbr>: </dt>
             <dd><a href="tel:+39123456789">123456789</a> </dd>
-            <dt> <span lang="en">Email : </span> </dt>
+            <dt> <span lang="en">Email: </span> </dt>
             <dd> <a href="mailto:info@dominioImmaginario.com">info@dominioImmaginario.comm</a> </dd>
-            <dt> Indirizzo : </dt>
+            <dt> Indirizzo: </dt>
             <dd>
-                <a href="https://maps.app.goo.gl/xqD3pfvXG4ockxUeA">Via Luigi Luzzatti,<abbr title="Numero civico">
-                        n.</abbr> 8, 35121 Padova <abbr title="Provincia di Padova">PD</abbr></a>
+                <a href="https://maps.app.goo.gl/xqD3pfvXG4ockxUeA">Via Luigi Luzzatti,
+                    <abbr title="Numero civico">n.</abbr> 8, 35121 Padova</a>
             </dd>
         </dl>
-        <a href="" lang="en">Privacy Link TODO</a>
-        <table title="orari-museo">
+        <!--         <a href="" lang="en">Privacy Link TODO</a>
+ -->
+        <p id="tab-descr" class="nascosto">La tabella contiene gli orari di apertura del museo</p>
+        <table id="orari-museo" title="Orari del museo" aria-describedby="tab-descr">
             <caption>Orari del Museo</caption>
             <thead>
                 <tr>
@@ -109,4 +118,5 @@
         </table>
     </footer>
 </body>
+
 </html>
