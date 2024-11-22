@@ -1,11 +1,6 @@
-/* #rating-fs label {
-  position:absolute;
- left:-999em;
-} */
-
 /* Versione 1 senza cambiare main */
 
-#primoContenuto {
+/* #primoContenuto {
   text-align: center;
 }
 
@@ -39,13 +34,16 @@
 #formPrenotazione label {
   margin-bottom: 0.5em;
   font-size: 1.2em;
-}
-
-
+} */
 
 /* Versione 2 cambiando main (decommenta div)*/
 
-/* main {
+* {
+  margin: 0;
+  padding: 0;
+}
+
+main {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -58,17 +56,24 @@
 
 #contenitorePrenotazione {
   width: 30%;
+  min-width: 12em;
   padding: 1.5em;
   background-color: white;
   border-radius: 10px;
   opacity: 0.9;
 }
 
-#primoContenuto {
+#primoContenuto h1 {
   text-align: center;
+  font-size: 2em;
+}
+
+#formPrenotazione {
+  margin-top: 1em;
 }
 
 #formPrenotazione input, select {
+  margin: auto;
   margin-bottom: 1.5em;
   box-sizing: border-box;
   padding: 0.4em;
@@ -76,7 +81,6 @@
   width: 10em;
   border-radius: 5px;
   display: block;
-  margin-left: 1.5em;
 }
 
 #formPrenotazione input[type="submit"] {
@@ -85,14 +89,15 @@
   padding: 0.6em;
   width: auto;
   font-size: 1em;
-  margin-left: auto;
   margin-bottom: 0;
   color: black;
 }
 
 #formPrenotazione label {
+  display: block;
+  margin: auto;
   margin-bottom: 0.5em;
   font-size: 1.2em;
-  margin-left: 1em;
-}  */
+  text-align: center;
+} 
 
