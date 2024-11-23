@@ -6,6 +6,7 @@ header {
     position: fixed;
     width: 100%;
     border-bottom:solid var(--headercolor);
+    z-index: 100;
 }
 
 #hamb {
