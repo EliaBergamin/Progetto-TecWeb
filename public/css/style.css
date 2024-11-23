@@ -14,6 +14,7 @@
   --contentbgcolor: #FFF;
   --linkcolor: #1a32cb;
   --visitedcolor: #F3C42B;
+  --alterntable: #cbeaf5;
 }
 
 @font-face {
@@ -340,7 +341,7 @@ footer h2 {
 #orari-museo tr:nth-child(even),
 #orari-museo thead th,
 #orari-museo thead td {
-  background-color: #f2f2f2;
+  background-color: var(--alterntable);
 }
 
 #orari-museo tr:nth-child(odd) {
