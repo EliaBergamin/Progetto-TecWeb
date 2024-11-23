@@ -1,17 +1,24 @@
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
     <title>Prenotazione</title>
     <meta charset="UTF-8">
     <meta name="description" content="Pagina per prenotare una visita al museo">
     <meta name="keywords" content="museo,prenotazione,visita,disponibilità,giorno,carte,cartoni,biglietto">
-    <link rel="stylesheet" href="../css/style.ccs" media="screen">
+    <link rel="stylesheet" href="../css/style.css" media="screen">
+    <link rel="stylesheet" href="../css/middle.css" media="screen and (max-width: 1024px)">
+    <link rel="stylesheet" href="../css/mini.css" media="screen and (max-width: 768px)">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../images/pokeball.ico" type="image/x-icon">
+    <script type="text/javascript" src="../js/script.js"></script>
 </head>
+
 <body>
     <a class="nascosto" href="#primoContenuto">Vai al contenuto</a>
     <header>
         <h1>Museo Cartoni Animati</h1>
+        <button id="hamb" class="hamToggle" data-hambOn="false" type="button" onclick="hambToggle()">Menù</button>
     </header>
 
     <nav id="breadcrumb">
@@ -20,7 +27,7 @@
         </p>
     </nav>
 
-    <nav id="menu">
+    <nav id="menu" class="hamToggle" data-hambOn="false">
         <ul>
             <li><a href="../index.html" lang="en">Home</a></li>
             <li><a href="mostre.html">Le mostre</a></li>
@@ -32,44 +39,52 @@
         </ul>
     </nav>
 
-    <main>
-        <h1 id="primoContenuto">Prenotazione visita Museo x</h1>
-        <form action="../../src/prenota.php" method="post">
-            <label for="giorno">Giorno </label>
-            <!-- da mettere come minimo il giorno odierno -->
-            <input type="date" name="giorno" id="giorno" required data-msg-required="Per favore, selezionare il giorno della visita" data-msg-invalid="Giorno non valido">
-            <label for="orario">Fascia oraria </label>
-            <select name="orario" id="orario" required>
-                <option value="" disabled selected>Seleziona una fascia oraria</option>
-                <option value="09"><time datetime="09:00">09:00</time> - <time datetime="10:30">10:30</time></option>
-                <option value="10_30"><time datetime="10:30">10:30</time> - <time datetime="12:00">12:00</time></option>
-                <option value="12"><time datetime="12:00">12:00</time> - <time datetime="13:30">13:30</time></option>
-                <option value="13_30"><time datetime="13:30">13:30</time> - <time datetime="15:00">15:00</time></option>
-                <option value="15"><time datetime="15:00">15:00</time> - <time datetime="16:30">16:30</time></option>
-                <option value="16_30"><time datetime="16:30">16:30</time> - <time datetime="18:00">18:00</time></option>
-            </select>
-            <label for="visitatori">Numero di visitatori </label>
-            <!-- max 15 valore da decidere -->
-            <input type="number" name="visitatori" id="visitatori" min="1" max="15" required data-msg-required="Per favore, selezionare il numero di visitatori" data-msg-invalid="Massimo x visitatori">
-            <input type="submit" value="Prenota">
-        </form>
+    <main id="prenotazione" class="compilazione">
+        <div id="contenitorePrenotazione" class="contenitoreCompilazione">
+            <h1>Prenota la tua visita al museo</h1>
+            <form action="../../src/prenota.php" method="post" id="formPrenotazione" class="formCompilazione">
+                <label for="giorno">Giorno</label>
+                <!-- da mettere come minimo il giorno odierno -->
+                <input type="date" name="giorno" id="giorno" required data-msg-required="Per favore, selezionare il giorno della visita" data-msg-invalid="Giorno non valido">
+                <label for="orario">Fascia oraria</label>
+                <select name="orario" id="orario" required>
+                    <option value="" disabled selected>Seleziona</option>
+                    <optgroup label="mattina">
+                        <option value="09">09:00 - 10:30</option>
+                        <option value="10_30">10:30 - 12:00</option>
+                    </optgroup>
+                    <optgroup label="pomeriggio">
+                        <option value="12">12:00 - 13:30</option>
+                        <option value="13_30">13:30 - 15:00</option>
+                        <option value="15">15:00 - 16:30</option>
+                        <option value="16_30">16:30 - 18:00</option>
+                    </optgroup>
+                </select>
+                <label for="visitatori">Numero di visitatori</label>
+                <!-- max 15 valore da decidere -->
+                <input type="number" name="visitatori" id="visitatori" min="1" max="15" required data-msg-required="Per favore, selezionare il numero di visitatori" data-msg-invalid="Massimo x visitatori">
+                <input type="submit" value="Prenota">
+            </form>
+        </div>
     </main>
-    <a href="#" aria-label="Torna su">⇪</a>
+    <a id="torna-su" href="#" aria-label="Torna su">⇪</a>
     <footer>
-        <img src="../images/logoMuseo.png" alt="Logo del Museo">
+        <h2>Museo Cartoni Animati</h2>
         <dl>
-            <dt> <abbr title="telefono">Tel</abbr> : </dt>
+            <dt> <abbr title="telefono">Tel</abbr>: </dt>
             <dd><a href="tel:+39123456789">123456789</a> </dd>
-            <dt> <span lang="en">Email : </span> </dt>
+            <dt> <span lang="en">Email: </span> </dt>
             <dd> <a href="mailto:info@dominioImmaginario.com">info@dominioImmaginario.comm</a> </dd>
-            <dt> Indirizzo : </dt>
+            <dt> Indirizzo: </dt>
             <dd>
-                <a href="https://maps.app.goo.gl/xqD3pfvXG4ockxUeA">Via Luigi Luzzatti,<abbr title="Numero civico">
-                        n.</abbr> 8, 35121 Padova <abbr title="Provincia di Padova">PD</abbr></a>
+                <a href="https://maps.app.goo.gl/xqD3pfvXG4ockxUeA">Via Luigi Luzzatti,
+                    <abbr title="Numero civico">n.</abbr> 8, 35121 Padova</a>
             </dd>
         </dl>
-        <a href="" lang="en">Privacy Link TODO</a>
-        <table title="orari-museo">
+        <!--         <a href="" lang="en">Privacy Link TODO</a>
+ -->
+        <p id="tab-descr" class="nascosto">La tabella contiene gli orari di apertura del museo</p>
+        <table id="orari-museo" title="Orari del museo" aria-describedby="tab-descr">
             <caption>Orari del Museo</caption>
             <thead>
                 <tr>
@@ -81,26 +96,27 @@
             <tbody>
                 <tr>
                     <th scope="row">Lunedì</th>
-                    <td><time datetime="09:00">09:00</time> - <time datetime="12:00">12:00</time></td>
-                    <td><time datetime="14:00">14:00</time> - <time datetime="19:00">19:00</time></td>
+                    <td>09:00 - 12:00</td>
+                    <td>14:00 - 19:00</td>
                 </tr>
                 <tr>
                     <th scope="row">Martedì</th>
-                    <td><time datetime="09:00">09:00</time> - <time datetime="12:00">12:00</time></td>
-                    <td><time datetime="14:00">14:00</time> - <time datetime="19:00">19:00</time></td>
+                    <td>09:00 - 12:00</td>
+                    <td>14:00 - 19:00</td>
                 </tr>
                 <tr>
                     <th scope="row">Sabato</th>
-                    <td><time datetime="08:00">08:00</time> - <time datetime="13:00">13:00</time></td>
-                    <td><time datetime="14:00">14:00</time> - <time datetime="20:00">20:00</time></td>
+                    <td>08:00 - 13:00</td>
+                    <td>14:00 - 20:00</td>
                 </tr>
                 <tr>
                     <th scope="row">Domenica</th>
-                    <td><time datetime="08:00">08:00</time> - <time datetime="13:00">13:00</time></td>
-                    <td><time datetime="14:00">14:00</time> - <time datetime="22:00">22:00</time></td>
+                    <td>08:00 - 13:00</td>
+                    <td>14:00 - 22:00</td>
                 </tr>
             </tbody>
         </table>
     </footer>
 </body>
+
 </html>
