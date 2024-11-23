@@ -252,6 +252,114 @@ ol li .active, .puntiniCarosello button:hover {
   border-radius: 0.2em 0.8em 0.8em 0.2em;
 }
 
+/*////////////////*/
+/* DETTAGLIO SALA */
+/*////////////////*/
+  
+.dettaglioSala{
+  margin: 2% 7% 2% 7%;
+  background-color: #f2f4f7;
+  border-radius: 1em ;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
+  overflow: auto;
+}
+
+
+.dettaglioSala h1{
+  text-align: center;
+  font-size: 2rem;
+  padding: 1rem;
+  margin: 0;
+}
+.dettaglioSala p{
+  padding: 1.1rem;
+  font-size: 1.1rem ;
+  margin: 0;
+}
+
+#titoloListaOpere{
+  text-align: center;
+  font-size: 2rem;
+  padding: 1rem;
+  
+}
+
+#listaOpere{
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  grid-column-gap: 3em;
+  grid-row-gap: 2em;
+  
+  list-style-type: none;
+  margin: 0 5em 0 5em;
+  padding: 0;
+  
+}
+#listaOpere li{ 
+  display: flex;
+  flex-direction: column; /* Imposta una colonna di layout per ciascun elemento */
+  align-items: center; 
+  text-align: left; /* Allinea il testo a sinistra */
+  border-radius: 1em ;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
+  padding: 2em;
+  margin: auto;
+  
+}
+
+#listaOpere li img{
+  max-height: fit-content;
+  max-width: 17em;
+  background-size: contain;
+  margin: 0;
+  margin-top: 1em;
+  
+  
+  
+}
+@media (max-width: 1225px) {
+  #listaOpere{
+    grid-template-columns: repeat(2,1fr);
+  }
+}
+/*trasforma la tabella e la fa diventare di una sola colonna in caso di schermi piccoli*/
+@media (max-width: 855px) {
+  #listaOpere{
+    grid-template-columns: repeat(1,1fr);
+    max-height: fit-content;
+    width: auto;
+    margin: 0 auto 0 auto;
+  }
+
+  #listaOpere li img{
+    max-height: fit-content;
+    width: auto;
+    background-size: contain;
+    margin: 0;
+    margin-top: 1em;
+    
+  }
+}
+
+
+
+#listaOpere li h3{
+  font-style: italic;
+  align-self: flex-start; /* Allinea il titolo a sinistra */
+  margin-bottom: 0;
+}
+
+#listaOpere li p{
+  align-self: flex-start; /* Allinea il titolo a sinistra */
+  margin-bottom: 0.1;
+}
+
+#listaOpere li a{
+  align-self: flex-start; /* Allinea il titolo a sinistra */
+  margin-bottom: 0;
+}
+
+
 /*////////////*/
 /* SECTION */
 /*////////////*/
