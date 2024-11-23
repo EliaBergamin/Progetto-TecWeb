@@ -42,10 +42,9 @@
 
     <main id="primoContenuto">
         <h1>Recensioni</h1>
-        <a href="recensisci.html">Scrivi una recensione</a>
         <h2 id="titolo-recens-museo">Recensioni del museo</h2>
         <a href="#titolo-recens-virtual">Vai alle recensioni del <span lang="en">Virtual Tour</span></a>
-        <ul id="recens-museo">
+        <ul class="recensioni">
             <li>
                 <p>NomeUtente</p>
                 <label id="lbl-rev-1">Punteggio 4 su 5</label>
@@ -72,7 +71,7 @@
             </li>
         </ul>
         <h2 id="titolo-recens-virtual">Recensioni del <span lang="en">Virtual Tour</span></h2>
-        <ul id="recens-virtual">
+        <ul class="recensioni">
             <li>
                 <p>NomeUtente</p>
                 <label id="lbl-rev-2">Punteggio 5 su 5</label>
@@ -96,6 +95,8 @@
                     aperiam suscipit dolorem?</p>
             </li>
         </ul>
+        <!-- ho spostato il link sotto per comodità -->
+        <a href="recensisci.html" id="scrivi-rev">Scrivi una recensione</a>
     </main>
     <a id="torna-su" href="#" aria-label="Torna su">⇪</a>
     <footer>
