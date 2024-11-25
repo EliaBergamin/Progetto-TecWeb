@@ -1,3 +1,733 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+:root {
+  --headerbgcolor: #95e98a;
+  --headercolor: #205d86;
+  --bgcolor: #fff;
+  --txtcolor: #000;
+  --breadcolor: #163F77;
+  --newscolor: #F3C42B;
+  --contenttxtcolor: #000;
+  --contentbgcolor: #FFF;
+  --linkcolor: #fff;
+  --visitedcolor: #38f689;
+}
+
+@font-face {
+  font-family: 'Lexend';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://fonts.gstatic.com/s/lexend/v23/wlptgwvFAVdoq2_F94zlCfv0bz1WCzsWzLdneg.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+.nascosto {
+  position: absolute;
+  left: -999rem;
+}
+
+html {
+  font-size: 100%;
+  font-family: "Lexend", sans-serif;
+  line-height: 1.5rem;
+  color: var(--txtcolor);
+  background-color: var(--bgcolor);
+  border: 0;
+  vertical-align: baseline;
+  min-height: 100%;
+}
+
+body {
+  display: grid;
+  grid-template-columns: 1fr 8fr;
+  overflow-x: hidden;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+a {
+  color: var(--linkcolor);
+}
+
+a:visited {
+  color: var(--visitedcolor);
+}
+
+/*////////////*/
+/* HEADER */
+/*////////////*/
+
+header {
+  grid-row: 1;
+  grid-column: 1;
+  background-color: var(--contentbgcolor);
+  background-image: url('../images/logoMuseo2.png');
+  background-position: left;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+header h1 {
+
+  position: absolute;
+  text-indent: -999rem;
+  color: var(--headercolor);
+  display: inline;
+  vertical-align: middle;
+}
+
+#hamb {
+  display: none;
+}
+
+/* eventualmente, questo codice commentato può essere
+utile per fissare il menu in modo che non scrolli
+(soprattutto in ottica mobile)*/
+/* .menu-wrapper {
+  width: 100%;
+  position: fixed;
+  display: grid;
+  grid-template-columns: 1fr 8fr;
+}
+
+.shadow-box {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+} */
+
+/*////////////*/
+/* MENU */
+/*////////////*/
+
+#menu {
+  background: var(--headerbgcolor);
+  color: var(--headercolor);
+  grid-row: 1;
+  grid-column: 2;
+  width: auto;
+}
+
+#menu li {
+  padding: 0.5rem;
+  display: inline;
+  vertical-align: middle;
+  height: 100%;
+}
+
+#currentLink {
+  background: var(--headercolor);
+  color: var(--headerbgcolor);
+}
+
+#menu a {
+  color: var(--headercolor);
+  text-decoration: none;
+  margin: 0;
+}
+
+/*////////////*/
+/* BREADCRUMB */
+/*////////////*/
+
+#breadcrumb {
+  grid-row: 2;
+  grid-column: 1/3;
+  background-color: var(--headercolor);
+  color: var(--headerbgcolor);
+  padding: 0.2rem;
+}
+
+#breadcrumb a:visited {
+  color: var(--visitedcolor);
+}
+
+/*////////////*/
+/* MAIN */
+/*////////////*/
+
+main {
+  grid-row: 3;
+  grid-column: 1/3;
+  margin-left: 3%;
+  margin-right: 3%;
+}
+
+/*////////////*/
+/* CAROSELLO */
+/*////////////*/
+
+#carosello {
+  position: relative;
+  margin: 2% 7% 2% 7%;
+}
+
+.immaginiCarosello {
+  list-style-type: none;
+  position: relative;
+  padding: 0;  
+}
+
+.immaginiCarosello img {
+  background-size: contain;
+  display: none;
+  width: 100%;
+  height: 20%;
+  position: relative;
+  padding: 0;
+  margin: 0;
+  z-index: 0;
+  border-radius: 1em;
+  box-shadow: 7px 7px 25px rgba(0, 0, 0, 0.2);
+}
+
+.puntiniCarosello li button {
+  cursor: pointer;
+  align-items: center;
+  text-indent: -9999em;
+  background-color: rgb(232, 225, 225);
+  border-radius: 50%;
+  height: 1.5rem;
+  width: 1.5rem;
+  border: none; 
+}
+
+.puntiniCarosello{
+  display: grid;
+  grid-template-columns: repeat(3,1.5rem);
+  grid-gap: 2rem;
+  justify-content: center;
+  align-content: center;
+  list-style-type: none;
+  right: 0%;
+  left: 0%;
+  position: absolute; 
+  bottom: 10%;
+  z-index: 1;
+}
+
+ol.puntiniCarosello{
+  margin: 0;
+  padding: 0;
+}
+
+ol li .active, .puntiniCarosello button:hover {
+  background-color: #717171;
+}
+
+#caroselloIndietro, #caroselloAvanti{
+  cursor: pointer;
+  height: 3rem;
+  width: 3rem;
+  margin: .4rem;
+  transition: 0.6s ease;
+  color: white;
+  background-color: rgb(121, 113, 113);
+  justify-content: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute; 
+  bottom: 42%;
+  z-index: 1;
+  border:none;  
+}
+
+#caroselloIndietro:hover, #caroselloAvanti:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+#caroselloIndietro{
+  left: 1em;
+  border-radius: 0.8em 0.2em 0.2em 0.8em;
+}
+
+#caroselloAvanti{
+  right: 1em;
+  left: auto;
+  border-radius: 0.2em 0.8em 0.8em 0.2em;
+}
+
+/*////////////////*/
+/* DETTAGLIO SALA */
+/*////////////////*/
+  
+.dettaglioSala{
+  margin: 2% 7% 2% 7%;
+  background-color: #f2f4f7;
+  border-radius: 1em ;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
+  overflow: auto;
+}
+
+
+.dettaglioSala h1{
+  text-align: center;
+  font-size: 2rem;
+  padding: 1rem;
+  margin: 0;
+}
+.dettaglioSala p{
+  padding: 1.1rem;
+  font-size: 1.1rem ;
+  margin: 0;
+}
+
+#titoloListaOpere{
+  text-align: center;
+  font-size: 2rem;
+  padding: 1rem;
+  
+}
+
+#listaOpere{
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  grid-column-gap: 3em;
+  grid-row-gap: 2em;
+  
+  list-style-type: none;
+  margin: 0 5em 0 5em;
+  padding: 0;
+  
+}
+#listaOpere li{ 
+  display: flex;
+  flex-direction: column; /* Imposta una colonna di layout per ciascun elemento */
+  align-items: center; 
+  text-align: left; /* Allinea il testo a sinistra */
+  border-radius: 1em ;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
+  padding: 2em;
+  margin: auto;
+  
+}
+
+#listaOpere li img{
+  max-height: fit-content;
+  max-width: 17em;
+  background-size: contain;
+  margin: 0;
+  margin-top: 1em;
+  
+  
+  
+}
+@media (max-width: 1225px) {
+  #listaOpere{
+    grid-template-columns: repeat(2,1fr);
+  }
+}
+/*trasforma la tabella e la fa diventare di una sola colonna in caso di schermi piccoli*/
+@media (max-width: 855px) {
+  #listaOpere{
+    grid-template-columns: repeat(1,1fr);
+    max-height: fit-content;
+    width: auto;
+    margin: 0 auto 0 auto;
+  }
+
+  #listaOpere li img{
+    max-height: fit-content;
+    width: auto;
+    background-size: contain;
+    margin: 0;
+    margin-top: 1em;
+    
+  }
+}
+
+
+
+#listaOpere li h3{
+  font-style: italic;
+  align-self: flex-start; /* Allinea il titolo a sinistra */
+  margin-bottom: 0;
+}
+
+#listaOpere li p{
+  align-self: flex-start; /* Allinea il titolo a sinistra */
+  margin-bottom: 0.1;
+}
+
+#listaOpere li a{
+  align-self: flex-start; /* Allinea il titolo a sinistra */
+  margin-bottom: 0;
+}
+
+
+/*////////////*/
+/* SECTION */
+/*////////////*/
+
+.mainSection {
+  margin: 2% 7% 2% 7%;
+  background-color: #f2f4f7;
+  border-radius: 1em ;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.mainSection h1{
+  text-align: center;
+  font-size: 2rem;
+  padding: 1rem;
+  margin-bottom: 0;
+  
+}
+
+.mainSection p{
+  margin: 1em;
+  padding: 1em;
+  font-size: 1.1rem ;
+}
+
+#torna-su {
+  grid-row: 4;
+  grid-column: 1/3;
+  width: 100%;
+  height: 3rem;
+  text-indent: -999rem;
+  display: block;
+  background: url(../images/back-to-top-icon.png) no-repeat center;
+  background-size: contain;
+  margin: 0.5rem auto;
+}
+
+/*////////////*/
+/* FOOTER */
+/*////////////*/
+
+footer {
+  grid-row: 5;
+  grid-column: 1/3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  background-color: var(--headerbgcolor);
+  color: var(--headercolor);
+  font-size: 0.75rem;
+  padding: 0 6%;
+}
+
+footer a {
+  color: var(--headercolor);
+}
+
+footer dl {
+  min-width: 14rem;
+  margin: 0.4rem 1.5%;
+  flex: 1 0 30%;
+  padding: 3rem 0;
+}
+
+footer dt {
+  float: left;
+  padding-right: 0.2rem;
+}
+
+footer h2 {
+  flex: 1 0 18%;
+  background-image: url('../images/logoMuseo2.png');
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  text-indent: -999rem;
+  min-height: 8rem;
+}
+
+/*//////////////////////////*/
+/* TABELLA ORARI MUSEO */
+/*//////////////////////////*/
+
+#orari-museo {
+  max-width: 30rem; 
+  text-align: center;
+  margin: 0.3rem 1.5%;
+  flex: 1 0 40%;
+}
+
+#orari-museo caption {
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+#orari-museo td {
+  min-width: 8rem;
+}
+
+#orari-museo tr:nth-child(even),
+#orari-museo thead th,
+#orari-museo thead td {
+  background-color: #f2f2f2;
+}
+
+#orari-museo tr:nth-child(odd) {
+  background-color: var(--headerbgcolor);
+}
+
+
+/*////////////*/
+/* MOSTRE */
+/*////////////*/
+#mostre h1 {
+  text-align: center;
+  font-size: 3em;
+}
+
+.tipoMostre {
+  font-size: 2em;
+  font-weight: bold;
+  margin: 1.5em 0;
+}
+
+.nomeMostra {
+  margin: 1.5em 5%;
+  font-size: 1.5em;
+  background-image: url("../images/pokeball.ico");
+  background-size: 1.3em;
+  background-repeat: no-repeat;
+  padding-left: 2em;
+}
+
+/* l'idea sarebbe renderla simile ad una carta ma work in progress */
+.infoMostra {
+  display: flex;
+  flex-direction: column;
+  padding: 1.5em;
+  border: 2px solid #ccc;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  margin: 1.5em 0;
+}
+
+.infoMostra > img {
+  display: block;
+  margin: auto;
+  width: 80%;
+  max-width: 800px;
+  border-radius: 10px;
+}
+
+/* con questo vengono sommati i due margini tra bot del primo e top del secondo risolvi */
+.infoMostra > p {
+  margin: 1em 10%;
+}
+
+.giorniMostra {
+  text-align: center;
+}
+
+.infoMostra time {
+  font-weight: bold;
+}
+
+.button {
+  align-self: flex-end;
+  padding: 0.6em;
+  font-size: 1em;
+  border: 2px solid #000;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  color: black;
+  text-decoration: none;
+}
+
+.accordion {
+  width: 100%;
+  padding: 0.6em;
+  font-size: 1.3em;
+  font-weight: bold;
+  background-color: white;
+  color: black;
+  cursor: pointer;
+  border: 1px solid #000;
+  border-radius: 5px;
+}
+
+.accordion::after {
+  content: "\002B";
+  color: black;
+  font-weight: bold;
+  float: right;
+}
+
+.active:after {
+  content: "\2212";
+}
+
+.accordion-panel {
+  display: none;
+}
+
+/*///////////////*/
+/* PRENOTAZIONI */
+/* REGISTRAZIONE */
+/*///////////////*/
+
+/* Versione 1 senza cambiare main */
+
+/* #primoContenuto H1 {
+  text-align: center;
+}
+
+.formcompilazione {
+  margin-top: 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.formcompilazione input, select {
+  margin-bottom: 1.5em;
+  box-sizing: border-box;
+  padding: 0.4em;
+  border: solid 2px #000;
+  width: 10em;
+  border-radius: 5px;
+}
+
+.formcompilazione input[type="submit"] {
+  margin-top: 1em;
+  background-color: rgb(40, 212, 40);
+  color: white;
+  padding: 0.6em;
+  width: auto;
+  font-size: 1em;
+  color: black;
+}
+
+.formcompilazione label {
+  margin-bottom: 0.5em;
+  font-size: 1.2em;
+} */
+.compilazione {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("../images/sala.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  margin-top: 1.5em;
+  border-radius: 3em;
+}
+
+.contenitoreCompilazione {
+  width: 30%;
+  min-width: 12em;
+  padding: 1.5em;
+  background-color: white;
+  border-radius: 10px;
+  opacity: 0.9;
+}
+
+.compilazione h1 {
+  text-align: center;
+  line-height: 1.5em;
+}
+
+.formCompilazione {
+  margin-top: 1em;
+}
+
+.formCompilazione input, select {
+  margin: auto;
+  margin-bottom: 1.5em;
+  box-sizing: border-box;
+  padding: 0.4em;
+  border: solid 2px #000;
+  width: 10em;
+  border-radius: 5px;
+  display: block;
+}
+
+.formCompilazione input[type="submit"] {
+  background-color: rgb(40, 212, 40);
+  color: white;
+  padding: 0.6em;
+  width: auto;
+  font-size: 1em;
+  margin-bottom: 0;
+  color: black;
+}
+
+.formCompilazione label {
+  display: block;
+  margin: auto;
+  margin-bottom: 0.5em;
+  font-size: 1.2em;
+  text-align: center;
+}
+
+/*////////////*/
+/* RECENSIONI */
+/*////////////*/
+
+#primoContenuto h1 {
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+#titolo-recens-museo {
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+}
+
+#titolo-recens-virtual {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+#scrivi-rev {
+  border: 1px solid;
+  border-radius: 10px;
+  padding: 0.5em;
+  text-decoration: none;
+  color: black;
+}
+
+#scrivi-rev::before {
+  content: "\270D";
+  margin-right: 0.5em;
+}
+
+.recensioni > li {
+  margin-top: 1em;
+  margin-bottom: 2em;
+  padding: 0.8em;
+  border: 2px solid;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.recensioni > li > p {
+  margin-bottom: 0.5em;
+  margin-top: 0.5em;
+}
+
+.recensioni > li > label {
+  font-weight: bold;
+  margin-right: 0.5em;
+}     
+
+.recensioni > li > time {
+  display: block;
+  font-size: 0.7em;
+}
+
+/*/////////////////////////*/
+/* DETTAGLIO OPERA (CARTA) */
+/*/////////////////////////*/
+
 .opera {
   color: var(--newstxtcolor);
   background-color: var(--contentbgcolor);
