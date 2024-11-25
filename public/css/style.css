@@ -1,4 +1,4 @@
-main {
+.opera {
   color: var(--newstxtcolor);
   background-color: var(--contentbgcolor);
   margin: 2em auto; 
@@ -9,14 +9,14 @@ main {
   border-radius: 8px; 
 }
 
-main h1 {
+.opera h1 {
   padding: 0.7em;
   padding-top: 0.1em;
   text-align: center;
   line-height: 1.5em;
 }
 
-main h2 {
+.opera h2 {
   padding-top: 0.7em;
   padding-bottom: 0.7em;
   text-align: center;
