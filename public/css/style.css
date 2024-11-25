@@ -666,4 +666,60 @@ footer h2 {
   margin-bottom: 0.5em;
   font-size: 1.2em;
   text-align: center;
-} 
+}
+
+/*////////////*/
+/* RECENSIONI */
+/*////////////*/
+
+#primoContenuto h1 {
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+#titolo-recens-museo {
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+}
+
+#titolo-recens-virtual {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+#scrivi-rev {
+  border: 1px solid;
+  border-radius: 10px;
+  padding: 0.5em;
+  text-decoration: none;
+  color: black;
+}
+
+#scrivi-rev::before {
+  content: "\270D";
+  margin-right: 0.5em;
+}
+
+.recensioni > li {
+  margin-top: 1em;
+  margin-bottom: 2em;
+  padding: 0.8em;
+  border: 2px solid;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.recensioni > li > p {
+  margin-bottom: 0.5em;
+  margin-top: 0.5em;
+}
+
+.recensioni > li > label {
+  font-weight: bold;
+  margin-right: 0.5em;
+}     
+
+.recensioni > li > time {
+  display: block;
+  font-size: 0.7em;
+}
