@@ -728,7 +728,7 @@ footer h2 {
 /* DETTAGLIO OPERA (CARTA) */
 /*/////////////////////////*/
 
-.opera {
+main[class="opera"] {
   color: var(--newstxtcolor);
   background-color: var(--contentbgcolor);
   margin: 2em auto; 
