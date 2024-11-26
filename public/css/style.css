@@ -816,6 +816,7 @@ main[class="opera"] {
   height: auto;
   border: 2px solid #ccc;
   border-radius: 5px;
+  width: 75%;
 }
 .virtualTour-elenco-sale {
   display: flex;
