@@ -809,9 +809,7 @@ main[class="opera"] {
   gap: 10px;
   margin-bottom: 20px;
 }
-.mappa a {
-  display: block;
-}
+
 .virtualTour-mappa img {
   height: auto;
   border: 2px solid #ccc;
@@ -823,21 +821,27 @@ main[class="opera"] {
   flex-direction: column;
   align-items: center;
 }
-.virtualTour-sala {
+
+.virtualTour-elenco-sale dl {
+  max-width: 600px;
+  margin: 0;
+  padding: 0;
+}
+.virtualTour-elenco-sale dt {
+  font-weight: bold;
+  margin-top: 20px;
+  color: #333;
+  text-align: center;
+}
+.virtualTour-elenco-sale dd {
+  margin: 5px 0 20px 0;
+  padding: 15px;
   border: 2px solid #ddd;
   border-radius: 10px;
-  padding: 15px;
-  max-width: 600px;
-  margin-bottom: 20px;
-  margin-top:20px;
   text-align: center;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
-.virtualTour-sala h3 {
-  margin: 5px 0;
-  color: #333;
-}
-.virtualTour-sala p {
-  margin: 5px 0;
+.virtualTour-elenco-sale dd p {
   color: #666;
+  margin-bottom: 10px;
 }

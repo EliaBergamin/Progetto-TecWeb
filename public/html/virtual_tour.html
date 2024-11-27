@@ -42,58 +42,59 @@
   
     <main id="primoContenuto">
         <h1>Mappa delle Sale</h1>
-
+    
         <!-- Mappa delle immagini -->
-        <div class="virtualTour-mappa">
+        <nav class="virtualTour-mappa">
             <a href="#sala1"><img src="../images/sala-dragon-ball.png" alt="Sala 1"></a>
             <a href="#sala2"><img src="../images/sala-gormiti.jpeg" alt="Sala 2"></a>
             <a href="#sala3"><img src="../images/sala-pokemon.jpg" alt="Sala 3"></a>
             <a href="#sala4"><img src="../images/sala-yu-gi-oh.jpeg" alt="Sala 4"></a>
-        </div>
-
+        </nav>
+    
         <!-- Elenco delle sale -->
-        <!-- Immagino che si passerà nel link un parametro indicante l'id della sala per poter riempirla con le giuste
-          informazioni, alternativa sarebbe un html per ogni pagina, ma non mi sembra proprio sua mamma, anche se in realtà
-          se consideriamo le sale statiche potrebbe starci -->
-        <!-- Le immagini sono disposte male ma non ci perderei troppo tempo ora perché vanno scelte (anche i relativi cartoni)
-          e magari scelta una dimensione standard. -->
-        <div class="virtualTour-elenco-sale">
+        <section class="virtualTour-elenco-sale">
             <h2>Elenco delle Sale</h2>
-            <div id="sala1" class="virtualTour-sala">
-                <h3>Sala 1: <span lang="en">Dragon Ball</span></h3>
-                <p>Immergiti nell'universo epico di Dragon Ball, dove potrai esplorare le avventure di Goku e dei suoi amici.
-                    Scopri le Sfere del Drago, rivivi gli scontri leggendari contro i Saiyan, Freezer e Majin Bu, e 
-                    lasciati travolgere dall'energia delle trasformazioni Super Saiyan. Oggetti iconici, diorami e 
-                    ricostruzioni interattive ti aspettano per farti sentire parte di questa straordinaria saga.</p>
-                <a href="dettaglio_sala.html?sala=1">Esplora la Sala</a>
-            </div>
-            <div id="sala2" class="virtualTour-sala">
-                <h3>Sala 2: <span lang="en">Pokemon</span></h3>
-                <p>Entra nel fantastico mondo dei Pokémon, dove allenatori di tutte le età possono scoprire creature straordinarie.
-                    Esplora regioni come Kanto, Johto e Galar, ammira una collezione di Poké Ball, e sfida le emozionanti battaglie 
-                    in un’arena virtuale. Non dimenticare di incontrare i Pokémon leggendari e mitici in una sala dedicata alla loro 
-                    storia e potere.</p>
-                <a href="dettaglio_sala.html?sala=2">Esplora la Sala</a>
-            </div>
-            <div id="sala3" class="virtualTour-sala">
-                <h3>Sala 3: <span lang="en">Yu-gi-oh</span></h3>
-                <p>Preparati a duellare nel mondo di Yu-Gi-Oh!, dove ogni carta racconta una storia epica. 
-                    Esplora il regno dei mostri con esposizioni dedicate alle carte leggendarie come il Drago Bianco Occhi Blu e il 
-                    Mago Nero. 
-                    Una replica dell’arena da duello ti aspetta per sfidare amici e rivivere i momenti più iconici della serie.</p>
-                <a href="dettaglio_sala.html?sala=3">Esplora la Sala</a>
-            </div>
-            <div id="sala4" class="virtualTour-sala">
-                <h3>Sala 4: Gormiti</h3>
-                <p>Viaggia verso l’isola magica dei Gormiti, dove la natura prende vita attraverso i potenti Lord della Terra, del Mare, 
-                    del Fuoco e dell’Aria. Attraversa paesaggi suggestivi e scopri la storia di questa eterna lotta tra il bene e il male. 
-                    Modelli tridimensionali, 
-                    effetti luminosi e una narrazione avvincente rendono questa sala un'esperienza immersiva.</p>
-                <a href="dettaglio_sala.html?sala=4">Esplora la Sala</a>
-            </div>
-        </div>
+            <dl>
+                <dt id="sala1">Sala 1: <span lang="en">Dragon Ball</span></dt>
+                <dd>
+                    <p>Immergiti nell'universo epico di Dragon Ball, dove potrai esplorare le avventure di Goku e dei suoi amici.
+                        Scopri le Sfere del Drago, rivivi gli scontri leggendari contro i Saiyan, Freezer e Majin Bu, e 
+                        lasciati travolgere dall'energia delle trasformazioni Super Saiyan. Oggetti iconici, diorami e 
+                        ricostruzioni interattive ti aspettano per farti sentire parte di questa straordinaria saga.</p>
+                    <a href="dettaglio_sala.html?sala=1">Esplora la Sala</a>
+                </dd>
+
+                <dt id="sala2">Sala 2: Gormiti</dt>
+                <dd>
+                    <p>Viaggia verso l’isola magica dei Gormiti, dove la natura prende vita attraverso i potenti Lord della Terra, del Mare, 
+                        del Fuoco e dell’Aria. Attraversa paesaggi suggestivi e scopri la storia di questa eterna lotta tra il bene e il male. 
+                        Modelli tridimensionali, 
+                        effetti luminosi e una narrazione avvincente rendono questa sala un'esperienza immersiva.</p>
+                    <a href="dettaglio_sala.html?sala=4">Esplora la Sala</a>
+                </dd>
+    
+                <dt id="sala3">Sala 3: <span lang="en">Pokemon</span></dt>
+                <dd>
+                    <p>Entra nel fantastico mondo dei Pokémon, dove allenatori di tutte le età possono scoprire creature straordinarie.
+                        Esplora regioni come Kanto, Johto e Galar, ammira una collezione di Poké Ball, e sfida le emozionanti battaglie 
+                        in un’arena virtuale. Non dimenticare di incontrare i Pokémon leggendari e mitici in una sala dedicata alla loro 
+                        storia e potere.</p>
+                    <a href="dettaglio_sala.html?sala=2">Esplora la Sala</a>
+                </dd>
+
+                <dt id="sala4">Sala 4: <span lang="en">Yu-gi-oh</span></dt>
+                <dd>
+                    <p>Preparati a duellare nel mondo di Yu-Gi-Oh!, dove ogni carta racconta una storia epica. 
+                        Esplora il regno dei mostri con esposizioni dedicate alle carte leggendarie come il Drago Bianco Occhi Blu e il 
+                        Mago Nero. 
+                        Una replica dell’arena da duello ti aspetta per sfidare amici e rivivere i momenti più iconici della serie.</p>
+                    <a href="dettaglio_sala.html?sala=3">Esplora la Sala</a>
+                </dd>
+            </dl>
+        </section>
         <a href="recensisci.html" class="btn">Lascia una recensione</a>
     </main>
+    
     <a id="torna-su" href="#" aria-label="Torna su">⇪</a>
     <footer>
         <h2>Museo Cartoni Animati</h2>
