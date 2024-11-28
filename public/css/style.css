@@ -41,9 +41,11 @@ html {
 }
 
 body {
+  max-width: 1200px;
   display: grid;
   grid-template-columns: 1fr 8fr;
   overflow-x: hidden;
+  margin: auto;
 }
 
 ol,
@@ -143,9 +145,12 @@ utile per fissare il menu in modo che non scrolli
 }
 
 #breadcrumb a:visited {
-  text-decoration-style: dotted;
+  text-decoration: underline dotted;
 }
 
+#home {
+  text-decoration: underline dotted;
+}
 /*////////////*/
 /* MAIN */
 /*////////////*/
@@ -298,7 +303,7 @@ ol li .active, .puntiniCarosello button:hover {
   grid-row-gap: 2em;
   
   list-style-type: none;
-  margin: 0 5em 0 5em;
+  margin: 0 ;
   padding: 0;
   
 }
@@ -327,6 +332,7 @@ ol li .active, .puntiniCarosello button:hover {
 @media (max-width: 1225px) {
   #listaOpere{
     grid-template-columns: repeat(2,1fr);
+    margin: 0 5em;
   }
 }
 /*trasforma la tabella e la fa diventare di una sola colonna in caso di schermi piccoli*/
@@ -335,7 +341,7 @@ ol li .active, .puntiniCarosello button:hover {
     grid-template-columns: repeat(1,1fr);
     max-height: fit-content;
     width: auto;
-    margin: 0 auto 0 auto;
+    margin: 0 auto;
   }
 
   #listaOpere li img{
