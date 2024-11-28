@@ -40,18 +40,34 @@
     <main id="mostre">
         <h1>Le mostre</h1>
         <dl>
+            <?php 
+                require_once("../prova.php");
+            ?>
             <dt class="tipoMostre">Mostre in corso</dt>
-            <dd>
-                <dl>
-                    <dt class="nomeMostra">Nome mostra</dt>
-                    <dd class="infoMostra">
-                        <img src="../images/mostra.jpg" alt="">
-                        <p>Descrizione mostra: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque quam ante, ornare sed urna sed, molestie volutpat turpis. Duis et nunc in purus lacinia euismod. Suspendisse potenti. Duis tempus purus elit. Curabitur scelerisque iaculis orci vitae gravida. Maecenas laoreet faucibus sodales. Aenean ultricies sodales ante eu efficitur. Phasellus eu ante rutrum, maximus est et, sodales tellus. Nullam dapibus massa viverra, gravida risus vel, hendrerit ipsum. Fusce laoreet et est at cursus. Sed pellentesque ac enim sed maximus. Aliquam mattis, diam eget maximus fringilla, diam ex facilisis mauris, id mollis est magna vel velit.</p>
-                        <p class="giorniMostra">Da <time datetime="2024-10-01">01 Ottobre 2024</time> a <time datetime="2024-12-01">01 Dicembre 2024</time></p>
-                        <a href="prenotazione.html" class="button">Prenota visita</a>
-                    </dd>
-                </dl>
-            </dd>
+            <!-- Prova --><dd>
+            <dl>
+                <dt class="nomeMostra"> Mostra Impressionismo</dt>
+                <dd class="infoMostra">
+                    <img src=../images/mostra.jpg alt=prvoa alt>
+                    <p>Descrizione mostra: Una raccolta di opere impressioniste da tutto il mondo.</p>
+                    <p class="giorniMostra">Da <time datetime=2024-03-01>01 Marzo 2024</time> a <time datetime=2024-06-30> 30 Giugno 2024 </time></p>
+                    <a href="prenotazione.html" class="button">Prenota visita</a>
+                </dd>
+            </dl>
+        </dd>
+<dd>
+            <dl>
+                <dt class="nomeMostra"> Mostra Rinascimento</dt>
+                <dd class="infoMostra">
+                    <img src=../images/mostra.jpg alt=prvoa alt>
+                    <p>Descrizione mostra: Esplora il periodo del Rinascimento con opere di artisti celebri.</p>
+                    <p class="giorniMostra">Da <time datetime=2024-07-01>01 Luglio 2024</time> a <time datetime=2024-09-30> 30 Settembre 2024 </time></p>
+                    <a href="prenotazione.html" class="button">Prenota visita</a>
+                </dd>
+            </dl>
+        </dd>
+<!-- Fine Prova -->
+
             <dt class="tipoMostre">Mostre in programma</dt>
             <dd>
                 <dl>

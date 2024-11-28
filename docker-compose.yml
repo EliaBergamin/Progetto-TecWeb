@@ -6,6 +6,8 @@ services:
     - ./public:/var/www/html
     ports:
     - "8080:80"
+    build:
+      context: .
 
   database:
     image: mariadb:10.6.7
