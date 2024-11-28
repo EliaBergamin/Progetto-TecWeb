@@ -143,7 +143,7 @@ utile per fissare il menu in modo che non scrolli
 }
 
 #breadcrumb a:visited {
-  color: var(--visitedcolor);
+  text-decoration-style: dotted;
 }
 
 /*////////////*/
@@ -155,6 +155,13 @@ main {
   grid-column: 1/3;
   margin-left: 3%;
   margin-right: 3%;
+}
+
+main h1 {
+  margin: 1rem 0;
+  line-height: 1.5em;
+  text-align: center;
+  font-size: 2.5rem;
 }
 
 /*////////////*/
@@ -623,16 +630,11 @@ footer h2 {
 
 .contenitoreCompilazione {
   width: 30%;
-  min-width: 12em;
+  min-width: 20em;
   padding: 1.5em;
   background-color: white;
   border-radius: 10px;
-  opacity: 0.9;
-}
-
-.compilazione h1 {
-  text-align: center;
-  line-height: 1.5em;
+  opacity: 0.93;
 }
 
 .formCompilazione {
@@ -803,11 +805,64 @@ main[class="opera"] {
 /* VIRTUAL TOUR */
 /*/////////////////////////*/
 
-.virtualTour-mappa {
+.virtualTour-mappa ol {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
+  grid-template-columns: 2fr 1fr 2fr;
+  gap: 4px;
   margin-bottom: 20px;
+  border: #ddd solid 8px;
+}
+
+.virtualTour-mappa li {
+  display: block;
+  width: auto;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  height: 16rem;
+  text-indent: -999em;
+}
+
+.virtualTour-mappa li a {
+  display: block;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+}
+
+#dragon {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+#dragon a {
+  background: url("../images/sala-dragon-ball.png") no-repeat center;
+}
+
+#pokemon {
+  grid-row: 1;
+  grid-column: 2/4;
+}
+
+#pokemon a {
+  background: url("../images/sala-pokemon.jpg") no-repeat center;
+}
+
+#gormiti {
+  grid-row: 2;
+  grid-column: 3;
+}
+
+#gormiti a {
+  background: url("../images/sala-gormiti.jpeg") no-repeat center;
+}
+
+#yugioh {
+  grid-row: 2;
+  grid-column: 1/3;
+}
+
+#yugioh a {
+  background: url("../images/sala-yu-gi-oh.jpeg") no-repeat center;
 }
 
 .virtualTour-mappa img {
