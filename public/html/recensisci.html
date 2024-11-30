@@ -91,19 +91,22 @@
     </ul>
   </nav>
 
-  <main id="primoContenuto">
-    <form action="../../src/recensisci.php" method="post">
-
-      <fieldset>
-        <legend>La tua visita</legend>
+  <main id="primoContenuto" class="compilazione">
+    <div class="contenitoreCompilazione">
+      <h1>Recensisci la tua visita</h1>
+      <form action="../../src/recensisci.php" method="post" class="formCompilazione">
         <fieldset>
           <legend>Come hai visitato il museo?</legend>
-          <input type="radio" name="tipo" id="tipo-museo" value="museo" required>
-          <label for="tipo-museo">Sono andato al museo</label>
-          <input type="radio" name="tipo" id="tipo-virtual" value="virtual">
-          <label for="tipo-virtual">Ho scelto il Virtual Tour</label>
+          <label>
+            <input type="radio" name="tipo" value="museo" required>
+            Sono andato al museo
+          </label>
+          <label>
+            <input type="radio" name="tipo" value="virtual">
+            Ho scelto il Virtual Tour
+          </label>
         </fieldset>
-        <label for="data-visita">Quando hai effettuato la visita?</label>
+        <label for="data-visita" class="domandaRecensione">Quando hai effettuato la visita?</label>
         <input type="date" name="data-visita" id="data-visita" required>
         <fieldset id="rating-fs">
           <legend>Come valuteresti la tua esperienza?</legend>
@@ -119,12 +122,12 @@
           <label for="voto-5" class="nascosto">Eccellente</label>
           <span id="giudizio"></span>
         </fieldset>
-        <label for="descrizione">Descrivi la tua visita</label>
+        <label for="descrizione" class="domandaRecensione">Descrivi la tua visita</label>
         <textarea name="descrizione" id="descrizione" minlength="100" rows="10" cols="100"
-          placeholder="L'opera che mi ha colpito di più è stata..." required></textarea>
+        placeholder="L'opera che mi ha colpito di più è stata..." required></textarea>
         <input type="submit" value="Invia" aria-label="Invia">
-      </fieldset>
-    </form>
+      </form>
+    </div>
   </main>
   <a id="torna-su" href="#" aria-label="Torna su">⇪</a>
   <footer>
