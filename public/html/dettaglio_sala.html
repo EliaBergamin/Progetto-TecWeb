@@ -16,7 +16,7 @@
 </head>
 
 <body>
-    <a class="nascosto" href="#primoContenuto">Vai al contenuto</a>
+    <a id="top-help" class="help nascosto" href="#primoContenuto">Vai al contenuto</a>
     <header>
         <h1>Museo Cartoni Animati</h1>
         <button id="hamb" class="hamToggle" data-hambOn="false" type="button" onclick="hambToggle()">Menù</button>
@@ -52,6 +52,7 @@
                     quelle probabilmente con una join visto che saranno in due table diverse ma vedremo.
                 </p>
         </section>
+        <a class="help nascosto" href="#">Torna su</a>
         <h2 id="titoloListaOpere">Ora la lista di tutte le opere che potrai trovare nella sala</h2>
         <ul id="listaOpere">
             <!-- Anche questa parte sara generata in automatico in base a quante opere nel db per ora facciamo finta ce ne siano tre-->
@@ -89,7 +90,7 @@
             </li>
         </ul>
     </main>
-    <a id="torna-su" href="#" aria-label="Torna su">⇪</a>
+    <a class="help" id="torna-su" href="#">Torna su</a>
     <footer>
         <h2>Museo Cartoni Animati</h2>
         <dl>
