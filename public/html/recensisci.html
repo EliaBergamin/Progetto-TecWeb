@@ -13,7 +13,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="../images/pokeball.ico" type="image/x-icon">
   <script type="text/javascript" src="../js/script.js"></script>
-  <!-- <script>
+  <script>
     console.log(document.getElementsByName("rating"));
     function reset_span() {
       inputs = document.getElementsByName("rating");
@@ -63,7 +63,7 @@
       item.addEventListener("mouseover", function () { change_span(item.id); console.log(item.id); });
       item.addEventListener("mouseleave", reset_span);
     }
-  </script> -->
+  </script>
 </head>
 
 <body>
@@ -91,19 +91,22 @@
     </ul>
   </nav>
 
-  <main id="primoContenuto">
-    <form action="../../src/recensisci.php" method="post">
-
-      <fieldset>
-        <legend>La tua visita</legend>
+  <main id="primoContenuto" class="compilazione recensisci">
+    <div class="contenitoreCompilazione">
+      <h1>Recensisci la tua visita</h1>
+      <form action="../../src/recensisci.php" method="post" class="formCompilazione">
         <fieldset>
           <legend>Come hai visitato il museo?</legend>
-          <input type="radio" name="tipo" id="tipo-museo" value="museo" required>
-          <label for="tipo-museo">Sono andato al museo</label>
-          <input type="radio" name="tipo" id="tipo-virtual" value="virtual">
-          <label for="tipo-virtual">Ho scelto il Virtual Tour</label>
+          <label>
+            <input type="radio" name="tipo" value="museo" required>
+            Sono andato al museo
+          </label>
+          <label>
+            <input type="radio" name="tipo" value="virtual">
+            Ho scelto il Virtual Tour
+          </label>
         </fieldset>
-        <label for="data-visita">Quando hai effettuato la visita?</label>
+        <label for="data-visita" class="domandaRecensione">Quando hai effettuato la visita?</label>
         <input type="date" name="data-visita" id="data-visita" required>
         <fieldset id="rating-fs">
           <legend>Come valuteresti la tua esperienza?</legend>
@@ -119,12 +122,12 @@
           <label for="voto-5" class="nascosto">Eccellente</label>
           <span id="giudizio"></span>
         </fieldset>
-        <label for="descrizione">Descrivi la tua visita</label>
-        <textarea name="descrizione" id="descrizione" minlength="100" rows="10" cols="100"
-          placeholder="L'opera che mi ha colpito di più è stata..." required></textarea>
+        <label for="descrizione" class="domandaRecensione">Descrivi la tua visita</label>
+        <textarea name="descrizione" id="descrizione" minlength="100" rows="8" cols="20"
+        placeholder="L'opera che mi ha colpito di più è stata..."></textarea>
         <input type="submit" value="Invia" aria-label="Invia">
-      </fieldset>
-    </form>
+      </form>
+    </div>
   </main>
   <a id="torna-su" href="#" aria-label="Torna su">⇪</a>
   <footer>
@@ -176,9 +179,9 @@
       </tbody>
     </table>
   </footer>
-  <!-- <script>
+  <script>
     document.getElementsByName("rating").forEach(addEventListeners);
-  </script> -->
+  </script>
 </body>
 
 </html>
