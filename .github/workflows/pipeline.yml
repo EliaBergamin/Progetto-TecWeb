@@ -25,6 +25,7 @@ jobs:
         run: |
           echo "Starting deploy to Altervista"
           lftp -u "$FTP_USERNAME","$FTP_PASSWORD" "$FTP_HOST" <<EOF
+          set ssl:verify-certificate no
           mirror -R ./ / # Sincronizza la directory corrente con il server Altervista
           quit
           EOF
