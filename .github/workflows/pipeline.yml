@@ -26,6 +26,7 @@ jobs:
           echo "Starting deploy to Altervista"
           lftp -u "$FTP_USERNAME","$FTP_PASSWORD" "$FTP_HOST" <<EOF
           set ssl:verify-certificate no
+          rm -rf /public_html/*
           mirror -R ./public/ /
           quit
           EOF
