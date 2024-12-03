@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS Opera (
     descrizione TEXT,
     anno YEAR,
     img_path VARCHAR(50),
-    FOREIGN KEY (id_sala) REFERENCES Sala(id_sala) ON DELETE CASCADE,
+    FOREIGN KEY (id_sala) REFERENCES Sala(id_sala) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS Utente (
