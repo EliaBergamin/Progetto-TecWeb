@@ -27,6 +27,6 @@ jobs:
           lftp -u "$FTP_USERNAME","$FTP_PASSWORD" "$FTP_HOST" <<EOF
           set ssl:verify-certificate no
           lcd ./public
-          mirror -R --delete --verbose --ignore-failed ./ /
+          mirror -R --delete --verbose --exclude .ftpquota --exclude .git --exclude .github ./ /
           quit
           EOF
