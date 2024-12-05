@@ -1,2 +1,3 @@
 # Trash from visual studio code
 .DS_Store
+.vscode/*
