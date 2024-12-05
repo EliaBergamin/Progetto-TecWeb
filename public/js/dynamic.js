@@ -11,7 +11,7 @@ mostraSlide(indiceSlide = n);
 
 function mostraSlide(n) {
 let i;
-let slides = document.querySelectorAll("#primoContenuto img");
+let slides = document.querySelectorAll(".immaginiCarosello img");
 console.log(slides)
 let dots = document.querySelectorAll(".puntiniCarosello button");
 
