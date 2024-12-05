@@ -7,19 +7,25 @@
     <meta name="keywords" content="mostre,carte,animazione,cartoni animati,rarità,giochi di carte collezionabili,prenota,visita,informazioni">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css" media="screen">
+    <link rel="stylesheet" href="../css/middle.css" media="screen and (max-width: 1024px)">
+    <link rel="stylesheet" href="../css/mini.css" media="screen and (max-width: 768px)">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../images/pokeball.ico" type="image/x-icon"> 
+    <script type="text/javascript" src="../js/script.js"></script>
 </head>
+
 <body>
     <a class="nascosto" href="#primoContenuto">Vai al contenuto</a>
     <header>
         <h1>Museo Cartoni Animati</h1>
+        <button id="hamb" class="hamToggle" data-hambOn="false" type="button" onclick="hambToggle()">Menù</button>
     </header>
 
     <nav id="breadcrumb">
         Ti trovi in: <a href="../index.html" lang="en">Home</a> &gt; Le mostre
     </nav>
 
-    <nav id="menu">
+    <nav id="menu" class="hamToggle" data-hambOn="false">
         <ul>
             <li><a href="../index.html" lang="en">Home</a></li>
             <li id="currentLink">Le mostre</li>
@@ -30,33 +36,38 @@
 
         </ul>
     </nav>
-    <main>
-        <h1 id="primoContenuto">Le mostre</h1>
+
+    <main id="mostre">
+        <h1>Le mostre</h1>
         <dl>
-            <dt>In corso</dt>
-            <dd>
-                <h2>Nome mostra</h2>
-                <p>Da <time datetime="2024-10-01">01 Ottobre 2024</time> a <time datetime="2024-12-01">01 Dicembre 2024</time></p>
-                <!-- io lascerei alt vuoto -->
-                <img src="../images/mostra.jpg" alt="">
-                <p>Descrizione mostra: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque quam ante, ornare sed urna sed, molestie volutpat turpis. Duis et nunc in purus lacinia euismod. Suspendisse potenti. Duis tempus purus elit. Curabitur scelerisque iaculis orci vitae gravida. Maecenas laoreet faucibus sodales. Aenean ultricies sodales ante eu efficitur. Phasellus eu ante rutrum, maximus est et, sodales tellus. Nullam dapibus massa viverra, gravida risus vel, hendrerit ipsum. Fusce laoreet et est at cursus. Sed pellentesque ac enim sed maximus. Aliquam mattis, diam eget maximus fringilla, diam ex facilisis mauris, id mollis est magna vel velit.</p>
-                <a href="prenotazione.html">Prenota visita</a>
-            </dd>
-            <dt>Mostre in programma</dt>
+            <dt class="tipoMostre">Mostre in corso</dt>
             <dd>
                 <dl>
-                    <dt>Nome mostra futura 1</dt>
-                    <dd>
-                        <p>Da <time datetime="2025-01-01">01 Gennaio 2025</time> a <time datetime="2025-02-01">01 Febbraio 2025</time></p>
+                    <dt class="nomeMostra">Nome mostra</dt>
+                    <dd class="infoMostra">
+                        <img src="../images/mostra.jpg" alt="">
+                        <p>Descrizione mostra: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque quam ante, ornare sed urna sed, molestie volutpat turpis. Duis et nunc in purus lacinia euismod. Suspendisse potenti. Duis tempus purus elit. Curabitur scelerisque iaculis orci vitae gravida. Maecenas laoreet faucibus sodales. Aenean ultricies sodales ante eu efficitur. Phasellus eu ante rutrum, maximus est et, sodales tellus. Nullam dapibus massa viverra, gravida risus vel, hendrerit ipsum. Fusce laoreet et est at cursus. Sed pellentesque ac enim sed maximus. Aliquam mattis, diam eget maximus fringilla, diam ex facilisis mauris, id mollis est magna vel velit.</p>
+                        <p class="giorniMostra">Da <time datetime="2024-10-01">01 Ottobre 2024</time> a <time datetime="2024-12-01">01 Dicembre 2024</time></p>
+                        <a href="prenotazione.html" class="button">Prenota visita</a>
+                    </dd>
+                </dl>
+            </dd>
+            <dt class="tipoMostre">Mostre in programma</dt>
+            <dd>
+                <dl>
+                    <dt class="nomeMostra">Nome mostra futura 1</dt>
+                    <dd class="infoMostra">
                         <img src="../images/mostra.jpg" alt="">
                         <p>Descrizione mostra: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque quam ante, ornare sed urna sed, molestie volutpat turpis. Duis et nunc in purus lacinia euismod. Suspendisse potenti. Duis tempus purus elit. Curabitur scelerisque iaculis orci vitae graw</p>
-                        <a href="prenotazione.html">Prenota visita</a>
-                    <dt>Nome mostra futura 2</dt>
-                    <dd>
-                        <p>Da <time datetime="2025-04-01">01 Aprile 2025</time> a <time datetime="2025-06-01">01 Giugno 2025</time></p>
+                        <p class="giorniMostra">Da <time datetime="2025-01-01">01 Gennaio 2025</time> a <time datetime="2025-02-01">01 Febbraio 2025</time></p>
+                        <a href="prenotazione.html" class="button">Prenota visita</a>
+                    </dd>
+                    <dt class="nomeMostra">Nome mostra futura 2</dt>
+                    <dd class="infoMostra">
                         <img src="../images/mostra.jpg" alt="">
                         <p>Descrizione mostra: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque quam ante, ornare sed urna sed, molestie volutpat turpis. Duis et nunc in purus lacinia euismod. Suspendisse potenti. Duis tempus purus elit. Curabitur scelerisque iaculis orci vitae grav</p>
-                        <a href="prenotazione.html">Prenota visita</a>
+                        <p class="giorniMostra">Da <time datetime="2025-04-01">01 Aprile 2025</time> a <time datetime="2025-06-01">01 Giugno 2025</time></p>
+                        <a href="prenotazione.html" class="button">Prenota visita</a>
                     </dd>
                 </dl>
             </dd>
@@ -64,16 +75,17 @@
             <dt><button class="accordion">Mostre passate</button></dt>
             <dd class="accordion-panel">
                 <dl>
-                    <dt>Nome mostra passata 1</dt>
-                    <dd>
-                        <p>Conclusa <time datetime="2024-06-01">01 Giugno 2024</time></p>
+                    <dt class="nomeMostra">Nome mostra passata 1</dt>
+                    <dd class="infoMostra">
                         <img src="../images/mostra.jpg" alt="">
                         <p>Descrizione mostra: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque quam ante, ornare sed urna sed, molestie volutpat turpis. Duis et nunc in purus lacinia euismod. Suspendisse potenti. Duis tempus purus elit. Curabitur scelerisque iaculis orci vitae grav</p>
-                    <dt>Nome mostra passata 2</dt>
-                    <dd>
-                        <p>Conclusa <time datetime="2024-02-01">01 Febbraio 2024</time></p>
+                        <p class="giorniMostra">Conclusa <time datetime="2024-06-01">01 Giugno 2024</time></p>
+                    </dd>
+                    <dt class="nomeMostra">Nome mostra passata 2</dt>
+                    <dd class="infoMostra">
                         <img src="../images/mostra.jpg" alt="">
                         <p>Descrizione mostra: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque quam ante, ornare sed urna sed, molestie volutpat turpis. Duis et nunc in purus lacinia euismod. Suspendisse potenti. Duis tempus purus elit. Curabitur scelerisque iaculis orci vitae grav</p>
+                        <p class="giorniMostra">Conclusa <time datetime="2024-02-01">01 Febbraio 2024</time></p>
                     </dd>
                 </dl>                       
             </dd>
@@ -129,5 +141,6 @@
             </tbody>
         </table>
     </footer>
+    <script type="text/javascript" src="../js/accordion.js"></script>
 </body>
 </html>
