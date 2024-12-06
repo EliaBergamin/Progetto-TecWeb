@@ -1,10 +1,10 @@
 <?php
 
-mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+//mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
 class DatabaseService{
     private const HOST = "database";
-	private const NAME = "------";
+	private const NAME = "museo";
 	private const USER = "user";
 	private const PASS = "userpassword";
 
@@ -21,7 +21,12 @@ class DatabaseService{
 			throw new Exception(self::GLOBALERROR);
 		}
 	}
-    
+
+    public function eseguiQueryProva($query) : array {
+        $result = $this->connection->query($query);
+        $rows = $result ->fetch_all(MYSQLI_ASSOC);
+        return $rows;
+    }
 
 
     public function __destruct() {

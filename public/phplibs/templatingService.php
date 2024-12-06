@@ -49,24 +49,23 @@ class Templating{
 
         $regexPattern = "/\Q$startPlaceHolder\E(.*?)\Q$endPlaceHolder\E/s";
 
-        preg_replace($regexPattern, $startPlaceHolder . $contentToInsert . $endPlaceHolder , $htmlSectionToReplace);
-
+        $htmlSectionToReplace = preg_replace($regexPattern, $startPlaceHolder . $contentToInsert . $endPlaceHolder , $htmlSectionToReplace);
     }
 
     /* Funzione per tornare il contenuto della pagin html dato il nome del file*/
-    public static function getHtmlFileContent() : string {
-        $phpFileNameThatCalled = basename(__FILE__);
-        $htmlFileFullPATH = dirname(__FILE__) . "/html" . "/" . str_replace(".php",".html",$phpFileNameThatCalled);
+    public static function getHtmlFileContent($phpFileNameThatCalled) : string {
         
+        $htmlFileFullPATH = __DIR__ . "/../html/" . str_replace(".php",".html",basename($phpFileNameThatCalled));
+
         return file_exists($htmlFileFullPATH) ? file_get_contents($htmlFileFullPATH) : "File not found";
     }
 
     /* Funzione per togliere i placeholders (commenti html) prima di mostrare la pagina a schermo */
     public static function showHtmlPageWithoutPlaceholders(&$htmlPageToDisplay) : void {
 
-        $regexPattern = "/<!--\s*.*?_start\s*-->|\s*<!--\s*.*?_end\s*-->/s";
+        $regexPattern = "/<!--\s*.*?_start\s*-->|<!--\s*.*?_end\s*-->/s";
 
-        preg_replace($regexPattern, "",$htmlPageToDisplay);
+        $htmlPageToDisplay = preg_replace($regexPattern, "",$htmlPageToDisplay);
 
         echo($htmlPageToDisplay);
 
@@ -74,4 +73,64 @@ class Templating{
 
 }
 
+
+
+
+
+/*
+FILE MOSTRE.PHP
+<?php
+    
+
+    require_once("phplibs/databaseService.php");
+    require_once("phplibs/templatingService.php");
+
+
+    $connesione = new DatabaseService();
+
+    $sql = "SELECT * FROM mostre";
+    
+
+    $arrayRestituito = $connesione->eseguiQueryProva($sql);
+    
+    $mostreHtmlContent = Templating::getHtmlFileContent(__FILE__);
+
+    $sectionToModify = Templating::getContentBetweenPlaceholders($mostreHtmlContent,"mostreincorso");
+
+    $fullcontent = "";
+
+    foreach ($arrayRestituito as $riga){
+        $temp = $sectionToModify;
+        Templating::replaceAnchor($temp,"nome_mostra",$riga["nome"]);
+        Templating::replaceAnchor($temp,"descrizione_mostra",$riga["descrizione"]);
+        $fullcontent.= $temp . "\n";
+    }
+
+
+
+    Templating::replaceContentBetweenPlaceholders($mostreHtmlContent,"mostreincorso",$fullcontent);
+    
+    Templating::showHtmlPageWithoutPlaceholders($mostreHtmlContent);
+
 ?>
+
+PARTE DEL FILE MOSTRE.HTML
+        <h1>Le mostre</h1>
+        <dl>
+            <dt class="tipoMostre">Mostre in corso</dt>
+            <!-- mostreincorso_start -->
+            <dd>
+                <dl>
+                    <dt class="nomeMostra">{{nome_mostra}}</dt>
+                    <dd class="infoMostra">
+                        <img src="../images/mostra.jpg" alt="">
+                        <p>Descrizione mostra: {{descrizione_mostra}}</p>
+                        <p class="giorniMostra">Da <time datetime="2024-10-01">01 Ottobre 2024</time> a <time datetime="2024-12-01">01 Dicembre 2024</time></p>
+                        <a href="prenotazione.html" class="button">Prenota visita</a>
+                    </dd>
+                </dl>
+                <a class="help nascosto" href="#">Torna su</a>
+
+            </dd>
+            <!-- mostreincorso_end -->
+*/
