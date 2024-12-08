@@ -6,7 +6,7 @@ CREATE DATABASE IF NOT EXISTS Museo;
 USE Museo;
 
 CREATE TABLE IF NOT EXISTS Mostra (
-    id_mostra SERIAL PRIMARY KEY,
+    id_mostra INT UNSIGNED NOT NULL AUTO_INCREMENT UNIQUE PRIMARY KEY,
     nome VARCHAR(50) NOT NULL,
     descrizione TEXT,
     data_inizio DATE,
@@ -15,15 +15,15 @@ CREATE TABLE IF NOT EXISTS Mostra (
 );
 
 CREATE TABLE IF NOT EXISTS Sala (
-    id_sala SERIAL PRIMARY KEY,
+    id_sala INT UNSIGNED NOT NULL AUTO_INCREMENT UNIQUE PRIMARY KEY,
     nome VARCHAR(50),
     descrizione TEXT,
     img_path VARCHAR(50)
 );
 
 CREATE TABLE IF NOT EXISTS Opera (
-    id_opera SERIAL PRIMARY KEY,
-    id_sala INT,
+    id_opera INT UNSIGNED NOT NULL AUTO_INCREMENT UNIQUE PRIMARY KEY,
+    id_sala INT UNSIGNED,
     nome VARCHAR(255) NOT NULL,
     autore VARCHAR(255),
     descrizione TEXT,
@@ -33,29 +33,29 @@ CREATE TABLE IF NOT EXISTS Opera (
 );
 
 CREATE TABLE IF NOT EXISTS Utente (
-    id_utente SERIAL PRIMARY KEY,
-    ruolo INT,
+    id_utente INT UNSIGNED NOT NULL AUTO_INCREMENT UNIQUE PRIMARY KEY,
+    ruolo TINYINT,
     username VARCHAR(20) UNIQUE,
     nome VARCHAR(30),
     cognome VARCHAR(30),
-    password_hash CHAR(60),
+    password_hash CHAR(255),
     email VARCHAR(50) UNIQUE,
     salt CHAR(32)
 );
 
 CREATE TABLE IF NOT EXISTS Prenotazione (
-    id_utente INT,
+    id_utente INT UNSIGNED,
     data_prenotazione DATE,
-    num_persone INT,
+    num_persone SMALLINT UNSIGNED,
     orario TIME,
     PRIMARY KEY (id_utente, data_prenotazione),
     FOREIGN KEY (id_utente) REFERENCES Utente(id_utente) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS Recensione (
-    id_recensione SERIAL PRIMARY KEY,
-    id_utente INT,
-    voto SMALLINT,
+    id_recensione INT UNSIGNED NOT NULL AUTO_INCREMENT UNIQUE PRIMARY KEY,
+    id_utente INT UNSIGNED,
+    voto TINYINT UNSIGNED,
     data_recensione DATE,
     descrizione TEXT,
     tipo BOOLEAN,
