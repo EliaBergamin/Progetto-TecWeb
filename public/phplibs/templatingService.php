@@ -63,12 +63,41 @@ class Templating{
     /* Funzione per togliere i placeholders (commenti html) prima di mostrare la pagina a schermo */
     public static function showHtmlPageWithoutPlaceholders(&$htmlPageToDisplay) : void {
 
-        $regexPattern = "/<!--\s*.*?_start\s*-->|<!--\s*.*?_end\s*-->/s";
+        $regexPattern = ["/<!-- (\w)+_start -->/", "/<!-- (\w)+_end -->/"];
 
-        $htmlPageToDisplay = preg_replace($regexPattern, "",$htmlPageToDisplay);
+        $htmlPageToDisplay = preg_replace($regexPattern, ["",""],$htmlPageToDisplay);
 
         echo($htmlPageToDisplay);
 
+    }
+
+    /* Funzione per convertire la data in formato YYYY-MM-DD in stringa italiana*/
+    public static function convertDateTimeToString($dataToConvert) : string {
+        
+        // Crea un oggetto DateTime dalla stringa data nel formato 'yyyy-mm-dd'
+        $dateIstance = DateTime::createFromFormat('Y-m-d', $dataToConvert);
+        
+        // Mesi in italiano (mappatura dei mesi da inglese a italiano)
+        $mappingMonth = [
+            "January" => "Gennaio", "February" => "Febbraio", "March" => "Marzo", "April" => "Aprile",
+            "May" => "Maggio", "June" => "Giugno", "July" => "Luglio", "August" => "Agosto",
+            "September" => "Settembre", "October" => "Ottobre", "November" => "Novembre", "December" => "Dicembre"
+        ];
+        
+        // Verifica se la data è valida
+        if ($dateIstance) {
+            // Ottieni il nome del mese in inglese
+            $meseENG = $dateIstance->format('F');
+            
+            // Converte il mese in italiano utilizzando l'array di mappatura
+            $meseITA = isset($mappingMonth[$meseENG]) ? $mappingMonth[$meseENG] : $meseENG;
+            
+            // Ritorna la data nel formato 'dd Mese Anno' con il mese in italiano
+            return $dateIstance->format('d') . ' ' . $meseITA . ' ' . $dateIstance->format('Y');
+        } else {
+            return "Data non valida";
+        }
+        
     }
 
 }

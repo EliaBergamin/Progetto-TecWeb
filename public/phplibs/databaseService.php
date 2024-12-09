@@ -1,9 +1,9 @@
 <?php
-//mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
 class DatabaseService{
     private const HOST = "database";
-	private const NAME = "museo";
+	private const NAME = "Museo";
 	private const USER = "user";
 	private const PASS = "userpassword";
 
@@ -17,19 +17,20 @@ class DatabaseService{
 			$this->connection = new mysqli(self::HOST, self::USER, self::PASS, self::NAME);
 			//$this->connection->set_charset("utf8");
 		} catch (mysqli_sql_exception $e) {
+			echo $e;
 			throw new Exception(self::GLOBALERROR);
 		}
 	}
 
-    private function executePreparedQuery(&$queryToExecute,&$arrayOfValues,$valueTypeForBinding = "") : mysqli_stmt {
+    private function executePreparedQuery($queryToExecute,$arrayOfValues,$valueTypeForBinding = "") : mysqli_stmt {
 		$valueTypeForBinding = $valueTypeForBinding ?: str_repeat("s",count($arrayOfValues));
 		$preparedStatement = $this->connection->prepare($queryToExecute);
-		if(!is_null($arrayOfValues)) $preparedStatement->bind_param($valueTypeForBinding,...$arrayOfValues);
+		if(!empty($arrayOfValues)) $preparedStatement->bind_param($valueTypeForBinding,...$arrayOfValues);
 		$preparedStatement->execute();
 		return $preparedStatement;
 	}
 
-	private function selectValuesPreparedQuery(&$queryToExecute,&$arrayOfValues,$valueTypeForBinding = "") : array {
+	private function selectValuesPreparedQuery($queryToExecute,$arrayOfValues,$valueTypeForBinding = "") : array {
 		try{
 		$preparedStatement = $this->executePreparedQuery($queryToExecute,$arrayOfValues,$valueTypeForBinding);
 		$resultFromQueryExectution = $preparedStatement->get_result();
