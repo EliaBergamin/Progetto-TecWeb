@@ -30,11 +30,11 @@
     <nav id="menu" class="hamToggle" data-hambOn="false">
         <ul>
             <li id="currentLink" lang="en">Home</li>
-            <li><a href="html/mostre.html">Le mostre</a></li>
-            <li><a href="html/virtual_tour.html" lang="en">Virtual Tour</a></li>
-            <li><a href="html/prenotazione.html">Prenotazione</a></li>
-            <li><a href="html/recensioni.html">Recensioni</a></li>
-            <li><a href="html/registrazione.html">Registrazione</a></li>
+            <li><a href="mostre.php">Le mostre</a></li>
+            <li><a href="virtual_tour.php" lang="en">Virtual Tour</a></li>
+            <li><a href="prenotazione.php">Prenotazione</a></li>
+            <li><a href="recensioni.php">Recensioni</a></li>
+            <li><a href="registrazione.php">Registrazione</a></li>
 
         </ul>
     </nav>
