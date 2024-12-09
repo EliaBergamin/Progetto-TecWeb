@@ -40,6 +40,7 @@ class DatabaseService{
 		return $associativeRowsFromSelect;
 		}
 		catch (mysqli_sql_exception $e) {
+			echo $e;
 			throw new Exception(self::GLOBALERROR);
 		}
 	}
@@ -64,7 +65,14 @@ class DatabaseService{
 		return $this->selectValuesPreparedQuery($queryMostrePassate,[]);
 	}
 
-	
+
+	public function selectOpereFromSala($numeroSala) : array {
+		$queryOpere = "SELECT *
+					   FROM Museo.Opera
+					   WHERE Opera.id_sala = ?";
+		$queryParams = [$numeroSala];
+		return $this->selectValuesPreparedQuery($queryOpere,$queryParams,"i");
+	}
 
 
 

@@ -55,39 +55,16 @@
         <a class="help nascosto" href="#">Torna su</a>
         <h2 id="titoloListaOpere">Ora la lista di tutte le opere che potrai trovare nella sala</h2>
         <ul id="listaOpere">
-            <!-- Anche questa parte sara generata in automatico in base a quante opere nel db per ora facciamo finta ce ne siano tre-->
-            <!-- Ricordando che per ogni opera ci sara una brevissima descrizione e il bottone che porta a dettaglio carta -->
+            <!-- opere_start -->
             <li>
-                <img src="../images/provaSala.jpg" alt="Prima Opera">
-                <h3>Opera 1</h3>
-                <p>Goku ssj4<br>
-                    Edizione Limitata</p>
+                <img src="{{img_path}}" alt="">
+                <h3>{{nome_opera}}</h3>
+                <p>{{descrizione_opera}}<br>
+                    {{autore_opera}}<br>
+                    {{anno_opera}}</p>
                 <a href="dettaglio_carta.html" aria-label="Vedi l'opera in dettaglio">Esplora</a>
             </li>
-            <li>
-                <img src="../images/provaSala.jpg" alt="Seconda Opera">
-                <h3>Opera 2</h3>
-                <p>Bulma<br>
-                    First Season</p>
-                <a href="dettaglio_carta.html" aria-label="Vedi l'opera in dettaglio">Esplora</a>
-
-            </li>
-            <li>
-                <img src="../images/provaSala.jpg" alt="Terza Opera">
-                <h3>Opera 3</h3>
-                <p>Crilin<br>
-                    Calve hero</p>
-
-                <a href="dettaglio_carta.html" aria-label="Vedi l'opera in dettaglio">Esplora</a>
-            </li>
-            <li>
-                <img src="../images/provaSala.jpg" alt="Terza Opera">
-                <h3>Opera 3</h3>
-                <p>Crilin<br>
-                    Calve hero</p>
-
-                <a href="dettaglio_carta.html" aria-label="Vedi l'opera in dettaglio">Esplora</a>
-            </li>
+            <!-- opere_end -->
         </ul>
     </main>
     <a class="help" id="torna-su" href="#">Torna su</a>
