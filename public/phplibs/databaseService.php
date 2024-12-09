@@ -1,5 +1,4 @@
 <?php
-
 //mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
 class DatabaseService{
@@ -22,11 +21,51 @@ class DatabaseService{
 		}
 	}
 
-    public function eseguiQueryProva($query) : array {
-        $result = $this->connection->query($query);
-        $rows = $result ->fetch_all(MYSQLI_ASSOC);
-        return $rows;
-    }
+    private function executePreparedQuery(&$queryToExecute,&$arrayOfValues,$valueTypeForBinding = "") : mysqli_stmt {
+		$valueTypeForBinding = $valueTypeForBinding ?: str_repeat("s",count($arrayOfValues));
+		$preparedStatement = $this->connection->prepare($queryToExecute);
+		if(!is_null($arrayOfValues)) $preparedStatement->bind_param($valueTypeForBinding,...$arrayOfValues);
+		$preparedStatement->execute();
+		return $preparedStatement;
+	}
+
+	private function selectValuesPreparedQuery(&$queryToExecute,&$arrayOfValues,$valueTypeForBinding = "") : array {
+		try{
+		$preparedStatement = $this->executePreparedQuery($queryToExecute,$arrayOfValues,$valueTypeForBinding);
+		$resultFromQueryExectution = $preparedStatement->get_result();
+		$associativeRowsFromSelect = $resultFromQueryExectution->fetch_all(MYSQLI_ASSOC);
+		$preparedStatement->close();
+		$resultFromQueryExectution->close();
+		return $associativeRowsFromSelect;
+		}
+		catch (mysqli_sql_exception $e) {
+			throw new Exception(self::GLOBALERROR);
+		}
+	}
+
+	public function selectMostrePassate() : array {
+		$queryMostrePassate = "SELECT * 
+							   FROM Museo.Mostra
+							   WHERE Mostra.data_fine < CURDATE()";
+		return $this->selectValuesPreparedQuery($queryMostrePassate,[]);
+	}
+
+	public function selectMostreCorrenti() : array {
+		$queryMostrePassate = "SELECT * 
+							   FROM Museo.Mostra
+							   WHERE CURDATE() BETWEEN data_inizio AND data_fine;";
+		return $this->selectValuesPreparedQuery($queryMostrePassate,[]);
+	}
+	public function selectMostreFuture() : array {
+		$queryMostrePassate = "SELECT * 
+							   FROM Museo.Mostra
+							   WHERE Mostra.data_inizio > CURDATE()";
+		return $this->selectValuesPreparedQuery($queryMostrePassate,[]);
+	}
+
+	
+
+
 
 
     public function __destruct() {
