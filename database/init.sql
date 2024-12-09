@@ -68,10 +68,10 @@ CREATE TABLE IF NOT EXISTS Recensione (
 -- MOCK DATA -- 
 
 INSERT INTO Mostra (nome, descrizione, data_inizio, data_fine, img_path) VALUES
-  ('Yu-Gi-Oh Exhibit', 'Explore the iconic dueling game of Yu-Gi-Oh', '2023-06-01', '2024-05-31', 'yugioh_exhibit.jpg'),
-  ('Pokémon Card Showcase', 'Discover the world of Pokémon trading cards', '2023-09-15', '2024-09-14', 'pokemon_exhibit.jpg'),
-  ('Dragon Ball Z Card Battle', 'Experience the intense card battles of the Dragon Ball universe', '2024-02-01', '2025-01-31', 'dragonball_exhibit.jpg'),
-  ('Gormiti Card Collection', 'Explore the collectible cards of the Gormiti creatures', '2023-11-20', '2024-11-19', 'gormiti_exhibit.jpg');
+  ('Yu-Gi-Oh Exhibit', 'Explore the iconic dueling game of Yu-Gi-Oh', '2023-06-01', '2023-06-10', 'yugioh_exhibit.jpg'),
+  ('Pokémon Card Showcase', 'Discover the world of Pokémon trading cards', '2024-12-01', '2024-12-31', 'pokemon_exhibit.jpg'),
+  ('Dragon Ball Z Card Battle', 'Experience the intense card battles of the Dragon Ball universe', '2024-12-01', '2025-02-27', 'dragonball_exhibit.jpg'),
+  ('Gormiti Card Collection', 'Explore the collectible cards of the Gormiti creatures', '2025-11-20', '2025-12-31', 'gormiti_exhibit.jpg');
 
 INSERT INTO Sala (nome, descrizione, img_path) VALUES
   ('Yu-Gi-Oh Arena', 'Duel against virtual opponents', 'yugioh_arena.jpg'),
