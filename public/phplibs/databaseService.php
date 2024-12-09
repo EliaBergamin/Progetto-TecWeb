@@ -73,8 +73,16 @@ class DatabaseService{
 		$queryParams = [$numeroSala];
 		return $this->selectValuesPreparedQuery($queryOpere,$queryParams,"i");
 	}
-
-
+//(id_utente, voto, data_recensione, descrizione, tipo) VALUES
+	public function selectRecensioniWithType($recensioniType) : array {
+		$queryOpere = "SELECT *
+					   FROM Museo.Recensione
+					   INNER JOIN Museo.Utente ON (Recensione.id_utente = Utente.id_utente)
+					   WHERE Recensione.tipo = ?";
+					   
+		$queryParams = [$recensioniType];
+		return $this->selectValuesPreparedQuery($queryOpere,$queryParams,"i");
+	}
 
 
     public function __destruct() {

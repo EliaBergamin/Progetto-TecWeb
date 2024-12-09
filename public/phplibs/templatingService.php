@@ -100,6 +100,26 @@ class Templating{
         
     }
 
+    public static function generateSvgFromScore($scoreParam) : string {
+        $maxPossibleScore = 5;
+
+        $htmlGenerated = '<svg id="rev-1" viewBox="0 0 128 24" width="88" height="16" aria-labelledby="lbl-rev-1">
+        <title>Punteggio ' . $scoreParam . ' su ' . $maxPossibleScore . '</title>';
+        for ($dotIteration = 0; $dotIteration < $maxPossibleScore; $dotIteration++) {
+            $transform = "translate(" . ($dotIteration * 26) . " 0)";
+            
+            if ($dotIteration < $scoreParam) {
+                $path = '<path d="M 12 0C5.388 0 0 5.388 0 12s5.388 12 12 12 12-5.38 12-12c0-6.612-5.38-12-12-12z" transform="' . $transform . '"></path>';
+            } else {
+                $path = '<path d="M 12 0C5.388 0 0 5.388 0 12s5.388 12 12 12 12-5.38 12-12c0-6.612-5.38-12-12-12zm0 2a9.983 9.983 0 019.995 10 10 10 0 01-10 10A10 10 0 012 12 10 10 0 0112 2z" transform="' . $transform . '"></path>';
+            }
+            
+            $htmlGenerated .= $path;
+        }
+        return $htmlGenerated .= '</svg>';
+    }
+
+
 }
 
 
