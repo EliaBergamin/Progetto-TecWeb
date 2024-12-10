@@ -1,7 +1,7 @@
 <?php
 //phpinfo();
 try {
-    $connection = mysqli_connect("localhost", "user", "userpassword", "mydatabase");
+    $connection = mysqli_connect("database", "user", "userpassword", "Museo");
 } catch (Exception $e) {
     header("Location: 500.html");
     if (mysqli_connect_errno()) {
