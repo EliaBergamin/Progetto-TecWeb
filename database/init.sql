@@ -68,35 +68,35 @@ CREATE TABLE IF NOT EXISTS Recensione (
 -- MOCK DATA -- 
 
 INSERT INTO Mostra (nome, descrizione, data_inizio, data_fine, img_path) VALUES
-  ('Yu-Gi-Oh Exhibit', 'Explore the iconic dueling game of Yu-Gi-Oh', '2023-06-01', '2023-06-10', 'yugioh_exhibit.jpg'),
-  ('Pokémon Card Showcase', 'Discover the world of Pokémon trading cards', '2024-12-01', '2024-12-31', 'pokemon_exhibit.jpg'),
-  ('Dragon Ball Z Card Battle', 'Experience the intense card battles of the Dragon Ball universe', '2024-12-01', '2025-02-27', 'dragonball_exhibit.jpg'),
-  ('Gormiti Card Collection', 'Explore the collectible cards of the Gormiti creatures', '2025-11-20', '2025-12-31', 'gormiti_exhibit.jpg');
+  ("Yu-Gi-Oh Exhibit", "Un viaggio nel mondo di Yu-Gi-Oh che non puoi perdere! L'esposizione include carte rare, storia del gioco e dettagli affascinanti sulle illustrazioni. Perfetta per fan di lunga data e neofiti curiosi.", "2023-06-01", "2023-06-10", "yugioh_exhibit.jpg"),
+  ("Pokémon Card Showcase", "La più grande collezione di carte Pokémon mai esposta. Dagli inizi con il set base fino alle edizioni moderne, scopri le carte più rare e iconiche, e immergiti in un mondo di ricordi e sorprese.", "2024-12-01", "2024-12-31", "pokemon_exhibit.jpg"),
+  ("Dragon Ball Z Card Battle", "Esplora l'emozionante mondo delle carte Dragon Ball Z! Dai Saiyan alle epiche battaglie, questa mostra celebra l'arte e la strategia del gioco con una collezione ricca e dinamica.", "2024-12-01", "2025-02-27", "dragonball_exhibit.jpg"),
+  ("Gormiti Card Collection", "Rivivi l'epoca d'oro dei Gormiti attraverso le loro carte! Una collezione completa e unica, che racconta storie di battaglie epiche e terre magiche con dettagli affascinanti e colorati.", "2025-11-20", "2025-12-31", "gormiti_exhibit.jpg");
 
 INSERT INTO Sala (nome, descrizione, img_path) VALUES
-  ('Yu-Gi-Oh Arena', 'Duel against virtual opponents', 'yugioh_arena.jpg'),
-  ('Pokémon Card Gallery', 'View rare and iconic Pokémon cards', 'pokemon_gallery.jpg'),
-  ('Dragon Ball Z Battle Grounds', 'Engage in virtual card battles from the series', 'dragonball_grounds.jpg'),
-  ('Gormiti Habitat', 'Explore the natural environments of Gormiti creatures', 'gormiti_habitat.jpg');
+  ("Yu-Gi-Oh Arena", "Entra in un'arena dedicata interamente all'universo di Yu-Gi-Oh! Scopri le carte più famose, partecipa a dimostrazioni interattive e immergiti in un'atmosfera da vero duellante.", "yugioh_arena.jpg"),
+  ("Pokémon Card Gallery", "Una galleria interattiva che celebra il fenomeno Pokémon. Esplora le carte più iconiche e scopri curiosità e aneddoti che hanno definito una generazione di collezionisti.", "pokemon_gallery.jpg"),
+  ("Dragon Ball Battle Grounds", "Uno spazio dedicato agli appassionati di Dragon Ball, dove le carte raccontano storie di battaglie memorabili. Ammira la potenza dei tuoi eroi preferiti in un'esperienza coinvolgente.", "dragonball_grounds.jpg"),
+  ("Gormiti Habitat", "Un'area esclusiva per immergersi nel mondo dei Gormiti. Scopri le carte che hanno fatto la storia, con esposizioni che rievocano le magiche terre dei Signori della Natura.", "gormiti_habitat.jpg");
 
 INSERT INTO Opera (id_sala, nome, autore, descrizione, anno, img_path) VALUES
-  (1, 'Blue-Eyes White Dragon', 'Kazuki Takahashi', 'The iconic signature monster of Seto Kaiba', 1996, 'blue_eyes.jpg'),
-  (2, 'Pikachu', 'Atsuko Nishida', 'The beloved Electric Mouse Pokémon', 1996, 'pikachu.jpg'),
-  (3, 'Super Saiyan Goku', 'Akira Toriyama', 'Goku''s legendary transformed state', 1989, 'super_saiyan.jpg'),
-  (4, 'Magmion', 'Serghei Rotaru', 'The Lava Gormiti creature', 2008, 'magmion.jpg');
+  (1, "Drago Bianco Occhi Blu", "Kazuki Takahashi", "Il Drago Bianco Occhi Blu, creato da Kazuki Takahashi, è il simbolo iconico di Seto Kaiba nel mondo di Yu-Gi-Oh! Con la sua potenza devastante e il design leggendario, questa carta ha conquistato il cuore di milioni di fan, diventando un'icona della cultura pop dal 1996.", 1996, "blue_eyes.jpg"),
+  (2, "Pikachu", "Atsuko Nishida", "Pikachu, ideato da Atsuko Nishida, è l'adorabile Pokémon di tipo Elettro che ha conquistato il mondo fin dal 1996. Con le sue guance rosse e il suo sorriso contagioso, è diventato l'emblema dei Pokémon, amato da grandi e piccoli per il suo carattere vivace e coraggioso.", 1996, "pikachu.jpg"),
+  (3, "Goku Super Saiyan", "Akira Toriyama", "Goku Super Saiyan, creato da Akira Toriyama, rappresenta il momento più epico nella saga di Dragon Ball Z. Dal 1989, questa forma ha definito la leggenda di Goku, incarnando determinazione, forza e spirito combattivo che hanno ispirato generazioni di fan.", 1989, "super_saiyan.jpg"),
+  (4, "Magmion", "Serghei Rotaru", "Magmion, concepito da Serghei Rotaru nel 2008, è una delle creature più potenti e memorabili dell'universo dei Gormiti. Rappresenta la forza della lava e il dominio del fuoco, con un design che combina potenza brutale e fascino mistico, perfetto per ogni collezionista.", 2008, "magmion.jpg");
 
 INSERT INTO Utente (ruolo, username, nome, cognome, password_hash, email, salt) VALUES
-(1, 'johnsmith', 'John', 'Smith', '$2y$10$abcdefghijklmnopqrstuv', 'john.smith@example.com', 'abc123def456'),
-(2, 'janedoe', 'Jane', 'Doe', '$2y$10$vwxyzabcdefghijklmnop', 'jane.doe@example.com', 'ghi789jkl012'),
-(2, 'bobloblaw', 'Bob', 'Loblaw', '$2y$10$mnopqrstuvwxyzabcdefg', 'bob.loblaw@example.com', 'mno345pqr678');
+(1, "johnsmith", "John", "Smith", "$2y$10$abcdefghijklmnopqrstuv", "john.smith@example.com", "abc123def456"),
+(2, "janedoe", "Jane", "Doe", "$2y$10$vwxyzabcdefghijklmnop", "jane.doe@example.com", "ghi789jkl012"),
+(2, "bobloblaw", "Bob", "Loblaw", "$2y$10$mnopqrstuvwxyzabcdefg", "bob.loblaw@example.com", "mno345pqr678");
 
 INSERT INTO Prenotazione (id_utente, data_prenotazione, num_persone, orario) VALUES
-(3, '2023-06-15', 2, '14:30:00'),
-(3, '2023-07-20', 3, '11:00:00'),
-(2, '2023-08-05', 1, '16:45:00'),
-(2, '2023-09-12', 4, '10:00:00'),
-(3, '2023-10-01', 2, '13:20:00');
+(3, "2023-06-15", 2, "14:30:00"),
+(3, "2023-07-20", 3, "11:00:00"),
+(2, "2023-08-05", 1, "16:45:00"),
+(2, "2023-09-12", 4, "10:00:00"),
+(3, "2023-10-01", 2, "13:20:00");
 
 INSERT INTO Recensione (id_utente, voto, data_recensione, descrizione, tipo) VALUES
-(3, 5, '2023-06-18', 'Fantastic exhibit, really enjoyed the Yu-Gi-Oh experience!', 1),
-(2, 4, '2023-08-10', 'Great collection of Pokémon cards, would love to see more interactive elements.', 1);
+(3, 5, "2023-06-18", "Una mostra davvero unica per gli appassionati di Yu-Gi-Oh! Le carte iconiche, come il Drago Bianco Occhi Blu e il Mago Nero, sono esposte in vetrine spettacolari. Perfetta combinazione di nostalgia e scoperta!", 1),
+(2, 4, "2023-08-10", "Un'esperienza magica per ogni fan di Pokémon! Le carte sono esposte in modo accattivante, con spiegazioni dettagliate sulla loro storia e rarità. Atmosfera è perfetta per immergersi nel mondo dei Pokémon. Spero di tornare presto magari per una nuova mostra!", 0);
