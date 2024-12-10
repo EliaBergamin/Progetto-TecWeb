@@ -42,16 +42,14 @@
     </nav>
 
     <main id="primoContenuto">
+        <!-- dettagliosala_start -->
         <section class="dettaglioSala">
-            <h1> La sala TagPhp</h1>
-                <p> In questa pagina carierà il proprio codice html in base a quale delle quattro sale cliccate
-                    questo si puo fare grazie a php.Quindi si prendera prima i dati dal database tramite una query
-                </p>
-                <p>Mettiamo per esempio nome sala, descrizione sala e immagine(che è un URI) a quel punto grazie a php
-                    riusciremo a generare il tutto in automatico,anche le immagini qui sotto e le relative descrizioni,
-                    quelle probabilmente con una join visto che saranno in due table diverse ma vedremo.
+            <h1> La sala {{nome_sala}}</h1>
+                <p> 
+                    {{descrizione_sala}}
                 </p>
         </section>
+        <!-- dettagliosala_end -->
         <a class="help nascosto" href="#">Torna su</a>
         <h2 id="titoloListaOpere">Ora la lista di tutte le opere che potrai trovare nella sala</h2>
         <ul id="listaOpere">

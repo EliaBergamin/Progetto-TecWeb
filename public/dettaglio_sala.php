@@ -9,6 +9,17 @@
 
     $numeroSalaRichiesta = isset($_GET['sala']) ? $_GET['sala'] : 0;
 
+    /* INFO SALA*/
+
+    $infoSalaRow = $databaseServiceIstance->selectInfoFromSala($numeroSalaRichiesta);
+    $sectionInfoSalaToModify = Templating::getContentBetweenPlaceholders($dettaglioSalaHtmlContent,"dettagliosala");
+
+    Templating::replaceAnchor($sectionInfoSalaToModify,"nome_sala",$infoSalaRow[0]['nome']);
+    Templating::replaceAnchor($sectionInfoSalaToModify,"descrizione_sala",$infoSalaRow[0]["descrizione"]);
+
+    Templating::replaceContentBetweenPlaceholders($dettaglioSalaHtmlContent,"dettagliosala",$sectionInfoSalaToModify);
+
+    /* OPERE DYNAMIC */
     $arrayOpere = $databaseServiceIstance->selectOpereFromSala(intval($numeroSalaRichiesta));
     $sectionOpereToModify = Templating::getContentBetweenPlaceholders($dettaglioSalaHtmlContent,"opere");
 

@@ -73,7 +73,15 @@ class DatabaseService{
 		$queryParams = [$numeroSala];
 		return $this->selectValuesPreparedQuery($queryOpere,$queryParams,"i");
 	}
-//(id_utente, voto, data_recensione, descrizione, tipo) VALUES
+
+	public function selectInfoFromSala($numeroSala) : array {
+		$queryOpere = "SELECT *
+					   FROM Museo.Sala
+					   WHERE Sala.id_sala = ?";
+		$queryParams = [$numeroSala];
+		return $this->selectValuesPreparedQuery($queryOpere,$queryParams,"i");
+	}
+
 	public function selectRecensioniWithType($recensioniType) : array {
 		$queryOpere = "SELECT *
 					   FROM Museo.Recensione
