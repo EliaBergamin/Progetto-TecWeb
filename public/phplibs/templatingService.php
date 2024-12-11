@@ -15,26 +15,34 @@
 session_start();
 
 
-class Templating{
+class Templating
+{
 
+    public const HTML_PATH = __DIR__
+        . DIRECTORY_SEPARATOR . ".."
+        . DIRECTORY_SEPARATOR . "html"
+        . DIRECTORY_SEPARATOR;
 
-    
     /* Funzione per trovare {{ancora}} e sostituirla con valore dinamico */
-    public static function replaceAnchor(&$htmlSectionToModify, $anchorNameBetweenBrackets, $dynamicDataToInsert): void {
-        $anchorWithBrackets = "{{" . $anchorNameBetweenBrackets . "}}";
+    public static function replaceAnchor(&$htmlSectionToModify, $anchorNameBetweenBrackets, $dynamicDataToInsert): void
+    {
+        /* $anchorWithBrackets = "{{" . $anchorNameBetweenBrackets . "}}";
         $offsetOfAnchor = strpos($htmlSectionToModify,$anchorWithBrackets);
         if($offsetOfAnchor != false){
             $lengthOfAnchor = strlen($anchorWithBrackets);
             $htmlSectionToModify = substr_replace($htmlSectionToModify,$dynamicDataToInsert,$offsetOfAnchor,$lengthOfAnchor);
-        }
+        } */
+        $htmlSectionToModify = str_replace("{{" . $anchorNameBetweenBrackets . "}}", $dynamicDataToInsert, $htmlSectionToModify);
+
         //no need to return since the variable is passed by reference
     }
-    
+
 
     /* Funzione per ottenere il contenuto html della sezione tra <!-- nome_sezione_start --> e <!--nome_sezione_end -->*/
-    public static function getContentBetweenPlaceholders($htmlSectionToModify, $placeholderName) : string {
-        $startPlaceHolder = "<!-- " . $placeholderName . "_start -->" ;
-        $endPlaceHolder = "<!-- " . $placeholderName . "_end -->" ;
+    public static function getContentBetweenPlaceholders($htmlSectionToModify, $placeholderName): string
+    {
+        $startPlaceHolder = "<!-- " . $placeholderName . "_start -->";
+        $endPlaceHolder = "<!-- " . $placeholderName . "_end -->";
 
         $regexPattern = "/\Q$startPlaceHolder\E(.*?)\Q$endPlaceHolder\E/s";
         preg_match($regexPattern, $htmlSectionToModify, $htmlSectionCaptured);
@@ -43,77 +51,75 @@ class Templating{
     }
 
     /* Funzione per rimpiazzare il contenuto tra <!-- nome_sezione_start --> e <!--nome_sezione_end --> */
-    public static function replaceContentBetweenPlaceholders(&$htmlSectionToReplace, $placeholderName, $contentToInsert) : void {
-        $startPlaceHolder = "<!-- " . $placeholderName . "_start -->" ;
-        $endPlaceHolder = "<!-- " . $placeholderName . "_end -->" ;
+    public static function replaceContentBetweenPlaceholders(&$htmlSectionToReplace, $placeholderName, $contentToInsert): void
+    {
+        $startPlaceHolder = "<!-- " . $placeholderName . "_start -->";
+        $endPlaceHolder = "<!-- " . $placeholderName . "_end -->";
 
         $regexPattern = "/\Q$startPlaceHolder\E(.*?)\Q$endPlaceHolder\E/s";
 
-        $htmlSectionToReplace = preg_replace($regexPattern, $startPlaceHolder . $contentToInsert . $endPlaceHolder , $htmlSectionToReplace);
+        $htmlSectionToReplace = preg_replace($regexPattern, $startPlaceHolder . $contentToInsert . $endPlaceHolder, $htmlSectionToReplace);
     }
 
     /* Funzione per tornare il contenuto della pagin html dato il nome del file*/
-    public static function getHtmlFileContent($phpFileNameThatCalled) : string {
-        
-        $htmlFileFullPATH = __DIR__ . "/../html/" . str_replace(".php",".html",basename($phpFileNameThatCalled));
+    public static function getHtmlFileContent($phpFileNameThatCalled): bool|string
+    {
 
-        return file_exists($htmlFileFullPATH) ? file_get_contents($htmlFileFullPATH) : "File not found";
+        $htmlFileFullPATH = Templating::HTML_PATH
+            . str_replace(".php", ".html", basename($phpFileNameThatCalled));
+
+        return file_get_contents($htmlFileFullPATH);
     }
 
     /* Funzione per togliere i placeholders (commenti html) prima di mostrare la pagina a schermo */
-    public static function showHtmlPageWithoutPlaceholders(&$htmlPageToDisplay) : void {
+    public static function showHtmlPageWithoutPlaceholders(&$htmlPageToDisplay): void
+    {
 
         $regexPattern = ["/<!-- (\w)+_start -->/", "/<!-- (\w)+_end -->/"];
 
-        $htmlPageToDisplay = preg_replace($regexPattern, ["",""],$htmlPageToDisplay);
+        $htmlPageToDisplay = preg_replace($regexPattern, ["", ""], $htmlPageToDisplay);
 
-        echo($htmlPageToDisplay);
+        echo ($htmlPageToDisplay);
 
     }
 
-    /* Funzione per convertire la data in formato YYYY-MM-DD in stringa italiana*/
-    public static function convertDateTimeToString($dataToConvert) : string {
-        
+    /* Funzione per convertire la data in formato YYYY-MM-DD in stringa italiana
+     * nel formato 'dd Mese Anno' con il mese in italiano
+     */
+    public static function convertDateTimeToString($dataToConvert): string
+    {
+
         // Crea un oggetto DateTime dalla stringa data nel formato 'yyyy-mm-dd'
         $dateIstance = DateTime::createFromFormat('Y-m-d', $dataToConvert);
-        
-        // Mesi in italiano (mappatura dei mesi da inglese a italiano)
-        $mappingMonth = [
-            "January" => "Gennaio", "February" => "Febbraio", "March" => "Marzo", "April" => "Aprile",
-            "May" => "Maggio", "June" => "Giugno", "July" => "Luglio", "August" => "Agosto",
-            "September" => "Settembre", "October" => "Ottobre", "November" => "Novembre", "December" => "Dicembre"
-        ];
-        
+        $formatter = new IntlDateFormatter(
+            'it_IT', // Locale (italiano)
+            IntlDateFormatter::LONG, // Formato per la data (LUNGO: 11 dicembre 2024)
+            IntlDateFormatter::NONE  // Nessun formato per l'ora
+        );
         // Verifica se la data è valida
         if ($dateIstance) {
-            // Ottieni il nome del mese in inglese
-            $meseENG = $dateIstance->format('F');
-            
-            // Converte il mese in italiano utilizzando l'array di mappatura
-            $meseITA = isset($mappingMonth[$meseENG]) ? $mappingMonth[$meseENG] : $meseENG;
-            
             // Ritorna la data nel formato 'dd Mese Anno' con il mese in italiano
-            return $dateIstance->format('d') . ' ' . $meseITA . ' ' . $dateIstance->format('Y');
+            return $formatter->format($dateIstance);
         } else {
             return "Data non valida";
         }
-        
     }
 
-    public static function generateSvgFromScore($scoreParam) : string {
+    public static function generateSvgFromScore($scoreParam): string
+    {
         $maxPossibleScore = 5;
 
         $htmlGenerated = '<svg id="rev-1" viewBox="0 0 128 24" width="88" height="16" aria-labelledby="lbl-rev-1">
         <title>Punteggio ' . $scoreParam . ' su ' . $maxPossibleScore . '</title>';
         for ($dotIteration = 0; $dotIteration < $maxPossibleScore; $dotIteration++) {
             $transform = "translate(" . ($dotIteration * 26) . " 0)";
-            
+
             if ($dotIteration < $scoreParam) {
                 $path = '<path d="M 12 0C5.388 0 0 5.388 0 12s5.388 12 12 12 12-5.38 12-12c0-6.612-5.38-12-12-12z" transform="' . $transform . '"></path>';
             } else {
                 $path = '<path d="M 12 0C5.388 0 0 5.388 0 12s5.388 12 12 12 12-5.38 12-12c0-6.612-5.38-12-12-12zm0 2a9.983 9.983 0 019.995 10 10 10 0 01-10 10A10 10 0 012 12 10 10 0 0112 2z" transform="' . $transform . '"></path>';
             }
-            
+
             $htmlGenerated .= $path;
         }
         return $htmlGenerated .= '</svg>';

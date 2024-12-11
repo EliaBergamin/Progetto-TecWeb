@@ -45,9 +45,9 @@
         <!-- dettagliosala_start -->
         <section class="dettaglioSala">
             <h1> La sala {{nome_sala}}</h1>
-                <p> 
-                    {{descrizione_sala}}
-                </p>
+            <p>
+                {{descrizione_sala}}
+            </p>
         </section>
         <!-- dettagliosala_end -->
         <a class="help nascosto" href="#">Torna su</a>
@@ -57,10 +57,21 @@
             <li>
                 <img src="{{img_path}}" alt="">
                 <h3>{{nome_opera}}</h3>
-                <p>{{descrizione_opera}}<br>
-                    {{autore_opera}}<br>
-                    {{anno_opera}}</p>
-                <a href="dettaglio_carta.php" aria-label="Vedi l'opera in dettaglio">Esplora</a>
+                <ul class="miniInfoOpera">
+                    <li>
+                        <p>{{descrizione_opera}}</p>
+                    </li>
+                    <li>
+                        {{autore_opera}}
+                    </li>
+                    <li>
+                        {{anno_opera}}
+                    </li>
+                    <li>
+                        <a href="dettaglio_carta.php" aria-label="Vedi l'opera in dettaglio">Esplora</a>
+                    </li>
+                </ul>
+                <!-- TODO -->
             </li>
             <!-- opere_end -->
         </ul>

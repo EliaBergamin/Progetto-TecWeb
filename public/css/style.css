@@ -320,7 +320,7 @@ ol li .active, .puntiniCarosello button:hover {
   padding: 0;
   
 }
-#listaOpere li{ 
+#listaOpere > li{ 
   display: flex;
   flex-direction: column; /* Imposta una colonna di layout per ciascun elemento */
   align-items: center; 

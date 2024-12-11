@@ -3,8 +3,10 @@ require_once("phplibs/databaseService.php");
 require_once("phplibs/templatingService.php");
 
 
-$databaseServiceIstance = new DatabaseService();
+$database = new DatabaseService();
 $dettaglioCartaHtmlContent = Templating::getHtmlFileContent(__FILE__);
+if (!$dettaglioCartaHtmlContent) {} 
+    //TODO
 Templating::showHtmlPageWithoutPlaceholders($dettaglioCartaHtmlContent);
 
 ?>
