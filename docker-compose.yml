@@ -1,13 +1,12 @@
-
 services:
   backend:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.phpcustom
     volumes:
-    - ./public:/var/www/html
+      - ./public:/var/www/html
     ports:
-    - "8080:80"
+      - "8080:80"
 
   database:
     image: mariadb:10.6.7

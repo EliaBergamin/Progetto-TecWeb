@@ -24,70 +24,56 @@
 
     <nav id="breadcrumb">
         <p>
-            Ti trovi in: <a href="../index.html" lang="en">Home</a> &gt;
-            <a href="virtual_tour.html" lang="en">Virtual Tour</a> &gt; Dettaglio sala x
+            Ti trovi in: <a href="index.php" lang="en">Home</a> &gt;
+            <a href="virtual_tour.php" lang="en">Virtual Tour</a> &gt; Dettaglio sala x
         </p>
     </nav>
 
     <nav id="menu" class="hamToggle" data-hambOn="false">
         <ul>
-            <li><a href="../index.html" lang="en">Home</a></li>
-            <li><a href="mostre.html">Le mostre</a></li>
-            <li><a href="virtual_tour.html" lang="en">Virtual Tour</a></li>
-            <li><a href="prenotazione.html">Prenotazione</a></li>
-            <li><a href="recensioni.html">Recensioni</a></li>
-            <li><a href="registrazione.html">Registrazione</a></li>
+            <li><a href="index.php" lang="en">Home</a></li>
+            <li><a href="mostre.php">Le mostre</a></li>
+            <li><a href="virtual_tour.php" lang="en">Virtual Tour</a></li>
+            <li><a href="prenotazione.php">Prenotazione</a></li>
+            <li><a href="recensioni.php">Recensioni</a></li>
+            <li><a href="registrazione.php">Registrazione</a></li>
 
         </ul>
     </nav>
 
     <main id="primoContenuto">
+        <!-- dettagliosala_start -->
         <section class="dettaglioSala">
-            <h1> La sala TagPhp</h1>
-                <p> In questa pagina carierà il proprio codice html in base a quale delle quattro sale cliccate
-                    questo si puo fare grazie a php.Quindi si prendera prima i dati dal database tramite una query
-                </p>
-                <p>Mettiamo per esempio nome sala, descrizione sala e immagine(che è un URI) a quel punto grazie a php
-                    riusciremo a generare il tutto in automatico,anche le immagini qui sotto e le relative descrizioni,
-                    quelle probabilmente con una join visto che saranno in due table diverse ma vedremo.
-                </p>
+            <h1> La sala {{nome_sala}}</h1>
+            <p>
+                {{descrizione_sala}}
+            </p>
         </section>
+        <!-- dettagliosala_end -->
         <a class="help nascosto" href="#">Torna su</a>
         <h2 id="titoloListaOpere">Ora la lista di tutte le opere che potrai trovare nella sala</h2>
         <ul id="listaOpere">
-            <!-- Anche questa parte sara generata in automatico in base a quante opere nel db per ora facciamo finta ce ne siano tre-->
-            <!-- Ricordando che per ogni opera ci sara una brevissima descrizione e il bottone che porta a dettaglio carta -->
+            <!-- opere_start -->
             <li>
-                <img src="../images/provaSala.jpg" alt="Prima Opera">
-                <h3>Opera 1</h3>
-                <p>Goku ssj4<br>
-                    Edizione Limitata</p>
-                <a href="dettaglio_carta.html" aria-label="Vedi l'opera in dettaglio">Esplora</a>
+                <img src="{{img_path}}" alt="">
+                <h3>{{nome_opera}}</h3>
+                <ul class="miniInfoOpera">
+                    <li>
+                        <p>{{descrizione_opera}}</p>
+                    </li>
+                    <li>
+                        {{autore_opera}}
+                    </li>
+                    <li>
+                        {{anno_opera}}
+                    </li>
+                    <li>
+                        <a href="dettaglio_carta.php" aria-label="Vedi l'opera in dettaglio">Esplora</a>
+                    </li>
+                </ul>
+                <!-- TODO -->
             </li>
-            <li>
-                <img src="../images/provaSala.jpg" alt="Seconda Opera">
-                <h3>Opera 2</h3>
-                <p>Bulma<br>
-                    First Season</p>
-                <a href="dettaglio_carta.html" aria-label="Vedi l'opera in dettaglio">Esplora</a>
-
-            </li>
-            <li>
-                <img src="../images/provaSala.jpg" alt="Terza Opera">
-                <h3>Opera 3</h3>
-                <p>Crilin<br>
-                    Calve hero</p>
-
-                <a href="dettaglio_carta.html" aria-label="Vedi l'opera in dettaglio">Esplora</a>
-            </li>
-            <li>
-                <img src="../images/provaSala.jpg" alt="Terza Opera">
-                <h3>Opera 3</h3>
-                <p>Crilin<br>
-                    Calve hero</p>
-
-                <a href="dettaglio_carta.html" aria-label="Vedi l'opera in dettaglio">Esplora</a>
-            </li>
+            <!-- opere_end -->
         </ul>
     </main>
     <a class="help" id="torna-su" href="#">Torna su</a>
