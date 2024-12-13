@@ -68,7 +68,6 @@ header {
   grid-row: 1;
   grid-column: 1/3;
   background-color: var(--contentbgcolor);
-  /* non trova l'immagine */
   background-image: url('../images/logoMuseo2.png');
   background-position: left;
   background-size: contain;
@@ -230,7 +229,8 @@ main h1 {
   box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
   padding: 2em;
   margin: auto;
-  
+  /* non funziona */
+  break-inside: avoid;
 }
 
 #listaOpere li img{
@@ -239,36 +239,11 @@ main h1 {
   background-size: contain;
   margin: 0;
   margin-top: 1em;
-  
-  
-  
-}
-@media (max-width: 1225px) {
-  #listaOpere{
-    grid-template-columns: repeat(2,1fr);
-    margin: 0 5em;
-  }
-}
-/*trasforma la tabella e la fa diventare di una sola colonna in caso di schermi piccoli*/
-@media (max-width: 855px) {
-  #listaOpere{
-    grid-template-columns: repeat(1,1fr);
-    max-height: fit-content;
-    width: auto;
-    margin: 0 auto;
-  }
-
-  #listaOpere li img{
-    max-height: fit-content;
-    width: auto;
-    background-size: contain;
-    margin: 0;
-    margin-top: 1em;
-    
-  }
 }
 
-
+#listaOpere{
+  grid-template-columns: repeat(2,1fr);
+}
 
 #listaOpere li h3{
   font-style: italic;
@@ -282,8 +257,7 @@ main h1 {
 }
 
 #listaOpere li a{
-  align-self: flex-start; /* Allinea il titolo a sinistra */
-  margin-bottom: 0;
+  display: none;
 }
 
 
@@ -313,15 +287,7 @@ main h1 {
 }
 
 #torna-su {
-  grid-row: 5;
-  grid-column: 1/3;
-  width: 100%;
-  height: 3rem;
-  text-indent: -999rem;
-  display: block;
-  background: url(../images/back-to-top-icon.png) no-repeat center;
-  background-size: contain;
-  margin: 0.5rem auto;
+  display: none;
 }
 
 /*////////////*/
@@ -335,16 +301,19 @@ footer {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   padding: 0 6%;
 }
 
-footer a {
-  color: var(--headercolor);
+
+
+footer a:link::after, footer a:visited::after {
+  content: "[" attr(href) "]";
+  display: block;
+  margin-top: 0.5px;
 }
 
 footer dl {
-  min-width: 14rem;
   margin: 0.4rem 1.5%;
   flex: 1 0 30%;
   padding: 3rem 0;
@@ -377,12 +346,6 @@ footer h2 {
 
 #orari-museo td {
   min-width: 8rem;
-}
-
-@media (max-width: 400px) {
-  #orari-museo td {
-    min-width: 6rem;
-  }
 }
 
 #orari-museo tr:nth-child(even),
@@ -432,6 +395,8 @@ footer h2 {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   background-color: #fff;
   margin: 1.5em 0;
+  /* questo dovrebbe evitare il taglio ma non funziona */
+  break-inside: avoid;
 }
 
 .infoMostra > img {
@@ -551,13 +516,6 @@ footer h2 {
   opacity: 0.93;
 }
 
-@media (max-width: 500px) {
-  .contenitoreCompilazione {
-    padding: 1em;
-    min-width: 16em;
-  }
-}
-
 .formCompilazione {
   margin-top: 1em;
 }
@@ -573,14 +531,10 @@ footer h2 {
   display: block;
 }
 
+/* per un motivo sconosciuto l'input email non lo mostra */
+
 .formCompilazione input[type="submit"] {
-  background-color: rgb(40, 212, 40);
-  color: white;
-  padding: 0.6em;
-  width: auto;
-  font-size: 1em;
-  margin-bottom: 0;
-  color: black;
+  display: none;
 }
 
 .formCompilazione label {
@@ -691,17 +645,12 @@ footer h2 {
   margin-bottom: 1em;
 }
 
-#scrivi-rev {
-  border: 1px solid;
-  border-radius: 10px;
-  padding: 0.5em;
-  text-decoration: none;
-  color: black;
+a[href="#titolo-recens-virtual"] {
+  display: none;
 }
 
-#scrivi-rev::before {
-  content: "\270D";
-  margin-right: 0.5em;
+#scrivi-rev {
+  display: none;
 }
 
 .recensioni > li {
@@ -711,6 +660,8 @@ footer h2 {
   border: 2px solid;
   border-radius: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /* non funziona */
+  break-inside: avoid;
 }
 
 .recensioni > li > p {
@@ -735,7 +686,7 @@ footer h2 {
 main[class="opera"] {
   color: var(--newstxtcolor);
   background-color: var(--contentbgcolor);
-  margin: 2em auto; 
+  margin: 0 auto; 
   width: 70%; 
   padding: 1.75em;
   border: 1px solid var(--contentxtcolor);
@@ -747,7 +698,8 @@ main[class="opera"] {
   padding: 0.7em;
   padding-top: 0.1em;
   text-align: center;
-  line-height: 1.5em;
+  line-height: 1em;
+  margin: 0 auto;
 }
 
 .opera h2 {
@@ -762,33 +714,37 @@ main[class="opera"] {
   border: 1px solid var(--contentxtcolor);
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 150px;
+  height: 200px;
 }
 
 #carta-descrizione {
-  margin-top: 2em;
+  margin-top: 1em;
 }
 
 #carta-descrizione p {
   text-align: justify;
-  line-height: 1.8;
+  line-height: 1.5;
   margin: 0 1em;
   font-size: 1.1em;
 }
 
 #carta-dettagli {
-  margin-top: 2em;
+  margin-top: 1em;
 }
 
 #carta-dettagli dl {
   width: 90%;
   margin: 0 auto;
+  column-count: 2;
+  column-gap: 1em;
+  font-size: 1.2em;
 }
 
 #carta-dettagli dt {
   background-image: url('../images/pokeball.ico');
   background-size: 1em;
   background-repeat: no-repeat;
-  font-size: 1.1em;
   padding-left: 2.5em;
 }
 
@@ -838,6 +794,7 @@ main[class="opera"] {
 
 #dragon a {
   background: url("../images/sala-dragon-ball.png") no-repeat center;
+  background-size: contain;
 }
 
 #pokemon {
@@ -847,6 +804,7 @@ main[class="opera"] {
 
 #pokemon a {
   background: url("../images/sala-pokemon.jpg") no-repeat center;
+  background-size: contain;
 }
 
 #gormiti {
@@ -856,6 +814,7 @@ main[class="opera"] {
 
 #gormiti a {
   background: url("../images/sala-gormiti.jpeg") no-repeat center;
+  background-size: contain;
 }
 
 #yugioh {
@@ -865,6 +824,7 @@ main[class="opera"] {
 
 #yugioh a {
   background: url("../images/sala-yu-gi-oh.jpeg") no-repeat center;
+  background-size: contain;
 }
 
 .virtualTour-mappa img {
@@ -897,8 +857,16 @@ main[class="opera"] {
   border-radius: 10px;
   text-align: center;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  /* non funziona */
+  break-inside: avoid;
 }
 .virtualTour-elenco-sale dd p {
   color: #666;
   margin-bottom: 10px;
+}  
+.virtualTour-elenco-sale dd a {
+  display: none;
 }   
+.btn {
+  display: none;
+}
