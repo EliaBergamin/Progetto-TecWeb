@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="css/style.css" media="screen">
     <link rel="stylesheet" href="css/middle.css" media="screen and (max-width: 1024px)">
     <link rel="stylesheet" href="css/mini.css" media="screen and (max-width: 768px)">
+    <link rel="stylesheet" href="css/print.css" media="print">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="images/pokeball.ico" type="image/x-icon">
     <script type="text/javascript" src="js/script.js"></script>
