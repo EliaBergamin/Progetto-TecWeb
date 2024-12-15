@@ -23,17 +23,17 @@
     </header>
 
     <nav id="breadcrumb">
-        Ti trovi in: <a href="../index.html" lang="en">Home</a> &gt; Le mostre
+        Ti trovi in: <a href="index.php" lang="en">Home</a> &gt; Le mostre
     </nav>
 
     <nav id="menu" class="hamToggle" data-hambOn="false">
         <ul>
-            <li><a href="../index.html" lang="en">Home</a></li>
+            <li><a href="index.php" lang="en">Home</a></li>
             <li id="currentLink">Le mostre</li>
-            <li><a href="virtual_tour.html" lang="en">Virtual Tour</a></li>
-            <li><a href="prenotazione.html">Prenotazione</a></li>
-            <li><a href="recensioni.html">Recensioni</a></li>
-            <li><a href="registrazione.html">Registrazione</a></li>
+            <li><a href="virtual_tour.php" lang="en">Virtual Tour</a></li>
+            <li><a href="prenotazione.php">Prenotazione</a></li>
+            <li><a href="recensioni.php">Recensioni</a></li>
+            <li><a href="registrazione.php">Registrazione</a></li>
 
         </ul>
     </nav>
@@ -44,13 +44,15 @@
             <dt class="tipoMostre">Mostre in corso</dt>
             <dd>
                 <dl>
-                    <dt class="nomeMostra">Nome mostra</dt>
+                    <!-- mostrecorrenti_start -->
+                    <dt class="nomeMostra">{{nome_mostra}}</dt>
                     <dd class="infoMostra">
-                        <img src="../images/mostra.jpg" alt="">
-                        <p>Descrizione mostra: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque quam ante, ornare sed urna sed, molestie volutpat turpis. Duis et nunc in purus lacinia euismod. Suspendisse potenti. Duis tempus purus elit. Curabitur scelerisque iaculis orci vitae gravida. Maecenas laoreet faucibus sodales. Aenean ultricies sodales ante eu efficitur. Phasellus eu ante rutrum, maximus est et, sodales tellus. Nullam dapibus massa viverra, gravida risus vel, hendrerit ipsum. Fusce laoreet et est at cursus. Sed pellentesque ac enim sed maximus. Aliquam mattis, diam eget maximus fringilla, diam ex facilisis mauris, id mollis est magna vel velit.</p>
-                        <p class="giorniMostra">Da <time datetime="2024-10-01">01 Ottobre 2024</time> a <time datetime="2024-12-01">01 Dicembre 2024</time></p>
-                        <a href="prenotazione.html" class="button">Prenota visita</a>
+                        <img src="{{img_path}}" alt="">
+                        <p>Descrizione mostra: {{descrizione_mostra}}</p>
+                        <p class="giorniMostra">Da <time datetime="{{data_inizio}}">{{string_data_inizio}}</time> a <time datetime="{{data_fine}}">{{string_data_fine}}</time></p>
+                        <a href="prenotazione.php" class="button">Prenota visita</a>
                     </dd>
+                    <!-- mostrecorrenti_end -->
                 </dl>
                 <a class="help nascosto" href="#">Torna su</a>
 
@@ -58,20 +60,15 @@
             <dt class="tipoMostre">Mostre in programma</dt>
             <dd>
                 <dl>
-                    <dt class="nomeMostra">Nome mostra futura 1</dt>
+                    <!-- mostrefuture_start -->
+                    <dt class="nomeMostra">{{nome_mostra}}</dt>
                     <dd class="infoMostra">
-                        <img src="../images/mostra.jpg" alt="">
-                        <p>Descrizione mostra: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque quam ante, ornare sed urna sed, molestie volutpat turpis. Duis et nunc in purus lacinia euismod. Suspendisse potenti. Duis tempus purus elit. Curabitur scelerisque iaculis orci vitae graw</p>
-                        <p class="giorniMostra">Da <time datetime="2025-01-01">01 Gennaio 2025</time> a <time datetime="2025-02-01">01 Febbraio 2025</time></p>
-                        <a href="prenotazione.html" class="button">Prenota visita</a>
+                        <img src="{{img_path}}" alt="">
+                        <p>Descrizione mostra: {{descrizione_mostra}}</p>
+                        <p class="giorniMostra">Da <time datetime="{{data_inizio}}">{{string_data_inizio}}</time> a <time datetime="{{data_fine}}">{{string_data_fine}}</time></p>
+                        <a href="prenotazione.php" class="button">Prenota visita</a>
                     </dd>
-                    <dt class="nomeMostra">Nome mostra futura 2</dt>
-                    <dd class="infoMostra">
-                        <img src="../images/mostra.jpg" alt="">
-                        <p>Descrizione mostra: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque quam ante, ornare sed urna sed, molestie volutpat turpis. Duis et nunc in purus lacinia euismod. Suspendisse potenti. Duis tempus purus elit. Curabitur scelerisque iaculis orci vitae grav</p>
-                        <p class="giorniMostra">Da <time datetime="2025-04-01">01 Aprile 2025</time> a <time datetime="2025-06-01">01 Giugno 2025</time></p>
-                        <a href="prenotazione.html" class="button">Prenota visita</a>
-                    </dd>
+                    <!-- mostrefuture_end -->
                 </dl>
                 <a class="help nascosto" href="#">Torna su</a>
             </dd>
@@ -81,18 +78,14 @@
             <dt><button class="accordion">Mostre passate</button></dt>
             <dd class="accordion-panel">
                 <dl>
-                    <dt class="nomeMostra">Nome mostra passata 1</dt>
+                    <!-- mostrepassate_start -->
+                    <dt class="nomeMostra">{{nome_mostra}}</dt>
                     <dd class="infoMostra">
-                        <img src="../images/mostra.jpg" alt="">
-                        <p>Descrizione mostra: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque quam ante, ornare sed urna sed, molestie volutpat turpis. Duis et nunc in purus lacinia euismod. Suspendisse potenti. Duis tempus purus elit. Curabitur scelerisque iaculis orci vitae grav</p>
-                        <p class="giorniMostra">Conclusa <time datetime="2024-06-01">01 Giugno 2024</time></p>
+                        <img src="{{img_path}}" alt="">
+                        <p>Descrizione mostra: {{descrizione_mostra}}</p>
+                        <p class="giorniMostra">Da <time datetime="{{data_inizio}}">{{string_data_inizio}}</time> a <time datetime="{{data_fine}}">{{string_data_fine}}</time></p>
                     </dd>
-                    <dt class="nomeMostra">Nome mostra passata 2</dt>
-                    <dd class="infoMostra">
-                        <img src="../images/mostra.jpg" alt="">
-                        <p>Descrizione mostra: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque quam ante, ornare sed urna sed, molestie volutpat turpis. Duis et nunc in purus lacinia euismod. Suspendisse potenti. Duis tempus purus elit. Curabitur scelerisque iaculis orci vitae grav</p>
-                        <p class="giorniMostra">Conclusa <time datetime="2024-02-01">01 Febbraio 2024</time></p>
-                    </dd>
+                    <!-- mostrepassate_end -->
                 </dl>                       
             </dd>
         </dl>   

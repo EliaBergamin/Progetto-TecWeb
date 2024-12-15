@@ -26,18 +26,18 @@
 
     <nav id="breadcrumb">
         <p>
-            Ti trovi in: <a lang="en" href="../index.html">Home</a> &gt; Recensioni
+            Ti trovi in: <a lang="en" href="index.php">Home</a> &gt; Recensioni
         </p>
     </nav>
 
     <nav id="menu" class="hamToggle" data-hambOn="false">
         <ul>
-            <li><a href="../index.html" lang="en">Home</a></li>
-            <li><a href="mostre.html">Le mostre</a></li>
-            <li><a href="virtual_tour.html" lang="en">Virtual Tour</a></li>
-            <li><a href="prenotazione.html">Prenotazione</a></li>
+            <li><a href="index.php" lang="en">Home</a></li>
+            <li><a href="mostre.php">Le mostre</a></li>
+            <li><a href="virtual_tour.php" lang="en">Virtual Tour</a></li>
+            <li><a href="prenotazione.php">Prenotazione</a></li>
             <li id="currentLink">Recensioni</li>
-            <li><a href="registrazione.html">Registrazione</a></li>
+            <li><a href="registrazione.php">Registrazione</a></li>
         </ul>
     </nav>
 
@@ -46,60 +46,32 @@
         <h2 id="titolo-recens-museo">Recensioni del museo</h2>
         <a href="#titolo-recens-virtual">Vai alle recensioni del <span lang="en">Virtual Tour</span></a>
         <ul class="recensioni">
+            <!-- recensionimuseo_start -->
             <li>
-                <p>NomeUtente</p>
-                <label id="lbl-rev-1">Punteggio 4 su 5</label>
-                <svg id="rev-1" viewBox="0 0 128 24" width="88" height="16" aria-labelledby="lbl-rev-1">
-                    <title>Punteggio 5 su 5</title>
-                    <!--attributo d da modificare con js per riempire il numero giusto di pallini-->
-                    <path d="M 12 0C5.388 0 0 5.388 0 12s5.388 12 12 12 12-5.38
-                    12-12c0-6.612-5.38-12-12-12z"></path>
-                    <path d="M 12 0C5.388 0 0 5.388 0 12s5.388 12 12 12 12-5.38
-                    12-12c0-6.612-5.38-12-12-12z" transform="translate (26 0)"></path>
-                    <path d="M 12 0C5.388 0 0 5.388 0 12s5.388 12 12 12 12-5.38
-                    12-12c0-6.612-5.38-12-12-12z" transform="translate (52 0)"></path>
-                    <path d="M 12 0C5.388 0 0 5.388 0 12s5.388 12 12 12 12-5.38
-                    12-12c0-6.612-5.38-12-12-12z" transform="translate (78 0)"></path>
-                    <path d="M 12 0C5.388 0 0 5.388 0 12s5.388 12 12 12 12-5.38 
-                    12-12c0-6.612-5.38-12-12-12zm0 2a9.983 9.983 0 019.995 10 10 
-                    10 0 01-10 10A10 10 0 012 12 10 10 0 0112 2z" transform="translate (104 0)"></path>
-                </svg>
-                <time datetime="2024-11-02">2 Novembre 2024</time>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsum quidem esse neque. Magnam
-                    assumenda
-                    possimus qui aperiam perferendis sit! Sed harum enim deserunt aperiam labore suscipit, debitis
-                    maxime in tempore.</p>
+                <p>{{nome_utente}}</p>
+                <label id="lbl-rev-1">Punteggio {{voto_recensione}} su 5</label>
+                {{svg_dynamic_generation}}
+                <time datetime="{{data_recensione}}">{{string_data_recensione}}</time>
+                <p>{{descrizione_recensione}}</p>
                 <a class="help nascosto" href="#">Torna su</a>
             </li>
+            <!-- recensionimuseo_end -->
         </ul>
         <h2 id="titolo-recens-virtual">Recensioni del <span lang="en">Virtual Tour</span></h2>
         <ul class="recensioni">
+            <!-- recensionivirtualtour_start -->
             <li>
-                <p>NomeUtente</p>
-                <label id="lbl-rev-2">Punteggio 5 su 5</label>
-                <svg viewBox="0 0 128 24" id="rev-2" width="88" height="16" aria-labelledby="lbl-rev-2">
-                    <title>Punteggio 5 su 5</title>
-                    <path d="M 12 0C5.388 0 0 5.388 0 12s5.388 12 12 12 12-5.38
-                    12-12c0-6.612-5.38-12-12-12z"></path>
-                    <path d="M 12 0C5.388 0 0 5.388 0 12s5.388 12 12 12 12-5.38
-                    12-12c0-6.612-5.38-12-12-12z" transform="translate (26 0)"></path>
-                    <path d="M 12 0C5.388 0 0 5.388 0 12s5.388 12 12 12 12-5.38
-                    12-12c0-6.612-5.38-12-12-12z" transform="translate (52 0)"></path>
-                    <path d="M 12 0C5.388 0 0 5.388 0 12s5.388 12 12 12 12-5.38
-                    12-12c0-6.612-5.38-12-12-12z" transform="translate (78 0)"></path>
-                    <path d="M 12 0C5.388 0 0 5.388 0 12s5.388 12 12 12 12-5.38
-                    12-12c0-6.612-5.38-12-12-12z" transform="translate (104 0)"></path>
-                </svg>
-                <time datetime="2024-11-02">2 Novembre 2024</time>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facere aperiam voluptas et blanditiis
-                    dolores, cum magni. Fuga accusamus illo perspiciatis cum aliquam autem, ea velit porro,
-                    architecto
-                    aperiam suscipit dolorem?</p>
+                <p>{{nome_utente}}</p>
+                <label id="lbl-rev-2">Punteggio {{voto_recensione}} su 5</label>
+                {{svg_dynamic_generation}}
+                <time datetime="{{data_recensione}}">{{string_data_recensione}}</time>
+                <p>{{descrizione_recensione}}</p>
                 <a class="help nascosto" href="#">Torna su</a>
             </li>
+            <!-- recensionivirtualtour_end -->
         </ul>
         <!-- ho spostato il link sotto per comodità -->
-        <a href="recensisci.html" id="scrivi-rev">Scrivi una recensione</a>
+        <a href="recensisci.php" id="scrivi-rev">Scrivi una recensione</a>
     </main>
     <a class="help" id="torna-su" href="#">Torna su</a>
     <footer>

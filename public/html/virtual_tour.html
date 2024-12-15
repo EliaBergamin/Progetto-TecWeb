@@ -31,12 +31,12 @@
 
     <nav id="menu" class="hamToggle" data-hambOn="false">
         <ul>
-            <li><a href="../index.html" lang="en" >Home</a></li>
-            <li><a href="mostre.html">Le mostre</a></li>
+            <li><a href="index.php" lang="en" >Home</a></li>
+            <li><a href="mostre.php">Le mostre</a></li>
             <li id="currentLink" lang="en">Virtual Tour</li>
-            <li><a href="prenotazione.html">Prenotazione</a></li>
-            <li><a href="recensioni.html">Recensioni</a></li>
-            <li><a href="registrazione.html">Registrazione</a></li>
+            <li><a href="prenotazione.php">Prenotazione</a></li>
+            <li><a href="recensioni.php">Recensioni</a></li>
+            <li><a href="registrazione.php">Registrazione</a></li>
 
         </ul>
     </nav>
@@ -45,27 +45,33 @@
         <h1>Mappa delle Sale</h1>
     
         <!-- Mappa delle immagini -->
+        
         <nav class="virtualTour-mappa">
-            <ol>
+        <ol>
+            <!-- salaimmagini_start-->
             <li id="dragon"><a href="#sala1">Sala 1: <span lang="en">Dragon Ball</span></a></li>
             <li id="pokemon"><a href="#sala2">Sala 2: Pokemon</a></li>
             <li id="gormiti"><a href="#sala3">Sala 3: Gormiti</a></li>
             <li id="yugioh"><a href="#sala4">Sala 4: Yu-Gi-Oh!</a></li>
+            <!-- salaimmagini_end-->
         </ol>
+
         </nav>
     
         <!-- Elenco delle sale -->
         <section class="virtualTour-elenco-sale">
             <h2>Elenco delle Sale</h2>
             <dl>
+                <!-- salainformation_start -->
                 <dt id="sala1">Sala 1: <span lang="en">Dragon Ball</span></dt>
                 <dd>
                     <p>Immergiti nell'universo epico di Dragon Ball, dove potrai esplorare le avventure di Goku e dei suoi amici.
                         Scopri le Sfere del Drago, rivivi gli scontri leggendari contro i Saiyan, Freezer e Majin Bu, e 
                         lasciati travolgere dall'energia delle trasformazioni Super Saiyan. Oggetti iconici, diorami e 
                         ricostruzioni interattive ti aspettano per farti sentire parte di questa straordinaria saga.</p>
-                    <a href="dettaglio_sala.html?sala=1">Esplora la Sala</a>
+                    <a href="dettaglio_sala.php?sala=1">Esplora la Sala</a>
                 </dd>
+                <!-- salainformation_end -->
 
                 <dt id="sala2">Sala 2: Gormiti</dt>
                 <dd>
@@ -73,7 +79,7 @@
                         del Fuoco e dell’Aria. Attraversa paesaggi suggestivi e scopri la storia di questa eterna lotta tra il bene e il male. 
                         Modelli tridimensionali, 
                         effetti luminosi e una narrazione avvincente rendono questa sala un'esperienza immersiva.</p>
-                    <a href="dettaglio_sala.html?sala=4">Esplora la Sala</a>
+                    <a href="dettaglio_sala.php?sala=4">Esplora la Sala</a>
                 </dd>
     
                 <dt id="sala3">Sala 3: <span lang="en">Pokemon</span></dt>
@@ -82,7 +88,7 @@
                         Esplora regioni come Kanto, Johto e Galar, ammira una collezione di Poké Ball, e sfida le emozionanti battaglie 
                         in un’arena virtuale. Non dimenticare di incontrare i Pokémon leggendari e mitici in una sala dedicata alla loro 
                         storia e potere.</p>
-                    <a href="dettaglio_sala.html?sala=2">Esplora la Sala</a>
+                    <a href="dettaglio_sala.php?sala=2">Esplora la Sala</a>
                 </dd>
 
                 <dt id="sala4">Sala 4: <span lang="en">Yu-gi-oh</span></dt>
@@ -91,7 +97,7 @@
                         Esplora il regno dei mostri con esposizioni dedicate alle carte leggendarie come il Drago Bianco Occhi Blu e il 
                         Mago Nero. 
                         Una replica dell’arena da duello ti aspetta per sfidare amici e rivivere i momenti più iconici della serie.</p>
-                    <a href="dettaglio_sala.html?sala=3">Esplora la Sala</a>
+                    <a href="dettaglio_sala.php?sala=3">Esplora la Sala</a>
                 </dd>
             </dl>
         </section>
@@ -151,3 +157,5 @@
 </body>
 
 </html>
+<!-- fine_start --> 
+<!-- fine_end -->

@@ -24,18 +24,18 @@
 
     <nav id="breadcrumb">
         <p>
-            Ti trovi in: <a href="../index.html" lang="en">Home</a> &gt; Prenotazione
+            Ti trovi in: <a href="index.php" lang="en">Home</a> &gt; Prenotazione
         </p>
     </nav>
 
     <nav id="menu" class="hamToggle" data-hambOn="false">
         <ul>
-            <li><a href="../index.html" lang="en">Home</a></li>
-            <li><a href="mostre.html">Le mostre</a></li>
-            <li><a href="virtual_tour.html" lang="en">Virtual Tour</a></li>
+            <li><a href="index.php" lang="en">Home</a></li>
+            <li><a href="mostre.php">Le mostre</a></li>
+            <li><a href="virtual_tour.php" lang="en">Virtual Tour</a></li>
             <li id="currentLink">Prenotazione</li>
-            <li><a href="recensioni.html">Recensioni</a></li>
-            <li><a href="registrazione.html">Registrazione</a></li>
+            <li><a href="recensioni.php">Recensioni</a></li>
+            <li><a href="registrazione.php">Registrazione</a></li>
 
         </ul>
     </nav>
@@ -43,7 +43,7 @@
     <main id="prenotazione" class="compilazione">
         <div id="contenitorePrenotazione" class="contenitoreCompilazione">
             <h1>Prenota la tua visita al museo</h1>
-            <form action="../../src/prenota.php" method="post" id="formPrenotazione" class="formCompilazione">
+            <form action="prenotazioneEffettuata.php" method="post" id="formPrenotazione" class="formCompilazione">
                 <label for="giorno">Giorno</label>
                 <!-- da mettere come minimo il giorno odierno -->
                 <input type="date" name="giorno" id="giorno" required data-msg-required="Per favore, selezionare il giorno della visita" data-msg-invalid="Giorno non valido">
