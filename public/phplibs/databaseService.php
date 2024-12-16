@@ -102,6 +102,15 @@ class DatabaseService
 		return $this->selectValuesPreparedQuery($queryOpere, $queryParams, "i");
 	}
 
+	public function selectUserFromUsername($username): array
+	{
+		$queryUser = "SELECT *
+					  FROM Museo.Utente
+					  WHERE Utente.username = ?";
+
+		$queryParams = [$username];
+		return $this->selectValuesPreparedQuery($queryUser, $queryParams, "s");
+	}
 
 	public function __destruct()
 	{

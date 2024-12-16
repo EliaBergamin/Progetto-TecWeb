@@ -3,12 +3,16 @@
 require_once("phplibs/databaseService.php");
 require_once("phplibs/templatingService.php");
 
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 
-$database = new DatabaseService();
-$mostreHtmlContent = Templating::getHtmlFileContent(__FILE__);
+$mostreHtmlContent = Templating::getHtmlWithModifiedMenu(__FILE__);
+//$mostreHtmlContent = Templating::getHtmlFileContent(__FILE__);
 if (!$mostreHtmlContent) {}
     //TODO
 /* MOSTRE CORRENTI*/
+$database = new DatabaseService();
 $arrayMostreCorrenti = $database->selectMostreCorrenti();
 $sectionCorrentiToModify = Templating::getContentBetweenPlaceholders($mostreHtmlContent, "mostrecorrenti");
 $fullcontent = "";

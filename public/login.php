@@ -1,5 +1,5 @@
 <?php
-function clean_input($data)
+/* function clean_input($data)
 {
     $data = trim($data);
     $data = stripslashes($data);
@@ -31,5 +31,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         echo "Credenziali incorrette";
     }
+} */
+
+require_once("phplibs/databaseService.php");
+require_once("phplibs/templatingService.php");
+
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
 }
+
+if (isset($_SESSION['user_id'])) 
+    header("Location: index.php");
+
+$database = new DatabaseService();
+$loginHtmlContent = Templating::getHtmlFileContent(__FILE__);
+if (!$loginHtmlContent) {}
+    //TODO
+Templating::showHtmlPageWithoutPlaceholders($loginHtmlContent);
+
 ?>
