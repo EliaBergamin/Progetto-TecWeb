@@ -3,9 +3,7 @@
 require_once("phplibs/databaseService.php");
 require_once("phplibs/templatingService.php");
 
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-}
+
 
 $mostreHtmlContent = Templating::getHtmlWithModifiedMenu(__FILE__);
 //$mostreHtmlContent = Templating::getHtmlFileContent(__FILE__);

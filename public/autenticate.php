@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Consulta per cercare l'utente
     $user = $database->selectUserFromUsername($username);
 
-    if ($user && password_verify($password, $user['password'])) {
+    if ($user && $password === $user['password'] . $user['salt']) {
         // Memorizza i dettagli dell'utente nella sessione
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['username'] = $user['username'];

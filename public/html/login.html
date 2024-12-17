@@ -3,9 +3,9 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Registrazione</title>
-    <meta name="description" content="Pagina di registrazione per poter usufruire dei servizi del museo">
-    <meta name="keywords" content="registrazione,signup,museo,cardgame,virtual tour,prenota,visita">
+    <title>Accedi</title>
+    <meta name="description" content="Accedi per poter usufruire dei servizi del museo">
+    <meta name="keywords" content="accesso,login,signin,museo,cardgame,virtual tour,prenota,visita">
     <link rel="stylesheet" href="../css/style.css" media="screen">
     <link rel="stylesheet" href="../css/middle.css" media="screen and (max-width: 1024px)">
     <link rel="stylesheet" href="../css/mini.css" media="screen and (max-width: 768px)">
@@ -29,28 +29,29 @@
 
     <nav id="menu" class="hamToggle" data-hambOn="false">
         <ul>
-            <li><a href="../index.html" lang="en">Home</a></li>
-            <li><a href="mostre.html">Le mostre</a></li>
-            <li><a href="virtual_tour.html" lang="en">Virtual Tour</a></li>
-            <li><a href="prenotazione.html">Prenotazione</a></li>
-            <li><a href="recensioni.html">Recensioni</a></li>
+            <li><a href="../index.php" lang="en">Home</a></li>
+            <li><a href="mostre.php">Le mostre</a></li>
+            <li><a href="virtual_tour.php" lang="en">Virtual Tour</a></li>
+            <li><a href="prenotazione.php">Prenotazione</a></li>
+            <li><a href="recensioni.php">Recensioni</a></li>
             <!-- log_start -->
             <li><a href="registrazione.php">Registrati</a></li>
             <li id="currentLink">Accedi</li>
             <!-- log_end -->
             <!-- account_opt_start -->
             <li><a href={{option_link}}>{{option}}</a></li>
-            <!-- account_opt_end -->            
+            <li><a href="logout.php">Esci</a></li>
+            <!-- account_opt_end -->
+            <!-- greeting_start -->
+            <li><span>Ciao {{username}}!</span></li>
+            <!-- greeting_end -->
         </ul>
-        <!-- greeting_start -->
-        <span>Ciao {{username}}!</span>
-        <!-- greeting_end -->
     </nav>
 
     <main id="primoContenuto" class="compilazione">
         <div class="contenitoreCompilazione">
         <h1>Accedi</h1>
-        <form action="login.php" method="post" class="formCompilazione">
+        <form action="autenticate.php" method="post" class="formCompilazione">
             <label for="email">Email: </label>
             <input type="email" name="email" id="email" required data-msg-required="L'email è obbligatoria!"
                 data-msg-invalid="Email non valida">

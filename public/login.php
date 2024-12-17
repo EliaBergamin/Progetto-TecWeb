@@ -36,15 +36,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 require_once("phplibs/databaseService.php");
 require_once("phplibs/templatingService.php");
 
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-}
+
 
 if (isset($_SESSION['user_id'])) 
     header("Location: index.php");
 
 $database = new DatabaseService();
-$loginHtmlContent = Templating::getHtmlFileContent(__FILE__);
+$loginHtmlContent = Templating::getHtmlWithModifiedMenu(__FILE__);
 if (!$loginHtmlContent) {}
     //TODO
 Templating::showHtmlPageWithoutPlaceholders($loginHtmlContent);

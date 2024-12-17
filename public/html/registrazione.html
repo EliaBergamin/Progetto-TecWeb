@@ -40,21 +40,24 @@
             <!-- log_end -->
             <!-- account_opt_start -->
             <li><a href={{option_link}}>{{option}}</a></li>
-            <!-- account_opt_end -->            
+            <li><a href="logout.php">Esci</a></li>
+            <!-- account_opt_end -->
+            <!-- greeting_start -->
+            <li><span>Ciao {{username}}!</span></li>
+            <!-- greeting_end -->
         </ul>
-        <!-- greeting_start -->
-        <span>Ciao {{username}}!</span>
-        <!-- greeting_end -->
     </nav>
 
     <main id="primoContenuto" class="compilazione">
         <div class="contenitoreCompilazione">
         <h1>Registrazione</h1>
-        <form action="../../src/registra.php" method="post" class="formCompilazione">
+        <form action="../register.php" method="post" class="formCompilazione">
             <label for="nome">Nome: </label>
             <input type="text" name="nome" id="nome" required>
             <label for="cognome">Cognome: </label>
             <input type="text" name="cognome" id="cognome" required>
+            <label for="username">Username: </label>
+            <input type="text" name="username" id="username" required>
             <label for="email">Email: </label>
             <input type="email" name="email" id="email" required data-msg-required="L'email è obbligatoria!"
                 data-msg-invalid="Email non valida">

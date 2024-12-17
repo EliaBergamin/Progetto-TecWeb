@@ -147,12 +147,12 @@ class Templating
             $log = '';
             Templating::replaceAnchor($account_opt, 'option_link', 'profile.php');
             Templating::replaceAnchor($account_opt, 'option', 'Il mio profilo');
-            Templating::replaceAnchor($greeting, 'greeting', $_SESSION['username']);
+            Templating::replaceAnchor($greeting, 'username', $_SESSION['username']);
         } else {
             $log = '';
             Templating::replaceAnchor($account_opt, 'option_link', 'admin.php');
             Templating::replaceAnchor($account_opt, 'option', 'Sezione amministratore');
-            Templating::replaceAnchor($greeting, 'greeting', $_SESSION['username']);
+            Templating::replaceAnchor($greeting, 'username', $_SESSION['username']);
         }
         Templating::replaceContentBetweenPlaceholders($htmlContent, "log", $log);
         Templating::replaceContentBetweenPlaceholders($htmlContent, "account_opt", $account_opt);
