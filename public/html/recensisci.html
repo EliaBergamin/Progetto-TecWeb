@@ -94,15 +94,15 @@
   <main id="primoContenuto" class="compilazione recensisci">
     <div class="contenitoreCompilazione">
       <h1>Recensisci la tua visita</h1>
-      <form action="effettuarecensione.php" method="post" class="formCompilazione">
+      <form action="recensione_effettuata.php" method="post" class="formCompilazione">
         <fieldset>
           <legend>Come hai visitato il museo?</legend>
           <label>
-            <input type="radio" name="tipo" value="museo" required>
+            <input type="radio" name="tipo" value="0" required>
             Sono andato al museo
           </label>
           <label>
-            <input type="radio" name="tipo" value="virtual">
+            <input type="radio" name="tipo" value="1">
             Ho scelto il Virtual Tour
           </label>
         </fieldset>

@@ -48,7 +48,39 @@ class DatabaseService
 			throw new Exception(self::GLOBALERROR);
 		}
 	}
+	
+	private function insertValuesPreparedQuery($queryToExecute, $arrayOfValues, $valueTypeForBinding = ""): bool
+	{
+		try{
+			$insertedRowsNumber = 0;
+			for( $i = 0; $i < count($arrayOfValues); $i++ ){
+				$preparedStatement = $this->executePreparedQuery($queryToExecute, $arrayOfValues[$i], $valueTypeForBinding);
+				$insertedRowsNumber += $preparedStatement->affected_rows;
+			}
+			if(!is_null($preparedStatement)) $preparedStatement->close();
+		}
+		catch (mysqli_sql_exception $e) {
+			if ($e->getCode() == 1062)
+				return false;
+			else
+				throw new Exception(self::GLOBALERROR);
+		}
+		return $insertedRowsNumber > 0 ;
+	}
+	public function insertUserReview($idUtente, $voto, $data_recensione, $descrizione, $tipo): bool
+	{
+		$queryInsertRecensione = "INSERT INTO Museo.Recensione (id_utente, voto, data_recensione, descrizione, tipo)
+								  VALUES (?, ?, ?, ?, ?)";
+		$queryParams = [$idUtente, $voto, $data_recensione, $descrizione, $tipo];
+		return $this->insertValuesPreparedQuery($queryInsertRecensione, [$queryParams], "iissi");
+	}
 
+	public function insertUserPrenotazione($userParam, $dayParam, $visitorsParam, $timeParam): bool{
+		$queryInsertPrenotazione = "INSERT INTO Museo.Prenotazione (id_utente, data_prenotazione, num_persone, orario)
+									VALUES (?, ? , ? , ?)";
+		$queryParams = [$userParam, $dayParam, $visitorsParam, $timeParam];
+		return $this->insertValuesPreparedQuery($queryInsertPrenotazione, [$queryParams], "isis");
+	}
 	public function selectMostrePassate(): array
 	{
 		$queryMostrePassate = "SELECT * 
@@ -102,7 +134,13 @@ class DatabaseService
 		return $this->selectValuesPreparedQuery($queryOpere, $queryParams, "i");
 	}
 
-
+	public function selectPrenotazioniFromId($idUtente): array{
+		$queryPrenotazioni = "SELECT *
+							  FROM Museo.Prenotazione
+							  WHERE Prenotazione.id_utente = ?";
+		$queryParams = [$idUtente];
+		return $this->selectValuesPreparedQuery($queryPrenotazioni,$queryParams,"i");
+	}
 	public function __destruct()
 	{
 		if ($this->connection)
