@@ -123,6 +123,7 @@ utile per fissare il menu in modo che non scrolli
 #home {
   text-decoration: underline dotted;
 }
+
 /*////////////*/
 /* MAIN */
 /*////////////*/
@@ -153,7 +154,7 @@ main h1 {
 .immaginiCarosello {
   list-style-type: none;
   position: relative;
-  padding: 0;  
+  padding: 0;
 }
 
 .immaginiCarosello img {
@@ -169,63 +170,68 @@ main h1 {
   box-shadow: 7px 7px 25px rgba(0, 0, 0, 0.2);
 }
 
-.puntiniCarosello{
+.puntiniCarosello {
   display: none;
 }
 
-#caroselloIndietro, #caroselloAvanti{
-  display: none;  
+#caroselloIndietro,
+#caroselloAvanti {
+  display: none;
 }
 
 /*////////////////*/
 /* DETTAGLIO SALA */
 /*////////////////*/
-  
-.dettaglioSala{
+
+.dettaglioSala {
   margin: 2% 7% 2% 7%;
   background-color: #f2f4f7;
-  border-radius: 1em ;
+  border-radius: 1em;
   box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
   overflow: auto;
 }
 
 
-.dettaglioSala h1{
+.dettaglioSala h1 {
   text-align: center;
   font-size: 2rem;
   padding: 1rem;
   margin: 0;
 }
-.dettaglioSala p{
+
+.dettaglioSala p {
   padding: 1.1rem;
-  font-size: 1.1rem ;
+  font-size: 1.1rem;
   margin: 0;
 }
 
-#titoloListaOpere{
+#titoloListaOpere {
   text-align: center;
   font-size: 2rem;
   padding: 1rem;
-  
+
 }
 
-#listaOpere{
+#listaOpere {
   display: grid;
-  grid-template-columns: repeat(3,1fr);
+  grid-template-columns: repeat(3, 1fr);
   grid-column-gap: 3em;
   grid-row-gap: 2em;
-  
+
   list-style-type: none;
-  margin: 0 ;
+  margin: 0;
   padding: 0;
-  
+
 }
-#listaOpere li{ 
+
+#listaOpere li {
   display: flex;
-  flex-direction: column; /* Imposta una colonna di layout per ciascun elemento */
-  align-items: center; 
-  text-align: left; /* Allinea il testo a sinistra */
-  border-radius: 1em ;
+  flex-direction: column;
+  /* Imposta una colonna di layout per ciascun elemento */
+  align-items: center;
+  text-align: left;
+  /* Allinea il testo a sinistra */
+  border-radius: 1em;
   box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
   padding: 2em;
   margin: auto;
@@ -233,7 +239,7 @@ main h1 {
   break-inside: avoid;
 }
 
-#listaOpere li img{
+#listaOpere li img {
   max-height: fit-content;
   max-width: 17em;
   background-size: contain;
@@ -241,22 +247,24 @@ main h1 {
   margin-top: 1em;
 }
 
-#listaOpere{
-  grid-template-columns: repeat(2,1fr);
+#listaOpere {
+  grid-template-columns: repeat(2, 1fr);
 }
 
-#listaOpere li h3{
+#listaOpere li h3 {
   font-style: italic;
-  align-self: flex-start; /* Allinea il titolo a sinistra */
+  align-self: flex-start;
+  /* Allinea il titolo a sinistra */
   margin-bottom: 0;
 }
 
-#listaOpere li p{
-  align-self: flex-start; /* Allinea il titolo a sinistra */
+#listaOpere li p {
+  align-self: flex-start;
+  /* Allinea il titolo a sinistra */
   margin-bottom: 0.1;
 }
 
-#listaOpere li a{
+#listaOpere li a {
   display: none;
 }
 
@@ -268,22 +276,22 @@ main h1 {
 .mainSection {
   margin: 2% 7% 2% 7%;
   background-color: #f2f4f7;
-  border-radius: 1em ;
+  border-radius: 1em;
   box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
 }
 
-.mainSection h1{
+.mainSection h1 {
   text-align: center;
   font-size: 2rem;
   padding: 1rem;
   margin-bottom: 0;
-  
+
 }
 
-.mainSection p{
+.mainSection p {
   margin: 1em;
   padding: 1em;
-  font-size: 1.1rem ;
+  font-size: 1.1rem;
 }
 
 #torna-su {
@@ -307,11 +315,12 @@ footer {
 
 
 
-footer a:link::after, footer a:visited::after {
+/* footer a:link::after,
+footer a:visited::after {
   content: "[" attr(href) "]";
   display: block;
   margin-top: 0.5px;
-}
+} */
 
 footer dl {
   margin: 0.4rem 1.5%;
@@ -333,7 +342,7 @@ footer h2 {
 /*//////////////////////////*/
 
 #orari-museo {
-  max-width: 30rem; 
+  max-width: 30rem;
   text-align: center;
   margin: 0.3rem 1.5%;
   flex: 1 0 40%;
@@ -399,7 +408,7 @@ footer h2 {
   break-inside: avoid;
 }
 
-.infoMostra > img {
+.infoMostra>img {
   display: block;
   margin: auto;
   width: 80%;
@@ -408,7 +417,7 @@ footer h2 {
 }
 
 /* con questo vengono sommati i due margini tra bot del primo e top del secondo risolvi */
-.infoMostra > p {
+.infoMostra>p {
   margin: 1em 10%;
 }
 
@@ -512,17 +521,18 @@ footer h2 {
   padding: 1.5em;
   padding-top: 0.75em;
   background-color: white;
-  border-radius: 10px;
+  border-radius: 1px;
   opacity: 0.93;
+  border: #000 solid 1px;
 }
 
 .formCompilazione {
   margin-top: 1em;
 }
 
-.formCompilazione input, select {
-  margin: auto;
-  margin-bottom: 1.5em;
+.formCompilazione input,
+select {
+  margin-bottom: 1.25em;
   box-sizing: border-box;
   padding: 0.4em;
   border: solid 2px #000;
@@ -540,9 +550,9 @@ footer h2 {
 .formCompilazione label {
   display: block;
   margin: auto;
-  margin-bottom: 0.5em;
+  margin-bottom: 0.25em;
   font-size: 1.15rem;
-  text-align: center;
+  text-align: left;
 }
 
 /*////////////*/
@@ -552,13 +562,15 @@ footer h2 {
 #primoContenuto[class="compilazione recensisci"] {
   height: 60em;
 }
+
 .contenitoreCompilazione h1 {
   font-size: 2em;
+  text-align: left;
 }
 
 .formCompilazione fieldset {
   border: none;
-  margin-bottom: 1.85em;
+  margin-bottom: 1em;
 }
 
 .formCompilazione fieldset input {
@@ -567,11 +579,9 @@ footer h2 {
 }
 
 .formCompilazione fieldset legend {
-  text-align: center;
+  text-align: left;
   font-size: 1.15rem;
   width: 100%;
-  border: 1px solid black;
-  border-radius: 50px;
   margin-bottom: 0.5em;
   padding-top: 0.5em;
   padding-bottom: 0.5em;
@@ -580,29 +590,28 @@ footer h2 {
 #rating-fs {
   text-align: left;
   font-size: 1.15rem;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .formCompilazione fieldset label {
   text-align: left;
   margin-bottom: 0;
   padding: 0;
-  cursor: pointer;
 }
 
 .domandaRecensione {
-  text-align: center;
+  text-align: left;
   font-size: 1.15rem;
   width: 100%;
-  border: 1px solid black;
-  border-radius: 50px;
   padding-top: 0.5em;
   padding-bottom: 0.5em;
 }
 
 .formCompilazione input[type="radio"] {
-  transform: scale(2);
-  margin: 0 0.3rem 1em;
-  cursor: pointer;
+  transform: scale(1.2);
+  margin: 0 0.3rem;
 }
 
 /* .formCompilazione input[name="rating"][type="radio"] {
@@ -611,12 +620,30 @@ footer h2 {
 
 .formCompilazione input[type="date"] {
   border: 1px solid black;
-  margin-bottom: 1.85em;
+  margin-bottom: 1.5em;
   font-size: 1.1rem;
-} 
+}
 
-.rating[type="radio"] {
-  margin-bottom: 2em;
+.formCompilazione input[type="text"],
+.formCompilazione input[type="email"],
+.formCompilazione input[type="password"] {
+  width: 100%;
+}
+
+.formCompilazione input[type="number"] {
+  width: 25%;
+}
+
+#rating-fs input[type="radio"][name="rating"] {
+  margin-right: 5px;
+}
+
+#rating-fs label {
+  display: inline;
+}
+
+#giudizio {
+  display: none;
 }
 
 .formCompilazione textarea {
@@ -653,7 +680,7 @@ a[href="#titolo-recens-virtual"] {
   display: none;
 }
 
-.recensioni > li {
+.recensioni>li {
   margin-top: 1em;
   margin-bottom: 2em;
   padding: 0.8em;
@@ -664,17 +691,17 @@ a[href="#titolo-recens-virtual"] {
   break-inside: avoid;
 }
 
-.recensioni > li > p {
+.recensioni>li>p {
   margin-bottom: 0.5em;
   margin-top: 0.5em;
 }
 
-.recensioni > li > label {
+.recensioni>li>label {
   font-weight: bold;
   margin-right: 0.5em;
-}     
+}
 
-.recensioni > li > time {
+.recensioni>li>time {
   display: block;
   font-size: 0.7em;
 }
@@ -686,12 +713,12 @@ a[href="#titolo-recens-virtual"] {
 main[class="opera"] {
   color: var(--newstxtcolor);
   background-color: var(--contentbgcolor);
-  margin: 0 auto; 
-  width: 70%; 
+  margin: 0 auto;
+  width: 70%;
   padding: 1.75em;
   border: 1px solid var(--contentxtcolor);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
-  border-radius: 8px; 
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
 }
 
 .opera h1 {
@@ -833,6 +860,7 @@ main[class="opera"] {
   border-radius: 5px;
   width: 75%;
 }
+
 .virtualTour-elenco-sale {
   display: flex;
   flex-direction: column;
@@ -844,12 +872,14 @@ main[class="opera"] {
   margin: 0;
   padding: 0;
 }
+
 .virtualTour-elenco-sale dt {
   font-weight: bold;
   margin-top: 20px;
   color: #333;
   text-align: center;
 }
+
 .virtualTour-elenco-sale dd {
   margin: 5px 0 20px 0;
   padding: 15px;
@@ -860,13 +890,16 @@ main[class="opera"] {
   /* non funziona */
   break-inside: avoid;
 }
+
 .virtualTour-elenco-sale dd p {
   color: #666;
   margin-bottom: 10px;
-}  
+}
+
 .virtualTour-elenco-sale dd a {
   display: none;
-}   
+}
+
 .btn {
   display: none;
 }

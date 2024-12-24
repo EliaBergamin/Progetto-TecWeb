@@ -7,7 +7,7 @@
   <meta name="description" content="Qui puoi inserire una recensione
     se hai visitato il museo o hai fatto il virtual tour">
   <meta name="keywords" content="recensione,museo,virtual tour,visita,cardgame">
-  <link rel="stylesheet" href="../css/style.css" media="screen">
+    <link rel="stylesheet" href="../css/style.css" media="screen">
   <link rel="stylesheet" href="../css/middle.css" media="screen and (max-width: 1024px)">
   <link rel="stylesheet" href="../css/mini.css" media="screen and (max-width: 768px)">
   <link rel="stylesheet" href="../css/print.css" media="print">
@@ -93,7 +93,7 @@
   </nav>
 
   <main id="primoContenuto" class="compilazione recensisci">
-    <div class="contenitoreCompilazione">
+    <div class="contenitoreCompilazione" id="contenitoreRecensione">
       <h1>Recensisci la tua visita</h1>
       <form action="effettuarecensione.php" method="post" class="formCompilazione">
         <fieldset>
@@ -111,21 +111,31 @@
         <input type="date" name="data-visita" id="data-visita" required>
         <fieldset id="rating-fs">
           <legend>Come valuteresti la tua esperienza?</legend>
-          <input type="radio" name="rating" class="ahead" id="voto-1" value="1">
-          <label for="voto-1" class="nascosto">Terribile</label>
-          <input type="radio" name="rating" class="ahead" id="voto-2" value="2">
-          <label for="voto-2" class="nascosto">Non soddisfacente</label>
-          <input type="radio" name="rating" class="ahead" id="voto-3" value="3">
-          <label for="voto-3" class="nascosto">Nella media</label>
-          <input type="radio" name="rating" class="ahead" id="voto-4" value="4">
-          <label for="voto-4" class="nascosto">Molto soddisfacente</label>
-          <input type="radio" name="rating" class="ahead" id="voto-5" value="5">
-          <label for="voto-5" class="nascosto">Eccellente</label>
+          <div class="rating-option">
+            <input type="radio" name="rating" class="ahead" id="voto-1" value="1">
+            <label for="voto-1" class="nascosto">Terribile</label>
+          </div>
+          <div class="rating-option">
+            <input type="radio" name="rating" class="ahead" id="voto-2" value="2">
+            <label for="voto-2" class="nascosto">Non soddisfacente</label>
+          </div>
+          <div class="rating-option">
+            <input type="radio" name="rating" class="ahead" id="voto-3" value="3">
+            <label for="voto-3" class="nascosto">Nella media</label>
+          </div>
+          <div class="rating-option">
+            <input type="radio" name="rating" class="ahead" id="voto-4" value="4">
+            <label for="voto-4" class="nascosto">Molto soddisfacente</label>
+          </div>
+          <div class="rating-option">
+            <input type="radio" name="rating" class="ahead" id="voto-5" value="5">
+            <label for="voto-5" class="nascosto">Eccellente</label>
+          </div>
           <span id="giudizio"></span>
         </fieldset>
         <label for="descrizione" class="domandaRecensione">Descrivi la tua visita</label>
         <textarea name="descrizione" id="descrizione" minlength="100" rows="8" cols="20"
-        placeholder="L'opera che mi ha colpito di più è stata..."></textarea>
+          placeholder="L'opera che mi ha colpito di più è stata..."></textarea>
         <input type="submit" value="Invia" aria-label="Invia">
       </form>
     </div>
