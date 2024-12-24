@@ -38,9 +38,8 @@ CREATE TABLE IF NOT EXISTS Utente (
     username VARCHAR(20) UNIQUE,
     nome VARCHAR(30),
     cognome VARCHAR(30),
-    password_hash CHAR(255),
-    email VARCHAR(50) UNIQUE,
-    salt CHAR(32)
+    password_hash VARCHAR(255),
+    email VARCHAR(50) UNIQUE
 );
 
 CREATE TABLE IF NOT EXISTS Prenotazione (
@@ -85,10 +84,11 @@ INSERT INTO Opera (id_sala, nome, autore, descrizione, anno, img_path) VALUES
   (3, "Goku Super Saiyan", "Akira Toriyama", "Goku Super Saiyan, creato da Akira Toriyama, rappresenta il momento più epico nella saga di Dragon Ball Z. Dal 1989, questa forma ha definito la leggenda di Goku, incarnando determinazione, forza e spirito combattivo che hanno ispirato generazioni di fan.", 1989, "super_saiyan.jpg"),
   (4, "Magmion", "Serghei Rotaru", "Magmion, concepito da Serghei Rotaru nel 2008, è una delle creature più potenti e memorabili dell'universo dei Gormiti. Rappresenta la forza della lava e il dominio del fuoco, con un design che combina potenza brutale e fascino mistico, perfetto per ogni collezionista.", 2008, "magmion.jpg");
 
-INSERT INTO Utente (ruolo, username, nome, cognome, password_hash, email, salt) VALUES
-(1, "johnsmith", "John", "Smith", "$2y$10$abcdefghijklmnopqrstuv", "john.smith@example.com", "abc123def456"),
-(2, "janedoe", "Jane", "Doe", "$2y$10$vwxyzabcdefghijklmnop", "jane.doe@example.com", "ghi789jkl012"),
-(2, "bobloblaw", "Bob", "Loblaw", "$2y$10$mnopqrstuvwxyzabcdefg", "bob.loblaw@example.com", "mno345pqr678");
+INSERT INTO Utente (ruolo, username, nome, cognome, password_hash, email) VALUES
+(1, "admin", "John", "Smith", "$2y$10$hR2hqK83R1oK4k2jWfz.NOYwpnV5Laf9ClB9C0xIwKj2sXKHL0WqC", "john.smith@example.com"),
+(2, "janedoe", "Jane", "Doe", "$2y$10$vwxyzabcdefghijklmnop", "jane.doe@example.com"),
+(2, "user", "User", "Name", "$2y$10$cFX/s3yEaLujSUteGmjlT.MBH.5suXmS667v0o8OVjBxsycCdFPCS", "user.name@example.com"),
+(2, "bobloblaw", "Bob", "Loblaw", "$2y$10$mnopqrstuvwxyzabcdefg", "bob.loblaw@example.com");
 
 INSERT INTO Prenotazione (id_utente, data_prenotazione, num_persone, orario) VALUES
 (3, "2023-06-15", 2, "14:30:00"),

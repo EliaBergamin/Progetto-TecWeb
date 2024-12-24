@@ -4,8 +4,12 @@ require_once("phplibs/databaseService.php");
 require_once("phplibs/templatingService.php");
 
 
+
+if (!isset($_SESSION['user_id'])) 
+    header("Location: login.php?redirect=dettaglio_sala.php");
+
 $database = new DatabaseService();
-$dettaglioSalaHtmlContent = Templating::getHtmlFileContent(__FILE__);
+$dettaglioSalaHtmlContent = Templating::getHtmlWithModifiedMenu(__FILE__);
 if (!$dettaglioSalaHtmlContent) {}
     //TODO
 $numeroSalaRichiesta = isset($_GET['sala']) ? $_GET['sala'] : 0;
