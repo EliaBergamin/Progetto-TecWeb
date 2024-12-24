@@ -14,11 +14,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
     $username = $_POST['username'];
     $password = $_POST['password'];
-    $salt = bin2hex(random_bytes(16));
-    $password_hash = password_hash($password . $salt, PASSWORD_BCRYPT);
+    $password_hash = password_hash($password, PASSWORD_BCRYPT);
     $database = new DatabaseService();
     // Inserisci il nuovo utente nel database
-    $user_id = $database->insertUser(2, $username, $nome, $cognome, $password_hash, $email, $salt);
+    $user_id = $database->insertUser(2, $username, $nome, $cognome, $password_hash, $email);
     unset($database);
 
     if ($user_id > 0) {

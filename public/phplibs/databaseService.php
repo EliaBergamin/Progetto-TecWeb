@@ -101,7 +101,7 @@ class DatabaseService
 		return $this->selectValuesPreparedQuery($queryOpere, $queryParams, "i");
 	}
 
-	public function selectUserFromUsername($username): array
+	public function selectUsersFromUsername($username): array
 	{
 		$queryUser = "SELECT *
 					  FROM Museo.Utente
@@ -128,13 +128,13 @@ class DatabaseService
 			$this->pulisciInputHelper($in);
 	}
 
-	public function insertUser($ruolo, $username, $nome, $cognome, $password_hash, $email, $salt): int
+	public function insertUser($ruolo, $username, $nome, $cognome, $password_hash, $email): int
 	{
-		$queryUser = "INSERT INTO Museo.Utente (ruolo, username, nome, cognome, password_hash, email, salt) 
-					  VALUES (?, ?, ?, ?, ?, ?, ?)";
-		$queryParams = [$ruolo, $username, $nome, $cognome, $password_hash, $email, $salt];
+		$queryUser = "INSERT INTO Museo.Utente (ruolo, username, nome, cognome, password_hash, email) 
+					  VALUES (?, ?, ?, ?, ?, ?)";
+		$queryParams = [$ruolo, $username, $nome, $cognome, $password_hash, $email];
 		self::pulisciInput($queryParams);
-		$stmt = self::executePreparedQuery($queryUser, $queryParams, "issssss");
+		$stmt = self::executePreparedQuery($queryUser, $queryParams, "isssss");
 		if ($stmt->affected_rows > 0)
 			return $stmt->insert_id;
 		else
