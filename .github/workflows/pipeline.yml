@@ -1,32 +1,26 @@
-name: Validate and Deploy
+name: Deploy to Azure
 
 on:
   push:
     branches:
       - main
-      - feature/pipeline
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+    - name: Checkout code
+      uses: actions/checkout@v3
 
-      - name: Install FTP Client
-        run: sudo apt-get install -y lftp
-
-      - name: Deploy to Altervista
-        env:
-          FTP_HOST: ${{ secrets.FTP_HOST }}
-          FTP_USERNAME: ${{ secrets.ALTERVISTA_USERNAME }}
-          FTP_PASSWORD: ${{ secrets.ALTERVISTA_PASSWORD }}
-        run: |
-          echo "Starting deploy to Altervista"
-          lftp -u "$FTP_USERNAME","$FTP_PASSWORD" "$FTP_HOST" <<EOF
-          set ssl:verify-certificate no
-          lcd ./public
-          mirror -R --delete --verbose --exclude .ftpquota --exclude .git --exclude .github ./ /
-          quit
-          EOF
+    - name: Deploy to server
+      uses: appleboy/ssh-action@v0.1.6
+      with:
+        host: ${{ secrets.SERVER_HOST }}
+        username: ${{ secrets.SERVER_USER }}
+        key: ${{ secrets.SERVER_SSH_KEY }}
+        port: 22
+        script: |
+          cd ../Progetto-TecWeb
+          git pull origin main
+          docker-compose up -d --build
