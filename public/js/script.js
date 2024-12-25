@@ -1,11 +1,8 @@
-var hamStatus = "false";
+var hamStatus = true;
 function hambToggle() {
     var e = document.getElementsByClassName("hamToggle");
-    hamStatus = "false" == hamStatus ? "true" : "false";
+    hamStatus = !hamStatus;
     for (var t = 0; t < e.length; t++) {
-        e[t].setAttribute("data-hambOn", hamStatus);
-        var n = e[t].style.display;
-        e[t].style.display = "none",
-        e[t].style.display = n
+        e[t].setAttribute("data-hambOn", hamStatus.toString());
     }
 }

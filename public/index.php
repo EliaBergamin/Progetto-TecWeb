@@ -20,14 +20,14 @@
     <a id="top-help" class="help nascosto" href="#primoContenuto">Vai al contenuto</a>
     <header>
         <h1>Museo Cartoni Animati</h1>
-        <button id="hamb" class="hamToggle" data-hambOn="false" type="button" onclick="hambToggle()">Menù</button>
+        <button id="hamb" class="hamToggle" data-hambOn="true" type="button" onclick="hambToggle()">Menù</button>
     </header>
 
     <nav id="breadcrumb">
         <p>Ti trovi in: <span lang="en">Home</span></p>
     </nav>
 
-    <nav id="menu" class="hamToggle" data-hambOn="false">
+    <nav id="menu" class="hamToggle" data-hambOn="true">
         <ul>
             <li id="currentLink" lang="en">Home</li>
             <li><a href="mostre.php">Le mostre</a></li>

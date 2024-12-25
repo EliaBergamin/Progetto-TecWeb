@@ -44,8 +44,8 @@ header {
 
 #menu[data-hambOn="false"] {
     z-index: 100;
-    transform: translate(11rem);
     transition: 1s ease-in-out;
+    transform: translate(11rem);
     position: fixed;
 }
 
