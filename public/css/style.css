@@ -206,7 +206,6 @@ main h1 {
 
 .immaginiCarosello img {
   background-size: contain;
-  display: none;
   width: 100%;
   height: 20%;
   position: relative;
@@ -215,6 +214,11 @@ main h1 {
   z-index: 0;
   border-radius: 1em;
   box-shadow: 7px 7px 25px rgba(0, 0, 0, 0.2);
+  display: none;
+}
+
+.immaginiCarosello img.onCarosello {
+  display: block;
 }
 
 .puntiniCarosello li button {
@@ -609,12 +613,16 @@ footer h2 {
   float: right;
 }
 
-.active:after {
+.accordion.active::after {
   content: "\2212";
 }
 
 .accordion-panel {
   display: none;
+}
+
+.accordion-panel.active {
+  display: block;
 }
 
 /*///////////////*/

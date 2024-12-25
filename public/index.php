@@ -43,10 +43,10 @@
         <div id="carosello">
             <ol class="immaginiCarosello">
                 <li>
-                    <img src="./images/immcarosello1.jpg" alt="Prima Immagine Carosello">
+                    <img src="./images/immcarosello1.jpg" alt="Prima Immagine Carosello" class="onCarosello">
                 </li>
                 <li>
-                    <img src="./images/immcarosello2.jpg" alt="Seconda Immagine Carosello">
+                    <img src="./images/immcarosello2.jpg" alt="Seconda Immagine Carosello" >
                 </li>
                 <li>
                     <img src="./images/immcarosello3.jpg" alt="Terza Immagine Carosello">
@@ -58,16 +58,16 @@
                 onclick="prossimaSlide(1)">&#10095;</button>
             <ol class="puntiniCarosello">
                 <li>
-                    <button class="" type="button" aria-label="Scorri all'immagine numero 1"
-                        onclick="currentSlide(1)">1</button>
+                    <button class="active" type="button" 
+                        onclick="currentSlide(1)">Scorri all'immagine numero 1</button>
                 </li>
                 <li>
-                    <button class="" type="button" aria-label="Scorri all'immagine numero 2"
-                        onclick="currentSlide(2)">2</button>
+                    <button class="" type="button"
+                        onclick="currentSlide(2)">Scorri all'immagine numero 2</button>
                 </li>
                 <li>
-                    <button class="" type="button" aria-label="Scorri all'immagine numero 3"
-                        onclick="currentSlide(3)">3</button>
+                    <button class="" type="button"
+                        onclick="currentSlide(3)">Scorri all'immagine numero 3</button>
                 </li>
             </ol>
         </div>
@@ -146,7 +146,6 @@
             </tbody>
         </table>
     </footer>
-    <script src="./js/dynamic.js"></script>
 </body>
 
 

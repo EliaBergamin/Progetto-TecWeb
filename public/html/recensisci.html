@@ -13,60 +13,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="../images/pokeball.ico" type="image/x-icon">
   <script type="text/javascript" src="../js/script.js"></script>
-  <script>
-    console.log(document.getElementsByName("rating"));
-    function reset_span() {
-      inputs = document.getElementsByName("rating");
-      let index = 4, found = 0;
-      for (; index >= 0 && !found; index--) {
-        const element = inputs[index];
-        if (element.checked) {
-          found = index + 1;
-        }
-      }
-      console.log(found);
-      for (let i = 1; i <= found; i++) {
-        let currentId = "voto-" + i.toString();
-        document.getElementById(currentId).classList.replace("ahead", "behind");
-      }
-      for (let i = found + 1; i <= 5; i++) {
-        let currentId = "voto-" + i.toString();
-        document.getElementById(currentId).classList.replace("behind", "ahead");
-      }
-      let giudizi = [
-        "", "Terribile", "Non soddisfacente", "Nella media", "Molto soddisfacente", "Eccellente"
-      ];
-      document.getElementById("giudizio").innerText = giudizi[found];
-    }
-    function change_span(id) {
-      let voto2giudizio = {
-        '1': "Terribile",
-        '2': "Non soddisfacente",
-        '3': "Nella media",
-        '4': "Molto soddisfacente",
-        '5': "Eccellente"
-      };
-      let voto = parseInt(id.charAt(5));
-      console.log(voto);
-      document.getElementById("giudizio").innerText = voto2giudizio[voto];
-      for (let i = 1; i <= voto; i++) {
-        let currentId = "voto-" + i.toString();
-        document.getElementById(currentId).classList.replace("ahead", "behind");
-      }
-      for (let i = voto + 1; i <= 5; i++) {
-        let currentId = "voto-" + i.toString();
-        document.getElementById(currentId).classList.replace("behind", "ahead");
-      }
-    }
-    function addEventListeners(item) {
-      item.addEventListener("click", function () { change_span(item.id); console.log(item.id); });
-      item.addEventListener("mouseover", function () { change_span(item.id); console.log(item.id); });
-      item.addEventListener("mouseleave", reset_span);
-    }
-  </script>
 </head>
 
-<body>
+<body onload="initRecensisci()">
   <a id="top-help" class="help nascosto" href="#primoContenuto">Vai al contenuto</a>
   <header>
     <h1>Museo Cartoni Animati</h1>
@@ -111,20 +60,20 @@
         <fieldset id="rating-fs">
           <legend>Come valuteresti la tua esperienza?</legend>
           <input type="radio" name="rating" class="ahead" id="voto-1" value="1">
-          <label for="voto-1" class="nascosto">Terribile</label>
+          <label for="voto-1">Terribile</label>
           <input type="radio" name="rating" class="ahead" id="voto-2" value="2">
-          <label for="voto-2" class="nascosto">Non soddisfacente</label>
+          <label for="voto-2">Non soddisfacente</label>
           <input type="radio" name="rating" class="ahead" id="voto-3" value="3">
-          <label for="voto-3" class="nascosto">Nella media</label>
+          <label for="voto-3">Nella media</label>
           <input type="radio" name="rating" class="ahead" id="voto-4" value="4">
-          <label for="voto-4" class="nascosto">Molto soddisfacente</label>
+          <label for="voto-4">Molto soddisfacente</label>
           <input type="radio" name="rating" class="ahead" id="voto-5" value="5">
-          <label for="voto-5" class="nascosto">Eccellente</label>
+          <label for="voto-5">Eccellente</label>
           <span id="giudizio"></span>
         </fieldset>
         <label for="descrizione" class="domandaRecensione">Descrivi la tua visita</label>
         <textarea name="descrizione" id="descrizione" minlength="100" rows="8" cols="20"
-        placeholder="L'opera che mi ha colpito di più è stata..."></textarea>
+          placeholder="L'opera che mi ha colpito di più è stata..."></textarea>
         <input type="submit" value="Invia" aria-label="Invia">
       </form>
     </div>
@@ -179,9 +128,5 @@
       </tbody>
     </table>
   </footer>
-  <script>
-    document.getElementsByName("rating").forEach(addEventListeners);
-  </script>
 </body>
-
 </html>
