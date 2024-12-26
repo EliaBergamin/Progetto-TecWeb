@@ -49,6 +49,10 @@ header {
     position: fixed;
 }
 
+#menu ul {
+ display: block;
+}
+
 #menu li {
     display: block;
     margin: 0;
