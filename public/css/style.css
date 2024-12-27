@@ -1052,3 +1052,55 @@ main[class="opera"] {
   color: #666;
   margin-bottom: 10px;
 }
+
+/*/////////////////////////*/
+/* PERSONALE ADMIN */
+/*/////////////////////////*/
+
+#tab-mostre {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+#tab-mostre caption {
+  font-size: 1.5em;
+  margin-bottom: 1em;
+}
+
+#tab-mostre td {
+  max-width: 11em;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+#tab-mostre th, 
+#tab-mostre td {
+  border: 1px solid black;
+  padding: 0.5em;
+}
+
+#tab-mostre tr:nth-child(even),
+#tab-mostre thead th {
+  background-color: #f2f2f2;
+}
+
+#tab-mostre tr:nth-child(odd) {
+  background-color: var(--headerbgcolor);
+}
+
+.mod-mostra,
+.elim-mostra {
+  text-align: center;
+}
+
+.mod-mostra a::before {
+  content: "\270D";
+  color: #000;
+}
+
+.elim-mostra a::before {
+  content: "\1F5D1";
+  color: #000;
+  font-size: 1.5em;
+}

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <title>Area personale</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Pagina per area personale dell'admin">
+    <meta name="keywords" content="admin, area personale, museo">
+    <link rel="stylesheet" href="../css/style.css" media="screen">
+    <link rel="stylesheet" href="../css/middle.css" media="screen and (max-width: 1024px)">
+    <link rel="stylesheet" href="../css/mini.css" media="screen and (max-width: 768px)">
+    <link rel="stylesheet" href="../css/print.css" media="print">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../images/pokeball.ico" type="image/x-icon">
+    <script type="text/javascript" src="../js/script.js"></script>
+</head>
+
+<body>
+    <a id="top-help" class="help nascosto" href="#primoContenuto">Vai al contenuto</a>
+    <header>
+        <h1>Museo Cartoni Animati</h1>
+        <button id="hamb" class="hamToggle" data-hambOn="false" type="button" onclick="hambToggle()">Menù</button>
+    </header>
+
+    <nav id="breadcrumb">
+        <p>
+            Ti trovi in: <a href="index.php" lang="en">Home</a> &gt; Area personale
+        </p>
+    </nav>
+
+    <nav id="menu" class="hamToggle" data-hambOn="false">
+        <ul>
+            <li><a href="index.php" lang="en">Home</a></li>
+            <li><a href="mostre.php">Le mostre</a></li>
+            <li><a href="virtual_tour.php" lang="en">Virtual Tour</a></li>
+            <li><a href="prenotazione.php">Prenotazione</a></li>
+            <li><a href="recensioni.php">Recensioni</a></li>
+            <li><a href="registrazione.php">Registrazione</a></li>
+
+        </ul>
+    </nav>
+
+    <main>
+        <h1>Gestione mostre</h1>
+        <!-- tabella con colonne nome, descrizione, data inizio, data fine, path img, modifica, elimina + pulsante aggiungi mostra bho sopra credo -->
+        <p id="tab-mostre-descr" class="nascosto">La tabella contiene le mostre del museo, ogni riga rappresenta la singola mostra, ogni colonna rappresenta un attributo delle mostre</p>
+        <table id="tab-mostre" title="Mostre museo" aria-describedby="tab-mostre-descr">
+            <caption>Mostre museo</caption>
+            <thead>
+                <tr>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Descrizione</th>
+                    <th scope="col">Data inizio</th>
+                    <th scope="col">Data fine</th>
+                    <th scope="col">Immagine</th>
+                    <th scope="col">Modifica</th>
+                    <th scope="col">Elimina</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{nome_mostra}}</td>
+                    <td>{{descrizione_mostra}}</td>
+                    <td><time datetime="{{data_inizio}}">{{string_data_inizio}}</time></td>
+                    <td><time datetime="{{data_fine}}">{{string_data_fine}}</time></td>
+                    <td>{{img_path}}</td>
+                    <td class="mod-mostra"><a href=""></a></td>
+                    <td class="elim-mostra"><a href=""></a></td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+    <a class="help" id="torna-su" href="#">Torna su</a>
+    <footer>
+        <h2>Museo Cartoni Animati</h2>
+        <dl>
+            <dt> <abbr title="telefono">Tel</abbr>: </dt>
+            <dd><a href="tel:+39123456789">123456789</a> </dd>
+            <dt> <span lang="en">Email: </span> </dt>
+            <dd> <a href="mailto:info@dominioImmaginario.com">info@dominioImmaginario.comm</a> </dd>
+            <dt> Indirizzo: </dt>
+            <dd>
+                <a href="https://maps.app.goo.gl/xqD3pfvXG4ockxUeA">Via Luigi Luzzatti,
+                    <abbr title="Numero civico">n.</abbr> 8, 35121 Padova</a>
+            </dd>
+        </dl>
+        <!--         <a href="" lang="en">Privacy Link TODO</a>
+ -->
+        <p id="tab-descr" class="nascosto">La tabella contiene gli orari di apertura del museo</p>
+        <table id="orari-museo" title="Orari del museo" aria-describedby="tab-descr">
+            <caption>Orari del Museo</caption>
+            <thead>
+                <tr>
+                    <td></td>
+                    <th scope="col">Mattina</th>
+                    <th scope="col">Pomeriggio</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">Lunedì</th>
+                    <td>09:00 - 12:00</td>
+                    <td>14:00 - 19:00</td>
+                </tr>
+                <tr>
+                    <th scope="row">Martedì</th>
+                    <td>09:00 - 12:00</td>
+                    <td>14:00 - 19:00</td>
+                </tr>
+                <tr>
+                    <th scope="row">Sabato</th>
+                    <td>08:00 - 13:00</td>
+                    <td>14:00 - 20:00</td>
+                </tr>
+                <tr>
+                    <th scope="row">Domenica</th>
+                    <td>08:00 - 13:00</td>
+                    <td>14:00 - 22:00</td>
+                </tr>
+            </tbody>
+        </table>
+    </footer>
+</body>
+
+</html>
