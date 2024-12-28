@@ -4,8 +4,9 @@ require_once("phplibs/databaseService.php");
 require_once("phplibs/templatingService.php");
 
 
+
 $database = new DatabaseService();
-$recensioniHtmlContent = Templating::getHtmlFileContent(__FILE__);
+$recensioniHtmlContent = Templating::getHtmlWithModifiedMenu(__FILE__);
 if (!$recensioniHtmlContent) {}
     //TODO
 /* RECENSIONI MUSEO*/
