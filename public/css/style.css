@@ -614,6 +614,7 @@ footer h2 {
 /*///////////////*/
 /* PRENOTAZIONI */
 /* REGISTRAZIONE */
+/* MODIFICA MOSTRA */
 /*///////////////*/
 
 /* Versione 1 senza cambiare main */
@@ -664,6 +665,10 @@ footer h2 {
   height: 40rem;
   margin-top: 1em;
   border-radius: 3em;
+}
+
+.lg {
+  height: 50rem;
 }
 
 .contenitoreCompilazione {
@@ -728,6 +733,7 @@ select {
 
 /*////////////*/
 /* RECENSISCI */
+/* MODIFICA MOSTRA */
 /*////////////*/
 
 #primoContenuto[class="compilazione recensisci"] {
@@ -1056,6 +1062,19 @@ main[class="opera"] {
 /*/////////////////////////*/
 /* PERSONALE ADMIN */
 /*/////////////////////////*/
+
+#agg-mostr {
+  border: 1px solid;
+  border-radius: 10px;
+  padding: 0.5em;
+  text-decoration: none;
+  color: black;
+}
+
+#agg-mostr::before {
+  content: "\2795";
+  margin-right: 0.5em;
+}
 
 #tab-mostre {
   width: 100%;

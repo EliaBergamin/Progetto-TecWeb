@@ -2,10 +2,10 @@
 <html lang="it">
 
 <head>
-    <title>Area personale</title>
+    <title>Area gestione</title>
     <meta charset="UTF-8">
-    <meta name="description" content="Pagina per area personale dell'admin">
-    <meta name="keywords" content="admin, area personale, museo">
+    <meta name="description" content="Pagina per gestire le mostre del museo, accessibile solo agli amministratori">
+    <meta name="keywords" content="amministratore,area personale,museo">
     <link rel="stylesheet" href="../css/style.css" media="screen">
     <link rel="stylesheet" href="../css/middle.css" media="screen and (max-width: 1024px)">
     <link rel="stylesheet" href="../css/mini.css" media="screen and (max-width: 768px)">
@@ -24,7 +24,7 @@
 
     <nav id="breadcrumb">
         <p>
-            Ti trovi in: <a href="index.php" lang="en">Home</a> &gt; Area personale
+            Ti trovi in: <a href="index.php" lang="en">Home</a> &gt; Area gestione
         </p>
     </nav>
 
@@ -40,9 +40,9 @@
         </ul>
     </nav>
 
-    <main>
+    <main id="primoContenuto">
         <h1>Gestione mostre</h1>
-        <!-- tabella con colonne nome, descrizione, data inizio, data fine, path img, modifica, elimina + pulsante aggiungi mostra bho sopra credo -->
+        <a id="agg-mostr" href="modifica_mostra.html">Aggiungi mostra</a>
         <p id="tab-mostre-descr" class="nascosto">La tabella contiene le mostre del museo, ogni riga rappresenta la singola mostra, ogni colonna rappresenta un attributo delle mostre</p>
         <table id="tab-mostre" title="Mostre museo" aria-describedby="tab-mostre-descr">
             <caption>Mostre museo</caption>
