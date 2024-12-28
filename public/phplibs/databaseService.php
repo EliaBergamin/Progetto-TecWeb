@@ -71,6 +71,7 @@ class DatabaseService
 		$queryInsertRecensione = "INSERT INTO Museo.Recensione (id_utente, voto, data_recensione, descrizione, tipo)
 								  VALUES (?, ?, ?, ?, ?)";
 		$queryParams = [$idUtente, $voto, $data_recensione, $descrizione, $tipo];
+		self::pulisciInput($queryParams);
 		return $this->insertValuesPreparedQuery($queryInsertRecensione, [$queryParams], "iissi");
 	}
 
@@ -78,6 +79,7 @@ class DatabaseService
 		$queryInsertPrenotazione = "INSERT INTO Museo.Prenotazione (id_utente, data_prenotazione, num_persone, orario)
 									VALUES (?, ? , ? , ?)";
 		$queryParams = [$userParam, $dayParam, $visitorsParam, $timeParam];
+		self::pulisciInput($queryParams);
 		return $this->insertValuesPreparedQuery($queryInsertPrenotazione, [$queryParams], "isis");
 	}
 	public function selectMostrePassate(): array
