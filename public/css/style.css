@@ -614,6 +614,7 @@ footer h2 {
 /*///////////////*/
 /* PRENOTAZIONI */
 /* REGISTRAZIONE */
+/* MODIFICA MOSTRA */
 /*///////////////*/
 
 /* Versione 1 senza cambiare main */
@@ -664,6 +665,10 @@ footer h2 {
   height: 40rem;
   margin-top: 1em;
   border-radius: 3em;
+}
+
+.lg {
+  height: 50rem;
 }
 
 .contenitoreCompilazione {
@@ -728,6 +733,7 @@ select {
 
 /*////////////*/
 /* RECENSISCI */
+/* MODIFICA MOSTRA */
 /*////////////*/
 
 #primoContenuto[class="compilazione recensisci"] {
@@ -1051,4 +1057,70 @@ main[class="opera"] {
 .virtualTour-elenco-sale dd p {
   color: #666;
   margin-bottom: 10px;
+}
+
+/*/////////////////////////*/
+/* PERSONALE ADMIN */
+/*/////////////////////////*/
+
+#agg-mostr {
+  border: 1px solid;
+  border-radius: 10px;
+  padding: 0.5em;
+  text-decoration: none;
+  color: black;
+}
+
+#agg-mostr::before {
+  content: "\2795";
+  margin-right: 0.5em;
+}
+
+#tab-mostre {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+#tab-mostre caption {
+  font-size: 1.5em;
+  margin-bottom: 1em;
+}
+
+#tab-mostre td {
+  max-width: 11em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+#tab-mostre th, 
+#tab-mostre td {
+  border: 1px solid black;
+  padding: 0.5em;
+}
+
+#tab-mostre tr:nth-child(even),
+#tab-mostre thead th {
+  background-color: #f2f2f2;
+}
+
+#tab-mostre tr:nth-child(odd) {
+  background-color: var(--headerbgcolor);
+}
+
+.mod-mostra,
+.elim-mostra {
+  text-align: center;
+}
+
+.mod-mostra a::before {
+  content: "\270D";
+  color: #000;
+}
+
+.elim-mostra a::before {
+  content: "\1F5D1";
+  color: #000;
+  font-size: 1.5em;
 }
