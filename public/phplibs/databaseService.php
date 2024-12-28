@@ -30,8 +30,7 @@ class DatabaseService
 		$preparedStatement = $this->connection->prepare($queryToExecute);
 		if (!empty($arrayOfValues))
 			$preparedStatement->bind_param($valueTypeForBinding, ...$arrayOfValues);
-		$preparedStatement->execute();
-		return $preparedStatement;
+		return $preparedStatement->execute() ? $preparedStatement : null;
 	}
 
 	private function selectValuesPreparedQuery($queryToExecute, $arrayOfValues, $valueTypeForBinding = ""): array
@@ -134,6 +133,7 @@ class DatabaseService
 		return $this->selectValuesPreparedQuery($queryOpere, $queryParams, "i");
 	}
 
+
 	public function selectPrenotazioniFromId($idUtente): array{
 		$queryPrenotazioni = "SELECT *
 							  FROM Museo.Prenotazione
@@ -141,6 +141,48 @@ class DatabaseService
 		$queryParams = [$idUtente];
 		return $this->selectValuesPreparedQuery($queryPrenotazioni,$queryParams,"i");
 	}
+
+	public function selectUsersFromUsername($username): array
+	{
+		$queryUser = "SELECT *
+					  FROM Museo.Utente
+					  WHERE Utente.username = ?";
+
+		$queryParams = [$username];
+		return $this->selectValuesPreparedQuery($queryUser, $queryParams, "s");
+	}
+
+	private function pulisciInputHelper(&$item): void
+	{
+		if (is_string($item)) {
+			$item = html_entity_decode($item, ENT_QUOTES | ENT_SUBSTITUTE | ENT_HTML5);
+			$item = trim($item);
+			$item = strip_tags($item);
+		}
+	}
+
+	private function pulisciInput(&$in): void
+	{
+		if (is_array($in))
+			array_walk_recursive($in, "self::pulisciInputHelper");
+		elseif (is_string($in))
+			$this->pulisciInputHelper($in);
+	}
+
+	public function insertUser($ruolo, $username, $nome, $cognome, $password_hash, $email): int
+	{
+		$queryUser = "INSERT INTO Museo.Utente (ruolo, username, nome, cognome, password_hash, email) 
+					  VALUES (?, ?, ?, ?, ?, ?)";
+		$queryParams = [$ruolo, $username, $nome, $cognome, $password_hash, $email];
+		self::pulisciInput($queryParams);
+		$stmt = self::executePreparedQuery($queryUser, $queryParams, "isssss");
+		if ($stmt->affected_rows > 0)
+			return $stmt->insert_id;
+		else
+			return -1;
+	}
+
+
 	public function __destruct()
 	{
 		if ($this->connection)

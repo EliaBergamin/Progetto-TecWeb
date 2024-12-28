@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../css/style.css" media="screen">
     <link rel="stylesheet" href="../css/middle.css" media="screen and (max-width: 1024px)">
     <link rel="stylesheet" href="../css/mini.css" media="screen and (max-width: 768px)">
+    <link rel="stylesheet" href="../css/print.css" media="print">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../images/pokeball.ico" type="image/x-icon">
     <script type="text/javascript" src="../js/script.js"></script>
@@ -35,8 +36,17 @@
             <li id="currentLink" lang="en">Virtual Tour</li>
             <li><a href="prenotazione.php">Prenotazione</a></li>
             <li><a href="recensioni.php">Recensioni</a></li>
-            <li><a href="registrazione.php">Registrazione</a></li>
-
+            <!-- log_start -->
+            <li><a href="registrazione.php">Registrati</a></li>
+            <li><a href="login.php">Accedi</a></li>
+            <!-- log_end -->
+            <!-- account_opt_start -->
+            <li><a href={{option_link}}>{{option}}</a></li>
+            <li><a href="logout.php">Esci</a></li>
+            <!-- account_opt_end -->
+            <!-- greeting_start -->
+            <li><span>Ciao {{username}}!</span></li>
+            <!-- greeting_end -->
         </ul>
     </nav>
   
