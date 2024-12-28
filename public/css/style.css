@@ -1089,7 +1089,8 @@ main[class="opera"] {
 
 #tab-mostre td {
   max-width: 11em;
-  overflow-x: auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
   white-space: nowrap;
 }
 
