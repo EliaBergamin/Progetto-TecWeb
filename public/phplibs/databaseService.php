@@ -178,7 +178,14 @@ class DatabaseService
 		return $this->selectValuesPreparedQuery($queryOpere, $queryParams, "i");
 	}
 
-
+	public function selectInfoUtenteFromId($idUtente) :array
+	{
+		$queryUtente = "SELECT *
+						FROM Museo.Utente
+						WHERE Utente.id_utente = ?";
+		$queryParams = [$idUtente];
+		return $this->selectValuesPreparedQuery($queryUtente, $queryParams, "i");
+	}
 	public function selectPrenotazioniFromId($idUtente): array{
 		$queryPrenotazioni = "SELECT *
 							  FROM Museo.Prenotazione
@@ -246,6 +253,12 @@ class DatabaseService
 		$queryParams = [$id_mostra];
 		self::pulisciInput($queryParams);
 		return self::deleteRowPreparedQuery($query, $queryParams, "i");
+	}
+	public function deletePrenotazioneUser($idUtente,$data_prenotazione) : bool {
+		$query = "DELETE FROM Prenotazione WHERE id_utente = ? AND data_prenotazione = ?";
+		$queryParams = [$idUtente,$data_prenotazione];
+		self::pulisciInput($queryParams);
+		return self::deleteRowPreparedQuery($query, $queryParams, "is");
 	}
 
 	public function __destruct()

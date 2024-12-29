@@ -8,7 +8,7 @@
     $insertSuccess = $database->insertUserReview($_SESSION['user_id'],intval($_POST['rating']),$_POST['data-visita'],$_POST['descrizione'],intval($_POST['tipo']));
     
     if($insertSuccess)
-        header('Location: /index.php');
+        header('Location: /profile.php');
     else
         header('Location: /recensisci.php');
 

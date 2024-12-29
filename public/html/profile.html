@@ -35,7 +35,16 @@
             <li><a href="virtual_tour.php" lang="en">Virtual Tour</a></li>
             <li><a href="prenotazione.php">Prenotazione</a></li>
             <li><a href="recensioni.php">Recensioni</a></li>
-            <li><a href="registrazione.php">Registrazione</a></li>
+            <!-- log_start -->
+            <li><a href="registrazione.php">Registrati</a></li>
+            <li><a href="login.php">Accedi</a></li>
+            <!-- log_end -->
+            <!-- account_opt_start -->
+            <li><a href="logout.php">Esci</a></li>
+            <!-- account_opt_end -->
+            <!-- greeting_start -->
+            <li><span>Ciao {{username}}!</span></li>
+            <!-- greeting_end -->
 
         </ul>
     </nav>
@@ -43,6 +52,7 @@
     <main id="primoContenuto">
         <h1>Area personale</h1>
         <h2>I tuoi dati:</h2>
+        <!-- datiutente_start -->
         <dl id="dati-utente">
             <dt>Nome: </dt>
             <dd>{{utente_nome}}</dd>
@@ -52,9 +62,8 @@
             <dd>{{utente_email}}</dd>
             <dt lang="en">Username: </dt>
             <dd>{{utente_username}}</dd>
-            <dt lang="en">Password: </dt>
-            <dd>{{utente_password}}</dd>
         </dl>
+        <!-- datiutente_end -->
         <h2>Le tue prenotazioni:</h2>
         <p id="tab-prenot-descr" class="nascosto">La tabella contiene le prenotazioni di un utente, ogni riga rappresenta la singola prenotazione, ogni colonna rappresenta un attributo della prenotazione</p>
         <table id="tab-prenot" title="Prenotazioni" aria-describedby="tab-prenot-descr">
@@ -68,16 +77,18 @@
                 </tr>
             </thead>
             <tbody>
+                <!-- rowprenotazione_start -->
                 <tr>
-                    <td><time datetime="{{data_prenotazione}}">{{string_data_prenotazione}}</time></td>
+                    <td><time id="data_prenotazione" datetime="{{data_prenotazione}}">{{string_data_prenotazione}}</time></td>
                     <td>{{num_persone}}</td>
                     <td>{{orario_prenotazione}}</td>
                     <td class="canc-pren"><a href="#dialog-pren"></a></td>
                 </tr>
+                <!-- rowprenotazione_end -->
             </tbody>
         </table>
         <dialog id="dialog-pren">
-            <p>Confermi di voler cancellare la prenotazione del giorno {{string_data_prenotazione}}?</p>
+            <p>Confermi di voler cancellare la prenotazione ?</p>
             <button id="annul-dialog">Annulla</button>
             <button id="conf-dialog">Conferma</button>
         </dialog>
