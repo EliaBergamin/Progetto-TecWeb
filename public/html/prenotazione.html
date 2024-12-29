@@ -35,15 +35,24 @@
             <li><a href="virtual_tour.php" lang="en">Virtual Tour</a></li>
             <li id="currentLink">Prenotazione</li>
             <li><a href="recensioni.php">Recensioni</a></li>
-            <li><a href="registrazione.php">Registrazione</a></li>
-
+            <!-- log_start -->
+            <li><a href="registrazione.php">Registrati</a></li>
+            <li><a href="login.php">Accedi</a></li>
+            <!-- log_end -->
+            <!-- account_opt_start -->
+            <li><a href={{option_link}}>{{option}}</a></li>
+            <li><a href="logout.php">Esci</a></li>
+            <!-- account_opt_end -->
+            <!-- greeting_start -->
+            <li><span>Ciao {{username}}!</span></li>
+            <!-- greeting_end -->
         </ul>
     </nav>
 
     <main id="prenotazione" class="compilazione">
         <div id="contenitorePrenotazione" class="contenitoreCompilazione">
             <h1>Prenota la tua visita al museo</h1>
-            <form action="prenotazioneEffettuata.php" method="post" id="formPrenotazione" class="formCompilazione">
+            <form action="prenotazione_effettuata.php" method="post" id="formPrenotazione" class="formCompilazione">
                 <label for="giorno">Giorno</label>
                 <!-- da mettere come minimo il giorno odierno -->
                 <input type="date" name="giorno" id="giorno" required data-msg-required="Per favore, selezionare il giorno della visita" data-msg-invalid="Giorno non valido">
@@ -51,14 +60,14 @@
                 <select name="orario" id="orario" required>
                     <option value="" disabled selected>Seleziona</option>
                     <optgroup label="mattina">
-                        <option value="09">09:00 - 10:30</option>
-                        <option value="10_30">10:30 - 12:00</option>
+                        <option value="09:00:00">09:00 - 10:30</option>
+                        <option value="10:30:00">10:30 - 12:00</option>
                     </optgroup>
                     <optgroup label="pomeriggio">
-                        <option value="12">12:00 - 13:30</option>
-                        <option value="13_30">13:30 - 15:00</option>
-                        <option value="15">15:00 - 16:30</option>
-                        <option value="16_30">16:30 - 18:00</option>
+                        <option value="12:00:00">12:00 - 13:30</option>
+                        <option value="13:30:00">13:30 - 15:00</option>
+                        <option value="15:00:00">15:00 - 16:30</option>
+                        <option value="16:30:00">16:30 - 18:00</option>
                     </optgroup>
                 </select>
                 <label for="visitatori">Numero di visitatori</label>

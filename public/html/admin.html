@@ -2,10 +2,10 @@
 <html lang="it">
 
 <head>
+    <title>Area gestione</title>
     <meta charset="UTF-8">
-    <title>Registrazione</title>
-    <meta name="description" content="Pagina di registrazione per poter usufruire dei servizi del museo">
-    <meta name="keywords" content="registrazione,signup,museo,cardgame,virtual tour,prenota,visita">
+    <meta name="description" content="Pagina per gestire le mostre del museo, accessibile solo agli amministratori">
+    <meta name="keywords" content="amministratore,area personale,museo">
     <link rel="stylesheet" href="../css/style.css" media="screen">
     <link rel="stylesheet" href="../css/middle.css" media="screen and (max-width: 1024px)">
     <link rel="stylesheet" href="../css/mini.css" media="screen and (max-width: 768px)">
@@ -24,51 +24,53 @@
 
     <nav id="breadcrumb">
         <p>
-            Ti trovi in: <a href="index.php" lang="en">Home</a> &gt; Registrazione
+            Ti trovi in: <a href="index.php" lang="en">Home</a> &gt; Area gestione
         </p>
     </nav>
 
     <nav id="menu" class="hamToggle" data-hambOn="false">
         <ul>
-            <li><a href="../index.php" lang="en">Home</a></li>
+            <li><a href="index.php" lang="en">Home</a></li>
             <li><a href="mostre.php">Le mostre</a></li>
             <li><a href="virtual_tour.php" lang="en">Virtual Tour</a></li>
             <li><a href="prenotazione.php">Prenotazione</a></li>
             <li><a href="recensioni.php">Recensioni</a></li>
-            <!-- log_start -->
-            <li id="currentLink">Registrati</li>
-            <li><a href="login.php">Accedi</a></li>
-            <!-- log_end -->
-            <!-- account_opt_start -->
-            <li><a href={{option_link}}>{{option}}</a></li>
-            <li><a href="logout.php">Esci</a></li>
-            <!-- account_opt_end -->
-            <!-- greeting_start -->
-            <li><span>Ciao {{username}}!</span></li>
-            <!-- greeting_end -->
+            <li><a href="registrazione.php">Registrazione</a></li>
+
         </ul>
     </nav>
 
-    <main id="primoContenuto" class="compilazione">
-        <div class="contenitoreCompilazione">
-        <h1>Registrazione</h1>
-        <form action="../register.php" method="post" class="formCompilazione">
-            <label for="nome">Nome </label>
-            <input type="text" name="nome" id="nome" required>
-            <label for="cognome">Cognome </label>
-            <input type="text" name="cognome" id="cognome" required>
-            <label for="username">Username </label>
-            <input type="text" name="username" id="username" required>
-            <label for="email">Email </label>
-            <input type="email" name="email" id="email" required data-msg-required="L'email è obbligatoria!"
-                data-msg-invalid="Email non valida">
-            <label for="password">Password </label>
-            <input type="password" name="password" id="password" required
-                data-msg-required="La password è obbligatoria!"
-                data-msg-invalid="La password deve essere lunga almeno 8 caratteri">
-            <input type="submit" value="Registrati">
-        </form>
-    </div>
+    <main id="primoContenuto">
+        <h1>Gestione mostre</h1>
+        <a id="agg-mostr" href="aggiungi_mostra.php">Aggiungi mostra</a>
+        <p id="tab-mostre-descr" class="nascosto">La tabella contiene le mostre del museo, ogni riga rappresenta la singola mostra, ogni colonna rappresenta un attributo delle mostre</p>
+        <table id="tab-mostre" title="Mostre museo" aria-describedby="tab-mostre-descr">
+            <caption>Mostre museo</caption>
+            <thead>
+                <tr>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Descrizione</th>
+                    <th scope="col">Data inizio</th>
+                    <th scope="col">Data fine</th>
+                    <th scope="col">Immagine</th>
+                    <th scope="col">Modifica</th>
+                    <th scope="col">Elimina</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- mostreAdmin_start -->
+                <tr>
+                    <td>{{nome_mostra}}</td>
+                    <td>{{descrizione_mostra}}</td>
+                    <td><time datetime="{{data_inizio}}">{{string_data_inizio}}</time></td>
+                    <td><time datetime="{{data_fine}}">{{string_data_fine}}</time></td>
+                    <td>{{img_path}}</td>
+                    <td class="mod-mostra"><a href="modifica_mostra.php?id_mostra={{id_mostra}}"></a></td>
+                    <td class="elim-mostra"><a href="delete_mostra_admin.php?id_mostra={{id_mostra}}"></a></td>
+                </tr>
+                <!-- mostreAdmin_end -->
+            </tbody>
+        </table>
     </main>
     <a class="help" id="torna-su" href="#">Torna su</a>
     <footer>
@@ -99,23 +101,23 @@
             <tbody>
                 <tr>
                     <th scope="row">Lunedì</th>
-                    <td><time datetime="09:00">09:00</time> - <time datetime="12:00">12:00</time></td>
-                    <td><time datetime="14:00">14:00</time> - <time datetime="19:00">19:00</time></td>
+                    <td>09:00 - 12:00</td>
+                    <td>14:00 - 19:00</td>
                 </tr>
                 <tr>
                     <th scope="row">Martedì</th>
-                    <td><time datetime="09:00">09:00</time> - <time datetime="12:00">12:00</time></td>
-                    <td><time datetime="14:00">14:00</time> - <time datetime="19:00">19:00</time></td>
+                    <td>09:00 - 12:00</td>
+                    <td>14:00 - 19:00</td>
                 </tr>
                 <tr>
                     <th scope="row">Sabato</th>
-                    <td><time datetime="08:00">08:00</time> - <time datetime="13:00">13:00</time></td>
-                    <td><time datetime="14:00">14:00</time> - <time datetime="20:00">20:00</time></td>
+                    <td>08:00 - 13:00</td>
+                    <td>14:00 - 20:00</td>
                 </tr>
                 <tr>
                     <th scope="row">Domenica</th>
-                    <td><time datetime="08:00">08:00</time> - <time datetime="13:00">13:00</time></td>
-                    <td><time datetime="14:00">14:00</time> - <time datetime="22:00">22:00</time></td>
+                    <td>08:00 - 13:00</td>
+                    <td>14:00 - 22:00</td>
                 </tr>
             </tbody>
         </table>

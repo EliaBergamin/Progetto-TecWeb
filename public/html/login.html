@@ -3,20 +3,19 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Registrazione</title>
-    <meta name="description" content="Pagina di registrazione per poter usufruire dei servizi del museo">
-    <meta name="keywords" content="registrazione,signup,museo,cardgame,virtual tour,prenota,visita">
+    <title>Accedi</title>
+    <meta name="description" content="Accedi per poter usufruire dei servizi del museo">
+    <meta name="keywords" content="accesso,login,signin,museo,cardgame,virtual tour,prenota,visita">
     <link rel="stylesheet" href="../css/style.css" media="screen">
     <link rel="stylesheet" href="../css/middle.css" media="screen and (max-width: 1024px)">
     <link rel="stylesheet" href="../css/mini.css" media="screen and (max-width: 768px)">
-    <link rel="stylesheet" href="../css/print.css" media="print">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../images/pokeball.ico" type="image/x-icon">
     <script type="text/javascript" src="../js/script.js"></script>
 </head>
 
 <body>
-    <a id="top-help" class="help nascosto" href="#primoContenuto">Vai al contenuto</a>
+    <a class="nascosto" href="#primoContenuto">Vai al contenuto</a>
     <header>
         <h1>Museo Cartoni Animati</h1>
         <button id="hamb" class="hamToggle" data-hambOn="false" type="button" onclick="hambToggle()">Menù</button>
@@ -24,7 +23,7 @@
 
     <nav id="breadcrumb">
         <p>
-            Ti trovi in: <a href="index.php" lang="en">Home</a> &gt; Registrazione
+            Ti trovi in: <a href="../index.html" lang="en">Home</a> &gt; Registrazione
         </p>
     </nav>
 
@@ -36,8 +35,8 @@
             <li><a href="prenotazione.php">Prenotazione</a></li>
             <li><a href="recensioni.php">Recensioni</a></li>
             <!-- log_start -->
-            <li id="currentLink">Registrati</li>
-            <li><a href="login.php">Accedi</a></li>
+            <li><a href="registrazione.php">Registrati</a></li>
+            <li id="currentLink">Accedi</li>
             <!-- log_end -->
             <!-- account_opt_start -->
             <li><a href={{option_link}}>{{option}}</a></li>
@@ -51,26 +50,20 @@
 
     <main id="primoContenuto" class="compilazione">
         <div class="contenitoreCompilazione">
-        <h1>Registrazione</h1>
-        <form action="../register.php" method="post" class="formCompilazione">
-            <label for="nome">Nome </label>
-            <input type="text" name="nome" id="nome" required>
-            <label for="cognome">Cognome </label>
-            <input type="text" name="cognome" id="cognome" required>
-            <label for="username">Username </label>
-            <input type="text" name="username" id="username" required>
-            <label for="email">Email </label>
-            <input type="email" name="email" id="email" required data-msg-required="L'email è obbligatoria!"
-                data-msg-invalid="Email non valida">
-            <label for="password">Password </label>
+        <h1>Accedi</h1>
+        <form action="autenticate.php" method="post" class="formCompilazione">
+            <label for="username">Username: </label>
+            <input type="text" name="username" id="username" required data-msg-required="Username obbligatorio!"
+                data-msg-invalid="Username non valido">
+            <label for="password">Password: </label>
             <input type="password" name="password" id="password" required
                 data-msg-required="La password è obbligatoria!"
                 data-msg-invalid="La password deve essere lunga almeno 8 caratteri">
-            <input type="submit" value="Registrati">
+            <input type="submit" value="Accedi">
         </form>
     </div>
     </main>
-    <a class="help" id="torna-su" href="#">Torna su</a>
+    <a id="torna-su" href="#" aria-label="Torna su">⇪</a>
     <footer>
         <h2>Museo Cartoni Animati</h2>
         <dl>

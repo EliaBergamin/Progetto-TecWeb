@@ -125,7 +125,40 @@ class Templating
         return $htmlGenerated .= '</svg>';
     }
 
+    public static function isAdmin(): bool
+    {
+        return isset($_SESSION['is_admin']) && $_SESSION['is_admin'] === true;
+    }
 
+    public static function getHtmlWithModifiedMenu($phpFileNameThatCalled): string
+    {
+        $htmlContent = Templating::getHtmlFileContent($phpFileNameThatCalled);
+        if (!$htmlContent) {
+            //TODO
+        }
+        $log = Templating::getContentBetweenPlaceholders($htmlContent, 'log');
+        $account_opt = Templating::getContentBetweenPlaceholders($htmlContent, 'account_opt');
+        $greeting = Templating::getContentBetweenPlaceholders($htmlContent, 'greeting');
+
+        if (!isset($_SESSION['user_id'])) {
+            $account_opt = '';
+            $greeting = '';
+        } elseif (!Templating::isAdmin()) {
+            $log = '';
+            Templating::replaceAnchor($account_opt, 'option_link', 'profile.php');
+            Templating::replaceAnchor($account_opt, 'option', 'Il mio profilo');
+            Templating::replaceAnchor($greeting, 'username', $_SESSION['username']);
+        } else {
+            $log = '';
+            Templating::replaceAnchor($account_opt, 'option_link', 'admin.php');
+            Templating::replaceAnchor($account_opt, 'option', 'Sezione amministratore');
+            Templating::replaceAnchor($greeting, 'username', $_SESSION['username']);
+        }
+        Templating::replaceContentBetweenPlaceholders($htmlContent, "log", $log);
+        Templating::replaceContentBetweenPlaceholders($htmlContent, "account_opt", $account_opt);
+        Templating::replaceContentBetweenPlaceholders($htmlContent, "greeting", $greeting);
+        return $htmlContent;
+    }
 }
 
 
