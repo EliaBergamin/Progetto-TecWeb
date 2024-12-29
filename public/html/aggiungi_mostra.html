@@ -25,7 +25,7 @@
   <nav id="breadcrumb">
     <p>
       Ti trovi in: <a lang="en" href="index.php">Home</a> &gt;
-      <a href="admin.php">Area gestione</a> &gt; Modifica mostra
+      <a href="admin.php">Area gestione</a> &gt; Aggiungi mostra
     </p>
   </nav>
 
@@ -42,22 +42,20 @@
 
   <main id="primoContenuto" class="compilazione lg">
     <div class="contenitoreCompilazione">
-      <h1>Modifica mostra</h1>
-      <!-- customform_start -->
-      <form class="formCompilazione" action="alter_mostra_admin.php?id_mostra={{id_mostra}}" method="post">
+      <h1>Aggiungi mostra</h1>
+      <form class="formCompilazione" action="insert_mostra_admin.php" method="post">
         <label for="nome-mostra">Nome mostra</label>
-        <input type="text" name="nome-mostra" id="nome-mostra" value={{nome_mostra}}>
+        <input type="text" name="nome-mostra" id="nome-mostra" required>
         <label for="descrizione-mostra">Descrizione</label>
-        <textarea name="descrizione-mostra" id="descrizione-mostra" >{{descrizione}}</textarea>
+        <textarea name="descrizione-mostra" id="descrizione-mostra" required></textarea>
         <label for="data-inizio">Data inizio</label>
-        <input type="date" name="data-inizio" id="data-inizio" value={{data_inizio}} >
+        <input type="date" name="data-inizio" id="data-inizio" required>
         <label for="data-fine">Data fine</label>
-        <input type="date" name="data-fine" id="data-fine" value={{data_fine}} >
+        <input type="date" name="data-fine" id="data-fine" required>
         <label for="immagine-mostra">Percorso immagine</label>
-        <input type="text" name="immagine-mostra" id="immagine-mostra" value={{immagine_mostra}} >
+        <input type="text" name="immagine-mostra" id="immagine-mostra" required>
         <input type="submit" value="Conferma">
       </form>
-      <!-- customform_end -->
     </div>
   </main>
   <a class="help" id="torna-su" href="#">Torna su</a>

@@ -5,7 +5,7 @@ require_once("phplibs/templatingService.php");
 
 
 if (!isset($_SESSION['user_id']) && $_SESSION['user_role'] != 'admin') 
-    header("Location: login.php?redirect=personale_admin.php");
+    header("Location: login.php?redirect=admin.php");
 
 $database = new DatabaseService();
 $personalePageAdmin = Templating::getHtmlWithModifiedMenu(__FILE__);
@@ -33,6 +33,7 @@ foreach ($arrayMostreMuseo as $associativeRow) {
         Templating::convertDateTimeToString($associativeRow["data_fine"])
     );
     Templating::replaceAnchor($temp, "img_path", $associativeRow["img_path"]);
+    Templating::replaceAnchor($temp, "id_mostra", $associativeRow["id_mostra"]);
 
 
     $fullcontent .= $temp . "\n";

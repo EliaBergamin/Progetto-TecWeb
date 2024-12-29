@@ -42,7 +42,7 @@
 
     <main id="primoContenuto">
         <h1>Gestione mostre</h1>
-        <a id="agg-mostr" href="modifica_mostra.html">Aggiungi mostra</a>
+        <a id="agg-mostr" href="aggiungi_mostra.php">Aggiungi mostra</a>
         <p id="tab-mostre-descr" class="nascosto">La tabella contiene le mostre del museo, ogni riga rappresenta la singola mostra, ogni colonna rappresenta un attributo delle mostre</p>
         <table id="tab-mostre" title="Mostre museo" aria-describedby="tab-mostre-descr">
             <caption>Mostre museo</caption>
@@ -65,8 +65,8 @@
                     <td><time datetime="{{data_inizio}}">{{string_data_inizio}}</time></td>
                     <td><time datetime="{{data_fine}}">{{string_data_fine}}</time></td>
                     <td>{{img_path}}</td>
-                    <td class="mod-mostra"><a href=""></a></td>
-                    <td class="elim-mostra"><a href=""></a></td>
+                    <td class="mod-mostra"><a href="modifica_mostra.php?id_mostra={{id_mostra}}"></a></td>
+                    <td class="elim-mostra"><a href="delete_mostra_admin.php?id_mostra={{id_mostra}}"></a></td>
                 </tr>
                 <!-- mostreAdmin_end -->
             </tbody>

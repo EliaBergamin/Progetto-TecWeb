@@ -66,6 +66,32 @@ class DatabaseService
 		}
 		return $insertedRowsNumber > 0 ;
 	}
+	private function updateValuesPreparedQuery($queryToExecute, $arrayOfValues, $valueTypeForBinding = ""): bool{
+		try{
+			$preparedStatement = $this->executePreparedQuery($queryToExecute, $arrayOfValues, $valueTypeForBinding);
+			$affectedRows = $preparedStatement->affected_rows;
+			$preparedStatement->close();
+		}
+		catch (mysqli_sql_exception $e) {
+			if ($e->getCode() == 1062)
+				return false;
+			else
+				throw new Exception(self::GLOBALERROR);
+		}
+		return $affectedRows > 0;
+	}
+
+	private function deleteRowPreparedQuery($queryToExecute, $arrayOfValues, $valueTypeForBinding = ""): bool{
+		try{
+			$preparedStatement = $this->executePreparedQuery($queryToExecute, $arrayOfValues, $valueTypeForBinding);
+			$affectedRows = $preparedStatement->affected_rows;
+			$preparedStatement->close();
+		}
+		catch (mysqli_sql_exception $e) {
+			throw new Exception(self::GLOBALERROR);
+		}
+		return $affectedRows > 0;
+	}
 	public function insertUserReview($idUtente, $voto, $data_recensione, $descrizione, $tipo): bool
 	{
 		$queryInsertRecensione = "INSERT INTO Museo.Recensione (id_utente, voto, data_recensione, descrizione, tipo)
@@ -82,6 +108,15 @@ class DatabaseService
 		self::pulisciInput($queryParams);
 		return $this->insertValuesPreparedQuery($queryInsertPrenotazione, [$queryParams], "isis");
 	}
+	
+	public function insertMostraAdmin($nome_mostra,$descrizione_mostra,$data_inizio,$data_fine,$img_path): bool
+	{
+		$queryInsertMostra = "INSERT INTO Museo.Mostra (nome, descrizione, data_inizio, data_fine, img_path)
+							  VALUES (?, ?, ?, ?, ?)";
+		$queryParams = [$nome_mostra, $descrizione_mostra, $data_inizio, $data_fine, $img_path];
+		self::pulisciInput($queryParams);
+		return $this->insertValuesPreparedQuery($queryInsertMostra, [$queryParams], "sssss");
+	}
 	public function selectMostrePassate(): array
 	{
 		$queryMostrePassate = "SELECT * 
@@ -96,6 +131,14 @@ class DatabaseService
 							   FROM Museo.Mostra
 							   WHERE CURDATE() BETWEEN data_inizio AND data_fine;";
 		return $this->selectValuesPreparedQuery($queryMostrePassate, []);
+	}
+
+	public function selectMostraByID($id_mostra): array
+	{
+		$queryMostrePassate = "SELECT * 
+							   FROM Museo.Mostra
+							   WHERE Mostra.id_mostra = ?";
+		return $this->selectValuesPreparedQuery($queryMostrePassate, [$id_mostra],"i");
 	}
 	public function selectMostreFuture(): array
 	{
@@ -183,7 +226,27 @@ class DatabaseService
 		else
 			return -1;
 	}
+	
+	public function alterMostraAdmin($id_mostra,$nome_mostra,$descrizione_mostra,$data_inizio,$data_fine,$img_path): bool {
+		$query = "UPDATE Mostra SET 
+                nome = ?, 
+                descrizione = ?, 
+                data_inizio = ?, 
+                data_fine = ?, 
+                img_path = ? 
+              WHERE id_mostra = ?";
 
+		$queryParams = [$nome_mostra, $descrizione_mostra, $data_inizio, $data_fine, $img_path,$id_mostra];
+		self::pulisciInput($queryParams);
+		return self::updateValuesPreparedQuery($query, $queryParams, "sssssi");
+	}
+
+	public function deleteMostraAdmin($id_mostra): bool{
+		$query = "DELETE FROM Mostra WHERE id_mostra = ?";
+		$queryParams = [$id_mostra];
+		self::pulisciInput($queryParams);
+		return self::deleteRowPreparedQuery($query, $queryParams, "i");
+	}
 
 	public function __destruct()
 	{
