@@ -1124,3 +1124,76 @@ main[class="opera"] {
   color: #000;
   font-size: 1.5em;
 }
+
+/*/////////////////////////*/
+/* AREA PERSONALE */
+/*/////////////////////////*/
+
+#dati-utente {
+  margin: 2em auto;
+  width: 50%;
+  padding: 0 1.5em;
+  padding-bottom: 1.5em;
+  border: 1px solid black;
+  border-radius: 8px;
+}
+
+#dati-utente dt {
+  font-weight: bold;
+  margin-bottom: 0.5em;
+  margin-top: 1.5em;
+}
+
+#dati-utente dd {
+  margin-left: 1.5em;
+}
+
+#tab-prenot {
+  width:80%;
+  border-collapse: collapse;
+  text-align: left;
+  margin: 2em auto;
+}
+
+#tab-prenot th, 
+#tab-prenot td {
+  border: 1px solid black;
+  padding: 0.5em;
+}
+
+#tab-prenot tr:nth-child(even),
+#tab-prenot thead th {
+  background-color: #f2f2f2;
+}
+
+#tab-prenot tr:nth-child(odd) {
+  background-color: var(--headerbgcolor);
+}
+
+.canc-pren {
+  cursor: pointer;
+  text-align: center;
+}
+
+.canc-pren a::before {
+  content: "\1F5D1";
+  color: #000;
+  font-size: 1.5em;
+}
+
+#dialog-pren {
+  border: 1px solid black;
+  border-radius: 8px;
+  padding: 1em;
+  margin: auto;
+  font-size: 1.2em;
+}
+
+#dialog-pren button {
+  margin-right: 1em;
+  margin-top: 1em;
+  padding: 0.5em;
+  border: 1px solid black;
+  border-radius: 5px;
+  cursor: pointer;
+}
