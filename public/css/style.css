@@ -696,12 +696,16 @@ footer h2 {
 
 .formCompilazione input,
 select {
-  margin-bottom: 1.25em;
+  margin-bottom: 0.25em;
   box-sizing: border-box;
   padding: 0.4em;
   border: solid 2px #000;
   border-radius: 5px;
   display: block;
+}
+
+.formCompilazione input:last-of-type {
+  margin-top: 1.25em;
 }
 
 .formCompilazione input[type="submit"] {
@@ -722,6 +726,7 @@ select {
 
 .formCompilazione label {
   display: block;
+  margin-top: 1em;
   margin-bottom: 0.25em;
   font-size: 1.15rem;
 }
