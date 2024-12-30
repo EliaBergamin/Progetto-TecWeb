@@ -98,7 +98,29 @@ function change_span(id) {
 }
 
 function addEventListeners(item) {
-    item.addEventListener("click", function () { change_span(item.id); console.log(item.id); });
-    item.addEventListener("mouseover", function () { change_span(item.id); console.log(item.id); });
+    item.addEventListener("click", function () { change_span(item.id); });
+    item.addEventListener("mouseover", function () { change_span(item.id); });
     item.addEventListener("mouseleave", reset_span);
+}
+
+function selectSala(id) {
+    let descrizioniSale = document.querySelectorAll("#virtualTour-elenco-sale p");
+
+    for (let i = 0; i < descrizioniSale.length; i++) {
+        if (i === id) {
+            descrizioniSale[i].classList.add("selected");
+        } else {
+            descrizioniSale[i].classList.remove("selected");
+        }
+    }
+}
+
+function initMap() {
+    console.log('initMap');
+    let links = document.querySelectorAll("#virtualTour-mappa a");
+    for (let i = 0; i < links.length; i++) {
+        links[i].addEventListener("click", function () {
+            selectSala(i);
+        });
+    }
 }

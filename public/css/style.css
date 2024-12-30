@@ -15,6 +15,7 @@
   --linkcolor: #fff;
   --visitedcolor: #fbff50;
   --submitcolor: #28d428;
+  --disabledtxtcolor: #666;
 }
 
 @font-face {
@@ -582,7 +583,7 @@ footer h2 {
 
 /* con questo vengono sommati i due margini tra bot del primo e top del secondo risolvi */
 .infoMostra>p {
-  margin: 1em 10%;
+  margin: 0em 10% 1em;
 }
 
 .giorniMostra {
@@ -594,7 +595,6 @@ footer h2 {
 }
 
 .button {
-  align-self: flex-end;
   padding: 0.6em;
   font-size: 1em;
   border: 2px solid #000;
@@ -687,14 +687,18 @@ select {
   display: block;
 }
 
-.formCompilazione input[type="submit"] {
+.formCompilazione input[type="submit"], a.button {
   background-color: var(--submitcolor);
-  color: white;
   padding: 0.6em;
   width: auto;
   font-size: 1em;
   margin-bottom: 0;
-  color: black;
+  color: var(--txtcolor);
+  display: block;
+}
+
+a.button {
+  margin: 0 10%;
 }
 
 .formCompilazione label {
@@ -922,7 +926,7 @@ main[class="opera"] {
 /* VIRTUAL TOUR */
 /*/////////////////////////*/
 
-.virtualTour-mappa ol {
+#virtualTour-mappa ol {
   display: grid;
   grid-template-columns: 2fr 1fr 2fr;
   gap: 4px;
@@ -930,7 +934,7 @@ main[class="opera"] {
   border: #ddd solid 8px;
 }
 
-.virtualTour-mappa li {
+#virtualTour-mappa li {
   display: block;
   width: auto;
   border: 2px solid #ccc;
@@ -939,7 +943,7 @@ main[class="opera"] {
   text-indent: -999em;
 }
 
-.virtualTour-mappa li a {
+#virtualTour-mappa li a {
   display: block;
   background-size: cover;
   width: 100%;
@@ -982,33 +986,31 @@ main[class="opera"] {
   background: url("../images/sala-yu-gi-oh.jpeg") no-repeat center;
 }
 
-.virtualTour-mappa img {
+#virtualTour-mappa img {
   height: auto;
   border: 2px solid #ccc;
   border-radius: 5px;
   width: 75%;
 }
 
-.virtualTour-elenco-sale {
+#virtualTour-elenco-sale {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.virtualTour-elenco-sale dl {
-  max-width: 600px;
-  margin: 0;
-  padding: 0;
+#virtualTour-elenco-sale dl {
+  max-width: 800px;
 }
 
-.virtualTour-elenco-sale dt {
+#virtualTour-elenco-sale dt {
   font-weight: bold;
   margin-top: 20px;
-  color: #333;
+  color: var(--txtcolor);
   text-align: center;
 }
 
-.virtualTour-elenco-sale dd {
+#virtualTour-elenco-sale dd {
   margin: 5px 0 20px 0;
   padding: 15px;
   border: 2px solid #ddd;
@@ -1017,7 +1019,11 @@ main[class="opera"] {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.virtualTour-elenco-sale dd p {
-  color: #666;
-  margin-bottom: 10px;
+#virtualTour-elenco-sale dd p {
+  color: var(--disabledtxtcolor);
+  margin: 0 10% 0.625rem;
+}
+
+#virtualTour-elenco-sale dd p.selected {
+  color: var(--txtcolor);
 }
