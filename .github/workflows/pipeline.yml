@@ -6,6 +6,19 @@ on:
       - main
 
 jobs:
+  validator:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v3
+      - name: Validate
+        uses: Cyb3r-Jak3/html5validator-action@v7.2.0
+        with:
+          config: .configs/validate-html-config.yml
+      - name: Log failures
+        if: failure()
+        run: cat log.log > "${GITHUB_STEP_SUMMARY}"
+
   deploy:
     runs-on: ubuntu-latest
 
@@ -13,7 +26,7 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    - name: Deploy to server
+    - name: Deploy
       uses: appleboy/ssh-action@v0.1.6
       with:
         host: ${{ secrets.SERVER_HOST }}
