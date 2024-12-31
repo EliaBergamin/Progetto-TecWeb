@@ -9,8 +9,8 @@
     $alterSuccess = $database->deletePrenotazioneUser($_SESSION['user_id'],$_POST['data_prenotazione']);
     
     if($alterSuccess)
-        header('Location: /profile.php');
+        header('Location: profile.php');
     else
-        header('Location: /index.php');
+        header('Location: index.php');
 
 ?>

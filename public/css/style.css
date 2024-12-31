@@ -1181,7 +1181,7 @@ main[class="opera"] {
   font-size: 1.5em;
 }
 
-#dialog-pren {
+.dialog {
   border: 1px solid black;
   border-radius: 8px;
   padding: 1em;
@@ -1189,7 +1189,7 @@ main[class="opera"] {
   font-size: 1.2em;
 }
 
-#dialog-pren button {
+.dialog button {
   margin-right: 1em;
   margin-top: 1em;
   padding: 0.5em;

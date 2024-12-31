@@ -15,7 +15,7 @@
     <script type="text/javascript" src="../js/script.js"></script>
 </head>
 
-<body>
+<body onload="initDialog()">
     <a id="top-help" class="help nascosto" href="#primoContenuto">Vai al contenuto</a>
     <header>
         <h1>Museo Cartoni Animati</h1>
@@ -70,17 +70,22 @@
             <tbody>
                 <!-- mostreAdmin_start -->
                 <tr>
-                    <td>{{nome_mostra}}</td>
-                    <td>{{descrizione_mostra}}</td>
+                    <td>{{nome}}</td>
+                    <td>{{descrizione}}</td>
                     <td><time datetime="{{data_inizio}}">{{string_data_inizio}}</time></td>
                     <td><time datetime="{{data_fine}}">{{string_data_fine}}</time></td>
                     <td>{{img_path}}</td>
                     <td class="mod-mostra"><a href="modifica_mostra.php?id_mostra={{id_mostra}}"></a></td>
-                    <td class="elim-mostra"><a href="delete_mostra_admin.php?id_mostra={{id_mostra}}"></a></td>
+                    <td class="elim-mostra cancella" id="elim-{{id_mostra}}" ><a href="#dialog-mostra"></a></td>
                 </tr>
                 <!-- mostreAdmin_end -->
             </tbody>
         </table>
+        <dialog id="dialog-mostra">
+            <p>Confermi di voler eliminare la mostra?</p>
+            <button id="annul-dialog">Annulla</button>
+            <button id="conf-dialog">Conferma</button>
+        </dialog>
     </main>
     <a class="help" id="torna-su" href="#">Torna su</a>
     <footer>

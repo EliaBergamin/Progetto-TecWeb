@@ -6,7 +6,7 @@
     $database = new DatabaseService();
     //user param sarà da rimpiazzare con session user_id implementate le funzionalità di login
     
-    $alterSuccess = $database->deleteMostraAdmin($_GET['id_mostra']);
+    $alterSuccess = $database->deleteMostraAdmin($_POST['id_mostra']);
     
     if($alterSuccess)
         header('Location: /admin.php');
