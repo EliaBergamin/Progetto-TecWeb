@@ -26,6 +26,7 @@ class DatabaseService
 
 	private function executePreparedQuery($queryToExecute, $arrayOfValues, $valueTypeForBinding = ""): mysqli_stmt
 	{
+		self::pulisciInput($arrayOfValues);
 		$valueTypeForBinding = $valueTypeForBinding ?: str_repeat("s", count($arrayOfValues));
 		$preparedStatement = $this->connection->prepare($queryToExecute);
 		if (!empty($arrayOfValues))
@@ -97,24 +98,21 @@ class DatabaseService
 		$queryInsertRecensione = "INSERT INTO Museo.Recensione (id_utente, voto, data_recensione, descrizione, tipo)
 								  VALUES (?, ?, ?, ?, ?)";
 		$queryParams = [$idUtente, $voto, $data_recensione, $descrizione, $tipo];
-		self::pulisciInput($queryParams);
 		return $this->insertValuesPreparedQuery($queryInsertRecensione, [$queryParams], "iissi");
 	}
 
-	public function insertUserPrenotazione($userParam, $dayParam, $visitorsParam, $timeParam): bool{
+	public function insertPrenotazione($userParam, $dayParam, $visitorsParam, $timeParam): bool{
 		$queryInsertPrenotazione = "INSERT INTO Museo.Prenotazione (id_utente, data_prenotazione, num_persone, orario)
 									VALUES (?, ? , ? , ?)";
 		$queryParams = [$userParam, $dayParam, $visitorsParam, $timeParam];
-		self::pulisciInput($queryParams);
 		return $this->insertValuesPreparedQuery($queryInsertPrenotazione, [$queryParams], "isis");
 	}
 	
-	public function insertMostraAdmin($nome_mostra,$descrizione_mostra,$data_inizio,$data_fine,$img_path): bool
+	public function insertMostra($nome,$descrizione,$data_inizio,$data_fine,$img_path): bool
 	{
 		$queryInsertMostra = "INSERT INTO Museo.Mostra (nome, descrizione, data_inizio, data_fine, img_path)
 							  VALUES (?, ?, ?, ?, ?)";
-		$queryParams = [$nome_mostra, $descrizione_mostra, $data_inizio, $data_fine, $img_path];
-		self::pulisciInput($queryParams);
+		$queryParams = [$nome, $descrizione, $data_inizio, $data_fine, $img_path];
 		return $this->insertValuesPreparedQuery($queryInsertMostra, [$queryParams], "sssss");
 	}
 	public function selectMostrePassate(): array
@@ -213,6 +211,14 @@ class DatabaseService
 		}
 	}
 
+	public static function cleanedInput($input): string
+	{
+		$input = trim($input);
+		$input = strip_tags($input);
+		$input = htmlentities($input);
+		return $input;
+	}
+
 	private function pulisciInput(&$in): void
 	{
 		if (is_array($in))
@@ -226,15 +232,14 @@ class DatabaseService
 		$queryUser = "INSERT INTO Museo.Utente (ruolo, username, nome, cognome, password_hash, email) 
 					  VALUES (?, ?, ?, ?, ?, ?)";
 		$queryParams = [$ruolo, $username, $nome, $cognome, $password_hash, $email];
-		self::pulisciInput($queryParams);
-		$stmt = self::executePreparedQuery($queryUser, $queryParams, "isssss");
+		$stmt = $this->executePreparedQuery($queryUser, $queryParams, "isssss");
 		if ($stmt->affected_rows > 0)
 			return $stmt->insert_id;
 		else
 			return -1;
 	}
 	
-	public function alterMostraAdmin($id_mostra,$nome_mostra,$descrizione_mostra,$data_inizio,$data_fine,$img_path): bool {
+	public function alterMostraAdmin($id_mostra,$nome,$descrizione,$data_inizio,$data_fine,$img_path): bool {
 		$query = "UPDATE Mostra SET 
                 nome = ?, 
                 descrizione = ?, 
@@ -243,21 +248,18 @@ class DatabaseService
                 img_path = ? 
               WHERE id_mostra = ?";
 
-		$queryParams = [$nome_mostra, $descrizione_mostra, $data_inizio, $data_fine, $img_path,$id_mostra];
-		self::pulisciInput($queryParams);
+		$queryParams = [$nome, $descrizione, $data_inizio, $data_fine, $img_path,$id_mostra];
 		return self::updateValuesPreparedQuery($query, $queryParams, "sssssi");
 	}
 
 	public function deleteMostraAdmin($id_mostra): bool{
 		$query = "DELETE FROM Mostra WHERE id_mostra = ?";
 		$queryParams = [$id_mostra];
-		self::pulisciInput($queryParams);
 		return self::deleteRowPreparedQuery($query, $queryParams, "i");
 	}
 	public function deletePrenotazioneUser($idUtente,$data_prenotazione) : bool {
 		$query = "DELETE FROM Prenotazione WHERE id_utente = ? AND data_prenotazione = ?";
 		$queryParams = [$idUtente,$data_prenotazione];
-		self::pulisciInput($queryParams);
 		return self::deleteRowPreparedQuery($query, $queryParams, "is");
 	}
 
