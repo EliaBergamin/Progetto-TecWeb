@@ -189,8 +189,8 @@ FILE MOSTRE.PHP
 
     foreach ($arrayRestituito as $riga){
         $temp = $sectionToModify;
-        Templating::replaceAnchor($temp,"nome_mostra",$riga["nome"]);
-        Templating::replaceAnchor($temp,"descrizione_mostra",$riga["descrizione"]);
+        Templating::replaceAnchor($temp,"nome",$riga["nome"]);
+        Templating::replaceAnchor($temp,"descrizione",$riga["descrizione"]);
         $fullcontent.= $temp . "\n";
     }
 
@@ -209,10 +209,10 @@ PARTE DEL FILE MOSTRE.HTML
             <!-- mostreincorso_start -->
             <dd>
                 <dl>
-                    <dt class="nomeMostra">{{nome_mostra}}</dt>
+                    <dt class="nomeMostra">{{nome}}</dt>
                     <dd class="infoMostra">
                         <img src="../images/mostra.jpg" alt="">
-                        <p>Descrizione mostra: {{descrizione_mostra}}</p>
+                        <p>Descrizione mostra: {{descrizione}}</p>
                         <p class="giorniMostra">Da <time datetime="2024-10-01">01 Ottobre 2024</time> a <time datetime="2024-12-01">01 Dicembre 2024</time></p>
                         <a href="prenotazione.html" class="button">Prenota visita</a>
                     </dd>

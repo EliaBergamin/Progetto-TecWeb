@@ -51,24 +51,27 @@
 
     <main id="primoContenuto" class="compilazione">
         <div class="contenitoreCompilazione">
-        <h1>Registrazione</h1>
-        <form action="../register.php" method="post" class="formCompilazione">
-            <label for="nome">Nome </label>
-            <input type="text" name="nome" id="nome" required>
-            <label for="cognome">Cognome </label>
-            <input type="text" name="cognome" id="cognome" required>
-            <label for="username">Username </label>
-            <input type="text" name="username" id="username" required>
-            <label for="email">Email </label>
-            <input type="email" name="email" id="email" required data-msg-required="L'email è obbligatoria!"
-                data-msg-invalid="Email non valida">
-            <label for="password">Password </label>
-            <input type="password" name="password" id="password" required
-                data-msg-required="La password è obbligatoria!"
-                data-msg-invalid="La password deve essere lunga almeno 8 caratteri">
-            <input type="submit" value="Registrati">
-        </form>
-    </div>
+            <!-- errormsgs_start -->
+            {{messaggiPerForm}}
+            <!-- errormsgs_end -->
+            <h1>Registrazione</h1>
+            <form action="../register.php" method="post" class="formCompilazione">
+                <label for="nome">Nome </label>
+                <input type="text" name="nome" id="nome" value="{{nome}}" required>
+                <label for="cognome">Cognome </label>
+                <input type="text" name="cognome" id="cognome" value="{{cognome}}" required>
+                <label for="username">Username </label>
+                <input type="text" name="username" id="username" value="{{username}}" required>
+                <label for="email">Email </label>
+                <input type="email" name="email" id="email" value="{{email}}" required data-msg-required="L'email è obbligatoria!"
+                    data-msg-invalid="Email non valida">
+                <label for="password">Password </label>
+                <input type="password" name="password" id="password" required
+                    data-msg-required="La password è obbligatoria!"
+                    data-msg-invalid="La password deve essere lunga almeno 8 caratteri">
+                <input type="submit" name="submit" value="Registrati">
+            </form>
+        </div>
     </main>
     <a class="help" id="torna-su" href="#">Torna su</a>
     <footer>
