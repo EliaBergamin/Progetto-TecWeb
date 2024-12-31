@@ -20,7 +20,7 @@ if (isset($_POST['submit'])) {
     }
 
     $descrizione = DatabaseService::cleanedInput($_POST['descrizione']);
-    if (strlen($descrizione) < 20) {
+    if (strlen($descrizione) < 25) {
         $messaggiPerForm .= '<li>Descrizione troppo corta</li>';
     } else if (!preg_match("/[\p{L}\p{P}\p{N}\ ]+/u", $descrizione)) {
         $messaggiPerForm .= '<li>La descrizione può contenere solo caratteri alfanumerici o di punteggiatura</li>';

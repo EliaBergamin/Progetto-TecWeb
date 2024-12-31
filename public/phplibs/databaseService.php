@@ -170,8 +170,8 @@ class DatabaseService
 		$queryOpere = "SELECT *
 					   FROM Museo.Recensione
 					   INNER JOIN Museo.Utente ON (Recensione.id_utente = Utente.id_utente)
-					   WHERE Recensione.tipo = ?";
-
+					   WHERE Recensione.tipo = ?
+					   ORDER BY Recensione.data_recensione DESC";
 		$queryParams = [$recensioniType];
 		return $this->selectValuesPreparedQuery($queryOpere, $queryParams, "i");
 	}
@@ -261,6 +261,15 @@ class DatabaseService
 		$query = "DELETE FROM Prenotazione WHERE id_utente = ? AND data_prenotazione = ?";
 		$queryParams = [$idUtente,$data_prenotazione];
 		return self::deleteRowPreparedQuery($query, $queryParams, "is");
+	}
+	public function checkVisitatori($giorno, $orario, $visitatori): bool
+	{
+		$query = "SELECT SUM(num_persone) as tot_visitatori
+				  FROM Museo.Prenotazione
+				  WHERE data_prenotazione = ? AND orario = ?";
+		$queryParams = [$giorno, $orario];
+		$result = $this->selectValuesPreparedQuery($query, $queryParams, "ss");
+		return $result[0]["tot_visitatori"] + $visitatori <= 90;
 	}
 
 	public function __destruct()

@@ -3,10 +3,11 @@
 require_once("phplibs/databaseService.php");
 require_once("phplibs/templatingService.php");
 
-
-
 if (!isset($_SESSION['user_id'])) 
     header("Location: login.php?redirect=dettaglio_sala.php");
+
+if ($_SESSION['is_admin'])
+    header("Location: 401.php");
 
 $database = new DatabaseService();
 $dettaglioSalaHtmlContent = Templating::getHtmlWithModifiedMenu(__FILE__);

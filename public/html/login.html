@@ -50,20 +50,24 @@
 
     <main id="primoContenuto" class="compilazione">
         <div class="contenitoreCompilazione">
-        <h1>Accedi</h1>
-        <!-- form_start -->
-        <form action="autenticate.php?redirect={{redirect}}" method="post" class="formCompilazione">
-            <label for="username">Username: </label>
-            <input type="text" name="username" id="username" required data-msg-required="Username obbligatorio!"
-                data-msg-invalid="Username non valido">
-            <label for="password">Password: </label>
-            <input type="password" name="password" id="password" required
-                data-msg-required="La password è obbligatoria!"
-                data-msg-invalid="La password deve essere lunga almeno 8 caratteri">
-            <input type="submit" name="submit" value="Accedi">
-        </form>
-        <!-- form_end -->
-    </div>
+            <h1>Accedi</h1>
+            <!-- errormsgs_start -->
+            {{messaggiPerForm}}
+            <!-- errormsgs_end -->
+            <!-- form_start -->
+            <form action="autenticate.php?redirect={{redirect}}" method="post" class="formCompilazione">
+                <label for="username">Username: </label>
+                <input type="text" name="username" id="username" required 
+                    data-msg-required="Username obbligatorio!"
+                    data-msg-invalid="Username non valido" value="{{username}}">
+                <label for="password">Password: </label>
+                <input type="password" name="password" id="password" required
+                    data-msg-required="La password è obbligatoria!"
+                    data-msg-invalid="La password deve essere lunga almeno 8 caratteri">
+                <input type="submit" name="submit" value="Accedi">
+            </form>
+            <!-- form_end -->
+        </div>
     </main>
     <a id="torna-su" href="#" aria-label="Torna su">⇪</a>
     <footer>

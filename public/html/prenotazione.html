@@ -52,10 +52,15 @@
     <main id="prenotazione" class="compilazione">
         <div id="contenitorePrenotazione" class="contenitoreCompilazione">
             <h1>Prenota la tua visita al museo</h1>
+            <!-- errormsgs_start -->
+            {{messaggiPerForm}}
+            <!-- errormsgs_end -->
+            <!-- form_start -->
             <form action="prenotazione_effettuata.php" method="post" id="formPrenotazione" class="formCompilazione">
                 <label for="giorno">Giorno</label>
-                <!-- da mettere come minimo il giorno odierno -->
-                <input type="date" name="giorno" id="giorno" required data-msg-required="Per favore, selezionare il giorno della visita" data-msg-invalid="Giorno non valido">
+                <input type="date" name="giorno" id="giorno" value="{{giorno}}" required
+                    data-msg-required="Per favore, selezionare il giorno della visita"
+                    data-msg-invalid="Giorno non valido">
                 <label for="orario">Fascia oraria</label>
                 <select name="orario" id="orario" required>
                     <option value="" disabled selected>Seleziona</option>
@@ -71,10 +76,12 @@
                     </optgroup>
                 </select>
                 <label for="visitatori">Numero di visitatori</label>
-                <!-- max 15 valore da decidere -->
-                <input type="number" name="visitatori" id="visitatori" min="1" max="15" required data-msg-required="Per favore, selezionare il numero di visitatori" data-msg-invalid="Massimo x visitatori">
+                <input type="number" name="visitatori" id="visitatori" min="1" max="15" required
+                    data-msg-required="Per favore, selezionare il numero di visitatori"
+                    data-msg-invalid="Massimo x visitatori" value="{{visitatori}}">
                 <input type="submit" name="submit" value="Prenota">
             </form>
+            <!-- form_end -->
         </div>
     </main>
     <a class="help" id="torna-su" href="#">Torna su</a>

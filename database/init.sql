@@ -92,11 +92,13 @@ INSERT INTO Utente (ruolo, username, nome, cognome, password_hash, email) VALUES
 (2, "bobloblaw", "Bob", "Loblaw", "$2y$10$mnopqrstuvwxyzabcdefg", "bob.loblaw@example.com");
 
 INSERT INTO Prenotazione (id_utente, data_prenotazione, num_persone, orario) VALUES
-(3, "2023-06-15", 2, "14:30:00"),
+(3, "202-06-15", 2, "14:30:00"),
 (3, "2023-07-20", 3, "11:00:00"),
+(3, "2023-10-01", 2, "13:20:00"),
 (2, "2023-08-05", 1, "16:45:00"),
-(2, "2023-09-12", 4, "10:00:00"),
-(3, "2023-10-01", 2, "13:20:00");
+(2, "2025-01-15", 4, "10:30:00"),
+(4, "2025-01-15", 84, "10:30:00");
+
 
 INSERT INTO Recensione (id_utente, voto, data_recensione, descrizione, tipo) VALUES
 (3, 5, "2023-06-18", "Una mostra davvero unica per gli appassionati di Yu-Gi-Oh! Le carte iconiche, come il Drago Bianco Occhi Blu e il Mago Nero, sono esposte in vetrine spettacolari. Perfetta combinazione di nostalgia e scoperta!", 1),
