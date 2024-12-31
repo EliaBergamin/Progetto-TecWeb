@@ -4,9 +4,10 @@
 <head>
   <meta charset="UTF-8">
   <title>Modifica mostra</title>
-  <meta name="description" content="Qui puoi inserire una nuova mostra nel sito del museo, o modificare quelle già presenti">
+  <meta name="description"
+    content="Qui puoi inserire una nuova mostra nel sito del museo, o modificare quelle già presenti">
   <meta name="keywords" content="amministratore,mostre,museo,modifica,inserimento">
-    <link rel="stylesheet" href="../css/style.css" media="screen">
+  <link rel="stylesheet" href="../css/style.css" media="screen">
   <link rel="stylesheet" href="../css/middle.css" media="screen and (max-width: 1024px)">
   <link rel="stylesheet" href="../css/mini.css" media="screen and (max-width: 768px)">
   <link rel="stylesheet" href="../css/print.css" media="print">
@@ -36,25 +37,40 @@
       <li><a href="virtual_tour.php" lang="en">Virtual Tour</a></li>
       <li><a href="prenotazione.php">Prenotazione</a></li>
       <li><a href="recensioni.php">Recensioni</a></li>
-      <li><a href="registrazione.php">Registrazione</a></li>
+      <!-- log_start -->
+      <li><a href="registrazione.php">Registrati</a></li>
+      <li><a href="login.php">Accedi</a></li>
+      <!-- log_end -->
+      <!-- account_opt_start -->
+      <li><a href={{option_link}}>{{option}}</a></li>
+      <li><a href="logout.php">Esci</a></li>
+      <!-- account_opt_end -->
+      <!-- greeting_start -->
+      <li><span>Ciao {{username}}!</span></li>
+      <!-- greeting_end -->
     </ul>
   </nav>
 
   <main id="primoContenuto" class="compilazione lg">
     <div class="contenitoreCompilazione">
       <h1>Aggiungi mostra</h1>
+      <!-- errormsgs_start -->
+      {{messaggiPerForm}}
+      <!-- errormsgs_end -->
       <form class="formCompilazione" action="insert_mostra_admin.php" method="post">
-        <label for="nome-mostra">Nome mostra</label>
-        <input type="text" name="nome-mostra" id="nome-mostra" required>
-        <label for="descrizione-mostra">Descrizione</label>
-        <textarea name="descrizione-mostra" id="descrizione-mostra" required></textarea>
-        <label for="data-inizio">Data inizio</label>
-        <input type="date" name="data-inizio" id="data-inizio" required>
-        <label for="data-fine">Data fine</label>
-        <input type="date" name="data-fine" id="data-fine" required>
-        <label for="immagine-mostra">Percorso immagine</label>
-        <input type="text" name="immagine-mostra" id="immagine-mostra" required>
-        <input type="submit" value="Conferma">
+        <!-- form_start -->
+        <label for="nome">Nome mostra</label>
+        <input type="text" name="nome" id="nome" value="{{nome}}" required>
+        <label for="descrizione">Descrizione</label>
+        <textarea name="descrizione" id="descrizione" required>{{descrizione}}</textarea>
+        <label for="data_inizio">Data inizio</label>
+        <input type="date" name="data_inizio" id="data_inizio" value="{{data_inizio}}" required>
+        <label for="data_fine">Data fine</label>
+        <input type="date" name="data_fine" id="data_fine" value="{{data_fine}}" required>
+        <label for="immagine">Percorso immagine</label>
+        <input type="text" name="immagine" id="immagine" required>
+        <!-- form_end -->
+        <input type="submit" name="submit" value="Conferma">
       </form>
     </div>
   </main>

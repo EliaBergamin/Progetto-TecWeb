@@ -36,26 +36,39 @@
       <li><a href="virtual_tour.php" lang="en">Virtual Tour</a></li>
       <li><a href="prenotazione.php">Prenotazione</a></li>
       <li><a href="recensioni.php">Recensioni</a></li>
-      <li><a href="registrazione.php">Registrazione</a></li>
+      <!-- log_start -->
+      <li><a href="registrazione.php">Registrati</a></li>
+      <li><a href="login.php">Accedi</a></li>
+      <!-- log_end -->
+      <!-- account_opt_start -->
+      <li><a href={{option_link}}>{{option}}</a></li>
+      <li><a href="logout.php">Esci</a></li>
+      <!-- account_opt_end -->
+      <!-- greeting_start -->
+      <li><span>Ciao {{username}}!</span></li>
+      <!-- greeting_end -->
     </ul>
   </nav>
 
   <main id="primoContenuto" class="compilazione lg">
     <div class="contenitoreCompilazione">
       <h1>Modifica mostra</h1>
+      <!-- errormsgs_start -->
+      {{messaggiPerForm}}
+      <!-- errormsgs_end -->
       <!-- customform_start -->
       <form class="formCompilazione" action="alter_mostra_admin.php?id_mostra={{id_mostra}}" method="post">
-        <label for="nome-mostra">Nome mostra</label>
-        <input type="text" name="nome-mostra" id="nome-mostra" value={{nome_mostra}}>
-        <label for="descrizione-mostra">Descrizione</label>
-        <textarea name="descrizione-mostra" id="descrizione-mostra" >{{descrizione}}</textarea>
-        <label for="data-inizio">Data inizio</label>
-        <input type="date" name="data-inizio" id="data-inizio" value={{data_inizio}} >
-        <label for="data-fine">Data fine</label>
-        <input type="date" name="data-fine" id="data-fine" value={{data_fine}} >
-        <label for="immagine-mostra">Percorso immagine</label>
-        <input type="text" name="immagine-mostra" id="immagine-mostra" value={{immagine_mostra}} >
-        <input type="submit" value="Conferma">
+        <label for="nome">Nome mostra</label>
+        <input type="text" name="nome" id="nome" value={{nome}}>
+        <label for="descrizione">Descrizione</label>
+        <textarea name="descrizione" id="descrizione" >{{descrizione}}</textarea>
+        <label for="data_inizio">Data inizio</label>
+        <input type="date" name="data_inizio" id="data_inizio" value={{data_inizio}} >
+        <label for="data_fine">Data fine</label>
+        <input type="date" name="data_fine" id="data_fine" value={{data_fine}} >
+        <label for="immagine">Percorso immagine</label>
+        <input type="text" name="immagine" id="immagine" value={{immagine}} >
+        <input type="submit" name="submit" value="Conferma">
       </form>
       <!-- customform_end -->
     </div>
