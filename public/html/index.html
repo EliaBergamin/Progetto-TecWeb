@@ -38,10 +38,13 @@
             <li><a href="registrazione.php">Registrati</a></li>
             <li><a href="login.php">Accedi</a></li>
             <!-- log_end -->
-            <!-- account_opt_start -->
-            <li><a href={{option_link}}>{{option}}</a></li>
+            <!-- admin_start -->
+            <li><a href="admin.php">Area gestione</a></li>
+            <!-- admin_end -->
+            <!-- profile_start -->
+            <li><a href="profile.php">Il mio profilo</a></li>
             <li><a href="logout.php">Esci</a></li>
-            <!-- account_opt_end -->
+            <!-- profile_end -->
             <!-- greeting_start -->
             <li><span>Ciao {{username}}!</span></li>
             <!-- greeting_end -->
@@ -68,16 +71,14 @@
                 onclick="prossimaSlide(1)">&#10095;</button>
             <ol class="puntiniCarosello">
                 <li>
-                    <button class="active" type="button"
-                        onclick="aggiornaSlide(1)">Scorri all'immagine numero 1</button>
+                    <button class="active" type="button" onclick="aggiornaSlide(1)">Scorri all'immagine numero
+                        1</button>
                 </li>
                 <li>
-                    <button class="" type="button"
-                        onclick="aggiornaSlide(2)">Scorri all'immagine numero 2</button>
+                    <button class="" type="button" onclick="aggiornaSlide(2)">Scorri all'immagine numero 2</button>
                 </li>
                 <li>
-                    <button class="" type="button"
-                        onclick="aggiornaSlide(3)">Scorri all'immagine numero 3</button>
+                    <button class="" type="button" onclick="aggiornaSlide(3)">Scorri all'immagine numero 3</button>
                 </li>
             </ol>
         </div>

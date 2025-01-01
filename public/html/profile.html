@@ -39,10 +39,13 @@
             <li><a href="registrazione.php">Registrati</a></li>
             <li><a href="login.php">Accedi</a></li>
             <!-- log_end -->
-            <!-- account_opt_start -->
-            <li id="currentLink">{{option}}</li>
+            <!-- admin_start -->
+            <li><a href="admin.php">Area gestione</a></li>
+            <!-- admin_end -->
+            <!-- profile_start -->
+            <li id="currentLink">Il mio profilo</a></li>
             <li><a href="logout.php">Esci</a></li>
-            <!-- account_opt_end -->
+            <!-- profile_end -->
             <!-- greeting_start -->
             <li><span>Ciao {{username}}!</span></li>
             <!-- greeting_end -->
@@ -66,7 +69,8 @@
         </dl>
         <!-- datiutente_end -->
         <h2>Le tue prenotazioni:</h2>
-        <p id="tab-prenot-descr" class="nascosto">La tabella contiene le prenotazioni di un utente, ogni riga rappresenta la singola prenotazione, ogni colonna rappresenta un attributo della prenotazione</p>
+        <p id="tab-prenot-descr" class="nascosto">La tabella contiene le prenotazioni di un utente, ogni riga
+            rappresenta la singola prenotazione, ogni colonna rappresenta un attributo della prenotazione</p>
         <table id="tab-prenot" title="Prenotazioni" aria-describedby="tab-prenot-descr">
             <caption>Prenotazioni</caption>
             <thead>
@@ -80,7 +84,8 @@
             <tbody>
                 <!-- rowprenotazione_start -->
                 <tr>
-                    <td><time class="data_prenotazione" datetime="{{data_prenotazione}}">{{string_data_prenotazione}}</time></td>
+                    <td><time class="data_prenotazione"
+                            datetime="{{data_prenotazione}}">{{string_data_prenotazione}}</time></td>
                     <td>{{num_persone}}</td>
                     <td>{{orario_prenotazione}}</td>
                     <td class="cancella canc-pren" id="elim-{{data_prenotazione}}"><a href="#dialog-pren"></a></td>

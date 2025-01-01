@@ -15,9 +15,12 @@
   --linkcolor: #fff;
   --visitedcolor: #fbff50;
   --submitcolor: #28d428;
+  --submitcolor: var(--headerbgcolor);
+
   --disabledtxtcolor: #666;
   --carouselcolor: var(--headercolor);
   --carouselactivecolor: var(--headerbgcolor);
+  --errorcolor: red;
 }
 
 @font-face {
@@ -74,6 +77,10 @@ a:visited {
 
 #menu a:focus {
   text-decoration: underline;
+}
+
+#menu a:active {
+  text-decoration: none;
 }
 
 #top-help {
@@ -685,6 +692,12 @@ footer h2 {
   }
 }
 
+.form-errors {
+  color: var(--errorcolor);
+  font-size: 1.1rem;
+  margin-bottom: 1em;
+}
+
 .formCompilazione {
   margin-top: 1em;
 }
@@ -715,9 +728,9 @@ a.button {
   width: auto;
 }
 
-.formCompilazione input[type="submit"]:hover {
-  background-color: rgb(40, 212, 40);
-  color: white;
+.formCompilazione input[type="submit"]:hover, a.button:hover {
+  background-color: var(--txtcolor);
+  color: var(--headerbgcolor);
   cursor: pointer;
 }
 
@@ -731,6 +744,20 @@ a.button {
   display: block;
   margin-bottom: 0.25em;
   font-size: 1.15rem;
+}
+
+.formCompilazione label::after {
+  content: "*";
+  color: var(--errorcolor);
+}
+
+.required-msg::before {
+  content: "* ";
+  color: var(--errorcolor);
+}
+
+.required-msg {
+  margin: 0.5em 0;
 }
 
 /*////////////*/

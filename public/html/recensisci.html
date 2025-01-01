@@ -41,9 +41,14 @@
       <li><a href="registrazione.php">Registrati</a></li>
       <li><a href="login.php">Accedi</a></li>
       <!-- log_end -->
-      <!-- account_opt_start -->
-      <li><a href={{option_link}}>{{option}}</a></li>
-      <!-- account_opt_end -->
+      <!-- admin_start -->
+      <li><a href="admin.php">Area gestione</a></li>
+      <!-- admin_end -->
+      <!-- profile_start -->
+      <li><a href="profile.php">Il mio profilo</a></li>
+      <li><a href="logout.php">Esci</a></li>
+      <!-- profile_end -->
+
       <!-- greeting_start -->
       <li><span>Ciao {{username}}!</span></li>
       <!-- greeting_end -->
@@ -99,6 +104,7 @@
         <label for="descrizione" class="domandaRecensione">Descrivi la tua visita</label>
         <textarea name="descrizione" id="descrizione" minlength="25" rows="8" cols="20"
           placeholder="L'opera che mi ha colpito di più è stata...">{{descrizione}}</textarea>
+        <p class="required-msg">Campi obbligatori</p>
         <input type="submit" name="submit" value="Invia" aria-label="Invia">
       </form>
       <!-- form_end -->
@@ -155,4 +161,5 @@
     </table>
   </footer>
 </body>
+
 </html>

@@ -39,10 +39,13 @@
             <li><a href="registrazione.php">Registrati</a></li>
             <li><a href="login.php">Accedi</a></li>
             <!-- log_end -->
-            <!-- account_opt_start -->
-            <li id="currentLink">{{option}}</li>
+            <!-- admin_start -->
+            <li id="currentLink">Area gestione</a></li>
+            <!-- admin_end -->
+            <!-- profile_start -->
+            <li><a href="profile.php">Il mio profilo</a></li>
             <li><a href="logout.php">Esci</a></li>
-            <!-- account_opt_end -->
+            <!-- profile_end -->
             <!-- greeting_start -->
             <li><span>Ciao {{username}}!</span></li>
             <!-- greeting_end -->
@@ -53,7 +56,8 @@
     <main id="primoContenuto">
         <h1>Gestione mostre</h1>
         <a id="agg-mostr" href="aggiungi_mostra.php">Aggiungi mostra</a>
-        <p id="tab-mostre-descr" class="nascosto">La tabella contiene le mostre del museo, ogni riga rappresenta la singola mostra, ogni colonna rappresenta un attributo delle mostre</p>
+        <p id="tab-mostre-descr" class="nascosto">La tabella contiene le mostre del museo, ogni riga rappresenta la
+            singola mostra, ogni colonna rappresenta un attributo delle mostre</p>
         <table id="tab-mostre" title="Mostre museo" aria-describedby="tab-mostre-descr">
             <caption>Mostre museo</caption>
             <thead>
@@ -76,7 +80,7 @@
                     <td><time datetime="{{data_fine}}">{{string_data_fine}}</time></td>
                     <td>{{img_path}}</td>
                     <td class="mod-mostra"><a href="modifica_mostra.php?id_mostra={{id_mostra}}"></a></td>
-                    <td class="elim-mostra cancella" id="elim-{{id_mostra}}" ><a href="#dialog-mostra"></a></td>
+                    <td class="elim-mostra cancella" id="elim-{{id_mostra}}"><a href="#dialog-mostra"></a></td>
                 </tr>
                 <!-- mostreAdmin_end -->
             </tbody>
