@@ -16,6 +16,8 @@
   --visitedcolor: #fbff50;
   --submitcolor: #28d428;
   --disabledtxtcolor: #666;
+  --carouselcolor: var(--headercolor);
+  --carouselactivecolor: var(--headerbgcolor);
 }
 
 @font-face {
@@ -68,6 +70,10 @@ a {
 
 a:visited {
   color: var(--visitedcolor);
+}
+
+#menu a:focus {
+  text-decoration: underline;
 }
 
 #top-help {
@@ -232,11 +238,11 @@ main h1 {
   cursor: pointer;
   align-items: center;
   text-indent: -9999em;
-  background-color: rgb(232, 225, 225);
+  background-color: var(--carouselactivecolor);
+  border: 2px solid var(--carouselcolor);
   border-radius: 50%;
   height: 1.5rem;
   width: 1.5rem;
-  border: none;
 }
 
 .puntiniCarosello {
@@ -260,7 +266,8 @@ ol.puntiniCarosello {
 
 ol li .active,
 .puntiniCarosello button:hover {
-  background-color: #717171;
+  background-color: var(--carouselcolor);
+  border: 2px solid var(--carouselactivecolor);
 }
 
 #caroselloIndietro,
@@ -270,8 +277,9 @@ ol li .active,
   width: 3rem;
   margin: .4rem;
   transition: 0.6s ease;
-  color: white;
-  background-color: rgb(121, 113, 113);
+  color: var(--carouselcolor);
+  background-color: var(--carouselactivecolor);
+  border: 2px solid var(--carouselcolor);
   justify-content: center;
   display: inline-flex;
   align-items: center;
@@ -279,12 +287,11 @@ ol li .active,
   position: absolute;
   bottom: 42%;
   z-index: 1;
-  border: none;
 }
 
 #caroselloIndietro:hover,
 #caroselloAvanti:hover {
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: var(--visitedcolor);
 }
 
 #caroselloIndietro {

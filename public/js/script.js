@@ -1,7 +1,7 @@
 var hamStatus = true;
 
-var currentDataPrenotazione = '';
-var currentIdMostra = '';
+var currentSlideDataPrenotazione = '';
+var currentSlideIdMostra = '';
 
 function hambToggle() {
     var e = document.getElementsByClassName("hamToggle");
@@ -11,31 +11,31 @@ function hambToggle() {
     }
 }
 
-let current = 0;
+let currentSlide = 1;
 
 function prossimaSlide(n) {
-    mostraSlide(current += n);
+    mostraSlide(currentSlide += n);
 }
 
-function currentSlide(n) {
-    mostraSlide(current = n);
+function aggiornaSlide(n) {
+    mostraSlide(currentSlide = n);
 }
 
 function mostraSlide(n) {
     let i;
     let slides = document.querySelectorAll(".immaginiCarosello img");
     let dots = document.querySelectorAll(".puntiniCarosello button");
-
-    if (n > slides.length) { current = 1 }
-    if (n < 1) { current = slides.length }
+    console.log(slides);
+    if (n > slides.length) { currentSlide = 1 }
+    if (n < 1) { currentSlide = slides.length }
     for (i = 0; i < slides.length; i++) {
-        slides[i].className = slides[i].className.replace("onCarosello", "");
+        slides[i].className = slides[i].classList.remove("onCarosello");
     }
     for (i = 0; i < dots.length; i++) {
-        dots[i].className = dots[i].className.replace("active", "");
+        dots[i].className = dots[i].classList.remove("active");
     }
-    slides[current - 1].className += "onCarosello";
-    dots[current - 1].className += "active";
+    slides[currentSlide - 1].classList.add("onCarosello");
+    dots[currentSlide - 1].classList.add("active");
 }
 
 function initAccordion() {
@@ -67,12 +67,12 @@ function reset_span() {
         }
     }
     for (let i = 1; i <= found; i++) {
-        let currentId = "voto-" + i.toString();
-        document.getElementById(currentId).classList.replace("ahead", "behind");
+        let currentSlideId = "voto-" + i.toString();
+        document.getElementById(currentSlideId).classList.replace("ahead", "behind");
     }
     for (let i = found + 1; i <= 5; i++) {
-        let currentId = "voto-" + i.toString();
-        document.getElementById(currentId).classList.replace("behind", "ahead");
+        let currentSlideId = "voto-" + i.toString();
+        document.getElementById(currentSlideId).classList.replace("behind", "ahead");
     }
     let giudizi = [
         "", "Terribile", "Non soddisfacente", "Nella media", "Molto soddisfacente", "Eccellente"
@@ -91,12 +91,12 @@ function change_span(id) {
     let voto = parseInt(id.charAt(5));
     document.getElementById("giudizio").innerText = voto2giudizio[voto];
     for (let i = 1; i <= voto; i++) {
-        let currentId = "voto-" + i.toString();
-        document.getElementById(currentId).classList.replace("ahead", "behind");
+        let currentSlideId = "voto-" + i.toString();
+        document.getElementById(currentSlideId).classList.replace("ahead", "behind");
     }
     for (let i = voto + 1; i <= 5; i++) {
-        let currentId = "voto-" + i.toString();
-        document.getElementById(currentId).classList.replace("behind", "ahead");
+        let currentSlideId = "voto-" + i.toString();
+        document.getElementById(currentSlideId).classList.replace("behind", "ahead");
     }
 }
 
@@ -138,12 +138,12 @@ function initDialog() {
         btn.addEventListener("click", () => {
             dialog.showModal();
             if (dialog.id === "dialog-pren") {
-                currentDataPrenotazione = btn.getAttribute("id").substring(5);
-                console.log(currentDataPrenotazione);
+                currentSlideDataPrenotazione = btn.getAttribute("id").substring(5);
+                console.log(currentSlideDataPrenotazione);
             }
             else {
-                currentIdMostra = btn.getAttribute("id").substring(5);
-                console.log(currentIdMostra);
+                currentSlideIdMostra = btn.getAttribute("id").substring(5);
+                console.log(currentSlideIdMostra);
             }
         });
     });
@@ -155,13 +155,13 @@ function initDialog() {
     if (dialog.id === "dialog-pren") {
         console.log("dialog-pren");
         confirm.addEventListener("click", () => {
-            console.log(currentDataPrenotazione);
+            console.log(currentSlideDataPrenotazione);
             fetch('../delete_prenotazione_user.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
                 },
-                body: `data_prenotazione=${encodeURIComponent(currentDataPrenotazione)}`,
+                body: `data_prenotazione=${encodeURIComponent(currentSlideDataPrenotazione)}`,
             })
                 .then(response => response.text())
                 .then(result => {
@@ -178,13 +178,13 @@ function initDialog() {
     else {
         console.log("dialog-mostra");
         confirm.addEventListener("click", () => {
-            console.log(currentIdMostra);
+            console.log(currentSlideIdMostra);
             fetch('../delete_mostra_admin.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
                 },
-                body: `id_mostra=${encodeURIComponent(currentIdMostra)}`,
+                body: `id_mostra=${encodeURIComponent(currentSlideIdMostra)}`,
             })
                 .then(response => response.text())
                 .then(result => {
