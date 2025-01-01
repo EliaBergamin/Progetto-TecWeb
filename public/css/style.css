@@ -13,7 +13,9 @@
   --contenttxtcolor: #000;
   --contentbgcolor: #FFF;
   --linkcolor: #fff;
-  --visitedcolor: #38f689;
+  --visitedcolor: #fbff50;
+  --submitcolor: #28d428;
+  --disabledtxtcolor: #666;
 }
 
 @font-face {
@@ -56,8 +58,7 @@ body {
   margin: auto;
 }
 
-ol,
-ul {
+ol, ul {
   list-style: none;
 }
 
@@ -124,14 +125,17 @@ utile per fissare il menu in modo che non scrolli
   color: var(--headercolor);
   grid-row: 2;
   grid-column: 2;
-  width: auto;
+  overflow: hidden;
 }
 
-#menu li {
-  padding: 0.5rem;
-  display: inline;
-  vertical-align: middle;
+#menu ul {
+  display: flex;
+}
+
+#menu a, #currentLink, #menu span {
+  display: block;
   height: 100%;
+  padding: 0.3em 0.8em;
 }
 
 #currentLink {
@@ -142,7 +146,11 @@ utile per fissare il menu in modo che non scrolli
 #menu a {
   color: var(--headercolor);
   text-decoration: none;
-  margin: 0;
+  background: var(--headerbgcolor);
+}
+
+#menu a:visited {
+  background: var(--visitedcolor);
 }
 
 /*////////////*/
@@ -157,9 +165,14 @@ utile per fissare il menu in modo che non scrolli
   padding: 0.2rem;
 }
 
-#breadcrumb a:visited {
-  text-decoration: underline dotted;
+#breadcrumb p {
+  padding: 0.18rem;
 }
+
+/* #breadcrumb a:visited {
+  text-decoration: none;
+  border-bottom: 1px dotted var(--visitedcolor);
+} */
 
 #home {
   text-decoration: underline dotted;
@@ -200,7 +213,6 @@ main h1 {
 
 .immaginiCarosello img {
   background-size: contain;
-  display: none;
   width: 100%;
   height: 20%;
   position: relative;
@@ -209,6 +221,11 @@ main h1 {
   z-index: 0;
   border-radius: 1em;
   box-shadow: 7px 7px 25px rgba(0, 0, 0, 0.2);
+  display: none;
+}
+
+.immaginiCarosello img.onCarosello {
+  display: block;
 }
 
 .puntiniCarosello li button {
@@ -561,7 +578,7 @@ footer h2 {
 
 /* con questo vengono sommati i due margini tra bot del primo e top del secondo risolvi */
 .infoMostra>p {
-  margin: 1em 10%;
+  margin: 0em 10% 1em;
 }
 
 .giorniMostra {
@@ -573,7 +590,6 @@ footer h2 {
 }
 
 .button {
-  align-self: flex-end;
   padding: 0.6em;
   font-size: 1em;
   border: 2px solid #000;
@@ -603,12 +619,16 @@ footer h2 {
   float: right;
 }
 
-.active:after {
+.accordion.active::after {
   content: "\2212";
 }
 
 .accordion-panel {
   display: none;
+}
+
+.accordion-panel.active {
+  display: block;
 }
 
 /*///////////////*/
@@ -617,43 +637,6 @@ footer h2 {
 /* MODIFICA MOSTRA */
 /*///////////////*/
 
-/* Versione 1 senza cambiare main */
-
-/* #primoContenuto H1 {
-  text-align: center;
-}
-
-.formcompilazione {
-  margin-top: 2em;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.formcompilazione input, select {
-  margin-bottom: 1.5em;
-  box-sizing: border-box;
-  padding: 0.4em;
-  border: solid 2px #000;
-  width: 10em;
-  border-radius: 5px;
-}
-
-.formcompilazione input[type="submit"] {
-  margin-top: 1em;
-  background-color: rgb(40, 212, 40);
-  color: white;
-  padding: 0.6em;
-  width: auto;
-  font-size: 1em;
-  color: black;
-}
-
-.formcompilazione label {
-  margin-bottom: 0.5em;
-  font-size: 1.2em;
-} */
 .compilazione {
   display: flex;
   justify-content: center;
@@ -709,14 +692,20 @@ select {
   display: block;
 }
 
-.formCompilazione input[type="submit"] {
-  background-color: rgb(40, 212, 40);
+.formCompilazione input[type="submit"], a.button {
+  background-color: var(--submitcolor);
   padding: 0.6em;
   width: 100%;
   font-size: 1.2em;
   margin-bottom: 0;
-  color: black;
+  color: var(--txtcolor);
+  display: block;
   border-radius: 20px;
+}
+
+a.button {
+  margin: 0 10%;
+  width: auto;
 }
 
 .formCompilazione input[type="submit"]:hover {
@@ -959,7 +948,7 @@ main[class="opera"] {
 /* VIRTUAL TOUR */
 /*/////////////////////////*/
 
-.virtualTour-mappa ol {
+#virtualTour-mappa ol {
   display: grid;
   grid-template-columns: 2fr 1fr 2fr;
   gap: 4px;
@@ -967,7 +956,7 @@ main[class="opera"] {
   border: #ddd solid 8px;
 }
 
-.virtualTour-mappa li {
+#virtualTour-mappa li {
   display: block;
   width: auto;
   border: 2px solid #ccc;
@@ -976,7 +965,7 @@ main[class="opera"] {
   text-indent: -999em;
 }
 
-.virtualTour-mappa li a {
+#virtualTour-mappa li a {
   display: block;
   background-size: cover;
   width: 100%;
@@ -1019,33 +1008,31 @@ main[class="opera"] {
   background: url("../images/sala-yu-gi-oh.jpeg") no-repeat center;
 }
 
-.virtualTour-mappa img {
+#virtualTour-mappa img {
   height: auto;
   border: 2px solid #ccc;
   border-radius: 5px;
   width: 75%;
 }
 
-.virtualTour-elenco-sale {
+#virtualTour-elenco-sale {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.virtualTour-elenco-sale dl {
-  max-width: 600px;
-  margin: 0;
-  padding: 0;
+#virtualTour-elenco-sale dl {
+  max-width: 800px;
 }
 
-.virtualTour-elenco-sale dt {
+#virtualTour-elenco-sale dt {
   font-weight: bold;
   margin-top: 20px;
-  color: #333;
+  color: var(--txtcolor);
   text-align: center;
 }
 
-.virtualTour-elenco-sale dd {
+#virtualTour-elenco-sale dd {
   margin: 5px 0 20px 0;
   padding: 15px;
   border: 2px solid #ddd;
@@ -1054,9 +1041,13 @@ main[class="opera"] {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.virtualTour-elenco-sale dd p {
-  color: #666;
-  margin-bottom: 10px;
+#virtualTour-elenco-sale dd p {
+  color: var(--disabledtxtcolor);
+  margin: 0 10% 0.625rem;
+}
+
+#virtualTour-elenco-sale dd p.selected {
+  color: var(--txtcolor);
 }
 
 /*/////////////////////////*/
