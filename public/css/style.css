@@ -721,6 +721,12 @@ a.button {
   cursor: pointer;
 }
 
+.formCompilazione input[type="submit"]:disabled {
+  background-color: var(--disabledtxtcolor);
+  color: #eee;
+  cursor: not-allowed;
+}
+
 .formCompilazione label {
   display: block;
   margin-bottom: 0.25em;
@@ -844,7 +850,13 @@ a.button {
   border-radius: 10px;
   padding: 0.5em;
   text-decoration: none;
-  color: black;
+  color: var(--txtcolor);
+}
+
+#scrivi-rev:hover {
+  background-color: var(--txtcolor);
+  color: var(--bgcolor);
+  transition: 0.3s ease;
 }
 
 #scrivi-rev::before {
@@ -1117,11 +1129,6 @@ main[class="opera"] {
   color: #000;
 }
 
-.elim-mostra a::before {
-  content: "\1F5D1";
-  color: #000;
-  font-size: 1.5em;
-}
 
 /*/////////////////////////*/
 /* AREA PERSONALE */
@@ -1168,15 +1175,19 @@ main[class="opera"] {
   background-color: var(--headerbgcolor);
 }
 
-.canc-pren {
+.cancella {
   cursor: pointer;
   text-align: center;
 }
 
-.canc-pren a::before {
+.cancella a::before {
   content: "\1F5D1";
   color: #000;
   font-size: 1.5em;
+}
+
+.cancella a, .mod-mostra a {
+  text-decoration: none;
 }
 
 dialog {
