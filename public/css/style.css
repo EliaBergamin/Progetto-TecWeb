@@ -1063,7 +1063,7 @@ main[class="opera"] {
   color: black;
 }
 
-#agg-mostr::before {
+#agg-mostra::before {
   content: "\2795";
   margin-right: 0.5em;
 }
