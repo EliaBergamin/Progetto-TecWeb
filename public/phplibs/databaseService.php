@@ -111,6 +111,16 @@ class DatabaseService
 		return $this->selectValuesPreparedQuery($queryUser, $queryParams, "s");
 	}
 
+	public function selectAvailableSlotsForDate($date): array
+	{
+		$querySlots = "SELECT orario 
+					FROM Prenotazione 
+					WHERE data_prenotazione = ?";
+
+		$queryParams = [$date];
+		return $this->selectValuesPreparedQuery($querySlots, $queryParams, "s");
+	}
+
 	private function pulisciInputHelper(&$item): void
 	{
 		if (is_string($item)) {

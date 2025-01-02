@@ -132,4 +132,58 @@
     </footer>
 </body>
 
+<script>
+    document.getElementById('giorno').addEventListener('change', function () {
+        const giornoSelezionato = this.value;
+
+        if (!giornoSelezionato) return; 
+        debugger;
+        fetch('../phplibs/controlla_disponibilita.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: `giorno=${encodeURIComponent(giornoSelezionato)}`,
+        })
+        .then(response => response.json())
+        .then(data => {
+            debugger;
+            aggiornaOrariDisponibili(data);
+        })
+        .catch(error => {
+            console.error('Errore durante il recupero degli slot:', error);
+        });
+    });
+
+    function aggiornaOrariDisponibili(slotDisponibili) {
+        debugger;
+        const selectOrario = document.getElementById('orario');
+
+        while (selectOrario.options.length > 1) {
+            selectOrario.remove(1);
+        }
+
+        const slot = {
+            "09": "09:00 - 10:30",
+            "10_30": "10:30 - 12:00",
+            "12": "12:00 - 13:30",
+            "13_30": "13:30 - 15:00",
+            "15": "15:00 - 16:30",
+            "16_30": "16:30 - 18:00",
+        };
+
+        slotDisponibili.forEach(orario => {
+            const option = document.createElement('option');
+            option.value = orario;
+            option.textContent = slot[orario];
+            selectOrario.appendChild(option);
+        });
+
+        // TODO: intanto mostro un alert, da capire bene come vogliamo fare
+        if (slotDisponibili.length === 0) {
+            alert('Nessun slot disponibile per il giorno selezionato.');
+        }
+    }
+</script>
+
 </html>
