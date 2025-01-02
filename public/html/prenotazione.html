@@ -33,10 +33,13 @@
             <li><a href="registrazione.php">Registrati</a></li>
             <li><a href="login.php">Accedi</a></li>
             <!-- log_end -->
-            <!-- account_opt_start -->
-            <li><a href={{option_link}}>{{option}}</a></li>
+            <!-- admin_start -->
+            <li><a href="admin.php">Admin</a></li>
+            <!-- admin_end -->
+            <!-- profile_start -->
+            <li><a href="profile.php">Il mio profilo</a></li>
             <li><a href="logout.php">Esci</a></li>
-            <!-- account_opt_end -->
+            <!-- profile_end -->
             <!-- greeting_start -->
             <li><span>Ciao {{username}}!</span></li>
             <!-- greeting_end -->
@@ -57,11 +60,11 @@
             <!-- errormsgs_end -->
             <!-- form_start -->
             <form action="prenotazione_effettuata.php" method="post" id="formPrenotazione" class="formCompilazione">
-                <label for="giorno">Giorno</label>
+                <label for="giorno" class="required-label">Giorno</label>
                 <input type="date" name="giorno" id="giorno" value="{{giorno}}" required
                     data-msg-required="Per favore, selezionare il giorno della visita"
                     data-msg-invalid="Giorno non valido">
-                <label for="orario">Fascia oraria</label>
+                <label for="orario" class="required-label">Fascia oraria</label>
                 <select name="orario" id="orario" required>
                     <option value="" disabled selected>Seleziona</option>
                     <optgroup label="mattina">
@@ -75,10 +78,11 @@
                         <option value="16:30:00">16:30 - 18:00</option>
                     </optgroup>
                 </select>
-                <label for="visitatori">Numero di visitatori</label>
+                <label for="visitatori" class="required-label">Numero di visitatori</label>
                 <input type="number" name="visitatori" id="visitatori" min="1" max="15" required
                     data-msg-required="Per favore, selezionare il numero di visitatori"
                     data-msg-invalid="Massimo x visitatori" value="{{visitatori}}">
+                <p class="required-msg">Campi obbligatori</p>
                 <input type="submit" name="submit" value="Prenota">
             </form>
             <!-- form_end -->

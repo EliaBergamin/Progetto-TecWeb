@@ -15,7 +15,12 @@
   --linkcolor: #fff;
   --visitedcolor: #fbff50;
   --submitcolor: #28d428;
+  --submitcolor: var(--headerbgcolor);
+
   --disabledtxtcolor: #666;
+  --carouselcolor: var(--headercolor);
+  --carouselactivecolor: var(--headerbgcolor);
+  --errorcolor: red;
   --tablebgcolor: #f2f2f2;
 }
 
@@ -69,6 +74,14 @@ a {
 
 a:visited {
   color: var(--visitedcolor);
+}
+
+#menu a:focus {
+  border: #000 solid 1px;
+}
+
+#menu a:active {
+  text-decoration: none;
 }
 
 #top-help {
@@ -136,7 +149,7 @@ utile per fissare il menu in modo che non scrolli
 #menu a, #currentLink, #menu span {
   display: block;
   height: 100%;
-  padding: 0.3em 0.8em;
+  padding: 0.3em 0.74em;
 }
 
 #currentLink {
@@ -233,11 +246,11 @@ main h1 {
   cursor: pointer;
   align-items: center;
   text-indent: -9999em;
-  background-color: rgb(232, 225, 225);
+  background-color: var(--carouselactivecolor);
+  border: 2px solid var(--carouselcolor);
   border-radius: 50%;
   height: 1.5rem;
   width: 1.5rem;
-  border: none;
 }
 
 .puntiniCarosello {
@@ -261,7 +274,8 @@ ol.puntiniCarosello {
 
 ol li .active,
 .puntiniCarosello button:hover {
-  background-color: #717171;
+  background-color: var(--carouselcolor);
+  border: 2px solid var(--carouselactivecolor);
 }
 
 #caroselloIndietro,
@@ -271,8 +285,9 @@ ol li .active,
   width: 3rem;
   margin: .4rem;
   transition: 0.6s ease;
-  color: white;
-  background-color: rgb(121, 113, 113);
+  color: var(--carouselcolor);
+  background-color: var(--carouselactivecolor);
+  border: 2px solid var(--carouselcolor);
   justify-content: center;
   display: inline-flex;
   align-items: center;
@@ -280,12 +295,11 @@ ol li .active,
   position: absolute;
   bottom: 42%;
   z-index: 1;
-  border: none;
 }
 
 #caroselloIndietro:hover,
 #caroselloAvanti:hover {
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: var(--visitedcolor);
 }
 
 #caroselloIndietro {
@@ -666,7 +680,7 @@ footer h2 {
 }
 
 #contenitoreRecensione {
-  min-width: 20em;
+  min-width: 20.5em;
 }
 
 @media (max-width: 500px) {
@@ -679,18 +693,28 @@ footer h2 {
   }
 }
 
+.form-errors {
+  color: var(--errorcolor);
+  font-size: 1.1rem;
+  margin-bottom: 1em;
+}
+
 .formCompilazione {
   margin-top: 1em;
 }
 
 .formCompilazione input,
-select {
+.formCompilazione select {
   margin-bottom: 1.25em;
   box-sizing: border-box;
   padding: 0.4em;
   border: solid 2px #000;
   border-radius: 5px;
   display: block;
+}
+
+.formCompilazione select:focus {
+  outline: none;
 }
 
 .formCompilazione input[type="submit"], a.button {
@@ -702,6 +726,7 @@ select {
   color: var(--txtcolor);
   display: block;
   border-radius: 20px;
+  border: none;
 }
 
 a.button {
@@ -709,16 +734,36 @@ a.button {
   width: auto;
 }
 
-.formCompilazione input[type="submit"]:hover {
-  background-color: rgb(40, 212, 40);
-  color: white;
+.formCompilazione input[type="submit"]:hover, a.button:hover {
+  background-color: var(--txtcolor);
+  color: var(--headerbgcolor);
   cursor: pointer;
+}
+
+.formCompilazione input[type="submit"]:disabled {
+  background-color: var(--disabledtxtcolor);
+  color: #eee;
+  cursor: not-allowed;
 }
 
 .formCompilazione label {
   display: block;
   margin-bottom: 0.25em;
   font-size: 1.15rem;
+}
+
+.required-label::after {
+  content: "*";
+  color: var(--errorcolor);
+}
+
+.required-msg::before {
+  content: "* ";
+  color: var(--errorcolor);
+}
+
+.required-msg {
+  margin: 0.5em 0;
 }
 
 /*////////////*/
@@ -798,7 +843,6 @@ a.button {
 } */
 
 .formCompilazione input[type="date"] {
-  border: 1px solid black;
   margin-bottom: 1.2em;
   font-size: 1.1rem;
 }
@@ -811,7 +855,7 @@ a.button {
   width: 100%;
   padding: 0.5em;
   margin-bottom: 1.5em;
-  border: 1px solid #ccc;
+  border: 2px solid #000;
   border-radius: 0.5em;
   font-size: 1rem;
   box-sizing: border-box;
@@ -838,7 +882,13 @@ a.button {
   border-radius: 10px;
   padding: 0.5em;
   text-decoration: none;
-  color: black;
+  color: var(--txtcolor);
+}
+
+#scrivi-rev:hover {
+  background-color: var(--txtcolor);
+  color: var(--bgcolor);
+  transition: 0.3s ease;
 }
 
 #scrivi-rev::before {
@@ -953,8 +1003,10 @@ main[class="opera"] {
   display: grid;
   grid-template-columns: 2fr 1fr 2fr;
   gap: 4px;
-  margin-bottom: 20px;
+  margin: 0 auto 2em;
   border: #ddd solid 8px;
+  width: 90%;
+  aspect-ratio: 5/3;
 }
 
 #virtualTour-mappa li {
@@ -962,7 +1014,6 @@ main[class="opera"] {
   width: auto;
   border: 2px solid #ccc;
   border-radius: 5px;
-  height: 16rem;
   text-indent: -999em;
 }
 
@@ -1112,11 +1163,6 @@ main[class="opera"] {
   color: #000;
 }
 
-.elim-mostra a::before {
-  content: "\1F5D1";
-  color: #000;
-  font-size: 1.5em;
-}
 
 /*/////////////////////////*/
 /* AREA PERSONALE */
@@ -1163,15 +1209,19 @@ main[class="opera"] {
   background-color: var(--headerbgcolor);
 }
 
-.canc-pren {
+.cancella {
   cursor: pointer;
   text-align: center;
 }
 
-.canc-pren a::before {
+.cancella a::before {
   content: "\1F5D1";
   color: #000;
   font-size: 1.5em;
+}
+
+.cancella a, .mod-mostra a {
+  text-decoration: none;
 }
 
 dialog {

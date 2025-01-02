@@ -32,10 +32,13 @@
             <li><a href="registrazione.php">Registrati</a></li>
             <li id="currentLink">Accedi</li>
             <!-- log_end -->
-            <!-- account_opt_start -->
-            <li><a href={{option_link}}>{{option}}</a></li>
+            <!-- admin_start -->
+            <li><a href="admin.php">Admin</a></li>
+            <!-- admin_end -->
+            <!-- profile_start -->
+            <li><a href="profile.php">Il mio profilo</a></li>
             <li><a href="logout.php">Esci</a></li>
-            <!-- account_opt_end -->
+            <!-- profile_end -->
             <!-- greeting_start -->
             <li><span>Ciao {{username}}!</span></li>
             <!-- greeting_end -->
@@ -55,13 +58,14 @@
             <!-- errormsgs_end -->
             <!-- form_start -->
             <form action="autenticate.php?redirect={{redirect}}" method="post" class="formCompilazione">
-                <label for="username">Username: </label>
+                <label for="username"  class="required-label">Username </label>
                 <input type="text" name="username" id="username" required data-msg-required="Username obbligatorio!"
                     data-msg-invalid="Username non valido" value="{{username}}">
-                <label for="password">Password: </label>
+                <label for="password" class="required-label">Password </label>
                 <input type="password" name="password" id="password" required
                     data-msg-required="La password è obbligatoria!"
                     data-msg-invalid="La password deve essere lunga almeno 8 caratteri">
+                <p class="required-msg">Campi obbligatori</p>
                 <input type="submit" name="submit" value="Accedi">
             </form>
             <!-- form_end -->

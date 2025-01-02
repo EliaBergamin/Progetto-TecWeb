@@ -22,6 +22,13 @@
     <button id="hamb" class="hamToggle" data-hambOn="true" type="button" onclick="hambToggle()">Menù</button>
   </header>
 
+  <nav id="breadcrumb">
+    <p>
+      Ti trovi in: <a lang="en" href="index.php">Home</a> &gt;
+      <a href="admin.php">Area gestione</a> &gt; Modifica mostra
+    </p>
+  </nav>
+
   <nav id="menu" class="hamToggle" data-hambOn="true">
     <ul>
       <li><a href="index.php" lang="en">Home</a></li>
@@ -33,10 +40,13 @@
       <li><a href="registrazione.php">Registrati</a></li>
       <li><a href="login.php">Accedi</a></li>
       <!-- log_end -->
-      <!-- account_opt_start -->
-      <li><a href={{option_link}}>{{option}}</a></li>
+      <!-- admin_start -->
+      <li><a href="admin.php">Admin</a></li>
+      <!-- admin_end -->
+      <!-- profile_start -->
+      <li><a href="profile.php">Il mio profilo</a></li>
       <li><a href="logout.php">Esci</a></li>
-      <!-- account_opt_end -->
+      <!-- profile_end -->
       <!-- greeting_start -->
       <li><span>Ciao {{username}}!</span></li>
       <!-- greeting_end -->
