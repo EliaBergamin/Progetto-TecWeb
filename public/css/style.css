@@ -731,6 +731,12 @@ select {
   font-size: 1.15rem;
 }
 
+.formCompilazione strong {
+  color: red;
+  font-size: 0.8em;
+  line-height: 0em;
+}
+
 /*////////////*/
 /* RECENSISCI */
 /*////////////*/
@@ -740,8 +746,10 @@ select {
 }
 
 .contenitoreCompilazione h1 {
-  font-size: 2em;
+  font-size: 1.75em;
   text-align: left;
+  margin:0.5em;
+  line-height: 1em;
 }
 
 .formCompilazione fieldset {
@@ -793,7 +801,7 @@ select {
 .formCompilazione input[type="email"],
 .formCompilazione input[type="password"] {
   width: 100%;
-  font-size: 1.15rem;
+  font-size: 1.0rem;
 }
 
 .formCompilazione input[type="number"] {

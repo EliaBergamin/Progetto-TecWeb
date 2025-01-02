@@ -7,19 +7,16 @@ function inizializzaValidazione(dettagli_form) {
  }
  
 function validazioneCampo(input) {		
-    var regex = dettagli_form[input.id][1];
-    var text = input.value;
-
-    // Rimuovo il suggerimento o il messaggio di errore precedente, se esiste
+    
     var nextElement = input.nextElementSibling;
     if (nextElement && (nextElement.classList.contains('default-text') || nextElement.classList.contains('errorSuggestion'))) {
         nextElement.remove();
     }
-
-    if(text.search(regex) != 0){
+    debugger;
+    if (!regole[dettagli_form[input.id][1]](input.value, dettagli_form[input.id][2])){
         messaggio(input, 1);
-        input.focus(); // Permette di rimanere sull'input errato
-        input.select(); // Seleziona tutto l'input e consente di pulirlo; opzionale, solo se è stato scritto così poco che si fa prima a riscrivere da capo
+        input.focus(); 
+        input.select();
         return false;
     }
 
@@ -40,21 +37,19 @@ function messaggio(input, mode) {
 /*  mode = 0, modalità input
     mode = 1, modalità errore */
 
-    var node; // tag con il messaggio, da aggiungere sotto il campo validato
+    var node;
 
     if(!mode){
-        // Creo messaggio di aiuto
         node = document.createElement('span');
-        node.className = 'default-text';  // Nel CSS della prof questa classe fa mettere in azzurro
-        node.setAttribute('aria-live', 'polite'); // aria-alert perche' venga letto dallo screen reader
+        node.className = 'default-text';  
+        node.setAttribute('aria-live', 'polite'); 
         node.appendChild(document.createTextNode(dettagli_form[input.id][0]));
     }
     else{
-        // Creo messaggio di errore
         node = document.createElement('strong');
-        node.className = 'errorSuggestion';  // Nel CSS della prof questa classe fa mettere in rosso
-        node.setAttribute('aria-live', 'assertive'); // aria-alert perche' venga letto dallo screen reader
-        node.appendChild(document.createTextNode(dettagli_form[input.id][2]));
+        node.className = 'errorSuggestion';  
+        node.setAttribute('aria-live', 'assertive');
+        node.appendChild(document.createTextNode(dettagli_form[input.id][3]));
     }
     
     input.parentNode.insertBefore(node, input.nextSibling);
