@@ -26,7 +26,7 @@
   <nav id="breadcrumb">
     <p>
       Ti trovi in: <a lang="en" href="index.php">Home</a> &gt;
-      <a href="admin.php">Area gestione</a> &gt; Aggiungi mostra
+      <a href="admin.php">Admin</a> &gt; Aggiungi mostra
     </p>
   </nav>
 
@@ -41,10 +41,13 @@
       <li><a href="registrazione.php">Registrati</a></li>
       <li><a href="login.php">Accedi</a></li>
       <!-- log_end -->
-      <!-- account_opt_start -->
-      <li><a href={{option_link}}>{{option}}</a></li>
+      <!-- admin_start -->
+      <li><a href="admin.php">Admin</a></li>
+      <!-- admin_end -->
+      <!-- profile_start -->
+      <li><a href="profile.php">Il mio profilo</a></li>
       <li><a href="logout.php">Esci</a></li>
-      <!-- account_opt_end -->
+      <!-- profile_end -->
       <!-- greeting_start -->
       <li><span>Ciao {{username}}!</span></li>
       <!-- greeting_end -->
@@ -59,16 +62,17 @@
       <!-- errormsgs_end -->
       <form class="formCompilazione" action="insert_mostra_admin.php" method="post">
         <!-- form_start -->
-        <label for="nome">Nome mostra</label>
+        <label for="nome" class="required-label">Nome mostra</label>
         <input type="text" name="nome" id="nome" value="{{nome}}" required>
-        <label for="descrizione">Descrizione</label>
+        <label for="descrizione" class="required-label">Descrizione</label>
         <textarea name="descrizione" id="descrizione" minlength="25" required>{{descrizione}}</textarea>
-        <label for="data_inizio">Data inizio</label>
+        <label for="data_inizio" class="required-label">Data inizio</label>
         <input type="date" name="data_inizio" id="data_inizio" value="{{data_inizio}}" required>
-        <label for="data_fine">Data fine</label>
+        <label for="data_fine" class="required-label">Data fine</label>
         <input type="date" name="data_fine" id="data_fine" value="{{data_fine}}" required>
-        <label for="immagine">Percorso immagine</label>
+        <label for="immagine" class="required-label">Percorso immagine</label>
         <input type="text" name="immagine" id="immagine" required>
+        <p class="required-msg">Campi obbligatori</p>
         <!-- form_end -->
         <input type="submit" name="submit" value="Conferma">
       </form>

@@ -8,19 +8,21 @@ if (isset($_SESSION['user_id']))
     header("Location: index.php?error=logged");
 
 $database = new DatabaseService();
-$registrazioneHtmlContent = Templating::getHtmlWithModifiedMenu(__FILE__);
-if (!$registrazioneHtmlContent) {
+$registrazioneContent = Templating::getHtmlWithModifiedMenu(__FILE__);
+if (!$registrazioneContent) {
 }
 //TODO
-$errormsgsToModify = Templating::getContentBetweenPlaceholders($prenotazioneContent, "errormsgs");
+$errormsgsToModify = Templating::getContentBetweenPlaceholders($registrazioneContent, "errormsgs");
 Templating::replaceAnchor($errormsgsToModify, "messaggiPerForm", "");
-Templating::replaceContentBetweenPlaceholders($prenotazioneContent, "errormsgs", $errormsgsToModify);
-$formValuesToModify = Templating::getContentBetweenPlaceholders($registrazioneHtmlContent, "form");
+Templating::replaceContentBetweenPlaceholders($registrazioneContent, "errormsgs", $errormsgsToModify);
+
+$formValuesToModify = Templating::getContentBetweenPlaceholders($registrazioneContent, "form");
 Templating::replaceAnchor($formValuesToModify, "nome", "");
 Templating::replaceAnchor($formValuesToModify, "cognome", "");
 Templating::replaceAnchor($formValuesToModify, "username", "");
 Templating::replaceAnchor($formValuesToModify, "email", "");
-Templating::replaceContentBetweenPlaceholders($registrazioneHtmlContent, "form", $formValuesToModify);
-Templating::showHtmlPageWithoutPlaceholders($registrazioneHtmlContent);
+Templating::replaceContentBetweenPlaceholders($registrazioneContent, "form", $formValuesToModify);
+
+Templating::showHtmlPageWithoutPlaceholders($registrazioneContent);
 
 ?>
