@@ -42,7 +42,7 @@
       <li><a href="login.php">Accedi</a></li>
       <!-- log_end -->
       <!-- admin_start -->
-      <li><a href="admin.php">Area gestione</a></li>
+      <li><a href="admin.php">Admin</a></li>
       <!-- admin_end -->
       <!-- profile_start -->
       <li><a href="profile.php">Il mio profilo</a></li>
@@ -65,7 +65,7 @@
       <!-- form_start -->
       <form action="recensione_effettuata.php" method="post" class="formCompilazione">
         <fieldset>
-          <legend>Come hai visitato il museo?</legend>
+          <legend class="required-label">Come hai visitato il museo?</legend>
           <label>
             <input type="radio" name="tipo" value="0" required {{checkedMuseo}}>
             Sono andato al museo
@@ -75,25 +75,25 @@
             Ho scelto il Virtual Tour
           </label>
         </fieldset>
-        <label for="data_visita" class="domandaRecensione">Quando hai effettuato la visita?</label>
+        <label for="data_visita" class="domandaRecensione required-label">Quando hai effettuato la visita?</label>
         <input type="date" name="data_visita" id="data_visita" value="{{data_visita}}" required>
         <fieldset id="rating-fs">
-          <legend>Come valuteresti la tua esperienza?</legend>
+          <legend class="required-label">Come valuteresti la tua esperienza?</legend>
           <div class="rating-option">
             <input type="radio" name="rating" class="ahead" id="voto-1" value="1" {{r1}}>
-            <label for="voto-1" class="nascosto">Terribile</label>
+            <label for="voto-1" class="nascosto">Deludente</label>
           </div>
           <div class="rating-option">
             <input type="radio" name="rating" class="ahead" id="voto-2" value="2" {{r2}}>
-            <label for="voto-2" class="nascosto">Non soddisfacente</label>
+            <label for="voto-2" class="nascosto">Mediocre</label>
           </div>
           <div class="rating-option">
             <input type="radio" name="rating" class="ahead" id="voto-3" value="3" {{r3}}>
-            <label for="voto-3" class="nascosto">Nella media</label>
+            <label for="voto-3" class="nascosto">Interessante</label>
           </div>
           <div class="rating-option">
             <input type="radio" name="rating" class="ahead" id="voto-4" value="4" {{r4}}>
-            <label for="voto-4" class="nascosto">Molto soddisfacente</label>
+            <label for="voto-4" class="nascosto">Soddisfacente</label>
           </div>
           <div class="rating-option">
             <input type="radio" name="rating" class="ahead" id="voto-5" value="5" {{r5}}>
@@ -101,7 +101,7 @@
           </div>
           <span id="giudizio"></span>
         </fieldset>
-        <label for="descrizione" class="domandaRecensione">Descrivi la tua visita</label>
+        <label for="descrizione" class="domandaRecensione required-label">Descrivi la tua visita</label>
         <textarea name="descrizione" id="descrizione" minlength="25" rows="8" cols="20"
           placeholder="L'opera che mi ha colpito di più è stata...">{{descrizione}}</textarea>
         <p class="required-msg">Campi obbligatori</p>

@@ -40,7 +40,7 @@
             <li><a href="login.php">Accedi</a></li>
             <!-- log_end -->
             <!-- admin_start -->
-            <li><a href="admin.php">Area gestione</a></li>
+            <li><a href="admin.php">Admin</a></li>
             <!-- admin_end -->
             <!-- profile_start -->
             <li><a href="profile.php">Il mio profilo</a></li>
@@ -60,16 +60,16 @@
             <!-- errormsgs_end -->
             <!-- form_start -->
             <form action="../register.php" method="post" class="formCompilazione">
-                <label for="nome">Nome </label>
+                <label for="nome" class="required-label">Nome </label>
                 <input type="text" name="nome" id="nome" value="{{nome}}" required>
-                <label for="cognome">Cognome </label>
+                <label for="cognome" class="required-label">Cognome </label>
                 <input type="text" name="cognome" id="cognome" value="{{cognome}}" required>
-                <label for="username">Username </label>
+                <label for="username" class="required-label">Username </label>
                 <input type="text" name="username" id="username" value="{{username}}" required>
-                <label for="email">Email </label>
+                <label for="email" class="required-label">Email </label>
                 <input type="email" name="email" id="email" value="{{email}}" required
                     data-msg-required="L'email è obbligatoria!" data-msg-invalid="Email non valida">
-                <label for="password">Password </label>
+                <label for="password" class="required-label">Password </label>
                 <input type="password" name="password" id="password" required
                     data-msg-required="La password è obbligatoria!"
                     data-msg-invalid="La password deve essere lunga almeno 8 caratteri">

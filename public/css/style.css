@@ -76,7 +76,7 @@ a:visited {
 }
 
 #menu a:focus {
-  text-decoration: underline;
+  border: #000 solid 1px;
 }
 
 #menu a:active {
@@ -148,7 +148,7 @@ utile per fissare il menu in modo che non scrolli
 #menu a, #currentLink, #menu span {
   display: block;
   height: 100%;
-  padding: 0.3em 0.8em;
+  padding: 0.3em 0.74em;
 }
 
 #currentLink {
@@ -679,7 +679,7 @@ footer h2 {
 }
 
 #contenitoreRecensione {
-  min-width: 20em;
+  min-width: 20.5em;
 }
 
 @media (max-width: 500px) {
@@ -703,13 +703,17 @@ footer h2 {
 }
 
 .formCompilazione input,
-select {
+.formCompilazione select {
   margin-bottom: 1.25em;
   box-sizing: border-box;
   padding: 0.4em;
   border: solid 2px #000;
   border-radius: 5px;
   display: block;
+}
+
+.formCompilazione select:focus {
+  outline: none;
 }
 
 .formCompilazione input[type="submit"], a.button {
@@ -721,6 +725,7 @@ select {
   color: var(--txtcolor);
   display: block;
   border-radius: 20px;
+  border: none;
 }
 
 a.button {
@@ -746,7 +751,7 @@ a.button {
   font-size: 1.15rem;
 }
 
-.formCompilazione label::after {
+.required-label::after {
   content: "*";
   color: var(--errorcolor);
 }
@@ -837,7 +842,6 @@ a.button {
 } */
 
 .formCompilazione input[type="date"] {
-  border: 1px solid black;
   margin-bottom: 1.2em;
   font-size: 1.1rem;
 }
@@ -850,7 +854,7 @@ a.button {
   width: 100%;
   padding: 0.5em;
   margin-bottom: 1.5em;
-  border: 1px solid #ccc;
+  border: 2px solid #000;
   border-radius: 0.5em;
   font-size: 1rem;
   box-sizing: border-box;
@@ -998,8 +1002,10 @@ main[class="opera"] {
   display: grid;
   grid-template-columns: 2fr 1fr 2fr;
   gap: 4px;
-  margin-bottom: 20px;
+  margin: 0 auto 2em;
   border: #ddd solid 8px;
+  width: 90%;
+  aspect-ratio: 5/3;
 }
 
 #virtualTour-mappa li {
@@ -1007,7 +1013,6 @@ main[class="opera"] {
   width: auto;
   border: 2px solid #ccc;
   border-radius: 5px;
-  height: 16rem;
   text-indent: -999em;
 }
 

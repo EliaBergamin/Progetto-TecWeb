@@ -75,17 +75,17 @@ function reset_span() {
         document.getElementById(currentSlideId).classList.replace("behind", "ahead");
     }
     let giudizi = [
-        "", "Terribile", "Non soddisfacente", "Nella media", "Molto soddisfacente", "Eccellente"
+        "", "Deludente", "Mediocre", "Interessante", "Soddisfacente", "Eccellente"
     ];
     document.getElementById("giudizio").innerText = giudizi[found];
 }
 
 function change_span(id) {
     let voto2giudizio = {
-        '1': "Terribile",
-        '2': "Non soddisfacente",
-        '3': "Nella media",
-        '4': "Molto soddisfacente",
+        '1': "Deludente",
+        '2': "Mediocre",
+        '3': "Interessante",
+        '4': "Soddisfacente",
         '5': "Eccellente"
     };
     let voto = parseInt(id.charAt(5));
