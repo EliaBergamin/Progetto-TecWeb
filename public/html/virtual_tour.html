@@ -15,23 +15,23 @@
     <script type="text/javascript" src="../js/script.js"></script>
 </head>
 
-<body>
+<body onload="initMap()">
     <a id="top-help" class="help nascosto" href="#primoContenuto">Vai al contenuto</a>
     <header>
         <h1>Museo Cartoni Animati</h1>
-        <button id="hamb" class="hamToggle" data-hambOn="false" type="button" onclick="hambToggle()">Menù</button>
+        <button id="hamb" class="hamToggle" data-hambOn="true" type="button" onclick="hambToggle()">Menù</button>
     </header>
 
     <nav id="breadcrumb">
         <p>
-            Ti trovi in: <a href="../index.html" lang="en" >Home</a> &gt;
+            Ti trovi in: <a href="index.php" lang="en">Home</a> &gt;
             <span lang="en">Virtual Tour</span>
         </p>
     </nav>
 
-    <nav id="menu" class="hamToggle" data-hambOn="false">
+    <nav id="menu" class="hamToggle" data-hambOn="true">
         <ul>
-            <li><a href="index.php" lang="en" >Home</a></li>
+            <li><a href="index.php" lang="en">Home</a></li>
             <li><a href="mostre.php">Le mostre</a></li>
             <li id="currentLink" lang="en">Virtual Tour</li>
             <li><a href="prenotazione.php">Prenotazione</a></li>
@@ -40,79 +40,87 @@
             <li><a href="registrazione.php">Registrati</a></li>
             <li><a href="login.php">Accedi</a></li>
             <!-- log_end -->
-            <!-- account_opt_start -->
-            <li><a href={{option_link}}>{{option}}</a></li>
+            <!-- admin_start -->
+            <li><a href="admin.php">Admin</a></li>
+            <!-- admin_end -->
+            <!-- profile_start -->
+            <li><a href="profile.php">Il mio profilo</a></li>
             <li><a href="logout.php">Esci</a></li>
-            <!-- account_opt_end -->
+            <!-- profile_end -->
             <!-- greeting_start -->
             <li><span>Ciao {{username}}!</span></li>
             <!-- greeting_end -->
         </ul>
     </nav>
-  
+
     <main id="primoContenuto">
         <h1>Mappa delle Sale</h1>
-    
+
         <!-- Mappa delle immagini -->
-        
-        <nav class="virtualTour-mappa">
-        <ol>
-            <!-- salaimmagini_start-->
-            <li id="dragon"><a href="#sala1">Sala 1: <span lang="en">Dragon Ball</span></a></li>
-            <li id="pokemon"><a href="#sala2">Sala 2: Pokemon</a></li>
-            <li id="gormiti"><a href="#sala3">Sala 3: Gormiti</a></li>
-            <li id="yugioh"><a href="#sala4">Sala 4: Yu-Gi-Oh!</a></li>
-            <!-- salaimmagini_end-->
-        </ol>
+
+        <nav id="virtualTour-mappa">
+            <ol>
+                <!-- salaimmagini_start-->
+                <li id="dragon"><a href="#sala1">Sala 1: <span lang="en">Dragon Ball</span></a></li>
+                <li id="pokemon"><a href="#sala2">Sala 2: Pokemon</a></li>
+                <li id="gormiti"><a href="#sala3">Sala 3: Gormiti</a></li>
+                <li id="yugioh"><a href="#sala4">Sala 4: Yu-Gi-Oh!</a></li>
+                <!-- salaimmagini_end-->
+            </ol>
 
         </nav>
-    
+
         <!-- Elenco delle sale -->
-        <section class="virtualTour-elenco-sale">
+        <section id="virtualTour-elenco-sale">
             <h2>Elenco delle Sale</h2>
             <dl>
                 <!-- salainformation_start -->
                 <dt id="sala1">Sala 1: <span lang="en">Dragon Ball</span></dt>
                 <dd>
-                    <p>Immergiti nell'universo epico di Dragon Ball, dove potrai esplorare le avventure di Goku e dei suoi amici.
-                        Scopri le Sfere del Drago, rivivi gli scontri leggendari contro i Saiyan, Freezer e Majin Bu, e 
-                        lasciati travolgere dall'energia delle trasformazioni Super Saiyan. Oggetti iconici, diorami e 
+                    <p>Immergiti nell'universo epico di Dragon Ball, dove potrai esplorare le avventure di Goku e dei
+                        suoi amici.
+                        Scopri le Sfere del Drago, rivivi gli scontri leggendari contro i Saiyan, Freezer e Majin Bu, e
+                        lasciati travolgere dall'energia delle trasformazioni Super Saiyan. Oggetti iconici, diorami e
                         ricostruzioni interattive ti aspettano per farti sentire parte di questa straordinaria saga.</p>
-                    <a href="dettaglio_sala.php?sala=1">Esplora la Sala</a>
+                    <a class="button" href="dettaglio_sala.php?sala=1">Esplora la Sala</a>
                 </dd>
                 <!-- salainformation_end -->
-
-                <dt id="sala2">Sala 2: Gormiti</dt>
+                <dt id="sala2">Sala 2: <span lang="en">Pokemon</span></dt>
                 <dd>
-                    <p>Viaggia verso l’isola magica dei Gormiti, dove la natura prende vita attraverso i potenti Lord della Terra, del Mare, 
-                        del Fuoco e dell’Aria. Attraversa paesaggi suggestivi e scopri la storia di questa eterna lotta tra il bene e il male. 
-                        Modelli tridimensionali, 
-                        effetti luminosi e una narrazione avvincente rendono questa sala un'esperienza immersiva.</p>
-                    <a href="dettaglio_sala.php?sala=4">Esplora la Sala</a>
-                </dd>
-    
-                <dt id="sala3">Sala 3: <span lang="en">Pokémon</span></dt>
-                <dd>
-                    <p>Entra nel fantastico mondo dei Pokémon, dove allenatori di tutte le età possono scoprire creature straordinarie.
-                        Esplora regioni come Kanto, Johto e Galar, ammira una collezione di Poké Ball, e sfida le emozionanti battaglie 
-                        in un’arena virtuale. Non dimenticare di incontrare i Pokémon leggendari e mitici in una sala dedicata alla loro 
+                    <p>Entra nel fantastico mondo dei Pokémon, dove allenatori di tutte le età possono scoprire creature
+                        straordinarie.
+                        Esplora regioni come Kanto, Johto e Galar, ammira una collezione di Poké Ball, e sfida le
+                        emozionanti battaglie
+                        in un'arena virtuale. Non dimenticare di incontrare i Pokémon leggendari e mitici in una sala
+                        dedicata alla loro
                         storia e potere.</p>
-                    <a href="dettaglio_sala.php?sala=2">Esplora la Sala</a>
+                    <a class="button" href="dettaglio_sala.php?sala=2">Esplora la Sala</a>
                 </dd>
-
+                <dt id="sala3">Sala 3: Gormiti</dt>
+                <dd>
+                    <p>Viaggia verso l'isola magica dei Gormiti, dove la natura prende vita attraverso i potenti Lord
+                        della Terra, del Mare,
+                        del Fuoco e dell'Aria. Attraversa paesaggi suggestivi e scopri la storia di questa eterna lotta
+                        tra il bene e il male.
+                        Modelli tridimensionali,
+                        effetti luminosi e una narrazione avvincente rendono questa sala un'esperienza immersiva.</p>
+                    <a class="button" href="dettaglio_sala.php?sala=3">Esplora la Sala</a>
+                </dd>
                 <dt id="sala4">Sala 4: <span lang="en">Yu-gi-oh</span></dt>
                 <dd>
-                    <p>Preparati a duellare nel mondo di Yu-Gi-Oh!, dove ogni carta racconta una storia epica. 
-                        Esplora il regno dei mostri con esposizioni dedicate alle carte leggendarie come il Drago Bianco Occhi Blu e il 
-                        Mago Nero. 
-                        Una replica dell’arena da duello ti aspetta per sfidare amici e rivivere i momenti più iconici della serie.</p>
-                    <a href="dettaglio_sala.php?sala=3">Esplora la Sala</a>
+                    <p>Preparati a duellare nel mondo di Yu-Gi-Oh!, dove ogni carta racconta una storia epica.
+                        Esplora il regno dei mostri con esposizioni dedicate alle carte leggendarie come il Drago Bianco
+                        Occhi Blu e il
+                        Mago Nero.
+                        Una replica dell'arena da duello ti aspetta per sfidare amici e rivivere i momenti più iconici
+                        della serie.</p>
+                    <a class="button" href="dettaglio_sala.php?sala=4">Esplora la Sala</a>
                 </dd>
             </dl>
         </section>
         <a href="recensisci.html" class="btn">Lascia una recensione</a>
     </main>
-    
+
     <a class="help" id="torna-su" href="#">Torna su</a>
     <footer>
         <h2>Museo Cartoni Animati</h2>
@@ -166,5 +174,5 @@
 </body>
 
 </html>
-<!-- fine_start --> 
+<!-- fine_start -->
 <!-- fine_end -->

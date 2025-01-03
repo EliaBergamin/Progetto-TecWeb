@@ -18,11 +18,11 @@
     <script type="text/javascript" src="../js/validazione-registrazione.js"></script>
 </head>
 
-<body onload="caricamentoValidazione();">
+<body>
     <a id="top-help" class="help nascosto" href="#primoContenuto">Vai al contenuto</a>
     <header>
         <h1>Museo Cartoni Animati</h1>
-        <button id="hamb" class="hamToggle" data-hambOn="false" type="button" onclick="hambToggle()">Menù</button>
+        <button id="hamb" class="hamToggle" data-hambOn="true" type="button" onclick="hambToggle()">Menù</button>
     </header>
 
     <nav id="breadcrumb">
@@ -31,7 +31,7 @@
         </p>
     </nav>
 
-    <nav id="menu" class="hamToggle" data-hambOn="false">
+    <nav id="menu" class="hamToggle" data-hambOn="true">
         <ul>
             <li><a href="../index.php" lang="en">Home</a></li>
             <li><a href="mostre.php">Le mostre</a></li>
@@ -42,10 +42,13 @@
             <li id="currentLink">Registrati</li>
             <li><a href="login.php">Accedi</a></li>
             <!-- log_end -->
-            <!-- account_opt_start -->
-            <li><a href={{option_link}}>{{option}}</a></li>
+            <!-- admin_start -->
+            <li><a href="admin.php">Admin</a></li>
+            <!-- admin_end -->
+            <!-- profile_start -->
+            <li><a href="profile.php">Il mio profilo</a></li>
             <li><a href="logout.php">Esci</a></li>
-            <!-- account_opt_end -->
+            <!-- profile_end -->
             <!-- greeting_start -->
             <li><span>Ciao {{username}}!</span></li>
             <!-- greeting_end -->
@@ -54,24 +57,30 @@
 
     <main id="primoContenuto" class="compilazione">
         <div class="contenitoreCompilazione">
-        <h1>Registrazione</h1>
-        <form action="../register.php" method="post" class="formCompilazione">
-            <label for="nome">Nome </label>
-            <input type="text" name="nome" id="nome" required>
-            <label for="cognome">Cognome </label>
-            <input type="text" name="cognome" id="cognome" required>
-            <label for="username">Username </label>
-            <input type="text" name="username" id="username" required>
-            <label for="email">Email </label>
-            <input type="email" name="email" id="email" required data-msg-required="L'email è obbligatoria!"
-                data-msg-invalid="Email non valida">
-            <label for="password">Password </label>
-            <input type="password" name="password" id="password" required
-                data-msg-required="La password è obbligatoria!"
-                data-msg-invalid="La password deve essere lunga almeno 8 caratteri">
-            <input type="submit" value="Registrati">
-        </form>
-    </div>
+            <h1>Registrazione</h1>
+            <!-- errormsgs_start -->
+            {{messaggiPerForm}}
+            <!-- errormsgs_end -->
+            <!-- form_start -->
+            <form action="../register.php" method="post" class="formCompilazione">
+                <label for="nome" class="required-label">Nome </label>
+                <input type="text" name="nome" id="nome" value="{{nome}}" required>
+                <label for="cognome" class="required-label">Cognome </label>
+                <input type="text" name="cognome" id="cognome" value="{{cognome}}" required>
+                <label for="username" class="required-label">Username </label>
+                <input type="text" name="username" id="username" value="{{username}}" required>
+                <label for="email" class="required-label">Email </label>
+                <input type="email" name="email" id="email" value="{{email}}" required
+                    data-msg-required="L'email è obbligatoria!" data-msg-invalid="Email non valida">
+                <label for="password" class="required-label">Password </label>
+                <input type="password" name="password" id="password" required
+                    data-msg-required="La password è obbligatoria!"
+                    data-msg-invalid="La password deve essere lunga almeno 8 caratteri">
+                <p class="required-msg">Campi obbligatori</p>
+                <input type="submit" name="submit" value="Registrati">
+            </form>
+            <!-- form_end -->
+        </div>
     </main>
     <a class="help" id="torna-su" href="#">Torna su</a>
     <footer>

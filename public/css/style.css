@@ -13,7 +13,14 @@
   --contenttxtcolor: #000;
   --contentbgcolor: #FFF;
   --linkcolor: #fff;
-  --visitedcolor: #38f689;
+  --visitedcolor: #fbff50;
+  --submitcolor: #28d428;
+  --submitcolor: var(--headerbgcolor);
+
+  --disabledtxtcolor: #666;
+  --carouselcolor: var(--headercolor);
+  --carouselactivecolor: var(--headerbgcolor);
+  --errorcolor: red;
 }
 
 @font-face {
@@ -56,8 +63,7 @@ body {
   margin: auto;
 }
 
-ol,
-ul {
+ol, ul {
   list-style: none;
 }
 
@@ -67,6 +73,14 @@ a {
 
 a:visited {
   color: var(--visitedcolor);
+}
+
+#menu a:focus {
+  border: #000 solid 1px;
+}
+
+#menu a:active {
+  text-decoration: none;
 }
 
 #top-help {
@@ -124,14 +138,17 @@ utile per fissare il menu in modo che non scrolli
   color: var(--headercolor);
   grid-row: 2;
   grid-column: 2;
-  width: auto;
+  overflow: hidden;
 }
 
-#menu li {
-  padding: 0.5rem;
-  display: inline;
-  vertical-align: middle;
+#menu ul {
+  display: flex;
+}
+
+#menu a, #currentLink, #menu span {
+  display: block;
   height: 100%;
+  padding: 0.3em 0.74em;
 }
 
 #currentLink {
@@ -142,7 +159,11 @@ utile per fissare il menu in modo che non scrolli
 #menu a {
   color: var(--headercolor);
   text-decoration: none;
-  margin: 0;
+  background: var(--headerbgcolor);
+}
+
+#menu a:visited {
+  background: var(--visitedcolor);
 }
 
 /*////////////*/
@@ -157,9 +178,14 @@ utile per fissare il menu in modo che non scrolli
   padding: 0.2rem;
 }
 
-#breadcrumb a:visited {
-  text-decoration: underline dotted;
+#breadcrumb p {
+  padding: 0.18rem;
 }
+
+/* #breadcrumb a:visited {
+  text-decoration: none;
+  border-bottom: 1px dotted var(--visitedcolor);
+} */
 
 #home {
   text-decoration: underline dotted;
@@ -200,7 +226,6 @@ main h1 {
 
 .immaginiCarosello img {
   background-size: contain;
-  display: none;
   width: 100%;
   height: 20%;
   position: relative;
@@ -209,17 +234,22 @@ main h1 {
   z-index: 0;
   border-radius: 1em;
   box-shadow: 7px 7px 25px rgba(0, 0, 0, 0.2);
+  display: none;
+}
+
+.immaginiCarosello img.onCarosello {
+  display: block;
 }
 
 .puntiniCarosello li button {
   cursor: pointer;
   align-items: center;
   text-indent: -9999em;
-  background-color: rgb(232, 225, 225);
+  background-color: var(--carouselactivecolor);
+  border: 2px solid var(--carouselcolor);
   border-radius: 50%;
   height: 1.5rem;
   width: 1.5rem;
-  border: none;
 }
 
 .puntiniCarosello {
@@ -243,7 +273,8 @@ ol.puntiniCarosello {
 
 ol li .active,
 .puntiniCarosello button:hover {
-  background-color: #717171;
+  background-color: var(--carouselcolor);
+  border: 2px solid var(--carouselactivecolor);
 }
 
 #caroselloIndietro,
@@ -253,8 +284,9 @@ ol li .active,
   width: 3rem;
   margin: .4rem;
   transition: 0.6s ease;
-  color: white;
-  background-color: rgb(121, 113, 113);
+  color: var(--carouselcolor);
+  background-color: var(--carouselactivecolor);
+  border: 2px solid var(--carouselcolor);
   justify-content: center;
   display: inline-flex;
   align-items: center;
@@ -262,12 +294,11 @@ ol li .active,
   position: absolute;
   bottom: 42%;
   z-index: 1;
-  border: none;
 }
 
 #caroselloIndietro:hover,
 #caroselloAvanti:hover {
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: var(--visitedcolor);
 }
 
 #caroselloIndietro {
@@ -561,7 +592,7 @@ footer h2 {
 
 /* con questo vengono sommati i due margini tra bot del primo e top del secondo risolvi */
 .infoMostra>p {
-  margin: 1em 10%;
+  margin: 0em 10% 1em;
 }
 
 .giorniMostra {
@@ -573,7 +604,6 @@ footer h2 {
 }
 
 .button {
-  align-self: flex-end;
   padding: 0.6em;
   font-size: 1em;
   border: 2px solid #000;
@@ -603,7 +633,7 @@ footer h2 {
   float: right;
 }
 
-.active:after {
+.accordion.active::after {
   content: "\2212";
 }
 
@@ -611,48 +641,16 @@ footer h2 {
   display: none;
 }
 
+.accordion-panel.active {
+  display: block;
+}
+
 /*///////////////*/
 /* PRENOTAZIONI */
 /* REGISTRAZIONE */
+/* MODIFICA MOSTRA */
 /*///////////////*/
 
-/* Versione 1 senza cambiare main */
-
-/* #primoContenuto H1 {
-  text-align: center;
-}
-
-.formcompilazione {
-  margin-top: 2em;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.formcompilazione input, select {
-  margin-bottom: 1.5em;
-  box-sizing: border-box;
-  padding: 0.4em;
-  border: solid 2px #000;
-  width: 10em;
-  border-radius: 5px;
-}
-
-.formcompilazione input[type="submit"] {
-  margin-top: 1em;
-  background-color: rgb(40, 212, 40);
-  color: white;
-  padding: 0.6em;
-  width: auto;
-  font-size: 1em;
-  color: black;
-}
-
-.formcompilazione label {
-  margin-bottom: 0.5em;
-  font-size: 1.2em;
-} */
 .compilazione {
   display: flex;
   justify-content: center;
@@ -666,6 +664,10 @@ footer h2 {
   border-radius: 3em;
 }
 
+.lg {
+  height: 50rem;
+}
+
 .contenitoreCompilazione {
   width: 24%;
   min-width: 16em;
@@ -677,7 +679,7 @@ footer h2 {
 }
 
 #contenitoreRecensione {
-  min-width: 20em;
+  min-width: 20.5em;
 }
 
 @media (max-width: 500px) {
@@ -690,13 +692,19 @@ footer h2 {
   }
 }
 
+.form-errors {
+  color: var(--errorcolor);
+  font-size: 1.1rem;
+  margin-bottom: 1em;
+}
+
 .formCompilazione {
   margin-top: 1em;
 }
 
 .formCompilazione input,
-select {
-  margin-bottom: 0.25em;
+.formCompilazione select {
+  margin-bottom: 1.25em;
   box-sizing: border-box;
   padding: 0.4em;
   border: solid 2px #000;
@@ -704,29 +712,41 @@ select {
   display: block;
 }
 
-.formCompilazione input:last-of-type {
-  margin-top: 1.25em;
+.formCompilazione select:focus {
+  outline: none;
 }
 
-.formCompilazione input[type="submit"] {
-  background-color: rgb(40, 212, 40);
+.formCompilazione input[type="submit"], a.button {
+  background-color: var(--submitcolor);
   padding: 0.6em;
   width: 100%;
   font-size: 1.2em;
   margin-bottom: 0;
-  color: black;
+  color: var(--txtcolor);
+  display: block;
   border-radius: 20px;
+  border: none;
 }
 
-.formCompilazione input[type="submit"]:hover {
-  background-color: rgb(40, 212, 40);
-  color: white;
+a.button {
+  margin: 0 10%;
+  width: auto;
+}
+
+.formCompilazione input[type="submit"]:hover, a.button:hover {
+  background-color: var(--txtcolor);
+  color: var(--headerbgcolor);
   cursor: pointer;
+}
+
+.formCompilazione input[type="submit"]:disabled {
+  background-color: var(--disabledtxtcolor);
+  color: #eee;
+  cursor: not-allowed;
 }
 
 .formCompilazione label {
   display: block;
-  margin-top: 1em;
   margin-bottom: 0.25em;
   font-size: 1.15rem;
 }
@@ -735,10 +755,23 @@ select {
   color: red;
   font-size: 0.8em;
   line-height: 0em;
+.required-label::after {
+  content: "*";
+  color: var(--errorcolor);
+}
+
+.required-msg::before {
+  content: "* ";
+  color: var(--errorcolor);
+}
+
+.required-msg {
+  margin: 0.5em 0;
 }
 
 /*////////////*/
 /* RECENSISCI */
+/* MODIFICA MOSTRA */
 /*////////////*/
 
 #primoContenuto[class="compilazione recensisci"] {
@@ -815,7 +848,6 @@ select {
 } */
 
 .formCompilazione input[type="date"] {
-  border: 1px solid black;
   margin-bottom: 1.2em;
   font-size: 1.1rem;
 }
@@ -828,7 +860,7 @@ select {
   width: 100%;
   padding: 0.5em;
   margin-bottom: 1.5em;
-  border: 1px solid #ccc;
+  border: 2px solid #000;
   border-radius: 0.5em;
   font-size: 1rem;
   box-sizing: border-box;
@@ -855,7 +887,13 @@ select {
   border-radius: 10px;
   padding: 0.5em;
   text-decoration: none;
-  color: black;
+  color: var(--txtcolor);
+}
+
+#scrivi-rev:hover {
+  background-color: var(--txtcolor);
+  color: var(--bgcolor);
+  transition: 0.3s ease;
 }
 
 #scrivi-rev::before {
@@ -966,24 +1004,25 @@ main[class="opera"] {
 /* VIRTUAL TOUR */
 /*/////////////////////////*/
 
-.virtualTour-mappa ol {
+#virtualTour-mappa ol {
   display: grid;
   grid-template-columns: 2fr 1fr 2fr;
   gap: 4px;
-  margin-bottom: 20px;
+  margin: 0 auto 2em;
   border: #ddd solid 8px;
+  width: 90%;
+  aspect-ratio: 5/3;
 }
 
-.virtualTour-mappa li {
+#virtualTour-mappa li {
   display: block;
   width: auto;
   border: 2px solid #ccc;
   border-radius: 5px;
-  height: 16rem;
   text-indent: -999em;
 }
 
-.virtualTour-mappa li a {
+#virtualTour-mappa li a {
   display: block;
   background-size: cover;
   width: 100%;
@@ -1026,33 +1065,31 @@ main[class="opera"] {
   background: url("../images/sala-yu-gi-oh.jpeg") no-repeat center;
 }
 
-.virtualTour-mappa img {
+#virtualTour-mappa img {
   height: auto;
   border: 2px solid #ccc;
   border-radius: 5px;
   width: 75%;
 }
 
-.virtualTour-elenco-sale {
+#virtualTour-elenco-sale {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.virtualTour-elenco-sale dl {
-  max-width: 600px;
-  margin: 0;
-  padding: 0;
+#virtualTour-elenco-sale dl {
+  max-width: 800px;
 }
 
-.virtualTour-elenco-sale dt {
+#virtualTour-elenco-sale dt {
   font-weight: bold;
   margin-top: 20px;
-  color: #333;
+  color: var(--txtcolor);
   text-align: center;
 }
 
-.virtualTour-elenco-sale dd {
+#virtualTour-elenco-sale dd {
   margin: 5px 0 20px 0;
   padding: 15px;
   border: 2px solid #ddd;
@@ -1061,7 +1098,150 @@ main[class="opera"] {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.virtualTour-elenco-sale dd p {
-  color: #666;
-  margin-bottom: 10px;
+#virtualTour-elenco-sale dd p {
+  color: var(--disabledtxtcolor);
+  margin: 0 10% 0.625rem;
 }
+
+#virtualTour-elenco-sale dd p.selected {
+  color: var(--txtcolor);
+}
+
+/*/////////////////////////*/
+/* PERSONALE ADMIN */
+/*/////////////////////////*/
+
+#agg-mostr {
+  border: 1px solid;
+  border-radius: 10px;
+  padding: 0.5em;
+  text-decoration: none;
+  color: black;
+}
+
+#agg-mostr::before {
+  content: "\2795";
+  margin-right: 0.5em;
+}
+
+#tab-mostre {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+#tab-mostre caption {
+  font-size: 1.5em;
+  margin-bottom: 1em;
+}
+
+#tab-mostre td {
+  max-width: 11em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+#tab-mostre th, 
+#tab-mostre td {
+  border: 1px solid black;
+  padding: 0.5em;
+}
+
+#tab-mostre tr:nth-child(even),
+#tab-mostre thead th {
+  background-color: #f2f2f2;
+}
+
+#tab-mostre tr:nth-child(odd) {
+  background-color: var(--headerbgcolor);
+}
+
+.mod-mostra,
+.elim-mostra {
+  text-align: center;
+}
+
+.mod-mostra a::before {
+  content: "\270D";
+  color: #000;
+}
+
+
+/*/////////////////////////*/
+/* AREA PERSONALE */
+/*/////////////////////////*/
+
+#dati-utente {
+  margin: 2em auto;
+  width: 50%;
+  padding: 0 1.5em;
+  padding-bottom: 1.5em;
+  border: 1px solid black;
+  border-radius: 8px;
+}
+
+#dati-utente dt {
+  font-weight: bold;
+  margin-bottom: 0.5em;
+  margin-top: 1.5em;
+}
+
+#dati-utente dd {
+  margin-left: 1.5em;
+}
+
+#tab-prenot {
+  width:80%;
+  border-collapse: collapse;
+  text-align: left;
+  margin: 2em auto;
+}
+
+#tab-prenot th, 
+#tab-prenot td {
+  border: 1px solid black;
+  padding: 0.5em;
+}
+
+#tab-prenot tr:nth-child(even),
+#tab-prenot thead th {
+  background-color: #f2f2f2;
+}
+
+#tab-prenot tr:nth-child(odd) {
+  background-color: var(--headerbgcolor);
+}
+
+.cancella {
+  cursor: pointer;
+  text-align: center;
+}
+
+.cancella a::before {
+  content: "\1F5D1";
+  color: #000;
+  font-size: 1.5em;
+}
+
+.cancella a, .mod-mostra a {
+  text-decoration: none;
+}
+
+dialog {
+  border: 1px solid black;
+  border-radius: 8px;
+  padding: 1em;
+  margin: auto;
+  font-size: 1.2em;
+}
+
+dialog button {
+  margin-right: 1em;
+  margin-top: 1em;
+  padding: 0.5em;
+  border: 1px solid black;
+  border-radius: 5px;
+  cursor: pointer;
+}
+

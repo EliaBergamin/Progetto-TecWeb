@@ -1,50 +1,44 @@
 <?php
-/* function clean_input($data)
-{
-    $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    return $data;
-}
-session_start();
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (array_key_exists("email", $_POST))
-        $email = filter_input(INPUT_POST, "email", FILTER_VALIDATE_EMAIL);
-    if (array_key_exists("password", $_POST))
-        $password = clean_input($_POST["password"]);
-
-    include "connect.php";
-
-    $stmt = $connection->prepare("SELECT * FROM users WHERE email = :email");
-    $stmt->bind_param(':username', $email);
-    $stmt->execute();
-    $user = $stmt->get_result()->fetch_assoc();
-
-    if ($user && password_verify($password, $user['password'])) {
-        // password valida
-        $_SESSION['user_id'] = $user['id'];
-        $_SESSION['username'] = $user['username'];
-        $_SESSION['role'] = $user['role'];
-        header("Location: ../index.php");
-        exit;
-    } else {
-        echo "Credenziali incorrette";
-    }
-} */
 
 require_once("phplibs/databaseService.php");
 require_once("phplibs/templatingService.php");
 
+$redirect = $_GET['redirect'] ?? 'profile.php';
+if (isset($_SESSION['user_id']))
+    if ($_SESSION['is_admin'])
+        header("Location: admin.php");
+    else
+        header("Location: $redirect");
 
-
-if (isset($_SESSION['user_id'])) 
-    header("Location: index.php");
 
 $database = new DatabaseService();
 $loginHtmlContent = Templating::getHtmlWithModifiedMenu(__FILE__);
-if (!$loginHtmlContent) {}
-    //TODO
+if (!$loginHtmlContent) {
+}
+//TODO
+
+$messaggiPerForm = '';
+if (isset($_GET['error'])) {
+    $error = $_GET['error'];
+    if ($error == 'user')
+        $messaggiPerForm .= '<li>Username non esistente</li>';
+    else if ($error == 'pwd')
+        $messaggiPerForm .= '<li>Password errata</li>';
+}
+
+if (strlen($messaggiPerForm) != 0)
+    $messaggiPerForm = '<ul class="form-errors">' . $messaggiPerForm . '</ul>';
+
+$errormsgsToModify = Templating::getContentBetweenPlaceholders($loginHtmlContent, "errormsgs");
+Templating::replaceAnchor($errormsgsToModify, "messaggiPerForm", $messaggiPerForm);
+Templating::replaceContentBetweenPlaceholders($loginHtmlContent, "errormsgs", $errormsgsToModify);
+
+$formToModify = Templating::getContentBetweenPlaceholders($loginHtmlContent, 'form');
+Templating::replaceAnchor($formToModify, 'redirect', $redirect);
+$username = $_GET['username'] ?? '';
+Templating::replaceAnchor($formToModify, 'username', $username);
+Templating::replaceContentBetweenPlaceholders($loginHtmlContent, 'form', $formToModify);
+
 Templating::showHtmlPageWithoutPlaceholders($loginHtmlContent);
 
 ?>

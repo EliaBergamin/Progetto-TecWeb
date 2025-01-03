@@ -7,7 +7,7 @@
   <meta name="description" content="Qui puoi inserire una recensione
     se hai visitato il museo o hai fatto il virtual tour">
   <meta name="keywords" content="recensione,museo,virtual tour,visita,cardgame">
-    <link rel="stylesheet" href="../css/style.css" media="screen">
+  <link rel="stylesheet" href="../css/style.css" media="screen">
   <link rel="stylesheet" href="../css/middle.css" media="screen and (max-width: 1024px)">
   <link rel="stylesheet" href="../css/mini.css" media="screen and (max-width: 768px)">
   <link rel="stylesheet" href="../css/print.css" media="print">
@@ -70,11 +70,11 @@
   </script>
 </head>
 
-<body onload="caricamentoValidazione();">
+<body onload="initRecensisci()">
   <a id="top-help" class="help nascosto" href="#primoContenuto">Vai al contenuto</a>
   <header>
     <h1>Museo Cartoni Animati</h1>
-    <button id="hamb" class="hamToggle" data-hambOn="false" type="button" onclick="hambToggle()">Menù</button>
+    <button id="hamb" class="hamToggle" data-hambOn="true" type="button" onclick="hambToggle()">Menù</button>
   </header>
 
   <nav id="breadcrumb">
@@ -84,7 +84,7 @@
     </p>
   </nav>
 
-  <nav id="menu" class="hamToggle" data-hambOn="false">
+  <nav id="menu" class="hamToggle" data-hambOn="true">
     <ul>
       <li><a href="index.php" lang="en">Home</a></li>
       <li><a href="mostre.php">Le mostre</a></li>
@@ -95,61 +95,73 @@
       <li><a href="registrazione.php">Registrati</a></li>
       <li><a href="login.php">Accedi</a></li>
       <!-- log_end -->
-      <!-- account_opt_start -->
-      <li><a href={{option_link}}>{{option}}</a></li>
-      <!-- account_opt_end -->            
-  </ul>
-  <!-- greeting_start -->
-  <span>Ciao {{username}}!</span>
-  <!-- greeting_end -->
+      <!-- admin_start -->
+      <li><a href="admin.php">Admin</a></li>
+      <!-- admin_end -->
+      <!-- profile_start -->
+      <li><a href="profile.php">Il mio profilo</a></li>
+      <li><a href="logout.php">Esci</a></li>
+      <!-- profile_end -->
+
+      <!-- greeting_start -->
+      <li><span>Ciao {{username}}!</span></li>
+      <!-- greeting_end -->
+    </ul>
+
   </nav>
 
   <main id="primoContenuto" class="compilazione recensisci">
     <div class="contenitoreCompilazione" id="contenitoreRecensione">
       <h1>Recensisci la tua visita</h1>
-      <form action="effettuarecensione.php" method="post" class="formCompilazione">
+      <!-- errormsgs_start -->
+      {{messaggiPerForm}}
+      <!-- errormsgs_end -->
+      <!-- form_start -->
+      <form action="recensione_effettuata.php" method="post" class="formCompilazione">
         <fieldset>
-          <legend>Come hai visitato il museo?</legend>
+          <legend class="required-label">Come hai visitato il museo?</legend>
           <label>
-            <input type="radio" name="tipo" value="museo" required>
+            <input type="radio" name="tipo" value="0" required {{checkedMuseo}}>
             Sono andato al museo
           </label>
           <label>
-            <input type="radio" name="tipo" value="virtual">
+            <input type="radio" name="tipo" value="1" {{checkedVirtual}}>
             Ho scelto il Virtual Tour
           </label>
         </fieldset>
-        <label for="data-visita" class="domandaRecensione">Quando hai effettuato la visita?</label>
-        <input type="date" name="data-visita" id="data-visita" required>
+        <label for="data_visita" class="domandaRecensione required-label">Quando hai effettuato la visita?</label>
+        <input type="date" name="data_visita" id="data_visita" value="{{data_visita}}" required>
         <fieldset id="rating-fs">
-          <legend>Come valuteresti la tua esperienza?</legend>
+          <legend class="required-label">Come valuteresti la tua esperienza?</legend>
           <div class="rating-option">
-            <input type="radio" name="rating" class="ahead" id="voto-1" value="1">
-            <label for="voto-1" class="nascosto">Terribile</label>
+            <input type="radio" name="rating" class="ahead" id="voto-1" value="1" {{r1}}>
+            <label for="voto-1" class="nascosto">Deludente</label>
           </div>
           <div class="rating-option">
-            <input type="radio" name="rating" class="ahead" id="voto-2" value="2">
-            <label for="voto-2" class="nascosto">Non soddisfacente</label>
+            <input type="radio" name="rating" class="ahead" id="voto-2" value="2" {{r2}}>
+            <label for="voto-2" class="nascosto">Mediocre</label>
           </div>
           <div class="rating-option">
-            <input type="radio" name="rating" class="ahead" id="voto-3" value="3">
-            <label for="voto-3" class="nascosto">Nella media</label>
+            <input type="radio" name="rating" class="ahead" id="voto-3" value="3" {{r3}}>
+            <label for="voto-3" class="nascosto">Interessante</label>
           </div>
           <div class="rating-option">
-            <input type="radio" name="rating" class="ahead" id="voto-4" value="4">
-            <label for="voto-4" class="nascosto">Molto soddisfacente</label>
+            <input type="radio" name="rating" class="ahead" id="voto-4" value="4" {{r4}}>
+            <label for="voto-4" class="nascosto">Soddisfacente</label>
           </div>
           <div class="rating-option">
-            <input type="radio" name="rating" class="ahead" id="voto-5" value="5">
+            <input type="radio" name="rating" class="ahead" id="voto-5" value="5" {{r5}}>
             <label for="voto-5" class="nascosto">Eccellente</label>
           </div>
           <span id="giudizio"></span>
         </fieldset>
-        <label for="descrizione" class="domandaRecensione">Descrivi la tua visita</label>
-        <textarea name="descrizione" id="descrizione" minlength="100" rows="8" cols="20"
-          placeholder="L'opera che mi ha colpito di più è stata..."></textarea>
-        <input type="submit" value="Invia" aria-label="Invia">
+        <label for="descrizione" class="domandaRecensione required-label">Descrivi la tua visita</label>
+        <textarea name="descrizione" id="descrizione" minlength="25" rows="8" cols="20"
+          placeholder="L'opera che mi ha colpito di più è stata...">{{descrizione}}</textarea>
+        <p class="required-msg">Campi obbligatori</p>
+        <input type="submit" name="submit" value="Invia" aria-label="Invia">
       </form>
+      <!-- form_end -->
     </div>
   </main>
   <a class="help" id="torna-su" href="#">Torna su</a>
@@ -202,9 +214,6 @@
       </tbody>
     </table>
   </footer>
-  <script>
-    document.getElementsByName("rating").forEach(addEventListeners);
-  </script>
 </body>
 
 </html>

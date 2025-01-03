@@ -3,8 +3,6 @@
 require_once("phplibs/databaseService.php");
 require_once("phplibs/templatingService.php");
 
-
-
 if (!isset($_SESSION['user_id'])) 
     header("Location: login.php?redirect=dettaglio_sala.php");
 
@@ -14,6 +12,11 @@ if (!$dettaglioSalaHtmlContent) {}
     //TODO
 $numeroSalaRichiesta = isset($_GET['sala']) ? $_GET['sala'] : 0;
 
+/* BREADCRUMB SALA*/
+
+$sectionBreadcrumbToModify = Templating::getContentBetweenPlaceholders($dettaglioSalaHtmlContent, "numerosalabread");
+Templating::replaceAnchor($sectionBreadcrumbToModify,"numero_sala",$numeroSalaRichiesta);
+Templating::replaceContentBetweenPlaceholders($dettaglioSalaHtmlContent, "numerosalabread", $sectionBreadcrumbToModify);
 /* INFO SALA*/
 
 $infoSalaRow = $database->selectInfoFromSala($numeroSalaRichiesta);

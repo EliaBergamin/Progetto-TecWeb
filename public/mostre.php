@@ -16,8 +16,8 @@ $sectionCorrentiToModify = Templating::getContentBetweenPlaceholders($mostreHtml
 $fullcontent = "";
 foreach ($arrayMostreCorrenti as $associativeRow) {
     $temp = $sectionCorrentiToModify;
-    Templating::replaceAnchor($temp, "nome_mostra", $associativeRow["nome"]);
-    Templating::replaceAnchor($temp, "descrizione_mostra", $associativeRow["descrizione"]);
+    Templating::replaceAnchor($temp, "nome", $associativeRow["nome"]);
+    Templating::replaceAnchor($temp, "descrizione", $associativeRow["descrizione"]);
     Templating::replaceAnchor($temp, "data_inizio", $associativeRow["data_inizio"]);
     Templating::replaceAnchor($temp, "data_fine", $associativeRow["data_fine"]);
     Templating::replaceAnchor(
@@ -47,8 +47,8 @@ $sectionFutureToModify = Templating::getContentBetweenPlaceholders($mostreHtmlCo
 $fullcontent = "";
 foreach ($arrayMostreFuture as $associativeRow) {
     $temp = $sectionFutureToModify;
-    Templating::replaceAnchor($temp, "nome_mostra", $associativeRow["nome"]);
-    Templating::replaceAnchor($temp, "descrizione_mostra", $associativeRow["descrizione"]);
+    Templating::replaceAnchor($temp, "nome", $associativeRow["nome"]);
+    Templating::replaceAnchor($temp, "descrizione", $associativeRow["descrizione"]);
     Templating::replaceAnchor($temp, "data_inizio", $associativeRow["data_inizio"]);
     Templating::replaceAnchor($temp, "data_fine", $associativeRow["data_fine"]);
     Templating::replaceAnchor(
@@ -77,8 +77,8 @@ $sectionPassateToModify = Templating::getContentBetweenPlaceholders($mostreHtmlC
 $fullcontent = "";
 foreach ($arrayMostrePassate as $associativeRow) {
     $temp = $sectionPassateToModify;
-    Templating::replaceAnchor($temp, "nome_mostra", $associativeRow["nome"]);
-    Templating::replaceAnchor($temp, "descrizione_mostra", $associativeRow["descrizione"]);
+    Templating::replaceAnchor($temp, "nome", $associativeRow["nome"]);
+    Templating::replaceAnchor($temp, "descrizione", $associativeRow["descrizione"]);
     Templating::replaceAnchor($temp, "data_inizio", $associativeRow["data_inizio"]);
     Templating::replaceAnchor($temp, "data_fine", $associativeRow["data_fine"]);
     Templating::replaceAnchor(

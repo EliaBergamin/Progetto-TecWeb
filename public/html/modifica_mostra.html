@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Modifica mostra</title>
+  <meta name="description" content="Qui puoi inserire una nuova mostra nel sito del museo, o modificare quelle già presenti">
+  <meta name="keywords" content="amministratore,mostre,museo,modifica,inserimento">
+    <link rel="stylesheet" href="../css/style.css" media="screen">
+  <link rel="stylesheet" href="../css/middle.css" media="screen and (max-width: 1024px)">
+  <link rel="stylesheet" href="../css/mini.css" media="screen and (max-width: 768px)">
+  <link rel="stylesheet" href="../css/print.css" media="print">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../images/pokeball.ico" type="image/x-icon">
+  <script type="text/javascript" src="../js/script.js"></script>
+</head>
+
+<body>
+  <a id="top-help" class="help nascosto" href="#primoContenuto">Vai al contenuto</a>
+  <header>
+    <h1>Museo Cartoni Animati</h1>
+    <button id="hamb" class="hamToggle" data-hambOn="true" type="button" onclick="hambToggle()">Menù</button>
+  </header>
+
+  <nav id="breadcrumb">
+    <p>
+      Ti trovi in: <a lang="en" href="index.php">Home</a> &gt;
+      <a href="admin.php">Admin</a> &gt; Modifica mostra
+    </p>
+  </nav>
+
+  <nav id="menu" class="hamToggle" data-hambOn="true">
+    <ul>
+      <li><a href="index.php" lang="en">Home</a></li>
+      <li><a href="mostre.php">Le mostre</a></li>
+      <li><a href="virtual_tour.php" lang="en">Virtual Tour</a></li>
+      <li><a href="prenotazione.php">Prenotazione</a></li>
+      <li><a href="recensioni.php">Recensioni</a></li>
+      <!-- log_start -->
+      <li><a href="registrazione.php">Registrati</a></li>
+      <li><a href="login.php">Accedi</a></li>
+      <!-- log_end -->
+      <!-- admin_start -->
+      <li><a href="admin.php">Admin</a></li>
+      <!-- admin_end -->
+      <!-- profile_start -->
+      <li><a href="profile.php">Il mio profilo</a></li>
+      <li><a href="logout.php">Esci</a></li>
+      <!-- profile_end -->
+      <!-- greeting_start -->
+      <li><span>Ciao {{username}}!</span></li>
+      <!-- greeting_end -->
+    </ul>
+  </nav>
+
+  <main id="primoContenuto" class="compilazione lg">
+    <div class="contenitoreCompilazione">
+      <h1>Modifica mostra</h1>
+      <!-- errormsgs_start -->
+      {{messaggiPerForm}}
+      <!-- errormsgs_end -->
+      <!-- customform_start -->
+      <form class="formCompilazione" action="alter_mostra_admin.php?id_mostra={{id_mostra}}" method="post">
+        <label for="nome">Nome mostra</label>
+        <input type="text" name="nome" id="nome" value={{nome}}>
+        <label for="descrizione">Descrizione</label>
+        <textarea name="descrizione" id="descrizione" minlength="25">{{descrizione}}</textarea>
+        <label for="data_inizio">Data inizio</label>
+        <input type="date" name="data_inizio" id="data_inizio" value={{data_inizio}} >
+        <label for="data_fine">Data fine</label>
+        <input type="date" name="data_fine" id="data_fine" value={{data_fine}} >
+        <label for="immagine">Percorso immagine</label>
+        <input type="text" name="immagine" id="immagine" value={{immagine}} >
+        <input type="submit" name="submit" value="Conferma">
+      </form>
+      <!-- customform_end -->
+    </div>
+  </main>
+  <a class="help" id="torna-su" href="#">Torna su</a>
+  <footer>
+    <h2>Museo Cartoni Animati</h2>
+    <dl>
+      <dt> <abbr title="telefono">Tel</abbr>: </dt>
+      <dd><a href="tel:+39123456789">123456789</a> </dd>
+      <dt> <span lang="en">Email: </span> </dt>
+      <dd> <a href="mailto:info@dominioImmaginario.com">info@dominioImmaginario.comm</a> </dd>
+      <dt> Indirizzo: </dt>
+      <dd>
+        <a href="https://maps.app.goo.gl/xqD3pfvXG4ockxUeA">Via Luigi Luzzatti,
+          <abbr title="Numero civico">n.</abbr> 8, 35121 Padova</a>
+      </dd>
+    </dl>
+    <!--         <a href="" lang="en">Privacy Link TODO</a>
+-->
+    <p id="tab-descr" class="nascosto">La tabella contiene gli orari di apertura del museo</p>
+    <table id="orari-museo" title="Orari del museo" aria-describedby="tab-descr">
+      <caption>Orari del Museo</caption>
+      <thead>
+        <tr>
+          <td></td>
+          <th scope="col">Mattina</th>
+          <th scope="col">Pomeriggio</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Lunedì</th>
+          <td><time datetime="09:00">09:00</time> - <time datetime="12:00">12:00</time></td>
+          <td><time datetime="14:00">14:00</time> - <time datetime="19:00">19:00</time></td>
+        </tr>
+        <tr>
+          <th scope="row">Martedì</th>
+          <td><time datetime="09:00">09:00</time> - <time datetime="12:00">12:00</time></td>
+          <td><time datetime="14:00">14:00</time> - <time datetime="19:00">19:00</time></td>
+        </tr>
+        <tr>
+          <th scope="row">Sabato</th>
+          <td><time datetime="08:00">08:00</time> - <time datetime="13:00">13:00</time></td>
+          <td><time datetime="14:00">14:00</time> - <time datetime="20:00">20:00</time></td>
+        </tr>
+        <tr>
+          <th scope="row">Domenica</th>
+          <td><time datetime="08:00">08:00</time> - <time datetime="13:00">13:00</time></td>
+          <td><time datetime="14:00">14:00</time> - <time datetime="22:00">22:00</time></td>
+        </tr>
+      </tbody>
+    </table>
+  </footer>
+</body>
+
+</html>

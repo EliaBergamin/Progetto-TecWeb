@@ -21,7 +21,7 @@
     <a id="top-help" class="help nascosto" href="#primoContenuto">Vai al contenuto</a>
     <header>
         <h1>Museo Cartoni Animati</h1>
-        <button id="hamb" class="hamToggle" data-hambOn="false" type="button" onclick="hambToggle()">Menù</button>
+        <button id="hamb" class="hamToggle" data-hambOn="true" type="button" onclick="hambToggle()">Menù</button>
     </header>
 
     <nav id="breadcrumb">
@@ -30,7 +30,7 @@
         </p>
     </nav>
 
-    <nav id="menu" class="hamToggle" data-hambOn="false">
+    <nav id="menu" class="hamToggle" data-hambOn="true">
         <ul>
             <li><a href="index.php" lang="en">Home</a></li>
             <li><a href="mostre.php">Le mostre</a></li>
@@ -41,10 +41,13 @@
             <li><a href="registrazione.php">Registrati</a></li>
             <li><a href="login.php">Accedi</a></li>
             <!-- log_end -->
-            <!-- account_opt_start -->
-            <li><a href={{option_link}}>{{option}}</a></li>
+            <!-- admin_start -->
+            <li><a href="admin.php">Admin</a></li>
+            <!-- admin_end -->
+            <!-- profile_start -->
+            <li><a href="profile.php">Il mio profilo</a></li>
             <li><a href="logout.php">Esci</a></li>
-            <!-- account_opt_end -->
+            <!-- profile_end -->
             <!-- greeting_start -->
             <li><span>Ciao {{username}}!</span></li>
             <!-- greeting_end -->
@@ -53,6 +56,7 @@
 
     <main id="primoContenuto">
         <h1>Recensioni</h1>
+        <a href="recensisci.php" id="scrivi-rev">Scrivi una recensione</a>
         <h2 id="titolo-recens-museo">Recensioni del museo</h2>
         <a href="#titolo-recens-virtual">Vai alle recensioni del <span lang="en">Virtual Tour</span></a>
         <ul class="recensioni">
@@ -80,8 +84,7 @@
             </li>
             <!-- recensionivirtualtour_end -->
         </ul>
-        <!-- ho spostato il link sotto per comodità -->
-        <a href="recensisci.php" id="scrivi-rev">Scrivi una recensione</a>
+
     </main>
     <a class="help" id="torna-su" href="#">Torna su</a>
     <footer>

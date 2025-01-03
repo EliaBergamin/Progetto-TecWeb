@@ -18,11 +18,11 @@
     <script type="text/javascript" src="../js/validazione-prenotazione.js"></script>
 </head>
 
-<body onload="caricamentoValidazione();">
+<body>
     <a id="top-help" class="help nascosto" href="#primoContenuto">Vai al contenuto</a>
     <header>
         <h1>Museo Cartoni Animati</h1>
-        <button id="hamb" class="hamToggle" data-hambOn="false" type="button" onclick="hambToggle()">Menù</button>
+        <button id="hamb" class="hamToggle" data-hambOn="true" type="button" onclick="hambToggle()">Menù</button>
     </header>
 
     <nav id="breadcrumb">
@@ -31,7 +31,7 @@
         </p>
     </nav>
 
-    <nav id="menu" class="hamToggle" data-hambOn="false">
+    <nav id="menu" class="hamToggle" data-hambOn="true">
         <ul>
             <li><a href="index.php" lang="en">Home</a></li>
             <li><a href="mostre.php">Le mostre</a></li>
@@ -42,10 +42,13 @@
             <li><a href="registrazione.php">Registrati</a></li>
             <li><a href="login.php">Accedi</a></li>
             <!-- log_end -->
-            <!-- account_opt_start -->
-            <li><a href={{option_link}}>{{option}}</a></li>
+            <!-- admin_start -->
+            <li><a href="admin.php">Admin</a></li>
+            <!-- admin_end -->
+            <!-- profile_start -->
+            <li><a href="profile.php">Il mio profilo</a></li>
             <li><a href="logout.php">Esci</a></li>
-            <!-- account_opt_end -->
+            <!-- profile_end -->
             <!-- greeting_start -->
             <li><span>Ciao {{username}}!</span></li>
             <!-- greeting_end -->
@@ -55,29 +58,37 @@
     <main id="prenotazione" class="compilazione">
         <div id="contenitorePrenotazione" class="contenitoreCompilazione">
             <h1>Prenota la tua visita al museo</h1>
-            <form action="prenotazioneEffettuata.php" method="post" id="formPrenotazione" class="formCompilazione">
-                <label for="giorno">Giorno</label>
-                <!-- da mettere come minimo il giorno odierno -->
-                <input type="date" name="giorno" id="giorno" required data-msg-required="Per favore, selezionare il giorno della visita" data-msg-invalid="Giorno non valido">
-                <label for="orario">Fascia oraria</label>
+            <!-- errormsgs_start -->
+            {{messaggiPerForm}}
+            <!-- errormsgs_end -->
+            <!-- form_start -->
+            <form action="prenotazione_effettuata.php" method="post" id="formPrenotazione" class="formCompilazione">
+                <label for="giorno" class="required-label">Giorno</label>
+                <input type="date" name="giorno" id="giorno" value="{{giorno}}" required
+                    data-msg-required="Per favore, selezionare il giorno della visita"
+                    data-msg-invalid="Giorno non valido">
+                <label for="orario" class="required-label">Fascia oraria</label>
                 <select name="orario" id="orario" required>
                     <option value="" disabled selected>Seleziona</option>
                     <optgroup label="mattina">
-                        <option id="09" value="09">09:00 - 10:30</option>
-                        <option id="10_30" value="10_30">10:30 - 12:00</option>
+                        <option id="09" value="09:00:00">09:00 - 10:30</option>
+                        <option id="10_30" value="10:30:00">10:30 - 12:00</option>
                     </optgroup>
                     <optgroup label="pomeriggio">
-                        <option id="12" value="12">12:00 - 13:30</option>
-                        <option id="13_30" value="13_30">13:30 - 15:00</option>
-                        <option id="15" value="15">15:00 - 16:30</option>
-                        <option id="16_30" value="16_30">16:30 - 18:00</option>
+                        <option id="12" value="12:00:00">12:00 - 13:30</option>
+                        <option id="13_30" value="13:30:00">13:30 - 15:00</option>
+                        <option id="15" value="15:00:00">15:00 - 16:30</option>
+                        <option id="16_30" value="16:30:00">16:30 - 18:00</option>
                     </optgroup>
                 </select>
-                <label for="visitatori">Numero di visitatori</label>
-                <!-- max 15 valore da decidere -->
-                <input type="number" name="visitatori" id="visitatori" min="1" required data-msg-required="Per favore, selezionare il numero di visitatori" data-msg-invalid="Massimo x visitatori">
-                <input type="submit" value="Prenota">
+                <label for="visitatori" class="required-label">Numero di visitatori</label>
+                <input type="number" name="visitatori" id="visitatori" min="1" max="15" required
+                    data-msg-required="Per favore, selezionare il numero di visitatori"
+                    data-msg-invalid="Massimo x visitatori" value="{{visitatori}}">
+                <p class="required-msg">Campi obbligatori</p>
+                <input type="submit" name="submit" value="Prenota">
             </form>
+            <!-- form_end -->
         </div>
     </main>
     <a class="help" id="torna-su" href="#">Torna su</a>
