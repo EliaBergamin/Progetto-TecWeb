@@ -111,11 +111,15 @@ class DatabaseService
 		return $this->selectValuesPreparedQuery($queryUser, $queryParams, "s");
 	}
 
-	public function selectAvailableSlotsForDate($date): array
+	public function selectPrenotazioniPerData($date): array
 	{
-		$querySlots = "SELECT orario 
-					FROM Prenotazione 
-					WHERE data_prenotazione = ?";
+		$querySlots = "SELECT 
+						orario AS slot_orario, 
+						SUM(num_persone) AS posti_occupati
+					FROM Prenotazione
+					WHERE data_prenotazione = ?
+					GROUP BY orario
+					ORDER BY orario;";
 
 		$queryParams = [$date];
 		return $this->selectValuesPreparedQuery($querySlots, $queryParams, "s");

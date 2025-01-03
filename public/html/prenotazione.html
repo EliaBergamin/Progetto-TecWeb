@@ -63,14 +63,14 @@
                 <select name="orario" id="orario" required>
                     <option value="" disabled selected>Seleziona</option>
                     <optgroup label="mattina">
-                        <option value="09">09:00 - 10:30</option>
-                        <option value="10_30">10:30 - 12:00</option>
+                        <option id="09" value="09">09:00 - 10:30</option>
+                        <option id="10_30" value="10_30">10:30 - 12:00</option>
                     </optgroup>
                     <optgroup label="pomeriggio">
-                        <option value="12">12:00 - 13:30</option>
-                        <option value="13_30">13:30 - 15:00</option>
-                        <option value="15">15:00 - 16:30</option>
-                        <option value="16_30">16:30 - 18:00</option>
+                        <option id="12" value="12">12:00 - 13:30</option>
+                        <option id="13_30" value="13_30">13:30 - 15:00</option>
+                        <option id="15" value="15">15:00 - 16:30</option>
+                        <option id="16_30" value="16_30">16:30 - 18:00</option>
                     </optgroup>
                 </select>
                 <label for="visitatori">Numero di visitatori</label>
@@ -136,8 +136,7 @@
     document.getElementById('giorno').addEventListener('change', function () {
         const giornoSelezionato = this.value;
 
-        if (!giornoSelezionato) return; 
-        debugger;
+        if (!giornoSelezionato) return;
         fetch('../phplibs/controlla_disponibilita.php', {
             method: 'POST',
             headers: {
@@ -147,7 +146,6 @@
         })
         .then(response => response.json())
         .then(data => {
-            debugger;
             aggiornaOrariDisponibili(data);
         })
         .catch(error => {
@@ -156,34 +154,40 @@
     });
 
     function aggiornaOrariDisponibili(slotDisponibili) {
-        debugger;
         const selectOrario = document.getElementById('orario');
 
         while (selectOrario.options.length > 1) {
             selectOrario.remove(1);
         }
 
-        const slot = {
-            "09": "09:00 - 10:30",
-            "10_30": "10:30 - 12:00",
-            "12": "12:00 - 13:30",
-            "13_30": "13:30 - 15:00",
-            "15": "15:00 - 16:30",
-            "16_30": "16:30 - 18:00",
-        };
+        const slotIds = ["09","10_30","12","13_30","15","16_30"];
 
-        slotDisponibili.forEach(orario => {
-            const option = document.createElement('option');
-            option.value = orario;
-            option.textContent = slot[orario];
-            selectOrario.appendChild(option);
-        });
+        let hasAvailableSlots = false;
+
+        for (const [orario, postiDisponibili] of Object.entries(slotDisponibili)) {
+            if (postiDisponibili > 0) {
+                hasAvailableSlots = true;
+                const option = document.createElement('option');
+                option.value = orario;
+                option.textContent = `${slot[orario]} (${postiDisponibili} posti disponibili)`;
+                option.dataset.postiDisponibili = postiDisponibili;
+                selectOrario.appendChild(option);
+            }
+        }
 
         // TODO: intanto mostro un alert, da capire bene come vogliamo fare
-        if (slotDisponibili.length === 0) {
+        if (!hasAvailableSlots) {
             alert('Nessun slot disponibile per il giorno selezionato.');
         }
     }
+
+    document.getElementById('giorno').addEventListener('change', function () {
+        const inputVisitatori = document.getElementById('visitatori');
+        const selectedOption = selectOrario.options[selectOrario.selectedIndex];
+        const postiDisponibili = selectedOption.dataset.postiDisponibili || 90;
+        inputVisitatori.max = postiDisponibili;
+        inputVisitatori.value = Math.min(inputVisitatori.value, postiDisponibili);
+    });
 </script>
 
 </html>
