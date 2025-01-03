@@ -13,6 +13,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../images/pokeball.ico" type="image/x-icon">
     <script type="text/javascript" src="../js/script.js"></script>
+    <script type="text/javascript" src="../js/regole.js"></script>
+    <script type="text/javascript" src="../js/validazione.js"></script>
+    <script type="text/javascript" src="../js/validazione-prenotazione.js"></script>
 </head>
 
 <body>
@@ -68,14 +71,14 @@
                 <select name="orario" id="orario" required>
                     <option value="" disabled selected>Seleziona</option>
                     <optgroup label="mattina">
-                        <option value="09:00:00">09:00 - 10:30</option>
-                        <option value="10:30:00">10:30 - 12:00</option>
+                        <option id="09" value="09:00:00">09:00 - 10:30</option>
+                        <option id="10_30" value="10:30:00">10:30 - 12:00</option>
                     </optgroup>
                     <optgroup label="pomeriggio">
-                        <option value="12:00:00">12:00 - 13:30</option>
-                        <option value="13:30:00">13:30 - 15:00</option>
-                        <option value="15:00:00">15:00 - 16:30</option>
-                        <option value="16:30:00">16:30 - 18:00</option>
+                        <option id="12" value="12:00:00">12:00 - 13:30</option>
+                        <option id="13_30" value="13:30:00">13:30 - 15:00</option>
+                        <option id="15" value="15:00:00">15:00 - 16:30</option>
+                        <option id="16_30" value="16:30:00">16:30 - 18:00</option>
                     </optgroup>
                 </select>
                 <label for="visitatori" class="required-label">Numero di visitatori</label>
@@ -139,5 +142,60 @@
         </table>
     </footer>
 </body>
+
+<script>
+    document.getElementById('giorno').addEventListener('change', function () {
+        document.getElementById('orario').value = "";
+        document.getElementById('visitatori').value = "";
+
+        const giornoSelezionato = this.value;
+
+        if (!giornoSelezionato) return;
+        fetch('../phplibs/controlla_disponibilita.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: `giorno=${encodeURIComponent(giornoSelezionato)}`,
+        })
+        .then(response => response.json())
+        .then(data => {
+            aggiornaOrariDisponibili(data);
+        })
+        .catch(error => {
+            console.error('Errore durante il recupero degli slot:', error);
+        });
+    });
+
+    function aggiornaOrariDisponibili(slotDisponibili) {
+        const slotsId = ["09","10_30","12","13_30","15","16_30"];
+        const slotsOrari = ["09:00:00", "10:30:00", "12:00:00", "13:30:00","15:00:00","16:30:00" ]
+        for (i = 0; i < slotsId.length; i++) {
+            const idSlot = slotsId[i];
+            const disponibilita = slotDisponibili[slotsOrari[i]] || 0;
+
+            const slotElement = document.getElementById(idSlot);
+            slotElement.dataset.postiDisponibili = disponibilita;
+
+            if (disponibilita < 1) {
+                slotElement.disabled = true;
+            } else {
+                slotElement.disabled = false;
+            }
+        }
+    }
+
+    document.getElementById('orario').addEventListener('change', function () {
+        document.getElementById('visitatori').value = "";
+
+        const inputVisitatori = document.getElementById('visitatori');
+        const selectOrario = document.getElementById("orario");
+        const selectedOption = selectOrario.options[selectOrario.selectedIndex];
+        const postiDisponibili = selectedOption.dataset.postiDisponibili || 90;
+        inputVisitatori.max = postiDisponibili;
+
+        caricamentoValidazioneNumeroVisitatori(postiDisponibili);
+    });
+</script>
 
 </html>

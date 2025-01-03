@@ -751,6 +751,10 @@ a.button {
   font-size: 1.15rem;
 }
 
+.formCompilazione strong {
+  color: red;
+  font-size: 0.8em;
+  line-height: 0em;
 .required-label::after {
   content: "*";
   color: var(--errorcolor);
@@ -775,8 +779,10 @@ a.button {
 }
 
 .contenitoreCompilazione h1 {
-  font-size: 2em;
+  font-size: 1.75em;
   text-align: left;
+  margin:0.5em;
+  line-height: 1em;
 }
 
 .formCompilazione fieldset {
@@ -828,7 +834,7 @@ a.button {
 .formCompilazione input[type="email"],
 .formCompilazione input[type="password"] {
   width: 100%;
-  font-size: 1.15rem;
+  font-size: 1.0rem;
 }
 
 .formCompilazione input[type="number"] {
@@ -1238,3 +1244,4 @@ dialog button {
   border-radius: 5px;
   cursor: pointer;
 }
+
