@@ -12,7 +12,6 @@ function validazioneCampo(input) {
     if (nextElement && (nextElement.classList.contains('default-text') || nextElement.classList.contains('errorSuggestion'))) {
         nextElement.remove();
     }
-    debugger;
     if (!regole[dettagli_form[input.id][1]](input.value, dettagli_form[input.id][2])){
         messaggio(input, 1);
         input.focus(); 

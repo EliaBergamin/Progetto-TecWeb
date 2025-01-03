@@ -75,7 +75,7 @@
                 </select>
                 <label for="visitatori">Numero di visitatori</label>
                 <!-- max 15 valore da decidere -->
-                <input type="number" name="visitatori" id="visitatori" min="1" max="15" required data-msg-required="Per favore, selezionare il numero di visitatori" data-msg-invalid="Massimo x visitatori">
+                <input type="number" name="visitatori" id="visitatori" min="1" required data-msg-required="Per favore, selezionare il numero di visitatori" data-msg-invalid="Massimo x visitatori">
                 <input type="submit" value="Prenota">
             </form>
         </div>
@@ -134,6 +134,9 @@
 
 <script>
     document.getElementById('giorno').addEventListener('change', function () {
+        document.getElementById('orario').value = "";
+        document.getElementById('visitatori').value = "";
+
         const giornoSelezionato = this.value;
 
         if (!giornoSelezionato) return;
@@ -154,39 +157,33 @@
     });
 
     function aggiornaOrariDisponibili(slotDisponibili) {
-        const selectOrario = document.getElementById('orario');
+        const slotsId = ["09","10_30","12","13_30","15","16_30"];
+        const slotsOrari = ["09:00:00", "10:30:00", "12:00:00", "13:30:00","15:00:00","16:30:00" ]
+        for (i = 0; i < slotsId.length; i++) {
+            const idSlot = slotsId[i];
+            const disponibilita = slotDisponibili[slotsOrari[i]] || 0;
 
-        while (selectOrario.options.length > 1) {
-            selectOrario.remove(1);
-        }
+            const slotElement = document.getElementById(idSlot);
+            slotElement.dataset.postiDisponibili = disponibilita;
 
-        const slotIds = ["09","10_30","12","13_30","15","16_30"];
-
-        let hasAvailableSlots = false;
-
-        for (const [orario, postiDisponibili] of Object.entries(slotDisponibili)) {
-            if (postiDisponibili > 0) {
-                hasAvailableSlots = true;
-                const option = document.createElement('option');
-                option.value = orario;
-                option.textContent = `${slot[orario]} (${postiDisponibili} posti disponibili)`;
-                option.dataset.postiDisponibili = postiDisponibili;
-                selectOrario.appendChild(option);
+            if (disponibilita < 1) {
+                slotElement.disabled = true;
+            } else {
+                slotElement.disabled = false;
             }
-        }
-
-        // TODO: intanto mostro un alert, da capire bene come vogliamo fare
-        if (!hasAvailableSlots) {
-            alert('Nessun slot disponibile per il giorno selezionato.');
         }
     }
 
-    document.getElementById('giorno').addEventListener('change', function () {
+    document.getElementById('orario').addEventListener('change', function () {
+        document.getElementById('visitatori').value = "";
+
         const inputVisitatori = document.getElementById('visitatori');
+        const selectOrario = document.getElementById("orario");
         const selectedOption = selectOrario.options[selectOrario.selectedIndex];
         const postiDisponibili = selectedOption.dataset.postiDisponibili || 90;
         inputVisitatori.max = postiDisponibili;
-        inputVisitatori.value = Math.min(inputVisitatori.value, postiDisponibili);
+
+        caricamentoValidazioneNumeroVisitatori(postiDisponibili);
     });
 </script>
 

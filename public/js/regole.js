@@ -38,6 +38,6 @@ var regole = {
         if(!input){
             return true;
         }
-        return input<15 && input>0;
+        return input<params && input>0;
     }
 }
