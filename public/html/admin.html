@@ -22,12 +22,6 @@
         <button id="hamb" class="hamToggle" data-hambOn="true" type="button" onclick="hambToggle()">Menù</button>
     </header>
 
-    <nav id="breadcrumb">
-        <p>
-            Ti trovi in: <a href="index.php" lang="en">Home</a> &gt; Admin
-        </p>
-    </nav>
-
     <nav id="menu" class="hamToggle" data-hambOn="true">
         <ul>
             <li><a href="index.php" lang="en">Home</a></li>
@@ -52,10 +46,14 @@
 
         </ul>
     </nav>
-
+    <nav id="breadcrumb">
+        <p>
+            Ti trovi in: <a href="index.php" lang="en">Home</a> &gt; Area gestione
+        </p>
+    </nav>
     <main id="primoContenuto">
         <h1>Gestione mostre</h1>
-        <a id="agg-mostr" href="aggiungi_mostra.php">Aggiungi mostra</a>
+        <a id="agg-mostra" href="aggiungi_mostra.php">Aggiungi mostra</a>
         <p id="tab-mostre-descr" class="nascosto">La tabella contiene le mostre del museo, ogni riga rappresenta la
             singola mostra, ogni colonna rappresenta un attributo delle mostre</p>
         <table id="tab-mostre" title="Mostre museo" aria-describedby="tab-mostre-descr">
@@ -74,11 +72,11 @@
             <tbody>
                 <!-- mostreAdmin_start -->
                 <tr>
-                    <td>{{nome}}</td>
-                    <td>{{descrizione}}</td>
-                    <td><time datetime="{{data_inizio}}">{{string_data_inizio}}</time></td>
-                    <td><time datetime="{{data_fine}}">{{string_data_fine}}</time></td>
-                    <td>{{img_path}}</td>
+                    <th scope="row">{{nome}}</th>
+                    <td data-title="Descrizione">{{descrizione}}</td>
+                    <td data-title="Data inizio"><time datetime="{{data_inizio}}">{{string_data_inizio}}</time></td>
+                    <td data-title="Data fine"><time datetime="{{data_fine}}">{{string_data_fine}}</time></td>
+                    <td data-title="Immagine">{{img_path}}</td>
                     <td class="mod-mostra"><a href="modifica_mostra.php?id_mostra={{id_mostra}}"></a></td>
                     <td class="elim-mostra cancella" id="elim-{{id_mostra}}"><a href="#dialog-mostra"></a></td>
                 </tr>
