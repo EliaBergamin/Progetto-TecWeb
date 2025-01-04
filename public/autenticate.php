@@ -1,22 +1,42 @@
 <?php
 require_once("phplibs/databaseService.php");
+require_once("phplibs/templatingService.php");
 
 $redirect = $_GET['redirect'] ?? 'profile.php';
 
 if (isset($_POST['submit'])) {
     $username = DatabaseService::cleanedInput($_POST['username']);
-    $password = DatabaseService::cleanedInput($_POST['password']);
-    // Consulta per cercare l'utente
-    $database = new DatabaseService();
-    $users = $database->selectUsersFromUsername($username);
+    if (strlen($username) < 4) {
+        $_SESSION["error"] = "user";
+        header("Location: login.php?redirect=$redirect");
+        exit;
+    }
+
+    try {
+        $database = new DatabaseService();
+        $users = $database->selectUsersFromUsername($username);
+        unset($database);
+    } catch (Exception $e) {
+        unset($database);
+        Templating::errCode(500);
+        exit;
+    }
+
     $user = $users[0] ?? null;
     if (!$user) {
-        header("Location: login.php?error=user&redirect=$redirect");
-    } elseif (!password_verify($password, $user['password_hash'])) {
-        header("Location: login.php?error=pwd&username=$username&redirect=$redirect");   
+        $_SESSION["error"] = "user";
+        header("Location: login.php?redirect=$redirect");
+        exit;
+    } 
+
+    $password = DatabaseService::cleanedInput($_POST['password']);
+    
+    if (strlen($password) < 4 || !password_verify($password, $user['password_hash'])) {
+        $_SESSION["error"] = "pwd";
+        $_SESSION["username"] = $username;
+        header("Location: login.php?redirect=$redirect");   
     } else {
         // Memorizza i dettagli dell'utente nella sessione
-        session_start();
         $_SESSION['user_id'] = $user['id_utente'];
         $_SESSION['username'] = $user['username'];
         $_SESSION['is_admin'] = $user['ruolo'] === 1; // Memorizza il ruolo
@@ -27,6 +47,8 @@ if (isset($_POST['submit'])) {
     }
     exit;
 } else {
-    header("Location: login.php");
+    Templating::errCode(405);
+    exit;
 }
+
 ?>

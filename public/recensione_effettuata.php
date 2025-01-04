@@ -10,65 +10,71 @@ $tipo = '';
 $data_visita = '';
 $rating = '';
 $descrizione = '';
-$messaggiPerForm = '';
-
-$database = new DatabaseService();
+$error = [];
 
 if (isset($_POST['submit'])) {
 
     $data_visita = DatabaseService::cleanedInput($_POST['data_visita']);
     if (!preg_match("/\d{4}-\d{2}-\d{2}/", $data_visita)) {
-        $messaggiPerForm .= "<li>Data non valida</li>";
+        array_push($error, "data_val");
     }
     $today = date("Y-m-d");
     if ($data_visita > $today) {
-        $messaggiPerForm .= "<li>La data non può essere futura</li>";
+        array_push($error, "data_fut");
     }
 
     $rating = DatabaseService::cleanedInput($_POST['rating']);
     if (!preg_match("/[1-5]/", $rating)) {
-        $messaggiPerForm .= "<li>Valutazione non valida</li>";
+        array_push($error, "rating");
     }
 
     $descrizione = DatabaseService::cleanedInput($_POST['descrizione']);
-    if (mb_strlen($descrizione, 'UTF-8') < 25) {
-        $messaggiPerForm .= '<li>Descrizione troppo corta</li>';
+    if (strlen($descrizione) < 25) {
+        array_push($error, "descr_len");
     } else if (!preg_match("/[\p{L}\p{P}\p{N}\ ]+/u", $descrizione)) {
-        $messaggiPerForm .= '<li>La descrizione può contenere solo caratteri alfanumerici o di punteggiatura</li>';
+        array_push($error, "descr_char");
     }
 
     $tipo = DatabaseService::cleanedInput($_POST['tipo']);
     if (!preg_match("/[0-1]/", $tipo)) {
-        $messaggiPerForm .= "<li>Tipo non valido</li>";
-    } 
-    if (strlen($messaggiPerForm) != 0) {
-        $messaggiPerForm = '<ul class="form-errors">' . $messaggiPerForm . '</ul>';
-        $recensisciContent = Templating::getHtmlWithModifiedMenu("recensisci.php");
-        $errormsgsToModify = Templating::getContentBetweenPlaceholders($recensisciContent, "errormsgs");
-        Templating::replaceAnchor($errormsgsToModify, "messaggiPerForm", $messaggiPerForm);
-        Templating::replaceContentBetweenPlaceholders($recensisciContent, "errormsgs", $errormsgsToModify);
-
-        $formValuesToModify = Templating::getContentBetweenPlaceholders($recensisciContent, "form");
-        Templating::replaceAnchor($formValuesToModify, "r1", $rating == 1 ? "checked" : "");
-        Templating::replaceAnchor($formValuesToModify, "r2", $rating == 2 ? "checked" : "");
-        Templating::replaceAnchor($formValuesToModify, "r3", $rating == 3 ? "checked" : "");
-        Templating::replaceAnchor($formValuesToModify, "r4", $rating == 4 ? "checked" : "");
-        Templating::replaceAnchor($formValuesToModify, "r5", $rating == 5 ? "checked" : "");
-        Templating::replaceAnchor($formValuesToModify, "data_visita", $data_visita);
-        Templating::replaceAnchor($formValuesToModify, "checkedMuseo", $tipo == 0 ? "checked" : "");
-        Templating::replaceAnchor($formValuesToModify, "checkedVirtual", $tipo == 1 ? "checked" : "");
-        Templating::replaceAnchor($formValuesToModify,"descrizione", $descrizione);
-        Templating::replaceContentBetweenPlaceholders($recensisciContent, "form", $formValuesToModify);
-
-        Templating::showHtmlPageWithoutPlaceholders($recensisciContent);
-
-    } else {
+        array_push($error, "tipo");
+    }
+    if (count($error) > 0) {
+        $_SESSION['error'] = $error;
+        $_SESSION['rating'] = $rating;
+        $_SESSION['data_visita'] = $data_visita;
+        $_SESSION['tipo'] = $tipo;
+        $_SESSION['descrizione'] = $descrizione;
+        header("Location: recensisci.php");
+        exit;
+    }
+    try {
+        $database = new DatabaseService();
         $insertSuccess = $database->insertUserReview($_SESSION['user_id'], $rating, $data_visita, $descrizione, $tipo);
+        unset($database);
+    } catch (Exception $e) {
+        unset($database);
+        Templating::errCode(500);
+        exit;
+    }
 
-        if ($insertSuccess)
+    if ($insertSuccess)
+        if ($tipo == 0)
             header('Location: recensioni.php');
         else
-            header('Location: recensisci.php?error=insert');
+            header('Location: recensioni.php#titolo-recens-virtual');
+    else {
+        $_SESSION['error'] = ['insert'];
+        $_SESSION['rating'] = $rating;
+        $_SESSION['data_visita'] = $data_visita;
+        $_SESSION['tipo'] = $tipo;
+        $_SESSION['descrizione'] = $descrizione;
+        header("Location: recensisci.php");
     }
+    exit;
+} else {
+    Templating::errCode(405);
+    exit;
 }
+
 ?>

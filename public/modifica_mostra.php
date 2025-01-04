@@ -2,31 +2,72 @@
 require_once("phplibs/databaseService.php");
 require_once("phplibs/templatingService.php");
 
-$id_mostra = $_GET['id_mostra'] ?? null;
+if (isset($_GET['id_mostra']))
+    $id_mostra = $_GET['id_mostra'];
+else {
+    Templating::errCode(404);
+    exit;
+}
 
-if (!isset($_SESSION['user_id'])) 
-    header("Location: login.php?redirect=modifica_mostra.php&id_mostra=". $id_mostra);
+if (!isset($_SESSION['user_id']))
+    header("Location: login.php?redirect=modifica_mostra.php&id_mostra=" . $id_mostra);
 
-$database = new DatabaseService();
 $modificaMostraContent = Templating::getHtmlWithModifiedMenu(__FILE__);
 
-$mostraToModifyInfo = $database->selectMostraByID($id_mostra);
+try {
+    $database = new DatabaseService();
+    $mostraToModifyInfo = $database->selectMostraByID($id_mostra);
+    unset($database);
+} catch (Exception $e) {
+    unset($database);
+    Templating::errCode(500);
+    exit;
+}
+
+if (empty($mostraToModifyInfo)) {
+    Templating::errCode(404);
+    exit;
+}
+
+$messaggiPerForm = '';
+if (isset($_SESSION['error']) && is_array($_SESSION['error'])) {
+    $error = $_SESSION['error'];
+    if (in_array('nome_len', $error))
+        $messaggiPerForm .= '<li>Nome troppo corto</li>';
+    if (in_array('nome_char', $error))
+        $messaggiPerForm .= '<li>Il nome può contenere solo caratteri alfanumerici o di punteggiatura</li>';
+    if (in_array('descr_len', $error))
+        $messaggiPerForm .= '<li>Descrizione troppo corta</li>';
+    if (in_array('descr_char', $error))
+        $messaggiPerForm .= '<li>La descrizione può contenere solo caratteri alfanumerici o di punteggiatura</li>';
+    if (in_array('data_ini_val', $error))
+        $messaggiPerForm .= "<li>Data d'inizio non valida</li>";
+    if (in_array('data_fin_val', $error))
+        $messaggiPerForm .= "<li>Data di fine non valida</li>";
+    if (in_array('data_ini_fin', $error))
+        $messaggiPerForm .= "<li>La data di inizio non può essere successiva alla data di fine</li>";
+    if (in_array('immagine', $error))
+        $messaggiPerForm .= "<li>Immagine non valida</li>";
+    if (in_array('modifica', $error))
+        $messaggiPerForm .= "<li>Errore durante la modifica</li>";
+    unset($_SESSION['error']);
+}
+if (strlen($messaggiPerForm) != 0) 
+    $messaggiPerForm = '<ul class="form-errors">' . $messaggiPerForm . '</ul>';
+
 $errormsgsToModify = Templating::getContentBetweenPlaceholders($modificaMostraContent, "errormsgs");
-Templating::replaceAnchor($errormsgsToModify, "messaggiPerForm", "");
+Templating::replaceAnchor($errormsgsToModify, "messaggiPerForm", $messaggiPerForm);
 Templating::replaceContentBetweenPlaceholders($modificaMostraContent, "errormsgs", $errormsgsToModify);
-$customFormMostra = Templating::getContentBetweenPlaceholders($modificaMostraContent, "customform");
-Templating::replaceAnchor($customFormMostra,"id_mostra", $mostraToModifyInfo[0]['id_mostra']);
-Templating::replaceAnchor($customFormMostra,"nome", $mostraToModifyInfo[0]['nome']);
-Templating::replaceAnchor($customFormMostra,"descrizione",$mostraToModifyInfo[0]['descrizione']);
-Templating::replaceAnchor($customFormMostra,"data_inizio",$mostraToModifyInfo[0]['data_inizio']);
-Templating::replaceAnchor($customFormMostra,"data_fine",$mostraToModifyInfo[0]['data_fine']);
-Templating::replaceAnchor($customFormMostra,"immagine",$mostraToModifyInfo[0]['img_path']);
-
-Templating::replaceContentBetweenPlaceholders($modificaMostraContent, "customform", $customFormMostra);
-
-    
 
 
+$formValuesToModify = Templating::getContentBetweenPlaceholders($modificaMostraContent, "form");
+Templating::replaceAnchor($formValuesToModify, "id_mostra", $id_mostra);
+Templating::replaceAnchor($formValuesToModify, "nome", $mostraToModifyInfo[0]['nome']);
+Templating::replaceAnchor($formValuesToModify, "descrizione", $mostraToModifyInfo[0]['descrizione']);
+Templating::replaceAnchor($formValuesToModify, "data_inizio", $mostraToModifyInfo[0]['data_inizio']);
+Templating::replaceAnchor($formValuesToModify, "data_fine", $mostraToModifyInfo[0]['data_fine']);
+Templating::replaceAnchor($formValuesToModify, "immagine", $mostraToModifyInfo[0]['img_path']);
+Templating::replaceContentBetweenPlaceholders($modificaMostraContent, "form", $formValuesToModify);
 
 Templating::showHtmlPageWithoutPlaceholders($modificaMostraContent);
 

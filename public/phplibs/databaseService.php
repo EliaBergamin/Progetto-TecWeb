@@ -8,7 +8,7 @@ class DatabaseService
 	private const USER = "user";
 	private const PASS = "userpassword";
 
-	private const GLOBALERROR = "ERROR encountered";
+	private const GLOBALERROR = "ERROR encountered in databaseService.php";
 
 
 	private $connection;
@@ -19,9 +19,14 @@ class DatabaseService
 			$this->connection = new mysqli(self::HOST, self::USER, self::PASS, self::NAME);
 			//$this->connection->set_charset("utf8");
 		} catch (mysqli_sql_exception $e) {
-			echo $e;
 			throw new Exception(self::GLOBALERROR);
 		}
+	}
+
+	public function __destruct()
+	{
+		if ($this->connection)
+			$this->connection->close();
 	}
 
 	private function executePreparedQuery($queryToExecute, $arrayOfValues, $valueTypeForBinding = ""): mysqli_stmt
@@ -44,7 +49,6 @@ class DatabaseService
 			$resultFromQueryExectution->close();
 			return $associativeRowsFromSelect;
 		} catch (mysqli_sql_exception $e) {
-			echo $e;
 			throw new Exception(self::GLOBALERROR);
 		}
 	}
@@ -201,6 +205,15 @@ class DatabaseService
 		$queryParams = [$username];
 		return $this->selectValuesPreparedQuery($queryUser, $queryParams, "s");
 	}
+	public function selectUsersFromEmail($email): array
+	{
+		$queryUser = "SELECT *
+					  FROM Museo.Utente
+					  WHERE Utente.email = ?";
+
+		$queryParams = [$email];
+		return $this->selectValuesPreparedQuery($queryUser, $queryParams, "s");
+	}
 
 	private function pulisciInputHelper(&$item): void
 	{
@@ -271,15 +284,5 @@ class DatabaseService
 		$result = $this->selectValuesPreparedQuery($query, $queryParams, "ss");
 		return $result[0]["tot_visitatori"] + $visitatori <= 90;
 	}
-
-	public function __destruct()
-	{
-		if ($this->connection)
-			$this->connection->close();
-	}
-
-
 }
-
-
 ?>
