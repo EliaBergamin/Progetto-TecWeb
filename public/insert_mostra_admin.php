@@ -8,66 +8,74 @@ $descrizione = '';
 $data_inizio = '';
 $data_fine = '';
 $immagine = '';
-$messaggiPerForm = '';
+$error = [];
 
 if (isset($_POST['submit'])) {
 
     $nome = DatabaseService::cleanedInput($_POST['nome']);
     if (strlen($nome) < 2) {
-        $messaggiPerForm .= '<li>Nome troppo corto</li>';
+        array_push($error, 'nome_len');
     } else if (!preg_match("/[\p{L}\p{P}\p{N}\ ]+/u", $nome)) {
-        $messaggiPerForm .= '<li>Il nome può contenere solo caratteri alfanumerici o di punteggiatura</li>';
+        array_push($error, 'nome_char');
     }
 
     $descrizione = DatabaseService::cleanedInput($_POST['descrizione']);
     if (strlen($descrizione) < 25) {
-        $messaggiPerForm .= '<li>Descrizione troppo corta</li>';
+        array_push($error, 'descr_len');
     } else if (!preg_match("/[\p{L}\p{P}\p{N}\ ]+/u", $descrizione)) {
-        $messaggiPerForm .= '<li>La descrizione può contenere solo caratteri alfanumerici o di punteggiatura</li>';
+        array_push($error, 'descr_char');
     }
 
     $data_inizio = DatabaseService::cleanedInput($_POST['data_inizio']);
     if (!preg_match("/\d{4}-\d{2}-\d{2}/", $data_inizio)) {
-        $messaggiPerForm .= "<li>Data d'inizio non valida</li>";
+        array_push($error, 'data_ini_val');
     }
     $data_fine = DatabaseService::cleanedInput($_POST['data_fine']);
     if (!preg_match("/\d{4}-\d{2}-\d{2}/", $data_fine)) {
-        $messaggiPerForm .= "<li>Data di fine non valida</li>";
+        array_push($error, 'data_fin_val');
     }
 
     if (strtotime($data_inizio) > strtotime($data_fine)) {
-        $messaggiPerForm .= "<li>La data di inizio non può essere successiva alla data di fine</li>";
+        array_push($error, 'data_ini_fin');
     }
     $immagine = DatabaseService::cleanedInput($_POST["immagine"]);
     // TODO: check and upload image
 
-    if (strlen($messaggiPerForm) != 0) {
-        $messaggiPerForm = '<ul class="form-errors">' . $messaggiPerForm . '</ul>';
-        $aggiungiMostraContent = Templating::getHtmlWithModifiedMenu("aggiungi_mostra.php");
-        $errormsgsToModify = Templating::getContentBetweenPlaceholders($aggiungiMostraContent, "errormsgs");
-        Templating::replaceAnchor($errormsgsToModify, "messaggiPerForm", $messaggiPerForm);
-        Templating::replaceContentBetweenPlaceholders($aggiungiMostraContent, "errormsgs", $errormsgsToModify);
-        $formValuesToModify = Templating::getContentBetweenPlaceholders($aggiungiMostraContent, "form");
-        Templating::replaceAnchor($formValuesToModify, "nome", $nome);
-        Templating::replaceAnchor($formValuesToModify, "descrizione", $descrizione);
-        Templating::replaceAnchor($formValuesToModify, "data_inizio", $data_inizio);
-        Templating::replaceAnchor($formValuesToModify, "data_fine", $data_fine);
-        Templating::replaceContentBetweenPlaceholders($aggiungiMostraContent, "form", $formValuesToModify);
+    if (count($error) > 0) {
+        $_SESSION['error'] = $error;
+        $_SESSION['nome'] = $nome;
+        $_SESSION['descrizione'] = $descrizione;
+        $_SESSION['data_inizio'] = $data_inizio;
+        $_SESSION['data_fine'] = $data_fine;
+        $_SESSION['immagine'] = $immagine;
+        header("Location: aggiungi_mostra.php");
+        exit;
+    }
 
-        Templating::showHtmlPageWithoutPlaceholders($aggiungiMostraContent);
-
-    } else {
-
+    try {
         $database = new DatabaseService();
         $insertSuccess = $database->insertMostra($nome, $descrizione, $data_inizio, $data_fine, $immagine);
         unset($database);
-        if ($insertSuccess)
-            header('Location: admin.php');
-        else
-            header('Location: aggiungi_mostra.php');
+    } catch (Exception $e) {
+        unset($database);
+        Templating::errCode(500);
+        exit;
     }
-} else
-    echo 'submit non settato';
-    //TODO
+    if ($insertSuccess)
+        header('Location: admin.php');
+    else {
+        $_SESSION['error'] = ['insert'];
+        $_SESSION['nome'] = $nome;
+        $_SESSION['descrizione'] = $descrizione;
+        $_SESSION['data_inizio'] = $data_inizio;
+        $_SESSION['data_fine'] = $data_fine;
+        $_SESSION['immagine'] = $immagine;
+        header('Location: aggiungi_mostra.php');
+    }
+    exit;
+} else {
+    Templating::errCode(405);
+    exit;
+}
 
 ?>

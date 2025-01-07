@@ -23,6 +23,11 @@ class Templating
         . DIRECTORY_SEPARATOR . "html"
         . DIRECTORY_SEPARATOR;
 
+    public static function errCode($num): void
+    {
+        http_response_code($num);
+        require("{$num}.php");
+    }
     /* Funzione per trovare {{ancora}} e sostituirla con valore dinamico */
     public static function replaceAnchor(&$htmlSectionToModify, $anchorNameBetweenBrackets, $dynamicDataToInsert): void
     {
@@ -67,7 +72,7 @@ class Templating
 
         $htmlFileFullPATH = Templating::HTML_PATH
             . str_replace(".php", ".html", basename($phpFileNameThatCalled));
-
+        
         return file_get_contents($htmlFileFullPATH);
     }
 
@@ -134,7 +139,8 @@ class Templating
     {
         $htmlContent = Templating::getHtmlFileContent($phpFileNameThatCalled);
         if (!$htmlContent) {
-            //TODO
+            Templating::errCode(404);
+            exit;
         }
         $log = Templating::getContentBetweenPlaceholders($htmlContent, 'log');
         $profile = Templating::getContentBetweenPlaceholders($htmlContent, 'profile');
@@ -155,70 +161,8 @@ class Templating
         }
         Templating::replaceContentBetweenPlaceholders($htmlContent, "log", $log);
         Templating::replaceContentBetweenPlaceholders($htmlContent, "profile", $profile);
-        Templating::replaceContentBetweenPlaceholders($htmlContent,"admin", $admin);
+        Templating::replaceContentBetweenPlaceholders($htmlContent, "admin", $admin);
         Templating::replaceContentBetweenPlaceholders($htmlContent, "greeting", $greeting);
         return $htmlContent;
     }
 }
-
-
-
-
-
-/*
-FILE MOSTRE.PHP
-<?php
-    
-
-    require_once("phplibs/databaseService.php");
-    require_once("phplibs/templatingService.php");
-
-
-    $connesione = new DatabaseService();
-
-    $sql = "SELECT * FROM mostre";
-    
-
-    $arrayRestituito = $connesione->eseguiQueryProva($sql);
-    
-    $mostreHtmlContent = Templating::getHtmlFileContent(__FILE__);
-
-    $sectionToModify = Templating::getContentBetweenPlaceholders($mostreHtmlContent,"mostreincorso");
-
-    $fullcontent = "";
-
-    foreach ($arrayRestituito as $riga){
-        $temp = $sectionToModify;
-        Templating::replaceAnchor($temp,"nome",$riga["nome"]);
-        Templating::replaceAnchor($temp,"descrizione",$riga["descrizione"]);
-        $fullcontent.= $temp . "\n";
-    }
-
-
-
-    Templating::replaceContentBetweenPlaceholders($mostreHtmlContent,"mostreincorso",$fullcontent);
-    
-    Templating::showHtmlPageWithoutPlaceholders($mostreHtmlContent);
-
-?>
-
-PARTE DEL FILE MOSTRE.HTML
-        <h1>Le mostre</h1>
-        <dl>
-            <dt class="tipoMostre">Mostre in corso</dt>
-            <!-- mostreincorso_start -->
-            <dd>
-                <dl>
-                    <dt class="nomeMostra">{{nome}}</dt>
-                    <dd class="infoMostra">
-                        <img src="../images/mostra.jpg" alt="">
-                        <p>Descrizione mostra: {{descrizione}}</p>
-                        <p class="giorniMostra">Da <time datetime="2024-10-01">01 Ottobre 2024</time> a <time datetime="2024-12-01">01 Dicembre 2024</time></p>
-                        <a href="prenotazione.html" class="button">Prenota visita</a>
-                    </dd>
-                </dl>
-                <a class="help nascosto" href="#">Torna su</a>
-
-            </dd>
-            <!-- mostreincorso_end -->
-*/

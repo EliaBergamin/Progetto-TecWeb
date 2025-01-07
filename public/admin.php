@@ -4,21 +4,26 @@ require_once("phplibs/templatingService.php");
 
 
 
-if (!isset($_SESSION['user_id'])) 
+if (!isset($_SESSION['user_id']))
     header("Location: login.php?redirect=admin.php");
-if (!$_SESSION['is_admin']) 
-    header('Location: 401.php');
+if (!$_SESSION['is_admin'])
+    header('Location: 403.php');
 
-$database = new DatabaseService();
-$personalePageAdmin = Templating::getHtmlWithModifiedMenu(__FILE__);
-if (!$personalePageAdmin) {}
-    //TODO
+$pageAdmin = Templating::getHtmlWithModifiedMenu(__FILE__);
 
-$arrayMostreCorrenti = $database->selectMostreCorrenti();
-$arrayMostreFuture = $database->selectMostreFuture();
-$arrayMostrePassate = $database->selectMostrePassate();
+try {
+    $database = new DatabaseService();
+    $arrayMostreCorrenti = $database->selectMostreCorrenti();
+    $arrayMostreFuture = $database->selectMostreFuture();
+    $arrayMostrePassate = $database->selectMostrePassate();
+    unset($database);
+} catch (Exception $e) {
+    unset($database);
+    Templating::errCode(500);
+    exit;
+}
 $arrayMostreMuseo = array_merge($arrayMostreFuture, $arrayMostreCorrenti, $arrayMostrePassate);
-$sectionMostreMuseoToAdmin = Templating::getContentBetweenPlaceholders($personalePageAdmin, "mostreAdmin");
+$sectionMostreMuseoToAdmin = Templating::getContentBetweenPlaceholders($pageAdmin, "mostreAdmin");
 
 $fullcontent = "";
 foreach ($arrayMostreMuseo as $associativeRow) {
@@ -44,10 +49,10 @@ foreach ($arrayMostreMuseo as $associativeRow) {
     $fullcontent .= $temp . "\n";
 }
 
-Templating::replaceContentBetweenPlaceholders($personalePageAdmin, "mostreAdmin", $fullcontent);
+Templating::replaceContentBetweenPlaceholders($pageAdmin, "mostreAdmin", $fullcontent);
 
 
 
-Templating::showHtmlPageWithoutPlaceholders($personalePageAdmin);
+Templating::showHtmlPageWithoutPlaceholders($pageAdmin);
 
 ?>

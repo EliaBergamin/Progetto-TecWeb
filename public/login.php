@@ -10,20 +10,16 @@ if (isset($_SESSION['user_id']))
     else
         header("Location: $redirect");
 
-
-$database = new DatabaseService();
 $loginHtmlContent = Templating::getHtmlWithModifiedMenu(__FILE__);
-if (!$loginHtmlContent) {
-}
-//TODO
 
 $messaggiPerForm = '';
-if (isset($_GET['error'])) {
-    $error = $_GET['error'];
+if (isset($_SESSION['error'])) {
+    $error = $_SESSION['error'];
     if ($error == 'user')
-        $messaggiPerForm .= '<li>Username non esistente</li>';
+        $messaggiPerForm .= '<li><span lang="en">Username<span> non esistente</li>';
     else if ($error == 'pwd')
-        $messaggiPerForm .= '<li>Password errata</li>';
+        $messaggiPerForm .= '<li><span lang="en">Password<span> errata</li>';
+    unset($_SESSION['error']);
 }
 
 if (strlen($messaggiPerForm) != 0)
@@ -35,7 +31,8 @@ Templating::replaceContentBetweenPlaceholders($loginHtmlContent, "errormsgs", $e
 
 $formToModify = Templating::getContentBetweenPlaceholders($loginHtmlContent, 'form');
 Templating::replaceAnchor($formToModify, 'redirect', $redirect);
-$username = $_GET['username'] ?? '';
+$username = $_SESSION['username'] ?? '';
+unset($_SESSION['username']);
 Templating::replaceAnchor($formToModify, 'username', $username);
 Templating::replaceContentBetweenPlaceholders($loginHtmlContent, 'form', $formToModify);
 
