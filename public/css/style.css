@@ -782,10 +782,6 @@ a.button {
 /* MODIFICA MOSTRA */
 /*////////////*/
 
-#primoContenuto[class="compilazione recensisci"] {
-  height: 60em;
-}
-
 .contenitoreCompilazione h1 {
   font-size: 2em;
   text-align: left;
