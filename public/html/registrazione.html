@@ -25,12 +25,6 @@
         <button id="hamb" class="hamToggle" data-hambOn="true" type="button" onclick="hambToggle()">Menù</button>
     </header>
 
-    <nav id="breadcrumb">
-        <p>
-            Ti trovi in: <a href="index.php" lang="en">Home</a> &gt; Registrazione
-        </p>
-    </nav>
-
     <nav id="menu" class="hamToggle" data-hambOn="true">
         <ul>
             <li><a href="../index.php" lang="en">Home</a></li>
@@ -55,6 +49,12 @@
         </ul>
     </nav>
 
+    <nav id="breadcrumb">
+        <p>
+            Ti trovi in: <a href="index.php" lang="en">Home</a> &gt; Registrazione
+        </p>
+    </nav>
+
     <main id="primoContenuto" class="compilazione">
         <div class="contenitoreCompilazione">
             <h1>Registrazione</h1>
@@ -64,18 +64,18 @@
             <!-- form_start -->
             <form action="../register.php" method="post" class="formCompilazione">
                 <label for="nome" class="required-label">Nome </label>
-                <input type="text" name="nome" id="nome" value="{{nome}}" required>
+                <input type="text" name="nome" id="nome" value="{{nome}}" required minlength="2">
                 <label for="cognome" class="required-label">Cognome </label>
-                <input type="text" name="cognome" id="cognome" value="{{cognome}}" required>
+                <input type="text" name="cognome" id="cognome" value="{{cognome}}" required minlength="2">
                 <label for="username" class="required-label">Username </label>
-                <input type="text" name="username" id="username" value="{{username}}" required>
+                <input type="text" name="username" id="username" value="{{username}}" required minlength="4">
                 <label for="email" class="required-label">Email </label>
                 <input type="email" name="email" id="email" value="{{email}}" required
                     data-msg-required="L'email è obbligatoria!" data-msg-invalid="Email non valida">
                 <label for="password" class="required-label">Password </label>
-                <input type="password" name="password" id="password" required
+                <input type="password" name="password" id="password" required minlength="4"
                     data-msg-required="La password è obbligatoria!"
-                    data-msg-invalid="La password deve essere lunga almeno 8 caratteri">
+                    data-msg-invalid="La password deve essere lunga almeno 4 caratteri">
                 <p class="required-msg">Campi obbligatori</p>
                 <input type="submit" name="submit" value="Registrati">
             </form>

@@ -22,13 +22,6 @@
     <button id="hamb" class="hamToggle" data-hambOn="true" type="button" onclick="hambToggle()">Menù</button>
   </header>
 
-  <nav id="breadcrumb">
-    <p>
-      Ti trovi in: <a lang="en" href="index.php">Home</a> &gt;
-      <a href="admin.php">Admin</a> &gt; Modifica mostra
-    </p>
-  </nav>
-
   <nav id="menu" class="hamToggle" data-hambOn="true">
     <ul>
       <li><a href="index.php" lang="en">Home</a></li>
@@ -53,13 +46,20 @@
     </ul>
   </nav>
 
-  <main id="primoContenuto" class="compilazione lg">
+  <nav id="breadcrumb">
+    <p>
+      Ti trovi in: <a lang="en" href="index.php">Home</a> &gt;
+      <a href="admin.php">Area gestione</a> &gt; Modifica mostra
+    </p>
+  </nav>
+  
+  <main id="primoContenuto" class="compilazione">
     <div class="contenitoreCompilazione">
       <h1>Modifica mostra</h1>
       <!-- errormsgs_start -->
       {{messaggiPerForm}}
       <!-- errormsgs_end -->
-      <!-- customform_start -->
+      <!-- form_start -->
       <form class="formCompilazione" action="alter_mostra_admin.php?id_mostra={{id_mostra}}" method="post">
         <label for="nome">Nome mostra</label>
         <input type="text" name="nome" id="nome" value={{nome}}>
@@ -73,7 +73,7 @@
         <input type="text" name="immagine" id="immagine" value={{immagine}} >
         <input type="submit" name="submit" value="Conferma">
       </form>
-      <!-- customform_end -->
+      <!-- form_end -->
     </div>
   </main>
   <a class="help" id="torna-su" href="#">Torna su</a>

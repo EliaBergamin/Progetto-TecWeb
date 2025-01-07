@@ -1,3 +1,14 @@
+/* NAV HELP*/
+#top-help:focus {
+    display: block;
+    position: fixed;
+    left: 0;
+    color: var(--txtcolor);
+    text-align: left;
+    margin-left: 5rem;
+    z-index: 100;
+}
+
 /* MENU */
 
 header {
@@ -5,7 +16,7 @@ header {
     min-height: 3.2rem;
     position: fixed;
     width: 100%;
-    border-bottom:solid var(--headercolor);
+    border-bottom: solid var(--headercolor);
     z-index: 50;
 }
 
@@ -50,13 +61,19 @@ header {
 }
 
 #menu ul {
- display: block;
+    display: block;
 }
 
 #menu li {
     display: block;
     margin: 0;
 }
+
+#menu a:focus {
+    border: none;
+    border-top: #000 solid 1px;
+    border-bottom: #000 solid 1px;
+  }
 
 /* BREADCRUMB */
 
@@ -83,4 +100,59 @@ footer dl {
 
 #orari-museo {
     margin: 0.4em 0;
+}
+
+/*////////////////*/
+/* TABELLA MOSTRE */
+/*////////////////*/
+
+#tab-mostre thead,
+#tab-mostre tfoot {
+    display: none;
+}
+
+#tab-mostre tr,
+#tab-mostre tbody th,
+#tab-mostre td {
+    display: block;
+    white-space: normal;
+    width: 100%;
+    max-width: none;
+    box-sizing: border-box;
+}
+
+th[data-title]:before,
+td[data-title]:before {
+    content: attr(data-title) ":\00A0";
+    font-weight: bold;
+}
+
+#tab-mostre th {
+    background-color: var(--headerbgcolor);
+    color: var(--txtcolor);
+}
+
+#tab-mostre td,
+#tab-mostre th {
+    border-top: none;
+}
+
+#tab-mostre tr:first-child {
+    border-top: 1px solid #000;
+}
+
+#tab-mostre tr:nth-child(odd),
+#tab-mostre tr:nth-child(even) {
+    background-color: var(--tablebgcolor);
+}
+
+#tab-mostre .mod-mostra,
+#tab-mostre .elim-mostra {
+    float: left;
+    width: 50%;
+    height: 2.7em;
+}
+
+#tab-mostre .mod-mostra {
+    border-right: none;
 }

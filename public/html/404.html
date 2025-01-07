@@ -1,11 +1,118 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
+
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <title>Pagina non trovata - Museo Cartoni Animati</title>
+    <meta name="description"
+        content="Il sito ufficiale per il Museo di cartoni animati. Informazioni, contatti e prenotazioni per il Museo dei cartoni animati.">
+    <meta name="keywords" content="Museo,Mostre,Animazione,Cartoni Animati,cardgame,prenota,visita,informazioni">
+    <link rel="stylesheet" href="css/style.css" media="screen">
+    <link rel="stylesheet" href="css/middle.css" media="screen and (max-width: 1024px)">
+    <link rel="stylesheet" href="css/mini.css" media="screen and (max-width: 768px)">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pagina non trovata</title>
+    <link rel="icon" href="images/pokeball.ico" type="image/x-icon">
+    <script type="text/javascript" src="js/script.js"></script>
 </head>
+
 <body>
-    <p>La pagina richiesta non è disponibile</p>
+    <a id="top-help" class="help nascosto" href="#primoContenuto">Vai al contenuto</a>
+    <header>
+        <h1>Museo Cartoni Animati</h1>
+        <button id="hamb" class="hamToggle" data-hambOn="true" type="button" onclick="hambToggle()">Menù</button>
+    </header>
+
+    <nav id="menu" class="hamToggle" data-hambOn="true">
+        <ul>
+            <li><a href="index.php" lang="en">Home</a></li>
+            <li><a href="mostre.php">Le mostre</a></li>
+            <li><a href="virtual_tour.php" lang="en">Virtual Tour</a></li>
+            <li><a href="prenotazione.php">Prenotazione</a></li>
+            <li><a href="recensioni.php">Recensioni</a></li>
+            <!-- log_start -->
+            <li><a href="registrazione.php">Registrati</a></li>
+            <li><a href="login.php">Accedi</a></li>
+            <!-- log_end -->
+            <!-- admin_start -->
+            <li><a href="admin.php">Admin</a></li>
+            <!-- admin_end -->
+            <!-- profile_start -->
+            <li><a href="profile.php">Il mio profilo</a></li>
+            <li><a href="logout.php">Esci</a></li>
+            <!-- profile_end -->
+            <!-- greeting_start -->
+            <li><span>Ciao {{username}}!</span></li>
+            <!-- greeting_end -->
+        </ul>
+    </nav>
+    <nav id="breadcrumb">
+        <p>Ti trovi in: <a href="index.php" lang="en">Home</a> &gt; Pagina non trovata</p>
+    </nav>
+    <main id="primoContenuto" class="error-page">
+        <h1 class="error-title">Oops! Non siamo riusciti a trovare la pagina...</h1>
+        <p class="error-descr"><span lang="en">Psyduck</span> è confuso... proprio come noi! Sembra che la pagina che
+            cercavi non esista.
+            Ti suggeriamo di tornare alla <a href="index.php" lang="en">Home</a> per continuare la 
+            tua navigazione nel sito del Museo. Se preferisci, scopri di più su 
+            <a href="https://wiki.pokemoncentral.it/Psyduck" target="_blank" lang="en">Psyduck</a>
+        </p>
+        <img class="error-img" src="../images/psyduck.png"
+            alt="Psyduck ricorda un papero giallo con lo sguardo perso nel nulla">
+    </main>
+    <a class="help" id="torna-su" href="#">Torna su</a>
+    <footer>
+        <h2>Museo Cartoni Animati</h2>
+        <dl>
+            <dt> <abbr title="telefono">Tel</abbr>: </dt>
+            <dd><a href="tel:+39123456789">123456789</a> </dd>
+            <dt> <span lang="en">Email: </span> </dt>
+            <dd> <a href="mailto:info@dominioImmaginario.com">info@dominioImmaginario.comm</a> </dd>
+            <dt> Indirizzo: </dt>
+            <dd>
+                <a href="https://maps.app.goo.gl/xqD3pfvXG4ockxUeA">Via Luigi Luzzatti,
+                    <abbr title="Numero civico">n.</abbr> 8, 35121 Padova</a>
+            </dd>
+        </dl>
+        <!--         <a href="" lang="en">Privacy Link TODO</a>
+ -->
+        <p id="tab-descr" class="nascosto">La tabella contiene gli orari di apertura del museo</p>
+        <table id="orari-museo" title="Orari del museo" aria-describedby="tab-descr">
+            <caption>Orari del Museo</caption>
+            <thead>
+                <tr>
+                    <td></td>
+                    <th scope="col">Mattina</th>
+                    <th scope="col">Pomeriggio</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">Lunedì</th>
+                    <td><time datetime="09:00">09:00</time> - <time datetime="12:00">12:00</time></td>
+                    <td><time datetime="14:00">14:00</time> - <time datetime="19:00">19:00</time></td>
+                </tr>
+                <tr>
+                    <th scope="row">Martedì</th>
+                    <td><time datetime="09:00">09:00</time> - <time datetime="12:00">12:00</time></td>
+                    <td><time datetime="14:00">14:00</time> - <time datetime="19:00">19:00</time></td>
+                </tr>
+                <tr>
+                    <th scope="row">Sabato</th>
+                    <td><time datetime="08:00">08:00</time> - <time datetime="13:00">13:00</time></td>
+                    <td><time datetime="14:00">14:00</time> - <time datetime="20:00">20:00</time></td>
+                </tr>
+                <tr>
+                    <th scope="row">Domenica</th>
+                    <td><time datetime="08:00">08:00</time> - <time datetime="13:00">13:00</time></td>
+                    <td><time datetime="14:00">14:00</time> - <time datetime="22:00">22:00</time></td>
+                </tr>
+            </tbody>
+        </table>
+    </footer>
 </body>
+
+
+
+
+
 </html>

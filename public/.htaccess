@@ -1,0 +1,15 @@
+RewriteEngine On
+
+# Redirezione permanente: rimuove la barra finale e aggiunge index.php
+RedirectMatch permanent "^/(.*)/$" "/$1/index.php"
+
+# Condizioni: se non è un file o una directory, reindirizza a 404.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^.*$ /404.php [L]
+
+# Gestione corretta dell'errore 404
+ErrorDocument 404 /404.php
+
+# Gestione corretta dell'errore 500
+ErrorDocument 500 /500.php

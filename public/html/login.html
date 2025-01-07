@@ -21,12 +21,6 @@
         <button id="hamb" class="hamToggle" data-hambOn="true" type="button" onclick="hambToggle()">Menù</button>
     </header>
 
-    <nav id="breadcrumb">
-        <p>
-            Ti trovi in: <a href="../index.html" lang="en">Home</a> &gt; Registrazione
-        </p>
-    </nav>
-
     <nav id="menu" class="hamToggle" data-hambOn="true">
         <ul>
             <li><a href="../index.php" lang="en">Home</a></li>
@@ -50,6 +44,11 @@
             <!-- greeting_end -->
         </ul>
     </nav>
+    <nav id="breadcrumb">
+        <p>
+            Ti trovi in: <a href="../index.html" lang="en">Home</a> &gt; Registrazione
+        </p>
+    </nav>
 
     <main id="primoContenuto" class="compilazione">
         <div class="contenitoreCompilazione">
@@ -61,11 +60,11 @@
             <form action="autenticate.php?redirect={{redirect}}" method="post" class="formCompilazione">
                 <label for="username"  class="required-label">Username </label>
                 <input type="text" name="username" id="username" required data-msg-required="Username obbligatorio!"
-                    data-msg-invalid="Username non valido" value="{{username}}">
+                    data-msg-invalid="Username non valido" value="{{username}}" minlength="4">
                 <label for="password" class="required-label">Password </label>
-                <input type="password" name="password" id="password" required
+                <input type="password" name="password" id="password" required minlength="4"
                     data-msg-required="La password è obbligatoria!"
-                    data-msg-invalid="La password deve essere lunga almeno 8 caratteri">
+                    data-msg-invalid="La password deve essere lunga almeno 4 caratteri">
                 <p class="required-msg">Campi obbligatori</p>
                 <input type="submit" name="submit" value="Accedi">
             </form>
