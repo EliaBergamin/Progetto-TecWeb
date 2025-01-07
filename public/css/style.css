@@ -97,7 +97,7 @@ header {
   grid-row: 2;
   grid-column: 1;
   background-color: var(--contentbgcolor);
-  background-image: url('../images/logoMuseo2.png');
+  background-image: url('../images/logo.jpeg');
   background-position: left;
   background-size: contain;
   background-repeat: no-repeat;
@@ -503,7 +503,7 @@ footer dt {
 
 footer h2 {
   flex: 1 0 18%;
-  background-image: url('../images/logoMuseo2.png');
+  background-image: url('../images/logo.jpeg');
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
