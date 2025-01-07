@@ -51,6 +51,7 @@ function initAccordion() {
 }
 
 function initRecensisci() {
+
     document.querySelectorAll("#rating-fs label").forEach((label) => {
         label.classList.add("nascosto");
     });

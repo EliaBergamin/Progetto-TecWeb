@@ -2,12 +2,11 @@ function inizializzaValidazione(dettagli_form) {
     for(var key in dettagli_form){
        var input = document.getElementById(key);
        messaggio(input, 0);
-       input.onblur = function() {validazioneCampo(this);};
+       input.onchange = function() {validazioneCampo(this);};
     }
  }
  
-function validazioneCampo(input) {		
-    
+function validazioneCampo(input) {
     var nextElement = input.nextElementSibling;
     if (nextElement && (nextElement.classList.contains('default-text') || nextElement.classList.contains('errorSuggestion'))) {
         nextElement.remove();

@@ -38,6 +38,6 @@ var regole = {
         if(!input){
             return true;
         }
-        return input<params && input>0;
+        return parseInt(input)<=parseInt(params) && parseInt(input)>0;
     }
 }
