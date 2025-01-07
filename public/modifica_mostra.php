@@ -9,8 +9,10 @@ else {
     exit;
 }
 
-if (!isset($_SESSION['user_id']))
+if (!isset($_SESSION['user_id'])) {
     header("Location: login.php?redirect=modifica_mostra.php&id_mostra=" . $id_mostra);
+    exit;
+}
 
 $modificaMostraContent = Templating::getHtmlWithModifiedMenu(__FILE__);
 

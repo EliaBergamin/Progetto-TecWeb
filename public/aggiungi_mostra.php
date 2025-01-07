@@ -4,8 +4,10 @@ require_once("phplibs/templatingService.php");
 
 
 
-if (!isset($_SESSION['user_id']))
+if (!isset($_SESSION['user_id'])) {
     header("Location: login.php?redirect=modifica_mostra.php");
+    exit;
+}
 
 $aggiungiMostraContent = Templating::getHtmlWithModifiedMenu(__FILE__);
 

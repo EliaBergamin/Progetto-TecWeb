@@ -4,10 +4,14 @@ require_once("phplibs/templatingService.php");
 
 
 
-if (!isset($_SESSION['user_id']))
+if (!isset($_SESSION['user_id'])) {
     header("Location: login.php?redirect=admin.php");
-if (!$_SESSION['is_admin'])
+    exit;
+}
+if (!$_SESSION['is_admin']) {
     header('Location: 403.php');
+    exit;
+}
 
 $pageAdmin = Templating::getHtmlWithModifiedMenu(__FILE__);
 

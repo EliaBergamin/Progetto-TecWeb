@@ -2,8 +2,10 @@
 require_once("phplibs/databaseService.php");
 require_once("phplibs/templatingService.php");
 
-if (isset($_SESSION['user_id']))
+if (isset($_SESSION['user_id'])) {
     header("Location: index.php?error=logged");
+    exit;
+}
 
 $registrazioneContent = Templating::getHtmlWithModifiedMenu(__FILE__);
 
@@ -30,6 +32,9 @@ if (isset($_SESSION['error']) && is_array($_SESSION['error'])) {
         $messaggiPerForm .= '<li><span lang="en">Username<span> già in uso</li>';
     if (in_array('password_len', $error))
         $messaggiPerForm .= '<li>La <span lang="en">password<span> deve avere almeno 8 caratteri</li>';
+    else if (in_array('password_weak', $error))
+        $messaggiPerForm .= '<li>La <span lang="en">password<span> deve contenere almeno 
+    una lettera, un numero, e un carattere speciale tra @$!%*?&</li>';
     if (in_array('insert', $error))
         $messaggiPerForm .= '<li>Errore durante la registrazione</li>';
     unset($_SESSION['error']);
@@ -47,6 +52,7 @@ Templating::replaceAnchor($formValuesToModify, "nome", $_SESSION['nome'] ?? "");
 Templating::replaceAnchor($formValuesToModify, "cognome", $_SESSION['cognome'] ?? "");
 Templating::replaceAnchor($formValuesToModify, "username", $_SESSION['username'] ?? "");
 Templating::replaceAnchor($formValuesToModify, "email", $_SESSION['email'] ?? "");
+Templating::replaceAnchor($formValuesToModify, "password", $_SESSION['password'] ?? "");
 Templating::replaceContentBetweenPlaceholders($registrazioneContent, "form", $formValuesToModify);
 
 Templating::showHtmlPageWithoutPlaceholders($registrazioneContent);
@@ -54,4 +60,5 @@ unset($_SESSION['nome']);
 unset($_SESSION['cognome']);
 unset($_SESSION['username']);
 unset($_SESSION['email']);
+unset($_SESSION['password']);
 ?>

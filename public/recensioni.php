@@ -7,8 +7,7 @@ require_once("phplibs/templatingService.php");
 
 $database = new DatabaseService();
 $recensioniHtmlContent = Templating::getHtmlWithModifiedMenu(__FILE__);
-if (!$recensioniHtmlContent) {}
-    //TODO
+
 /* RECENSIONI MUSEO*/
 $arrayRecensioniMuseo = $database->selectRecensioniWithType(0);
 $sectionRecensioniMuseoToModify = Templating::getContentBetweenPlaceholders($recensioniHtmlContent, "recensionimuseo");

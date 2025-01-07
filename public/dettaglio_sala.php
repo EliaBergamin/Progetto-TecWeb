@@ -3,13 +3,14 @@
 require_once("phplibs/databaseService.php");
 require_once("phplibs/templatingService.php");
 
-if (!isset($_SESSION['user_id'])) 
+if (!isset($_SESSION['user_id'])) {
     header("Location: login.php?redirect=dettaglio_sala.php");
+    exit;
+}
 
 $database = new DatabaseService();
 $dettaglioSalaHtmlContent = Templating::getHtmlWithModifiedMenu(__FILE__);
-if (!$dettaglioSalaHtmlContent) {}
-    //TODO
+
 $numeroSalaRichiesta = isset($_GET['sala']) ? $_GET['sala'] : 0;
 
 /* BREADCRUMB SALA*/

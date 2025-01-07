@@ -15,14 +15,14 @@ if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
     $nome = DatabaseService::cleanedInput($_POST['nome']);
     if (strlen($nome) < 2) {
         array_push($error, 'nome_len');
-    } else if (!preg_match("/[\p{L}\p{P}\p{N}\ ]+/u", $nome)) {
+    } else if (!preg_match("/^[\p{L}\p{P}\p{N}\ ]+$/u", $nome)) {
         array_push($error, 'nome_char');
     }
 
     $cognome = DatabaseService::cleanedInput($_POST['cognome']);
     if (strlen($cognome) < 2) {
         array_push($error, 'cognome_len');
-    } else if (!preg_match("/[\p{L}\p{P}\p{N}\ ]+/u", $cognome)) {
+    } else if (!preg_match("/^[\p{L}\p{P}\p{N}\ ]+$/u", $cognome)) {
         array_push($error, 'cognome_char');
     }
 
@@ -32,7 +32,7 @@ if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         try {
             $database = new DatabaseService();
-            $users = $database->selectUsersFromUsername($username);
+            $users = $database->selectUsersFromEmail($email);
             unset($database);
         } catch (Exception $e) {
             unset($database);
@@ -47,7 +47,7 @@ if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = DatabaseService::cleanedInput($_POST['username']);
     if (strlen($username) < 4) {
         array_push($error, 'username_len');
-    } else if (!preg_match("/[\p{L}\p{N}]+/u", $username)) {
+    } else if (!preg_match("/^[\p{L}\p{N}]+$/u", $username)) {
         array_push($error, 'username_char');
     } else {
         try {
@@ -64,8 +64,10 @@ if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
     $password = DatabaseService::cleanedInput($_POST['password']);
-    if (strlen($password) < 4) {
+    if (strlen($password) < 8) {
         array_push($error, 'password_len');
+    } else if (!preg_match("/^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/", $password)) {
+        array_push($error, 'password_weak');
     }
 
     if (count($error) > 0) {
@@ -74,6 +76,7 @@ if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['cognome'] = $cognome;
         $_SESSION['email'] = $email;
         $_SESSION['username'] = $username;
+        $_SESSION['password'] = $password;
         header("Location: registrazione.php?redirect=$redirect");
         exit;
     }
@@ -86,6 +89,7 @@ if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
         unset($database);
     } catch (Exception $e) {
         unset($database);
+        echo $e->getMessage();
         Templating::errCode(500);
         exit;
     }

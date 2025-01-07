@@ -3,8 +3,10 @@
 require_once("phplibs/databaseService.php");
 require_once("phplibs/templatingService.php");
 
-if (!isset($_SESSION['user_id']))
+if (!isset($_SESSION['user_id'])) {
     header("Location: login.php?redirect=recensisci.php");
+    exit;
+}
 
 $tipo = '';
 $data_visita = '';
@@ -15,7 +17,7 @@ $error = [];
 if (isset($_POST['submit'])) {
 
     $data_visita = DatabaseService::cleanedInput($_POST['data_visita']);
-    if (!preg_match("/\d{4}-\d{2}-\d{2}/", $data_visita)) {
+    if (!preg_match("/^\d{4}-\d{2}-\d{2}$/", $data_visita)) {
         array_push($error, "data_val");
     }
     $today = date("Y-m-d");
@@ -24,19 +26,19 @@ if (isset($_POST['submit'])) {
     }
 
     $rating = DatabaseService::cleanedInput($_POST['rating']);
-    if (!preg_match("/[1-5]/", $rating)) {
+    if (!preg_match("/^[1-5]$/", $rating)) {
         array_push($error, "rating");
     }
 
     $descrizione = DatabaseService::cleanedInput($_POST['descrizione']);
     if (strlen($descrizione) < 25) {
         array_push($error, "descr_len");
-    } else if (!preg_match("/[\p{L}\p{P}\p{N}\ ]+/u", $descrizione)) {
+    } else if (!preg_match("/^[\p{L}\p{P}\p{N}\ ]+$/u", $descrizione)) {
         array_push($error, "descr_char");
     }
 
     $tipo = DatabaseService::cleanedInput($_POST['tipo']);
-    if (!preg_match("/[0-1]/", $tipo)) {
+    if (!preg_match("/^[0-1]$/", $tipo)) {
         array_push($error, "tipo");
     }
     if (count($error) > 0) {

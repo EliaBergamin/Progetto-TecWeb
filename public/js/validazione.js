@@ -1,20 +1,29 @@
 function inizializzaValidazione(dettagli_form) {
-    for(var key in dettagli_form){
-       var input = document.getElementById(key);
-       messaggio(input, 0);
-       input.onchange = function() {validazioneCampo(this);};
+    for (const key in dettagli_form) {
+        let input = document.getElementById(key);
+        messaggio(input, 0);
+        input.onblur = function () { validazioneCampo(this); };
+        input.oninput = function () { validazioneForm(); };
     }
- }
- 
-function validazioneCampo(input) {
-    var nextElement = input.nextElementSibling;
-    if (nextElement && (nextElement.classList.contains('default-text') || nextElement.classList.contains('errorSuggestion'))) {
+    document.getElementById('form').onsubmit = function () { return validazioneForm(); };
+    document.querySelector('#form input[type="submit"]').setAttribute('disabled', 'disabled');
+}
+
+function caricamentoValidazione(){
+    inizializzaValidazione(dettagli_form)
+}
+
+function validazioneCampo(input, mode = 1) {
+    const nextElement = input.nextElementSibling;
+    if (mode && nextElement && (nextElement.classList.contains('default-text') || nextElement.classList.contains('errorSuggestion'))) {
         nextElement.remove();
     }
-    if (!regole[dettagli_form[input.id][1]](input.value, dettagli_form[input.id][2])){
-        messaggio(input, 1);
-        input.focus(); 
-        input.select();
+    if (!regole[dettagli_form[input.id][1]](input.value, dettagli_form[input.id][2])) {
+        if (mode) {
+            messaggio(input, mode);
+            input.focus();
+            input.select();
+        }
         return false;
     }
 
@@ -22,33 +31,35 @@ function validazioneCampo(input) {
 }
 
 function validazioneForm() {
-    for (var key in dettagli_form){
-        var input = document.getElementById(key);
-        if(!validazioneCampo(input)){
+    for (const key in dettagli_form) {
+        const input = document.getElementById(key);
+        if (!validazioneCampo(input, 0)) {
+            document.querySelector('#form input[type="submit"]').setAttribute('disabled', 'disabled');
             return false;
         }
     }
+    document.querySelector('#form input[type="submit"]').removeAttribute('disabled');
     return true;
 }
-    
+
 function messaggio(input, mode) {
-/*  mode = 0, modalità input
-    mode = 1, modalità errore */
+    /*  mode = 0, modalità input
+        mode = 1, modalità errore */
 
-    var node;
+    let node;
 
-    if(!mode){
+    if (!mode) {
         node = document.createElement('span');
-        node.className = 'default-text';  
-        node.setAttribute('aria-live', 'polite'); 
+        node.className = 'default-text';
+        node.setAttribute('aria-live', 'polite');
         node.appendChild(document.createTextNode(dettagli_form[input.id][0]));
     }
-    else{
+    else {
         node = document.createElement('strong');
-        node.className = 'errorSuggestion';  
+        node.className = 'errorSuggestion';
         node.setAttribute('aria-live', 'assertive');
-        node.appendChild(document.createTextNode(dettagli_form[input.id][3]));
+        node.innerHTML = dettagli_form[input.id][3];
     }
-    
+
     input.parentNode.insertBefore(node, input.nextSibling);
 }

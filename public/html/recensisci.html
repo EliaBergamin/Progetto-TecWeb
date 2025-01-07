@@ -13,61 +13,10 @@
   <link rel="stylesheet" href="../css/print.css" media="print">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="../images/pokeball.ico" type="image/x-icon">
-  <script type="text/javascript" src="../js/script.js"></script>
-  <script type="text/javascript" src="../js/regole.js"></script>
-  <script type="text/javascript" src="../js/validazione.js"></script>
-  <script type="text/javascript" src="../js/validazione-recensione.js"></script>
-  <script>
-    console.log(document.getElementsByName("rating"));
-    function reset_span() {
-      inputs = document.getElementsByName("rating");
-      let index = 4, found = 0;
-      for (; index >= 0 && !found; index--) {
-        const element = inputs[index];
-        if (element.checked) {
-          found = index + 1;
-        }
-      }
-      console.log(found);
-      for (let i = 1; i <= found; i++) {
-        let currentId = "voto-" + i.toString();
-        document.getElementById(currentId).classList.replace("ahead", "behind");
-      }
-      for (let i = found + 1; i <= 5; i++) {
-        let currentId = "voto-" + i.toString();
-        document.getElementById(currentId).classList.replace("behind", "ahead");
-      }
-      let giudizi = [
-        "", "Terribile", "Non soddisfacente", "Nella media", "Molto soddisfacente", "Eccellente"
-      ];
-      document.getElementById("giudizio").innerText = giudizi[found];
-    }
-    function change_span(id) {
-      let voto2giudizio = {
-        '1': "Terribile",
-        '2': "Non soddisfacente",
-        '3': "Nella media",
-        '4': "Molto soddisfacente",
-        '5': "Eccellente"
-      };
-      let voto = parseInt(id.charAt(5));
-      console.log(voto);
-      document.getElementById("giudizio").innerText = voto2giudizio[voto];
-      for (let i = 1; i <= voto; i++) {
-        let currentId = "voto-" + i.toString();
-        document.getElementById(currentId).classList.replace("ahead", "behind");
-      }
-      for (let i = voto + 1; i <= 5; i++) {
-        let currentId = "voto-" + i.toString();
-        document.getElementById(currentId).classList.replace("behind", "ahead");
-      }
-    }
-    function addEventListeners(item) {
-      item.addEventListener("click", function () { change_span(item.id); console.log(item.id); });
-      item.addEventListener("mouseover", function () { change_span(item.id); console.log(item.id); });
-      item.addEventListener("mouseleave", reset_span);
-    }
-  </script>
+  <script src="../js/script.js"></script>
+  <script src="../js/regole.js"></script>
+  <script src="../js/validazione.js"></script>
+  <script src="../js/validazione-recensione.js"></script>
 </head>
 
 <body onload="initRecensisci(); caricamentoValidazione(); ">
@@ -116,7 +65,7 @@
       {{messaggiPerForm}}
       <!-- errormsgs_end -->
       <!-- form_start -->
-      <form action="recensione_effettuata.php" method="post" class="formCompilazione">
+      <form action="recensione_effettuata.php" method="post" class="formCompilazione" id="form">
         <fieldset>
           <legend class="required-label">Come hai visitato il museo?</legend>
           <label>
@@ -133,7 +82,7 @@
         <fieldset id="rating-fs">
           <legend class="required-label">Come valuteresti la tua esperienza?</legend>
           <div class="rating-option">
-            <input type="radio" name="rating" class="ahead" id="voto-1" value="1" {{r1}}>
+            <input type="radio" name="rating" class="ahead" id="voto-1" value="1" {{r1}} required>
             <label for="voto-1" class="nascosto">Deludente</label>
           </div>
           <div class="rating-option">

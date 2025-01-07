@@ -12,13 +12,13 @@
     <link rel="stylesheet" href="../css/print.css" media="print">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../images/pokeball.ico" type="image/x-icon">
-    <script type="text/javascript" src="../js/script.js"></script>
-    <script type="text/javascript" src="../js/regole.js"></script>
-    <script type="text/javascript" src="../js/validazione.js"></script>
-    <script type="text/javascript" src="../js/validazione-prenotazione.js"></script>
+    <script src="../js/script.js"></script>
+    <script src="../js/regole.js"></script>
+    <script src="../js/validazione.js"></script>
+    <script src="../js/validazione-prenotazione.js"></script>
 </head>
 
-<body onload="caricamentoValidazione();">
+<body onload="caricamentoValidazione();initAJAX();">
     <a id="top-help" class="help nascosto" href="#prenotazione">Vai al contenuto</a>
     <header>
         <h1>Museo Cartoni Animati</h1>
@@ -62,7 +62,7 @@
             {{messaggiPerForm}}
             <!-- errormsgs_end -->
             <!-- form_start -->
-            <form action="prenotazione_effettuata.php" method="post" id="formPrenotazione" class="formCompilazione">
+            <form action="prenotazione_effettuata.php" method="post" id="form" class="formCompilazione">
                 <label for="giorno" class="required-label">Giorno</label>
                 <input type="date" name="giorno" id="giorno" value="{{giorno}}" required
                     data-msg-required="Per favore, selezionare il giorno della visita"
@@ -83,8 +83,7 @@
                 </select>
                 <label for="visitatori" class="required-label">Numero di visitatori</label>
                 <input type="number" name="visitatori" id="visitatori" min="1" max="15" required
-                    data-msg-required="Per favore, selezionare il numero di visitatori"
-                    data-msg-invalid="Massimo x visitatori" value="{{visitatori}}">
+                     value="{{visitatori}}">
                 <p class="required-msg">Campi obbligatori</p>
                 <input type="submit" name="submit" value="Prenota">
             </form>
@@ -142,60 +141,5 @@
         </table>
     </footer>
 </body>
-
-<script>
-    document.getElementById('giorno').addEventListener('change', function () {
-        document.getElementById('orario').value = "";
-        document.getElementById('visitatori').value = "";
-
-        const giornoSelezionato = this.value;
-
-        if (!giornoSelezionato) return;
-        fetch('../phplibs/controlla_disponibilita.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            body: `giorno=${encodeURIComponent(giornoSelezionato)}`,
-        })
-        .then(response => response.json())
-        .then(data => {
-            aggiornaOrariDisponibili(data);
-        })
-        .catch(error => {
-            console.error('Errore durante il recupero degli slot:', error);
-        });
-    });
-
-    function aggiornaOrariDisponibili(slotDisponibili) {
-        const slotsId = ["09","10_30","12","13_30","15","16_30"];
-        const slotsOrari = ["09:00:00", "10:30:00", "12:00:00", "13:30:00","15:00:00","16:30:00" ]
-        for (i = 0; i < slotsId.length; i++) {
-            const idSlot = slotsId[i];
-            const disponibilita = slotDisponibili[slotsOrari[i]] || 0;
-
-            const slotElement = document.getElementById(idSlot);
-            slotElement.dataset.postiDisponibili = disponibilita;
-
-            if (disponibilita < 1) {
-                slotElement.disabled = true;
-            } else {
-                slotElement.disabled = false;
-            }
-        }
-    }
-
-    document.getElementById('orario').addEventListener('change', function () {
-        document.getElementById('visitatori').value = "";
-
-        const inputVisitatori = document.getElementById('visitatori');
-        const selectOrario = document.getElementById("orario");
-        const selectedOption = selectOrario.options[selectOrario.selectedIndex];
-        const postiDisponibili = selectedOption.dataset.postiDisponibili || 90;
-        inputVisitatori.max = postiDisponibili;
-
-        caricamentoValidazioneNumeroVisitatori(postiDisponibili);
-    });
-</script>
 
 </html>

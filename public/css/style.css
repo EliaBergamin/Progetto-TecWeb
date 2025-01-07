@@ -48,7 +48,7 @@
 html {
   font-size: 100%;
   font-family: "Lexend", sans-serif;
-  line-height: 1.5rem;
+  line-height: 1.5em;
   color: var(--txtcolor);
   background-color: var(--bgcolor);
   border: 0;
@@ -64,7 +64,8 @@ body {
   margin: auto;
 }
 
-ol, ul {
+ol,
+ul {
   list-style: none;
 }
 
@@ -85,6 +86,21 @@ a[target="_blank"]::after {
   color: #fff;
   background: var(--headercolor);
 }
+
+.util-btn {
+  border: 1px solid;
+  border-radius: 10px;
+  padding: 0.5em;
+  text-decoration: none;
+  color: var(--txtcolor);
+}
+
+.util-btn:hover {
+  background-color: var(--txtcolor);
+  color: var(--bgcolor);
+  transition: 0.3s ease;
+}
+
 
 #menu a:focus {
   border-left: #000 solid 1px;
@@ -157,7 +173,9 @@ utile per fissare il menu in modo che non scrolli
   display: flex;
 }
 
-#menu a, #currentLink, #menu span {
+#menu a,
+#currentLink,
+#menu span {
   display: block;
   height: 100%;
   padding: 0.3em 0.74em;
@@ -716,7 +734,6 @@ footer h2 {
 
 .formCompilazione input,
 .formCompilazione select {
-  margin-bottom: 1.25em;
   box-sizing: border-box;
   padding: 0.4em;
   border: solid 2px #000;
@@ -728,7 +745,8 @@ footer h2 {
   outline: none;
 }
 
-.formCompilazione input[type="submit"], a.button {
+.formCompilazione input[type="submit"],
+a.button {
   background-color: var(--submitcolor);
   padding: 0.6em;
   width: 100%;
@@ -745,7 +763,8 @@ a.button {
   width: auto;
 }
 
-.formCompilazione input[type="submit"]:hover, a.button:hover {
+.formCompilazione input[type="submit"]:hover,
+a.button:hover {
   background-color: var(--txtcolor);
   color: var(--headerbgcolor);
   cursor: pointer;
@@ -759,14 +778,15 @@ a.button {
 
 .formCompilazione label {
   display: block;
-  margin-bottom: 0.25em;
+  margin: 1em 0 0.25em;
   font-size: 1.15rem;
 }
 
 .formCompilazione strong {
   color: red;
   font-size: 0.8em;
-  line-height: 0em;
+  font-weight: normal;
+  line-height: 0;
 }
 
 .required-label::after {
@@ -789,10 +809,8 @@ a.button {
 /*////////////*/
 
 .contenitoreCompilazione h1 {
-  font-size: 1.75em;
+  font-size: 2em;
   text-align: left;
-  margin:0.5em;
-  line-height: 1em;
 }
 
 .formCompilazione fieldset {
@@ -820,7 +838,7 @@ a.button {
 
 .formCompilazione fieldset label {
   text-align: left;
-  margin-bottom: 0;
+  margin: 0;
   padding: 0;
   cursor: pointer;
 }
@@ -858,7 +876,6 @@ a.button {
 } */
 
 .formCompilazione input[type="date"] {
-  margin-bottom: 1.2em;
   font-size: 1.1rem;
 }
 
@@ -869,7 +886,6 @@ a.button {
 .formCompilazione textarea {
   width: 100%;
   padding: 0.5em;
-  margin-bottom: 1.5em;
   border: 2px solid #000;
   border-radius: 0.5em;
   font-size: 1rem;
@@ -890,20 +906,6 @@ a.button {
 #titolo-recens-virtual {
   margin-top: 1em;
   margin-bottom: 1em;
-}
-
-#scrivi-rev {
-  border: 1px solid;
-  border-radius: 10px;
-  padding: 0.5em;
-  text-decoration: none;
-  color: var(--txtcolor);
-}
-
-#scrivi-rev:hover {
-  background-color: var(--txtcolor);
-  color: var(--bgcolor);
-  transition: 0.3s ease;
 }
 
 #scrivi-rev::before {
@@ -1071,7 +1073,7 @@ main[class="opera"] {
   grid-column: 1/3;
 }
 
-#yugioh a{
+#yugioh a {
   background: url("../images/sala-yu-gi-oh.jpeg") no-repeat center;
 }
 
@@ -1121,14 +1123,6 @@ main[class="opera"] {
 /* PERSONALE ADMIN */
 /*/////////////////////////*/
 
-#agg-mostra {
-  border: 1px solid;
-  border-radius: 10px;
-  padding: 0.5em;
-  text-decoration: none;
-  color: black;
-}
-
 #agg-mostra::before {
   content: "\2795";
   margin-right: 0.5em;
@@ -1145,7 +1139,8 @@ main[class="opera"] {
   margin-bottom: 1em;
 }
 
-#tab-mostre td, #tab-mostre tbody th {
+#tab-mostre td,
+#tab-mostre tbody th {
   font-weight: normal;
   max-width: 11em;
   overflow: hidden;
@@ -1153,7 +1148,7 @@ main[class="opera"] {
   white-space: nowrap;
 }
 
-#tab-mostre th, 
+#tab-mostre th,
 #tab-mostre td {
   border: 1px solid black;
   padding: 0.5em;
@@ -1203,13 +1198,13 @@ main[class="opera"] {
 }
 
 #tab-prenot {
-  width:80%;
+  width: 80%;
   border-collapse: collapse;
   text-align: left;
   margin: 2em auto;
 }
 
-#tab-prenot th, 
+#tab-prenot th,
 #tab-prenot td {
   border: 1px solid black;
   padding: 0.5em;
@@ -1235,7 +1230,8 @@ main[class="opera"] {
   font-size: 1.5em;
 }
 
-.cancella a, .mod-mostra a {
+.cancella a,
+.mod-mostra a {
   text-decoration: none;
 }
 

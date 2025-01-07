@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../css/mini.css" media="screen and (max-width: 768px)">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../images/pokeball.ico" type="image/x-icon">
-    <script type="text/javascript" src="../js/script.js"></script>
+    <script src="../js/script.js"></script>
 </head>
 
 <body>
@@ -57,7 +57,7 @@
             {{messaggiPerForm}}
             <!-- errormsgs_end -->
             <!-- form_start -->
-            <form action="autenticate.php?redirect={{redirect}}" method="post" class="formCompilazione">
+            <form action="autenticate.php?redirect={{redirect}}" method="post" class="formCompilazione" id="form">
                 <label for="username"  class="required-label">Username </label>
                 <input type="text" name="username" id="username" required data-msg-required="Username obbligatorio!"
                     data-msg-invalid="Username non valido" value="{{username}}" minlength="4">

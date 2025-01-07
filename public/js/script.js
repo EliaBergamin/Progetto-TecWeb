@@ -200,3 +200,58 @@ function initDialog() {
         });
     }
 }
+
+function initAJAX() {
+    document.getElementById('giorno').addEventListener('change', function () {
+        document.getElementById('orario').value = "";
+        document.getElementById('visitatori').value = "";
+
+        const giornoSelezionato = this.value;
+
+        if (!giornoSelezionato) return;
+        fetch('../phplibs/controlla_disponibilita.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: `giorno=${encodeURIComponent(giornoSelezionato)}`,
+        })
+            .then(response => response.json())
+            .then(data => {
+                aggiornaOrariDisponibili(data);
+            })
+            .catch(error => {
+                console.error('Errore durante il recupero degli slot:', error);
+            });
+    });
+
+    document.getElementById('orario').addEventListener('change', function () {
+        document.getElementById('visitatori').value = "";
+
+        const selectOrario = document.getElementById("orario");
+        const selectedOption = selectOrario.options[selectOrario.selectedIndex];
+        const postiDisponibili = selectedOption.dataset.postiDisponibili || 15;
+        const maxVisitatori = postiDisponibili >= 15 ? 15 : postiDisponibili;
+        document.getElementById('visitatori').max = maxVisitatori;
+
+        caricamentoValidazioneNumeroVisitatori(maxVisitatori);
+    });
+}
+
+function aggiornaOrariDisponibili(slotDisponibili) {
+    const slotsId = ["09", "10_30", "12", "13_30", "15", "16_30"];
+    const slotsOrari = ["09:00:00", "10:30:00", "12:00:00", "13:30:00", "15:00:00", "16:30:00"]
+    for (i = 0; i < slotsId.length; i++) {
+        const idSlot = slotsId[i];
+        const disponibilita = slotDisponibili[slotsOrari[i]] || 0;
+
+        const slotElement = document.getElementById(idSlot);
+        slotElement.dataset.postiDisponibili = disponibilita;
+
+        if (disponibilita < 1) {
+            slotElement.disabled = true;
+        } else {
+            slotElement.disabled = false;
+        }
+    }
+}

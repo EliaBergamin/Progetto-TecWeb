@@ -15,23 +15,23 @@ if (isset($_POST['submit'])) {
     $nome = DatabaseService::cleanedInput($_POST['nome']);
     if (strlen($nome) < 2) {
         array_push($error, 'nome_len');
-    } else if (!preg_match("/[\p{L}\p{P}\p{N}\ ]+/u", $nome)) {
+    } else if (!preg_match("/^[\p{L}\p{P}\p{N}\ ]+$/u", $nome)) {
         array_push($error, 'nome_char');
     }
 
     $descrizione = DatabaseService::cleanedInput($_POST['descrizione']);
     if (strlen($descrizione) < 25) {
         array_push($error, 'descr_len');
-    } else if (!preg_match("/[\p{L}\p{P}\p{N}\ ]+/u", $descrizione)) {
+    } else if (!preg_match("/^[\p{L}\p{P}\p{N}\ ]+$/u", $descrizione)) {
         array_push($error, 'descr_char');
     }
 
     $data_inizio = DatabaseService::cleanedInput($_POST['data_inizio']);
-    if (!preg_match("/\d{4}-\d{2}-\d{2}/", $data_inizio)) {
+    if (!preg_match("/^\d{4}-\d{2}-\d{2}$/", $data_inizio)) {
         array_push($error, 'data_ini_val');
     }
     $data_fine = DatabaseService::cleanedInput($_POST['data_fine']);
-    if (!preg_match("/\d{4}-\d{2}-\d{2}/", $data_fine)) {
+    if (!preg_match("/^\d{4}-\d{2}-\d{2}$/", $data_fine)) {
         array_push($error, 'data_fin_val');
     }
 

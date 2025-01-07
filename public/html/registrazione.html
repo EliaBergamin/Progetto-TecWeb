@@ -12,10 +12,10 @@
     <link rel="stylesheet" href="../css/print.css" media="print">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../images/pokeball.ico" type="image/x-icon">
-    <script type="text/javascript" src="../js/script.js"></script>
-    <script type="text/javascript" src="../js/regole.js"></script>
-    <script type="text/javascript" src="../js/validazione.js"></script>
-    <script type="text/javascript" src="../js/validazione-registrazione.js"></script>
+    <script src="../js/script.js"></script>
+    <script src="../js/regole.js"></script>
+    <script src="../js/validazione.js"></script>
+    <script src="../js/validazione-registrazione.js"></script>
 </head>
 
 <body onload="caricamentoValidazione();">
@@ -62,7 +62,7 @@
             {{messaggiPerForm}}
             <!-- errormsgs_end -->
             <!-- form_start -->
-            <form action="../register.php" method="post" class="formCompilazione">
+            <form action="../register.php" method="post" class="formCompilazione" id="form">
                 <label for="nome" class="required-label">Nome </label>
                 <input type="text" name="nome" id="nome" value="{{nome}}" required minlength="2">
                 <label for="cognome" class="required-label">Cognome </label>
@@ -74,8 +74,7 @@
                     data-msg-required="L'email è obbligatoria!" data-msg-invalid="Email non valida">
                 <label for="password" class="required-label">Password </label>
                 <input type="password" name="password" id="password" required minlength="4"
-                    data-msg-required="La password è obbligatoria!"
-                    data-msg-invalid="La password deve essere lunga almeno 4 caratteri">
+                    value="{{password}}">
                 <p class="required-msg">Campi obbligatori</p>
                 <input type="submit" name="submit" value="Registrati">
             </form>

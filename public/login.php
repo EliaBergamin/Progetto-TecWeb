@@ -4,11 +4,13 @@ require_once("phplibs/databaseService.php");
 require_once("phplibs/templatingService.php");
 
 $redirect = $_GET['redirect'] ?? 'profile.php';
-if (isset($_SESSION['user_id']))
+if (isset($_SESSION['user_id'])) {
     if ($_SESSION['is_admin'])
         header("Location: admin.php");
     else
         header("Location: $redirect");
+    exit;
+}
 
 $loginHtmlContent = Templating::getHtmlWithModifiedMenu(__FILE__);
 
