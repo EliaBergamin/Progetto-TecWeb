@@ -755,6 +755,8 @@ a.button {
   color: red;
   font-size: 0.8em;
   line-height: 0em;
+}
+
 .required-label::after {
   content: "*";
   color: var(--errorcolor);
