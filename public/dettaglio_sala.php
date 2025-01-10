@@ -3,14 +3,15 @@
 require_once("phplibs/databaseService.php");
 require_once("phplibs/templatingService.php");
 
+$numeroSalaRichiesta = isset($_GET['sala']) ? $_GET['sala'] : 1;
+
 if (!isset($_SESSION['user_id'])) 
-    header("Location: login.php?redirect=dettaglio_sala.php");
+    header("Location: login.php?redirect=dettaglio_sala.php?sala=$numeroSalaRichiesta");
 
 $database = new DatabaseService();
 $dettaglioSalaHtmlContent = Templating::getHtmlWithModifiedMenu(__FILE__);
-if (!$dettaglioSalaHtmlContent) {}
-    //TODO
-$numeroSalaRichiesta = isset($_GET['sala']) ? $_GET['sala'] : 0;
+
+
 
 /* BREADCRUMB SALA*/
 
@@ -30,14 +31,17 @@ Templating::replaceContentBetweenPlaceholders($dettaglioSalaHtmlContent, "dettag
 /* OPERE DYNAMIC */
 $arrayOpere = $database->selectOpereFromSala(intval($numeroSalaRichiesta));
 $sectionOpereToModify = Templating::getContentBetweenPlaceholders($dettaglioSalaHtmlContent, "opere");
-
+ 
 $fullcontent = "";
 foreach ($arrayOpere as $associativeRow) {
     $temp = $sectionOpereToModify;
+    Templating::replaceAnchor($temp, "img_path", $associativeRow["img_path"]);
     Templating::replaceAnchor($temp, "nome_opera", $associativeRow["nome"]);
     Templating::replaceAnchor($temp, "descrizione_opera", $associativeRow["descrizione"]);
     Templating::replaceAnchor($temp, "autore_opera", $associativeRow["autore"]);
     Templating::replaceAnchor($temp, "anno_opera", $associativeRow["anno"]);
+    Templating::replaceAnchor($temp, "numero_sala", $numeroSalaRichiesta);
+    Templating::replaceAnchor($temp, "id_opera", $associativeRow["id_opera"]);
 
     $fullcontent .= $temp . "\n";
 }

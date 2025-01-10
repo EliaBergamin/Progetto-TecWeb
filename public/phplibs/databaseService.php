@@ -159,6 +159,14 @@ class DatabaseService
 		$queryParams = [$numeroSala];
 		return $this->selectValuesPreparedQuery($queryOpere, $queryParams, "i");
 	}
+	public function selectOperaInfoFromId($id): array
+	{
+		$queryOpere = "SELECT *
+					   FROM Museo.Opera
+					   WHERE Opera.id_opera = ?";
+		$queryParams = [$id];
+		return $this->selectValuesPreparedQuery($queryOpere, $queryParams, "i");
+	}
 
 	public function selectInfoFromSala($numeroSala): array
 	{
