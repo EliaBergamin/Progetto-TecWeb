@@ -28,8 +28,14 @@ if (isset($_SESSION['error']) && is_array($_SESSION['error'])) {
         $messaggiPerForm .= "<li>Data di fine non valida</li>";
     if (in_array('data_ini_fin', $error))
         $messaggiPerForm .= "<li>La data di inizio non può essere successiva alla data di fine</li>";
-    if (in_array('immagine', $error))
-        $messaggiPerForm .= "<li>Immagine non valida</li>";
+    if (in_array('upload', $error))
+        $messaggiPerForm .= "<li>Errore durante il caricamento dell'immagine</li>";
+    if (in_array('type', $error))
+        $messaggiPerForm .= "<li>Il file caricato non sembra essere un'immagine</li>";
+    if (in_array('size', $error))
+        $messaggiPerForm .= "<li>Il file caricato è troppo grande. La dimensione massima è 1.5MB</li>";
+    if (in_array('format', $error))
+        $messaggiPerForm .= "<li>Il file caricato non è in un formato valido</li>";
     if (in_array('insert', $error))
         $messaggiPerForm .= "<li>Errore durante l'inserimento</li>";
     unset($_SESSION['error']);
@@ -44,13 +50,11 @@ $nome = $_SESSION['nome'] ?? '';
 $descrizione = $_SESSION['descrizione'] ?? '';
 $data_inizio = $_SESSION['data_inizio'] ?? '';
 $data_fine = $_SESSION['data_fine'] ?? '';
-$immagine = $_SESSION['immagine'] ?? '';
 $formValuesToModify = Templating::getContentBetweenPlaceholders($aggiungiMostraContent, "form");
 Templating::replaceAnchor($formValuesToModify, "nome", $nome);
 Templating::replaceAnchor($formValuesToModify, "descrizione", $descrizione);
 Templating::replaceAnchor($formValuesToModify, "data_inizio", $data_inizio);
 Templating::replaceAnchor($formValuesToModify, "data_fine", $data_fine);
-Templating::replaceAnchor($formValuesToModify, "immagine", $immagine);
 Templating::replaceContentBetweenPlaceholders($aggiungiMostraContent, "form", $formValuesToModify);
 
 Templating::showHtmlPageWithoutPlaceholders($aggiungiMostraContent);
@@ -59,5 +63,4 @@ unset($_SESSION['nome']);
 unset($_SESSION['descrizione']);
 unset($_SESSION['data_inizio']);
 unset($_SESSION['data_fine']);
-unset($_SESSION['immagine']);
 ?>

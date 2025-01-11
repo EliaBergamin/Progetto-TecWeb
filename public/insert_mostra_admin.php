@@ -22,7 +22,7 @@ if (isset($_POST['submit'])) {
     $descrizione = DatabaseService::cleanedInput($_POST['descrizione']);
     if (strlen($descrizione) < 25) {
         array_push($error, 'descr_len');
-    } else if (!preg_match("/^[\p{L}\p{P}\p{N}\ ]+$/u", $descrizione)) {
+    } else if (!preg_match("/^[\p{L}\p{P}\p{N}\s\S]+$/u", $descrizione)) {
         array_push($error, 'descr_char');
     }
 
@@ -38,8 +38,16 @@ if (isset($_POST['submit'])) {
     if (strtotime($data_inizio) > strtotime($data_fine)) {
         array_push($error, 'data_ini_fin');
     }
-    $immagine = DatabaseService::cleanedInput($_POST["immagine"]);
-    // TODO: check and upload image
+
+    if ($_FILES["immagine"]["tmp_name"]) {
+        $upload = Templating::uploadImg($_FILES["immagine"]);
+        if ($upload[0]) 
+            $immagine = $upload[1];
+        else 
+            array_push($error, $upload[1]);
+    }
+    else 
+        array_push($error, 'upload', 'size');
 
     if (count($error) > 0) {
         $_SESSION['error'] = $error;
@@ -47,7 +55,6 @@ if (isset($_POST['submit'])) {
         $_SESSION['descrizione'] = $descrizione;
         $_SESSION['data_inizio'] = $data_inizio;
         $_SESSION['data_fine'] = $data_fine;
-        $_SESSION['immagine'] = $immagine;
         header("Location: aggiungi_mostra.php");
         exit;
     }
@@ -58,6 +65,7 @@ if (isset($_POST['submit'])) {
         unset($database);
     } catch (Exception $e) {
         unset($database);
+        echo $e->getMessage();
         Templating::errCode(500);
         exit;
     }
@@ -69,7 +77,6 @@ if (isset($_POST['submit'])) {
         $_SESSION['descrizione'] = $descrizione;
         $_SESSION['data_inizio'] = $data_inizio;
         $_SESSION['data_fine'] = $data_fine;
-        $_SESSION['immagine'] = $immagine;
         header('Location: aggiungi_mostra.php');
     }
     exit;

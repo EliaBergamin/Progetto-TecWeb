@@ -41,7 +41,7 @@ var regole = {
     },
 
     "MatchRegex": function MatchRegex(input, regex) {
-        return input.search(regex) == 0;
+        return input.trim().search(regex) == 0;
     },
 
     "RangeVisitatori": function RangeVisitatori(input, params = null) {
@@ -58,6 +58,15 @@ var regole = {
         }
         const dataInizio = new Date(dataInserita);
         const dataFine = new Date(input);
-        return dataFine >= dataInizio;
+        return dataFine >= dataInizio || document.getElementById("data_fine").setAttribute('value', dataInserita);
+    },
+
+    "DimensioneFile": function DimensioneFile(input, params = null) {
+        if (!input) {
+            return true;
+        }
+        const fileInput = document.getElementById('immagine');
+        const file = fileInput.files[0];
+        return file.size <= 1.5 * 1024 * 1024;
     }
 }

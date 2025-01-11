@@ -4,9 +4,10 @@
 <head>
   <meta charset="UTF-8">
   <title>Modifica mostra</title>
-  <meta name="description" content="Qui puoi inserire una nuova mostra nel sito del museo, o modificare quelle già presenti">
+  <meta name="description"
+    content="Qui puoi inserire una nuova mostra nel sito del museo, o modificare quelle già presenti">
   <meta name="keywords" content="amministratore,mostre,museo,modifica,inserimento">
-    <link rel="stylesheet" href="../css/style.css" media="screen">
+  <link rel="stylesheet" href="../css/style.css" media="screen">
   <link rel="stylesheet" href="../css/middle.css" media="screen and (max-width: 1024px)">
   <link rel="stylesheet" href="../css/mini.css" media="screen and (max-width: 768px)">
   <link rel="stylesheet" href="../css/print.css" media="print">
@@ -55,7 +56,7 @@
       <a href="admin.php">Area gestione</a> &gt; Modifica mostra
     </p>
   </nav>
-  
+
   <main id="primoContenuto" class="compilazione">
     <div class="contenitoreCompilazione">
       <h1>Modifica mostra</h1>
@@ -63,17 +64,18 @@
       {{messaggiPerForm}}
       <!-- errormsgs_end -->
       <!-- form_start -->
-      <form class="formCompilazione" action="alter_mostra_admin.php?id_mostra={{id_mostra}}" method="post" id="form">
+      <form class="formCompilazione" action="alter_mostra_admin.php?id_mostra={{id_mostra}}" method="post" id="form"
+        enctype="multipart/form-data">
         <label for="nome">Nome mostra</label>
         <input type="text" name="nome" id="nome" value={{nome}}>
         <label for="descrizione">Descrizione</label>
         <textarea name="descrizione" id="descrizione" minlength="25">{{descrizione}}</textarea>
         <label for="data_inizio">Data inizio</label>
-        <input type="date" name="data_inizio" id="data_inizio" value={{data_inizio}} >
+        <input type="date" name="data_inizio" id="data_inizio" value={{data_inizio}}>
         <label for="data_fine">Data fine</label>
-        <input type="date" name="data_fine" id="data_fine" value={{data_fine}} >
+        <input type="date" name="data_fine" id="data_fine" value={{data_fine}}>
         <label for="immagine">Percorso immagine</label>
-        <input type="text" name="immagine" id="immagine" value={{immagine}} >
+        <input type="file" name="immagine" id="immagine" accept=".jpg,.jpeg,.png,.webp" required>
         <input type="submit" name="submit" value="Conferma">
       </form>
       <!-- form_end -->

@@ -19,7 +19,7 @@
   <script src="../js/validazione-recensione.js"></script>
 </head>
 
-<body onload="initRecensisci(); caricamentoValidazione(); ">
+<body onload="validatorLoad();">
   <a id="top-help" class="help nascosto" href="#primoContenuto">Vai al contenuto</a>
   <header>
     <h1>Museo Cartoni Animati</h1>
@@ -79,6 +79,7 @@
         </fieldset>
         <label for="data_visita" class="domandaRecensione required-label">Quando hai effettuato la visita?</label>
         <input type="date" name="data_visita" id="data_visita" value="{{data_visita}}" required>
+        <span id="err_data_visita" class="errorSuggestion" data-ref-to="data_visita"></span>
         <fieldset id="rating-fs">
           <legend class="required-label">Come valuteresti la tua esperienza?</legend>
           <div class="rating-option">
@@ -106,6 +107,7 @@
         <label for="descrizione" class="domandaRecensione required-label">Descrivi la tua visita</label>
         <textarea name="descrizione" id="descrizione" minlength="25" rows="8" cols="20"
           placeholder="L'opera che mi ha colpito di più è stata...">{{descrizione}}</textarea>
+        <span id="err_descrizione" class="errorSuggestion" data-ref-to="descrizione"></span>
         <p class="required-msg">Campi obbligatori</p>
         <input type="submit" name="submit" value="Invia" aria-label="Invia">
       </form>

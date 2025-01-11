@@ -33,7 +33,7 @@ if (isset($_POST['submit'])) {
     $descrizione = DatabaseService::cleanedInput($_POST['descrizione']);
     if (strlen($descrizione) < 25) {
         array_push($error, "descr_len");
-    } else if (!preg_match("/^[\p{L}\p{P}\p{N}\ ]+$/u", $descrizione)) {
+    } else if (!preg_match("/^[\p{L}\p{P}\p{N}\s\S]+$/u", $descrizione)) {
         array_push($error, "descr_char");
     }
 
