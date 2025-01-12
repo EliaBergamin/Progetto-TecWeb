@@ -3,15 +3,15 @@
 require_once "phplibs/databaseService.php";
 require_once "phplibs/templatingService.php";
 
-if (!isset($_SESSION['user_id'])) {
-    header("Location: login.php?redirect=dettaglio_sala.php");
-    exit;
-}
+if (!isset($_GET['sala'])) 
+    Templating::errCode(404);
 
-$database = new DatabaseService();
+$numeroSalaRichiesta = $_GET['sala'];
+
+if (!isset($_SESSION['user_id'])) 
+    header("Location: login.php?redirect=dettaglio_sala.php?sala=$numeroSalaRichiesta");
+
 $dettaglioSalaHtmlContent = Templating::getHtmlWithModifiedMenu(__FILE__);
-
-$numeroSalaRichiesta = isset($_GET['sala']) ? $_GET['sala'] : 0;
 
 /* BREADCRUMB SALA*/
 
@@ -20,7 +20,10 @@ Templating::replaceAnchor($sectionBreadcrumbToModify,"numero_sala",$numeroSalaRi
 Templating::replaceContentBetweenPlaceholders($dettaglioSalaHtmlContent, "numerosalabread", $sectionBreadcrumbToModify);
 /* INFO SALA*/
 
+$database = new DatabaseService();
 $infoSalaRow = $database->selectInfoFromSala($numeroSalaRichiesta);
+if (count($infoSalaRow) == 0) 
+    Templating::errCode(404);
 $sectionInfoSalaToModify = Templating::getContentBetweenPlaceholders($dettaglioSalaHtmlContent, "dettagliosala");
 
 Templating::replaceAnchor($sectionInfoSalaToModify, "nome_sala", $infoSalaRow[0]['nome']);
@@ -30,15 +33,20 @@ Templating::replaceContentBetweenPlaceholders($dettaglioSalaHtmlContent, "dettag
 
 /* OPERE DYNAMIC */
 $arrayOpere = $database->selectOpereFromSala(intval($numeroSalaRichiesta));
-$sectionOpereToModify = Templating::getContentBetweenPlaceholders($dettaglioSalaHtmlContent, "opere");
+unset($database);
 
+$sectionOpereToModify = Templating::getContentBetweenPlaceholders($dettaglioSalaHtmlContent, "opere");
+ 
 $fullcontent = "";
 foreach ($arrayOpere as $associativeRow) {
     $temp = $sectionOpereToModify;
+    Templating::replaceAnchor($temp, "img_path", $associativeRow["img_path"]);
     Templating::replaceAnchor($temp, "nome_opera", $associativeRow["nome"]);
     Templating::replaceAnchor($temp, "descrizione_opera", $associativeRow["descrizione"]);
     Templating::replaceAnchor($temp, "autore_opera", $associativeRow["autore"]);
     Templating::replaceAnchor($temp, "anno_opera", $associativeRow["anno"]);
+    Templating::replaceAnchor($temp, "numero_sala", $numeroSalaRichiesta);
+    Templating::replaceAnchor($temp, "id_opera", $associativeRow["id_opera"]);
 
     $fullcontent .= $temp . "\n";
 }
