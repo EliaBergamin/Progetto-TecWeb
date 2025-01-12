@@ -1,7 +1,7 @@
 <?php
 
-require_once("phplibs/databaseService.php");
-require_once("phplibs/templatingService.php");
+require_once "phplibs/databaseService.php";
+require_once "phplibs/templatingService.php";
 
 $database = new DatabaseService();
 //user param sarà da rimpiazzare con session user_id implementate le funzionalità di login

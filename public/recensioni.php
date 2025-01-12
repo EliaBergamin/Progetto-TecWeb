@@ -1,7 +1,7 @@
 <?php
 
-require_once("phplibs/databaseService.php");
-require_once("phplibs/templatingService.php");
+require_once "phplibs/databaseService.php";
+require_once "phplibs/templatingService.php";
 
 
 

@@ -1,7 +1,7 @@
 <?php
 
-require_once("phplibs/databaseService.php");
-require_once("phplibs/templatingService.php");
+require_once "phplibs/databaseService.php";
+require_once "phplibs/templatingService.php";
 
 $nome = '';
 $descrizione = '';
@@ -65,9 +65,7 @@ if (isset($_POST['submit'])) {
         unset($database);
     } catch (Exception $e) {
         unset($database);
-        echo $e->getMessage();
         Templating::errCode(500);
-        exit;
     }
     if ($insertSuccess)
         header('Location: admin.php');
@@ -80,9 +78,6 @@ if (isset($_POST['submit'])) {
         header('Location: aggiungi_mostra.php');
     }
     exit;
-} else {
+} else 
     Templating::errCode(405);
-    exit;
-}
-
 ?>

@@ -32,7 +32,8 @@ class Templating
     public static function errCode($num): void
     {
         http_response_code($num);
-        require("{$num}.php");
+        require "{$num}.php";
+        exit;
     }
     /* Funzione per trovare {{ancora}} e sostituirla con valore dinamico */
     public static function replaceAnchor(&$htmlSectionToModify, $anchorNameBetweenBrackets, $dynamicDataToInsert): void
@@ -144,10 +145,9 @@ class Templating
     public static function getHtmlWithModifiedMenu($phpFileNameThatCalled): string
     {
         $htmlContent = Templating::getHtmlFileContent($phpFileNameThatCalled);
-        if (!$htmlContent) {
+        if (!$htmlContent) 
             Templating::errCode(404);
-            exit;
-        }
+
         $log = Templating::getContentBetweenPlaceholders($htmlContent, 'log');
         $profile = Templating::getContentBetweenPlaceholders($htmlContent, 'profile');
         $admin = Templating::getContentBetweenPlaceholders($htmlContent, 'admin');

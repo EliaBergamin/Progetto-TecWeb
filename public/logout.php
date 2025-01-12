@@ -1,6 +1,6 @@
 <?php
 
-require_once("phplibs/templatingService.php");
+require_once "phplibs/templatingService.php";
 
 session_unset();
 session_destroy();

@@ -1,14 +1,12 @@
 <?php
 
-require_once("phplibs/databaseService.php");
-require_once("phplibs/templatingService.php");
+require_once "phplibs/databaseService.php";
+require_once "phplibs/templatingService.php";
 
 if (isset($_GET['id_mostra']))
     $id_mostra = $_GET['id_mostra'];
-else {
+else 
     Templating::errCode(404);
-    exit;
-}
 
 $nome = '';
 $descrizione = '';
@@ -68,7 +66,6 @@ if (isset($_POST['submit'])) {
     } catch (Exception $e) {
         unset($database);
         Templating::errCode(500);
-        exit;
     }
     if ($alterSuccess) {
         $_SESSION["success"] = ["Modifica effettuata con successo"];
@@ -78,9 +75,6 @@ if (isset($_POST['submit'])) {
         header("Location: modifica_mostra.php?id_mostra=$id_mostra");
     }
     exit;
-} else {
+} else 
     Templating::errCode(405);
-    exit;
-}
-
 ?>

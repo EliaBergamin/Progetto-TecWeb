@@ -1,7 +1,7 @@
 <?php
 
-require_once("phplibs/databaseService.php");
-require_once("phplibs/templatingService.php");
+require_once "phplibs/databaseService.php";
+require_once "phplibs/templatingService.php";
 
 if (!isset($_SESSION['user_id'])) {
     header("Location: login.php?redirect=recensisci.php");
@@ -57,7 +57,6 @@ if (isset($_POST['submit'])) {
     } catch (Exception $e) {
         unset($database);
         Templating::errCode(500);
-        exit;
     }
 
     if ($insertSuccess)
@@ -74,9 +73,6 @@ if (isset($_POST['submit'])) {
         header("Location: recensisci.php");
     }
     exit;
-} else {
+} else 
     Templating::errCode(405);
-    exit;
-}
-
 ?>

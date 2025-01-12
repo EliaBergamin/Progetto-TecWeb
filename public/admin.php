@@ -1,6 +1,6 @@
 <?php
-require_once("phplibs/databaseService.php");
-require_once("phplibs/templatingService.php");
+require_once "phplibs/databaseService.php";
+require_once "phplibs/templatingService.php";
 
 
 
@@ -24,7 +24,6 @@ try {
 } catch (Exception $e) {
     unset($database);
     Templating::errCode(500);
-    exit;
 }
 $arrayMostreMuseo = array_merge($arrayMostreFuture, $arrayMostreCorrenti, $arrayMostrePassate);
 $sectionMostreMuseoToAdmin = Templating::getContentBetweenPlaceholders($pageAdmin, "mostreAdmin");

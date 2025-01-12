@@ -1,5 +1,5 @@
 <?php
-require_once("phplibs/templatingService.php");
+require_once "phplibs/templatingService.php";
 
 if (!isset($_SESSION['user_id'])) {
     header("Location: login.php?redirect=prenotazione.php");

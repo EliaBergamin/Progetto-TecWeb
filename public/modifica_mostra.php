@@ -1,13 +1,11 @@
 <?php
-require_once("phplibs/databaseService.php");
-require_once("phplibs/templatingService.php");
+require_once "phplibs/databaseService.php";
+require_once "phplibs/templatingService.php";
 
 if (isset($_GET['id_mostra']))
     $id_mostra = $_GET['id_mostra'];
-else {
+else 
     Templating::errCode(404);
-    exit;
-}
 
 if (!isset($_SESSION['user_id'])) {
     header("Location: login.php?redirect=modifica_mostra.php&id_mostra=" . $id_mostra);
@@ -23,13 +21,10 @@ try {
 } catch (Exception $e) {
     unset($database);
     Templating::errCode(500);
-    exit;
 }
 
-if (empty($mostraToModifyInfo)) {
+if (empty($mostraToModifyInfo)) 
     Templating::errCode(404);
-    exit;
-}
 
 $messaggiPerForm = '';
 if (isset($_SESSION['error']) && is_array($_SESSION['error'])) {

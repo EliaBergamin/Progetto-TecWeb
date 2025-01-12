@@ -1,6 +1,6 @@
 <?php
-require_once("phplibs/databaseService.php");
-require_once("phplibs/templatingService.php");
+require_once "phplibs/databaseService.php";
+require_once "phplibs/templatingService.php";
 
 $redirect = $_GET['redirect'] ?? 'profile.php';
 
@@ -19,7 +19,6 @@ if (isset($_POST['submit'])) {
     } catch (Exception $e) {
         unset($database);
         Templating::errCode(500);
-        exit;
     }
 
     $user = $users[0] ?? null;
@@ -46,9 +45,6 @@ if (isset($_POST['submit'])) {
             header("Location: admin.php");
     }
     exit;
-} else {
+} else 
     Templating::errCode(405);
-    exit;
-}
-
 ?>

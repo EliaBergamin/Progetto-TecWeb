@@ -1,6 +1,6 @@
 <?php
-require_once("phplibs/databaseService.php");
-require_once("phplibs/templatingService.php");
+require_once "phplibs/databaseService.php";
+require_once "phplibs/templatingService.php";
 
 $redirect = $_GET['redirect'] ?? 'index.php';
 
@@ -37,7 +37,6 @@ if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
         } catch (Exception $e) {
             unset($database);
             Templating::errCode(500);
-            exit;
         }
         if (count($users) > 0) {
             array_push($error, 'email_exists');
@@ -57,7 +56,6 @@ if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
         } catch (Exception $e) {
             unset($database);
             Templating::errCode(500);
-            exit;
         }
         if (count($users) > 0) {
             array_push($error, 'username_exists');
@@ -91,7 +89,6 @@ if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
         unset($database);
         echo $e->getMessage();
         Templating::errCode(500);
-        exit;
     }
 
     if ($user_id > 0) {
@@ -104,9 +101,6 @@ if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['error'] = ['insert'];
         header("Location: registrazione.php?redirect=$redirect");
     }
-} else {
+} else 
     Templating::errCode(405);
-    exit;
-}
-
 ?>
