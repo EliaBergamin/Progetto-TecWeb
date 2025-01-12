@@ -27,6 +27,7 @@ class Templating
     {
         http_response_code($num);
         require("{$num}.php");
+        exit;
     }
     /* Funzione per trovare {{ancora}} e sostituirla con valore dinamico */
     public static function replaceAnchor(&$htmlSectionToModify, $anchorNameBetweenBrackets, $dynamicDataToInsert): void
