@@ -123,7 +123,8 @@ class DatabaseService
 	{
 		$queryMostrePassate = "SELECT * 
 							   FROM Museo.Mostra
-							   WHERE Mostra.data_fine < CURDATE()";
+							   WHERE Mostra.data_fine < CURDATE()
+							   ORDER BY Mostra.data_fine DESC";
 		return $this->selectValuesPreparedQuery($queryMostrePassate, []);
 	}
 
@@ -131,7 +132,8 @@ class DatabaseService
 	{
 		$queryMostrePassate = "SELECT * 
 							   FROM Museo.Mostra
-							   WHERE CURDATE() BETWEEN data_inizio AND data_fine;";
+							   WHERE CURDATE() BETWEEN data_inizio AND data_fine
+							   ORDER BY Mostra.data_fine DESC";
 		return $this->selectValuesPreparedQuery($queryMostrePassate, []);
 	}
 
@@ -146,7 +148,8 @@ class DatabaseService
 	{
 		$queryMostrePassate = "SELECT * 
 							   FROM Museo.Mostra
-							   WHERE Mostra.data_inizio > CURDATE()";
+							   WHERE Mostra.data_inizio > CURDATE()
+							   ORDER BY Mostra.data_inizio ASC";
 		return $this->selectValuesPreparedQuery($queryMostrePassate, []);
 	}
 
@@ -157,6 +160,14 @@ class DatabaseService
 					   FROM Museo.Opera
 					   WHERE Opera.id_sala = ?";
 		$queryParams = [$numeroSala];
+		return $this->selectValuesPreparedQuery($queryOpere, $queryParams, "i");
+	}
+	public function selectOperaInfoFromId($id): array
+	{
+		$queryOpere = "SELECT *
+					   FROM Museo.Opera
+					   WHERE Opera.id_opera = ?";
+		$queryParams = [$id];
 		return $this->selectValuesPreparedQuery($queryOpere, $queryParams, "i");
 	}
 
