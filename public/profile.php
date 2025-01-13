@@ -39,7 +39,7 @@ foreach ($arrayPrenotazioniUtente as $associativeRow) {
     );
 
     Templating::replaceAnchor($temp, "num_persone", $associativeRow["num_persone"]);
-    Templating::replaceAnchor($temp, "orario_prenotazione", $associativeRow["orario"]);
+    Templating::replaceAnchor($temp, "orario_prenotazione", substr($associativeRow["orario"], 0, 5));
 
 
     $fullcontent .= $temp . "\n";

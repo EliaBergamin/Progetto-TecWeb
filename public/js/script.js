@@ -5,6 +5,17 @@ var hamStatus = true;
 var currentSlideDataPrenotazione = '';
 var currentSlideIdMostra = '';
 
+document.addEventListener("DOMContentLoaded", function () {
+    hambToggle();
+    validatorLoad();
+    document.getElementById("accordion") && initAccordion();
+    document.getElementById("giorno") && initAJAX();
+    document.getElementById("rating-fs") && initRecensisci();
+    document.getElementById("virtualTour-mappa") && initMap();
+    document.querySelector("dialog") && initDialog();
+    document.getElementById("hamb").addEventListener("click", hambToggle);
+});
+
 function hambToggle() {
     var e = document.getElementsByClassName("hamToggle");
     hamStatus = !hamStatus;
