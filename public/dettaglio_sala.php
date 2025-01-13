@@ -39,7 +39,11 @@ foreach ($arrayOpere as $associativeRow) {
     $temp = $sectionOpereToModify;
     Templating::replaceAnchor($temp, "img_path", $associativeRow["img_path"]);
     Templating::replaceAnchor($temp, "nome_opera", $associativeRow["nome"]);
-    Templating::replaceAnchor($temp, "descrizione_opera", $associativeRow["descrizione"]);
+    $descrizione = $associativeRow["descrizione"];
+    if (strlen($descrizione) > 200) {
+        $descrizione = substr($descrizione, 0, strrpos(substr($descrizione, 0, 200), ' ')) . "...";
+    } //per ottenere i primi 200 caratteri della descrizione senza tagliare l'ultima parola
+    Templating::replaceAnchor($temp, "descrizione_opera", $descrizione);
     Templating::replaceAnchor($temp, "autore_opera", $associativeRow["autore"]);
     Templating::replaceAnchor($temp, "anno_opera", $associativeRow["anno"]);
     Templating::replaceAnchor($temp, "numero_sala", $numeroSalaRichiesta);
