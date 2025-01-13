@@ -3,11 +3,9 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Le mostre</title>
-    <meta name="description" content="Pagina dedicata alla sezione mostre del Museo Cartoni Animati">
-    <meta name="keywords"
-        content="mostre,carte,animazione,cartoni animati,rarità,giochi di carte collezionabili,prenota,visita,informazioni">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrazione</title>
+    <meta name="description" content="Pagina di registrazione per poter usufruire dei servizi del museo">
+    <meta name="keywords" content="registrazione,signup,museo,cardgame,virtual tour,prenota,visita">
     <link rel="stylesheet" href="../css/style.css" media="screen">
     <link rel="stylesheet" href="../css/middle.css" media="screen and (max-width: 1024px)">
     <link rel="stylesheet" href="../css/mini.css" media="screen and (max-width: 768px)">
@@ -17,8 +15,8 @@
     <script src="../js/script.js"></script>
 </head>
 
-<body onload="initAccordion();">
-    <a id="top-help" class="help nascosto" href="#mostre">Vai al contenuto</a>
+<body onload="validatorLoad();">
+    <a id="top-help" class="help nascosto" href="#primoContenuto">Vai al contenuto</a>
     <header>
         <h1>Museo Cartoni Animati</h1>
         <button id="hamb" class="hamToggle" data-hambOn="true" type="button" onclick="hambToggle()">Menù</button>
@@ -26,13 +24,13 @@
 
     <nav id="menu" class="hamToggle" data-hambOn="true">
         <ul>
-            <li><a href="index.php" lang="en">Home</a></li>
-            <li id="currentLink">Le mostre</li>
+            <li><a href="../index.php" lang="en">Home</a></li>
+            <li><a href="mostre.php">Le mostre</a></li>
             <li><a href="virtual_tour.php" lang="en">Virtual Tour</a></li>
             <li><a href="prenotazione.php">Prenotazione</a></li>
             <li><a href="recensioni.php">Recensioni</a></li>
             <!-- log_start -->
-            <li><a href="registrazione.php">Registrati</a></li>
+            <li id="currentLink">Registrati</li>
             <li><a href="login.php">Accedi</a></li>
             <!-- log_end -->
             <!-- admin_start -->
@@ -47,61 +45,43 @@
             <!-- greeting_end -->
         </ul>
     </nav>
+
     <nav id="breadcrumb">
-        Ti trovi in: <a href="index.php" lang="en">Home</a> &gt; Le mostre
+        <p>
+            Ti trovi in: <a href="index.php" lang="en">Home</a> &gt; Registrazione
+        </p>
     </nav>
-    <main id="mostre">
-        <h1>Le mostre</h1>
-        <dl>
-            <dt class="tipoMostre">Mostre in corso</dt>
-            <dd>
-                <dl>
-                    <!-- mostrecorrenti_start -->
-                    <dt class="nomeMostra">{{nome}}</dt>
-                    <dd class="infoMostra">
-                        <img src="../pics/{{img_path}}" alt="">
-                        <p>Descrizione mostra: {{descrizione}}</p>
-                        <p class="giorniMostra">Da <time datetime="{{data_inizio}}">{{string_data_inizio}}</time> a
-                            <time datetime="{{data_fine}}">{{string_data_fine}}</time></p>
-                        <a href="prenotazione.php" class="button">Prenota visita</a>
-                    </dd>
-                    <!-- mostrecorrenti_end -->
-                </dl>
-                <a class="help nascosto" href="#">Torna su</a>
 
-            </dd>
-            <dt class="tipoMostre">Mostre in programma</dt>
-            <dd>
-                <dl>
-                    <!-- mostrefuture_start -->
-                    <dt class="nomeMostra">{{nome}}</dt>
-                    <dd class="infoMostra">
-                        <img src="../pics/{{img_path}}" alt="">
-                        <p>Descrizione mostra: {{descrizione}}</p>
-                        <p class="giorniMostra">Da <time datetime="{{data_inizio}}">{{string_data_inizio}}</time> a
-                            <time datetime="{{data_fine}}">{{string_data_fine}}</time></p>
-                        <a href="prenotazione.php" class="button">Prenota visita</a>
-                    </dd>
-                    <!-- mostrefuture_end -->
-                </dl>
-                <a class="help nascosto" href="#">Torna su</a>
-            </dd>
-
-            <dt><button class="accordion">Mostre passate</button></dt>
-            <dd class="accordion-panel">
-                <dl>
-                    <!-- mostrepassate_start -->
-                    <dt class="nomeMostra">{{nome}}</dt>
-                    <dd class="infoMostra">
-                        <img src="../pics/{{img_path}}" alt="">
-                        <p>Descrizione mostra: {{descrizione}}</p>
-                        <p class="giorniMostra">Da <time datetime="{{data_inizio}}">{{string_data_inizio}}</time> a
-                            <time datetime="{{data_fine}}">{{string_data_fine}}</time></p>
-                    </dd>
-                    <!-- mostrepassate_end -->
-                </dl>
-            </dd>
-        </dl>
+    <main id="primoContenuto" class="compilazione">
+        <div class="contenitoreCompilazione">
+            <h1>Registrazione</h1>
+            <!-- errormsgs_start -->
+            {{messaggiPerForm}}
+            <!-- errormsgs_end -->
+            <!-- form_start -->
+            <form action="../register.php" method="post" class="formCompilazione" id="form">
+                <label for="nome" class="required-label">Nome </label>
+                <input type="text" name="nome" id="nome" value="{{nome}}" required minlength="2" maxlength="50">
+                <span id="err_nome" class="errorSuggestion" data-ref-to="nome"></span>
+                <label for="cognome" class="required-label">Cognome </label>
+                <input type="text" name="cognome" id="cognome" value="{{cognome}}" required minlength="2"
+                    maxlength="50">
+                <span id="err_cognome" class="errorSuggestion" data-ref-to="cognome"></span>
+                <label for="username" class="required-label">Username </label>
+                <input type="text" name="username" id="username" value="{{username}}" required minlength="4"
+                    maxlength="20">
+                <span id="err_username" class="errorSuggestion" data-ref-to="username"></span>
+                <label for="email" class="required-label">Email </label>
+                <input type="email" name="email" id="email" value="{{email}}" required>
+                <span id="err_email" class="errorSuggestion" data-ref-to="email"></span>
+                <label for="password" class="required-label">Password </label>
+                <input type="password" name="password" id="password" required minlength="8" value="{{password}}">
+                <span id="err_password" class="errorSuggestion" data-ref-to="password"></span>
+                <p class="required-msg">Campi obbligatori</p>
+                <input type="submit" name="submit" value="Registrati">
+            </form>
+            <!-- form_end -->
+        </div>
     </main>
     <a class="help" id="torna-su" href="#">Torna su</a>
     <footer>
