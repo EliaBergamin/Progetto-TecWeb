@@ -3,10 +3,7 @@
 require_once "phplibs/databaseService.php";
 require_once "phplibs/templatingService.php";
 
-if (!isset($_GET['sala'])) 
-    Templating::errCode(404);
-
-$numeroSalaRichiesta = $_GET['sala'];
+$numeroSalaRichiesta = isset($_GET['sala']) ? $_GET['sala'] : Templating::errCode(404);
 
 if (!isset($_SESSION['user_id'])) 
     header("Location: login.php?redirect=dettaglio_sala.php?sala=$numeroSalaRichiesta");
