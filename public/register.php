@@ -13,21 +13,21 @@ $error = [];
 
 if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
     $nome = DatabaseService::cleanedInput($_POST['nome']);
-    if (strlen($nome) < 2) {
+    if (strlen($nome) < 2 || strlen($nome) > 50) {
         array_push($error, 'nome_len');
     } else if (!preg_match("/^[\p{L}\p{P}\p{N}\ ]+$/u", $nome)) {
         array_push($error, 'nome_char');
     }
 
     $cognome = DatabaseService::cleanedInput($_POST['cognome']);
-    if (strlen($cognome) < 2) {
+    if (strlen($cognome) < 2 || strlen($cognome) > 50) {
         array_push($error, 'cognome_len');
     } else if (!preg_match("/^[\p{L}\p{P}\p{N}\ ]+$/u", $cognome)) {
         array_push($error, 'cognome_char');
     }
 
     $email = DatabaseService::cleanedInput($_POST['email']);
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL) || strlen($email) > 100) {
         array_push($error, 'email_val');
     } else {
         try {
@@ -44,9 +44,9 @@ if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     $username = DatabaseService::cleanedInput($_POST['username']);
-    if (strlen($username) < 4) {
+    if (strlen($username) < 4 || strlen($username) > 20) {
         array_push($error, 'username_len');
-    } else if (!preg_match("/^[\p{L}\p{N}]+$/u", $username)) {
+    } else if (!preg_match("/^[A-Za-z0-9]$/u", $username)) {
         array_push($error, 'username_char');
     } else {
         try {

@@ -277,8 +277,8 @@ const regole = {
 const checklist = {
     /* check mostra*/
     err_nome_mostra: [
-        ['MatchRegex', /^.{2,50}$/, 'Inserire il nome della mostra, minimo 2 caratteri, massimo 50'],
-        ['MatchRegex', /^[\p{L}\p{P}\p{N}\s]*$/u, 'Non sono ammessi caratteri speciali']
+        ['MatchRegex', /^.{2,80}$/, 'Inserire il nome della mostra, minimo 2 caratteri, massimo 80'],
+        ['MatchRegex', /^[\p{L}\p{P}\p{N}\s<>/=]*$/u, 'Non sono ammessi caratteri speciali']
     ],
     err_descrizione: [
         ['MatchRegex', /^.{25,5000}$/, 'Inserire la descrizione della mostra, minimo 25 caratteri, massimo 5000'],

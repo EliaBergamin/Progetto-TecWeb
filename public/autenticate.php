@@ -6,7 +6,7 @@ $redirect = $_GET['redirect'] ?? 'profile.php';
 
 if (isset($_POST['submit'])) {
     $username = DatabaseService::cleanedInput($_POST['username']);
-    if (strlen($username) < 4) {
+    if (!preg_match("/^[A-Za-z0-9]$/u", $username)) {
         $_SESSION["error"] = "user";
         header("Location: login.php?redirect=$redirect");
         exit;

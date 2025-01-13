@@ -18,14 +18,14 @@ $error = [];
 if (isset($_POST['submit'])) {
 
     $nome = DatabaseService::cleanedInput($_POST['nome']);
-    if (strlen($nome) < 2) {
+    if (strlen($nome) < 2 || strlen($nome) > 80) {
         array_push($error, 'nome_len');
-    } else if (!preg_match("/^[\p{L}\p{P}\p{N}\ ]+$/u", $nome)) {
+    } else if (!preg_match("/^[\p{L}\p{P}\p{N}\ \/=<>]+$/u", $nome)) {
         array_push($error, 'nome_char');
     }
 
     $descrizione = DatabaseService::cleanedInput($_POST['descrizione']);
-    if (strlen($descrizione) < 25) {
+    if (strlen($descrizione) < 25 || strlen($descrizione) > 5000) {
         array_push($error, 'descr_len');
     } else if (!preg_match("/^[\p{L}\p{P}\p{N}\s\S\/><=]+$/u", $descrizione)) {
         array_push($error, 'descr_char');
@@ -62,6 +62,7 @@ if (isset($_POST['submit'])) {
         $alterSuccess = $database->alterMostraAdmin($id_mostra, $nome, $descrizione, $data_inizio, $data_fine, $immagine);
         unset($database);
     } catch (Exception $e) {
+        echo $e->getMessage();
         unset($database);
         Templating::errCode(500);
     }

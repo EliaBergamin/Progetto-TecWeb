@@ -15,11 +15,11 @@ $messaggiPerForm = '';
 if (isset($_SESSION['error']) && is_array($_SESSION['error'])) {
     $error = $_SESSION['error'];
     if (in_array('nome_len', $error))
-        $messaggiPerForm .= '<li>Nome troppo corto</li>';
+        $messaggiPerForm .= '<li>Il nome deve avere minimo 2 caratteri e massimo 80</li>';
     if (in_array('nome_char', $error))
         $messaggiPerForm .= '<li>Il nome può contenere solo caratteri alfanumerici o di punteggiatura</li>';
     if (in_array('descr_len', $error))
-        $messaggiPerForm .= '<li>Descrizione troppo corta</li>';
+        $messaggiPerForm .= '<li>La descrizione deve avere minimo 25 caratteri e massimo 5000</li>';
     if (in_array('descr_char', $error))
         $messaggiPerForm .= '<li>La descrizione può contenere solo caratteri alfanumerici o di punteggiatura</li>';
     if (in_array('data_ini_val', $error))

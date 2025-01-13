@@ -64,16 +64,16 @@
       <form class="formCompilazione" action="alter_mostra_admin.php?id_mostra={{id_mostra}}" method="post" id="form"
         enctype="multipart/form-data">
         <label for="nome" class="required-label">Nome mostra</label>
-        <input type="text" name="nome" id="nome" value={{nome}} minlength="2" required>
+        <input type="text" name="nome" id="nome" value="{{nome}}" minlength="2" required>
         <span id="err_nome_mostra" class="errorSuggestion" data-ref-to="nome"></span>
         <label for="descrizione" class="required-label">Descrizione</label>
         <textarea name="descrizione" id="descrizione" minlength="25" required>{{descrizione}}</textarea>
         <span id="err_descrizione" class="errorSuggestion" data-ref-to="descrizione"></span>
         <label for="data_inizio" class="required-label">Data inizio</label>
-        <input type="date" name="data_inizio" id="data_inizio" value={{data_inizio}} required>
+        <input type="date" name="data_inizio" id="data_inizio" value="{{data_inizio}}" required>
         <span id="err_data_inizio" class="errorSuggestion" data-ref-to="data_inizio"></span>
         <label for="data_fine" class="required-label">Data fine</label>
-        <input type="date" name="data_fine" id="data_fine" value={{data_fine}} required>
+        <input type="date" name="data_fine" id="data_fine" value="{{data_fine}}" required>
         <span id="err_data_fine" class="errorSuggestion" data-ref-to="data_fine"></span>
         <label for="immagine">Percorso immagine</label>
         <input type="file" name="immagine" id="immagine" accept=".jpg,.jpeg,.png,.webp">

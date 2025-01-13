@@ -73,10 +73,14 @@ class DatabaseService
 	}
 	private function updateValuesPreparedQuery($queryToExecute, $arrayOfValues, $valueTypeForBinding = ""): bool
 	{
+		for ($i = 0; $i < count($arrayOfValues); $i++) {
+			echo $arrayOfValues[$i]."<br>";
+		}
 		try {
 			$preparedStatement = $this->executePreparedQuery($queryToExecute, $arrayOfValues, $valueTypeForBinding);
 			$affectedRows = $preparedStatement->affected_rows;
 			$preparedStatement->close();
+			echo $affectedRows;
 		} catch (mysqli_sql_exception $e) {
 			if ($e->getCode() == 1062)
 				return false;
@@ -254,7 +258,7 @@ class DatabaseService
 	public static function cleanedInput($input): string
 	{
 		$input = trim($input);
-		$input = strip_tags($input, "<span>");
+		$input = strip_tags($input, "<span><a>");
 		$input = htmlentities($input);
 		return $input;
 	}

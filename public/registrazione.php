@@ -13,11 +13,11 @@ $messaggiPerForm = '';
 if (isset($_SESSION['error']) && is_array($_SESSION['error'])) {
     $error = $_SESSION['error'];
     if (in_array('nome_len', $error))
-        $messaggiPerForm .= '<li>Il nome deve avere almeno 2 caratteri</li>';
+        $messaggiPerForm .= '<li>Il nome deve avere minimo 2 caratteri e massimo 50</li>';
     else if (in_array('nome_char', $error))
         $messaggiPerForm .= '<li>Il nome può contenere solo caratteri alfanumerici o di punteggiatura</li>';
     if (in_array('cognome_len', $error))
-        $messaggiPerForm .= '<li>Il cognome deve avere almeno 2 caratteri</li>';
+        $messaggiPerForm .= '<li>Il cognome deve avere minimo 2 caratteri e massimo 50</li>';
     else if (in_array('cognome_char', $error))  
         $messaggiPerForm .= '<li>Il cognome può contenere solo caratteri alfanumerici o di punteggiatura</li>';
     if (in_array('email_val', $error))
@@ -25,7 +25,7 @@ if (isset($_SESSION['error']) && is_array($_SESSION['error'])) {
     else if (in_array('email_exists', $error))
         $messaggiPerForm .= '<li><span lang="en">Email<span> già in registrata</li>';
     if (in_array('username_len', $error))
-        $messaggiPerForm .= '<li>Lo <span lang="en">username<span> deve avere almeno 4 caratteri</li>';
+        $messaggiPerForm .= '<li>Lo <span lang="en">username<span> deve avere minimo 4 caratteri e massimo 20</li>';
     else if (in_array('username_char', $error))
         $messaggiPerForm .= '<li>Lo <span lang="en">username<span> può contenere solo caratteri alfanumerici</li>';
     else if (in_array('username_exists', $error))
