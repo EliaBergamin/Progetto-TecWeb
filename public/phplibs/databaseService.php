@@ -52,32 +52,32 @@ class DatabaseService
 			throw new Exception(self::GLOBALERROR);
 		}
 	}
-	
+
 	private function insertValuesPreparedQuery($queryToExecute, $arrayOfValues, $valueTypeForBinding = ""): bool
 	{
-		try{
+		try {
 			$insertedRowsNumber = 0;
-			for( $i = 0; $i < count($arrayOfValues); $i++ ){
+			for ($i = 0; $i < count($arrayOfValues); $i++) {
 				$preparedStatement = $this->executePreparedQuery($queryToExecute, $arrayOfValues[$i], $valueTypeForBinding);
 				$insertedRowsNumber += $preparedStatement->affected_rows;
 			}
-			if(!is_null($preparedStatement)) $preparedStatement->close();
-		}
-		catch (mysqli_sql_exception $e) {
+			if (!is_null($preparedStatement))
+				$preparedStatement->close();
+		} catch (mysqli_sql_exception $e) {
 			if ($e->getCode() == 1062)
 				return false;
 			else
 				throw new Exception(self::GLOBALERROR);
 		}
-		return $insertedRowsNumber > 0 ;
+		return $insertedRowsNumber > 0;
 	}
-	private function updateValuesPreparedQuery($queryToExecute, $arrayOfValues, $valueTypeForBinding = ""): bool{
-		try{
+	private function updateValuesPreparedQuery($queryToExecute, $arrayOfValues, $valueTypeForBinding = ""): bool
+	{
+		try {
 			$preparedStatement = $this->executePreparedQuery($queryToExecute, $arrayOfValues, $valueTypeForBinding);
 			$affectedRows = $preparedStatement->affected_rows;
 			$preparedStatement->close();
-		}
-		catch (mysqli_sql_exception $e) {
+		} catch (mysqli_sql_exception $e) {
 			if ($e->getCode() == 1062)
 				return false;
 			else
@@ -86,13 +86,13 @@ class DatabaseService
 		return $affectedRows > 0;
 	}
 
-	private function deleteRowPreparedQuery($queryToExecute, $arrayOfValues, $valueTypeForBinding = ""): bool{
-		try{
+	private function deleteRowPreparedQuery($queryToExecute, $arrayOfValues, $valueTypeForBinding = ""): bool
+	{
+		try {
 			$preparedStatement = $this->executePreparedQuery($queryToExecute, $arrayOfValues, $valueTypeForBinding);
 			$affectedRows = $preparedStatement->affected_rows;
 			$preparedStatement->close();
-		}
-		catch (mysqli_sql_exception $e) {
+		} catch (mysqli_sql_exception $e) {
 			throw new Exception(self::GLOBALERROR);
 		}
 		return $affectedRows > 0;
@@ -105,14 +105,15 @@ class DatabaseService
 		return $this->insertValuesPreparedQuery($queryInsertRecensione, [$queryParams], "iissi");
 	}
 
-	public function insertPrenotazione($userParam, $dayParam, $visitorsParam, $timeParam): bool{
+	public function insertPrenotazione($userParam, $dayParam, $visitorsParam, $timeParam): bool
+	{
 		$queryInsertPrenotazione = "INSERT INTO Museo.Prenotazione (id_utente, data_prenotazione, num_persone, orario)
 									VALUES (?, ? , ? , ?)";
 		$queryParams = [$userParam, $dayParam, $visitorsParam, $timeParam];
 		return $this->insertValuesPreparedQuery($queryInsertPrenotazione, [$queryParams], "isis");
 	}
-	
-	public function insertMostra($nome,$descrizione,$data_inizio,$data_fine,$img_path): bool
+
+	public function insertMostra($nome, $descrizione, $data_inizio, $data_fine, $img_path): bool
 	{
 		$queryInsertMostra = "INSERT INTO Museo.Mostra (nome, descrizione, data_inizio, data_fine, img_path)
 							  VALUES (?, ?, ?, ?, ?)";
@@ -142,7 +143,7 @@ class DatabaseService
 		$queryMostrePassate = "SELECT * 
 							   FROM Museo.Mostra
 							   WHERE Mostra.id_mostra = ?";
-		return $this->selectValuesPreparedQuery($queryMostrePassate, [$id_mostra],"i");
+		return $this->selectValuesPreparedQuery($queryMostrePassate, [$id_mostra], "i");
 	}
 	public function selectMostreFuture(): array
 	{
@@ -191,7 +192,7 @@ class DatabaseService
 		return $this->selectValuesPreparedQuery($queryOpere, $queryParams, "i");
 	}
 
-	public function selectInfoUtenteFromId($idUtente) :array
+	public function selectInfoUtenteFromId($idUtente): array
 	{
 		$queryUtente = "SELECT *
 						FROM Museo.Utente
@@ -199,12 +200,13 @@ class DatabaseService
 		$queryParams = [$idUtente];
 		return $this->selectValuesPreparedQuery($queryUtente, $queryParams, "i");
 	}
-	public function selectPrenotazioniFromId($idUtente): array{
+	public function selectPrenotazioniFromId($idUtente): array
+	{
 		$queryPrenotazioni = "SELECT *
 							  FROM Museo.Prenotazione
 							  WHERE Prenotazione.id_utente = ?";
 		$queryParams = [$idUtente];
-		return $this->selectValuesPreparedQuery($queryPrenotazioni,$queryParams,"i");
+		return $this->selectValuesPreparedQuery($queryPrenotazioni, $queryParams, "i");
 	}
 
 	public function selectUsersFromUsername($username): array
@@ -252,7 +254,7 @@ class DatabaseService
 	public static function cleanedInput($input): string
 	{
 		$input = trim($input);
-		$input = strip_tags($input);
+		$input = strip_tags($input, "<span>");
 		$input = htmlentities($input);
 		return $input;
 	}
@@ -276,28 +278,38 @@ class DatabaseService
 		else
 			return -1;
 	}
-	
-	public function alterMostraAdmin($id_mostra,$nome,$descrizione,$data_inizio,$data_fine,$img_path): bool {
-		$query = "UPDATE Mostra SET 
+
+	public function alterMostraAdmin($id_mostra, $nome, $descrizione, $data_inizio, $data_fine, $img_path): bool
+	{
+		$query = $img_path ?
+				"UPDATE Mostra SET 
                 nome = ?, 
                 descrizione = ?, 
                 data_inizio = ?, 
                 data_fine = ?, 
                 img_path = ? 
-              WHERE id_mostra = ?";
-
-		$queryParams = [$nome, $descrizione, $data_inizio, $data_fine, $img_path,$id_mostra];
-		return self::updateValuesPreparedQuery($query, $queryParams, "sssssi");
+              	WHERE id_mostra = ?" :
+				"UPDATE Mostra SET 
+				nome = ?, 
+				descrizione = ?, 
+				data_inizio = ?, 
+				data_fine = ? 
+			  	WHERE id_mostra = ?";
+		$types = $img_path ? "sssssi" : "ssssi";
+		$queryParams = $img_path ? [$nome, $descrizione, $data_inizio, $data_fine, $img_path, $id_mostra] : [$nome, $descrizione, $data_inizio, $data_fine, $id_mostra];
+		return self::updateValuesPreparedQuery($query, $queryParams, $types);
 	}
 
-	public function deleteMostraAdmin($id_mostra): bool{
+	public function deleteMostraAdmin($id_mostra): bool
+	{
 		$query = "DELETE FROM Mostra WHERE id_mostra = ?";
 		$queryParams = [$id_mostra];
 		return self::deleteRowPreparedQuery($query, $queryParams, "i");
 	}
-	public function deletePrenotazioneUser($idUtente,$data_prenotazione) : bool {
+	public function deletePrenotazioneUser($idUtente, $data_prenotazione): bool
+	{
 		$query = "DELETE FROM Prenotazione WHERE id_utente = ? AND data_prenotazione = ?";
-		$queryParams = [$idUtente,$data_prenotazione];
+		$queryParams = [$idUtente, $data_prenotazione];
 		return self::deleteRowPreparedQuery($query, $queryParams, "is");
 	}
 	public function checkVisitatori($giorno, $orario, $visitatori): bool

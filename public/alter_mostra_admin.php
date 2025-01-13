@@ -27,7 +27,7 @@ if (isset($_POST['submit'])) {
     $descrizione = DatabaseService::cleanedInput($_POST['descrizione']);
     if (strlen($descrizione) < 25) {
         array_push($error, 'descr_len');
-    } else if (!preg_match("/^[\p{L}\p{P}\p{N}\s\S]+$/u", $descrizione)) {
+    } else if (!preg_match("/^[\p{L}\p{P}\p{N}\s\S\/><=]+$/u", $descrizione)) {
         array_push($error, 'descr_char');
     }
 
@@ -51,8 +51,6 @@ if (isset($_POST['submit'])) {
         else 
             array_push($error, $upload[1]);
     }
-    else 
-        array_push($error, 'upload', 'size');
 
     if (count($error) > 0) {
         $_SESSION['error'] = $error;

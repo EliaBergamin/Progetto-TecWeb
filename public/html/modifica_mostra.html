@@ -14,12 +14,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="../images/pokeball.ico" type="image/x-icon">
   <script src="../js/script.js"></script>
-  <script src="../js/regole.js"></script>
-  <script src="../js/validazione.js"></script>
-  <script src="../js/validazione-mostra.js"></script>
 </head>
 
-<body onload="caricamentoValidazione();">
+<body onload="validatorLoad();">
   <a id="top-help" class="help nascosto" href="#primoContenuto">Vai al contenuto</a>
   <header>
     <h1>Museo Cartoni Animati</h1>
@@ -66,16 +63,22 @@
       <!-- form_start -->
       <form class="formCompilazione" action="alter_mostra_admin.php?id_mostra={{id_mostra}}" method="post" id="form"
         enctype="multipart/form-data">
-        <label for="nome">Nome mostra</label>
-        <input type="text" name="nome" id="nome" value={{nome}}>
-        <label for="descrizione">Descrizione</label>
-        <textarea name="descrizione" id="descrizione" minlength="25">{{descrizione}}</textarea>
-        <label for="data_inizio">Data inizio</label>
-        <input type="date" name="data_inizio" id="data_inizio" value={{data_inizio}}>
-        <label for="data_fine">Data fine</label>
-        <input type="date" name="data_fine" id="data_fine" value={{data_fine}}>
+        <label for="nome" class="required-label">Nome mostra</label>
+        <input type="text" name="nome" id="nome" value={{nome}} minlength="2" required>
+        <span id="err_nome_mostra" class="errorSuggestion" data-ref-to="nome"></span>
+        <label for="descrizione" class="required-label">Descrizione</label>
+        <textarea name="descrizione" id="descrizione" minlength="25" required>{{descrizione}}</textarea>
+        <span id="err_descrizione" class="errorSuggestion" data-ref-to="descrizione"></span>
+        <label for="data_inizio" class="required-label">Data inizio</label>
+        <input type="date" name="data_inizio" id="data_inizio" value={{data_inizio}} required>
+        <span id="err_data_inizio" class="errorSuggestion" data-ref-to="data_inizio"></span>
+        <label for="data_fine" class="required-label">Data fine</label>
+        <input type="date" name="data_fine" id="data_fine" value={{data_fine}} required>
+        <span id="err_data_fine" class="errorSuggestion" data-ref-to="data_fine"></span>
         <label for="immagine">Percorso immagine</label>
-        <input type="file" name="immagine" id="immagine" accept=".jpg,.jpeg,.png,.webp" required>
+        <input type="file" name="immagine" id="immagine" accept=".jpg,.jpeg,.png,.webp">
+        <span id="err_immagine_new" class="errorSuggestion" data-ref-to="immagine"></span>
+        <p class="required-msg">Campi obbligatori</p>
         <input type="submit" name="submit" value="Conferma">
       </form>
       <!-- form_end -->

@@ -46,7 +46,7 @@ if (isset($_SESSION['error']) && is_array($_SESSION['error'])) {
     if (in_array('immagine', $error))
         $messaggiPerForm .= "<li>Immagine non valida</li>";
     if (in_array('modifica', $error))
-        $messaggiPerForm .= "<li>Errore durante la modifica</li>";
+        $messaggiPerForm .= "<li>Non è stato modificato nulla</li>";
     unset($_SESSION['error']);
 }
 if (strlen($messaggiPerForm) != 0) 
