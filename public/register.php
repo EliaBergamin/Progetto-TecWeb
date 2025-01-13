@@ -46,7 +46,7 @@ if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = DatabaseService::cleanedInput($_POST['username']);
     if (strlen($username) < 4 || strlen($username) > 20) {
         array_push($error, 'username_len');
-    } else if (!preg_match("/^[A-Za-z0-9]$/u", $username)) {
+    } else if (!preg_match("/^[A-Za-z0-9]{4,20}$/u", $username)) {
         array_push($error, 'username_char');
     } else {
         try {

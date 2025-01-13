@@ -314,7 +314,7 @@ const checklist = {
     ],
     err_username: [
         ['MatchRegex', /^.{4,20}$/, 'Scegliere il proprio <span lang="en">username</span>, minimo 4 caratteri, massimo 20'],
-        ['MatchRegex', /^[A-Za-z0-9]{4,20}$/, 'Sono ammessi solo lettere non accentate e numeri']
+        ['MatchRegex', /^[A-Za-z0-9]*$/, 'Sono ammessi solo lettere non accentate e numeri']
     ],
     err_email: [
         ['MatchRegex', /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/, 'Inserire il proprio indirizzo <span lang="en">email</span> nel formato corretto']
@@ -336,7 +336,6 @@ const checklist = {
     ],
 };
 
-var hasError = false;
 
 function validate(check, rule) {
 
@@ -360,7 +359,6 @@ function validate(check, rule) {
         err.classList.remove("none");
         err.setAttribute("role", "alert");
         err.innerHTML = rule[2];
-        hasError = true;
         return false;
     }
 }
@@ -412,7 +410,7 @@ function validatorLoad() {
         }
     }
     const form = document.getElementById("form");
-    form && (form.onsubmit = function (e) { return validatorCheckAll(); })
+    form && (form.onsubmit = function () { return validatorCheckAll(); })
 }
 
 function initAJAX() {
