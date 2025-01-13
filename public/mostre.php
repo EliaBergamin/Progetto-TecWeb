@@ -1,14 +1,13 @@
 <?php
 
-require_once("phplibs/databaseService.php");
-require_once("phplibs/templatingService.php");
+require_once "phplibs/databaseService.php";
+require_once "phplibs/templatingService.php";
 
 
 
 $mostreHtmlContent = Templating::getHtmlWithModifiedMenu(__FILE__);
 //$mostreHtmlContent = Templating::getHtmlFileContent(__FILE__);
-if (!$mostreHtmlContent) {}
-    //TODO
+
 /* MOSTRE CORRENTI*/
 $database = new DatabaseService();
 $arrayMostreCorrenti = $database->selectMostreCorrenti();

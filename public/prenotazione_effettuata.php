@@ -1,10 +1,12 @@
 <?php
 
-require_once("phplibs/databaseService.php");
-require_once("phplibs/templatingService.php");
+require_once "phplibs/databaseService.php";
+require_once "phplibs/templatingService.php";
 
-if (!isset($_SESSION['user_id']))
+if (!isset($_SESSION['user_id'])) {
     header("Location: login.php?redirect=prenotazione.php");
+    exit;
+}
 
 $giorno = '';
 $orario = '';
@@ -14,7 +16,7 @@ $error = [];
 if (isset($_POST['submit'])) {
 
     $giorno = DatabaseService::cleanedInput($_POST['giorno']);
-    if (!preg_match("/\d{4}-\d{2}-\d{2}/", $giorno)) {
+    if (!preg_match("/^\d{4}-\d{2}-\d{2}$/", $giorno)) {
         array_push($error, "data_val");
     }
     $today = date("Y-m-d");
@@ -23,7 +25,7 @@ if (isset($_POST['submit'])) {
     }
 
     $orario = DatabaseService::cleanedInput($_POST['orario']);
-    if (!preg_match("/\d{2}:\d{2}:\d{2}/", $orario)) {
+    if (!preg_match("/^\d{2}:\d{2}:\d{2}$/", $orario)) {
         array_push($error, "orario_val");
     }
     if ($giorno == $today) {
@@ -34,7 +36,7 @@ if (isset($_POST['submit'])) {
     }
 
     $visitatori = DatabaseService::cleanedInput($_POST['visitatori']);
-    if (!preg_match("/\d+/", $visitatori) || $visitatori < 1 || $visitatori > 15) {
+    if (!preg_match("/^\d+$/", $visitatori) || $visitatori < 1 || $visitatori > 15) {
         array_push($error, "visitatori_val");
     } else {
         try {
@@ -44,7 +46,6 @@ if (isset($_POST['submit'])) {
         } catch (Exception $e) {
             unset($database);
             Templating::errCode(500);
-            exit;
         }
         if (!$disponibili)
             array_push($error, "visitatori_nd");
@@ -66,7 +67,6 @@ if (isset($_POST['submit'])) {
     } catch (Exception $e) {
         unset($database);
         Templating::errCode(500);
-        exit;
     }
     if ($insertSuccess)
         header('Location: profile.php');
@@ -76,9 +76,6 @@ if (isset($_POST['submit'])) {
     }
     exit;
 
-} else {
+} else 
     Templating::errCode(405);
-    exit;
-}
-
 ?>

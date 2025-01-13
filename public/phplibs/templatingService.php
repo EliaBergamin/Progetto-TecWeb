@@ -18,15 +18,21 @@ session_start();
 class Templating
 {
 
-    public const HTML_PATH = __DIR__
+    private const HTML_PATH = __DIR__
         . DIRECTORY_SEPARATOR . ".."
         . DIRECTORY_SEPARATOR . "html"
         . DIRECTORY_SEPARATOR;
+    private const PICS_PATH = __DIR__
+        . DIRECTORY_SEPARATOR . ".."
+        . DIRECTORY_SEPARATOR . "pics"
+        . DIRECTORY_SEPARATOR;
+    
+    private const MB = 1048576;
 
     public static function errCode($num): void
     {
         http_response_code($num);
-        require("{$num}.php");
+        require "{$num}.php";
         exit;
     }
     /* Funzione per trovare {{ancora}} e sostituirla con valore dinamico */
@@ -73,7 +79,7 @@ class Templating
 
         $htmlFileFullPATH = Templating::HTML_PATH
             . str_replace(".php", ".html", basename($phpFileNameThatCalled));
-        
+
         return file_get_contents($htmlFileFullPATH);
     }
 
@@ -85,7 +91,7 @@ class Templating
 
         $htmlPageToDisplay = preg_replace($regexPattern, ["", ""], $htmlPageToDisplay);
 
-        echo ($htmlPageToDisplay);
+        echo $htmlPageToDisplay;
 
     }
 
@@ -139,10 +145,9 @@ class Templating
     public static function getHtmlWithModifiedMenu($phpFileNameThatCalled): string
     {
         $htmlContent = Templating::getHtmlFileContent($phpFileNameThatCalled);
-        if (!$htmlContent) {
+        if (!$htmlContent) 
             Templating::errCode(404);
-            exit;
-        }
+
         $log = Templating::getContentBetweenPlaceholders($htmlContent, 'log');
         $profile = Templating::getContentBetweenPlaceholders($htmlContent, 'profile');
         $admin = Templating::getContentBetweenPlaceholders($htmlContent, 'admin');
@@ -166,4 +171,93 @@ class Templating
         Templating::replaceContentBetweenPlaceholders($htmlContent, "greeting", $greeting);
         return $htmlContent;
     }
+
+    private static function randomString(): string
+    {
+        // https://stackoverflow.com/a/31107425
+        $length = 16;
+        $keyspace = '0123456789abcdefghijklmnopqrstuvwxyz';
+        $length = strlen($keyspace) - 1;
+        $pieces = [];
+        for ($i = 0; $i < $length; ++$i)
+            $pieces[] = $keyspace[random_int(0, $length)];
+        return implode('', $pieces);
+    }
+
+    public static function uploadImg($file): array
+    {
+        if (!(file_exists($file['tmp_name']) && is_uploaded_file($file['tmp_name'])))
+            return [false, "upload"];
+        $target_dir = self::PICS_PATH;
+        $target_file = $target_dir . basename($file["name"]);
+        
+        if (!getimagesize($file["tmp_name"])) {
+            unlink($file["tmp_name"]);
+            return [false, "type"];
+        }
+
+        if ($file["size"] > 1.5 * self::MB) {
+            unlink($file["tmp_name"]);
+            return [false, "size: {$file['size']}"];
+        }
+
+        $imagetype = mime_content_type($file["tmp_name"]);
+        if ($imagetype != "image/jpeg" && $imagetype != "image/png" && $imagetype != "image/webp") {
+            unlink($file["tmp_name"]);
+            return [false, "format"];
+        }
+
+        /* $r = 1.5;
+        $w0 = 200;
+        $h0 = $w0 * $r;
+        $w1 = 500;
+        $h1 = $w1 * $r;
+
+        do {
+            $filename = self::randomString();
+        } while (file_exists($target_dir . $filename . ".webp"));
+
+        switch ($imagetype) {
+            case "image/jpeg":
+                $filename .= '.jpg';
+                break;
+            case "image/png":
+                $filename .= '.png';
+                break;
+            case "image/webp":
+                $filename .= '.webp';
+                break;
+        } */
+/*
+        list($width, $height) = getimagesize($file["tmp_name"]);
+
+        if (($height / $width) < $r) {
+            $y = 0;
+            $x = intval(($width - ($height / $r)) / 2);
+            $width -= 2 * $x;
+        } else {
+            $x = 0;
+            $y = intval(($height - ($width * $r)) / 2);
+            $height -= 2 * $y;
+        }
+
+        $pic0 = imagecreatetruecolor($w0, $h0);
+        $pic1 = imagecreatetruecolor($w1, $h1);
+
+        imagecopyresampled($pic0, $source, 0, 0, $x, $y, $w0, $h0, $width, $height);
+        imagecopyresampled($pic1, $source, 0, 0, $x, $y, $w1, $h1, $width, $height);
+
+        $fn0 = $target_dir . "w{$w0}_" . $filename;
+        $fn1 = $target_dir . "w{$w1}_" . $filename;
+
+        imagewebp($pic0, $fn0 . ".webp");
+        imagejpeg($pic0, $fn0 . ".jpg");
+        imagewebp($pic1, $fn1 . ".webp");
+        imagejpeg($pic1, $fn1 . ".jpg"); */
+        if (!move_uploaded_file($file["tmp_name"], $target_file)) 
+            return [false, "upload"];
+        //unlink($file["tmp_name"]);
+        return [true, basename($file["name"])];
+    }
+
 }

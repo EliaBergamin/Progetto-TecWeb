@@ -1,7 +1,7 @@
 <?php
 
-require_once("phplibs/databaseService.php");
-require_once("phplibs/templatingService.php");
+require_once "phplibs/databaseService.php";
+require_once "phplibs/templatingService.php";
 
 $nome = '';
 $descrizione = '';
@@ -13,33 +13,42 @@ $error = [];
 if (isset($_POST['submit'])) {
 
     $nome = DatabaseService::cleanedInput($_POST['nome']);
-    if (strlen($nome) < 2) {
+
+    if (strlen($nome) < 2 || strlen($nome) > 80) {
         array_push($error, 'nome_len');
-    } else if (!preg_match("/[\p{L}\p{P}\p{N}\ ]+/u", $nome)) {
+    } else if (!preg_match("/^[\p{L}\p{P}\p{N}\ \/=<>]+$/u", $nome)) {
         array_push($error, 'nome_char');
     }
 
     $descrizione = DatabaseService::cleanedInput($_POST['descrizione']);
-    if (strlen($descrizione) < 25) {
+    if (strlen($descrizione) < 25 || strlen($descrizione) > 5000) {
         array_push($error, 'descr_len');
-    } else if (!preg_match("/[\p{L}\p{P}\p{N}\ ]+/u", $descrizione)) {
+    } else if (!preg_match("/^[\p{L}\p{P}\p{N}\s\S\/=<>]+$/u", $descrizione)) {
         array_push($error, 'descr_char');
     }
 
     $data_inizio = DatabaseService::cleanedInput($_POST['data_inizio']);
-    if (!preg_match("/\d{4}-\d{2}-\d{2}/", $data_inizio)) {
+    if (!preg_match("/^\d{4}-\d{2}-\d{2}$/", $data_inizio)) {
         array_push($error, 'data_ini_val');
     }
     $data_fine = DatabaseService::cleanedInput($_POST['data_fine']);
-    if (!preg_match("/\d{4}-\d{2}-\d{2}/", $data_fine)) {
+    if (!preg_match("/^\d{4}-\d{2}-\d{2}$/", $data_fine)) {
         array_push($error, 'data_fin_val');
     }
 
     if (strtotime($data_inizio) > strtotime($data_fine)) {
         array_push($error, 'data_ini_fin');
     }
-    $immagine = DatabaseService::cleanedInput($_POST["immagine"]);
-    // TODO: check and upload image
+
+    if ($_FILES["immagine"]["tmp_name"]) {
+        $upload = Templating::uploadImg($_FILES["immagine"]);
+        if ($upload[0]) 
+            $immagine = $upload[1];
+        else 
+            array_push($error, $upload[1]);
+    }
+    else 
+        array_push($error, 'upload', 'size');
 
     if (count($error) > 0) {
         $_SESSION['error'] = $error;
@@ -47,7 +56,6 @@ if (isset($_POST['submit'])) {
         $_SESSION['descrizione'] = $descrizione;
         $_SESSION['data_inizio'] = $data_inizio;
         $_SESSION['data_fine'] = $data_fine;
-        $_SESSION['immagine'] = $immagine;
         header("Location: aggiungi_mostra.php");
         exit;
     }
@@ -59,7 +67,6 @@ if (isset($_POST['submit'])) {
     } catch (Exception $e) {
         unset($database);
         Templating::errCode(500);
-        exit;
     }
     if ($insertSuccess)
         header('Location: admin.php');
@@ -69,13 +76,9 @@ if (isset($_POST['submit'])) {
         $_SESSION['descrizione'] = $descrizione;
         $_SESSION['data_inizio'] = $data_inizio;
         $_SESSION['data_fine'] = $data_fine;
-        $_SESSION['immagine'] = $immagine;
         header('Location: aggiungi_mostra.php');
     }
     exit;
-} else {
+} else 
     Templating::errCode(405);
-    exit;
-}
-
 ?>

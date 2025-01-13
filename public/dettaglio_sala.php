@@ -1,17 +1,14 @@
 <?php
 
-require_once("phplibs/databaseService.php");
-require_once("phplibs/templatingService.php");
+require_once "phplibs/databaseService.php";
+require_once "phplibs/templatingService.php";
 
-$numeroSalaRichiesta = isset($_GET['sala']) ? $_GET['sala'] : 1;
+$numeroSalaRichiesta = isset($_GET['sala']) ? $_GET['sala'] : Templating::errCode(404);
 
 if (!isset($_SESSION['user_id'])) 
     header("Location: login.php?redirect=dettaglio_sala.php?sala=$numeroSalaRichiesta");
 
-$database = new DatabaseService();
 $dettaglioSalaHtmlContent = Templating::getHtmlWithModifiedMenu(__FILE__);
-
-
 
 /* BREADCRUMB SALA*/
 
@@ -20,7 +17,10 @@ Templating::replaceAnchor($sectionBreadcrumbToModify,"numero_sala",$numeroSalaRi
 Templating::replaceContentBetweenPlaceholders($dettaglioSalaHtmlContent, "numerosalabread", $sectionBreadcrumbToModify);
 /* INFO SALA*/
 
+$database = new DatabaseService();
 $infoSalaRow = $database->selectInfoFromSala($numeroSalaRichiesta);
+if (count($infoSalaRow) == 0) 
+    Templating::errCode(404);
 $sectionInfoSalaToModify = Templating::getContentBetweenPlaceholders($dettaglioSalaHtmlContent, "dettagliosala");
 
 Templating::replaceAnchor($sectionInfoSalaToModify, "nome_sala", $infoSalaRow[0]['nome']);
@@ -30,6 +30,8 @@ Templating::replaceContentBetweenPlaceholders($dettaglioSalaHtmlContent, "dettag
 
 /* OPERE DYNAMIC */
 $arrayOpere = $database->selectOpereFromSala(intval($numeroSalaRichiesta));
+unset($database);
+
 $sectionOpereToModify = Templating::getContentBetweenPlaceholders($dettaglioSalaHtmlContent, "opere");
  
 $fullcontent = "";

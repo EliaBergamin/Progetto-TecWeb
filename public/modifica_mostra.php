@@ -1,16 +1,16 @@
 <?php
-require_once("phplibs/databaseService.php");
-require_once("phplibs/templatingService.php");
+require_once "phplibs/databaseService.php";
+require_once "phplibs/templatingService.php";
 
 if (isset($_GET['id_mostra']))
     $id_mostra = $_GET['id_mostra'];
-else {
+else 
     Templating::errCode(404);
+
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.php?redirect=modifica_mostra.php&id_mostra=" . $id_mostra);
     exit;
 }
-
-if (!isset($_SESSION['user_id']))
-    header("Location: login.php?redirect=modifica_mostra.php&id_mostra=" . $id_mostra);
 
 $modificaMostraContent = Templating::getHtmlWithModifiedMenu(__FILE__);
 
@@ -21,23 +21,20 @@ try {
 } catch (Exception $e) {
     unset($database);
     Templating::errCode(500);
-    exit;
 }
 
-if (empty($mostraToModifyInfo)) {
+if (empty($mostraToModifyInfo)) 
     Templating::errCode(404);
-    exit;
-}
 
 $messaggiPerForm = '';
 if (isset($_SESSION['error']) && is_array($_SESSION['error'])) {
     $error = $_SESSION['error'];
     if (in_array('nome_len', $error))
-        $messaggiPerForm .= '<li>Nome troppo corto</li>';
+        $messaggiPerForm .= '<li>Il nome deve avere minimo 2 caratteri e massimo 80</li>';
     if (in_array('nome_char', $error))
         $messaggiPerForm .= '<li>Il nome può contenere solo caratteri alfanumerici o di punteggiatura</li>';
     if (in_array('descr_len', $error))
-        $messaggiPerForm .= '<li>Descrizione troppo corta</li>';
+        $messaggiPerForm .= '<li>La descrizione deve avere minimo 25 caratteri e massimo 5000</li>';
     if (in_array('descr_char', $error))
         $messaggiPerForm .= '<li>La descrizione può contenere solo caratteri alfanumerici o di punteggiatura</li>';
     if (in_array('data_ini_val', $error))
@@ -49,7 +46,7 @@ if (isset($_SESSION['error']) && is_array($_SESSION['error'])) {
     if (in_array('immagine', $error))
         $messaggiPerForm .= "<li>Immagine non valida</li>";
     if (in_array('modifica', $error))
-        $messaggiPerForm .= "<li>Errore durante la modifica</li>";
+        $messaggiPerForm .= "<li>Non è stato modificato nulla</li>";
     unset($_SESSION['error']);
 }
 if (strlen($messaggiPerForm) != 0) 
