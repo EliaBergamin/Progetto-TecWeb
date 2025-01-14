@@ -8,7 +8,7 @@ var currentSlideIdMostra = '';
 document.addEventListener("DOMContentLoaded", function () {
     hambToggle();
     validatorLoad();
-    document.documentElement.className = 'dark';
+    //document.documentElement.className = 'dark';
     document.getElementById("accordion") && initAccordion();
     document.getElementById("giorno") && initAJAX();
     document.getElementById("rating-fs") && initRecensisci();
