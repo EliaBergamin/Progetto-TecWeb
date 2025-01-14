@@ -12,14 +12,14 @@
     <link rel="stylesheet" href="../css/print.css" media="print">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../images/pokeball.ico" type="image/x-icon">
-    <script type="text/javascript" src="../js/script.js"></script>
+    <script src="../js/script.js"></script>
 </head>
 
 <body>
     <a id="top-help" class="help nascosto" href="#prenotazione">Vai al contenuto</a>
     <header>
         <h1>Museo Cartoni Animati</h1>
-        <button id="hamb" class="hamToggle" data-hambOn="true" type="button" onclick="hambToggle()">Menù</button>
+        <button id="hamb" class="hamToggle" data-hambOn="true" type="button">Menù</button>
     </header>
 
     <nav id="menu" class="hamToggle" data-hambOn="true">
@@ -59,29 +59,29 @@
             {{messaggiPerForm}}
             <!-- errormsgs_end -->
             <!-- form_start -->
-            <form action="prenotazione_effettuata.php" method="post" id="formPrenotazione" class="formCompilazione">
+            <form action="prenotazione_effettuata.php" method="post" id="form" class="formCompilazione">
                 <label for="giorno" class="required-label">Giorno</label>
-                <input type="date" name="giorno" id="giorno" value="{{giorno}}" required
-                    data-msg-required="Per favore, selezionare il giorno della visita"
-                    data-msg-invalid="Giorno non valido">
-                <label for="orario" class="required-label">Fascia oraria</label>
+                <input type="date" name="giorno" id="giorno" value="{{giorno}}" required>
+                    <span id="err_giorno" class="errorSuggestion" aria-live="assertive" data-ref-to="giorno"></span>
+                    <label for="orario" class="required-label">Fascia oraria</label>
                 <select name="orario" id="orario" required>
                     <option value="" disabled selected>Seleziona</option>
                     <optgroup label="mattina">
-                        <option value="09:00:00" {{o1}}>09:00 - 10:30</option>
-                        <option value="10:30:00" {{o2}}>10:30 - 12:00</option>
+                        <option id="09" value="09:00:00" {{o1}}>09:00 - 10:30</option>
+                        <option id="10_30" value="10:30:00" {{o2}}>10:30 - 12:00</option>
                     </optgroup>
                     <optgroup label="pomeriggio">
-                        <option value="12:00:00" {{o3}}>12:00 - 13:30</option>
-                        <option value="13:30:00" {{o4}}>13:30 - 15:00</option>
-                        <option value="15:00:00" {{o5}}>15:00 - 16:30</option>
-                        <option value="16:30:00" {{o6}}>16:30 - 18:00</option>
+                        <option id="12" value="12:00:00" {{o3}}>12:00 - 13:30</option>
+                        <option id="13_30" value="13:30:00" {{o4}}>13:30 - 15:00</option>
+                        <option id="15" value="15:00:00" {{o5}}>15:00 - 16:30</option>
+                        <option id="16_30" value="16:30:00" {{o6}}>16:30 - 18:00</option>
                     </optgroup>
                 </select>
+                <span id="err_orario" class="errorSuggestion" aria-live="assertive" data-ref-to="orario"></span>
                 <label for="visitatori" class="required-label">Numero di visitatori</label>
                 <input type="number" name="visitatori" id="visitatori" min="1" max="15" required
-                    data-msg-required="Per favore, selezionare il numero di visitatori"
-                    data-msg-invalid="Massimo x visitatori" value="{{visitatori}}">
+                     value="{{visitatori}}">
+                <span id="err_visitatori" class="errorSuggestion" aria-live="assertive" data-ref-to="visitatori"></span>
                 <p class="required-msg">Campi obbligatori</p>
                 <input type="submit" name="submit" value="Prenota">
             </form>

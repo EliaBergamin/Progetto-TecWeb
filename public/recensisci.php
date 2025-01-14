@@ -1,9 +1,11 @@
 <?php
-require_once("phplibs/databaseService.php");
-require_once("phplibs/templatingService.php");
+require_once "phplibs/databaseService.php";
+require_once "phplibs/templatingService.php";
 
-if (!isset($_SESSION['user_id']))
+if (!isset($_SESSION['user_id'])) {
     header("Location: login.php?redirect=recensisci.php");
+    exit;
+}
 
 $database = new DatabaseService();
 $recensisciContent = Templating::getHtmlWithModifiedMenu(__FILE__);
@@ -18,7 +20,7 @@ if (isset($_SESSION['error']) && is_array($_SESSION['error'])) {
     if (in_array('rating', $error))
         $messaggiPerForm .= '<li>Valutazione non valida</li>';
     if (in_array('descr_len', $error))
-        $messaggiPerForm .= '<li>Descrizione troppo corta</li>';
+        $messaggiPerForm .= '<li>La descrizione deve avere minimo 25 caratteri e massimo 5000</li>';
     if (in_array('descr_char', $error))
         $messaggiPerForm .= '<li>La descrizione può contenere solo caratteri alfanumerici o di punteggiatura</li>';
     if (in_array('tipo', $error))

@@ -48,14 +48,14 @@ header {
     top: 3.2rem;
     right: 0;
     width: 10rem;
-    transition: 1s ease-in-out;
+    transition: .8s ease-in-out;
     border: 2.5px solid var(--headercolor);
     border-right: none;
 }
 
 #menu[data-hambOn="false"] {
     z-index: 100;
-    transition: 1s ease-in-out;
+    transition: .8s ease-in-out;
     transform: translate(11rem);
     position: fixed;
 }

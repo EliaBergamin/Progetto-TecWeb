@@ -1,12 +1,12 @@
 <?php
-require_once("phplibs/databaseService.php");
-require_once("phplibs/templatingService.php");
+require_once "phplibs/databaseService.php";
+require_once "phplibs/templatingService.php";
 
 $redirect = $_GET['redirect'] ?? 'profile.php';
 
 if (isset($_POST['submit'])) {
     $username = DatabaseService::cleanedInput($_POST['username']);
-    if (strlen($username) < 4) {
+    if (!preg_match("/^[A-Za-z0-9]{4,20}$/u", $username)) {
         $_SESSION["error"] = "user";
         header("Location: login.php?redirect=$redirect");
         exit;
@@ -19,12 +19,12 @@ if (isset($_POST['submit'])) {
     } catch (Exception $e) {
         unset($database);
         Templating::errCode(500);
-        exit;
     }
 
     $user = $users[0] ?? null;
     if (!$user) {
         $_SESSION["error"] = "user";
+        $_SESSION["username"] = $username;
         header("Location: login.php?redirect=$redirect");
         exit;
     } 
@@ -46,9 +46,6 @@ if (isset($_POST['submit'])) {
             header("Location: admin.php");
     }
     exit;
-} else {
+} else 
     Templating::errCode(405);
-    exit;
-}
-
 ?>

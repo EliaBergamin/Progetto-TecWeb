@@ -1,8 +1,10 @@
 <?php
-require_once("phplibs/templatingService.php");
+require_once "phplibs/templatingService.php";
 
-if (!isset($_SESSION['user_id']))
+if (!isset($_SESSION['user_id'])) {
     header("Location: login.php?redirect=prenotazione.php");
+    exit;
+}
 
 $prenotazioneContent = Templating::getHtmlWithModifiedMenu(__FILE__);
 
@@ -22,7 +24,8 @@ if (isset($_SESSION['error']) && is_array($_SESSION['error'])) {
     else if (in_array('visitatori_nd', $error))
         $messaggiPerForm .= '<li>Numero di visitatori non disponibile</li>';
     if (in_array('insert', $error))
-        $messaggiPerForm .= '<li>Errore durante la prenotazione</li>';
+        $messaggiPerForm .= '<li>Errore durante la prenotazione. 
+            Si rammenta che non è possibile effettuare due prenotazioni per lo stesso giorno</li>';
     unset($_SESSION['error']);
 }
 if (strlen($messaggiPerForm) != 0)

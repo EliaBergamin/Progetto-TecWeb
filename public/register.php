@@ -1,6 +1,6 @@
 <?php
-require_once("phplibs/databaseService.php");
-require_once("phplibs/templatingService.php");
+require_once "phplibs/databaseService.php";
+require_once "phplibs/templatingService.php";
 
 $redirect = $_GET['redirect'] ?? 'index.php';
 
@@ -13,31 +13,30 @@ $error = [];
 
 if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
     $nome = DatabaseService::cleanedInput($_POST['nome']);
-    if (strlen($nome) < 2) {
+    if (strlen($nome) < 2 || strlen($nome) > 50) {
         array_push($error, 'nome_len');
-    } else if (!preg_match("/[\p{L}\p{P}\p{N}\ ]+/u", $nome)) {
+    } else if (!preg_match("/^[\p{L}\p{P}\p{N}\ ]+$/u", $nome)) {
         array_push($error, 'nome_char');
     }
 
     $cognome = DatabaseService::cleanedInput($_POST['cognome']);
-    if (strlen($cognome) < 2) {
+    if (strlen($cognome) < 2 || strlen($cognome) > 50) {
         array_push($error, 'cognome_len');
-    } else if (!preg_match("/[\p{L}\p{P}\p{N}\ ]+/u", $cognome)) {
+    } else if (!preg_match("/^[\p{L}\p{P}\p{N}\ ]+$/u", $cognome)) {
         array_push($error, 'cognome_char');
     }
 
     $email = DatabaseService::cleanedInput($_POST['email']);
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL) || strlen($email) > 100) {
         array_push($error, 'email_val');
     } else {
         try {
             $database = new DatabaseService();
-            $users = $database->selectUsersFromUsername($username);
+            $users = $database->selectUsersFromEmail($email);
             unset($database);
         } catch (Exception $e) {
             unset($database);
             Templating::errCode(500);
-            exit;
         }
         if (count($users) > 0) {
             array_push($error, 'email_exists');
@@ -45,9 +44,9 @@ if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     $username = DatabaseService::cleanedInput($_POST['username']);
-    if (strlen($username) < 4) {
+    if (strlen($username) < 4 || strlen($username) > 20) {
         array_push($error, 'username_len');
-    } else if (!preg_match("/[\p{L}\p{N}]+/u", $username)) {
+    } else if (!preg_match("/^[A-Za-z0-9]{4,20}$/u", $username)) {
         array_push($error, 'username_char');
     } else {
         try {
@@ -57,15 +56,16 @@ if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
         } catch (Exception $e) {
             unset($database);
             Templating::errCode(500);
-            exit;
         }
         if (count($users) > 0) {
             array_push($error, 'username_exists');
         }
     }
     $password = DatabaseService::cleanedInput($_POST['password']);
-    if (strlen($password) < 4) {
+    if (strlen($password) < 8) {
         array_push($error, 'password_len');
+    } else if (!preg_match("/^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/", $password)) {
+        array_push($error, 'password_weak');
     }
 
     if (count($error) > 0) {
@@ -74,6 +74,7 @@ if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['cognome'] = $cognome;
         $_SESSION['email'] = $email;
         $_SESSION['username'] = $username;
+        $_SESSION['password'] = $password;
         header("Location: registrazione.php?redirect=$redirect");
         exit;
     }
@@ -86,8 +87,8 @@ if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
         unset($database);
     } catch (Exception $e) {
         unset($database);
+        echo $e->getMessage();
         Templating::errCode(500);
-        exit;
     }
 
     if ($user_id > 0) {
@@ -100,9 +101,6 @@ if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['error'] = ['insert'];
         header("Location: registrazione.php?redirect=$redirect");
     }
-} else {
+} else 
     Templating::errCode(405);
-    exit;
-}
-
 ?>

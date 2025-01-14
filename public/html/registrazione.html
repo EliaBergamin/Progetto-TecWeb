@@ -12,14 +12,14 @@
     <link rel="stylesheet" href="../css/print.css" media="print">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../images/pokeball.ico" type="image/x-icon">
-    <script type="text/javascript" src="../js/script.js"></script>
+    <script src="../js/script.js"></script>
 </head>
 
 <body>
     <a id="top-help" class="help nascosto" href="#primoContenuto">Vai al contenuto</a>
     <header>
         <h1>Museo Cartoni Animati</h1>
-        <button id="hamb" class="hamToggle" data-hambOn="true" type="button" onclick="hambToggle()">Menù</button>
+        <button id="hamb" class="hamToggle" data-hambOn="true" type="button">Menù</button>
     </header>
 
     <nav id="menu" class="hamToggle" data-hambOn="true">
@@ -59,20 +59,24 @@
             {{messaggiPerForm}}
             <!-- errormsgs_end -->
             <!-- form_start -->
-            <form action="../register.php" method="post" class="formCompilazione">
+            <form action="../register.php" method="post" class="formCompilazione" id="form">
                 <label for="nome" class="required-label">Nome </label>
-                <input type="text" name="nome" id="nome" value="{{nome}}" required minlength="2">
+                <input type="text" name="nome" id="nome" value="{{nome}}" required minlength="2" maxlength="50">
+                <span id="err_nome" class="errorSuggestion" aria-live="assertive" data-ref-to="nome"></span>
                 <label for="cognome" class="required-label">Cognome </label>
-                <input type="text" name="cognome" id="cognome" value="{{cognome}}" required minlength="2">
+                <input type="text" name="cognome" id="cognome" value="{{cognome}}" required minlength="2"
+                    maxlength="50">
+                <span id="err_cognome" class="errorSuggestion" aria-live="assertive" data-ref-to="cognome"></span>
                 <label for="username" class="required-label">Username </label>
-                <input type="text" name="username" id="username" value="{{username}}" required minlength="4">
+                <input type="text" name="username" id="username" value="{{username}}" required minlength="4"
+                    maxlength="20">
+                <span id="err_username" class="errorSuggestion" aria-live="assertive" data-ref-to="username"></span>
                 <label for="email" class="required-label">Email </label>
-                <input type="email" name="email" id="email" value="{{email}}" required
-                    data-msg-required="L'email è obbligatoria!" data-msg-invalid="Email non valida">
+                <input type="email" name="email" id="email" value="{{email}}" required>
+                <span id="err_email" class="errorSuggestion" aria-live="assertive" data-ref-to="email"></span>
                 <label for="password" class="required-label">Password </label>
-                <input type="password" name="password" id="password" required minlength="4"
-                    data-msg-required="La password è obbligatoria!"
-                    data-msg-invalid="La password deve essere lunga almeno 4 caratteri">
+                <input type="password" name="password" id="password" required minlength="8" value="{{password}}">
+                <span id="err_password" class="errorSuggestion" aria-live="assertive" data-ref-to="password"></span>
                 <p class="required-msg">Campi obbligatori</p>
                 <input type="submit" name="submit" value="Registrati">
             </form>

@@ -1,9 +1,11 @@
 <?php
-require_once("phplibs/databaseService.php");
-require_once("phplibs/templatingService.php");
+require_once "phplibs/databaseService.php";
+require_once "phplibs/templatingService.php";
 
-if (!isset($_SESSION['user_id'])) 
+if (!isset($_SESSION['user_id'])) {
     header("Location: login.php?redirect=prenotazione.php");
+    exit;
+}
 
 $database = new DatabaseService();
 $profileAreaContentHtml = Templating::getHtmlWithModifiedMenu(__FILE__);
@@ -37,7 +39,7 @@ foreach ($arrayPrenotazioniUtente as $associativeRow) {
     );
 
     Templating::replaceAnchor($temp, "num_persone", $associativeRow["num_persone"]);
-    Templating::replaceAnchor($temp, "orario_prenotazione", $associativeRow["orario"]);
+    Templating::replaceAnchor($temp, "orario_prenotazione", substr($associativeRow["orario"], 0, 5));
 
 
     $fullcontent .= $temp . "\n";

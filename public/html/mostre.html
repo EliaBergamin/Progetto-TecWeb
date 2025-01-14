@@ -14,14 +14,14 @@
     <link rel="stylesheet" href="../css/print.css" media="print">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../images/pokeball.ico" type="image/x-icon">
-    <script type="text/javascript" src="../js/script.js"></script>
+    <script src="../js/script.js"></script>
 </head>
 
-<body onload="initAccordion()">
+<body onload="initAccordion();">
     <a id="top-help" class="help nascosto" href="#mostre">Vai al contenuto</a>
     <header>
         <h1>Museo Cartoni Animati</h1>
-        <button id="hamb" class="hamToggle" data-hambOn="true" type="button" onclick="hambToggle()">Menù</button>
+        <button id="hamb" class="hamToggle" data-hambOn="true" type="button">Menù</button>
     </header>
 
     <nav id="menu" class="hamToggle" data-hambOn="true">
@@ -57,10 +57,10 @@
             <dd>
                 <dl>
                     <!-- mostrecorrenti_start -->
-                    <dt class="nomeMostra">{{nome}}</dt>
+                    <dt id="{{id_mostra}}" class="nomeMostra">{{nome}}</dt>
                     <dd class="infoMostra">
-                        <img src="../images/{{img_path}}" alt="">
-                        <p>Descrizione mostra: {{descrizione}}</p>
+                        <img src="../pics/{{img_path}}" alt="">
+                        <p>{{descrizione}}</p>
                         <p class="giorniMostra">Da <time datetime="{{data_inizio}}">{{string_data_inizio}}</time> a
                             <time datetime="{{data_fine}}">{{string_data_fine}}</time></p>
                         <a href="prenotazione.php" class="button">Prenota visita</a>
@@ -74,10 +74,10 @@
             <dd>
                 <dl>
                     <!-- mostrefuture_start -->
-                    <dt class="nomeMostra">{{nome}}</dt>
+                    <dt id="{{id_mostra}}" class="nomeMostra">{{nome}}</dt>
                     <dd class="infoMostra">
-                        <img src="../images/{{img_path}}" alt="">
-                        <p>Descrizione mostra: {{descrizione}}</p>
+                        <img src="../pics/{{img_path}}" alt="">
+                        <p>{{descrizione}}</p>
                         <p class="giorniMostra">Da <time datetime="{{data_inizio}}">{{string_data_inizio}}</time> a
                             <time datetime="{{data_fine}}">{{string_data_fine}}</time></p>
                         <a href="prenotazione.php" class="button">Prenota visita</a>
@@ -87,14 +87,14 @@
                 <a class="help nascosto" href="#">Torna su</a>
             </dd>
 
-            <dt><button class="accordion">Mostre passate</button></dt>
+            <dt><button id="accordion" class="accordion">Mostre passate</button></dt>
             <dd class="accordion-panel">
                 <dl>
                     <!-- mostrepassate_start -->
-                    <dt class="nomeMostra">{{nome}}</dt>
+                    <dt id="{{id_mostra}}" class="nomeMostra">{{nome}}</dt>
                     <dd class="infoMostra">
-                        <img src="../images/{{img_path}}" alt="">
-                        <p>Descrizione mostra: {{descrizione}}</p>
+                        <img src="../pics/{{img_path}}" alt="">
+                        <p>{{descrizione}}</p>
                         <p class="giorniMostra">Da <time datetime="{{data_inizio}}">{{string_data_inizio}}</time> a
                             <time datetime="{{data_fine}}">{{string_data_fine}}</time></p>
                     </dd>

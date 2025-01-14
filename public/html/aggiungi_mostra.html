@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Modifica mostra</title>
+  <title>Aggiungi mostra</title>
   <meta name="description"
     content="Qui puoi inserire una nuova mostra nel sito del museo, o modificare quelle già presenti">
   <meta name="keywords" content="amministratore,mostre,museo,modifica,inserimento">
@@ -13,14 +13,14 @@
   <link rel="stylesheet" href="../css/print.css" media="print">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="../images/pokeball.ico" type="image/x-icon">
-  <script type="text/javascript" src="../js/script.js"></script>
+  <script src="../js/script.js"></script>
 </head>
 
 <body>
   <a id="top-help" class="help nascosto" href="#primoContenuto">Vai al contenuto</a>
   <header>
     <h1>Museo Cartoni Animati</h1>
-    <button id="hamb" class="hamToggle" data-hambOn="true" type="button" onclick="hambToggle()">Menù</button>
+    <button id="hamb" class="hamToggle" data-hambOn="true" type="button">Menù</button>
   </header>
 
   <nav id="menu" class="hamToggle" data-hambOn="true">
@@ -49,7 +49,7 @@
   <nav id="breadcrumb">
     <p>
       Ti trovi in: <a lang="en" href="index.php">Home</a> &gt;
-      <a href="admin.php">Area gestione</a> &gt; Aggiungi mostra
+      <a href="admin.php">Area admin</a> &gt; Aggiungi mostra
     </p>
   </nav>
 
@@ -59,18 +59,24 @@
       <!-- errormsgs_start -->
       {{messaggiPerForm}}
       <!-- errormsgs_end -->
-      <form class="formCompilazione" action="insert_mostra_admin.php" method="post">
+      <form class="formCompilazione" action="insert_mostra_admin.php" method="post" id="form"
+        enctype="multipart/form-data">
         <!-- form_start -->
         <label for="nome" class="required-label">Nome mostra</label>
-        <input type="text" name="nome" id="nome" value="{{nome}}" required>
+        <input type="text" name="nome" id="nome" value="{{nome}}" required minlength="2" maxlength="50">
+        <span id="err_nome_mostra" class="errorSuggestion" aria-live="assertive" data-ref-to="nome"></span>
         <label for="descrizione" class="required-label">Descrizione</label>
         <textarea name="descrizione" id="descrizione" minlength="25" required>{{descrizione}}</textarea>
+        <span id="err_descrizione" class="errorSuggestion" aria-live="assertive" data-ref-to="descrizione"></span>
         <label for="data_inizio" class="required-label">Data inizio</label>
         <input type="date" name="data_inizio" id="data_inizio" value="{{data_inizio}}" required>
+        <span id="err_data_inizio" class="errorSuggestion" aria-live="assertive" data-ref-to="data_inizio"></span>
         <label for="data_fine" class="required-label">Data fine</label>
         <input type="date" name="data_fine" id="data_fine" value="{{data_fine}}" required>
+        <span id="err_data_fine" class="errorSuggestion" aria-live="assertive" data-ref-to="data_fine"></span>
         <label for="immagine" class="required-label">Percorso immagine</label>
-        <input type="text" name="immagine" id="immagine" required>
+        <input type="file" name="immagine" id="immagine" accept=".jpg,.jpeg,.png,.webp" required>
+        <span id="err_immagine" class="errorSuggestion" aria-live="assertive" data-ref-to="immagine"></span>
         <p class="required-msg">Campi obbligatori</p>
         <!-- form_end -->
         <input type="submit" name="submit" value="Conferma">

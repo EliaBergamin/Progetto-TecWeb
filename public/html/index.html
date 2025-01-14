@@ -12,14 +12,14 @@
     <link rel="stylesheet" href="css/mini.css" media="screen and (max-width: 768px)">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="images/pokeball.ico" type="image/x-icon">
-    <script type="text/javascript" src="js/script.js"></script>
+    <script src="js/script.js"></script>
 </head>
 
 <body>
     <a id="top-help" class="help nascosto" href="#primoContenuto">Vai al contenuto</a>
     <header>
         <h1>Museo Cartoni Animati</h1>
-        <button id="hamb" class="hamToggle" data-hambOn="true" type="button" onclick="hambToggle()">Menù</button>
+        <button id="hamb" class="hamToggle" data-hambOn="true" type="button">Menù</button>
     </header>
 
     <nav id="menu" class="hamToggle" data-hambOn="true">
@@ -51,17 +51,22 @@
     </nav>
     <main id="primoContenuto">
         <div id="carosello">
+            <!-- carosello_start -->
             <ol class="immaginiCarosello">
                 <li>
-                    <img src="./images/external.webp" alt="Prima Immagine Carosello" class="onCarosello">
+                    <img src="../pics/{{img0}}" alt="{{alt0}}" class="onCarosello">
+                    <a href="mostre.php#{{id0}}" class="more onCarosello">SCOPRI DI PIÙ</a>
                 </li>
                 <li>
-                    <img src="./images/car3.webp" alt="Seconda Immagine Carosello">
+                    <img src="../pics/{{img1}}" alt="{{alt1}}">
+                    <a href="mostre.php#{{id1}}" class="more">SCOPRI DI PIÙ</a>
                 </li>
                 <li>
-                    <img src="./images/car4.webp" alt="Terza Immagine Carosello">
+                    <img src="../pics/{{img2}}" alt="{{alt2}}">
+                    <a href="mostre.php#{{id2}}" class="more">SCOPRI DI PIÙ</a>
                 </li>
             </ol>
+            <!-- carosello_end -->
             <button id="caroselloIndietro" type="button" aria-label="Immagine precedente"
                 onclick="prossimaSlide(-1)">&#10094;</button>
             <button id="caroselloAvanti" type="button" aria-label="Immagine successiva"

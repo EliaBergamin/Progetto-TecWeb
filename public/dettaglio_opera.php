@@ -1,15 +1,13 @@
 <?php
-require_once("phplibs/templatingService.php");
-require_once("phplibs/databaseService.php");
+require_once "phplibs/databaseService.php";
+require_once "phplibs/templatingService.php";
 
-
-$numeroSalaRichiesta = isset($_GET['sala']) ? $_GET['sala'] : 1;
-$operaIdRichiesta = isset($_GET['id_opera']) ? $_GET['id_opera'] : 0;
+$numeroSalaRichiesta = isset($_GET['sala']) ? $_GET['sala'] : Templating::errCode(404);
+$operaIdRichiesta = isset($_GET['id_opera']) ? $_GET['id_opera'] : Templating::errCode(404);
 
 if (!isset($_SESSION['user_id'])) 
     header("Location: login.php?redirect=dettaglio_opera.php?sala=$numeroSalaRichiesta");
 
-$database = new DatabaseService();
 $dettaglioOperaHtmlContent = Templating::getHtmlWithModifiedMenu(__FILE__);
 
 /* BREADCRUMB SALA*/
@@ -19,7 +17,12 @@ Templating::replaceAnchor($sectionBreadcrumbToModify,"numero_sala_bread",$numero
 Templating::replaceAnchor($sectionBreadcrumbToModify,"numero_sala",$numeroSalaRichiesta);
 Templating::replaceContentBetweenPlaceholders($dettaglioOperaHtmlContent, "numerosalabread", $sectionBreadcrumbToModify);
 
+$database = new DatabaseService();
 $operaArrayDetailed = $database->selectOperaInfoFromId($operaIdRichiesta);
+unset($database);
+
+if (empty($operaArrayDetailed)) 
+    Templating::errCode(404);
  
 //titoloh1
 $sectionh1ToModify = Templating::getContentBetweenPlaceholders($dettaglioOperaHtmlContent,"operah1");

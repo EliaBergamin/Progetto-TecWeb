@@ -13,14 +13,14 @@
   <link rel="stylesheet" href="../css/print.css" media="print">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="../images/pokeball.ico" type="image/x-icon">
-  <script type="text/javascript" src="../js/script.js"></script>
+  <script src="../js/script.js"></script>
 </head>
 
-<body onload="initRecensisci()">
+<body>
   <a id="top-help" class="help nascosto" href="#primoContenuto">Vai al contenuto</a>
   <header>
     <h1>Museo Cartoni Animati</h1>
-    <button id="hamb" class="hamToggle" data-hambOn="true" type="button" onclick="hambToggle()">Menù</button>
+    <button id="hamb" class="hamToggle" data-hambOn="true" type="button">Menù</button>
   </header>
 
   <nav id="menu" class="hamToggle" data-hambOn="true">
@@ -62,7 +62,7 @@
       {{messaggiPerForm}}
       <!-- errormsgs_end -->
       <!-- form_start -->
-      <form action="recensione_effettuata.php" method="post" class="formCompilazione">
+      <form action="recensione_effettuata.php" method="post" class="formCompilazione" id="form">
         <fieldset>
           <legend class="required-label">Come hai visitato il museo?</legend>
           <label>
@@ -76,10 +76,11 @@
         </fieldset>
         <label for="data_visita" class="domandaRecensione required-label">Quando hai effettuato la visita?</label>
         <input type="date" name="data_visita" id="data_visita" value="{{data_visita}}" required>
+        <span id="err_data_visita" class="errorSuggestion" aria-live="assertive" data-ref-to="data_visita"></span>
         <fieldset id="rating-fs">
           <legend class="required-label">Come valuteresti la tua esperienza?</legend>
           <div class="rating-option">
-            <input type="radio" name="rating" class="ahead" id="voto-1" value="1" {{r1}}>
+            <input type="radio" name="rating" class="ahead" id="voto-1" value="1" {{r1}} required>
             <label for="voto-1" class="nascosto">Deludente</label>
           </div>
           <div class="rating-option">
@@ -103,6 +104,7 @@
         <label for="descrizione" class="domandaRecensione required-label">Descrivi la tua visita</label>
         <textarea name="descrizione" id="descrizione" minlength="25" rows="8" cols="20"
           placeholder="L'opera che mi ha colpito di più è stata...">{{descrizione}}</textarea>
+        <span id="err_descrizione" class="errorSuggestion" aria-live="assertive" data-ref-to="descrizione"></span>
         <p class="required-msg">Campi obbligatori</p>
         <input type="submit" name="submit" value="Invia" aria-label="Invia">
       </form>
