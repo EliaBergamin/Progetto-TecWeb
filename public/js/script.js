@@ -36,18 +36,21 @@ function aggiornaSlide(n) {
 
 function mostraSlide(n) {
     let i;
-    let slides = document.querySelectorAll(".immaginiCarosello img");
-    let dots = document.querySelectorAll(".puntiniCarosello button");
+    const slides = document.querySelectorAll(".immaginiCarosello img");
+    const links = document.querySelectorAll(".immaginiCarosello .more");
+    const dots = document.querySelectorAll(".puntiniCarosello button");
     console.log(slides);
     if (n > slides.length) { currentSlide = 1 }
     if (n < 1) { currentSlide = slides.length }
     for (i = 0; i < slides.length; i++) {
-        slides[i].className = slides[i].classList.remove("onCarosello");
+        slides[i].classList.remove("onCarosello");
+        links[i].classList.remove("onCarosello");
     }
     for (i = 0; i < dots.length; i++) {
-        dots[i].className = dots[i].classList.remove("active");
+        dots[i].classList.remove("active");
     }
     slides[currentSlide - 1].classList.add("onCarosello");
+    links[currentSlide - 1].classList.add("onCarosello");
     dots[currentSlide - 1].classList.add("active");
 }
 
@@ -154,7 +157,7 @@ function initDialog() {
     document.querySelectorAll(".cancella").forEach((btn) => {
         btn.addEventListener("click", () => {
             dialog.showModal();
-            if (dialog.id === "dialog-pren") 
+            if (dialog.id === "dialog-pren")
                 currentSlideDataPrenotazione = btn.getAttribute("id").substring(5);
             else
                 currentSlideIdMostra = btn.getAttribute("id").substring(5);
@@ -353,7 +356,7 @@ function validate(check, rule) {
     const err = document.getElementById(check);
     const input = document.getElementById(err.getAttribute("data-ref-to"));
     const valid = regole[rule[0]](input.value, rule[1]);
-    
+
 
     if (valid) {
         input.removeAttribute("aria-invalid");
@@ -403,7 +406,7 @@ function validatorLoad() {
                             return;
                     }
                 });
-            else 
+            else
                 input.addEventListener('change', () => {
                     for (const rule of checklist[check]) {
                         if (!validate(check, rule))

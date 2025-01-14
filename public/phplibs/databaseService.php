@@ -73,14 +73,10 @@ class DatabaseService
 	}
 	private function updateValuesPreparedQuery($queryToExecute, $arrayOfValues, $valueTypeForBinding = ""): bool
 	{
-		for ($i = 0; $i < count($arrayOfValues); $i++) {
-			echo $arrayOfValues[$i]."<br>";
-		}
 		try {
 			$preparedStatement = $this->executePreparedQuery($queryToExecute, $arrayOfValues, $valueTypeForBinding);
 			$affectedRows = $preparedStatement->affected_rows;
 			$preparedStatement->close();
-			echo $affectedRows;
 		} catch (mysqli_sql_exception $e) {
 			if ($e->getCode() == 1062)
 				return false;
@@ -133,13 +129,19 @@ class DatabaseService
 		return $this->selectValuesPreparedQuery($queryMostrePassate, []);
 	}
 
-	public function selectMostreCorrenti(): array
+	public function selectMostreCorrenti($extended = true): array
 	{
-		$queryMostrePassate = "SELECT * 
-							   FROM Museo.Mostra
-							   WHERE CURDATE() BETWEEN data_inizio AND data_fine
-							   ORDER BY Mostra.data_fine DESC";
-		return $this->selectValuesPreparedQuery($queryMostrePassate, []);
+		$query = $extended ?
+				"SELECT * 
+				 FROM Museo.Mostra
+				 WHERE CURDATE() BETWEEN data_inizio AND data_fine
+				 ORDER BY Mostra.data_fine DESC" :
+				"SELECT id_mostra, nome, img_path, alt
+				 FROM Museo.Mostra
+				 WHERE CURDATE() BETWEEN data_inizio AND data_fine
+				 ORDER BY Mostra.data_fine ASC
+				 LIMIT 3";
+		return $this->selectValuesPreparedQuery($query, []);
 	}
 
 	public function selectMostraByID($id_mostra): array
@@ -149,13 +151,19 @@ class DatabaseService
 							   WHERE Mostra.id_mostra = ?";
 		return $this->selectValuesPreparedQuery($queryMostrePassate, [$id_mostra], "i");
 	}
-	public function selectMostreFuture(): array
+	public function selectMostreFuture($extended = true): array
 	{
-		$queryMostrePassate = "SELECT * 
-							   FROM Museo.Mostra
-							   WHERE Mostra.data_inizio > CURDATE()
-							   ORDER BY Mostra.data_inizio ASC";
-		return $this->selectValuesPreparedQuery($queryMostrePassate, []);
+		$query = $extended ?
+				"SELECT * 
+				 FROM Museo.Mostra
+				 WHERE Mostra.data_inizio > CURDATE()
+				 ORDER BY Mostra.data_inizio ASC" :
+				"SELECT id_mostra, nome, img_path, alt
+				 FROM Museo.Mostra
+				 WHERE Mostra.data_inizio > CURDATE()
+				 ORDER BY Mostra.data_inizio ASC
+				 LIMIT 3";
+		return $this->selectValuesPreparedQuery($query, []);
 	}
 
 
@@ -286,14 +294,14 @@ class DatabaseService
 	public function alterMostraAdmin($id_mostra, $nome, $descrizione, $data_inizio, $data_fine, $img_path): bool
 	{
 		$query = $img_path ?
-				"UPDATE Mostra SET 
+			"UPDATE Mostra SET 
                 nome = ?, 
                 descrizione = ?, 
                 data_inizio = ?, 
                 data_fine = ?, 
                 img_path = ? 
               	WHERE id_mostra = ?" :
-				"UPDATE Mostra SET 
+			"UPDATE Mostra SET 
 				nome = ?, 
 				descrizione = ?, 
 				data_inizio = ?, 

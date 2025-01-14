@@ -24,6 +24,7 @@ if (isset($_POST['submit'])) {
     $user = $users[0] ?? null;
     if (!$user) {
         $_SESSION["error"] = "user";
+        $_SESSION["username"] = $username;
         header("Location: login.php?redirect=$redirect");
         exit;
     } 

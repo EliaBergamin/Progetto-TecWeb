@@ -62,7 +62,6 @@ if (isset($_POST['submit'])) {
         $alterSuccess = $database->alterMostraAdmin($id_mostra, $nome, $descrizione, $data_inizio, $data_fine, $immagine);
         unset($database);
     } catch (Exception $e) {
-        echo $e->getMessage();
         unset($database);
         Templating::errCode(500);
     }
