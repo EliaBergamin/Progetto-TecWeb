@@ -62,7 +62,7 @@
             <form action="prenotazione_effettuata.php" method="post" id="form" class="formCompilazione">
                 <label for="giorno" class="required-label">Giorno</label>
                 <input type="date" name="giorno" id="giorno" value="{{giorno}}" required>
-                    <span id="err_giorno" class="errorSuggestion" data-ref-to="giorno"></span>
+                    <span id="err_giorno" class="errorSuggestion" aria-live="assertive" data-ref-to="giorno"></span>
                     <label for="orario" class="required-label">Fascia oraria</label>
                 <select name="orario" id="orario" required>
                     <option value="" disabled selected>Seleziona</option>
@@ -77,11 +77,11 @@
                         <option id="16_30" value="16:30:00" {{o6}}>16:30 - 18:00</option>
                     </optgroup>
                 </select>
-                <span id="err_orario" class="errorSuggestion" data-ref-to="orario"></span>
+                <span id="err_orario" class="errorSuggestion" aria-live="assertive" data-ref-to="orario"></span>
                 <label for="visitatori" class="required-label">Numero di visitatori</label>
                 <input type="number" name="visitatori" id="visitatori" min="1" max="15" required
                      value="{{visitatori}}">
-                <span id="err_visitatori" class="errorSuggestion" data-ref-to="visitatori"></span>
+                <span id="err_visitatori" class="errorSuggestion" aria-live="assertive" data-ref-to="visitatori"></span>
                 <p class="required-msg">Campi obbligatori</p>
                 <input type="submit" name="submit" value="Prenota">
             </form>

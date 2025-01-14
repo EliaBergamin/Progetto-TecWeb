@@ -60,7 +60,7 @@
             <form action="autenticate.php?redirect={{redirect}}" method="post" class="formCompilazione" id="form">
                 <label for="username"  class="required-label">Username </label>
                 <input type="text" name="username" id="username" value="{{username}}" minlength="4">
-                <span id="err_username" class="errorSuggestion" data-ref-to="username"></span>
+                <span id="err_username" class="errorSuggestion" aria-live="assertive" data-ref-to="username"></span>
                 <label for="password" class="required-label">Password </label>
                 <input type="password" name="password" id="password" required minlength="4">
                 <p class="required-msg">Campi obbligatori</p>

@@ -17,7 +17,6 @@ class DatabaseService
 	{
 		try {
 			$this->connection = new mysqli(self::HOST, self::USER, self::PASS, self::NAME);
-			//$this->connection->set_charset("utf8");
 		} catch (mysqli_sql_exception $e) {
 			throw new Exception(self::GLOBALERROR);
 		}

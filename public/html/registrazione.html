@@ -62,21 +62,21 @@
             <form action="../register.php" method="post" class="formCompilazione" id="form">
                 <label for="nome" class="required-label">Nome </label>
                 <input type="text" name="nome" id="nome" value="{{nome}}" required minlength="2" maxlength="50">
-                <span id="err_nome" class="errorSuggestion" data-ref-to="nome"></span>
+                <span id="err_nome" class="errorSuggestion" aria-live="assertive" data-ref-to="nome"></span>
                 <label for="cognome" class="required-label">Cognome </label>
                 <input type="text" name="cognome" id="cognome" value="{{cognome}}" required minlength="2"
                     maxlength="50">
-                <span id="err_cognome" class="errorSuggestion" data-ref-to="cognome"></span>
+                <span id="err_cognome" class="errorSuggestion" aria-live="assertive" data-ref-to="cognome"></span>
                 <label for="username" class="required-label">Username </label>
                 <input type="text" name="username" id="username" value="{{username}}" required minlength="4"
                     maxlength="20">
-                <span id="err_username" class="errorSuggestion" data-ref-to="username"></span>
+                <span id="err_username" class="errorSuggestion" aria-live="assertive" data-ref-to="username"></span>
                 <label for="email" class="required-label">Email </label>
                 <input type="email" name="email" id="email" value="{{email}}" required>
-                <span id="err_email" class="errorSuggestion" data-ref-to="email"></span>
+                <span id="err_email" class="errorSuggestion" aria-live="assertive" data-ref-to="email"></span>
                 <label for="password" class="required-label">Password </label>
                 <input type="password" name="password" id="password" required minlength="8" value="{{password}}">
-                <span id="err_password" class="errorSuggestion" data-ref-to="password"></span>
+                <span id="err_password" class="errorSuggestion" aria-live="assertive" data-ref-to="password"></span>
                 <p class="required-msg">Campi obbligatori</p>
                 <input type="submit" name="submit" value="Registrati">
             </form>
