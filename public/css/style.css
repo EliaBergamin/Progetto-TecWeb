@@ -8,13 +8,11 @@
   --headercolor: #205d86;
   --bgcolor: #fff;
   --txtcolor: #000;
-  --newscolor: #F3C42B;
   --contentbgcolor: #f2f4f7;
   --breadlinkcolor: #fff;
   --breadvisitedcolor: #fbff50;
   --linkcolor: #4b7c81;
   --visitedcolor: #000;
-  --submitcolor: #28d428;
   --submitcolor: var(--headerbgcolor);
 
   --disabledtxtcolor: #666;
@@ -23,18 +21,19 @@
   --errorcolor: red;
   --tablebgcolor: #f2f2f2;
   --shadowcolor: rgba(0, 0, 0, 0.15);
+  --footercolor: var(--headercolor);
+  --bttsrc: url(../images/back-to-top-icon.png);
 }
 
 :root.dark {
   --headerbgcolor: #205d86;
-  --headercolor: #95e98a;
-  --menuvisitedcolor: #fbff50;
-  --bgcolor: #000;
+  --headercolor: #fff;
+  --menuvisitedcolor: #fff;
+  --bgcolor: #202020;
   --txtcolor: #fff;
-  --newscolor: #F3C42B;
-  --contentbgcolor: #343434;
+  --contentbgcolor: #1E1E1E;
   --breadlinkcolor: #000;
-  --breadvisitedcolor: var(--headerbgcolor);
+  --breadvisitedcolor: #58007e;
   --linkcolor: #4b7c81;
   --visitedcolor: #fff;
   --submitcolor: var(--headerbgcolor);
@@ -45,6 +44,9 @@
   --errorcolor: red;
   --tablebgcolor: #232323;
   --shadowcolor: #fff;
+  --footercolor: var(--txtcolor);
+  --bttsrc: url(../images/dark_back-to-top-icon.png);
+
 }
 
 @font-face {
@@ -170,6 +172,58 @@ header h1 {
   display: none;
 }
 
+/*
+==============
+THEME TOGGLE
+==============
+*/
+
+.switch {
+  position: fixed;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  bottom: 0.5em;
+  right: 0.5em;
+  width: 7.5em;
+  height: 2em;
+  text-align: center;
+  margin: -30px 0 0 -75px;
+  background: var(--contentbgcolor);
+  transition: all 0.5s ease;
+  border-radius: 1.5em;
+  border: 1px solid var(--txtcolor);
+}
+
+input[type=radio] {
+  display: none;
+}
+.switch label {
+  cursor: pointer;
+  color: var(--disabledtxtcolor);
+  transition: all 0.5s ease;
+}
+label[for=light] {
+  position: absolute;
+  left: 0.3em;
+}
+label[for=dark] {
+  position: absolute;
+  right: 0.3em;
+}
+#dark:checked ~ .switch {
+  background: #202020;
+}
+
+#light:checked ~ .switch label[for=light] {
+  cursor: default;
+  color: #000;
+}
+#dark:checked ~ .switch label[for=dark] {
+  cursor: default;
+  color: #fff;
+}
+
 /* eventualmente, questo codice commentato può essere
 utile per fissare il menu in modo che non scrolli
 (soprattutto in ottica mobile)*/
@@ -287,6 +341,11 @@ main h1 {
   border-radius: 1em;
   height: 60vh;
   box-shadow: 2px 2px 20px var(--shadowcolor);
+}
+
+.dark .immaginiCarosello {
+  box-shadow: inset 0 0 10px var(--shadowcolor);
+  background: var(--bgcolor);
 }
 
 .immaginiCarosello img {
@@ -526,6 +585,10 @@ ol li .active {
   box-shadow: 5px 5px 20px var(--shadowcolor);
 }
 
+.dark .mainSection {
+  box-shadow: inset 0 0 10px var(--shadowcolor);
+}
+
 .mainSection h1 {
   text-align: center;
   font-size: 2rem;
@@ -547,7 +610,7 @@ ol li .active {
   height: 3rem;
   text-indent: -999rem;
   display: block;
-  background: url(../images/back-to-top-icon.png) no-repeat center;
+  background: var(--bttsrc) no-repeat center;
   background-size: contain;
   margin: 0.5rem auto;
 }
@@ -564,13 +627,13 @@ footer {
   align-items: center;
   flex-wrap: wrap;
   background-color: var(--headerbgcolor);
-  color: var(--headercolor);
+  color: var(--footercolor);
   font-size: 0.75rem;
   padding: 0 6%;
 }
 
 footer a {
-  color: var(--headercolor);
+  color: var(--footercolor);
 }
 
 footer dl {
@@ -795,7 +858,7 @@ footer h2 {
 }
 
 .formCompilazione select:focus {
-  outline: none;
+  outline: var(--txtcolor) solid 2px;
 }
 
 .formCompilazione input[type="submit"],
@@ -807,7 +870,7 @@ a.button {
   margin-bottom: 0;
   color: var(--txtcolor);
   display: block;
-  border-radius: 20px;
+  border-radius: 1.25em;
   border: none;
 }
 
@@ -821,6 +884,13 @@ a.button:hover {
   background-color: var(--txtcolor);
   color: var(--headerbgcolor);
   cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.dark .formCompilazione input[type="submit"]:hover,
+.dark a.button:hover {
+  background-color: var(--breadvisitedcolor);
+  color: var(--txtcolor);
 }
 
 .formCompilazione input[type="submit"]:disabled {
@@ -990,6 +1060,11 @@ a.button:hover {
   font-size: 0.7em;
 }
 
+svg {
+  fill: var(--txtcolor);
+  height: 1em;
+}
+
 /*/////////////////////////*/
 /* DETTAGLIO OPERA (CARTA) */
 /*/////////////////////////*/
@@ -1003,6 +1078,10 @@ main[class="opera"] {
   border: 1px solid var(--contentxtcolor);
   box-shadow: 0 4px 10px var(--shadowcolor);
   border-radius: 8px;
+}
+
+.dark main[class="opera"] {
+  box-shadow: inset 0 0 10px var(--shadowcolor);
 }
 
 .opera h1 {
@@ -1025,6 +1104,10 @@ main[class="opera"] {
   border-radius: 10px; 
   box-shadow: 0 4px 8px var(--shadowcolor);
   max-height: 500px;
+}
+
+.dark #carta-immagine img {
+  box-shadow: 0 0 5px var(--shadowcolor);
 }
 
 #carta-descrizione {
@@ -1073,12 +1156,16 @@ main[class="opera"] {
 #virtualTour-mappa ol {
   display: grid;
   grid-template-columns: 2fr 1fr 2fr;
-  gap: 4px;
+  gap: 0.25em;
   margin: 0 auto 2em;
   border: #ddd solid 8px;
-  background: #fff;
+  background: var(--bgcolor);
   width: 90%;
   aspect-ratio: 5/3;
+}
+
+.dark #virtualTour-mappa ol {
+  border: #505050 solid 8px;
 }
 
 #virtualTour-mappa li {
@@ -1102,7 +1189,7 @@ main[class="opera"] {
 }
 
 #dragon a {
-  background: url("../images/sala-dragon-ball.png") no-repeat center;
+  background: url("../images/sala-dragon-ball_1.png") no-repeat center;
 }
 
 #pokemon {
@@ -1111,7 +1198,7 @@ main[class="opera"] {
 }
 
 #pokemon a {
-  background: url("../images/sala-pokemon.jpg") no-repeat center;
+  background: url("../images/sala-pokemon.PNG") no-repeat center;
 }
 
 #gormiti {
@@ -1129,7 +1216,7 @@ main[class="opera"] {
 }
 
 #yugioh a {
-  background: url("../images/sala-yu-gi-oh.jpeg") no-repeat center;
+  background: url("../images/sala-yu-gi-oh.PNG") no-repeat center;
 }
 
 #virtualTour-mappa img {
@@ -1151,7 +1238,7 @@ main[class="opera"] {
 
 #virtualTour-elenco-sale dt {
   font-weight: bold;
-  margin-top: 20px;
+  margin-top: 1.25em;
   color: var(--txtcolor);
   text-align: center;
 }

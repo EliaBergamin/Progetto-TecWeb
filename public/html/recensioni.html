@@ -47,6 +47,14 @@
             <!-- greeting_end -->
         </ul>
     </nav>
+    <form id="theme-form">
+        <input type="radio" name="theme" id="light" checked>
+        <input type="radio" name="theme" id="dark">
+        <div class="switch">
+            <label for="light">Chiaro</label>
+            <label for="dark">Scuro</label>
+        </div>
+    </form>
 
     <nav id="breadcrumb">
         <p>
@@ -63,8 +71,11 @@
             <!-- recensionimuseo_start -->
             <li>
                 <p>{{nome_utente}}</p>
-                <label id="lbl-rev-1">Punteggio {{voto_recensione}} su 5</label>
-                {{svg_dynamic_generation}}
+                <label id="lbl-rev-{{id_rev}}">Punteggio {{voto_recensione}} su 5</label>
+                <svg id="rev-{{id_rev}}" viewBox="0 0 128 24" aria-labelledby="lbl-rev-{{id_rev}}">
+                    <title>Punteggio {{voto_recensione}} su 5</title>
+                    {{svg_dynamic_generation}}
+                </svg>
                 <time datetime="{{data_recensione}}">{{string_data_recensione}}</time>
                 <p>{{descrizione_recensione}}</p>
                 <a class="help nascosto" href="#">Torna su</a>
@@ -76,8 +87,11 @@
             <!-- recensionivirtualtour_start -->
             <li>
                 <p>{{nome_utente}}</p>
-                <label id="lbl-rev-2">Punteggio {{voto_recensione}} su 5</label>
-                {{svg_dynamic_generation}}
+                <label id="lbl-rev-{{id_rev}}">Punteggio {{voto_recensione}} su 5</label>
+                <svg id="rev-{{id_rev}}" viewBox="0 0 128 24" aria-labelledby="lbl-rev-{{id_rev}}">
+                    <title>Punteggio {{voto_recensione}} su 5</title>
+                    {{svg_dynamic_generation}}
+                </svg>
                 <time datetime="{{data_recensione}}">{{string_data_recensione}}</time>
                 <p>{{descrizione_recensione}}</p>
                 <a class="help nascosto" href="#">Torna su</a>

@@ -8,7 +8,7 @@ var currentSlideIdMostra = '';
 document.addEventListener("DOMContentLoaded", function () {
     hambToggle();
     validatorLoad();
-    //document.documentElement.className = 'dark';
+    document.getElementById("theme-form") && initTheme();
     document.getElementById("accordion") && initAccordion();
     document.getElementById("giorno") && initAJAX();
     document.getElementById("rating-fs") && initRecensisci();
@@ -23,6 +23,39 @@ function hambToggle() {
     for (var t = 0; t < e.length; t++) {
         e[t].setAttribute("data-hambOn", hamStatus.toString());
     }
+}
+
+function initTheme() {
+    const theme = (() => {
+        if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+            return localStorage.getItem('theme');
+        }
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            return 'dark';
+        }
+        return 'light';
+    })();
+
+    if (theme === 'light') {
+        document.documentElement.classList.remove('dark');
+        document.getElementById("light").setAttribute("checked",'');
+        document.getElementById("dark").removeAttribute("checked");
+    } else {
+        document.documentElement.classList.add('dark');
+        document.getElementById("dark").setAttribute("checked",'');
+        document.getElementById("light").removeAttribute("checked");
+    }
+
+    // Imposta la preferenza iniziale su localStorage
+    localStorage.setItem('theme', theme);
+
+    document.querySelectorAll("label[for=light], label[for=dark]").forEach((r) => {
+        r.addEventListener("click", function () {
+            document.documentElement.classList.toggle("dark");
+            const theme = document.documentElement.classList.contains("dark") ? "dark" : "light";
+            localStorage.setItem("theme", theme);            
+        });
+    });
 }
 
 let currentSlide = 1;

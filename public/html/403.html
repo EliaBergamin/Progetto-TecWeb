@@ -45,6 +45,14 @@
             <!-- greeting_end -->
         </ul>
     </nav>
+    <form id="theme-form">
+        <input type="radio" name="theme" id="light" checked>
+        <input type="radio" name="theme" id="dark">
+        <div class="switch">
+            <label for="light">Chiaro</label>
+            <label for="dark">Scuro</label>
+        </div>
+    </form>
     <nav id="breadcrumb">
         <p>Ti trovi in: <a href="index.php" lang="en">Home</a> &gt; Accesso negato</p>
     </nav>
@@ -53,7 +61,7 @@
         <p class="error-descr">
             Bastiodon sta bloccando l'accesso alla pagina che stavi cercando di raggiungere!
             Per superare la barriera, combatti contro di lui, oppure <a href="login.php?redirect=admin">
-            accedi come amministratore</a>. Se preferisci, scopri di più su 
+                accedi come amministratore</a>. Se preferisci, scopri di più su
             <a href="https://wiki.pokemoncentral.it/Bastiodon" target="_blank" lang="en">Bastiodon</a>
         </p>
         <img class="error-img" src="../images/bastiodon.png"
