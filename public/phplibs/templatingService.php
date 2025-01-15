@@ -36,7 +36,7 @@ class Templating
         exit;
     }
     /* Funzione per trovare {{ancora}} e sostituirla con valore dinamico */
-    public static function replaceAnchor(&$htmlSectionToModify, $anchorNameBetweenBrackets, $dynamicDataToInsert): void
+    public static function replaceAnchor(&$htmlSectionToModify, $anchorNameBetweenBrackets, $dynamicDataToInsert,$skipHTMLConverting = false): void
     {
         /* $anchorWithBrackets = "{{" . $anchorNameBetweenBrackets . "}}";
         $offsetOfAnchor = strpos($htmlSectionToModify,$anchorWithBrackets);
@@ -44,9 +44,36 @@ class Templating
             $lengthOfAnchor = strlen($anchorWithBrackets);
             $htmlSectionToModify = substr_replace($htmlSectionToModify,$dynamicDataToInsert,$offsetOfAnchor,$lengthOfAnchor);
         } */
+        !$skipHTMLConverting && self::convertRawDataToHTML($dynamicDataToInsert);
         $htmlSectionToModify = str_replace("{{" . $anchorNameBetweenBrackets . "}}", $dynamicDataToInsert, $htmlSectionToModify);
 
         //no need to return since the variable is passed by reference
+    }
+    // Converte la stringa in input {abbr}XXXXX;XXXXexplanation{/abbr} in <abbr title="XXXXexplanation">XXXXX</abbr>
+    private static function convertAbbrTag($inputString):string{
+        $from = ["/\{abbr\}([^;]*?){\/abbr\}/", "/\{abbr\}([^\{\};]*?);(.*?){\/abbr\}/s"];
+        $to = ['<abbr>${1}</abbr>', '<abbr title="${1}">${2}</abbr>'] ;
+        return preg_replace($from, $to, $inputString);
+    }
+    private static function convertLangTag($inputString):string{
+        $from = ["/\[([a-z]{2,3})\]/", "/\[\/([a-z]{2,3})\]/"];
+        $to = ['<span lang="${1}">', '</span>'];
+        return preg_replace($from, $to, $inputString);
+    }
+
+    private static function preventXSSAndFormat(&$inputString):void{
+        if(is_string($inputString)){
+            $inputString = htmlspecialchars($inputString,ENT_QUOTES | ENT_SUBSTITUTE| ENT_HTML5);
+            $inputString = self::convertAbbrTag($inputString);
+            $inputString = self::convertLangTag($inputString);
+        }
+    }
+
+    private static function convertRawDataToHTML(&$convertableInput) :void{
+        if (is_array($convertableInput))
+			array_walk_recursive($convertableInput, "self::preventXSSAndFormat");
+		elseif (is_string($convertableInput))
+			self::preventXSSAndFormat($convertableInput);
     }
 
 
