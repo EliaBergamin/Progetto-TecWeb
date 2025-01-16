@@ -730,6 +730,11 @@ footer h2 {
   margin: 1.5em 0;
 }
 
+.dark .infoMostra {
+  border: none;
+  box-shadow: inset 0 0 10px var(--shadowcolor);
+}
+
 .infoMostra>img {
   display: block;
   margin: auto;
@@ -1045,6 +1050,11 @@ a.button:hover {
   box-shadow: 0 4px 8px var(--shadowcolor);
 }
 
+.dark .recensioni>li {
+  border: none;
+  box-shadow: inset 0 0 5px var(--shadowcolor);
+}
+
 .recensioni>li>p {
   margin-bottom: 0.5em;
   margin-top: 0.5em;
@@ -1250,6 +1260,11 @@ main[class="opera"] {
   border-radius: 10px;
   text-align: center;
   box-shadow: 0 2px 5px var(--shadowcolor);
+}
+
+.dark #virtualTour-elenco-sale dd {
+  border: none;
+  box-shadow: inset 0 0 5px var(--shadowcolor);
 }
 
 #virtualTour-elenco-sale dd p {
