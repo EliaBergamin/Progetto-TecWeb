@@ -20,7 +20,8 @@ foreach ($arrayRecensioniMuseo as $associativeRow) {
     Templating::replaceAnchor(
         $temp,
         "svg_dynamic_generation",
-        Templating::generateSvgFromScore($associativeRow["voto"])
+        Templating::generateSvgFromScore($associativeRow["voto"]),
+        true,
     );
     Templating::replaceAnchor($temp, "data_recensione", $associativeRow["data_recensione"]);
     Templating::replaceAnchor(
@@ -48,7 +49,8 @@ foreach ($arrayRecensioniVirtualTour as $associativeRow) {
     Templating::replaceAnchor(
         $temp,
         "svg_dynamic_generation",
-        Templating::generateSvgFromScore($associativeRow["voto"])
+        Templating::generateSvgFromScore($associativeRow["voto"]),
+        true
     );
     Templating::replaceAnchor($temp, "data_recensione", $associativeRow["data_recensione"]);
     Templating::replaceAnchor(

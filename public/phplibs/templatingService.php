@@ -36,7 +36,7 @@ class Templating
         exit;
     }
     /* Funzione per trovare {{ancora}} e sostituirla con valore dinamico */
-    public static function replaceAnchor(&$htmlSectionToModify, $anchorNameBetweenBrackets, $dynamicDataToInsert): void
+    public static function replaceAnchor(&$htmlSectionToModify, $anchorNameBetweenBrackets, $dynamicDataToInsert,$skipHTMLConverting = false): void
     {
         /* $anchorWithBrackets = "{{" . $anchorNameBetweenBrackets . "}}";
         $offsetOfAnchor = strpos($htmlSectionToModify,$anchorWithBrackets);
@@ -44,9 +44,42 @@ class Templating
             $lengthOfAnchor = strlen($anchorWithBrackets);
             $htmlSectionToModify = substr_replace($htmlSectionToModify,$dynamicDataToInsert,$offsetOfAnchor,$lengthOfAnchor);
         } */
+        !$skipHTMLConverting && self::convertRawDataToHTML($dynamicDataToInsert);
         $htmlSectionToModify = str_replace("{{" . $anchorNameBetweenBrackets . "}}", $dynamicDataToInsert, $htmlSectionToModify);
 
         //no need to return since the variable is passed by reference
+    }
+    // Converte la stringa in input {abbr}XXXXX;XXXXexplanation{/abbr} in <abbr title="XXXXexplanation">XXXXX</abbr>
+    private static function convertAbbrTag($inputString):string{
+        $from = ["/\{abbr\}([^;]*?){\/abbr\}/", "/\{abbr\}([^\{\};]*?);(.*?){\/abbr\}/s"];
+        $to = ['<abbr>${1}</abbr>', '<abbr title="${1}">${2}</abbr>'] ;
+        return preg_replace($from, $to, $inputString);
+    }
+    private static function convertLangTag($inputString):string{
+        $from = ["/\{([a-z]{2,3})\}/", "/\{\/([a-z]{2,3})\}/"];
+        $to = ['<span lang="${1}">', '</span>'];
+        return preg_replace($from, $to, $inputString);
+    }
+    private static function convertLinkTag($inputString):string{
+        $from = ["/\{a\}([^;]*?){\/a\}/"];
+        $to = ['<a target="_blank" lang="en" href="https://wiki.pokemoncentral.it/${1}">${1}</a>'] ;
+        return preg_replace($from, $to, $inputString);
+    }
+
+    private static function preventXSSAndFormat(&$inputString):void{
+        if(is_string($inputString)){
+            $inputString = htmlspecialchars($inputString,ENT_QUOTES | ENT_SUBSTITUTE| ENT_HTML5);
+            $inputString = self::convertAbbrTag($inputString);
+            $inputString = self::convertLangTag($inputString);
+            $inputString = self::convertLinkTag($inputString);
+        }
+    }
+
+    private static function convertRawDataToHTML(&$convertableInput) :void{
+        if (is_array($convertableInput))
+			array_walk_recursive($convertableInput, "self::preventXSSAndFormat");
+		elseif (is_string($convertableInput))
+			self::preventXSSAndFormat($convertableInput);
     }
 
 
@@ -102,16 +135,25 @@ class Templating
     {
 
         // Crea un oggetto DateTime dalla stringa data nel formato 'yyyy-mm-dd'
-        $dateIstance = DateTime::createFromFormat('Y-m-d', $dataToConvert);
-        $formatter = new IntlDateFormatter(
-            'it_IT', // Locale (italiano)
-            IntlDateFormatter::LONG, // Formato per la data (LUNGO: 11 dicembre 2024)
-            IntlDateFormatter::NONE  // Nessun formato per l'ora
-        );
+        $date = DateTime::createFromFormat('Y-m-d', $dataToConvert);
+        
+        // Mesi in italiano (mappatura dei mesi da inglese a italiano)
+        $mesi = [
+            "January" => "Gennaio", "February" => "Febbraio", "March" => "Marzo", "April" => "Aprile",
+            "May" => "Maggio", "June" => "Giugno", "July" => "Luglio", "August" => "Agosto",
+            "September" => "Settembre", "October" => "Ottobre", "November" => "Novembre", "December" => "Dicembre"
+        ];
+        
         // Verifica se la data è valida
-        if ($dateIstance) {
+        if ($date) {
+            // Ottieni il nome del mese in inglese
+            $meseInglese = $date->format('F');
+            
+            // Converte il mese in italiano utilizzando l'array di mappatura
+            $meseItaliano = isset($mesi[$meseInglese]) ? $mesi[$meseInglese] : $meseInglese;
+            
             // Ritorna la data nel formato 'dd Mese Anno' con il mese in italiano
-            return $formatter->format($dateIstance);
+            return $date->format('d') . ' ' . $meseItaliano . ' ' . $date->format('Y');
         } else {
             return "Data non valida";
         }
