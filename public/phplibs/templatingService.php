@@ -135,16 +135,25 @@ class Templating
     {
 
         // Crea un oggetto DateTime dalla stringa data nel formato 'yyyy-mm-dd'
-        $dateIstance = DateTime::createFromFormat('Y-m-d', $dataToConvert);
-        $formatter = new IntlDateFormatter(
-            'it_IT', // Locale (italiano)
-            IntlDateFormatter::LONG, // Formato per la data (LUNGO: 11 dicembre 2024)
-            IntlDateFormatter::NONE  // Nessun formato per l'ora
-        );
+        $date = DateTime::createFromFormat('Y-m-d', $dataToConvert);
+        
+        // Mesi in italiano (mappatura dei mesi da inglese a italiano)
+        $mesi = [
+            "January" => "Gennaio", "February" => "Febbraio", "March" => "Marzo", "April" => "Aprile",
+            "May" => "Maggio", "June" => "Giugno", "July" => "Luglio", "August" => "Agosto",
+            "September" => "Settembre", "October" => "Ottobre", "November" => "Novembre", "December" => "Dicembre"
+        ];
+        
         // Verifica se la data è valida
-        if ($dateIstance) {
+        if ($date) {
+            // Ottieni il nome del mese in inglese
+            $meseInglese = $date->format('F');
+            
+            // Converte il mese in italiano utilizzando l'array di mappatura
+            $meseItaliano = isset($mesi[$meseInglese]) ? $mesi[$meseInglese] : $meseInglese;
+            
             // Ritorna la data nel formato 'dd Mese Anno' con il mese in italiano
-            return $formatter->format($dateIstance);
+            return $date->format('d') . ' ' . $meseItaliano . ' ' . $date->format('Y');
         } else {
             return "Data non valida";
         }
