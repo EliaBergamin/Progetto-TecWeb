@@ -111,7 +111,7 @@ INSERT INTO Opera (id_sala, nome, autore, descrizione, anno, img_path) VALUES
   Zeraora può creare campi magnetici dai cuscinetti sulle zampe con cui si sposta fino alla velocità del fulmine e levita. Si differenzia dalla maggior parte dei Pokémon di tipo Elettro poiché deve assorbire energia elettrica 
   da fonti esterne e non possiede un organo che la produca autonomamente. Il pelo gli si rizza su tutto il corpo quando utilizza grandi quantità di elettricità.
   È un Pokémon solitario e riservato, che vive lontano dagli umani. Nonostante la sua natura indipendente, è noto per proteggere i Pokémon più deboli, mostrando una sorprendente compassione. Zeraora è un Pokémon che unisce forza, velocità e mistero, ed è amato dai fan per il suo design accattivante e i suoi incredibili poteri.
-  Scopri di più su <a target='_blank' href='https://wiki.pokemoncentral.it/Zeraora'>Zeraora</a>.", 2018, "pokemon/zeraora.jpg"),
+  Scopri di più su {a}Zeraora{/a}", 2018, "pokemon/zeraora.jpg"),
   (1, "Goku Super Saiyan", "Akira Toriyama", "Goku Super Saiyan, creato da Akira Toriyama, rappresenta il momento più epico nella saga di Dragon Ball Z. Dal 1989, questa forma ha definito la leggenda di Goku, incarnando determinazione, forza e spirito combattivo che hanno ispirato generazioni di fan.", 1989, "dragonball/goku-super-saiyan.jpg"),
   (3, "Magmion", "Serghei Rotaru", "Magmion, concepito da Serghei Rotaru nel 2008, è una delle creature più potenti e memorabili dell'universo dei Gormiti. Rappresenta la forza della lava e il dominio del fuoco, con un design che combina potenza brutale e fascino mistico, perfetto per ogni collezionista.", 2008, "gormiti/armageddon.jpg");
 

@@ -60,12 +60,18 @@ class Templating
         $to = ['<span lang="${1}">', '</span>'];
         return preg_replace($from, $to, $inputString);
     }
+    private static function convertLinkTag($inputString):string{
+        $from = ["/\{a\}([^;]*?){\/a\}/"];
+        $to = ['<a target="_blank" lang="en" href="https://wiki.pokemoncentral.it/${1}">${1}</a>'] ;
+        return preg_replace($from, $to, $inputString);
+    }
 
     private static function preventXSSAndFormat(&$inputString):void{
         if(is_string($inputString)){
             $inputString = htmlspecialchars($inputString,ENT_QUOTES | ENT_SUBSTITUTE| ENT_HTML5);
             $inputString = self::convertAbbrTag($inputString);
             $inputString = self::convertLangTag($inputString);
+            $inputString = self::convertLinkTag($inputString);
         }
     }
 
