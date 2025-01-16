@@ -56,7 +56,7 @@ class Templating
         return preg_replace($from, $to, $inputString);
     }
     private static function convertLangTag($inputString):string{
-        $from = ["/\[([a-z]{2,3})\]/", "/\[\/([a-z]{2,3})\]/"];
+        $from = ["/\{([a-z]{2,3})\}/", "/\{\/([a-z]{2,3})\}/"];
         $to = ['<span lang="${1}">', '</span>'];
         return preg_replace($from, $to, $inputString);
     }
