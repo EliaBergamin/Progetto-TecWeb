@@ -171,7 +171,7 @@ function initDialog() {
 
     if (dialog.id === "dialog-pren") {
         confirm.addEventListener("click", () => {
-            fetch('../delete_prenotazione_user.php', {
+            fetch('delete_prenotazione_user.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
@@ -192,7 +192,7 @@ function initDialog() {
     }
     else {
         confirm.addEventListener("click", () => {
-            fetch('../delete_mostra_admin.php', {
+            fetch('delete_mostra_admin.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
@@ -436,7 +436,7 @@ function initAJAX() {
         const giornoSelezionato = this.value;
 
         if (!giornoSelezionato) return;
-        fetch('../phplibs/controlla_disponibilita.php', {
+        fetch('phplibs/controlla_disponibilita.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
