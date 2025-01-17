@@ -3,6 +3,13 @@
 require_once "phplibs/databaseService.php";
 require_once "phplibs/templatingService.php";
 
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.php?redirect=aggiungi_mostra.php");
+    exit;
+}
+if (!$_SESSION['is_admin']) 
+    Templating::errCode(403);
+
 $nome = '';
 $descrizione = '';
 $data_inizio = '';
@@ -80,5 +87,5 @@ if (isset($_POST['submit'])) {
     }
     exit;
 } else 
-    Templating::errCode(405);
+    Templating::errCode(400);
 ?>

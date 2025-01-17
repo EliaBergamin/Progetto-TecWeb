@@ -3,10 +3,10 @@ require_once "phplibs/databaseService.php";
 require_once "phplibs/templatingService.php";
 
 $numeroSalaRichiesta = isset($_GET['sala']) ? $_GET['sala'] : Templating::errCode(404);
-$operaIdRichiesta = isset($_GET['id_opera']) ? $_GET['id_opera'] : Templating::errCode(404);
+$operaIdRichiesta = isset($_GET['opera']) ? $_GET['opera'] : Templating::errCode(404);
 
 if (!isset($_SESSION['user_id']))
-    header("Location: login.php?redirect=dettaglio_opera.php?sala=$numeroSalaRichiesta");
+    header("Location: login.php?redirect=dettaglio_opera.php?sala=$numeroSalaRichiesta&opera=$operaIdRichiesta");
 
 try {
     $database = new DatabaseService();
@@ -24,18 +24,19 @@ $dettaglioOperaHtmlContent = Templating::getHtmlWithModifiedMenu(__FILE__);
 
 //title, description, keywords
 $customMeta = Templating::getContentBetweenPlaceholders($dettaglioOperaHtmlContent, "meta");
-$cleanName = preg_replace('/\{.+\}(.*?)\{\/.+\}/', '$1', $operaArrayDetailed[0]["nome"]); //remove html placeholder
-Templating::replaceAnchor($customMeta, "title", $cleanName);
-$cleanName = preg_replace('/\{.+\}(.*?)\{\/.+\}/', '$1', $operaArrayDetailed[0]["sala"]); //remove html placeholder
-$fullName = explode(' ', $cleanName);
-$shortName = "{$fullName[0]} {$fullName[1]}";
-Templating::replaceAnchor($customMeta, "sala_abbr", $shortName);
+$cleanOpera = preg_replace('/\{.+\}(.*?)\{\/.+\}/', '$1', $operaArrayDetailed[0]["nome"]); //remove html placeholder
+Templating::replaceAnchor($customMeta, "title", $cleanOpera);
+$cleanSala = preg_replace('/\{.+\}(.*?)\{\/.+\}/', '$1', $operaArrayDetailed[0]["sala"]); //remove html placeholder
+$fullSala = explode(' ', $cleanSala);
+$shortSala = "{$fullSala[0]} {$fullSala[1]}";
+Templating::replaceAnchor($customMeta, "sala_abbr", $shortSala);
 Templating::replaceContentBetweenPlaceholders($dettaglioOperaHtmlContent, "meta", $customMeta);
 
-/* BREADCRUMB SALA*/
+/* BREADCRUMB */
 $sectionBreadcrumbToModify = Templating::getContentBetweenPlaceholders($dettaglioOperaHtmlContent, "numerosalabread");
 Templating::replaceAnchor($sectionBreadcrumbToModify, "numero_sala", $numeroSalaRichiesta);
-Templating::replaceAnchor($sectionBreadcrumbToModify, "sala", $cleanName);
+Templating::replaceAnchor($sectionBreadcrumbToModify, "sala", $operaArrayDetailed[0]["sala"]);
+Templating::replaceAnchor($sectionBreadcrumbToModify, "opera", $operaArrayDetailed[0]["nome"]);
 Templating::replaceContentBetweenPlaceholders($dettaglioOperaHtmlContent, "numerosalabread", $sectionBreadcrumbToModify);
 
 //titoloh1

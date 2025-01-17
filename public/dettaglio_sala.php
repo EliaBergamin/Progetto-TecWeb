@@ -35,7 +35,7 @@ Templating::replaceContentBetweenPlaceholders($dettaglioSalaHtmlContent, "meta",
 /* BREADCRUMB SALA*/
 
 $sectionBreadcrumbToModify = Templating::getContentBetweenPlaceholders($dettaglioSalaHtmlContent, "salabread");
-Templating::replaceAnchor($sectionBreadcrumbToModify, "sala", $cleanName);
+Templating::replaceAnchor($sectionBreadcrumbToModify, "sala", $infoSalaRow[0]["nome"]);
 Templating::replaceContentBetweenPlaceholders($dettaglioSalaHtmlContent, "salabread", $sectionBreadcrumbToModify);
 
 /* INFO SALA*/

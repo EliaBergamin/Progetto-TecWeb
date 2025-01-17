@@ -102,5 +102,5 @@ if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
         header("Location: registrazione.php?redirect=$redirect");
     }
 } else 
-    Templating::errCode(405);
+    Templating::errCode(400);
 ?>

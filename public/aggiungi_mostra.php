@@ -1,13 +1,12 @@
 <?php
-require_once "phplibs/databaseService.php";
 require_once "phplibs/templatingService.php";
 
-
-
 if (!isset($_SESSION['user_id'])) {
-    header("Location: login.php?redirect=modifica_mostra.php");
+    header("Location: login.php?redirect=aggiungi_mostra.php");
     exit;
 }
+if (!$_SESSION['is_admin']) 
+    Templating::errCode(403);
 
 $aggiungiMostraContent = Templating::getHtmlWithModifiedMenu(__FILE__);
 

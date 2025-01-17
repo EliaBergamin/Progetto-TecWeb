@@ -1,5 +1,4 @@
 <?php
-
 require_once "phplibs/templatingService.php";
 
 session_unset();

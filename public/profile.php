@@ -3,27 +3,29 @@ require_once "phplibs/databaseService.php";
 require_once "phplibs/templatingService.php";
 
 if (!isset($_SESSION['user_id'])) {
-    header("Location: login.php?redirect=prenotazione.php");
+    header("Location: login.php");
     exit;
 }
 
-$database = new DatabaseService();
+try {
+    $database = new DatabaseService();
+    $arrayDatiUtente = $database->selectInfoUtenteFromId($_SESSION['user_id']);
+    $arrayPrenotazioniUtente = $database->selectPrenotazioniFromId($_SESSION['user_id']);
+    unset($database);
+} catch (Exception $e) {
+    unset($database);
+    Templating::errCode(500);
+}
+
 $profileAreaContentHtml = Templating::getHtmlWithModifiedMenu(__FILE__);
 
 $sectionDatiUtente = Templating::getContentBetweenPlaceholders($profileAreaContentHtml, "datiutente");
-
-$arrayDatiUtente = $database->selectInfoUtenteFromId($_SESSION['user_id']);
-
 Templating::replaceAnchor($sectionDatiUtente, "utente_nome", $arrayDatiUtente[0]["nome"]);
 Templating::replaceAnchor($sectionDatiUtente, "utente_cognome", $arrayDatiUtente[0]["cognome"]);
 Templating::replaceAnchor($sectionDatiUtente, "utente_username", $arrayDatiUtente[0]["username"]);
 Templating::replaceAnchor($sectionDatiUtente, "utente_email", $arrayDatiUtente[0]["email"]);
 
 Templating::replaceContentBetweenPlaceholders($profileAreaContentHtml, "datiutente", $sectionDatiUtente);
-
-
-
-$arrayPrenotazioniUtente = $database->selectPrenotazioniFromId($_SESSION['user_id']);
 
 $sectionTablePrenotazioni = Templating::getContentBetweenPlaceholders($profileAreaContentHtml, "rowprenotazione");
 

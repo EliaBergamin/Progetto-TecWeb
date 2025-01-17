@@ -999,7 +999,7 @@ main[class="opera"] {
   background-color: var(--bgcolor);
   margin: 2em auto;
   width: 70%;
-  padding: 1.75em;
+  padding: 1.5em;
   border: 1px solid var(--contentxtcolor);
   box-shadow: 0 4px 10px var(--shadowcolor);
   border-radius: 8px;
@@ -1048,18 +1048,14 @@ main[class="opera"] {
 }
 
 #carta-dettagli dt {
-  background-image: url('../images/pokeball.ico');
-  background-size: 1em;
-  background-repeat: no-repeat;
-  font-size: 1.1em;
-  padding-left: 2.5em;
+  background: url('../images/pokeball.ico') no-repeat center left;
+  background-size: 1.25em;
+  padding: 0 0.5em 0 2em;
+  float: left;
 }
 
 #carta-dettagli dd {
-  padding: 0.5em;
-  padding-left: 2.5em;
-  margin-left: 1.5em;
-  font-size: 1em;
+  margin: 0.2em 0;
 }
 
 #carta-dettagli dd:last-child {
@@ -1230,7 +1226,7 @@ main[class="opera"] {
 
 
 /*/////////////////////////*/
-/* AREA PERSONALE */
+/* Il mio profilo */
 /*/////////////////////////*/
 
 #dati-utente {
@@ -1327,6 +1323,18 @@ dialog button {
   grid-row: 2;
   grid-column: 1;
   margin: 5em 0;
+}
+
+.error-descr ul {
+  margin-left: 2em;
+}
+
+.error-descr li {
+  text-align: left;
+  margin: 0.5em 0;
+  background: url("../images/pokeball.ico") no-repeat top left;
+  background-size: 1.25em;
+  padding-left: 2em;
 }
 
 .error-img {

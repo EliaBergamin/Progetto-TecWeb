@@ -1,15 +1,20 @@
 <?php
-
 require_once "phplibs/databaseService.php";
 require_once "phplibs/templatingService.php";
-
-
 
 $mostreHtmlContent = Templating::getHtmlWithModifiedMenu(__FILE__);
 
 /* MOSTRE CORRENTI*/
-$database = new DatabaseService();
-$arrayMostreCorrenti = $database->selectMostreCorrenti();
+try {
+    $database = new DatabaseService();
+    $arrayMostreCorrenti = $database->selectMostreCorrenti();
+    $arrayMostreFuture = $database->selectMostreFuture();
+    $arrayMostrePassate = $database->selectMostrePassate();
+    unset($database);
+} catch (Exception $e) {
+    unset($database);
+    Templating::errCode(500);
+}
 $sectionCorrentiToModify = Templating::getContentBetweenPlaceholders($mostreHtmlContent, "mostrecorrenti");
 $fullcontent = "";
 foreach ($arrayMostreCorrenti as $associativeRow) {
@@ -39,8 +44,6 @@ Templating::replaceContentBetweenPlaceholders($mostreHtmlContent, "mostrecorrent
 
 
 /* MOSTRE FUTURE*/
-
-$arrayMostreFuture = $database->selectMostreFuture();
 $sectionFutureToModify = Templating::getContentBetweenPlaceholders($mostreHtmlContent, "mostrefuture");
 
 $fullcontent = "";
@@ -71,9 +74,7 @@ Templating::replaceContentBetweenPlaceholders($mostreHtmlContent, "mostrefuture"
 
 
 /* MOSTRE PASSATE*/
-$arrayMostrePassate = $database->selectMostrePassate();
 $sectionPassateToModify = Templating::getContentBetweenPlaceholders($mostreHtmlContent, "mostrepassate");
-
 $fullcontent = "";
 foreach ($arrayMostrePassate as $associativeRow) {
     $temp = $sectionPassateToModify;
