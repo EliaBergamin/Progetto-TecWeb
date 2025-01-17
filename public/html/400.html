@@ -2,10 +2,10 @@
 <html lang="it">
 
 <head>
-    <title>Il mio profilo | Leggende Animate</title>
-    <meta charset="UTF-8">
-    <meta name="description" content="Qui puoi trovare i tuoi dati e gestire le tue prenotazioni al museo Leggende Animate.">
-    <meta name="keywords" content="Leggende Animate,profilo,utente,prenotazioni,dati,museo">
+    <meta charset="utf-8">
+    <title>Richiesta non valida | Leggende Animate</title>
+    <meta name="description" content="Errore 400: Richiesta non valida.">
+    <meta name="keywords" content="Leggende Animate,museo,non valida,richiesta,errore,405">
     <link rel="stylesheet" href="css/style.css" media="screen">
     <link rel="stylesheet" href="css/middle.css" media="screen and (max-width: 1024px)">
     <link rel="stylesheet" href="css/mini.css" media="screen and (max-width: 768px)">
@@ -37,67 +37,33 @@
             <li><a href="admin.php">Admin</a></li>
             <!-- admin_end -->
             <!-- profile_start -->
-            <li id="currentLink">Il mio profilo</a></li>
+            <li><a href="profile.php">Il mio profilo</a></li>
             <li><a href="logout.php">Esci</a></li>
             <!-- profile_end -->
             <!-- greeting_start -->
             <li><span>Ciao {{username}}!</span></li>
             <!-- greeting_end -->
-
         </ul>
     </nav>
-
     <nav id="breadcrumb">
-        <p>
-            Ti trovi in: <a href="index.php" lang="en">Home</a> &gt; Il mio profilo
-        </p>
+        <p>Ti trovi in: <a href="index.php" lang="en">Home</a> &gt; Richiesta non valida</p>
     </nav>
-
-    <main id="primoContenuto">
-        <h1>Il mio profilo</h1>
-        <h2>I tuoi dati:</h2>
-        <!-- datiutente_start -->
-        <dl id="dati-utente">
-            <dt>Nome: </dt>
-            <dd>{{utente_nome}}</dd>
-            <dt>Cognome: </dt>
-            <dd>{{utente_cognome}}</dd>
-            <dt lang="en">Email: </dt>
-            <dd>{{utente_email}}</dd>
-            <dt lang="en">Username: </dt>
-            <dd>{{utente_username}}</dd>
-        </dl>
-        <!-- datiutente_end -->
-        <h2>Le tue prenotazioni:</h2>
-        <p id="tab-prenot-descr" class="nascosto">La tabella contiene le prenotazioni di un utente, ogni riga
-            rappresenta la singola prenotazione, ogni colonna rappresenta un attributo della prenotazione</p>
-        <table id="tab-prenot" title="Prenotazioni" aria-describedby="tab-prenot-descr">
-            <caption>Prenotazioni</caption>
-            <thead>
-                <tr>
-                    <th scope="col">Data</th>
-                    <th scope="col">Numero di persone</th>
-                    <th scope="col">Ora</th>
-                    <th scope="col">Cancella prenotazione</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- rowprenotazione_start -->
-                <tr>
-                    <td><time class="data_prenotazione"
-                            datetime="{{data_prenotazione}}">{{string_data_prenotazione}}</time></td>
-                    <td>{{num_persone}}</td>
-                    <td>{{orario_prenotazione}}</td>
-                    <td class="cancella canc-pren" id="elim-{{data_prenotazione}}"><a href="#dialog-pren"></a></td>
-                </tr>
-                <!-- rowprenotazione_end -->
-            </tbody>
-        </table>
-        <dialog id="dialog-pren">
-            <p>Confermi di voler cancellare la prenotazione?</p>
-            <button id="annul-dialog">Annulla</button>
-            <button id="conf-dialog">Conferma</button>
-        </dialog>
+    <main id="primoContenuto" class="error-page">
+        <h1 class="error-title">Oh no! La tua richiesta ha qualcosa che non va...</h1>
+        <div class="error-descr">
+            Pare che tu stia cercando di fare qualcosa nel modo sbagliato.
+            Il saggio Oranguru ti consiglia di:
+            <ul>
+                <li>Verificare l'URL</li>
+                <li>Tornare alla pagina precedente</li>
+                <li>Se hai inviato un modulo, ripetere la richiesta assicurandoti
+                    che tutti i parametri siano corretti</li>
+            </ul>
+            Se preferisci, scopri di più su
+            <a href="https://wiki.pokemoncentral.it/Oranguru" target="_blank" lang="en">Oranguru</a>
+        </div>
+        <img class="error-img" src="images/oranguru.webp"
+            alt="Oranguru ricorda un orango bianco con un mantello viola e lo sguardo stanco">
     </main>
     <a class="help" id="torna-su" href="#">Torna su</a>
     <footer>
@@ -128,23 +94,23 @@
             <tbody>
                 <tr>
                     <th scope="row">Lunedì</th>
-                    <td>09:00 - 12:00</td>
-                    <td>14:00 - 19:00</td>
+                    <td><time datetime="09:00">09:00</time> - <time datetime="12:00">12:00</time></td>
+                    <td><time datetime="14:00">14:00</time> - <time datetime="19:00">19:00</time></td>
                 </tr>
                 <tr>
                     <th scope="row">Martedì</th>
-                    <td>09:00 - 12:00</td>
-                    <td>14:00 - 19:00</td>
+                    <td><time datetime="09:00">09:00</time> - <time datetime="12:00">12:00</time></td>
+                    <td><time datetime="14:00">14:00</time> - <time datetime="19:00">19:00</time></td>
                 </tr>
                 <tr>
                     <th scope="row">Sabato</th>
-                    <td>08:00 - 13:00</td>
-                    <td>14:00 - 20:00</td>
+                    <td><time datetime="08:00">08:00</time> - <time datetime="13:00">13:00</time></td>
+                    <td><time datetime="14:00">14:00</time> - <time datetime="20:00">20:00</time></td>
                 </tr>
                 <tr>
                     <th scope="row">Domenica</th>
-                    <td>08:00 - 13:00</td>
-                    <td>14:00 - 22:00</td>
+                    <td><time datetime="08:00">08:00</time> - <time datetime="13:00">13:00</time></td>
+                    <td><time datetime="14:00">14:00</time> - <time datetime="22:00">22:00</time></td>
                 </tr>
             </tbody>
         </table>

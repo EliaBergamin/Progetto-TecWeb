@@ -8,9 +8,11 @@ else
     Templating::errCode(404);
 
 if (!isset($_SESSION['user_id'])) {
-    header("Location: login.php?redirect=modifica_mostra.php&id_mostra=" . $id_mostra);
+    header("Location: login.php?redirect=modifica_mostra.php&id_mostra=$id_mostra");
     exit;
 }
+if (!$_SESSION['is_admin']) 
+    Templating::errCode(403);
 
 $modificaMostraContent = Templating::getHtmlWithModifiedMenu(__FILE__);
 

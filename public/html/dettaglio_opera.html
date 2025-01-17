@@ -52,7 +52,7 @@
             Ti trovi in: <a href="index.php" lang="en">Home</a> &gt;
             <a href="virtual_tour.php" lang="en">Virtual tour</a> &gt;
             <!-- numerosalabread_start -->
-            <a href="dettaglio_sala.php?sala={{numero_sala}}">{{sala}}</a> &gt; Dettaglio opera
+            <a href="dettaglio_sala.php?sala={{numero_sala}}">{{sala}}</a> &gt; {{opera}}
             <!-- numerosalabread_end -->
         </p>
     </nav>
@@ -77,14 +77,14 @@
         </div>
  
         <div id="carta-dettagli">
-            <h2>Dettagli della carta</h2>
+            <h2>Dettagli dell'opera</h2>
             <!-- operadetails_start -->
             <dl>
                 <!-- <dt>Personaggio:</dt>
                 <dd>{{nome}}</dd> -->
-                <dt>Anno di Creazione:</dt>
+                <dt class="details">Anno di Creazione:</dt>
                 <dd> {{operayear}}</dd>
-                <dt>Artista:</dt>
+                <dt class="details">Autore:</dt>
                 <dd>{{operaauthor}}</dd>
             </dl>
             <!-- operadetails_end -->
