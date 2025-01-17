@@ -7,7 +7,7 @@
     <title>{{title}} | Leggende Animate</title>
     <meta name="description"
         content="Scopri tutte le opere che si trovano nella sala {{title}} del museo Leggende Animate!">
-    <meta name="keywords" content="Leggende Animate,{{title_abbr}},sala,opere,museo,virtual tour">
+    <meta name="keywords" content="Leggende Animate,{{sala_abbr}},sala,opere,museo,virtual tour">
     <!-- meta_end -->
     <link rel="stylesheet" href="css/style.css" media="screen">
     <link rel="stylesheet" href="css/middle.css" media="screen and (max-width: 1024px)">
@@ -52,9 +52,9 @@
     <nav id="breadcrumb">
         <p>
             Ti trovi in: <a href="index.php" lang="en">Home</a> &gt;
-            <!-- numerosalabread_start -->
-            <a href="virtual_tour.php" lang="en">Virtual Tour</a> &gt; Dettaglio sala {{numero_sala}}
-            <!-- numerosalabread_end -->
+            <!-- salabread_start -->
+            <a href="virtual_tour.php" lang="en">Virtual Tour</a> &gt; {{sala}}
+            <!-- salabread_end -->
         </p>
     </nav>
     <main id="primoContenuto">
@@ -145,62 +145,3 @@
 </body>
 
 </html>
-
-
-
-<!-- 
-    PER PRENDERE LE IMMAGINI IN AUTOMATICO E METTERLE IN COLONNA DI 3 MI ASPETTERO QUALCOSA DI QUESTO GENERE
-    INOLTRE DOVRO TENERE CONTO CHE PER I PICCOLI SCHERMI DOVRO DIMINUIRE LE COLONNE DI 1 IN BASE ALLA WIDTH
-
-<div class="gallery">
-    <?php
-    // Esempio di recupero delle immagini dal database
-    $sql = "SELECT immagine FROM opzioni";
-    $result = $conn->query($sql);
-
-    if ($result->num_rows > 0) {
-        while($row = $result->fetch_assoc()) {
-            echo '<div class="image-item">';
-            echo '<img src="images/' . htmlspecialchars($row['immagine']) . '" alt="Immagine">';
-            echo '</div>';
-        }
-    } else {
-        echo "Nessuna immagine disponibile.";
-    }
-    ?>
-</div>
-/* Impostazioni di base per la gallery */
-.gallery {
-    display: grid;                     /* Usa Grid Layout */
-    grid-template-columns: repeat(3, 1fr); /* Crea 3 colonne uguali */
-    gap: 16px;                          /* Distanza tra gli elementi */
-    margin: 20px;                       /* Distanza esterna */
-}
-
-/* Stile per le singole immagini */
-.image-item {
-    border: 1px solid #ddd;             /* Bordo per le immagini (facoltativo) */
-    padding: 8px;                       /* Distanza tra immagine e bordo */
-    background-color: #f8f8f8;          /* Colore di sfondo (facoltativo) */
-    text-align: center;                 /* Allineamento dell'immagine al centro */
-}
-
-/* Assicurati che le immagini siano responsive */
-.image-item img {
-    width: 100%;                        /* L'immagine occupa tutta la larghezza disponibile */
-    height: auto;                       /* Mantieni il rapporto di aspetto */
-    display: block;                     /* Elimina gli spazi sotto l'immagine */
-}
-/* Per schermi più piccoli, 2 colonne */
-@media (max-width: 768px) {
-    .gallery {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-/* Per dispositivi ancora più piccoli, 1 colonna */
-@media (max-width: 480px) {
-    .gallery {
-        grid-template-columns: 1fr;
-    }
-} -->
