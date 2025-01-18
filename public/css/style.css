@@ -531,12 +531,18 @@ ol li .active {
   font-size: 2rem;
   padding: 1rem;
   margin-bottom: 0;
+}
 
+.mainSection h2 {
+  font-size: 1.3rem;
+  padding: 1rem;
+  margin-bottom: 0;
 }
 
 .mainSection p {
-  margin: 1em;
-  padding: 1em;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  padding-bottom: 1em;
   font-size: 1.1rem;
 }
 
