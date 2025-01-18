@@ -44,6 +44,7 @@ foreach ($arrayOpere as $associativeRow) {
         $descrizione = substr($descrizione, 0, strrpos(substr($descrizione, 0, 150), ' ')) . "...";
     } //per ottenere i primi 150 caratteri della descrizione senza tagliare l'ultima parola
     Templating::replaceAnchor($temp, "descrizione_opera", $descrizione);
+    $temp = preg_replace("/\{[a-z]{2,3}\}/", "", $temp);
     Templating::replaceAnchor($temp, "autore_opera", $associativeRow["autore"]);
     Templating::replaceAnchor($temp, "anno_opera", $associativeRow["anno"]);
     Templating::replaceAnchor($temp, "numero_sala", $numeroSalaRichiesta);

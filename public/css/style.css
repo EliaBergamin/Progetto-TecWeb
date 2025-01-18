@@ -505,7 +505,7 @@ ol li .active {
 #listaOpere li p {
   align-self: flex-start;
   /* Allinea il titolo a sinistra */
-  margin-bottom: 0.1;
+  margin-bottom: 0.1em;
 }
 
 #listaOpere li a {
