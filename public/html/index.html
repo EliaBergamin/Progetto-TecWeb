@@ -54,19 +54,21 @@
             <!-- carosello_start -->
             <ol class="immaginiCarosello">
                 <li>
-                    <img src="pics/{{img0}}" alt="{{alt0}}" class="onCarosello">
-                    <a href="mostre.php#{{id0}}" class="more onCarosello">SCOPRI DI PIÙ</a>
+                    <img id="{{id0}}" src="pics/{{img0}}" alt="{{alt0}}" class="onCarosello">
+                    <!-- <a href="mostre.php#{{id0}}" class="more onCarosello">SCOPRI DI PIÙ</a> -->
                 </li>
                 <li>
-                    <img src="pics/{{img1}}" alt="{{alt1}}">
-                    <a href="mostre.php#{{id1}}" class="more">SCOPRI DI PIÙ</a>
+                    <img id="{{id1}}" src="pics/{{img1}}" alt="{{alt1}}">
+                    <!-- <a href="mostre.php#{{id1}}" class="more">SCOPRI DI PIÙ</a> -->
                 </li>
                 <li>
-                    <img src="pics/{{img2}}" alt="{{alt2}}">
-                    <a href="mostre.php#{{id2}}" class="more">SCOPRI DI PIÙ</a>
+                    <img id="{{id2}}" src="pics/{{img2}}" alt="{{alt2}}">
+                    <!-- <a href="mostre.php#{{id2}}" class="more">SCOPRI DI PIÙ</a> -->
                 </li>
+                <li><a id="scopridipiu" href="mostre.php#{{id0}}" class="more onCarosello">SCOPRI DI PIÙ</a></li>
             </ol>
             <!-- carosello_end -->
+            
             <button id="caroselloIndietro" type="button" aria-label="Immagine precedente"
                 onclick="prossimaSlide(-1)">&#10094;</button>
             <button id="caroselloAvanti" type="button" aria-label="Immagine successiva"

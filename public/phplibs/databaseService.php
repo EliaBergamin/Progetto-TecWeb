@@ -119,12 +119,18 @@ class DatabaseService
 		$queryParams = [$nome, $descrizione, $data_inizio, $data_fine, $img_path];
 		return $this->insertValuesPreparedQuery($queryInsertMostra, [$queryParams], "sssss");
 	}
-	public function selectMostrePassate(): array
+	public function selectMostrePassate($extended = true): array
 	{
-		$queryMostrePassate = "SELECT * 
-							   FROM Mostra
-							   WHERE Mostra.data_fine < CURDATE()
-							   ORDER BY Mostra.data_fine DESC";
+		$queryMostrePassate = $extended ?
+							"SELECT * 
+							FROM Mostra
+							WHERE Mostra.data_fine < CURDATE()
+							ORDER BY Mostra.data_fine DESC" : 
+							"SELECT * 
+							FROM Mostra
+							WHERE Mostra.data_fine < CURDATE()
+							ORDER BY Mostra.data_fine DESC
+							LIMIT 3";
 		return $this->selectValuesPreparedQuery($queryMostrePassate, []);
 	}
 
