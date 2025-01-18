@@ -1,0 +1,39 @@
+.puntiniCarosello li button {
+    height: 1em;
+    width: 1em;
+
+}
+.immaginiCarosello img {
+    height: 200px;
+}
+
+.immaginiCarosello .more {
+    bottom: 18%; 
+    font-size: 1.2vw;
+    padding: 0.4em;
+}
+.immaginiCarosello li {
+    justify-content: center;
+    align-items: center ;
+}
+
+#caroselloIndietro, #caroselloAvanti {
+    font-size: 0.7em;
+    height: 2.4em;
+    width: 2.4em;
+    border-radius: 0px;
+}
+
+#caroselloAvanti {
+    border-radius: 0.1em 0.4em 0.4em 0.1em;
+}
+#caroselloIndietro {
+    border-radius: 0.4em 0.1em 0.1em 0.4em;
+}
+
+@media (max-width: 500px) {
+    .immaginiCarosello img {
+        height: 150px;
+    }
+
+}

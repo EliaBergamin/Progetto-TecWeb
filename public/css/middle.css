@@ -85,6 +85,10 @@ header {
     margin-left: 0;
 }
  */
+
+.immaginiCarosello img {
+    height: 400px;
+}
 footer {
     padding: 0.5em 2%;
 }
@@ -101,6 +105,7 @@ footer dl {
 #orari-museo {
     margin: 0.4em 0;
 }
+/*INDEX*/
 
 /*////////////////*/
 /* TABELLA MOSTRE */
