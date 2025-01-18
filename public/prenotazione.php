@@ -37,7 +37,7 @@ Templating::replaceContentBetweenPlaceholders($prenotazioneContent, "errormsgs",
 
 $giorno = $_SESSION['giorno'] ?? '';
 $orario = $_SESSION['orario'] ?? '';
-$visitatori = $_SESSION['visitatori'] ?? '';
+$visitatori = floatval($_SESSION['visitatori'] ?? '');
 $formValuesToModify = Templating::getContentBetweenPlaceholders($prenotazioneContent, "form");
 Templating::replaceAnchor($formValuesToModify, "giorno", $giorno);
 Templating::replaceAnchor($formValuesToModify, "o1", $orario == '09:00:00' ? 'selected' : '');
