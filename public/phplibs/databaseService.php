@@ -275,7 +275,7 @@ class DatabaseService
 	private function pulisciInput(&$in): void
 	{
 		if (is_array($in))
-			array_walk_recursive($in, "self::pulisciInputHelper");
+			array_walk_recursive($in, "DatabaseService::pulisciInputHelper");
 		elseif (is_string($in))
 			$this->pulisciInputHelper($in);
 	}

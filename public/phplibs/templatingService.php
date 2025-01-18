@@ -56,18 +56,18 @@ class Templating
         return preg_replace($from, $to, $inputString);
     }
     private static function convertLangTag($inputString):string{
-        $from = ["/\{([a-z]{2,3})\}/", "/\{\/([a-z]{2,3})\}/"];
+        $from = ["/\{([a-z]{2})\}/", "/\{\/([a-z]{2})\}/"];
         $to = ['<span lang="${1}">', '</span>'];
         return preg_replace($from, $to, $inputString);
     }
     private static function convertLinkTag($inputString):string{
-        $from = ["/\{a\}([^;]*?){\/a\}/"];
-        $to = ['<a target="_blank" lang="en" href="https://wiki.pokemoncentral.it/${1}">${1}</a>'] ;
+        $from = ["/\{a([a-z]{2})\}([^;]*?){\/a([^;]*?)\}/"];
+        $to = ['<a target="_blank" lang="${1}" href="${3}">${2}</a>'] ;
         return preg_replace($from, $to, $inputString);
     }
 
     private static function preventXSSAndFormat(&$inputString):void{
-        if(is_string($inputString)){
+        if(is_string($inputString)){            
             $inputString = htmlspecialchars($inputString,ENT_QUOTES | ENT_SUBSTITUTE| ENT_HTML5);
             $inputString = self::convertAbbrTag($inputString);
             $inputString = self::convertLangTag($inputString);
@@ -77,7 +77,7 @@ class Templating
 
     private static function convertRawDataToHTML(&$convertableInput) :void{
         if (is_array($convertableInput))
-			array_walk_recursive($convertableInput, "self::preventXSSAndFormat");
+			array_walk_recursive($convertableInput, "Templating::preventXSSAndFormat");
 		elseif (is_string($convertableInput))
 			self::preventXSSAndFormat($convertableInput);
     }
