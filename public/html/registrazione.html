@@ -22,7 +22,7 @@
         <button id="hamb" class="hamToggle" data-hambOn="true" type="button">Menù</button>
     </header>
 
-    <nav id="menu" class="hamToggle" data-hambOn="true">
+    <nav id="menu" class="hamToggle" data-hambOn="true" aria-label="menù principale">
         <ul>
             <li><a href="index.php" lang="en">Home</a></li>
             <li><a href="mostre.php">Le mostre</a></li>
@@ -30,7 +30,7 @@
             <li><a href="prenotazione.php">Prenota</a></li>
             <li><a href="recensioni.php">Recensioni</a></li>
             <!-- log_start -->
-            <li id="currentLink">Registrati</li>
+            <li aria-current="page" id="currentLink">Registrati</li>
             <li><a href="login.php">Accedi</a></li>
             <!-- log_end -->
             <!-- admin_start -->
@@ -46,10 +46,11 @@
         </ul>
     </nav>
 
-    <nav id="breadcrumb">
-        <p>
-            Ti trovi in: <a href="index.php" lang="en">Home</a> &gt; Registrazione
-        </p>
+    <nav id="breadcrumb" aria-label="breadcrumb">
+        <ol>
+            <li><a href="index.php" lang="en">Home</a></li>
+            <li aria-current="page">Registrazione</li>
+        </ol>
     </nav>
 
     <main id="primoContenuto" class="compilazione">

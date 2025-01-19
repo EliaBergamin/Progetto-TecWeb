@@ -2,7 +2,7 @@
 <html lang="it">
 
 <head>
-    <meta charset="UTF-8">  
+    <meta charset="UTF-8">
     <!-- meta_start -->
     <title>{{title}} | Leggende Animate</title>
     <meta name="description" content="Scopri in dettaglio {{title}}, un'opera esclusiva del museo Leggende Animate!">
@@ -24,7 +24,7 @@
         <button id="hamb" class="hamToggle" data-hambOn="true" type="button">Menù</button>
     </header>
 
-    <nav id="menu" class="hamToggle" data-hambOn="true">
+    <nav id="menu" class="hamToggle" data-hambOn="true" aria-label="menù principale">
         <ul>
             <li><a href="index.php" lang="en">Home</a></li>
             <li><a href="mostre.php">Le mostre</a></li>
@@ -47,14 +47,15 @@
             <!-- greeting_end -->
         </ul>
     </nav>
-    <nav id="breadcrumb">
-        <p>
-            Ti trovi in: <a href="index.php" lang="en">Home</a> &gt;
-            <a href="virtual_tour.php" lang="en">Virtual tour</a> &gt;
+    <nav id="breadcrumb" aria-label="breadcrumb">
+        <ol>
             <!-- numerosalabread_start -->
-            <a href="dettaglio_sala.php?sala={{numero_sala}}">{{sala}}</a> &gt; {{opera}}
+            <li><a href="index.php" lang="en">Home</a></li>
+            <li><a href="virtual_tour.php" lang="en">Virtual tour</a></li>
+            <li><a href="dettaglio_sala.php?sala={{numero_sala}}">{{sala}}</a></li>
+            <li aria-current="page">{{opera}}</li>
             <!-- numerosalabread_end -->
-        </p>
+        </ol>
     </nav>
     <main id="primoContenuto" class="opera">
         <!-- operah1_start -->
@@ -75,7 +76,7 @@
             </p>
             <!-- operadescription_end -->
         </div>
- 
+
         <div id="carta-dettagli">
             <h2>Dettagli dell'opera</h2>
             <!-- operadetails_start -->

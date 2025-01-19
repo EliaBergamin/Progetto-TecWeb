@@ -4,7 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <title>Scrivi una recensione | Leggende Animate</title>
-  <meta name="description" content="Scrivi una recensione sulla tua visita al museo o sul virtual tour e condividi la tua esperienza.">
+  <meta name="description"
+    content="Scrivi una recensione sulla tua visita al museo o sul virtual tour e condividi la tua esperienza.">
   <meta name="keywords" content="Leggende Animate,recensione,museo,virtual tour,visita,mostre">
   <link rel="stylesheet" href="css/style.css" media="screen">
   <link rel="stylesheet" href="css/middle.css" media="screen and (max-width: 1024px)">
@@ -22,7 +23,7 @@
     <button id="hamb" class="hamToggle" data-hambOn="true" type="button">Menù</button>
   </header>
 
-  <nav id="menu" class="hamToggle" data-hambOn="true">
+  <nav id="menu" class="hamToggle" data-hambOn="true" aria-label="menù principale">
     <ul>
       <li><a href="index.php" lang="en">Home</a></li>
       <li><a href="mostre.php">Le mostre</a></li>
@@ -47,11 +48,12 @@
     </ul>
   </nav>
 
-  <nav id="breadcrumb">
-    <p>
-      Ti trovi in: <a lang="en" href="index.php">Home</a> &gt;
-      <a href="recensioni.php">Recensioni</a> &gt; Scrivi una recensione
-    </p>
+  <nav id="breadcrumb" aria-label="breadcrumb">
+    <ol>
+      <li><a href="index.php" lang="en">Home</a></li>
+      <li><a href="recensioni.php">Recensioni</a></li>
+      <li aria-current="page">Scrivi una recensione</li>
+    </ol>
   </nav>
 
   <main id="primoContenuto" class="compilazione recensisci">
