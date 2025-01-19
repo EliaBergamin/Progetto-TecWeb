@@ -22,11 +22,11 @@
         <button id="hamb" class="hamToggle" data-hambOn="true" type="button">Menù</button>
     </header>
 
-    <nav id="menu" class="hamToggle" data-hambOn="true" aria-label="menù di navigazione principale">
+    <nav id="menu" class="hamToggle" data-hambOn="true" aria-label="menù principale">
         <ul>
             <li><a href="index.php" lang="en">Home</a></li>
             <li><a href="mostre.php">Le mostre</a></li>
-            <li id="currentLink" lang="en">Virtual Tour</li>
+            <li aria-current="page" id="currentLink" lang="en">Virtual Tour</li>
             <li><a href="prenotazione.php">Prenota</a></li>
             <li><a href="recensioni.php">Recensioni</a></li>
             <!-- log_start -->
@@ -47,18 +47,16 @@
     </nav>
 
     <nav id="breadcrumb" aria-label="breadcrumb">
-        <p>
-            Ti trovi in: <a href="index.php" lang="en">Home</a> &gt;
-            <span lang="en">Virtual Tour</span>
-        </p>
+        <ol>
+            <li><a href="index.php" lang="en">Home</a></li>
+            <li lang="en" aria-current="page">Virtual tour</li>
+        </ol>
     </nav>
 
     <main id="primoContenuto">
         <h1>Mappa delle Sale</h1>
 
-        <!-- Mappa delle immagini -->
-
-        <nav id="virtualTour-mappa">
+        <nav id="virtualTour-mappa" aria-label="mappa delle sale">
             <ol>
                 <!-- salaimmagini_start-->
                 <li id="dragon"><a href="#sala1">Sala 1: <span lang="en">Dragon Ball</span></a></li>
@@ -70,7 +68,6 @@
 
         </nav>
 
-        <!-- Elenco delle sale -->
         <section id="virtualTour-elenco-sale">
             <h2>Elenco delle Sale</h2>
             <dl>

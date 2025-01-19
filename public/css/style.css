@@ -240,12 +240,19 @@ utile per fissare il menu in modo che non scrolli
   padding: 0.2rem;
 }
 
-#breadcrumb p {
+#breadcrumb ol {
+  display: flex;
+  margin-left: 0.5em;
   padding: 0.18rem;
 }
 
 #breadcrumb a {
   color: var(--breadlinkcolor);
+}
+
+#breadcrumb li+li::before {
+  content: '>';
+  margin: 0 0.5em;
 }
 
 #breadcrumb a:visited {
@@ -985,17 +992,26 @@ a.button:hover {
   box-shadow: 0 4px 8px var(--shadowcolor);
 }
 
-.recensioni>li>p {
-  margin-bottom: 0.5em;
-  margin-top: 0.5em;
+.recensioni>li dt {
+  display: none;
 }
 
-.recensioni>li>label {
+.recensioni>li dt.lbl-punteggio,
+.recensioni>li dt.lbl-punteggio+dd {
+  display: inline;
+  font-weight: bold;
+}
+
+.recensioni>li dd {
+  margin: 0.3em 0;
+}
+
+.recensioni>li label {
   font-weight: bold;
   margin-right: 0.5em;
 }
 
-.recensioni>li>time {
+.recensioni>li time {
   display: block;
   font-size: 0.7em;
 }

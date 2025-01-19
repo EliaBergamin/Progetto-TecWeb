@@ -22,10 +22,9 @@
         <button id="hamb" class="hamToggle" data-hambOn="true" type="button">Menù</button>
     </header>
 
-    <nav id="menu" class="hamToggle" data-hambOn="true" aria-label="menù di navigazione principale">
+    <nav id="menu" class="hamToggle" data-hambOn="true" aria-label="menù principale">
         <ul>
-            <li id="currentLink" lang="en">Home</li>
-
+            <li aria-current="page" id="currentLink" lang="en">Home</li>
             <li><a href="mostre.php">Le mostre</a></li>
             <li><a href="virtual_tour.php" lang="en">Virtual Tour</a></li>
             <li><a href="prenotazione.php">Prenota</a></li>
@@ -47,7 +46,9 @@
         </ul>
     </nav>
     <nav id="breadcrumb" aria-label="breadcrumb">
-        <p>Ti trovi in: <span lang="en">Home</span></p>
+        <ol>
+            <li aria-current="page" lang="en">Home</li>
+        </ol>
     </nav>
     <main id="primoContenuto">
         <div id="carosello">
