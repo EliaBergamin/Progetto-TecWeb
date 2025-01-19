@@ -4,8 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Modifica mostra | Leggende Animate</title>
-  <meta name="description"
-    content="Modifica una mostra già presente all'interno del sito del museo Leggende Animate.">
+  <meta name="description" content="Modifica una mostra già presente all'interno del sito del museo Leggende Animate.">
   <meta name="keywords" content="Leggende Animate,mostra,modifica,museo,admin">
   <link rel="stylesheet" href="css/style.css" media="screen">
   <link rel="stylesheet" href="css/middle.css" media="screen and (max-width: 1024px)">
@@ -23,7 +22,7 @@
     <button id="hamb" class="hamToggle" data-hambOn="true" type="button">Menù</button>
   </header>
 
-  <nav id="menu" class="hamToggle" data-hambOn="true">
+  <nav id="menu" class="hamToggle" data-hambOn="true" aria-label="menù principale">
     <ul>
       <li><a href="index.php" lang="en">Home</a></li>
       <li><a href="mostre.php">Le mostre</a></li>
@@ -47,11 +46,12 @@
     </ul>
   </nav>
 
-  <nav id="breadcrumb">
-    <p>
-      Ti trovi in: <a lang="en" href="index.php">Home</a> &gt;
-      <a href="admin.php">Area admin</a> &gt; Modifica mostra
-    </p>
+  <nav id="breadcrumb" aria-label="breadcrumb">
+    <ol>
+      <li><a href="index.php" lang="en">Home</a></li>
+      <li><a href="admin.php" lang="en">Area admin</a></li>
+      <li aria-current="page">Modifica mostra</li>
+    </ol>
   </nav>
 
   <main id="primoContenuto" class="compilazione">

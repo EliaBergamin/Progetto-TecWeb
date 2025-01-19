@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Recensioni | Leggende Animate</title>
-    <meta name="description" content="Leggi le recensioni degli utenti che hanno visitato il museo o hanno fatto il virtual tour e scopri cosa ne pensano.">
+    <meta name="description"
+        content="Leggi le recensioni degli utenti che hanno visitato il museo o hanno fatto il virtual tour e scopri cosa ne pensano.">
     <meta name="keywords" content="Leggende Animate,recensioni,museo,virtual tour,visita,mostre,cartoni">
     <link rel="stylesheet" href="css/style.css" media="screen">
     <link rel="stylesheet" href="css/middle.css" media="screen and (max-width: 1024px)">
@@ -22,13 +23,13 @@
         <button id="hamb" class="hamToggle" data-hambOn="true" type="button">Menù</button>
     </header>
 
-    <nav id="menu" class="hamToggle" data-hambOn="true">
+    <nav id="menu" class="hamToggle" data-hambOn="true" aria-label="menù principale">
         <ul>
             <li><a href="index.php" lang="en">Home</a></li>
             <li><a href="mostre.php">Le mostre</a></li>
             <li><a href="virtual_tour.php" lang="en">Virtual Tour</a></li>
             <li><a href="prenotazione.php">Prenota</a></li>
-            <li id="currentLink">Recensioni</li>
+            <li aria-current="page" id="currentLink">Recensioni</li>
             <!-- log_start -->
             <li><a href="registrazione.php">Registrati</a></li>
             <li><a href="login.php">Accedi</a></li>
@@ -46,10 +47,11 @@
         </ul>
     </nav>
 
-    <nav id="breadcrumb">
-        <p>
-            Ti trovi in: <a lang="en" href="index.php">Home</a> &gt; Recensioni
-        </p>
+    <nav id="breadcrumb" aria-label="breadcrumb">
+        <ol>
+            <li><a href="index.php" lang="en">Home</a></li>
+            <li aria-current="page">Recensioni</li>
+        </ol>
     </nav>
 
     <main id="primoContenuto">
@@ -60,11 +62,21 @@
         <ul class="recensioni">
             <!-- recensionimuseo_start -->
             <li>
-                <p>{{nome_utente}}</p>
-                <label id="lbl-rev-1">Punteggio {{voto_recensione}} su 5</label>
-                {{svg_dynamic_generation}}
-                <time datetime="{{data_recensione}}">{{string_data_recensione}}</time>
-                <p>{{descrizione_recensione}}</p>
+                <dl class="recensione">
+                    <dt>Nome utente</dt>
+                    <dd>{{nome_utente}}</dd>
+                    <dt class="lbl-punteggio">Punteggio</dt>
+                    <dd>
+                        <label id="lbl-rev-1">{{voto_recensione}} su 5</label>
+                        {{svg_dynamic_generation}}
+                    </dd>
+                    <dt>Data recensione</dt>
+                    <dd>
+                        <time datetime="{{data_recensione}}">{{string_data_recensione}}</time>
+                    </dd>
+                    <dt>Descrizione</dt>
+                    <dd>{{descrizione_recensione}}</dd>
+                </dl>
             </li>
             <!-- recensionimuseo_end -->
         </ul>
@@ -72,11 +84,21 @@
         <ul class="recensioni">
             <!-- recensionivirtualtour_start -->
             <li>
-                <p>{{nome_utente}}</p>
-                <label id="lbl-rev-2">Punteggio {{voto_recensione}} su 5</label>
-                {{svg_dynamic_generation}}
-                <time datetime="{{data_recensione}}">{{string_data_recensione}}</time>
-                <p>{{descrizione_recensione}}</p>
+                <dl class="recensione">
+                    <dt>Nome utente</dt>
+                    <dd>{{nome_utente}}</dd>
+                    <dt class="lbl-punteggio">Punteggio</dt>
+                    <dd>
+                        <label id="lbl-rev-1">{{voto_recensione}} su 5</label>
+                        {{svg_dynamic_generation}}
+                    </dd>
+                    <dt>Data recensione</dt>
+                    <dd>
+                        <time datetime="{{data_recensione}}">{{string_data_recensione}}</time>
+                    </dd>
+                    <dt>Descrizione</dt>
+                    <dd>{{descrizione_recensione}}</dd>
+                </dl>
             </li>
             <!-- recensionivirtualtour_end -->
         </ul>

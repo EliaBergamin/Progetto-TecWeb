@@ -22,7 +22,7 @@
         <button id="hamb" class="hamToggle" data-hambOn="true" type="button">Menù</button>
     </header>
 
-    <nav id="menu" class="hamToggle" data-hambOn="true">
+    <nav id="menu" class="hamToggle" data-hambOn="true" aria-label="menù principale">
         <ul>
             <li><a href="index.php" lang="en">Home</a></li>
             <li><a href="mostre.php">Le mostre</a></li>
@@ -37,7 +37,7 @@
             <li><a href="admin.php">Admin</a></li>
             <!-- admin_end -->
             <!-- profile_start -->
-            <li id="currentLink">Il mio profilo</li>
+            <li aria-current="page" id="currentLink">Il mio profilo</li>
             <li><a href="logout.php">Esci</a></li>
             <!-- profile_end -->
             <!-- greeting_start -->
@@ -47,10 +47,11 @@
         </ul>
     </nav>
 
-    <nav id="breadcrumb">
-        <p>
-            Ti trovi in: <a href="index.php" lang="en">Home</a> &gt; Il mio profilo
-        </p>
+    <nav id="breadcrumb" aria-label="breadcrumb">
+        <ol>
+            <li><a href="index.php" lang="en">Home</a></li>
+            <li aria-current="page">Il mio profilo</li>
+        </ol>
     </nav>
 
     <main id="primoContenuto">
@@ -93,8 +94,8 @@
                 <!-- rowprenotazione_end -->
             </tbody>
         </table>
-        <dialog id="dialog-pren">
-            <p>Confermi di voler cancellare la prenotazione?</p>
+        <dialog id="dialog-pren" aria-describedby="dialog-txt">
+            <p id="dialog-txt">Confermi di voler cancellare la prenotazione?</p>
             <button id="annul-dialog">Annulla</button>
             <button id="conf-dialog">Conferma</button>
         </dialog>
