@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="css/print.css" media="print">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="images/pokeball.ico" type="image/x-icon">
-    <script src="js/script.js"></script>
+    <script src="js/script.js" defer></script>
 </head>
 
 <body>
@@ -61,11 +61,11 @@
             <!-- form_start -->
             <form action="prenotazione_effettuata.php" method="post" id="form" class="formCompilazione">
                 <label for="giorno" class="required-label">Giorno</label>
-                <input type="date" name="giorno" id="giorno" value="{{giorno}}" required>
+                <input type="date" name="giorno" id="giorno" value="{{giorno}}" aria-required="true" data-required-msg="Inserire una data">
                     <span id="err_giorno" class="errorSuggestion" aria-live="assertive" data-ref-to="giorno"></span>
                     <label for="orario" class="required-label">Fascia oraria</label>
-                <select name="orario" id="orario" required>
-                    <option value="" disabled selected>Seleziona</option>
+                <select name="orario" id="orario" aria-required="true" data-required-msg="Selezionare una fascia oraria">
+                    <option value="" id="to-select" disabled selected>Seleziona</option>
                     <optgroup label="mattina">
                         <option id="09" value="09:00:00" {{o1}}>09:00 - 10:30</option>
                         <option id="10_30" value="10:30:00" {{o2}}>10:30 - 12:00</option>
@@ -79,7 +79,7 @@
                 </select>
                 <span id="err_orario" class="errorSuggestion" aria-live="assertive" data-ref-to="orario"></span>
                 <label for="visitatori" class="required-label">Numero di visitatori</label>
-                <input type="number" name="visitatori" id="visitatori" min="1" max="15" required
+                <input type="number" name="visitatori" id="visitatori"  aria-required="true" data-required-msg="Inserire il numero di visitatori"
                      value="{{visitatori}}">
                 <span id="err_visitatori" class="errorSuggestion" aria-live="assertive" data-ref-to="visitatori"></span>
                 <p class="required-msg">Campi obbligatori</p>

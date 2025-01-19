@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="css/print.css" media="print">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="images/pokeball.ico" type="image/x-icon">
-    <script src="js/script.js"></script>
+    <script src="js/script.js" defer></script>
 </head>
 
 <body>
@@ -88,7 +88,7 @@
                             datetime="{{data_prenotazione}}">{{string_data_prenotazione}}</time></td>
                     <td>{{num_persone}}</td>
                     <td>{{orario_prenotazione}}</td>
-                    <td class="cancella canc-pren" id="elim-{{data_prenotazione}}"><a href="#dialog-pren"></a></td>
+                    <td class="cancella canc-pren" id="elim-{{data_prenotazione}}"><a href="#dialog-pren">&#x1F5D1;</a></td>
                 </tr>
                 <!-- rowprenotazione_end -->
             </tbody>

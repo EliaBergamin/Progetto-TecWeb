@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="css/print.css" media="print">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="images/pokeball.ico" type="image/x-icon">
-  <script src="js/script.js"></script>
+  <script src="js/script.js" defer></script>
 </head>
 
 <body>
@@ -64,16 +64,16 @@
       <form class="formCompilazione" action="alter_mostra_admin.php?id_mostra={{id_mostra}}" method="post" id="form"
         enctype="multipart/form-data">
         <label for="nome" class="required-label">Nome mostra</label>
-        <input type="text" name="nome" id="nome" value="{{nome}}" minlength="2" required>
+        <input type="text" name="nome" id="nome" value="{{nome}}" minlength="2" aria-required="true" data-required-msg="Inserire il nome">
         <span id="err_nome_mostra" class="errorSuggestion" aria-live="assertive" data-ref-to="nome"></span>
         <label for="descrizione" class="required-label">Descrizione</label>
-        <textarea name="descrizione" id="descrizione" minlength="25" required>{{descrizione}}</textarea>
+        <textarea name="descrizione" id="descrizione" minlength="25" aria-required="true" data-required-msg="Inserire una descrizione">{{descrizione}}</textarea>
         <span id="err_descrizione" class="errorSuggestion" aria-live="assertive" data-ref-to="descrizione"></span>
         <label for="data_inizio" class="required-label">Data inizio</label>
-        <input type="date" name="data_inizio" id="data_inizio" value="{{data_inizio}}" required>
+        <input type="date" name="data_inizio" id="data_inizio" value="{{data_inizio}}" aria-required="true" data-required-msg="Inserire una data">
         <span id="err_data_inizio" class="errorSuggestion" aria-live="assertive" data-ref-to="data_inizio"></span>
         <label for="data_fine" class="required-label">Data fine</label>
-        <input type="date" name="data_fine" id="data_fine" value="{{data_fine}}" required>
+        <input type="date" name="data_fine" id="data_fine" value="{{data_fine}}" aria-required="true" data-required-msg="Inserire una data">
         <span id="err_data_fine" class="errorSuggestion" aria-live="assertive" data-ref-to="data_fine"></span>
         <label for="immagine">Percorso immagine</label>
         <input type="file" name="immagine" id="immagine" accept=".jpg,.jpeg,.png,.webp">

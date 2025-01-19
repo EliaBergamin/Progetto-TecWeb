@@ -68,11 +68,11 @@ CREATE TABLE IF NOT EXISTS Recensione (
 -- MOCK DATA -- 
 
 INSERT INTO Mostra (nome, descrizione, data_inizio, data_fine, img_path, alt) VALUES
-  ("Dragon Ball Z Card Battle", "Esplora l'emozionante mondo delle carte {en}Dragon Ball{/en} Z! Dai {ja}Saiyan{/ja} alle epiche battaglie, questa mostra celebra l'arte e la strategia del gioco con una collezione ricca e dinamica.", "2024-12-01", "2025-02-27", "dragonball_exhibit.jpg", ""),
-  ("Pokémon Card Showcase", "La più grande collezione di carte Pokémon mai esposta. Dagli inizi con il set base fino alle edizioni moderne, scopri le carte più rare e iconiche, e immergiti in un mondo di ricordi e sorprese.", "2024-12-01", "2024-12-31", "pokemon_exhibit.jpg", ""),
-  ("Gormiti Card Collection", "Rivivi l'epoca d'oro dei Gormiti attraverso le loro carte! Una collezione completa e unica, che racconta storie di battaglie epiche e terre magiche con dettagli affascinanti e colorati.", "2025-11-20", "2025-12-31", "gormiti_exhibit.jpg", ""),
+  ("Dragon Ball Z Card Battle", "Esplora l'emozionante mondo delle carte {en}Dragon Ball{/en} Z! Dai {ja}Saiyan{/ja} alle epiche battaglie, questa mostra celebra l'arte e la strategia del gioco con una collezione ricca e dinamica.", "2024-12-01", "2025-02-27", "dragonball_exhibit.webp", ""),
+  ("Pokémon Card Showcase", "La più grande collezione di carte Pokémon mai esposta. Dagli inizi con il set base fino alle edizioni moderne, scopri le carte più rare e iconiche, e immergiti in un mondo di ricordi e sorprese.", "2024-12-01", "2024-12-31", "pokemon_exhibit.webp", ""),
   ("Pokémon: Sole e Luna", "Immergiti in un'avventura spaziale con la nuova mostra a tema Pokémon: Sole e Luna! Scopri le rarissime carte della regione di Alola, tra cui non mancheranno certamente Solgaleo e Lunala GX!", "2025-01-14", "2025-03-24", "sun_moon.webp", ""),
-  ("Yu-Gi-Oh Exhibit", "Un viaggio nel mondo di Yu-Gi-Oh che non puoi perdere! L'esposizione include carte rare, storia del gioco e dettagli affascinanti sulle illustrazioni. Perfetta per fan di lunga data e neofiti curiosi.", "2023-06-01", "2023-06-10", "yugioh_exhibit.jpg", "");
+  ("Gormiti Card Collection", "Rivivi l'epoca d'oro dei Gormiti attraverso le loro carte! Una collezione completa e unica, che racconta storie di battaglie epiche e terre magiche con dettagli affascinanti e colorati.", "2025-11-20", "2025-12-31", "gormiti_exhibit.webp", ""),
+  ("Yu-Gi-Oh Exhibit", "Un viaggio nel mondo di Yu-Gi-Oh che non puoi perdere! L'esposizione include carte rare, storia del gioco e dettagli affascinanti sulle illustrazioni. Perfetta per fan di lunga data e neofiti curiosi.", "2023-06-01", "2023-06-10", "yugioh_exhibit.webp", "");
 
 
 INSERT INTO Sala (nome, descrizione, img_path) VALUES
@@ -217,7 +217,7 @@ INSERT INTO Prenotazione (id_utente, data_prenotazione, num_persone, orario) VAL
 (3, "2025-06-15", 92, "15:00"),
 (3, "2025-07-20", 3, "12:00"),
 (2, "2025-08-05", 1, "16:30"),
-(2, "2025-09-12", 4, "10:30"),
+(2, "2025-09-12", 84, "10:30"),
 (3, "2024-10-01", 2, "13:30");
 
 INSERT INTO Recensione (id_utente, voto, data_recensione, descrizione, tipo) VALUES

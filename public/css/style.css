@@ -5,7 +5,7 @@
 
 :root {
   --headerbgcolor: #95e98a;
-  --headercolor: #205d86;
+  --headercolor: #205e86;
   --bgcolor: #fff;
   --txtcolor: #000;
   --newscolor: #F3C42B;
@@ -16,7 +16,7 @@
   --visitedcolor: #000;
   --submitcolor: #28d428;
   --submitcolor: var(--headerbgcolor);
-
+  --menuvisitedcolor: var(--headercolor);
   --disabledtxtcolor: #666;
   --carouselcolor: var(--headercolor);
   --carouselactivecolor: var(--headerbgcolor);
@@ -26,7 +26,7 @@
 }
 
 :root.dark {
-  --headerbgcolor: #205d86;
+  --headerbgcolor: #205e86;
   --headercolor: #95e98a;
   --menuvisitedcolor: #fbff50;
   --bgcolor: #000;
@@ -51,6 +51,7 @@
   font-family: 'Lexend';
   font-style: normal;
   font-weight: 400;
+  font-display: swap;
   src: url(https://fonts.gstatic.com/s/lexend/v23/wlptgwvFAVdoq2_F94zlCfv0bz1WCzsWzLdneg.woff2) format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
@@ -128,15 +129,6 @@ a[target="_blank"]::after {
   transition: 0.3s ease;
 }
 
-
-#menu a:focus {
-  border-left: var(--txtcolor) solid 1px;
-  border-right: var(--txtcolor) solid 1px;
-}
-
-#menu a:active {
-  text-decoration: none;
-}
 
 #top-help {
   grid-row: 1;
@@ -219,9 +211,23 @@ utile per fissare il menu in modo che non scrolli
   background: var(--headerbgcolor);
 }
 
+#menu a:focus {
+  border-left: var(--txtcolor) solid 1px;
+  border-right: var(--txtcolor) solid 1px;
+}
+
+#menu a:active {
+  text-decoration: none;
+}
+
 #menu a:visited {
   background: var(--breadvisitedcolor);
   color: var(--menuvisitedcolor);
+}
+
+#menu a:hover {
+  background: var(--headercolor);
+  color: var(--headerbgcolor);
 }
 
 /*////////////*/
@@ -241,11 +247,15 @@ utile per fissare il menu in modo che non scrolli
 }
 
 #breadcrumb a {
-  color: var(--breadlinkcolor);
+  color: var(--headercolor);
+  background: var(--breadvisitedcolor);
+  padding: 0 0.2em;
+  border-radius: 3px;
 }
 
 #breadcrumb a:visited {
-  color: var(--breadvisitedcolor);
+  color: var(--headerbgcolor);
+  background: var(--headercolor);
 }
 
 #home {
@@ -570,6 +580,10 @@ footer {
 }
 
 footer a {
+  color: var(--txtcolor);
+}
+
+footer a:visited {
   color: var(--headercolor);
 }
 
@@ -837,7 +851,7 @@ a.button:hover {
 
 .formCompilazione .errorSuggestion {
   color: red;
-  font-size: 0.8em;
+  font-size: 0.9em;
   font-weight: normal;
   line-height: 0;
 }
@@ -887,6 +901,10 @@ a.button:hover {
 #rating-fs {
   text-align: left;
   font-size: 1.15rem;
+}
+
+span#giudizio {
+  margin: 0 1em;
 }
 
 .formCompilazione fieldset label {
@@ -1219,8 +1237,7 @@ main[class="opera"] {
   text-align: center;
 }
 
-.mod-mostra a::before {
-  content: "\270D";
+.mod-mostra a {
   color: var(--txtcolor);
 }
 
@@ -1275,8 +1292,7 @@ main[class="opera"] {
   text-align: center;
 }
 
-.cancella a::before {
-  content: "\1F5D1";
+.cancella a {
   color: var(--txtcolor);
   font-size: 1.5em;
 }
