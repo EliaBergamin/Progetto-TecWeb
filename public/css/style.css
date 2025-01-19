@@ -1233,28 +1233,25 @@ main[class="opera"] {
   margin: 2em auto;
   padding: 0 1.5em;
   width: 45%;
-  padding-bottom: 1.5em;
   border-radius: 8px;
-  background-image: url("../images/pokedex.png");
+  background: url("../images/pokedex.png") no-repeat right; 
   background-size: contain;
-  background-repeat: no-repeat;
-  background-position: left;
-  padding-left: 15em;
+  padding-right: 20%;
 }
 
 #dati-utente dt {
   font-weight: bold;
   margin-bottom: 0.5em;
-  margin-top: 1.5em;
   padding: 0.5em;
-  width: calc(100% - 2em);
+  width: 6em;
   background-color: var(--headerbgcolor);
   color: var(--headercolor);
   border-radius: 5px;
+  float: left;
 }
 
 #dati-utente dd {
-  margin-left: 1.5em;   
+  margin: 0 0 0.5em 6.9em;
   padding: 0.5em;
   background-color: var(--breadvisitedcolor);
   border-left: 4px solid black;

@@ -3,3 +3,14 @@
   padding-left: 1.5em;
   width: 80%;
 }
+
+@media (max-width: 600px) {
+  #dati-utente dt {
+    float: none;
+    width: 80%;
+  }
+  #dati-utente dd {
+    margin-left: 2em;
+    width: 80%;
+  }
+}
