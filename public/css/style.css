@@ -114,6 +114,10 @@ a[target="_blank"]::after {
   background: var(--headercolor);
 }
 
+strong {
+  color: var(--headercolor);
+}
+
 .util-btn {
   border: 1px solid;
   border-radius: 10px;
