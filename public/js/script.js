@@ -289,7 +289,7 @@ const regole = {
         }
         const fileInput = document.getElementById('immagine');
         const file = fileInput.files[0];
-        return file.size <= 1.5 * 1024 * 1024;
+        return file.size <= 1024 * 1024;
     }
 }
 
@@ -312,7 +312,7 @@ const checklist = {
     ],
     err_immagine: [
         ['MatchRegex', /^.*\.(webp|png|jpeg|jpg)$/, 'Caricare un\'immagine in formato <abbr lang="en" title="Portable Network Graphics">PNG</abbr>, <abbr lang="en" title="Joint Photographic Experts Group">JPG/JPEG</abbr> o <abbr lang="en" title="Web Picture">WebP</abbr>'],
-        ['DimensioneFile', '', 'L\'immagine non può superare 1.5<abbr lang="en" title="Megabyte">MB</abbr>']
+        ['DimensioneFile', '', 'L\'immagine non può superare 1<abbr lang="en" title="Megabyte">MB</abbr>']
     ],
 
     /* check recensione*/
