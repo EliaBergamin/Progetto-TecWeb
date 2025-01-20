@@ -16,6 +16,10 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("virtualTour-mappa") && initMap();
     document.querySelector("dialog") && initDialog();
     document.getElementById("hamb").addEventListener("click", hambToggle);
+    const visitatori = document.getElementById("visitatori");
+    if (visitatori && visitatori.value == "") {
+        visitatori.removeAttribute("value");      
+    }
 });
 
 function hambToggle() {
