@@ -1248,13 +1248,11 @@ main[class="opera"] {
 /*/////////////////////////*/
 
 #dati-utente {
-  margin: 2em auto;
-  padding: 0 1.5em;
-  width: 45%;
+  margin: 1.5em;
   border-radius: 8px;
   background: url("../images/pokedex.png") no-repeat right; 
   background-size: contain;
-  padding-right: 20%;
+  padding-right: 18%;
 }
 
 #dati-utente dt {
