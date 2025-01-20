@@ -304,23 +304,23 @@ main h1 {
   display: none;
 }
 
-.immaginiCarosello .more{
+#carosello .more{
   display: none;
-  font-size: 1vw;
+  font-size: 1em;
   text-decoration: none;
   text-align: center;
   color: var(--headercolor);
-  padding: 1em;
+  padding: 1em 0.3em;
   background: var(--headerbgcolor);
   border: 1px solid var(--headercolor);
   position: absolute;
   bottom: 13%;
   left: 38.5%;
   right: 38.5%;
-  border-radius: 1em;
+  border-radius: 0.6em;
 }
 
-.immaginiCarosello .onCarosello {
+#carosello .onCarosello {
   display: block;
 }
 .puntiniCarosello li {
@@ -342,8 +342,8 @@ main h1 {
 
 .puntiniCarosello {
   display: grid;
-  grid-template-columns: repeat(3, 1.5rem);
-  grid-gap: 2rem;
+  grid-template-columns: repeat(3, 1.5em);
+  grid-gap: 1em;
   justify-content: center;
   align-content: center;
   list-style-type: none;
@@ -373,7 +373,6 @@ ol li .active {
   color: var(--carouselcolor);
   background-color: var(--carouselactivecolor);
   border: 2px solid var(--carouselcolor);
-  justify-content: center;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -385,7 +384,7 @@ ol li .active {
 #caroselloIndietro:hover,
 #caroselloAvanti:hover,
 .puntiniCarosello button[class='']:hover,
-.immaginiCarosello .more:hover {
+#carosello .more:hover {
   background: var(--breadvisitedcolor);
   transition: 0.6s ease;
   scale: 1.1;
@@ -676,8 +675,8 @@ footer h2 {
 }
 
 .infoMostra>img {
-  display: block;
   margin: auto;
+  display: block;
   max-width: 80%;
   max-height: 480px;
   border-radius: 10px;
@@ -1293,6 +1292,8 @@ main[class="opera"] {
 .cancella a,
 .mod-mostra a {
   text-decoration: none;
+  display: block;
+  width: 100%;
 }
 
 dialog {

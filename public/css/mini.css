@@ -1,20 +1,17 @@
-.puntiniCarosello li button {
-    height: 1em;
-    width: 1em;
-
-}
-.immaginiCarosello img {
+#carosello img {
     height: 200px;
 }
 
-.immaginiCarosello .more {
-    bottom: 18%; 
-    font-size: 1.2vw;
-    padding: 0.4em;
+#carosello .more {
+    bottom: 16%; 
+    font-size: 0.9em;
+    padding: 0.3em;
+    left: 34.5%;
+    right: 34.5%;
 }
-.immaginiCarosello li {
-    justify-content: center;
-    align-items: center ;
+
+ol.puntiniCarosello {
+    bottom: 0.4em;
 }
 
 #caroselloIndietro, #caroselloAvanti {
@@ -32,8 +29,38 @@
 }
 
 @media (max-width: 500px) {
-    .immaginiCarosello img {
+    #carosello img {
         height: 150px;
     }
+    #carosello .more {
+        font-size: 0.8em;
+        left: 30%;
+        right: 30%;
+    }
+    ol.puntiniCarosello {
+        bottom: 0.2em;
+    }
 
+    .util-btn {
+        display: block;
+        width: 65%;
+        text-align: center;
+        min-width: 10em;
+        margin: auto;
+    }
+}
+
+.infoMostra>img {
+    max-width: 100%;
+    margin-bottom: 0;
+}
+
+.infoMostra>p {
+    margin: 1em 0;
+}
+
+@media (max-width: 600px) {
+    #tab-mostre caption {
+        margin: 0.5em 0;
+    }
 }

@@ -8,32 +8,33 @@ $database = new DatabaseService();
 $arrayMostreCorrenti = $database->selectMostreCorrenti(false);
 $arrayMostreFuture= $database->selectMostreFuture(false);
 $arrayMostrePassate = $database->selectMostrePassate(false);
+unset($database);
 
-$defaultCarouselArray = array(
-    array(
+$defaultCarouselArray = [
+    [
         "id_mostra" => -1,
-        "nome" => "Carousel Default 1",
+        "nome" => "Il primo museo virtuale sui cartoni animati",
         "img_path" => "../images/car1.webp",
         "alt" => ""
-    ),
-    array(
+    ],
+    [
         "id_mostra" => -2,
-        "nome" => "Carousel Default 2",
+        "nome" => "Il primo museo virtuale sui cartoni animati",
         "img_path" => "../images/car2.webp",
         "alt" => ""
-    ),
-    array(
+    ],
+    [
         "id_mostra" => -3,
-        "nome" => "Carousel Default 3",
+        "nome" => "Il primo museo virtuale sui cartoni animati",
         "img_path" => "../images/car3.webp",
         "alt" => ""
-    )
-);
-unset($database);
+    ]
+];
 $arrayMostreMerged = array_merge($arrayMostreCorrenti, $arrayMostreFuture, $arrayMostrePassate);
 $arrayMostreMerged = count($arrayMostreMerged) < 3 ? array_merge($arrayMostreMerged, $defaultCarouselArray) : $arrayMostreMerged;
 $carosello = Templating::getContentBetweenPlaceholders($indexHtmlContent, "carosello");
 for ($i = 0; $i < 3; $i++) {
+    Templating::replaceAnchor($carosello, "nome{$i}", $arrayMostreMerged[$i]["nome"]);
     Templating::replaceAnchor($carosello, "img{$i}", $arrayMostreMerged[$i]["img_path"]);
     Templating::replaceAnchor($carosello, "alt{$i}", $arrayMostreMerged[$i]["alt"]);
     Templating::replaceAnchor($carosello, "id{$i}", $arrayMostreMerged[$i]["id_mostra"]);

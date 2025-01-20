@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
     hambToggle();
     validatorLoad();
     //document.documentElement.className = 'dark';
+    document.getElementById("scopridipiu") && initCarLink();
     document.getElementById("accordion") && initAccordion();
     document.getElementById("giorno") && initAJAX();
     document.getElementById("rating-fs") && initRecensisci();
@@ -63,15 +64,24 @@ function updateDiscoverMore(){
         const activeItem = document.querySelector('.onCarosello');
     
         // Ottieni il link associato all'elemento attivo
-        const link = activeItem.getAttribute('id');
+        const linkId = activeItem.getAttribute('id');
         
         // Reindirizza l'utente al link
-        if (link > 0) {
-            window.location.href = "mostre.php#" + link;  // Fa il redirect alla pagina
+        if (linkId > 0) {
+            window.location.href = "mostre.php#" + linkId;  // Fa il redirect alla pagina
         } else {
-            window.location.href = "mostre.php#";
+            window.location.href = "virtual_tour.php";
         }
     });
+}
+
+function initCarLink() {
+    const link = document.getElementById("scopridipiu");
+    if (link.getAttribute("href").search(/\-\d/) != -1) {
+        link.setAttribute("href", "virtual_tour.php");
+        console.log("virtual_tour.php");
+        
+    }
 }
 
 function initAccordion() {
@@ -327,7 +337,7 @@ const regole = {
         }
         const fileInput = document.getElementById('immagine');
         const file = fileInput.files[0];
-        return file.size <= 1.5 * 1024 * 1024;
+        return file.size <= 1024 * 1024;
     }
 }
 
