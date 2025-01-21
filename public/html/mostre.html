@@ -22,10 +22,10 @@
         <button id="hamb" class="hamToggle" data-hambOn="true" type="button">Menù</button>
     </header>
 
-    <nav id="menu" class="hamToggle" data-hambOn="true">
+    <nav id="menu" class="hamToggle" data-hambOn="true" aria-label="menù principale">
         <ul>
             <li><a href="index.php" lang="en">Home</a></li>
-            <li id="currentLink">Le mostre</li>
+            <li aria-current="page" id="currentLink">Le mostre</li>
             <li><a href="virtual_tour.php" lang="en">Virtual Tour</a></li>
             <li><a href="prenotazione.php">Prenota</a></li>
             <li><a href="recensioni.php">Recensioni</a></li>
@@ -34,7 +34,7 @@
             <li><a href="login.php">Accedi</a></li>
             <!-- log_end -->
             <!-- admin_start -->
-            <li><a href="admin.php">Admin</a></li>
+            <li><a href="admin.php" lang="en">Admin</a></li>
             <!-- admin_end -->
             <!-- profile_start -->
             <li><a href="profile.php">Il mio profilo</a></li>
@@ -45,14 +45,21 @@
             <!-- greeting_end -->
         </ul>
     </nav>
-    <nav id="breadcrumb">
-        Ti trovi in: <a href="index.php" lang="en">Home</a> &gt; Le mostre
+    <nav id="breadcrumb" aria-label="breadcrumb">
+        <ol>
+            <li><a href="index.php" lang="en">Home</a></li>
+            <li aria-current="page">Le mostre</li>
+        </ol>
     </nav>
     <main id="mostre">
         <h1>Le mostre</h1>
         <dl>
             <dt class="tipoMostre">Mostre in corso</dt>
+
             <dd>
+                <!-- nessunaMostraCorrente_start -->
+                <p  class="nomeMostra">Non ci sono mostre in corso al momento.</p>
+                <!-- nessunaMostraCorrente_end -->
                 <dl>
                     <!-- mostrecorrenti_start -->
                     <dt id="{{id_mostra}}" class="nomeMostra">{{nome}}</dt>
@@ -69,7 +76,11 @@
 
             </dd>
             <dt class="tipoMostre">Mostre in programma</dt>
+            
             <dd>
+                <!-- nessunaMostraFutura_start -->
+                <p class="nomeMostra">Non sono presenti mostre future al momento.</p>
+                <!-- nessunaMostraFutura_end -->
                 <dl>
                     <!-- mostrefuture_start -->
                     <dt id="{{id_mostra}}" class="nomeMostra">{{nome}}</dt>
@@ -86,7 +97,11 @@
             </dd>
 
             <dt><button id="accordion" class="accordion">Mostre passate</button></dt>
+            
             <dd class="accordion-panel">
+                <!-- nessunaMostraPassata_start -->
+                <p class="nomeMostra">Non sono presenti mostre passate registrate.</p>
+                <!-- nessunaMostraPassata_end -->
                 <dl>
                     <!-- mostrepassate_start -->
                     <dt id="{{id_mostra}}" class="nomeMostra">{{nome}}</dt>
@@ -117,34 +132,34 @@
         </dl>
         <!--         <a href="" lang="en">Privacy Link TODO</a>
  -->
-        <p id="tab-descr" class="nascosto">La tabella contiene gli orari di apertura del museo</p>
+        <p id="tab-descr" class="nascosto">La tabella contiene gli orari di apertura del museo di mattina e pomeriggio dal sabato al martedì</p>
         <table id="orari-museo" title="Orari del museo" aria-describedby="tab-descr">
             <caption>Orari del Museo</caption>
             <thead>
                 <tr>
                     <td></td>
-                    <th scope="col">Mattina</th>
-                    <th scope="col">Pomeriggio</th>
+                    <th scope="col" abbr="Mat">Mattina</th>
+                    <th scope="col" abbr="Pom">Pomeriggio</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <th scope="row">Lunedì</th>
+                    <th scope="row" abbr="Lun">Lunedì</th>
                     <td><time datetime="09:00">09:00</time> - <time datetime="12:00">12:00</time></td>
                     <td><time datetime="14:00">14:00</time> - <time datetime="19:00">19:00</time></td>
                 </tr>
                 <tr>
-                    <th scope="row">Martedì</th>
+                    <th scope="row" abbr="Mar">Martedì</th>
                     <td><time datetime="09:00">09:00</time> - <time datetime="12:00">12:00</time></td>
                     <td><time datetime="14:00">14:00</time> - <time datetime="19:00">19:00</time></td>
                 </tr>
                 <tr>
-                    <th scope="row">Sabato</th>
+                    <th scope="row" abbr="Sab">Sabato</th>
                     <td><time datetime="08:00">08:00</time> - <time datetime="13:00">13:00</time></td>
                     <td><time datetime="14:00">14:00</time> - <time datetime="20:00">20:00</time></td>
                 </tr>
                 <tr>
-                    <th scope="row">Domenica</th>
+                    <th scope="row" abbr="Dom">Domenica</th>
                     <td><time datetime="08:00">08:00</time> - <time datetime="13:00">13:00</time></td>
                     <td><time datetime="14:00">14:00</time> - <time datetime="22:00">22:00</time></td>
                 </tr>

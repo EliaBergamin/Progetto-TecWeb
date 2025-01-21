@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Recensioni | Leggende Animate</title>
-    <meta name="description" content="Leggi le recensioni degli utenti che hanno visitato il museo o hanno fatto il virtual tour e scopri cosa ne pensano.">
+    <meta name="description"
+        content="Leggi le recensioni degli utenti che hanno visitato il museo o hanno fatto il virtual tour e scopri cosa ne pensano.">
     <meta name="keywords" content="Leggende Animate,recensioni,museo,virtual tour,visita,mostre,cartoni">
     <link rel="stylesheet" href="css/style.css" media="screen">
     <link rel="stylesheet" href="css/middle.css" media="screen and (max-width: 1024px)">
@@ -22,19 +23,19 @@
         <button id="hamb" class="hamToggle" data-hambOn="true" type="button">Menù</button>
     </header>
 
-    <nav id="menu" class="hamToggle" data-hambOn="true">
+    <nav id="menu" class="hamToggle" data-hambOn="true" aria-label="menù principale">
         <ul>
             <li><a href="index.php" lang="en">Home</a></li>
             <li><a href="mostre.php">Le mostre</a></li>
             <li><a href="virtual_tour.php" lang="en">Virtual Tour</a></li>
             <li><a href="prenotazione.php">Prenota</a></li>
-            <li id="currentLink">Recensioni</li>
+            <li aria-current="page" id="currentLink">Recensioni</li>
             <!-- log_start -->
             <li><a href="registrazione.php">Registrati</a></li>
             <li><a href="login.php">Accedi</a></li>
             <!-- log_end -->
             <!-- admin_start -->
-            <li><a href="admin.php">Admin</a></li>
+            <li><a href="admin.php" lang="en">Admin</a></li>
             <!-- admin_end -->
             <!-- profile_start -->
             <li><a href="profile.php">Il mio profilo</a></li>
@@ -46,10 +47,11 @@
         </ul>
     </nav>
 
-    <nav id="breadcrumb">
-        <p>
-            Ti trovi in: <a lang="en" href="index.php">Home</a> &gt; Recensioni
-        </p>
+    <nav id="breadcrumb" aria-label="breadcrumb">
+        <ol>
+            <li><a href="index.php" lang="en">Home</a></li>
+            <li aria-current="page">Recensioni</li>
+        </ol>
     </nav>
 
     <main id="primoContenuto">
@@ -60,12 +62,21 @@
         <ul class="recensioni">
             <!-- recensionimuseo_start -->
             <li>
-                <p>{{nome_utente}}</p>
-                <label id="lbl-rev-1">Punteggio {{voto_recensione}} su 5</label>
-                {{svg_dynamic_generation}}
-                <time datetime="{{data_recensione}}">{{string_data_recensione}}</time>
-                <p>{{descrizione_recensione}}</p>
-                <a class="help nascosto" href="#">Torna su</a>
+                <dl class="recensione">
+                    <dt>Nome utente</dt>
+                    <dd>{{nome_utente}}</dd>
+                    <dt class="lbl-punteggio">Punteggio</dt>
+                    <dd>
+                        <label id="lbl-rev-1">{{voto_recensione}} su 5</label>
+                        {{svg_dynamic_generation}}
+                    </dd>
+                    <dt>Data recensione</dt>
+                    <dd>
+                        <time datetime="{{data_recensione}}">{{string_data_recensione}}</time>
+                    </dd>
+                    <dt>Descrizione</dt>
+                    <dd>{{descrizione_recensione}}</dd>
+                </dl>
             </li>
             <!-- recensionimuseo_end -->
         </ul>
@@ -73,12 +84,21 @@
         <ul class="recensioni">
             <!-- recensionivirtualtour_start -->
             <li>
-                <p>{{nome_utente}}</p>
-                <label id="lbl-rev-2">Punteggio {{voto_recensione}} su 5</label>
-                {{svg_dynamic_generation}}
-                <time datetime="{{data_recensione}}">{{string_data_recensione}}</time>
-                <p>{{descrizione_recensione}}</p>
-                <a class="help nascosto" href="#">Torna su</a>
+                <dl class="recensione">
+                    <dt>Nome utente</dt>
+                    <dd>{{nome_utente}}</dd>
+                    <dt class="lbl-punteggio">Punteggio</dt>
+                    <dd>
+                        <label id="lbl-rev-1">{{voto_recensione}} su 5</label>
+                        {{svg_dynamic_generation}}
+                    </dd>
+                    <dt>Data recensione</dt>
+                    <dd>
+                        <time datetime="{{data_recensione}}">{{string_data_recensione}}</time>
+                    </dd>
+                    <dt>Descrizione</dt>
+                    <dd>{{descrizione_recensione}}</dd>
+                </dl>
             </li>
             <!-- recensionivirtualtour_end -->
         </ul>
@@ -100,34 +120,34 @@
         </dl>
         <!--         <a href="" lang="en">Privacy Link TODO</a>
  -->
-        <p id="tab-descr" class="nascosto">La tabella contiene gli orari di apertura del museo</p>
+        <p id="tab-descr" class="nascosto">La tabella contiene gli orari di apertura del museo di mattina e pomeriggio dal sabato al martedì</p>
         <table id="orari-museo" title="Orari del museo" aria-describedby="tab-descr">
             <caption>Orari del Museo</caption>
             <thead>
                 <tr>
                     <td></td>
-                    <th scope="col">Mattina</th>
-                    <th scope="col">Pomeriggio</th>
+                    <th scope="col" abbr="Mat">Mattina</th>
+                    <th scope="col" abbr="Pom">Pomeriggio</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <th scope="row">Lunedì</th>
+                    <th scope="row" abbr="Lun">Lunedì</th>
                     <td><time datetime="09:00">09:00</time> - <time datetime="12:00">12:00</time></td>
                     <td><time datetime="14:00">14:00</time> - <time datetime="19:00">19:00</time></td>
                 </tr>
                 <tr>
-                    <th scope="row">Martedì</th>
+                    <th scope="row" abbr="Mar">Martedì</th>
                     <td><time datetime="09:00">09:00</time> - <time datetime="12:00">12:00</time></td>
                     <td><time datetime="14:00">14:00</time> - <time datetime="19:00">19:00</time></td>
                 </tr>
                 <tr>
-                    <th scope="row">Sabato</th>
+                    <th scope="row" abbr="Sab">Sabato</th>
                     <td><time datetime="08:00">08:00</time> - <time datetime="13:00">13:00</time></td>
                     <td><time datetime="14:00">14:00</time> - <time datetime="20:00">20:00</time></td>
                 </tr>
                 <tr>
-                    <th scope="row">Domenica</th>
+                    <th scope="row" abbr="Dom">Domenica</th>
                     <td><time datetime="08:00">08:00</time> - <time datetime="13:00">13:00</time></td>
                     <td><time datetime="14:00">14:00</time> - <time datetime="22:00">22:00</time></td>
                 </tr>

@@ -98,7 +98,7 @@ INSERT INTO Opera (id_sala, nome, autore, descrizione, anno, img_path) VALUES
   la sua determinazione a non arrendersi mai.", 1999, "yugioh/drago_nero_rosso.jpg"),
   (4, "Exodia il Proibito", "{ja}Kazuki Takahashi{/ja}", "Exodia il Proibito è una creatura mitica, conosciuta come l'arma definitiva nel mondo di Yu-Gi-Oh!. È divisa in cinque pezzi, ognuno dei quali rappresenta un frammento 
   del suo immenso potere. Quando tutte le parti vengono riunite, Exodia garantisce la vittoria immediata, rendendola una delle carte più temute e rispettate. Nel cartone animato, Exodia fa il suo debutto 
-  nel primo episodio della serie, quando {ait}Yugi{/ahttps://it.wikipedia.org/wiki/Yugi_Mut%C5%8D} lo evoca per sconfiggere {ait}Seto Kaiba{/ahttps://it.wikipedia.org/wiki/Seto_Kaiba}. In questa scena 
+  nel primo episodio della serie, quando {aja}Yugi{/ahttps://it.wikipedia.org/wiki/Yugi_Mut%C5%8D} lo evoca per sconfiggere {aja}Seto Kaiba{/ahttps://it.wikipedia.org/wiki/Seto_Kaiba}. In questa scena 
   iconica, le cinque parti di Exodia si combinano per distruggere i tre Draghi Bianchi Occhi Blu di Kaiba, ribaltando il duello in un colpo solo. La sua figura colossale, avvolta in catene, è diventata 
   un simbolo di speranza per i duellanti, evocata solo dai più grandi strategici in momenti di disperazione.
   Scopri di più su {ait}Exodia il proibito{/ahttps://yugipedia.com/wiki/Exodia_the_Forbidden_One_(character)}", 1999, "yugioh/exodia.jpg"),
@@ -110,7 +110,7 @@ INSERT INTO Opera (id_sala, nome, autore, descrizione, anno, img_path) VALUES
   Scopri di più su {ait}Mago Nero{/ahttps://virtualarena.fandom.com/it/wiki/Mago_Nero}.", 1999, "yugioh/mago_nero.jpg"),
   (4, "Obelisk il Tormentatore", "{ja}Kazuki Takahashi{/ja}", "Obelisk il Tormentatore è una delle tre divinità egizie, una carta di potenza divina che domina il campo di battaglia con la sua presenza colossale. 
   Con il suo corpo blu scuro e i muscoli scolpiti, rappresenta la forza assoluta. Il suo attacco, {en}'Fist of Fury'{/en}, è capace di eliminare tutti gli avversari con una sola mossa. Nel cartone animato, 
-  Obelisk è posseduto da {aen}Seto Kaiba{/ahttps://it.wikipedia.org/wiki/Seto_Kaiba} e gioca un ruolo cruciale nel torneo di {en}Battle City{/en}. Una delle sue apparizioni più iconiche avviene durante il 
+  Obelisk è posseduto da {aja}Seto Kaiba{/ahttps://it.wikipedia.org/wiki/Seto_Kaiba} e gioca un ruolo cruciale nel torneo di {en}Battle City{/en}. Una delle sue apparizioni più iconiche avviene durante il 
   duello contro {aja}Ishizu Ishtar{/ahttps://yugioh.fandom.com/wiki/Ishizu_Ishtar}, dove {ja}Kaiba{/ja} utilizza la carta per ribaltare una situazione apparentemente disperata. La sua figura, legata alle antiche 
   memorie del faraone, rappresenta non solo il potere ineguagliabile, ma anche il mistero e il fascino delle civiltà perdute.", 2000, "yugioh/obelisk.jpg"),
   -- pokemon
@@ -159,13 +159,13 @@ INSERT INTO Opera (id_sala, nome, autore, descrizione, anno, img_path) VALUES
   rendendolo quasi invincibile. Nel cartone animato, {ja}Goku{/ja} raggiunge per la prima volta lo stato di Super {ja}Saiyan{/ja} durante la battaglia contro {en}Freezer{/en} su {aja}Namek{/ahttps://dragonball.fandom.com/it/wiki/Namecc}, 
   in un momento di pura disperazione e rabbia dopo la morte del suo amico {ait}Crilin{/ahttps://dragonball.fandom.com/wiki/Krillin}. La sua trasformazione segna un punto di svolta nella serie, 
   dimostrando il potenziale illimitato dei {ja}Saiyan{/ja}. {ja}Goku{/ja} utilizza questa forma in molte altre battaglie iconiche, consolidando il suo status di eroe leggendario.
-  Scopri di più su {ait}Goku Super Saiyan{/ahttps://dragonball.fandom.com/it/wiki/Super_Saiyan}.", 1991, "dragonball/goku-super-saiyan.jpg"),
+  Scopri di più su {ait}{ja}Goku{/ja} Super {ja}Saiyan{/ja}{/ahttps://dragonball.fandom.com/it/wiki/Super_Saiyan}.", 1991, "dragonball/goku-super-saiyan.jpg"),
   (1, "{ja}Majin Bu{/ja}", "{ja}Akira Toriyama{/ja}", "{ja}Majin Bu{/ja} è una creatura antica e imprevedibile, capace di alternare momenti di innocenza a esplosioni di violenza pura. 
   Con un aspetto inizialmente buffo e paffuto, nasconde un potere immenso che lo rende uno degli avversari più pericolosi affrontati dai {ait}guerrieri Z{/ahttps://dragonball.fandom.com/it/wiki/Guerrieri_Z}. 
   {ja}Majin Bu{/ja} ha la capacità di rigenerarsi e trasformarsi in versioni sempre più potenti. Nel cartone animato, è il principale antagonista della saga di {ja}Majin Bu{/ja}, dove terrorizza l'universo 
   con la sua forza distruttiva. Una delle sue trasformazioni più memorabili è quella in {ja}Kid Bu{/ja}, la forma originale e più crudele. Le battaglie tra {ja}Majin Bu{/ja} e {aja}Goku{/ahttps://dragonball.fandom.com/wiki/Goku}, 
   culminate con l'utilizzo della {ait}Sfera {ja}Genkidama{/ja}{/ahttps://dragonball.fandom.com/it/wiki/Sfera_Genkidama}, rappresentano alcuni dei momenti più emozionanti della serie.
-  Scopri di più su {ait}Majin Bu{/ahttps://dragonball.fandom.com/it/wiki/Majin-Bu}.", 1994, "dragonball/majin_bu.jpg"),
+  Scopri di più su {aja}Majin Bu{/ahttps://dragonball.fandom.com/it/wiki/Majin-Bu}.", 1994, "dragonball/majin_bu.jpg"),
   (1, "{ja}Shenron{/ja}", "{ja}Akira Toriyama{/ja}", "{ja}Shenron{/ja} è il leggendario drago dell'anime {en}Dragon Ball{/en}, evocato raccogliendo tutte e sette le Sfere del Drago. 
   Con il suo corpo serpentino verde e le corna imponenti, rappresenta il potere divino di realizzare qualsiasi desiderio, con alcune limitazioni. {ja}Shenron{/ja} appare in momenti cruciali, spesso 
   per riportare in vita personaggi caduti o per risolvere situazioni disperate. Nel cartone animato, il primo incontro con {ja}Shenron{/ja} avviene quando {aja}Goku{/ahttps://dragonball.fandom.com/wiki/Goku} 
