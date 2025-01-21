@@ -22,7 +22,7 @@
         <button id="hamb" class="hamToggle" data-hambOn="true" type="button">Menù</button>
     </header>
 
-    <nav id="menu" class="hamToggle" data-hambOn="true">
+    <nav id="menu" class="hamToggle" data-hambOn="true" aria-label="menù principale">
         <ul>
             <li><a href="index.php" lang="en">Home</a></li>
             <li><a href="mostre.php">Le mostre</a></li>
@@ -34,7 +34,7 @@
             <li><a href="login.php">Accedi</a></li>
             <!-- log_end -->
             <!-- admin_start -->
-            <li id="currentLink" lang="en">Admin</li>
+            <li aria-current="page" id="currentLink" lang="en">Admin</li>
             <!-- admin_end -->
             <!-- profile_start -->
             <li><a href="profile.php">Il mio profilo</a></li>
@@ -46,10 +46,11 @@
 
         </ul>
     </nav>
-    <nav id="breadcrumb">
-        <p>
-            Ti trovi in: <a href="index.php" lang="en">Home</a> &gt; Area admin
-        </p>
+    <nav id="breadcrumb" aria-label="breadcrumb">
+        <ol>
+            <li><a href="index.php" lang="en">Home</a></li>
+            <li aria-current="page" lang="en">Area admin</li>
+        </ol>
     </nav>
     <main id="primoContenuto">
         <h1>Gestione mostre</h1>
@@ -77,14 +78,14 @@
                     <td data-title="Data inizio"><time datetime="{{data_inizio}}">{{string_data_inizio}}</time></td>
                     <td data-title="Data fine"><time datetime="{{data_fine}}">{{string_data_fine}}</time></td>
                     <td data-title="Immagine">{{img_path}}</td>
-                    <td class="mod-mostra"><a href="modifica_mostra.php?id_mostra={{id_mostra}}"></a></td>
-                    <td class="elim-mostra cancella" id="elim-{{id_mostra}}"><a href="#dialog-mostra"></a></td>
+                    <td class="mod-mostra"><a href="modifica_mostra.php?id_mostra={{id_mostra}}" aria-label="modifica mostra"></a></td>
+                    <td class="elim-mostra cancella" id="elim-{{id_mostra}}"><a href="#dialog-mostra" aria-label="cancella mostra"></a></td>
                 </tr>
                 <!-- mostreAdmin_end -->
             </tbody>
         </table>
-        <dialog id="dialog-mostra">
-            <p>Confermi di voler eliminare la mostra?</p>
+        <dialog id="dialog-mostra" aria-describedby="dialog-txt">
+            <p id="dialog-txt">Confermi di voler eliminare la mostra?</p>
             <button id="annul-dialog">Annulla</button>
             <button id="conf-dialog">Conferma</button>
         </dialog>

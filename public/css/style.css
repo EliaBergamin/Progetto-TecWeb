@@ -240,12 +240,19 @@ utile per fissare il menu in modo che non scrolli
   padding: 0.2rem;
 }
 
-#breadcrumb p {
+#breadcrumb ol {
+  display: flex;
+  margin-left: 0.5em;
   padding: 0.18rem;
 }
 
 #breadcrumb a {
   color: var(--breadlinkcolor);
+}
+
+#breadcrumb li+li::before {
+  content: '>';
+  margin: 0 0.5em;
 }
 
 #breadcrumb a:visited {
@@ -278,6 +285,8 @@ main h1 {
 /* CAROSELLO */
 /*////////////*/
 
+
+
 #carosello {
   position: relative;
   margin: 2% 7% 2% 7%;
@@ -289,7 +298,7 @@ main h1 {
   padding: .8em;
   background: var(--headercolor);
   border-radius: 1em;
-  height: 60vh;
+  /* height: 60vh; */
   box-shadow: 2px 2px 20px var(--shadowcolor);
 }
 
@@ -306,26 +315,32 @@ main h1 {
   display: none;
 }
 
-.immaginiCarosello .more {
+#carosello .more{
   display: none;
+  font-size: 1em;
   text-decoration: none;
   text-align: center;
   color: var(--headercolor);
-  padding: 1em;
+  padding: 1em 0.3em;
   background: var(--headerbgcolor);
   border: 1px solid var(--headercolor);
   position: absolute;
-  bottom: 3.4em;
+  bottom: 13%;
   left: 38.5%;
   right: 38.5%;
-  border-radius: 1em;
+  border-radius: 0.6em;
 }
 
-.immaginiCarosello .onCarosello {
+#carosello .onCarosello {
   display: block;
 }
-
+.puntiniCarosello li {
+  display: inline-flex;
+  justify-content: center;
+}
 .puntiniCarosello li button {
+  display: inline-flex;
+  justify-content: center;
   cursor: pointer;
   align-items: center;
   text-indent: -9999em;
@@ -338,8 +353,8 @@ main h1 {
 
 .puntiniCarosello {
   display: grid;
-  grid-template-columns: repeat(3, 1.5rem);
-  grid-gap: 2rem;
+  grid-template-columns: repeat(3, 1.5em);
+  grid-gap: 1em;
   justify-content: center;
   align-content: center;
   list-style-type: none;
@@ -369,7 +384,6 @@ ol li .active {
   color: var(--carouselcolor);
   background-color: var(--carouselactivecolor);
   border: 2px solid var(--carouselcolor);
-  justify-content: center;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -381,7 +395,7 @@ ol li .active {
 #caroselloIndietro:hover,
 #caroselloAvanti:hover,
 .puntiniCarosello button[class='']:hover,
-.immaginiCarosello .more:hover {
+#carosello .more:hover {
   background: var(--breadvisitedcolor);
   transition: 0.6s ease;
   scale: 1.1;
@@ -678,8 +692,8 @@ footer h2 {
 }
 
 .infoMostra>img {
-  display: block;
   margin: auto;
+  display: block;
   max-width: 80%;
   max-height: 480px;
   border-radius: 10px;
@@ -712,6 +726,7 @@ footer h2 {
 
 .accordion {
   width: 100%;
+  margin-top: 1em;
   padding: 0.6em;
   font-size: 1.3em;
   font-weight: bold;
@@ -985,17 +1000,26 @@ a.button:hover {
   box-shadow: 0 4px 8px var(--shadowcolor);
 }
 
-.recensioni>li>p {
-  margin-bottom: 0.5em;
-  margin-top: 0.5em;
+.recensioni>li dt {
+  display: none;
 }
 
-.recensioni>li>label {
+.recensioni>li dt.lbl-punteggio,
+.recensioni>li dt.lbl-punteggio+dd {
+  display: inline;
+  font-weight: bold;
+}
+
+.recensioni>li dd {
+  margin: 0.3em 0;
+}
+
+.recensioni>li label {
   font-weight: bold;
   margin-right: 0.5em;
 }
 
-.recensioni>li>time {
+.recensioni>li time {
   display: block;
   font-size: 0.7em;
 }
@@ -1240,13 +1264,11 @@ main[class="opera"] {
 /*/////////////////////////*/
 
 #dati-utente {
-  margin: 2em auto;
-  padding: 0 1.5em;
-  width: 45%;
+  margin: 1.5em;
   border-radius: 8px;
   background: url("../images/pokedex.png") no-repeat right; 
   background-size: contain;
-  padding-right: 20%;
+  padding-right: 18%;
 }
 
 #dati-utente dt {
@@ -1304,6 +1326,8 @@ main[class="opera"] {
 .cancella a,
 .mod-mostra a {
   text-decoration: none;
+  display: block;
+  width: 100%;
 }
 
 dialog {

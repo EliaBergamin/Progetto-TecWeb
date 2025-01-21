@@ -22,10 +22,10 @@
         <button id="hamb" class="hamToggle" data-hambOn="true" type="button">Menù</button>
     </header>
 
-    <nav id="menu" class="hamToggle" data-hambOn="true">
+    <nav id="menu" class="hamToggle" data-hambOn="true" aria-label="menù principale">
         <ul>
             <li><a href="index.php" lang="en">Home</a></li>
-            <li id="currentLink">Le mostre</li>
+            <li aria-current="page" id="currentLink">Le mostre</li>
             <li><a href="virtual_tour.php" lang="en">Virtual Tour</a></li>
             <li><a href="prenotazione.php">Prenota</a></li>
             <li><a href="recensioni.php">Recensioni</a></li>
@@ -45,14 +45,24 @@
             <!-- greeting_end -->
         </ul>
     </nav>
-    <nav id="breadcrumb">
-        Ti trovi in: <a href="index.php" lang="en">Home</a> &gt; Le mostre
+    <nav id="breadcrumb" aria-label="breadcrumb">
+        <ol>
+            <li><a href="index.php" lang="en">Home</a></li>
+            <li aria-current="page">Le mostre</li>
+        </ol>
     </nav>
     <main id="mostre">
         <h1>Le mostre</h1>
         <dl>
             <dt class="tipoMostre">Mostre in corso</dt>
+            <!-- nessunaMostraCorrente_start -->
+            <p>Non ci sono mostre in corso al momento.</p>
+            <!-- nessunaMostraCorrente_end -->
+
             <dd>
+                <!-- nessunaMostraCorrente_start -->
+                <p  class="nomeMostra">Non ci sono mostre in corso al momento.</p>
+                <!-- nessunaMostraCorrente_end -->
                 <dl>
                     <!-- mostrecorrenti_start -->
                     <dt id="{{id_mostra}}" class="nomeMostra">{{nome}}</dt>
@@ -69,7 +79,11 @@
 
             </dd>
             <dt class="tipoMostre">Mostre in programma</dt>
+            
             <dd>
+                <!-- nessunaMostraFutura_start -->
+                <p class="nomeMostra">Non sono presenti mostre future al momento.</p>
+                <!-- nessunaMostraFutura_end -->
                 <dl>
                     <!-- mostrefuture_start -->
                     <dt id="{{id_mostra}}" class="nomeMostra">{{nome}}</dt>
@@ -86,7 +100,11 @@
             </dd>
 
             <dt><button id="accordion" class="accordion">Mostre passate</button></dt>
+            
             <dd class="accordion-panel">
+                <!-- nessunaMostraPassata_start -->
+                <p class="nomeMostra">Non sono presenti mostre passate registrate.</p>
+                <!-- nessunaMostraPassata_end -->
                 <dl>
                     <!-- mostrepassate_start -->
                     <dt id="{{id_mostra}}" class="nomeMostra">{{nome}}</dt>

@@ -22,12 +22,12 @@
         <button id="hamb" class="hamToggle" data-hambOn="true" type="button">Menù</button>
     </header>
 
-    <nav id="menu" class="hamToggle" data-hambOn="true">
+    <nav id="menu" class="hamToggle" data-hambOn="true" aria-label="menù principale">
         <ul>
             <li><a href="index.php" lang="en">Home</a></li>
             <li><a href="mostre.php">Le mostre</a></li>
             <li><a href="virtual_tour.php" lang="en">Virtual Tour</a></li>
-            <li id="currentLink">Prenota</li>
+            <li aria-current="page" id="currentLink">Prenota</li>
             <li><a href="recensioni.php">Recensioni</a></li>
             <!-- log_start -->
             <li><a href="registrazione.php">Registrati</a></li>
@@ -46,10 +46,11 @@
         </ul>
     </nav>
 
-    <nav id="breadcrumb">
-        <p>
-            Ti trovi in: <a href="index.php" lang="en">Home</a> &gt; Prenotazione
-        </p>
+    <nav id="breadcrumb" aria-label="breadcrumb">
+        <ol>
+            <li><a href="index.php" lang="en">Home</a></li>
+            <li aria-current="page">Prenotazione</li>
+        </ol>
     </nav>
     
     <main id="prenotazione" class="compilazione">
