@@ -481,7 +481,7 @@ ol li .active {
 }
 
 #listaOpere li img {
-  min-height: fit-content;
+  /* min-height: fit-content; */
   max-width: 17em;
   background-size: contain;
   margin: 0;
@@ -512,7 +512,7 @@ ol li .active {
     background-size: contain;
     margin: 0;
     margin-top: 1em;
-    
+    display: block;
   }
 }
 
