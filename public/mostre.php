@@ -17,6 +17,11 @@ try {
 }
 $sectionCorrentiToModify = Templating::getContentBetweenPlaceholders($mostreHtmlContent, "mostrecorrenti");
 $fullcontent = "";
+
+if(!empty($arrayMostreCorrenti)){
+    Templating::replaceContentBetweenPlaceholders($mostreHtmlContent,"nessunaMostraCorrente","");  
+}
+
 foreach ($arrayMostreCorrenti as $associativeRow) {
     $temp = $sectionCorrentiToModify;
     Templating::replaceAnchor($temp, "id_mostra", $associativeRow["id_mostra"]);
@@ -40,13 +45,17 @@ foreach ($arrayMostreCorrenti as $associativeRow) {
     $fullcontent .= $temp . "\n";
 }
 
+
+
 Templating::replaceContentBetweenPlaceholders($mostreHtmlContent, "mostrecorrenti", $fullcontent);
 
 
 /* MOSTRE FUTURE*/
 $sectionFutureToModify = Templating::getContentBetweenPlaceholders($mostreHtmlContent, "mostrefuture");
-
 $fullcontent = "";
+if(!empty($arrayMostreFuture)){
+    Templating::replaceContentBetweenPlaceholders($mostreHtmlContent,"nessunaMostraFutura","");  
+}
 foreach ($arrayMostreFuture as $associativeRow) {
     $temp = $sectionFutureToModify;
     Templating::replaceAnchor($temp, "id_mostra", $associativeRow["id_mostra"]);
@@ -76,6 +85,9 @@ Templating::replaceContentBetweenPlaceholders($mostreHtmlContent, "mostrefuture"
 /* MOSTRE PASSATE*/
 $sectionPassateToModify = Templating::getContentBetweenPlaceholders($mostreHtmlContent, "mostrepassate");
 $fullcontent = "";
+if(!empty($arrayMostrePassate)){
+    Templating::replaceContentBetweenPlaceholders($mostreHtmlContent,"nessunaMostraPassata","");  
+}
 foreach ($arrayMostrePassate as $associativeRow) {
     $temp = $sectionPassateToModify;
     Templating::replaceAnchor($temp, "id_mostra", $associativeRow["id_mostra"]);
@@ -103,5 +115,7 @@ Templating::replaceContentBetweenPlaceholders($mostreHtmlContent, "mostrepassate
 
 Templating::showHtmlPageWithoutPlaceholders($mostreHtmlContent);
 
+function noShowToDisplay($templateName){
 
+}
 ?>

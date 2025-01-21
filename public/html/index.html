@@ -55,35 +55,41 @@
             <!-- carosello_start -->
             <ol class="immaginiCarosello">
                 <li>
-                    <img src="pics/{{img0}}" alt="{{alt0}}" class="onCarosello">
-                    <a href="mostre.php#{{id0}}" class="more onCarosello">SCOPRI DI PIÙ</a>
+                    <figure>
+                        <figcaption class="nascosto">{{nome0}}</figcaption>
+                        <img id="{{id0}}" src="pics/{{img0}}" alt="{{alt0}}" class="onCarosello">
+                    </figure>
                 </li>
                 <li>
-                    <img src="pics/{{img1}}" alt="{{alt1}}">
-                    <a href="mostre.php#{{id1}}" class="more">SCOPRI DI PIÙ</a>
+                    <figure>
+                        <figcaption class="nascosto">{{nome1}}</figcaption>
+                        <img id="{{id1}}" src="pics/{{img1}}" alt="{{alt1}}">
+                    </figure>
                 </li>
                 <li>
-                    <img src="pics/{{img2}}" alt="{{alt2}}">
-                    <a href="mostre.php#{{id2}}" class="more">SCOPRI DI PIÙ</a>
+                    <figure>
+                        <figcaption class="nascosto">{{nome2}}</figcaption>
+                        <img id="{{id2}}" src="pics/{{img2}}" alt="{{alt2}}">
+                    </figure>
                 </li>
             </ol>
-            <!-- carosello_end -->
+            <a id="scopridipiu" href="mostre.php#{{id0}}" class="more onCarosello">SCOPRI DI PIÙ</a>
             <button id="caroselloIndietro" type="button" aria-label="Immagine precedente"
                 onclick="prossimaSlide(-1)">&#10094;</button>
             <button id="caroselloAvanti" type="button" aria-label="Immagine successiva"
                 onclick="prossimaSlide(1)">&#10095;</button>
             <ol class="puntiniCarosello">
                 <li>
-                    <button class="active" type="button" onclick="aggiornaSlide(1)">Scorri all'immagine numero
-                        1</button>
+                    <button class="active" type="button" onclick="aggiornaSlide(1)">Scorri all'immagine: {{nome0}}</button>
                 </li>
                 <li>
-                    <button class="" type="button" onclick="aggiornaSlide(2)">Scorri all'immagine numero 2</button>
+                    <button class="" type="button" onclick="aggiornaSlide(2)">Scorri all'immagine: {{nome1}}</button>
                 </li>
                 <li>
-                    <button class="" type="button" onclick="aggiornaSlide(3)">Scorri all'immagine numero 3</button>
+                    <button class="" type="button" onclick="aggiornaSlide(3)">Scorri all'immagine: {{nome2}}</button>
                 </li>
             </ol>
+            <!-- carosello_end -->
         </div>
         <section class="mainSection">
             <h1>Il museo dei cartoni animati internazionali più famosi</h1>

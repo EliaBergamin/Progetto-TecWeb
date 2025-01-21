@@ -72,6 +72,7 @@ class Templating
             $inputString = self::convertAbbrTag($inputString);
             $inputString = self::convertLangTag($inputString);
             $inputString = self::convertLinkTag($inputString);
+            $inputString = html_entity_decode($inputString);
         }
     }
 
@@ -238,7 +239,7 @@ class Templating
             return [false, "type"];
         }
 
-        if ($file["size"] > 1.5 * self::MB) {
+        if ($file["size"] > self::MB) {
             unlink($file["tmp_name"]);
             return [false, "size: {$file['size']}"];
         }
