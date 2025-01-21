@@ -115,7 +115,7 @@ INSERT INTO Opera (id_sala, nome, autore, descrizione, anno, img_path) VALUES
   memorie del faraone, rappresenta non solo il potere ineguagliabile, ma anche il mistero e il fascino delle civiltà perdute.", 2000, "yugioh/obelisk.jpg"),
   -- pokemon
   (2, "Pikachu", "{ja}Atsuko Nishida{/ja}", "Pikachu, ideato da {ja}Atsuko Nishida{/ja}, è l'adorabile Pokémon di tipo Elettro che ha conquistato il mondo fin dal 1996. Con le sue guance rosse e il suo sorriso contagioso, 
-  è diventato l'emblema dei Pokémon, amato da grandi e piccoli per il suo carattere vivace e coraggioso.", 1996, "pokemon/pikachu.jpg"),
+  è diventato l'emblema dei Pokémon, amato da grandi e piccoli per il suo carattere vivace e coraggioso.", 1996, "pokemon/pikachu.png"),
   (2, "{en}Arceus{/en}", "{en}Game Freak{/en}", "{en}Arceus{/en}, anche noto come la Creatura Originaria, è un Pokémon misterioso di tipo Normale. Secondo la leggenda, {en}Arceus{/en} è il creatore dell'universo Pokémon, nato prima dell'esistenza stessa del tempo e dello spazio.
   Dopo aver dato origine al mondo, si dice che abbia creato {ait}Dialga{/ahttps://wiki.pokemoncentral.it/Dialga} (tempo), {ait}Palkia{/ahttps://wiki.pokemoncentral.it/Palkia} (spazio) e {aen}Giratina{/ahttps://wiki.pokemoncentral.it/Giratina} (antimateria) per mantenere l'equilibrio cosmico.
   Inoltre, {en}Arceus{/en} avrebbe creato i tre Pokémon del lago ({aen}Uxie{/ahttps://wiki.pokemoncentral.it/Uxie}, {aen}Mesprit{/ahttps://wiki.pokemoncentral.it/Mesprit} e {aen}Azelf{/ahttps://wiki.pokemoncentral.it/Azelf}) per portare conoscenza, emozioni e forza di volontà agli esseri viventi.
@@ -123,21 +123,21 @@ INSERT INTO Opera (id_sala, nome, autore, descrizione, anno, img_path) VALUES
   Ha un anello dorato attorno al torso, che assomiglia a un mandala, con punte che rappresentano le diverse dimensioni o forse le placche elementali.
   La sua testa presenta lunghe protuberanze, simili a corna, che conferiscono un'aria regale e ultraterrena. Gli occhi sono di un colore verde intenso, con le pupille rosse, spesso associati a un'aura di potere.
   Inoltre, è anche un Pokémon che può parlare con gli esseri umani, quindi è in grado di capirne i sentimenti ed il linguaggio, ed è disposto ad aiutare l'uomo. Se si arrabbia, comunque, può diventare furioso a tal punto da distruggere qualsiasi cosa e far sparire chiunque lui desideri dalla faccia della terra.
-  Scopri di più su {aen}Arceus{/ahttps://wiki.pokemoncentral.it/Arceus}.", 2006, "pokemon/arceus.jpg"),
+  Scopri di più su {aen}Arceus{/ahttps://wiki.pokemoncentral.it/Arceus}.", 2006, "pokemon/arceus.png"),
   (2, "{en}Gengar{/en}", "{ja}Ken Sugimori{/ja}", "{en}Gengar{/en}, il Pokémon Ombra, è uno dei Pokémon più iconici della serie, noto per il suo aspetto spettrale e il suo sorriso malizioso. È un Pokémon di tipo Spettro/Veleno ed è stato introdotto nella prima generazione.
   Ha un corpo tondeggiante con un aspetto simile a quello di un'ombra materializzata, la schiena munita di irti aculei. È di colore viola scuro, con occhi rossi brillanti che emanano un'aura inquietante.
   Ha un sorriso permanente e maligno, che sottolinea il suo carattere dispettoso. Le sue orecchie appuntite e la sua coda corta e arrotondata lo fanno sembrare un ibrido tra un fantasma e un animale caricaturale.
   {en}Gengar{/en} ama fare scherzi agli esseri umani e agli altri Pokémon, spesso spaventandoli con la sua abilità di apparire e scomparire improvvisamente.
   Nonostante il suo lato giocoso, può essere molto spaventoso, soprattutto quando usa la sua energia spettrale per drenare calore dall'aria, causando un improvviso freddo glaciale.
   È stato uno dei primi Pokémon introdotti nella serie animata, catturando l'immaginazione dei fan per il suo mix di mistero e umorismo.
-  Scopri di più su {aen}Gengar{/ahttps://wiki.pokemoncentral.it/Gengar}.", 1996, "pokemon/gengar.jpg"),
+  Scopri di più su {aen}Gengar{/ahttps://wiki.pokemoncentral.it/Gengar}.", 1996, "pokemon/gengar.png"),
   (2, "{en}Mewtwo{/en}", "{ja}Ken Sugimori{/ja}", "{en}Mewtwo{/en}, il Pokémon Genetico, è un Pokémon leggendario di tipo Psico introdotto in prima generazione. 
   È noto per la sua potenza straordinaria e per la sua storia unica, essendo una creatura creata artificialmente a partire dal DNA di {aen}Mew{/ahttps://wiki.pokemoncentral.it/Mew}.
   {en}Mewtwo{/en} ha un aspetto umanoide e felino, con un corpo slanciato ma muscoloso. Il suo corpo è prevalentemente grigio-violaceo, con una lunga coda di colore viola. Ha occhi penetranti e brillanti, che riflettono la sua intelligenza e il suo potere.
   Le sue mani hanno tre dita lunghe e affusolate, progettate per manipolare oggetti e concentrare energia psichica. {en}Mewtwo{/en} è inizialmente un Pokémon freddo, calcolatore e solitario. 
   È tormentato dal fatto di essere una creazione artificiale e si sente disconnesso sia dai Pokémon che dagli esseri umani.
   {en}Mewtwo{/en} incarna temi di potere, identità e la ricerca del proprio posto nel mondo, rendendolo uno dei personaggi più complessi e amati del mondo Pokémon.
-  Scopri di più su {aen}Mewtwo{/ahttps://wiki.pokemoncentral.it/Mewtwo}.", 1996, "pokemon/mewtwo.jpg"),
+  Scopri di più su {aen}Mewtwo{/ahttps://wiki.pokemoncentral.it/Mewtwo}.", 1996, "pokemon/mewtwo.png"),
   (2, "Zeraora", "{ja}Inosuke{/ja}", "Zeraora, il Pokémon Fulmirapido, è un Pokémon misterioso di tipo Elettro introdotto nella settima generazione ({ait}Pokémon Ultrasole e Ultraluna{/ahttps://wiki.pokemoncentral.it/Pok%C3%A9mon_Ultrasole_e_Ultraluna}). 
   È noto per la sua velocità incredibile e la sua capacità di manipolare l'elettricità con precisione letale.
   Ha un aspetto simile a un felino bipede, che ricorda una combinazione tra una pantera e un ghepardo. Il suo corpo è prevalentemente giallo, con dettagli blu e neri che sottolineano il suo tema elettrico. Ha occhi blu luminosi e un'espressione determinata.
@@ -146,7 +146,7 @@ INSERT INTO Opera (id_sala, nome, autore, descrizione, anno, img_path) VALUES
   da fonti esterne e non possiede un organo che la produca autonomamente. Il pelo gli si rizza su tutto il corpo quando utilizza grandi quantità di elettricità.
   È un Pokémon solitario e riservato, che vive lontano dagli umani. Nonostante la sua natura indipendente, è noto per proteggere i Pokémon più deboli, mostrando una sorprendente compassione. Zeraora è un Pokémon che unisce forza, 
   velocità e mistero, ed è amato dai fan per il suo design accattivante e i suoi incredibili poteri.
-  Scopri di più su {ait}Zeraora{/ahttps://wiki.pokemoncentral.it/Zeraora}", 2018, "pokemon/zeraora.jpg"),
+  Scopri di più su {ait}Zeraora{/ahttps://wiki.pokemoncentral.it/Zeraora}", 2018, "pokemon/zeraora.png"),
   -- dragonball
   (1, "Freezer", "{ja}Akira Toriyama{/ja}", "{en}Freezer{/en} è uno dei villain più iconici della serie {en}Dragon Ball{/en}, noto per la sua crudeltà e il suo potere devastante. 
   Questo imperatore galattico spietato domina interi pianeti e razze, eliminando chiunque osi opporsi al suo dominio. Con un aspetto alieno elegante e minaccioso, {en}Freezer{/en} 

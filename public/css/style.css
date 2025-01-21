@@ -481,7 +481,7 @@ ol li .active {
 }
 
 #listaOpere li img {
-  min-height: 90%;
+  min-height: fit-content;
   max-width: 17em;
   background-size: contain;
   margin: 0;
