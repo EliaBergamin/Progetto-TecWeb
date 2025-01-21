@@ -13,6 +13,8 @@
 
 header {
     background-color: var(--headerbgcolor);
+    background-position: left;
+    background-size: contain;
     min-height: 3.2rem;
     position: fixed;
     width: 100%;
