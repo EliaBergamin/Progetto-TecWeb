@@ -56,9 +56,9 @@ foreach ($arrayOpere as $associativeRow) {
     Templating::replaceAnchor($temp, "img_path", $associativeRow["img_path"]);
     Templating::replaceAnchor($temp, "nome_opera", $associativeRow["nome"]);
     $descrizione = $associativeRow["descrizione"];
-    if (strlen($descrizione) > 150) {
-        $descrizione = substr($descrizione, 0, strrpos(substr($descrizione, 0, 150), ' ')) . "...";
-    } //per ottenere i primi 150 caratteri della descrizione senza tagliare l'ultima parola
+    // if (strlen($descrizione) > 150) {
+    //     $descrizione = substr($descrizione, 0, strrpos(substr($descrizione, 0, 150), ' ')) . "...";
+    // } //per ottenere i primi 150 caratteri della descrizione senza tagliare l'ultima parola
     Templating::replaceAnchor($temp, "descrizione_opera", $descrizione);
     $temp = preg_replace("/\{[a-z]{2,3}\}/", "", $temp);
     Templating::replaceAnchor($temp, "autore_opera", $associativeRow["autore"]);

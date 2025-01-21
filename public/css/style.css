@@ -481,7 +481,7 @@ ol li .active {
 }
 
 #listaOpere li img {
-  max-height: fit-content;
+  min-height: 90%;
   max-width: 17em;
   background-size: contain;
   margin: 0;
@@ -512,7 +512,7 @@ ol li .active {
     background-size: contain;
     margin: 0;
     margin-top: 1em;
-
+    
   }
 }
 
@@ -527,6 +527,13 @@ ol li .active {
 
 #listaOpere li p {
   align-self: flex-start;
+  display: -webkit-box;
+  line-clamp: 3;                  
+  box-orient: vertical;
+  -webkit-line-clamp: 4; /* Numero di righe visibili */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
   /* Allinea il titolo a sinistra */
   margin-bottom: 0.1em;
 }
