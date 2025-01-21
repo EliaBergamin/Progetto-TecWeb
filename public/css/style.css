@@ -17,7 +17,7 @@
   --submitcolor: #28d428;
   --submitcolor: var(--headerbgcolor);
   --menuvisitedcolor: var(--headercolor);
-  --disabledtxtcolor: #666;
+  --disabledtxtcolor: #595959;
   --carouselcolor: var(--headercolor);
   --carouselactivecolor: var(--headerbgcolor);
   --errorcolor: red;
@@ -190,12 +190,16 @@ utile per fissare il menu in modo che non scrolli
 
 #menu ul {
   display: flex;
+  height: 3em;
 }
 
 #menu a,
 #currentLink,
 #menu span {
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
   height: 100%;
   padding: 0.3em 0.74em;
 }
@@ -208,7 +212,7 @@ utile per fissare il menu in modo che non scrolli
 #menu a {
   color: var(--headercolor);
   text-decoration: none;
-  background: var(--headerbgcolor);
+  background: var(--breadvisitedcolor);
 }
 
 #menu a:focus {
@@ -221,7 +225,7 @@ utile per fissare il menu in modo che non scrolli
 }
 
 #menu a:visited {
-  background: var(--breadvisitedcolor);
+  background: var(--headerbgcolor);
   color: var(--menuvisitedcolor);
 }
 
@@ -830,6 +834,10 @@ a.button {
   width: auto;
 }
 
+a.button:visited {
+  color: var(--disabledtxtcolor);
+}
+
 .formCompilazione input[type="submit"]:hover,
 a.button:hover {
   background-color: var(--txtcolor);
@@ -1040,7 +1048,7 @@ main[class="opera"] {
   display: block;
   margin: 0 auto;
   border: 1px solid var(--txtcolor);
-  border-radius: 10px; 
+  border-radius: 10px;
   box-shadow: 0 4px 8px var(--shadowcolor);
   max-height: 500px;
 }

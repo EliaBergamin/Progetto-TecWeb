@@ -1,5 +1,5 @@
 User-agent: *
-Disallow: /php/
+Disallow: /phplibs/
 Disallow: /html/
 Disallow: /400.php
 Disallow: /403.php
