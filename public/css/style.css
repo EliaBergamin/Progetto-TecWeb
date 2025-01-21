@@ -251,8 +251,7 @@ utile per fissare il menu in modo che non scrolli
 }
 
 #breadcrumb a {
-  color: var(--headercolor);
-  background: var(--breadvisitedcolor);
+  color: var(--breadvisitedcolor);
   padding: 0 0.2em;
   border-radius: 3px;
 }
