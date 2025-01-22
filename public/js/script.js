@@ -318,6 +318,13 @@ const regole = {
         return input.trim().search(regex) == 0;
     },
 
+    "MatchRegexOrEmpty": function MatchRegex(input, regex) {
+        if (!input || input.trim() === "") {
+            return true;
+        }
+        return input.trim().search(regex) == 0;
+    },
+
     "RangeVisitatori": function RangeVisitatori(input, params = null) {
         if (!input) {
             return true;
@@ -367,6 +374,7 @@ const checklist = {
         ['DimensioneFile', '', 'L\'immagine non può superare 1<abbr lang="en" title="Megabyte">MB</abbr>']
     ],
     err_immagine_edit_mostra: [
+        ['MatchRegexOrEmpty', /^.*\.(webp|png|jpeg|jpg)$/, 'Caricare un\'immagine in formato <abbr lang="en" title="Portable Network Graphics">PNG</abbr>, <abbr lang="en" title="Joint Photographic Experts Group">JPG/JPEG</abbr> o <abbr lang="en" title="Web Picture">WebP</abbr>'],
         ['DimensioneFile', '', 'L\'immagine non può superare 1<abbr lang="en" title="Megabyte">MB</abbr>']
     ],
 
