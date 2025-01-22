@@ -212,7 +212,7 @@ utile per fissare il menu in modo che non scrolli
 #currentLink,
 #menu span {
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
   box-sizing: border-box; 
   height: 100%;
