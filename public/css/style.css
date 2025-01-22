@@ -87,7 +87,7 @@ html {
 body {
   max-width: 1200px;
   display: grid;
-  grid-template-columns: 1fr 10fr;
+  grid-template-columns: 1fr 8fr;
   overflow-x: hidden;
   margin: auto;
 }
@@ -205,6 +205,7 @@ utile per fissare il menu in modo che non scrolli
 #menu ul {
   display: flex;
   height: 3em;
+  
 }
 
 #menu a,
@@ -213,7 +214,7 @@ utile per fissare il menu in modo che non scrolli
   display: flex;
   justify-content: center;
   align-items: center;
-  box-sizing: border-box;
+  box-sizing: border-box; 
   height: 100%;
   padding: 0.3em 0.74em;
 }
