@@ -366,6 +366,9 @@ const checklist = {
         ['MatchRegex', /^.*\.(webp|png|jpeg|jpg)$/, 'Caricare un\'immagine in formato <abbr lang="en" title="Portable Network Graphics">PNG</abbr>, <abbr lang="en" title="Joint Photographic Experts Group">JPG/JPEG</abbr> o <abbr lang="en" title="Web Picture">WebP</abbr>'],
         ['DimensioneFile', '', 'L\'immagine non può superare 1<abbr lang="en" title="Megabyte">MB</abbr>']
     ],
+    err_immagine_edit_mostra: [
+        ['DimensioneFile', '', 'L\'immagine non può superare 1<abbr lang="en" title="Megabyte">MB</abbr>']
+    ],
 
     /* check recensione*/
     err_data_visita: [
