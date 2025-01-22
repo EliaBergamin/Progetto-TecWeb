@@ -214,7 +214,7 @@ INSERT INTO Utente (ruolo, username, nome, cognome, password_hash, email) VALUES
 (2, "bobloblaw", "Bob", "Loblaw", "$2y$10$mnopqrstuvwxyzabcdefg", "bob.loblaw@example.com");
 
 INSERT INTO Prenotazione (id_utente, data_prenotazione, num_persone, orario) VALUES
-(3, "2025-06-15", 92, "15:00"),
+(3, "2025-06-15", 7, "15:00"),
 (3, "2025-07-20", 3, "12:00"),
 (2, "2025-08-05", 1, "16:30"),
 (2, "2025-09-12", 4, "10:30"),
