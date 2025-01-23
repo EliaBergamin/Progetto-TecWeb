@@ -3,14 +3,22 @@
 require_once "phplibs/databaseService.php";
 require_once "phplibs/templatingService.php";
 
-$database = new DatabaseService();
-//user param sarà da rimpiazzare con session user_id implementate le funzionalità di login
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.php");
+    exit;
+}
+if (!$_SESSION['is_admin'])
+    Templating::errCode(403);
 
-$alterSuccess = $database->deleteMostraAdmin($_POST['id_mostra']);
+try {
+    $database = new DatabaseService();
+    $alterSuccess = $database->deleteMostraAdmin($_POST['id_mostra']);
+    unset($database);
+} catch (Exception $e) {
+    unset($database);
+    Templating::errCode(500);
+}
 
-if ($alterSuccess)
-    header('Location: /admin.php');
-else
-    header('Location: /admin.php');
+header('Location: /admin.php');
 exit;
 ?>

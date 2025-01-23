@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="utf-8">
+    <title>Richiesta non valida | Leggende Animate</title>
+    <meta name="description" content="Errore 400: Richiesta non valida.">
+    <meta name="keywords" content="Leggende Animate,museo,non valida,richiesta,errore,405">
+    <link rel="stylesheet" href="css/style.css" media="screen">
+    <link rel="stylesheet" href="css/middle.css" media="screen and (max-width: 1024px)">
+    <link rel="stylesheet" href="css/mini.css" media="screen and (max-width: 768px)">
+    <link rel="stylesheet" href="css/print.css" media="print">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="images/pokeball.ico" type="image/x-icon">
+    <script src="js/script.js"></script>
+</head>
+
+<body>
+    <a id="top-help" class="help nascosto" href="#primoContenuto">Vai al contenuto</a>
+    <header>
+        <h1>Leggende Animate</h1>
+        <button id="hamb" class="hamToggle" data-hambOn="true" type="button">Menù</button>
+    </header>
+
+    <nav id="menu" class="hamToggle" data-hambOn="true" aria-label="menù principale">
+        <ul>
+            <li><a href="index.php" lang="en">Home</a></li>
+            <li><a href="mostre.php">Le mostre</a></li>
+            <li><a href="virtual_tour.php" lang="en">Virtual Tour</a></li>
+            <li><a href="prenotazione.php">Prenota</a></li>
+            <li><a href="recensioni.php">Recensioni</a></li>
+            <!-- log_start -->
+            <li><a href="registrazione.php">Registrati</a></li>
+            <li><a href="login.php">Accedi</a></li>
+            <!-- log_end -->
+            <!-- admin_start -->
+            <li><a href="admin.php" lang="en">Admin</a></li>
+            <!-- admin_end -->
+            <!-- profile_start -->
+            <li><a href="profile.php">Il mio profilo</a></li>
+            <li><a href="logout.php">Esci</a></li>
+            <!-- profile_end -->
+            <!-- greeting_start -->
+            <li><span>Ciao {{username}}!</span></li>
+            <!-- greeting_end -->
+        </ul>
+    </nav>
+    <nav id="breadcrumb" aria-label="breadcrumb">
+        <ol>
+            <li><a href="index.php" lang="en">Home</a></li>
+            <li aria-current="page">Richiesta non valida</li>
+        </ol>
+    </nav>
+    <main id="primoContenuto" class="error-page">
+        <h1 class="error-title">Oh no! La tua richiesta ha qualcosa che non va...</h1>
+        <div class="error-descr">
+            Pare che tu stia cercando di fare qualcosa nel modo sbagliato.
+            Il saggio Oranguru ti consiglia di:
+            <ul>
+                <li>Verificare l'URL</li>
+                <li>Tornare alla pagina precedente</li>
+                <li>Se hai inviato un modulo, ripetere la richiesta assicurandoti
+                    che tutti i parametri siano corretti</li>
+            </ul>
+            Se preferisci, scopri di più su
+            <a href="https://wiki.pokemoncentral.it/Oranguru" target="_blank" lang="en">Oranguru</a>
+        </div>
+        <img class="error-img" src="images/oranguru.webp"
+            alt="Oranguru ricorda un orango bianco con un mantello viola e lo sguardo stanco">
+    </main>
+    <a class="help" id="torna-su" href="#">Torna su</a>
+    <footer>
+        <h2>Leggende Animate</h2>
+        <dl>
+            <dt> <abbr title="telefono">Tel</abbr>: </dt>
+            <dd><a href="tel:+39123456789">123456789</a> </dd>
+            <dt> <span lang="en">Email: </span> </dt>
+            <dd> <a href="mailto:info@dominioImmaginario.com">info@dominioImmaginario.comm</a> </dd>
+            <dt> Indirizzo: </dt>
+            <dd>
+                <a href="https://maps.app.goo.gl/xqD3pfvXG4ockxUeA">Via Luigi Luzzatti,
+                    <abbr title="Numero civico">n.</abbr> 8, 35121 Padova</a>
+            </dd>
+        </dl>
+        <!--         <a href="" lang="en">Privacy Link TODO</a>
+ -->
+        <p id="tab-descr" class="nascosto">La tabella contiene gli orari di apertura del museo di mattina e pomeriggio dal sabato al martedì</p>
+        <table id="orari-museo" title="Orari del museo" aria-describedby="tab-descr">
+            <caption>Orari del Museo</caption>
+            <thead>
+                <tr>
+                    <td></td>
+                    <th scope="col" abbr="Mat">Mattina</th>
+                    <th scope="col" abbr="Pom">Pomeriggio</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row" abbr="Lun">Lunedì</th>
+                    <td><time datetime="09:00">09:00</time> - <time datetime="12:00">12:00</time></td>
+                    <td><time datetime="14:00">14:00</time> - <time datetime="19:00">19:00</time></td>
+                </tr>
+                <tr>
+                    <th scope="row" abbr="Mar">Martedì</th>
+                    <td><time datetime="09:00">09:00</time> - <time datetime="12:00">12:00</time></td>
+                    <td><time datetime="14:00">14:00</time> - <time datetime="19:00">19:00</time></td>
+                </tr>
+                <tr>
+                    <th scope="row" abbr="Sab">Sabato</th>
+                    <td><time datetime="08:00">08:00</time> - <time datetime="13:00">13:00</time></td>
+                    <td><time datetime="14:00">14:00</time> - <time datetime="20:00">20:00</time></td>
+                </tr>
+                <tr>
+                    <th scope="row" abbr="Dom">Domenica</th>
+                    <td><time datetime="08:00">08:00</time> - <time datetime="13:00">13:00</time></td>
+                    <td><time datetime="14:00">14:00</time> - <time datetime="22:00">22:00</time></td>
+                </tr>
+            </tbody>
+        </table>
+    </footer>
+</body>
+
+</html>

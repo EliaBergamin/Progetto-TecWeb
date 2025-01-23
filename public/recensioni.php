@@ -4,7 +4,6 @@ require_once "phplibs/databaseService.php";
 require_once "phplibs/templatingService.php";
 
 
-
 $database = new DatabaseService();
 $recensioniHtmlContent = Templating::getHtmlWithModifiedMenu(__FILE__);
 
@@ -21,7 +20,8 @@ foreach ($arrayRecensioniMuseo as $associativeRow) {
     Templating::replaceAnchor(
         $temp,
         "svg_dynamic_generation",
-        Templating::generateSvgFromScore($associativeRow["voto"])
+        Templating::generateSvgFromScore($associativeRow["voto"]),
+        true,
     );
     Templating::replaceAnchor($temp, "data_recensione", $associativeRow["data_recensione"]);
     Templating::replaceAnchor(
@@ -50,7 +50,8 @@ foreach ($arrayRecensioniVirtualTour as $associativeRow) {
     Templating::replaceAnchor(
         $temp,
         "svg_dynamic_generation",
-        Templating::generateSvgFromScore($associativeRow["voto"])
+        Templating::generateSvgFromScore($associativeRow["voto"]),
+        true
     );
     Templating::replaceAnchor($temp, "data_recensione", $associativeRow["data_recensione"]);
     Templating::replaceAnchor(

@@ -98,7 +98,7 @@ class DatabaseService
 	}
 	public function insertUserReview($idUtente, $voto, $data_recensione, $descrizione, $tipo): bool
 	{
-		$queryInsertRecensione = "INSERT INTO Museo.Recensione (id_utente, voto, data_recensione, descrizione, tipo)
+		$queryInsertRecensione = "INSERT INTO Recensione (id_utente, voto, data_recensione, descrizione, tipo)
 								  VALUES (?, ?, ?, ?, ?)";
 		$queryParams = [$idUtente, $voto, $data_recensione, $descrizione, $tipo];
 		return $this->insertValuesPreparedQuery($queryInsertRecensione, [$queryParams], "iissi");
@@ -106,7 +106,7 @@ class DatabaseService
 
 	public function insertPrenotazione($userParam, $dayParam, $visitorsParam, $timeParam): bool
 	{
-		$queryInsertPrenotazione = "INSERT INTO Museo.Prenotazione (id_utente, data_prenotazione, num_persone, orario)
+		$queryInsertPrenotazione = "INSERT INTO Prenotazione (id_utente, data_prenotazione, num_persone, orario)
 									VALUES (?, ? , ? , ?)";
 		$queryParams = [$userParam, $dayParam, $visitorsParam, $timeParam];
 		return $this->insertValuesPreparedQuery($queryInsertPrenotazione, [$queryParams], "isis");
@@ -114,17 +114,23 @@ class DatabaseService
 
 	public function insertMostra($nome, $descrizione, $data_inizio, $data_fine, $img_path): bool
 	{
-		$queryInsertMostra = "INSERT INTO Museo.Mostra (nome, descrizione, data_inizio, data_fine, img_path)
+		$queryInsertMostra = "INSERT INTO Mostra (nome, descrizione, data_inizio, data_fine, img_path)
 							  VALUES (?, ?, ?, ?, ?)";
 		$queryParams = [$nome, $descrizione, $data_inizio, $data_fine, $img_path];
 		return $this->insertValuesPreparedQuery($queryInsertMostra, [$queryParams], "sssss");
 	}
-	public function selectMostrePassate(): array
+	public function selectMostrePassate($extended = true): array
 	{
-		$queryMostrePassate = "SELECT * 
-							   FROM Museo.Mostra
-							   WHERE Mostra.data_fine < CURDATE()
-							   ORDER BY Mostra.data_fine DESC";
+		$queryMostrePassate = $extended ?
+							"SELECT * 
+							FROM Mostra
+							WHERE Mostra.data_fine < CURDATE()
+							ORDER BY Mostra.data_fine DESC" : 
+							"SELECT * 
+							FROM Mostra
+							WHERE Mostra.data_fine < CURDATE()
+							ORDER BY Mostra.data_fine DESC
+							LIMIT 3";
 		return $this->selectValuesPreparedQuery($queryMostrePassate, []);
 	}
 
@@ -132,11 +138,11 @@ class DatabaseService
 	{
 		$query = $extended ?
 				"SELECT * 
-				 FROM Museo.Mostra
+				 FROM Mostra
 				 WHERE CURDATE() BETWEEN data_inizio AND data_fine
 				 ORDER BY Mostra.data_fine DESC" :
 				"SELECT id_mostra, nome, img_path, alt
-				 FROM Museo.Mostra
+				 FROM Mostra
 				 WHERE CURDATE() BETWEEN data_inizio AND data_fine
 				 ORDER BY Mostra.data_fine ASC
 				 LIMIT 3";
@@ -146,7 +152,7 @@ class DatabaseService
 	public function selectMostraByID($id_mostra): array
 	{
 		$queryMostrePassate = "SELECT * 
-							   FROM Museo.Mostra
+							   FROM Mostra
 							   WHERE Mostra.id_mostra = ?";
 		return $this->selectValuesPreparedQuery($queryMostrePassate, [$id_mostra], "i");
 	}
@@ -154,11 +160,11 @@ class DatabaseService
 	{
 		$query = $extended ?
 				"SELECT * 
-				 FROM Museo.Mostra
+				 FROM Mostra
 				 WHERE Mostra.data_inizio > CURDATE()
 				 ORDER BY Mostra.data_inizio ASC" :
 				"SELECT id_mostra, nome, img_path, alt
-				 FROM Museo.Mostra
+				 FROM Mostra
 				 WHERE Mostra.data_inizio > CURDATE()
 				 ORDER BY Mostra.data_inizio ASC
 				 LIMIT 3";
@@ -169,15 +175,17 @@ class DatabaseService
 	public function selectOpereFromSala($numeroSala): array
 	{
 		$queryOpere = "SELECT *
-					   FROM Museo.Opera
+					   FROM Opera
 					   WHERE Opera.id_sala = ?";
 		$queryParams = [$numeroSala];
 		return $this->selectValuesPreparedQuery($queryOpere, $queryParams, "i");
 	}
 	public function selectOperaInfoFromId($id): array
 	{
-		$queryOpere = "SELECT *
-					   FROM Museo.Opera
+		$queryOpere = "SELECT Opera.nome AS nome, Opera.descrizione AS descrizione, anno, autore, 
+					   Opera.img_path AS img_path, Sala.nome AS sala
+					   FROM Opera 
+					   JOIN Sala ON (Opera.id_sala = Sala.id_sala)
 					   WHERE Opera.id_opera = ?";
 		$queryParams = [$id];
 		return $this->selectValuesPreparedQuery($queryOpere, $queryParams, "i");
@@ -186,7 +194,7 @@ class DatabaseService
 	public function selectInfoFromSala($numeroSala): array
 	{
 		$queryOpere = "SELECT *
-					   FROM Museo.Sala
+					   FROM Sala
 					   WHERE Sala.id_sala = ?";
 		$queryParams = [$numeroSala];
 		return $this->selectValuesPreparedQuery($queryOpere, $queryParams, "i");
@@ -195,8 +203,8 @@ class DatabaseService
 	public function selectRecensioniWithType($recensioniType): array
 	{
 		$queryOpere = "SELECT *
-					   FROM Museo.Recensione
-					   INNER JOIN Museo.Utente ON (Recensione.id_utente = Utente.id_utente)
+					   FROM Recensione
+					   INNER JOIN Utente ON (Recensione.id_utente = Utente.id_utente)
 					   WHERE Recensione.tipo = ?
 					   ORDER BY Recensione.data_recensione DESC";
 		$queryParams = [$recensioniType];
@@ -206,7 +214,7 @@ class DatabaseService
 	public function selectInfoUtenteFromId($idUtente): array
 	{
 		$queryUtente = "SELECT *
-						FROM Museo.Utente
+						FROM Utente
 						WHERE Utente.id_utente = ?";
 		$queryParams = [$idUtente];
 		return $this->selectValuesPreparedQuery($queryUtente, $queryParams, "i");
@@ -214,7 +222,7 @@ class DatabaseService
 	public function selectPrenotazioniFromId($idUtente): array
 	{
 		$queryPrenotazioni = "SELECT *
-							  FROM Museo.Prenotazione
+							  FROM Prenotazione
 							  WHERE Prenotazione.id_utente = ?";
 		$queryParams = [$idUtente];
 		return $this->selectValuesPreparedQuery($queryPrenotazioni, $queryParams, "i");
@@ -223,7 +231,7 @@ class DatabaseService
 	public function selectUsersFromUsername($username): array
 	{
 		$queryUser = "SELECT *
-					  FROM Museo.Utente
+					  FROM Utente
 					  WHERE Utente.username = ?";
 
 		$queryParams = [$username];
@@ -232,7 +240,7 @@ class DatabaseService
 	public function selectUsersFromEmail($email): array
 	{
 		$queryUser = "SELECT *
-					  FROM Museo.Utente
+					  FROM Utente
 					  WHERE Utente.email = ?";
 
 		$queryParams = [$email];
@@ -273,14 +281,14 @@ class DatabaseService
 	private function pulisciInput(&$in): void
 	{
 		if (is_array($in))
-			array_walk_recursive($in, "self::pulisciInputHelper");
+			array_walk_recursive($in, "DatabaseService::pulisciInputHelper");
 		elseif (is_string($in))
 			$this->pulisciInputHelper($in);
 	}
 
 	public function insertUser($ruolo, $username, $nome, $cognome, $password_hash, $email): int
 	{
-		$queryUser = "INSERT INTO Museo.Utente (ruolo, username, nome, cognome, password_hash, email) 
+		$queryUser = "INSERT INTO Utente (ruolo, username, nome, cognome, password_hash, email) 
 					  VALUES (?, ?, ?, ?, ?, ?)";
 		$queryParams = [$ruolo, $username, $nome, $cognome, $password_hash, $email];
 		$stmt = $this->executePreparedQuery($queryUser, $queryParams, "isssss");
@@ -325,8 +333,8 @@ class DatabaseService
 	}
 	public function checkVisitatori($giorno, $orario, $visitatori): bool
 	{
-		$query = "SELECT SUM(num_persone) as tot_visitatori
-				  FROM Museo.Prenotazione
+		$query = "SELECT SUM(num_persone) AS tot_visitatori
+				  FROM Prenotazione
 				  WHERE data_prenotazione = ? AND orario = ?";
 		$queryParams = [$giorno, $orario];
 		$result = $this->selectValuesPreparedQuery($query, $queryParams, "ss");

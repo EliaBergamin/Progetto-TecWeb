@@ -3,6 +3,13 @@
 require_once "phplibs/databaseService.php";
 require_once "phplibs/templatingService.php";
 
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.php");
+    exit;
+}
+if (!$_SESSION['is_admin']) 
+    Templating::errCode(403);
+
 if (isset($_GET['id_mostra']))
     $id_mostra = $_GET['id_mostra'];
 else 
@@ -74,5 +81,5 @@ if (isset($_POST['submit'])) {
     }
     exit;
 } else 
-    Templating::errCode(405);
+    Templating::errCode(400);
 ?>

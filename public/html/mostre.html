@@ -3,40 +3,38 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Le mostre</title>
-    <meta name="description" content="Pagina dedicata alla sezione mostre del Museo Cartoni Animati">
-    <meta name="keywords"
-        content="mostre,carte,animazione,cartoni animati,rarità,giochi di carte collezionabili,prenota,visita,informazioni">
+    <title>Le mostre | Leggende Animate</title>
+    <meta name="description" content="Scopri le mostre del museo Leggende Animate! Informazioni, contatti e prenotazioni per il museo sono disponibili qui.">
+    <meta name="keywords" content="Leggende Animate,mostre,museo,carte,prenota,visita,cartoni">
+    <link rel="stylesheet" href="css/style.css" media="screen">
+    <link rel="stylesheet" href="css/middle.css" media="screen and (max-width: 1024px)">
+    <link rel="stylesheet" href="css/mini.css" media="screen and (max-width: 768px)">
+    <link rel="stylesheet" href="css/print.css" media="print">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/style.css" media="screen">
-    <link rel="stylesheet" href="../css/middle.css" media="screen and (max-width: 1024px)">
-    <link rel="stylesheet" href="../css/mini.css" media="screen and (max-width: 768px)">
-    <link rel="stylesheet" href="../css/print.css" media="print">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="../images/pokeball.ico" type="image/x-icon">
-    <script src="../js/script.js"></script>
+    <link rel="icon" href="images/pokeball.ico" type="image/x-icon">
+    <script src="js/script.js"></script>
 </head>
 
 <body>
     <a id="top-help" class="help nascosto" href="#mostre">Vai al contenuto</a>
     <header>
-        <h1>Museo Cartoni Animati</h1>
+        <h1>Leggende Animate</h1>
         <button id="hamb" class="hamToggle" data-hambOn="true" type="button">Menù</button>
     </header>
 
-    <nav id="menu" class="hamToggle" data-hambOn="true">
+    <nav id="menu" class="hamToggle" data-hambOn="true" aria-label="menù principale">
         <ul>
             <li><a href="index.php" lang="en">Home</a></li>
-            <li id="currentLink">Le mostre</li>
+            <li aria-current="page" id="currentLink">Le mostre</li>
             <li><a href="virtual_tour.php" lang="en">Virtual Tour</a></li>
-            <li><a href="prenotazione.php">Prenotazione</a></li>
+            <li><a href="prenotazione.php">Prenota</a></li>
             <li><a href="recensioni.php">Recensioni</a></li>
             <!-- log_start -->
             <li><a href="registrazione.php">Registrati</a></li>
             <li><a href="login.php">Accedi</a></li>
             <!-- log_end -->
             <!-- admin_start -->
-            <li><a href="admin.php">Admin</a></li>
+            <li><a href="admin.php" lang="en">Admin</a></li>
             <!-- admin_end -->
             <!-- profile_start -->
             <li><a href="profile.php">Il mio profilo</a></li>
@@ -48,9 +46,12 @@
         </ul>
     </nav>
     <div id="bread-bar">
-        <nav id="breadcrumb">
-            <p>Ti trovi in: <a href="index.php" lang="en">Home</a> &gt; Le mostre</p>
-        </nav>
+        <nav id="breadcrumb" aria-label="breadcrumb">
+        <ol>
+            <li><a href="index.php" lang="en">Home</a></li>
+            <li aria-current="page">Le mostre</li>
+        </ol>
+    </nav>
         <form id="theme-form">
             <input type="radio" name="theme" id="light" checked>
             <input type="radio" name="theme" id="dark">
@@ -64,12 +65,16 @@
         <h1>Le mostre</h1>
         <dl>
             <dt class="tipoMostre">Mostre in corso</dt>
+
             <dd>
+                <!-- nessunaMostraCorrente_start -->
+                <p  class="nomeMostra">Non ci sono mostre in corso al momento.</p>
+                <!-- nessunaMostraCorrente_end -->
                 <dl>
                     <!-- mostrecorrenti_start -->
                     <dt id="{{id_mostra}}" class="nomeMostra">{{nome}}</dt>
                     <dd class="infoMostra">
-                        <img src="../pics/{{img_path}}" alt="">
+                        <img src="pics/{{img_path}}" alt="">
                         <p>{{descrizione}}</p>
                         <p class="giorniMostra">Da <time datetime="{{data_inizio}}">{{string_data_inizio}}</time> a
                             <time datetime="{{data_fine}}">{{string_data_fine}}</time></p>
@@ -81,12 +86,16 @@
 
             </dd>
             <dt class="tipoMostre">Mostre in programma</dt>
+            
             <dd>
+                <!-- nessunaMostraFutura_start -->
+                <p class="nomeMostra">Non sono presenti mostre future al momento.</p>
+                <!-- nessunaMostraFutura_end -->
                 <dl>
                     <!-- mostrefuture_start -->
                     <dt id="{{id_mostra}}" class="nomeMostra">{{nome}}</dt>
                     <dd class="infoMostra">
-                        <img src="../pics/{{img_path}}" alt="">
+                        <img src="pics/{{img_path}}" alt="">
                         <p>{{descrizione}}</p>
                         <p class="giorniMostra">Da <time datetime="{{data_inizio}}">{{string_data_inizio}}</time> a
                             <time datetime="{{data_fine}}">{{string_data_fine}}</time></p>
@@ -98,12 +107,16 @@
             </dd>
 
             <dt><button id="accordion" class="accordion">Mostre passate</button></dt>
+            
             <dd class="accordion-panel">
+                <!-- nessunaMostraPassata_start -->
+                <p class="nomeMostra">Non sono presenti mostre passate registrate.</p>
+                <!-- nessunaMostraPassata_end -->
                 <dl>
                     <!-- mostrepassate_start -->
                     <dt id="{{id_mostra}}" class="nomeMostra">{{nome}}</dt>
                     <dd class="infoMostra">
-                        <img src="../pics/{{img_path}}" alt="">
+                        <img src="pics/{{img_path}}" alt="">
                         <p>{{descrizione}}</p>
                         <p class="giorniMostra">Da <time datetime="{{data_inizio}}">{{string_data_inizio}}</time> a
                             <time datetime="{{data_fine}}">{{string_data_fine}}</time></p>
@@ -115,7 +128,7 @@
     </main>
     <a class="help" id="torna-su" href="#">Torna su</a>
     <footer>
-        <h2>Museo Cartoni Animati</h2>
+        <h2>Leggende Animate</h2>
         <dl>
             <dt> <abbr title="telefono">Tel</abbr>: </dt>
             <dd><a href="tel:+39123456789">123456789</a> </dd>
@@ -129,34 +142,34 @@
         </dl>
         <!--         <a href="" lang="en">Privacy Link TODO</a>
  -->
-        <p id="tab-descr" class="nascosto">La tabella contiene gli orari di apertura del museo</p>
+        <p id="tab-descr" class="nascosto">La tabella contiene gli orari di apertura del museo di mattina e pomeriggio dal sabato al martedì</p>
         <table id="orari-museo" title="Orari del museo" aria-describedby="tab-descr">
             <caption>Orari del Museo</caption>
             <thead>
                 <tr>
                     <td></td>
-                    <th scope="col">Mattina</th>
-                    <th scope="col">Pomeriggio</th>
+                    <th scope="col" abbr="Mat">Mattina</th>
+                    <th scope="col" abbr="Pom">Pomeriggio</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <th scope="row">Lunedì</th>
+                    <th scope="row" abbr="Lun">Lunedì</th>
                     <td><time datetime="09:00">09:00</time> - <time datetime="12:00">12:00</time></td>
                     <td><time datetime="14:00">14:00</time> - <time datetime="19:00">19:00</time></td>
                 </tr>
                 <tr>
-                    <th scope="row">Martedì</th>
+                    <th scope="row" abbr="Mar">Martedì</th>
                     <td><time datetime="09:00">09:00</time> - <time datetime="12:00">12:00</time></td>
                     <td><time datetime="14:00">14:00</time> - <time datetime="19:00">19:00</time></td>
                 </tr>
                 <tr>
-                    <th scope="row">Sabato</th>
+                    <th scope="row" abbr="Sab">Sabato</th>
                     <td><time datetime="08:00">08:00</time> - <time datetime="13:00">13:00</time></td>
                     <td><time datetime="14:00">14:00</time> - <time datetime="20:00">20:00</time></td>
                 </tr>
                 <tr>
-                    <th scope="row">Domenica</th>
+                    <th scope="row" abbr="Dom">Domenica</th>
                     <td><time datetime="08:00">08:00</time> - <time datetime="13:00">13:00</time></td>
                     <td><time datetime="14:00">14:00</time> - <time datetime="22:00">22:00</time></td>
                 </tr>

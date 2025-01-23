@@ -3,40 +3,39 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Recensioni</title>
-    <meta name="description" content="Questa pagina mostra le recensioni
-    degli utenti che hanno visitato il museo o hanno fatto il
-    virtual tour">
-    <meta name="keywords" content="recensioni,museo,virtual tour,visita,cardgame">
-    <link rel="stylesheet" href="../css/style.css" media="screen">
-    <link rel="stylesheet" href="../css/middle.css" media="screen and (max-width: 1024px)">
-    <link rel="stylesheet" href="../css/mini.css" media="screen and (max-width: 768px)">
-    <link rel="stylesheet" href="../css/print.css" media="print">
+    <title>Recensioni | Leggende Animate</title>
+    <meta name="description"
+        content="Leggi le recensioni degli utenti che hanno visitato il museo o hanno fatto il virtual tour e scopri cosa ne pensano.">
+    <meta name="keywords" content="Leggende Animate,recensioni,museo,virtual tour,visita,mostre,cartoni">
+    <link rel="stylesheet" href="css/style.css" media="screen">
+    <link rel="stylesheet" href="css/middle.css" media="screen and (max-width: 1024px)">
+    <link rel="stylesheet" href="css/mini.css" media="screen and (max-width: 768px)">
+    <link rel="stylesheet" href="css/print.css" media="print">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="../images/pokeball.ico" type="image/x-icon">
-    <script src="../js/script.js"></script>
+    <link rel="icon" href="images/pokeball.ico" type="image/x-icon">
+    <script src="js/script.js"></script>
 </head>
 
 <body>
     <a id="top-help" class="help nascosto" href="#primoContenuto">Vai al contenuto</a>
     <header>
-        <h1>Museo Cartoni Animati</h1>
+        <h1>Leggende Animate</h1>
         <button id="hamb" class="hamToggle" data-hambOn="true" type="button">Menù</button>
     </header>
 
-    <nav id="menu" class="hamToggle" data-hambOn="true">
+    <nav id="menu" class="hamToggle" data-hambOn="true" aria-label="menù principale">
         <ul>
             <li><a href="index.php" lang="en">Home</a></li>
             <li><a href="mostre.php">Le mostre</a></li>
             <li><a href="virtual_tour.php" lang="en">Virtual Tour</a></li>
-            <li><a href="prenotazione.php">Prenotazione</a></li>
-            <li id="currentLink">Recensioni</li>
+            <li><a href="prenotazione.php">Prenota</a></li>
+            <li aria-current="page" id="currentLink">Recensioni</li>
             <!-- log_start -->
             <li><a href="registrazione.php">Registrati</a></li>
             <li><a href="login.php">Accedi</a></li>
             <!-- log_end -->
             <!-- admin_start -->
-            <li><a href="admin.php">Admin</a></li>
+            <li><a href="admin.php" lang="en">Admin</a></li>
             <!-- admin_end -->
             <!-- profile_start -->
             <li><a href="profile.php">Il mio profilo</a></li>
@@ -48,11 +47,12 @@
         </ul>
     </nav>
     <div id="bread-bar">
-        <nav id="breadcrumb">
-            <p>
-                Ti trovi in: <a lang="en" href="index.php">Home</a> &gt; Recensioni
-            </p>
-        </nav>
+        <nav id="breadcrumb" aria-label="breadcrumb">
+        <ol>
+            <li><a href="index.php" lang="en">Home</a></li>
+            <li aria-current="page">Recensioni</li>
+        </ol>
+    </nav>
         <form id="theme-form">
             <input type="radio" name="theme" id="light" checked>
             <input type="radio" name="theme" id="dark">
@@ -70,15 +70,23 @@
         <ul class="recensioni">
             <!-- recensionimuseo_start -->
             <li>
-                <p>{{nome_utente}}</p>
-                <label id="lbl-rev-{{id_rev}}">Punteggio {{voto_recensione}} su 5</label>
-                <svg id="rev-{{id_rev}}" viewBox="0 0 128 24" aria-labelledby="lbl-rev-{{id_rev}}">
-                    <title>Punteggio {{voto_recensione}} su 5</title>
-                    {{svg_dynamic_generation}}
-                </svg>
-                <time datetime="{{data_recensione}}">{{string_data_recensione}}</time>
-                <p>{{descrizione_recensione}}</p>
-                <a class="help nascosto" href="#">Torna su</a>
+                <dl class="recensione">
+                    <dt>Nome utente</dt>
+                    <dd>{{nome_utente}}</dd>
+                    <dt class="lbl-punteggio">Punteggio</dt>
+                    <dd>
+                        <label id="lbl-rev-{{id_rev}}">{{voto_recensione}} su 5</label>
+                        <svg id="rev-{{id_rev}}" viewBox="0 0 128 24" aria-labelledby="lbl-rev-{{id_rev}}">
+                          {{svg_dynamic_generation}}
+                        </svg>
+                    </dd>
+                    <dt>Data recensione</dt>
+                    <dd>
+                        <time datetime="{{data_recensione}}">{{string_data_recensione}}</time>
+                    </dd>
+                    <dt>Descrizione</dt>
+                    <dd>{{descrizione_recensione}}</dd>
+                </dl>
             </li>
             <!-- recensionimuseo_end -->
         </ul>
@@ -86,15 +94,23 @@
         <ul class="recensioni">
             <!-- recensionivirtualtour_start -->
             <li>
-                <p>{{nome_utente}}</p>
-                <label id="lbl-rev-{{id_rev}}">Punteggio {{voto_recensione}} su 5</label>
-                <svg id="rev-{{id_rev}}" viewBox="0 0 128 24" aria-labelledby="lbl-rev-{{id_rev}}">
-                    <title>Punteggio {{voto_recensione}} su 5</title>
-                    {{svg_dynamic_generation}}
+                <dl class="recensione">
+                    <dt>Nome utente</dt>
+                    <dd>{{nome_utente}}</dd>
+                    <dt class="lbl-punteggio">Punteggio</dt>
+                    <dd>
+                        <label id="lbl-rev-{{id_rev}}">{{voto_recensione}} su 5</label>
+                        <svg id="rev-{{id_rev}}" viewBox="0 0 128 24" aria-labelledby="lbl-rev-{{id_rev}}">
+                        {{svg_dynamic_generation}}
                 </svg>
-                <time datetime="{{data_recensione}}">{{string_data_recensione}}</time>
-                <p>{{descrizione_recensione}}</p>
-                <a class="help nascosto" href="#">Torna su</a>
+                    </dd>
+                    <dt>Data recensione</dt>
+                    <dd>
+                        <time datetime="{{data_recensione}}">{{string_data_recensione}}</time>
+                    </dd>
+                    <dt>Descrizione</dt>
+                    <dd>{{descrizione_recensione}}</dd>
+                </dl>
             </li>
             <!-- recensionivirtualtour_end -->
         </ul>
@@ -102,7 +118,7 @@
     </main>
     <a class="help" id="torna-su" href="#">Torna su</a>
     <footer>
-        <h2>Museo Cartoni Animati</h2>
+        <h2>Leggende Animate</h2>
         <dl>
             <dt> <abbr title="telefono">Tel</abbr>: </dt>
             <dd><a href="tel:+39123456789">123456789</a> </dd>
@@ -116,34 +132,34 @@
         </dl>
         <!--         <a href="" lang="en">Privacy Link TODO</a>
  -->
-        <p id="tab-descr" class="nascosto">La tabella contiene gli orari di apertura del museo</p>
+        <p id="tab-descr" class="nascosto">La tabella contiene gli orari di apertura del museo di mattina e pomeriggio dal sabato al martedì</p>
         <table id="orari-museo" title="Orari del museo" aria-describedby="tab-descr">
             <caption>Orari del Museo</caption>
             <thead>
                 <tr>
                     <td></td>
-                    <th scope="col">Mattina</th>
-                    <th scope="col">Pomeriggio</th>
+                    <th scope="col" abbr="Mat">Mattina</th>
+                    <th scope="col" abbr="Pom">Pomeriggio</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <th scope="row">Lunedì</th>
+                    <th scope="row" abbr="Lun">Lunedì</th>
                     <td><time datetime="09:00">09:00</time> - <time datetime="12:00">12:00</time></td>
                     <td><time datetime="14:00">14:00</time> - <time datetime="19:00">19:00</time></td>
                 </tr>
                 <tr>
-                    <th scope="row">Martedì</th>
+                    <th scope="row" abbr="Mar">Martedì</th>
                     <td><time datetime="09:00">09:00</time> - <time datetime="12:00">12:00</time></td>
                     <td><time datetime="14:00">14:00</time> - <time datetime="19:00">19:00</time></td>
                 </tr>
                 <tr>
-                    <th scope="row">Sabato</th>
+                    <th scope="row" abbr="Sab">Sabato</th>
                     <td><time datetime="08:00">08:00</time> - <time datetime="13:00">13:00</time></td>
                     <td><time datetime="14:00">14:00</time> - <time datetime="20:00">20:00</time></td>
                 </tr>
                 <tr>
-                    <th scope="row">Domenica</th>
+                    <th scope="row" abbr="Dom">Domenica</th>
                     <td><time datetime="08:00">08:00</time> - <time datetime="13:00">13:00</time></td>
                     <td><time datetime="14:00">14:00</time> - <time datetime="22:00">22:00</time></td>
                 </tr>

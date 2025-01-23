@@ -4,3 +4,89 @@
     top: 2.5rem;
     z-index: 100;
 }
+
+#carosello img {
+    height: 200px;
+}
+
+#carosello .more {
+    bottom: 16%;
+    font-size: 0.9em;
+    padding: 0.3em;
+    left: 34.5%;
+    right: 34.5%;
+}
+
+ol.puntiniCarosello {
+    bottom: 0.4em;
+}
+
+#caroselloIndietro,
+#caroselloAvanti {
+    font-size: 0.7em;
+    height: 2.4em;
+    width: 2.4em;
+    border-radius: 0px;
+}
+
+#caroselloAvanti {
+    border-radius: 0.1em 0.4em 0.4em 0.1em;
+}
+
+#caroselloIndietro {
+    border-radius: 0.4em 0.1em 0.1em 0.4em;
+}
+
+@media (max-width: 500px) {
+    #carosello img {
+        height: 150px;
+    }
+
+    #carosello .more {
+        font-size: 0.8em;
+        left: 30%;
+        right: 30%;
+    }
+
+    ol.puntiniCarosello {
+        bottom: 0.2em;
+    }
+
+    .util-btn {
+        display: block;
+        width: 65%;
+        text-align: center;
+        min-width: 10em;
+        margin: auto;
+    }
+}
+
+.infoMostra>img {
+    max-width: 100%;
+    margin-bottom: 0;
+}
+
+.infoMostra>p {
+    margin: 1em 0;
+}
+
+@media (max-width: 600px) {
+    #tab-mostre caption {
+        margin: 0.5em 0;
+    }
+
+    #dati-utente {
+        background-image: none;
+        width: 100%;
+    }
+
+    #dati-utente dt {
+        float: none;
+        width: 80%;
+    }
+
+    #dati-utente dd {
+        margin-left: 1em;
+        width: 80%;
+    }
+}

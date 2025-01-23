@@ -55,6 +55,7 @@
   font-family: 'Lexend';
   font-style: normal;
   font-weight: 400;
+  font-display: 'off';
   src: url(https://fonts.gstatic.com/s/lexend/v23/wlptgwvFAVdoq2_F94zlCfv0bz1WCzsWzLdneg.woff2) format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
@@ -118,6 +119,10 @@ a[target="_blank"]::after {
   background: var(--headercolor);
 }
 
+strong {
+  color: var(--headercolor);
+}
+
 .util-btn {
   border: 1px solid;
   border-radius: 10px;
@@ -154,9 +159,10 @@ a[target="_blank"]::after {
 header {
   grid-row: 2;
   grid-column: 1;
-  background-color: var(--bgcolor);
-  background-image: url('../images/logo.jpeg');
-  background-position: left;
+  /* background-color: var(--bgcolor); */
+  background-color: #95e98a;
+  background-image: url('../images/logo.jpg');
+  background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
 }
@@ -263,12 +269,17 @@ utile per fissare il menu in modo che non scrolli
 
 #menu ul {
   display: flex;
+  height: 3em;
+  
 }
 
 #menu a,
 #currentLink,
 #menu span {
-  display: block;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  box-sizing: border-box; 
   height: 100%;
   padding: 0.3em 0.74em;
 }
@@ -310,12 +321,19 @@ utile per fissare il menu in modo che non scrolli
   flex-grow: 1;
 }
 
-#breadcrumb p {
+#breadcrumb ol {
+  display: flex;
+  margin-left: 0.5em;
   padding: 0.18rem;
 }
 
 #breadcrumb a {
   color: var(--breadlinkcolor);
+}
+
+#breadcrumb li+li::before {
+  content: '>';
+  margin: 0 0.5em;
 }
 
 #breadcrumb a:visited {
@@ -348,6 +366,8 @@ main h1 {
 /* CAROSELLO */
 /*////////////*/
 
+
+
 #carosello {
   position: relative;
   margin: 2% 7% 2% 7%;
@@ -359,7 +379,7 @@ main h1 {
   padding: .8em;
   background: var(--headercolor);
   border-radius: 1em;
-  height: 60vh;
+  /* height: 60vh; */
   box-shadow: 2px 2px 20px var(--shadowcolor);
 }
 
@@ -371,7 +391,7 @@ main h1 {
 .immaginiCarosello img {
   box-sizing: content-box;
   max-width: 100%;
-  max-height: 55vh;
+  height: 50vh;
   position: relative;
   padding: 0;
   margin: auto;
@@ -381,26 +401,32 @@ main h1 {
   display: none;
 }
 
-.immaginiCarosello .more {
+#carosello .more{
   display: none;
+  font-size: 1em;
   text-decoration: none;
   text-align: center;
   color: var(--carouselcolor);
-  padding: 1em;
+  padding: 1em 0.3em;
   background: var(--carouselactivecolor);
   border: 1px solid var(--carouselcolor);
   position: absolute;
-  bottom: 3.4em;
+  bottom: 13%;
   left: 38.5%;
   right: 38.5%;
-  border-radius: 1em;
+  border-radius: 0.6em;
 }
 
-.immaginiCarosello .onCarosello {
+#carosello .onCarosello {
   display: block;
 }
-
+.puntiniCarosello li {
+  display: inline-flex;
+  justify-content: center;
+}
 .puntiniCarosello li button {
+  display: inline-flex;
+  justify-content: center;
   cursor: pointer;
   align-items: center;
   text-indent: -9999em;
@@ -413,8 +439,8 @@ main h1 {
 
 .puntiniCarosello {
   display: grid;
-  grid-template-columns: repeat(3, 1.5rem);
-  grid-gap: 2rem;
+  grid-template-columns: repeat(3, 1.5em);
+  grid-gap: 1em;
   justify-content: center;
   align-content: center;
   list-style-type: none;
@@ -444,7 +470,6 @@ ol li .active {
   color: var(--carouselcolor);
   background-color: var(--carouselactivecolor);
   border: 2px solid var(--carouselcolor);
-  justify-content: center;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -456,7 +481,7 @@ ol li .active {
 #caroselloIndietro:hover,
 #caroselloAvanti:hover,
 .puntiniCarosello button[class='']:hover,
-.immaginiCarosello .more:hover {
+#carosello .more:hover {
   background: var(--breadvisitedcolor);
   transition: 0.6s ease;
   scale: 1.1;
@@ -543,7 +568,7 @@ ol li .active {
 }
 
 #listaOpere li img {
-  max-height: fit-content;
+  /* min-height: fit-content; */
   max-width: 17em;
   background-size: contain;
   margin: 0;
@@ -574,7 +599,7 @@ ol li .active {
     background-size: contain;
     margin: 0;
     margin-top: 1em;
-
+    display: block;
   }
 }
 
@@ -589,8 +614,15 @@ ol li .active {
 
 #listaOpere li p {
   align-self: flex-start;
+  display: -webkit-box;
+  line-clamp: 3;                  
+  box-orient: vertical;
+  -webkit-line-clamp: 4; /* Numero di righe visibili */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
   /* Allinea il titolo a sinistra */
-  margin-bottom: 0.1;
+  margin-bottom: 0.1em;
 }
 
 #listaOpere li a {
@@ -620,12 +652,18 @@ ol li .active {
   font-size: 2rem;
   padding: 1rem;
   margin-bottom: 0;
+}
 
+.mainSection h2 {
+  font-size: 1.3rem;
+  padding: 1rem;
+  margin-bottom: 0;
 }
 
 .mainSection p {
-  margin: 1em;
-  padding: 1em;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  padding-bottom: 1em;
   font-size: 1.1rem;
 }
 
@@ -680,7 +718,7 @@ footer dt {
 
 footer h2 {
   flex: 1 0 18%;
-  background-image: url('../images/logo.jpeg');
+  background-image: url('../images/logo.jpg');
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
@@ -766,8 +804,8 @@ footer h2 {
 }
 
 .infoMostra>img {
-  display: block;
   margin: auto;
+  display: block;
   max-width: 80%;
   max-height: 480px;
   border-radius: 10px;
@@ -800,6 +838,7 @@ footer h2 {
 
 .accordion {
   width: 100%;
+  margin-top: 1em;
   padding: 0.6em;
   font-size: 1.3em;
   font-weight: bold;
@@ -1096,17 +1135,26 @@ a.button:hover {
   box-shadow: inset 0 0 5px var(--shadowcolor);
 }
 
-.recensioni>li>p {
-  margin-bottom: 0.5em;
-  margin-top: 0.5em;
+.recensioni>li dt {
+  display: none;
 }
 
-.recensioni>li>label {
+.recensioni>li dt.lbl-punteggio,
+.recensioni>li dt.lbl-punteggio+dd {
+  display: inline;
+  font-weight: bold;
+}
+
+.recensioni>li dd {
+  margin: 0.3em 0;
+}
+
+.recensioni>li label {
   font-weight: bold;
   margin-right: 0.5em;
 }
 
-.recensioni>li>time {
+.recensioni>li time {
   display: block;
   font-size: 0.7em;
 }
@@ -1125,7 +1173,7 @@ main[class="opera"] {
   background-color: var(--bgcolor);
   margin: 2em auto;
   width: 70%;
-  padding: 1.75em;
+  padding: 1.5em;
   border: 1px solid var(--contentxtcolor);
   box-shadow: 0 4px 10px var(--shadowcolor);
   border-radius: 8px;
@@ -1182,18 +1230,14 @@ main[class="opera"] {
 }
 
 #carta-dettagli dt {
-  background-image: url('../images/pokeball.ico');
-  background-size: 1em;
-  background-repeat: no-repeat;
-  font-size: 1.1em;
-  padding-left: 2.5em;
+  background: url('../images/pokeball.ico') no-repeat center left;
+  background-size: 1.25em;
+  padding: 0 0.5em 0 2em;
+  float: left;
 }
 
 #carta-dettagli dd {
-  padding: 0.5em;
-  padding-left: 2.5em;
-  margin-left: 1.5em;
-  font-size: 1em;
+  margin: 0.2em 0;
 }
 
 #carta-dettagli dd:last-child {
@@ -1373,26 +1417,34 @@ main[class="opera"] {
 
 
 /*/////////////////////////*/
-/* AREA PERSONALE */
+/* Il mio profilo */
 /*/////////////////////////*/
 
 #dati-utente {
-  margin: 2em auto;
-  width: 50%;
-  padding: 0 1.5em;
-  padding-bottom: 1.5em;
-  border: 1px solid var(--txtcolor);
+  margin: 1.5em;
   border-radius: 8px;
+  background: url("../images/pokedex.png") no-repeat right; 
+  background-size: contain;
+  padding-right: 18%;
 }
 
 #dati-utente dt {
   font-weight: bold;
   margin-bottom: 0.5em;
-  margin-top: 1.5em;
+  padding: 0.5em;
+  width: 6em;
+  background-color: var(--headerbgcolor);
+  color: var(--headercolor);
+  border-radius: 5px;
+  float: left;
 }
 
 #dati-utente dd {
-  margin-left: 1.5em;
+  margin: 0 0 0.5em 6.9em;
+  padding: 0.5em;
+  background-color: var(--breadvisitedcolor);
+  border-left: 4px solid black;
+  border-radius: 5px;
 }
 
 #tab-prenot {
@@ -1431,6 +1483,8 @@ main[class="opera"] {
 .cancella a,
 .mod-mostra a {
   text-decoration: none;
+  display: block;
+  width: 100%;
 }
 
 dialog {
@@ -1470,6 +1524,18 @@ dialog button {
   grid-row: 2;
   grid-column: 1;
   margin: 5em 0;
+}
+
+.error-descr ul {
+  margin-left: 2em;
+}
+
+.error-descr li {
+  text-align: left;
+  margin: 0.5em 0;
+  background: url("../images/pokeball.ico") no-repeat top left;
+  background-size: 1.25em;
+  padding-left: 2em;
 }
 
 .error-img {

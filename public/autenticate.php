@@ -47,5 +47,5 @@ if (isset($_POST['submit'])) {
     }
     exit;
 } else 
-    Templating::errCode(405);
+    Templating::errCode(400);
 ?>
