@@ -5,7 +5,7 @@
 
 :root {
   --headerbgcolor: #95e98a;
-  --headercolor: #205d86;
+  --headercolor: #205e86;
   --bgcolor: #fff;
   --txtcolor: #000;
   --contentbgcolor: #f2f4f7;
@@ -14,29 +14,30 @@
   --linkcolor: #4b7c81;
   --visitedcolor: #000;
   --submitcolor: var(--headerbgcolor);
-
   --disabledtxtcolor: #666;
   --carouselcolor: var(--headercolor);
   --carouselactivecolor: var(--headerbgcolor);
   --errorcolor: red;
   --tablebgcolor: #f2f2f2;
   --shadowcolor: rgba(0, 0, 0, 0.15);
+  --footerlinkcolor: #000;
+  --footerbgcolor: var(--headerbgcolor);
   --footercolor: var(--headercolor);
   --bttsrc: url(../images/back-to-top-icon.png);
 }
 
 :root.dark {
-  --headerbgcolor: #205d86;
-  --headercolor: #fff;
-  --menuvisitedcolor: #fff;
-  --bgcolor: #202020;
-  --txtcolor: #fff;
-  --contentbgcolor: #1E1E1E;
+  --headerbgcolor: #000;
+  --headercolor: #2b7bb1;
+  --menuvisitedcolor: #000;
+  --bgcolor: #000;
+  --txtcolor: #ddd;
+  --contentbgcolor: #000;
   --breadlinkcolor: #000;
-  --breadvisitedcolor: #58007e;
-  --linkcolor: #4b7c81;
+  --breadvisitedcolor: #ddd;
+  --linkcolor: var(--headercolor);
   --visitedcolor: #fff;
-  --submitcolor: var(--headerbgcolor);
+  --submitcolor: var(--headercolor);
 
   --disabledtxtcolor: #888;
   --carouselcolor: var(--headercolor);
@@ -44,7 +45,8 @@
   --errorcolor: red;
   --tablebgcolor: #232323;
   --shadowcolor: #fff;
-  --footercolor: var(--txtcolor);
+  --footerbgcolor: var(--headercolor);
+  --footercolor: #fff;
   --bttsrc: url(../images/dark_back-to-top-icon.png);
 
 }
@@ -365,10 +367,10 @@ main h1 {
   display: none;
   text-decoration: none;
   text-align: center;
-  color: var(--headercolor);
+  color: var(--carouselcolor);
   padding: 1em;
-  background: var(--headerbgcolor);
-  border: 1px solid var(--headercolor);
+  background: var(--carouselactivecolor);
+  border: 1px solid var(--carouselcolor);
   position: absolute;
   bottom: 3.4em;
   left: 38.5%;
@@ -469,6 +471,9 @@ ol li .active {
   overflow: auto;
 }
 
+.dark .dettaglioSala {
+  box-shadow: inset 0 0 10px var(--shadowcolor);
+}
 
 .dettaglioSala h1 {
   text-align: center;
@@ -487,7 +492,7 @@ ol li .active {
   text-align: center;
   font-size: 2rem;
   padding: 1rem;
-
+  line-height: 1.5em;
 }
 
 #listaOpere {
@@ -513,7 +518,10 @@ ol li .active {
   box-shadow: 5px 5px 20px var(--shadowcolor);
   padding: 2em;
   margin: auto;
+}
 
+.dark #listaOpere>li {
+  box-shadow: inset 0 0 10px var(--shadowcolor);
 }
 
 #listaOpere li img {
@@ -626,13 +634,17 @@ footer {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  background-color: var(--headerbgcolor);
+  background-color: var(--footerbgcolor);
   color: var(--footercolor);
   font-size: 0.75rem;
   padding: 0 6%;
 }
 
 footer a {
+  color: var(--footerlinkcolor);
+}
+
+footer a:visited {
   color: var(--footercolor);
 }
 
@@ -886,16 +898,27 @@ a.button {
 
 .formCompilazione input[type="submit"]:hover,
 a.button:hover {
-  background-color: var(--txtcolor);
+  background: var(--txtcolor);
   color: var(--headerbgcolor);
   cursor: pointer;
   transition: 0.2s ease;
 }
 
+.dark .formCompilazione input[type="submit"],
+.dark a.button {
+  color: var(--visitedcolor);
+  border: 1px solid var(--bgcolor);
+}
+
 .dark .formCompilazione input[type="submit"]:hover,
 .dark a.button:hover {
-  background-color: var(--breadvisitedcolor);
-  color: var(--txtcolor);
+  background: var(--headerbgcolor);
+  color: var(--headercolor);
+  border: 1px solid var(--headercolor);
+}
+
+a.button:visited {
+  color: var(--bgcolor);
 }
 
 .formCompilazione input[type="submit"]:disabled {
