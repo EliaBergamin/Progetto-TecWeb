@@ -68,17 +68,17 @@ CREATE TABLE IF NOT EXISTS Recensione (
 -- MOCK DATA -- 
 
 INSERT INTO Mostra (nome, descrizione, data_inizio, data_fine, img_path, alt) VALUES
-  ("Dragon Ball Z Card Battle", "Esplora l'emozionante mondo delle carte {en}Dragon Ball{/en} Z! Dai {ja}Saiyan{/ja} alle epiche battaglie, questa mostra celebra l'arte e la strategia del gioco con una collezione ricca e dinamica.", "2024-12-01", "2025-02-27", "dragonball_exhibit.webp", ""),
-  ("Pokémon Card Showcase", "La più grande collezione di carte Pokémon mai esposta. Dagli inizi con il set base fino alle edizioni moderne, scopri le carte più rare e iconiche, e immergiti in un mondo di ricordi e sorprese.", "2024-12-01", "2024-12-31", "pokemon_exhibit.webp", ""),
-  ("Gormiti Card Collection", "Rivivi l'epoca d'oro dei Gormiti attraverso le loro carte! Una collezione completa e unica, che racconta storie di battaglie epiche e terre magiche con dettagli affascinanti e colorati.", "2025-11-20", "2025-12-31", "gormiti_exhibit.webp", ""),
+  ("{en}Dragon Ball{/en} Z {en}Card Battle{/en}", "Esplora l'emozionante mondo delle carte {en}Dragon Ball{/en} Z! Dai {ja}Saiyan{/ja} alle epiche battaglie, questa mostra celebra l'arte e la strategia del gioco con una collezione ricca e dinamica.", "2024-12-01", "2025-02-27", "dragonball_exhibit.webp", ""),
+  ("Pokémon {en}Card Showcase{/en}", "La più grande collezione di carte Pokémon mai esposta. Dagli inizi con il set base fino alle edizioni moderne, scopri le carte più rare e iconiche, e immergiti in un mondo di ricordi e sorprese.", "2024-12-01", "2024-12-31", "pokemon_exhibit.webp", ""),
+  ("Gormiti {en}Card Collection{/en}", "Rivivi l'epoca d'oro dei Gormiti attraverso le loro carte! Una collezione completa e unica, che racconta storie di battaglie epiche e terre magiche con dettagli affascinanti e colorati.", "2025-11-20", "2025-12-31", "gormiti_exhibit.webp", ""),
   ("Pokémon: Sole e Luna", "Immergiti in un'avventura spaziale con la nuova mostra a tema Pokémon: Sole e Luna! Scopri le rarissime carte della regione di Alola, tra cui non mancheranno certamente Solgaleo e Lunala GX!", "2025-01-14", "2025-03-24", "sun_moon.webp", ""),
-  ("Yu-Gi-Oh Exhibit", "Un viaggio nel mondo di Yu-Gi-Oh che non puoi perdere! L'esposizione include carte rare, storia del gioco e dettagli affascinanti sulle illustrazioni. Perfetta per fan di lunga data e neofiti curiosi.", "2023-06-01", "2023-06-10", "yugioh_exhibit.webp", "");
+  ("Yu-Gi-Oh {en}Exhibit{/en}", "Un viaggio nel mondo di Yu-Gi-Oh che non puoi perdere! L'esposizione include carte rare, storia del gioco e dettagli affascinanti sulle illustrazioni. Perfetta per fan di lunga data e neofiti curiosi.", "2023-06-01", "2023-06-10", "yugioh_exhibit.webp", "");
 
 
 INSERT INTO Sala (nome, descrizione, img_path) VALUES
-  ("Dragon Ball Battle Grounds", "Immergiti nell'universo epico di {en}Dragon Ball{/en}, dove potrai esplorare le avventure di Goku e dei suoi amici. Scopri le Sfere del Drago, rivivi gli scontri leggendari contro i Saiyan, Freezer e Majin Bu, e lasciati travolgere dall'energia delle trasformazioni Super Saiyan. Oggetti iconici, diorami e ricostruzioni interattive ti aspettano per farti sentire parte di questa straordinaria saga.", "dragonball_grounds.jpg"),
-  ("Pokémon Card Gallery", "Entra nel fantastico mondo dei Pokémon, dove allenatori di tutte le età possono scoprire creature straordinarie. Esplora regioni come Kanto, Johto e Galar, ammira una collezione di Poké Ball, e sfida le emozionanti battaglie in un'arena virtuale. Non dimenticare di incontrare i Pokémon leggendari e mitici in una sala dedicata alla loro storia e potere.", "pokemon_gallery.jpg"),
-  ("Gormiti Habitat", "Viaggia verso l'isola magica dei Gormiti, dove la natura prende vita attraverso i potenti {en}Lord{/en} della Terra, del Mare, del Fuoco e dell'Aria. Attraversa paesaggi suggestivi e scopri la storia di questa eterna lotta tra il bene e il male. Modelli tridimensionali, effetti luminosi e una narrazione avvincente rendono questa sala un'esperienza immersiva.", "gormiti_habitat.jpg"),
+  ("{en}Dragon Ball Battle Grounds{/en}", "Immergiti nell'universo epico di {en}Dragon Ball{/en}, dove potrai esplorare le avventure di {ja}Goku{/ja} e dei suoi amici. Scopri le Sfere del Drago, rivivi gli scontri leggendari contro i {ja}Saiyan{/ja}, {en}Freezer{/en} e {ja}Majin Bu{/ja}, e lasciati travolgere dall'energia delle trasformazioni Super {ja}Saiyan{/ja}. Oggetti iconici e ricostruzioni interattive ti aspettano per farti sentire parte di questa straordinaria saga.", "dragonball_grounds.jpg"),
+  ("Pokémon {en}Card Gallery{/en}", "Entra nel fantastico mondo dei Pokémon, dove allenatori di tutte le età possono scoprire creature straordinarie. Esplora regioni come Kanto, Johto e Galar, ammira una collezione di Poké Ball, e sfida le emozionanti battaglie in un'arena virtuale. Non dimenticare di incontrare i Pokémon leggendari e mitici in una sala dedicata alla loro storia e potere.", "pokemon_gallery.jpg"),
+  ("Gormiti {en}Habitat{/en}", "Viaggia verso l'isola magica dei Gormiti, dove la natura prende vita attraverso i potenti {en}Lord{/en} della Terra, del Mare, del Fuoco e dell'Aria. Attraversa paesaggi suggestivi e scopri la storia di questa eterna lotta tra il bene e il male. Modelli tridimensionali, effetti luminosi e una narrazione avvincente rendono questa sala un'esperienza immersiva.", "gormiti_habitat.jpg"),
   ("Yu-Gi-Oh Arena", "Preparati a duellare nel mondo di Yu-Gi-Oh!, dove ogni carta racconta una storia epica. Esplora il regno dei mostri con esposizioni dedicate alle carte leggendarie come il Drago Bianco Occhi Blu e il Mago Nero. Una replica dell'arena da duello ti aspetta per sfidare amici e rivivere i momenti più iconici della serie.", "yugioh_arena.jpg");
 
 INSERT INTO Opera (id_sala, nome, autore, descrizione, anno, img_path) VALUES
@@ -148,7 +148,7 @@ INSERT INTO Opera (id_sala, nome, autore, descrizione, anno, img_path) VALUES
   velocità e mistero, ed è amato dai fan per il suo design accattivante e i suoi incredibili poteri.
   Scopri di più su {ait}Zeraora{/ahttps://wiki.pokemoncentral.it/Zeraora}", 2018, "pokemon/zeraora.png"),
   -- dragonball
-  (1, "Freezer", "{ja}Akira Toriyama{/ja}", "{en}Freezer{/en} è uno dei villain più iconici della serie {en}Dragon Ball{/en}, noto per la sua crudeltà e il suo potere devastante. 
+  (1, "{en}Freezer{en}", "{ja}Akira Toriyama{/ja}", "{en}Freezer{/en} è uno dei villain più iconici della serie {en}Dragon Ball{/en}, noto per la sua crudeltà e il suo potere devastante. 
   Questo imperatore galattico spietato domina interi pianeti e razze, eliminando chiunque osi opporsi al suo dominio. Con un aspetto alieno elegante e minaccioso, {en}Freezer{/en} 
   è capace di trasformarsi in diverse forme, ognuna più potente della precedente. Nel cartone animato, {en}Freezer{/en} è il principale antagonista nella saga di {aja}Namek{/ahttps://dragonball.fandom.com/it/wiki/Namecc}, 
   dove affronta {aja}Goku{/ahttps://dragonball.fandom.com/wiki/Goku} e i suoi amici. La sua trasformazione finale, combinata con il suo attacco 'Disco Distruttore', rappresenta una delle 
@@ -175,7 +175,7 @@ INSERT INTO Opera (id_sala, nome, autore, descrizione, anno, img_path) VALUES
   (1, "Vegeta", "{ja}Akira Toriyama{/ja}", "Vegeta è il principe orgoglioso della razza {ja}Saiyan{/ja}, noto per la sua ambizione, il suo orgoglio e la sua determinazione incrollabile. Con il suo 
   caratteristico sguardo severo e la sua forza esplosiva, Vegeta è uno dei personaggi più complessi e amati della serie. All'inizio, Vegeta è un antagonista, intenzionato a conquistare la Terra, 
   ma nel corso del tempo si evolve, diventando un alleato fondamentale per {aja}Goku{/ahttps://dragonball.fandom.com/wiki/Goku} e gli altri guerrieri Z. Nel cartone animato, Vegeta è protagonista di 
-  molti momenti memorabili, come il suo sacrificio eroico contro {ja}Majin Bu{/ja} e il raggiungimento della forma Super {ja}Saiyan{/ja} per competere con Goku. La sua rivalità con {ja}Goku{/ja} è 
+  molti momenti memorabili, come il suo sacrificio eroico contro {ja}Majin Bu{/ja} e il raggiungimento della forma Super {ja}Saiyan{/ja} per competere con {ja}Goku{/ja}. La sua rivalità con {ja}Goku{/ja} è 
   una delle dinamiche più importanti della serie, spingendolo costantemente a superare i suoi limiti.
   Scopri di più su {ait}Vegeta{/ahttps://dragonball.fandom.com/it/wiki/Vegeta}.", 1989, "dragonball/vegeta.jpg"),
   -- gormiti
