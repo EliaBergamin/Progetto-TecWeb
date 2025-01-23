@@ -161,7 +161,7 @@ header {
   grid-column: 1;
   /* background-color: var(--bgcolor); */
   background-color: #95e98a;
-  background-image: url('../images/logo.jpg');
+  background-image: url('../images/logo.png');
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
@@ -718,7 +718,7 @@ footer dt {
 
 footer h2 {
   flex: 1 0 18%;
-  background-image: url('../images/logo.jpg');
+  background-image: url('../images/logo.png');
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
