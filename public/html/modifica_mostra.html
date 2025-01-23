@@ -76,8 +76,8 @@
         <input type="date" name="data_fine" id="data_fine" value="{{data_fine}}" aria-required="true" data-required-msg="Inserire una data">
         <span id="err_data_fine" class="errorSuggestion" aria-live="assertive" data-ref-to="data_fine"></span>
         <label for="immagine">Percorso immagine</label>
-        <input type="file" name="immagine" id="immagine" accept=".jpg,.jpeg,.png,.webp">
-        <span id="err_immagine" class="errorSuggestion" aria-live="assertive" data-ref-to="immagine"></span>
+        <input type="file" name="immagine" id="immagine" accept=".jpg,.jpeg,.png,.webp" aria-required="false">
+        <span id="err_immagine_edit_mostra" class="errorSuggestion" aria-live="assertive" data-ref-to="immagine"></span>
         <p class="required-msg">Campi obbligatori</p>
         <input type="submit" name="submit" value="Conferma">
       </form>

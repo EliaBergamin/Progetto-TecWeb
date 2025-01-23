@@ -889,9 +889,18 @@ a.button:hover {
 
 .formCompilazione .errorSuggestion {
   color: red;
-  font-size: 0.9em;
+  font-size: 0.96rem;
   font-weight: normal;
   line-height: 0;
+}
+
+.formCompilazione #err_voto {
+  display: block;
+  margin-top: 1em;
+}
+
+.formCompilazione #err_voto.none {
+  display: none;
 }
 
 .required-label::after {

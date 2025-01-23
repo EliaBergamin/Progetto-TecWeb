@@ -320,6 +320,13 @@ const regole = {
         return input.trim().search(regex) == 0;
     },
 
+    "MatchRegexOrEmpty": function MatchRegex(input, regex) {
+        if (!input || input.trim() === "") {
+            return true;
+        }
+        return input.trim().search(regex) == 0;
+    },
+
     "RangeVisitatori": function RangeVisitatori(input, params = null) {
         if (!input) {
             return true;
@@ -375,6 +382,10 @@ const checklist = {
     ],
     err_immagine: [
         ['MatchRegex', /^.*\.(webp|png|jpeg|jpg)$/, 'Caricare un\'immagine in formato <abbr lang="en" title="Portable Network Graphics">PNG</abbr>, <abbr lang="en" title="Joint Photographic Experts Group">JPG/JPEG</abbr> o <abbr lang="en" title="Web Picture">WebP</abbr>'],
+        ['DimensioneFile', '', 'L\'immagine non può superare 1<abbr lang="en" title="Megabyte">MB</abbr>']
+    ],
+    err_immagine_edit_mostra: [
+        ['MatchRegexOrEmpty', /^.*\.(webp|png|jpeg|jpg)$/, 'Caricare un\'immagine in formato <abbr lang="en" title="Portable Network Graphics">PNG</abbr>, <abbr lang="en" title="Joint Photographic Experts Group">JPG/JPEG</abbr> o <abbr lang="en" title="Web Picture">WebP</abbr>'],
         ['DimensioneFile', '', 'L\'immagine non può superare 1<abbr lang="en" title="Megabyte">MB</abbr>']
     ],
 
@@ -465,6 +476,7 @@ function validatorCheckAll() {
                             err.removeAttribute("role");
                             err.classList.remove("toggleOn");
                             err.classList.add("none");
+                            console.log("ciao");
                         });
                     });
                     return false;
@@ -473,7 +485,7 @@ function validatorCheckAll() {
             }
             for (const rule of checklist[check]) {
                 const input = document.getElementById(err.getAttribute("data-ref-to"));
-                if (!input.value) {
+                if (!input.value && input.getAttribute('aria-required') === 'true') {
                     showErrorMsg(input, err, check, input.getAttribute('data-required-msg'));
                     return false;
                 }

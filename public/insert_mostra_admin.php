@@ -41,9 +41,7 @@ if (isset($_POST['submit'])) {
     $data_fine = DatabaseService::cleanedInput($_POST['data_fine']);
     if (!preg_match("/^\d{4}-\d{2}-\d{2}$/", $data_fine)) {
         array_push($error, 'data_fin_val');
-    }
-
-    if (strtotime($data_inizio) > strtotime($data_fine)) {
+    } else if (strtotime($data_inizio) > strtotime($data_fine)) {
         array_push($error, 'data_ini_fin');
     }
 
