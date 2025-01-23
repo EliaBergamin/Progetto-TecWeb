@@ -70,16 +70,16 @@ CREATE TABLE IF NOT EXISTS Recensione (
 INSERT INTO Mostra (nome, descrizione, data_inizio, data_fine, img_path, alt) VALUES
   ("Dragon Ball Z Card Battle", "Esplora l'emozionante mondo delle carte {en}Dragon Ball{/en} Z! Dai {ja}Saiyan{/ja} alle epiche battaglie, questa mostra celebra l'arte e la strategia del gioco con una collezione ricca e dinamica.", "2024-12-01", "2025-02-27", "dragonball_exhibit.webp", ""),
   ("Pokémon Card Showcase", "La più grande collezione di carte Pokémon mai esposta. Dagli inizi con il set base fino alle edizioni moderne, scopri le carte più rare e iconiche, e immergiti in un mondo di ricordi e sorprese.", "2024-12-01", "2024-12-31", "pokemon_exhibit.webp", ""),
-  ("Pokémon: Sole e Luna", "Immergiti in un'avventura spaziale con la nuova mostra a tema Pokémon: Sole e Luna! Scopri le rarissime carte della regione di Alola, tra cui non mancheranno certamente Solgaleo e Lunala GX!", "2025-01-14", "2025-03-24", "sun_moon.webp", ""),
   ("Gormiti Card Collection", "Rivivi l'epoca d'oro dei Gormiti attraverso le loro carte! Una collezione completa e unica, che racconta storie di battaglie epiche e terre magiche con dettagli affascinanti e colorati.", "2025-11-20", "2025-12-31", "gormiti_exhibit.webp", ""),
+  ("Pokémon: Sole e Luna", "Immergiti in un'avventura spaziale con la nuova mostra a tema Pokémon: Sole e Luna! Scopri le rarissime carte della regione di Alola, tra cui non mancheranno certamente Solgaleo e Lunala GX!", "2025-01-14", "2025-03-24", "sun_moon.webp", ""),
   ("Yu-Gi-Oh Exhibit", "Un viaggio nel mondo di Yu-Gi-Oh che non puoi perdere! L'esposizione include carte rare, storia del gioco e dettagli affascinanti sulle illustrazioni. Perfetta per fan di lunga data e neofiti curiosi.", "2023-06-01", "2023-06-10", "yugioh_exhibit.webp", "");
 
 
 INSERT INTO Sala (nome, descrizione, img_path) VALUES
-  ("Dragon Ball Battle Grounds", "Uno spazio dedicato agli appassionati di {en}Dragon Ball{/en}, dove le carte raccontano storie di battaglie memorabili. Ammira la potenza dei tuoi eroi preferiti in un'esperienza coinvolgente.", "dragonball_grounds.jpg"),
-  ("Pokémon Card Gallery", "Una galleria interattiva che celebra il fenomeno Pokémon. Esplora le carte più iconiche e scopri curiosità e aneddoti che hanno definito una generazione di collezionisti.", "pokemon_gallery.jpg"),
-  ("Gormiti Habitat", "Un'area esclusiva per immergersi nel mondo dei Gormiti. Scopri le carte che hanno fatto la storia, con esposizioni che rievocano le magiche terre dei Signori della Natura.", "gormiti_habitat.jpg"),
-  ("Yu-Gi-Oh Arena", "Entra in un'arena dedicata interamente all'universo di Yu-Gi-Oh! Scopri le carte più famose, partecipa a dimostrazioni interattive e immergiti in un'atmosfera da vero duellante.", "yugioh_arena.jpg");
+  ("Dragon Ball Battle Grounds", "Immergiti nell'universo epico di {en}Dragon Ball{/en}, dove potrai esplorare le avventure di Goku e dei suoi amici. Scopri le Sfere del Drago, rivivi gli scontri leggendari contro i Saiyan, Freezer e Majin Bu, e lasciati travolgere dall'energia delle trasformazioni Super Saiyan. Oggetti iconici, diorami e ricostruzioni interattive ti aspettano per farti sentire parte di questa straordinaria saga.", "dragonball_grounds.jpg"),
+  ("Pokémon Card Gallery", "Entra nel fantastico mondo dei Pokémon, dove allenatori di tutte le età possono scoprire creature straordinarie. Esplora regioni come Kanto, Johto e Galar, ammira una collezione di Poké Ball, e sfida le emozionanti battaglie in un'arena virtuale. Non dimenticare di incontrare i Pokémon leggendari e mitici in una sala dedicata alla loro storia e potere.", "pokemon_gallery.jpg"),
+  ("Gormiti Habitat", "Viaggia verso l'isola magica dei Gormiti, dove la natura prende vita attraverso i potenti {en}Lord{/en} della Terra, del Mare, del Fuoco e dell'Aria. Attraversa paesaggi suggestivi e scopri la storia di questa eterna lotta tra il bene e il male. Modelli tridimensionali, effetti luminosi e una narrazione avvincente rendono questa sala un'esperienza immersiva.", "gormiti_habitat.jpg"),
+  ("Yu-Gi-Oh Arena", "Preparati a duellare nel mondo di Yu-Gi-Oh!, dove ogni carta racconta una storia epica. Esplora il regno dei mostri con esposizioni dedicate alle carte leggendarie come il Drago Bianco Occhi Blu e il Mago Nero. Una replica dell'arena da duello ti aspetta per sfidare amici e rivivere i momenti più iconici della serie.", "yugioh_arena.jpg");
 
 INSERT INTO Opera (id_sala, nome, autore, descrizione, anno, img_path) VALUES
   -- yugioh
@@ -115,7 +115,7 @@ INSERT INTO Opera (id_sala, nome, autore, descrizione, anno, img_path) VALUES
   memorie del faraone, rappresenta non solo il potere ineguagliabile, ma anche il mistero e il fascino delle civiltà perdute.", 2000, "yugioh/obelisk.jpg"),
   -- pokemon
   (2, "Pikachu", "{ja}Atsuko Nishida{/ja}", "Pikachu, ideato da {ja}Atsuko Nishida{/ja}, è l'adorabile Pokémon di tipo Elettro che ha conquistato il mondo fin dal 1996. Con le sue guance rosse e il suo sorriso contagioso, 
-  è diventato l'emblema dei Pokémon, amato da grandi e piccoli per il suo carattere vivace e coraggioso.", 1996, "pokemon/pikachu.jpg"),
+  è diventato l'emblema dei Pokémon, amato da grandi e piccoli per il suo carattere vivace e coraggioso.", 1996, "pokemon/pikachu.png"),
   (2, "{en}Arceus{/en}", "{en}Game Freak{/en}", "{en}Arceus{/en}, anche noto come la Creatura Originaria, è un Pokémon misterioso di tipo Normale. Secondo la leggenda, {en}Arceus{/en} è il creatore dell'universo Pokémon, nato prima dell'esistenza stessa del tempo e dello spazio.
   Dopo aver dato origine al mondo, si dice che abbia creato {ait}Dialga{/ahttps://wiki.pokemoncentral.it/Dialga} (tempo), {ait}Palkia{/ahttps://wiki.pokemoncentral.it/Palkia} (spazio) e {aen}Giratina{/ahttps://wiki.pokemoncentral.it/Giratina} (antimateria) per mantenere l'equilibrio cosmico.
   Inoltre, {en}Arceus{/en} avrebbe creato i tre Pokémon del lago ({aen}Uxie{/ahttps://wiki.pokemoncentral.it/Uxie}, {aen}Mesprit{/ahttps://wiki.pokemoncentral.it/Mesprit} e {aen}Azelf{/ahttps://wiki.pokemoncentral.it/Azelf}) per portare conoscenza, emozioni e forza di volontà agli esseri viventi.
@@ -123,21 +123,21 @@ INSERT INTO Opera (id_sala, nome, autore, descrizione, anno, img_path) VALUES
   Ha un anello dorato attorno al torso, che assomiglia a un mandala, con punte che rappresentano le diverse dimensioni o forse le placche elementali.
   La sua testa presenta lunghe protuberanze, simili a corna, che conferiscono un'aria regale e ultraterrena. Gli occhi sono di un colore verde intenso, con le pupille rosse, spesso associati a un'aura di potere.
   Inoltre, è anche un Pokémon che può parlare con gli esseri umani, quindi è in grado di capirne i sentimenti ed il linguaggio, ed è disposto ad aiutare l'uomo. Se si arrabbia, comunque, può diventare furioso a tal punto da distruggere qualsiasi cosa e far sparire chiunque lui desideri dalla faccia della terra.
-  Scopri di più su {aen}Arceus{/ahttps://wiki.pokemoncentral.it/Arceus}.", 2006, "pokemon/arceus.jpg"),
+  Scopri di più su {aen}Arceus{/ahttps://wiki.pokemoncentral.it/Arceus}.", 2006, "pokemon/arceus.png"),
   (2, "{en}Gengar{/en}", "{ja}Ken Sugimori{/ja}", "{en}Gengar{/en}, il Pokémon Ombra, è uno dei Pokémon più iconici della serie, noto per il suo aspetto spettrale e il suo sorriso malizioso. È un Pokémon di tipo Spettro/Veleno ed è stato introdotto nella prima generazione.
   Ha un corpo tondeggiante con un aspetto simile a quello di un'ombra materializzata, la schiena munita di irti aculei. È di colore viola scuro, con occhi rossi brillanti che emanano un'aura inquietante.
   Ha un sorriso permanente e maligno, che sottolinea il suo carattere dispettoso. Le sue orecchie appuntite e la sua coda corta e arrotondata lo fanno sembrare un ibrido tra un fantasma e un animale caricaturale.
   {en}Gengar{/en} ama fare scherzi agli esseri umani e agli altri Pokémon, spesso spaventandoli con la sua abilità di apparire e scomparire improvvisamente.
   Nonostante il suo lato giocoso, può essere molto spaventoso, soprattutto quando usa la sua energia spettrale per drenare calore dall'aria, causando un improvviso freddo glaciale.
   È stato uno dei primi Pokémon introdotti nella serie animata, catturando l'immaginazione dei fan per il suo mix di mistero e umorismo.
-  Scopri di più su {aen}Gengar{/ahttps://wiki.pokemoncentral.it/Gengar}.", 1996, "pokemon/gengar.jpg"),
+  Scopri di più su {aen}Gengar{/ahttps://wiki.pokemoncentral.it/Gengar}.", 1996, "pokemon/gengar.png"),
   (2, "{en}Mewtwo{/en}", "{ja}Ken Sugimori{/ja}", "{en}Mewtwo{/en}, il Pokémon Genetico, è un Pokémon leggendario di tipo Psico introdotto in prima generazione. 
   È noto per la sua potenza straordinaria e per la sua storia unica, essendo una creatura creata artificialmente a partire dal DNA di {aen}Mew{/ahttps://wiki.pokemoncentral.it/Mew}.
   {en}Mewtwo{/en} ha un aspetto umanoide e felino, con un corpo slanciato ma muscoloso. Il suo corpo è prevalentemente grigio-violaceo, con una lunga coda di colore viola. Ha occhi penetranti e brillanti, che riflettono la sua intelligenza e il suo potere.
   Le sue mani hanno tre dita lunghe e affusolate, progettate per manipolare oggetti e concentrare energia psichica. {en}Mewtwo{/en} è inizialmente un Pokémon freddo, calcolatore e solitario. 
   È tormentato dal fatto di essere una creazione artificiale e si sente disconnesso sia dai Pokémon che dagli esseri umani.
   {en}Mewtwo{/en} incarna temi di potere, identità e la ricerca del proprio posto nel mondo, rendendolo uno dei personaggi più complessi e amati del mondo Pokémon.
-  Scopri di più su {aen}Mewtwo{/ahttps://wiki.pokemoncentral.it/Mewtwo}.", 1996, "pokemon/mewtwo.jpg"),
+  Scopri di più su {aen}Mewtwo{/ahttps://wiki.pokemoncentral.it/Mewtwo}.", 1996, "pokemon/mewtwo.png"),
   (2, "Zeraora", "{ja}Inosuke{/ja}", "Zeraora, il Pokémon Fulmirapido, è un Pokémon misterioso di tipo Elettro introdotto nella settima generazione ({ait}Pokémon Ultrasole e Ultraluna{/ahttps://wiki.pokemoncentral.it/Pok%C3%A9mon_Ultrasole_e_Ultraluna}). 
   È noto per la sua velocità incredibile e la sua capacità di manipolare l'elettricità con precisione letale.
   Ha un aspetto simile a un felino bipede, che ricorda una combinazione tra una pantera e un ghepardo. Il suo corpo è prevalentemente giallo, con dettagli blu e neri che sottolineano il suo tema elettrico. Ha occhi blu luminosi e un'espressione determinata.
@@ -146,7 +146,7 @@ INSERT INTO Opera (id_sala, nome, autore, descrizione, anno, img_path) VALUES
   da fonti esterne e non possiede un organo che la produca autonomamente. Il pelo gli si rizza su tutto il corpo quando utilizza grandi quantità di elettricità.
   È un Pokémon solitario e riservato, che vive lontano dagli umani. Nonostante la sua natura indipendente, è noto per proteggere i Pokémon più deboli, mostrando una sorprendente compassione. Zeraora è un Pokémon che unisce forza, 
   velocità e mistero, ed è amato dai fan per il suo design accattivante e i suoi incredibili poteri.
-  Scopri di più su {ait}Zeraora{/ahttps://wiki.pokemoncentral.it/Zeraora}", 2018, "pokemon/zeraora.jpg"),
+  Scopri di più su {ait}Zeraora{/ahttps://wiki.pokemoncentral.it/Zeraora}", 2018, "pokemon/zeraora.png"),
   -- dragonball
   (1, "Freezer", "{ja}Akira Toriyama{/ja}", "{en}Freezer{/en} è uno dei villain più iconici della serie {en}Dragon Ball{/en}, noto per la sua crudeltà e il suo potere devastante. 
   Questo imperatore galattico spietato domina interi pianeti e razze, eliminando chiunque osi opporsi al suo dominio. Con un aspetto alieno elegante e minaccioso, {en}Freezer{/en} 
@@ -214,7 +214,7 @@ INSERT INTO Utente (ruolo, username, nome, cognome, password_hash, email) VALUES
 (2, "bobloblaw", "Bob", "Loblaw", "$2y$10$mnopqrstuvwxyzabcdefg", "bob.loblaw@example.com");
 
 INSERT INTO Prenotazione (id_utente, data_prenotazione, num_persone, orario) VALUES
-(3, "2025-06-15", 92, "15:00"),
+(3, "2025-06-15", 7, "15:00"),
 (3, "2025-07-20", 3, "12:00"),
 (2, "2025-08-05", 1, "16:30"),
 (2, "2025-09-12", 84, "10:30"),

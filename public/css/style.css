@@ -146,9 +146,9 @@ strong {
 header {
   grid-row: 2;
   grid-column: 1;
-  background-color: var(--bgcolor);
-  background-image: url('../images/logo.jpeg');
-  background-position: left;
+  background-color: var(--headerbgcolor);
+  background-image: url('../images/logo.jpg');
+  background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
 }
@@ -195,15 +195,16 @@ utile per fissare il menu in modo che non scrolli
 #menu ul {
   display: flex;
   height: 3em;
+  
 }
 
 #menu a,
 #currentLink,
 #menu span {
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
-  box-sizing: border-box;
+  box-sizing: border-box; 
   height: 100%;
   padding: 0.3em 0.74em;
 }
@@ -318,7 +319,7 @@ main h1 {
 .immaginiCarosello img {
   box-sizing: content-box;
   max-width: 100%;
-  max-height: 55vh;
+  height: 50vh;
   position: relative;
   padding: 0;
   margin: auto;
@@ -485,11 +486,10 @@ ol li .active {
   box-shadow: 5px 5px 20px var(--shadowcolor);
   padding: 2em;
   margin: auto;
-
 }
 
 #listaOpere li img {
-  max-height: fit-content;
+  /* min-height: fit-content; */
   max-width: 17em;
   background-size: contain;
   margin: 0;
@@ -520,7 +520,7 @@ ol li .active {
     background-size: contain;
     margin: 0;
     margin-top: 1em;
-
+    display: block;
   }
 }
 
@@ -535,6 +535,13 @@ ol li .active {
 
 #listaOpere li p {
   align-self: flex-start;
+  display: -webkit-box;
+  line-clamp: 3;                  
+  box-orient: vertical;
+  -webkit-line-clamp: 4; /* Numero di righe visibili */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
   /* Allinea il titolo a sinistra */
   margin-bottom: 0.1em;
 }
@@ -628,7 +635,7 @@ footer dt {
 
 footer h2 {
   flex: 1 0 18%;
-  background-image: url('../images/logo.jpeg');
+  background-image: url('../images/logo.jpg');
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;

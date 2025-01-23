@@ -45,7 +45,7 @@ function mostraSlide(n) {
     const slides = document.querySelectorAll(".immaginiCarosello img");
     //const links = document.querySelectorAll(".immaginiCarosello .more");
     const dots = document.querySelectorAll(".puntiniCarosello button");
-    console.log(slides);
+    //console.log(slides);
     if (n > slides.length) { currentSlide = 1 }
     if (n < 1) { currentSlide = slides.length }
     for (i = 0; i < slides.length; i++) {
@@ -83,7 +83,7 @@ function initCarLink() {
     const link = document.getElementById("scopridipiu");
     if (link.getAttribute("href").search(/\-\d/) != -1) {
         link.setAttribute("href", "virtual_tour.php");
-        console.log("virtual_tour.php");
+        //console.log("virtual_tour.php");
         
     }
 }
@@ -100,7 +100,7 @@ function initAccordion() {
     });
     //con questo evento praticamente se la pagina viene ricaricata con un riferimento ad un id, apre l'accordion
     window.addEventListener("load", function() {
-        console.log(this.window.location.hash);
+        //console.log(this.window.location.hash);
         if (window.location.hash) {
             
             const accordionId = window.location.hash.slice(1); // rimuove il carattere '#'
@@ -236,7 +236,7 @@ function initDialog() {
             })
                 .then(response => response.text())
                 .then(result => {
-                    console.log('Success:', result);
+                    //console.log('Success:', result);
                     window.location.reload();
                 })
                 .catch(error => {
@@ -257,7 +257,7 @@ function initDialog() {
             })
                 .then(response => response.text())
                 .then(result => {
-                    console.log('Success:', result);
+                    //console.log('Success:', result);
                     window.location.reload();
                 })
                 .catch(error => {
