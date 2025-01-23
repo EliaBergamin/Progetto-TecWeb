@@ -1,0 +1,6 @@
+.switch {
+    position: absolute;
+    right: 3.2rem;
+    top: 2.5rem;
+    z-index: 100;
+}

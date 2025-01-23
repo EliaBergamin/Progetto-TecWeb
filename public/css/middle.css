@@ -20,6 +20,10 @@ header {
     z-index: 50;
 }
 
+.dark header {
+    border-bottom-width: 1px;
+}
+
 #hamb {
     cursor: pointer;
     transition-duration: 0.2s;
@@ -155,4 +159,8 @@ td[data-title]:before {
 
 #tab-mostre .mod-mostra {
     border-right: none;
+}
+
+.switch {
+    top: 2.54em;
 }

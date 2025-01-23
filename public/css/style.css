@@ -42,7 +42,7 @@
   --disabledtxtcolor: #888;
   --carouselcolor: var(--headercolor);
   --carouselactivecolor: var(--headerbgcolor);
-  --errorcolor: red;
+  --errorcolor: #ff3d3d;
   --tablebgcolor: #232323;
   --shadowcolor: #fff;
   --footerbgcolor: var(--headercolor);
@@ -179,16 +179,19 @@ header h1 {
 THEME TOGGLE
 ==============
 */
+#theme-form {
+  display: flex;
+  align-items: center; /* Centra verticalmente */
+}
 
 .switch {
-  position: fixed;
+  position:relative;
   display: flex;
   flex-direction: row;
   align-items: center;
-  bottom: 0.5em;
-  right: 0.5em;
+  top: 0.9em;
   width: 7.5em;
-  height: 2em;
+  height: 2em; 
   text-align: center;
   margin: -30px 0 0 -75px;
   background: var(--contentbgcolor);
@@ -200,28 +203,34 @@ THEME TOGGLE
 input[type=radio] {
   display: none;
 }
+
 .switch label {
   cursor: pointer;
   color: var(--disabledtxtcolor);
   transition: all 0.5s ease;
 }
+
 label[for=light] {
   position: absolute;
   left: 0.3em;
+  cursor: default;
+  color: #000;
 }
+
 label[for=dark] {
   position: absolute;
   right: 0.3em;
 }
-#dark:checked ~ .switch {
+
+.dark .switch {
   background: #202020;
 }
 
-#light:checked ~ .switch label[for=light] {
-  cursor: default;
-  color: #000;
+.dark .switch label[for=light] {
+  color: #ccc;
 }
-#dark:checked ~ .switch label[for=dark] {
+
+.dark .switch label[for=dark] {
   cursor: default;
   color: #fff;
 }
@@ -284,12 +293,21 @@ utile per fissare il menu in modo che non scrolli
 /* BREADCRUMB */
 /*////////////*/
 
-#breadcrumb {
+#bread-bar {
   grid-row: 3;
   grid-column: 1/3;
   background-color: var(--headercolor);
   color: var(--headerbgcolor);
   padding: 0.2rem;
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+}
+
+#breadcrumb {
+  /* grid-row: 3;
+  grid-column: 1/3; */
+  flex-grow: 1;
 }
 
 #breadcrumb p {
@@ -838,7 +856,7 @@ footer h2 {
   padding-top: 0.75em;
   background-color: var(--bgcolor);
   border-radius: 10px;
-  opacity: 0.93;
+  opacity: 0.96;
 }
 
 #contenitoreRecensione {
@@ -917,7 +935,7 @@ a.button:hover {
   border: 1px solid var(--headercolor);
 }
 
-a.button:visited {
+.dark a.button:visited {
   color: var(--bgcolor);
 }
 
@@ -934,7 +952,7 @@ a.button:visited {
 }
 
 .formCompilazione .errorSuggestion {
-  color: red;
+  color: var(--errorcolor);
   font-size: 0.8em;
   font-weight: normal;
   line-height: 0;
