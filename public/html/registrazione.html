@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="css/print.css" media="print">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="images/pokeball.ico" type="image/x-icon">
-    <script src="js/script.js"></script>
+    <script src="js/script.js" defer></script>
 </head>
 
 <body>
@@ -68,21 +68,22 @@
             <!-- form_start -->
             <form action="register.php" method="post" class="formCompilazione" id="form">
                 <label for="nome" class="required-label">Nome </label>
-                <input type="text" name="nome" id="nome" value="{{nome}}" required minlength="2" maxlength="50">
+                <input type="text" name="nome" id="nome" value="{{nome}}" aria-required="true" data-required-msg="Inserire il nome" minlength="2" maxlength="50">
                 <span id="err_nome" class="errorSuggestion" aria-live="assertive" data-ref-to="nome"></span>
                 <label for="cognome" class="required-label">Cognome </label>
-                <input type="text" name="cognome" id="cognome" value="{{cognome}}" required minlength="2"
+                <input type="text" name="cognome" id="cognome" value="{{cognome}}" aria-required="true" data-required-msg="Inserire il cognome" minlength="2"
                     maxlength="50">
                 <span id="err_cognome" class="errorSuggestion" aria-live="assertive" data-ref-to="cognome"></span>
                 <label for="username" class="required-label">Username </label>
-                <input type="text" name="username" id="username" value="{{username}}" required minlength="4"
+                <input type="text" name="username" id="username" value="{{username}}" aria-required="true" data-required-msg="Inserire uno username" minlength="4"
                     maxlength="20">
                 <span id="err_username" class="errorSuggestion" aria-live="assertive" data-ref-to="username"></span>
                 <label for="email" class="required-label">Email </label>
-                <input type="email" name="email" id="email" value="{{email}}" required>
+                <input type="email" name="email" id="email" value="{{email}}" aria-required="true" data-required-msg="Inserire l'indirizzo email"
+                    maxlength="50">
                 <span id="err_email" class="errorSuggestion" aria-live="assertive" data-ref-to="email"></span>
                 <label for="password" class="required-label">Password </label>
-                <input type="password" name="password" id="password" required minlength="8" value="{{password}}">
+                <input type="password" name="password" id="password" aria-required="true" data-required-msg="Inserire una password" minlength="8" value="{{password}}">
                 <span id="err_password" class="errorSuggestion" aria-live="assertive" data-ref-to="password"></span>
                 <p class="required-msg">Campi obbligatori</p>
                 <input type="submit" name="submit" value="Registrati">
@@ -106,9 +107,8 @@
         </dl>
         <!--         <a href="" lang="en">Privacy Link TODO</a>
  -->
-        <p id="tab-descr" class="nascosto">La tabella contiene gli orari di apertura del museo di mattina e pomeriggio
-            dal sabato al martedì</p>
-        <table id="orari-museo" title="Orari del museo" aria-describedby="tab-descr">
+        <p id="tab-descr" class="nascosto">La tabella contiene gli orari di apertura del museo di mattina e pomeriggio dal Mercoledì alla Domenica</p>
+        <table id="orari-museo" aria-describedby="tab-descr">
             <caption>Orari del Museo</caption>
             <thead>
                 <tr>
@@ -119,24 +119,29 @@
             </thead>
             <tbody>
                 <tr>
-                    <th scope="row" abbr="Lun">Lunedì</th>
+                    <th scope="row" abbr="Mer">Mercoledì</th>
                     <td><time datetime="09:00">09:00</time> - <time datetime="12:00">12:00</time></td>
-                    <td><time datetime="14:00">14:00</time> - <time datetime="19:00">19:00</time></td>
+                    <td><time datetime="13:30">13:30</time> - <time datetime="18:00">18:00</time></td>
                 </tr>
                 <tr>
-                    <th scope="row" abbr="Mar">Martedì</th>
+                    <th scope="row" abbr="Gio">Giovedì</th>
                     <td><time datetime="09:00">09:00</time> - <time datetime="12:00">12:00</time></td>
-                    <td><time datetime="14:00">14:00</time> - <time datetime="19:00">19:00</time></td>
+                    <td><time datetime="13:30">13:30</time> - <time datetime="18:00">18:00</time></td>
+                </tr>
+                <tr>
+                    <th scope="row" abbr="Ven">Venerdì</th>
+                    <td><time datetime="09:00">09:00</time> - <time datetime="12:00">12:00</time></td>
+                    <td><time datetime="13:30">13:30</time> - <time datetime="18:00">18:00</time></td>
                 </tr>
                 <tr>
                     <th scope="row" abbr="Sab">Sabato</th>
-                    <td><time datetime="08:00">08:00</time> - <time datetime="13:00">13:00</time></td>
-                    <td><time datetime="14:00">14:00</time> - <time datetime="20:00">20:00</time></td>
+                    <td><time datetime="09:00">09:00</time> - <time datetime="12:00">12:00</time></td>
+                    <td><time datetime="13:30">13:30</time> - <time datetime="18:00">18:00</time></td>
                 </tr>
                 <tr>
                     <th scope="row" abbr="Dom">Domenica</th>
-                    <td><time datetime="08:00">08:00</time> - <time datetime="13:00">13:00</time></td>
-                    <td><time datetime="14:00">14:00</time> - <time datetime="22:00">22:00</time></td>
+                    <td><time datetime="09:00">09:00</time> - <time datetime="12:00">12:00</time></td>
+                    <td><time datetime="13:30">13:30</time> - <time datetime="18:00">18:00</time></td>
                 </tr>
             </tbody>
         </table>

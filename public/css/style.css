@@ -14,7 +14,8 @@
   --linkcolor: #4b7c81;
   --visitedcolor: #000;
   --submitcolor: var(--headerbgcolor);
-  --disabledtxtcolor: #666;
+  --menuvisitedcolor: var(--headercolor);
+  --disabledtxtcolor: #595959;
   --carouselcolor: var(--headercolor);
   --carouselactivecolor: var(--headerbgcolor);
   --errorcolor: red;
@@ -136,15 +137,6 @@ strong {
   transition: 0.3s ease;
 }
 
-
-#menu a:focus {
-  border-left: var(--txtcolor) solid 1px;
-  border-right: var(--txtcolor) solid 1px;
-}
-
-#menu a:active {
-  text-decoration: none;
-}
 
 #top-help {
   grid-row: 1;
@@ -298,6 +290,15 @@ utile per fissare il menu in modo che non scrolli
   background: #95e98a;
 }
 
+#menu a:focus {
+  border-left: var(--txtcolor) solid 1px;
+  border-right: var(--txtcolor) solid 1px;
+}
+
+#menu a:active {
+  text-decoration: none;
+}
+
 #menu a:visited {
   background: var(--headerbgcolor);
   color: var(--headercolor);
@@ -305,6 +306,12 @@ utile per fissare il menu in modo che non scrolli
 
 .dark #menu a:visited {
   background: var(--headerbgcolor);
+  color: var(--menuvisitedcolor);
+}
+
+#menu a:hover {
+  background: var(--headercolor);
+  color: var(--headerbgcolor);
 }
 
 /*////////////*/
@@ -329,7 +336,9 @@ utile per fissare il menu in modo che non scrolli
 }
 
 #breadcrumb a {
-  color: var(--breadlinkcolor);
+  color: var(--breadvisitedcolor);
+  padding: 0 0.2em;
+  border-radius: 3px;
 }
 
 #breadcrumb li+li::before {
@@ -338,7 +347,8 @@ utile per fissare il menu in modo che non scrolli
 }
 
 #breadcrumb a:visited {
-  color: var(--breadvisitedcolor);
+  color: var(--headerbgcolor);
+  background: var(--headercolor);
 }
 
 #home {
@@ -589,27 +599,6 @@ ol li .active {
   }
 }
 
-/*trasforma la tabella e la fa diventare di una sola colonna in caso di schermi piccoli*/
-@media (max-width: 855px) {
-  #listaOpere {
-    grid-template-columns: repeat(1, 1fr);
-    max-height: fit-content;
-    width: auto;
-    margin: 0 auto;
-  }
-
-  #listaOpere li img {
-    max-height: fit-content;
-    width: auto;
-    background-size: contain;
-    margin: 0;
-    margin-top: 1em;
-    display: block;
-  }
-}
-
-
-
 #listaOpere li h3 {
   font-style: italic;
   align-self: flex-start;
@@ -748,13 +737,7 @@ footer h2 {
 }
 
 #orari-museo td {
-  min-width: 8rem;
-}
-
-@media (max-width: 400px) {
-  #orari-museo td {
-    min-width: 6rem;
-  }
+  min-width: 7.8rem;
 }
 
 #orari-museo tr:nth-child(even),
@@ -907,16 +890,6 @@ footer h2 {
   min-width: 20.5em;
 }
 
-@media (max-width: 500px) {
-
-  .contenitoreCompilazione,
-  #contenitoreRecensione {
-    width: 75%;
-    padding: 1em;
-    min-width: 15em;
-  }
-}
-
 .form-errors {
   color: var(--errorcolor);
   font-size: 1.1rem;
@@ -958,6 +931,10 @@ a.button {
   width: auto;
 }
 
+a.button:visited {
+  color: var(--disabledtxtcolor);
+}
+
 .formCompilazione input[type="submit"]:hover,
 a.button:hover {
   background: var(--txtcolor);
@@ -997,9 +974,18 @@ a.button:hover {
 
 .formCompilazione .errorSuggestion {
   color: var(--errorcolor);
-  font-size: 0.8em;
+  font-size: 0.96rem;
   font-weight: normal;
   line-height: 0;
+}
+
+.formCompilazione #err_voto {
+  display: block;
+  margin-top: 1em;
+}
+
+.formCompilazione #err_voto.none {
+  display: none;
 }
 
 .required-label::after {
@@ -1047,6 +1033,10 @@ a.button:hover {
 #rating-fs {
   text-align: left;
   font-size: 1.15rem;
+}
+
+span#giudizio {
+  margin: 0 1em;
 }
 
 .formCompilazione fieldset label {
@@ -1205,7 +1195,7 @@ main[class="opera"] {
   display: block;
   margin: 0 auto;
   border: 1px solid var(--txtcolor);
-  border-radius: 10px; 
+  border-radius: 10px;
   box-shadow: 0 4px 8px var(--shadowcolor);
   max-height: 500px;
 }
@@ -1417,8 +1407,7 @@ main[class="opera"] {
   text-align: center;
 }
 
-.mod-mostra a::before {
-  content: "\270D";
+.mod-mostra a {
   color: var(--txtcolor);
 }
 
@@ -1482,8 +1471,7 @@ main[class="opera"] {
   text-align: center;
 }
 
-.cancella a::before {
-  content: "\1F5D1";
+.cancella a {
   color: var(--txtcolor);
   font-size: 1.5em;
 }
@@ -1493,6 +1481,16 @@ main[class="opera"] {
   text-decoration: none;
   display: block;
   width: 100%;
+}
+
+.cancella a::before {
+  content: "\1F5D1";
+  color: var(--txtcolor);
+}
+
+.mod-mostra a::before {
+  content: "\270D";
+  color: var(--txtcolor);
 }
 
 dialog {

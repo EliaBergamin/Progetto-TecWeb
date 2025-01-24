@@ -175,3 +175,21 @@ td[data-title]:before {
 #tab-mostre .mod-mostra {
     border-right: none;
 }
+
+@media (max-width: 855px) {
+    #listaOpere {
+      grid-template-columns: repeat(1, 1fr);
+      max-height: fit-content;
+      width: auto;
+      margin: 0 auto;
+    }
+  
+    #listaOpere li img {
+      max-height: fit-content;
+      width: auto;
+      background-size: contain;
+      margin: 0;
+      margin-top: 1em;
+      display: block;
+    }
+  }
