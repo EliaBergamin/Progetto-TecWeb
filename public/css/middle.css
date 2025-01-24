@@ -83,9 +83,9 @@ header {
   }
 
 .switch {
-    position: absolute;
+    position: fixed;
     right: 3.2rem;
-    top: 2.5rem;
+    top: 2.54rem;
     z-index: 100;
 }
 
@@ -174,8 +174,4 @@ td[data-title]:before {
 
 #tab-mostre .mod-mostra {
     border-right: none;
-}
-
-.switch {
-    top: 2.54em;
 }
