@@ -12,8 +12,9 @@
   --breadlinkcolor: #fff;
   --breadvisitedcolor: #fbff50;
   --linkcolor: #4b7c81;
-  --visitedcolor: #000;
+  --bordercolor: #000;
   --submitcolor: var(--headerbgcolor);
+  --visitedcolor: #000;
   --menuvisitedcolor: var(--headercolor);
   --disabledtxtcolor: #595959;
   --carouselcolor: var(--headercolor);
@@ -31,13 +32,14 @@
   --headerbgcolor: #000;
   --headercolor: #2b7bb1;
   --menuvisitedcolor: #000;
+  --visitedcolor: #fff;
   --bgcolor: #000;
   --txtcolor: #ddd;
   --contentbgcolor: #000;
   --breadlinkcolor: #000;
   --breadvisitedcolor: #ddd;
   --linkcolor: var(--headercolor);
-  --visitedcolor: #fff;
+  --bordercolor: #fff;
   --submitcolor: var(--headercolor);
 
   --disabledtxtcolor: #888;
@@ -306,7 +308,7 @@ utile per fissare il menu in modo che non scrolli
 
 .dark #menu a:visited {
   background: var(--headerbgcolor);
-  color: var(--menuvisitedcolor);
+  color: var(--headercolor);
 }
 
 #menu a:hover {
