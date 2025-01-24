@@ -327,13 +327,6 @@ const regole = {
         return input.trim().search(regex) == 0;
     },
 
-    "MatchRegexOrEmpty": function MatchRegex(input, regex) {
-        if (!input || input.trim() === "") {
-            return true;
-        }
-        return input.trim().search(regex) == 0;
-    },
-
     "RangeVisitatori": function RangeVisitatori(input, params = null) {
         if (!input) {
             return true;
