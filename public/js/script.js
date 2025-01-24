@@ -396,12 +396,6 @@ const checklist = {
         ['DimensioneFile', '', 'L\'immagine non può superare 1<abbr lang="en" title="Megabyte">MB</abbr>']
     ],
 
-    /* check recensione*/
-    err_data_visita: [
-        /* ['MatchRegex', /^\d{4}-\d{2}-\d{2}$/, 'Inserire una data valida'], */
-        ['DataNelPassato', '', 'La data della visita non può essere nel futuro']
-    ],
-
     /* check registrazione*/
     err_nome: [
         ['MatchRegex', /^.{2,50}$/, 'Inserire il proprio nome, minimo 2 caratteri, massimo 50'],
