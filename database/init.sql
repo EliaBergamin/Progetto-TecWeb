@@ -69,21 +69,21 @@ CREATE TABLE IF NOT EXISTS Recensione (
 
 INSERT INTO Mostra (nome, descrizione, data_inizio, data_fine, img_path, alt) VALUES
   ("{en}Dragon Ball{/en} Z {en}Card Battle{/en}", "Esplora l'emozionante mondo delle carte {en}Dragon Ball{/en} Z! Dai {ja}Saiyan{/ja} alle epiche battaglie, questa mostra celebra l'arte e la strategia del gioco con una collezione ricca e dinamica.", "2024-12-01", "2025-02-27", "dragonball_exhibit.webp", ""),
-  ("Pokémon {en}Card Showcase{/en}", "La più grande collezione di carte Pokémon mai esposta. Dagli inizi con il set base fino alle edizioni moderne, scopri le carte più rare e iconiche, e immergiti in un mondo di ricordi e sorprese.", "2024-12-01", "2024-12-31", "pokemon_exhibit.webp", ""),
+  ("Pokémon {en}Card Showcase{/en}", "La più grande collezione di carte Pokémon mai esposta. Dagli inizi con il {en}set{/en} base fino alle edizioni moderne, scopri le carte più rare e iconiche, e immergiti in un mondo di ricordi e sorprese.", "2024-12-01", "2024-12-31", "pokemon_exhibit.webp", ""),
   ("Gormiti {en}Card Collection{/en}", "Rivivi l'epoca d'oro dei Gormiti attraverso le loro carte! Una collezione completa e unica, che racconta storie di battaglie epiche e terre magiche con dettagli affascinanti e colorati.", "2025-11-20", "2025-12-31", "gormiti_exhibit.webp", ""),
   ("{en}Eevolution{/en}: L'Arte della Trasformazione", "Un viaggio nell'affascinante mondo di {en}Eevee{/en}, la creatura simbolo di potenziale e adattabilità. Scopri la magia delle sue evoluzioni, ognuna unica e legata agli elementi naturali, attraverso un'esposizione che celebra la bellezza, 
     la diversità e l'ispirazione che questo Pokémon rappresenta. Dall'elettrizzante Jolteon al misterioso Umbreon, immergiti in un universo di colori e forme in continua trasformazione.", "2025-01-14", "2025-03-24", "sun_moon.webp", ""),
-  ("Yu-Gi-Oh {en}Exhibit{/en}", "Un viaggio nel mondo di Yu-Gi-Oh che non puoi perdere! L'esposizione include carte rare, storia del gioco e dettagli affascinanti sulle illustrazioni. Perfetta per fan di lunga data e neofiti curiosi.", "2023-06-01", "2023-06-10", "yugioh_exhibit.webp", "");
+  ("{ja}Yu-Gi-Oh{/ja} {en}Exhibit{/en}", "Un viaggio nel mondo di {ja}Yu-Gi-Oh{/ja} che non puoi perdere! L'esposizione include carte rare, storia del gioco e dettagli affascinanti sulle illustrazioni. Perfetta per fan di lunga data e neofiti curiosi.", "2023-06-01", "2023-06-10", "yugioh_exhibit.webp", "");
 
 INSERT INTO Sala (nome, descrizione, img_path) VALUES
   ("{en}Dragon Ball Battle Grounds{/en}", "Immergiti nell'universo epico di {en}Dragon Ball{/en}, dove potrai esplorare le avventure di {ja}Goku{/ja} e dei suoi amici. Scopri le Sfere del Drago, rivivi gli scontri leggendari contro i {ja}Saiyan{/ja}, {en}Freezer{/en} e {ja}Majin Bu{/ja}, e lasciati travolgere dall'energia delle trasformazioni Super {ja}Saiyan{/ja}. Oggetti iconici e ricostruzioni interattive ti aspettano per farti sentire parte di questa straordinaria saga.", "dragonball_grounds.jpg"),
   ("Pokémon {en}Card Gallery{/en}", "Entra nel fantastico mondo dei Pokémon, dove allenatori di tutte le età possono scoprire creature straordinarie. Esplora regioni come Kanto, Johto e Galar, ammira una collezione di Poké Ball, e sfida le emozionanti battaglie in un'arena virtuale. Non dimenticare di incontrare i Pokémon leggendari e mitici in una sala dedicata alla loro storia e potere.", "pokemon_gallery.jpg"),
   ("Gormiti {en}Habitat{/en}", "Viaggia verso l'isola magica dei Gormiti, dove la natura prende vita attraverso i potenti {en}Lord{/en} della Terra, del Mare, del Fuoco e dell'Aria. Attraversa paesaggi suggestivi e scopri la storia di questa eterna lotta tra il bene e il male. Modelli tridimensionali, effetti luminosi e una narrazione avvincente rendono questa sala un'esperienza immersiva.", "gormiti_habitat.jpg"),
-  ("Yu-Gi-Oh Arena", "Preparati a duellare nel mondo di Yu-Gi-Oh!, dove ogni carta racconta una storia epica. Esplora il regno dei mostri con esposizioni dedicate alle carte leggendarie come il Drago Bianco Occhi Blu e il Mago Nero. Una replica dell'arena da duello ti aspetta per sfidare amici e rivivere i momenti più iconici della serie.", "yugioh_arena.jpg");
+  ("{ja}Yu-Gi-Oh{/ja} Arena", "Preparati a duellare nel mondo di {ja}Yu-Gi-Oh{/ja}!, dove ogni carta racconta una storia epica. Esplora il regno dei mostri con esposizioni dedicate alle carte leggendarie come il Drago Bianco Occhi Blu e il Mago Nero. Una replica dell'arena da duello ti aspetta per sfidare amici e rivivere i momenti più iconici della serie.", "yugioh_arena.jpg");
 
 INSERT INTO Opera (id_sala, nome, autore, descrizione, anno, img_path) VALUES
   -- yugioh
-  (4, "Drago Bianco Occhi Blu", "{ja}Kazuki Takahashi{/ja}", "Il Drago Bianco Occhi Blu è una delle creature più potenti e rispettate del mondo di Yu-Gi-Oh!. Con le sue squame bianche luminose e 
+  (4, "Drago Bianco Occhi Blu", "{ja}Kazuki Takahashi{/ja}", "Il Drago Bianco Occhi Blu è una delle creature più potenti e rispettate del mondo di {ja}Yu-Gi-Oh{/ja}!. Con le sue squame bianche luminose e 
   gli occhi azzurri che brillano di energia, rappresenta la perfezione e il dominio assoluto. Il suo attacco devastante, il 'Raggio Bianco Distruttore', è sinonimo di distruzione totale. Solo i 
   duellanti più esperti possono controllare questa carta leggendaria, simbolo di forza pura e ambizione. Nel cartone animato, il Drago Bianco Occhi Blu è la carta simbolo di 
   {aja}Seto Kaiba{/ahttps://it.wikipedia.org/wiki/Seto_Kaiba}, utilizzata in numerosi duelli cruciali. In particolare, nel Regno dei Duellanti, {ja}Kaiba{/ja} distrugge una copia del suo Drago 
@@ -96,14 +96,14 @@ INSERT INTO Opera (id_sala, nome, autore, descrizione, anno, img_path) VALUES
   {aen}Rex Raptor{/ahttps://yugioh.fandom.com/wiki/Rex_Raptor} nel Regno dei Duellanti. In quella battaglia, {en}Joey{/en} dimostra di essere degno di controllare il Drago Nero Occhi Rossi, trasformando 
   la creatura in un simbolo della sua crescita come duellante. La carta ritorna in diversi momenti, come quando {en}Joey{/en} la utilizza per affrontare avversari più forti, mostrando il suo coraggio e 
   la sua determinazione a non arrendersi mai.", 1999, "yugioh/drago_nero_rosso.jpg"),
-  (4, "Exodia il Proibito", "{ja}Kazuki Takahashi{/ja}", "Exodia il Proibito è una creatura mitica, conosciuta come l'arma definitiva nel mondo di Yu-Gi-Oh!. È divisa in cinque pezzi, ognuno dei quali rappresenta un frammento 
+  (4, "Exodia il Proibito", "{ja}Kazuki Takahashi{/ja}", "Exodia il Proibito è una creatura mitica, conosciuta come l'arma definitiva nel mondo di {ja}Yu-Gi-Oh{/ja}!. È divisa in cinque pezzi, ognuno dei quali rappresenta un frammento 
   del suo immenso potere. Quando tutte le parti vengono riunite, Exodia garantisce la vittoria immediata, rendendola una delle carte più temute e rispettate. Nel cartone animato, Exodia fa il suo debutto 
   nel primo episodio della serie, quando {aja}Yugi{/ahttps://it.wikipedia.org/wiki/Yugi_Mut%C5%8D} lo evoca per sconfiggere {aja}Seto Kaiba{/ahttps://it.wikipedia.org/wiki/Seto_Kaiba}. In questa scena 
   iconica, le cinque parti di Exodia si combinano per distruggere i tre Draghi Bianchi Occhi Blu di Kaiba, ribaltando il duello in un colpo solo. La sua figura colossale, avvolta in catene, è diventata 
   un simbolo di speranza per i duellanti, evocata solo dai più grandi strategici in momenti di disperazione.
   Scopri di più su {ait}Exodia il proibito{/ahttps://yugipedia.com/wiki/Exodia_the_Forbidden_One_(character)}", 1999, "yugioh/exodia.jpg"),
   (4, "Mago Nero", "{ja}Kazuki Takahashi{/ja}", "Il Mago Nero è il maestro supremo della magia oscura, simbolo di conoscenza e potere arcano. Con la sua tunica elaborata e la sua bacchetta, è una delle 
-  creature più iconiche di Yu-Gi-Oh!. Il suo design elegante e la sua maestria negli incantesimi lo rendono un'arma letale in battaglia. Nel cartone animato, il Mago Nero è la carta simbolo di 
+  creature più iconiche di {ja}Yu-Gi-Oh{/ja}!. Il suo design elegante e la sua maestria negli incantesimi lo rendono un'arma letale in battaglia. Nel cartone animato, il Mago Nero è la carta simbolo di 
   {aja}Yugi{/ahttps://it.wikipedia.org/wiki/Yugi_Mut%C5%8D}, utilizzata in numerosi duelli chiave. Durante il Regno dei Duellanti, il Mago Nero appare per la prima volta contro 
   {aja}Seto Kaiba{/ahttps://it.wikipedia.org/wiki/Seto_Kaiba}, dimostrando il suo potenziale devastante. La carta gioca un ruolo centrale anche nel duello contro {ait}Pegasus{/ahttps://yugioh.fandom.com/wiki/Maximillion_Pegasus}, 
   dove {ja}Yugi{/ja} combina la sua strategia con il potere magico del Mago Nero per proteggere i suoi amici e affrontare la mente di Pegasus. È più di una carta: è il simbolo del legame tra {ja}Yugi{/ja} e il Faraone.
@@ -215,9 +215,9 @@ INSERT INTO Utente (ruolo, username, nome, cognome, password_hash, email) VALUES
 
 INSERT INTO Prenotazione (id_utente, data_prenotazione, num_persone, orario) VALUES
 (3, "2025-06-15", 7, "15:00"),
-(3, "2025-07-20", 3, "12:00"),
-(2, "2025-08-05", 1, "16:30"),
-(2, "2025-09-12", 84, "10:30"),
+(3, "2025-07-20", 3, "13:30"),
+(2, "2025-08-06", 1, "16:30"),
+(2, "2025-09-12", 4, "10:30"),
 (3, "2024-10-01", 2, "13:30");
 
 INSERT INTO Recensione (id_utente, voto, data_recensione, descrizione, tipo) VALUES
