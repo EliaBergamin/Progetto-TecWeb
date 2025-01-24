@@ -290,12 +290,21 @@ utile per fissare il menu in modo che non scrolli
 #menu a {
   color: var(--headercolor);
   text-decoration: none;
-  background: var(--headerbgcolor);
+  background: var(--breadvisitedcolor);
+}
+
+.dark #menu a {
+  color: var(--headerbgcolor);
+  background: #95e98a;
 }
 
 #menu a:visited {
-  background: #95e98a;
-  color: var(--menuvisitedcolor);
+  background: var(--headerbgcolor);
+  color: var(--headercolor);
+}
+
+.dark #menu a:visited {
+  background: var(--headerbgcolor);
 }
 
 /*////////////*/
