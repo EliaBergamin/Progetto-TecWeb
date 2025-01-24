@@ -64,7 +64,7 @@ if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = DatabaseService::cleanedInput($_POST['password']);
     if (strlen($password) < 8) {
         array_push($error, 'password_len');
-    } else if (!preg_match("/^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/", $password)) {
+    } else if (!preg_match("/^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*?&]).{8,}$/", $password)) {
         array_push($error, 'password_weak');
     }
 

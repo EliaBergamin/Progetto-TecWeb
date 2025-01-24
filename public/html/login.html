@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="css/mini.css" media="screen and (max-width: 768px)">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="images/pokeball.ico" type="image/x-icon">
-    <script src="js/script.js"></script>
+    <script src="js/script.js" defer></script>
 </head>
 
 <body>
@@ -59,11 +59,11 @@
             <!-- errormsgs_end -->
             <!-- form_start -->
             <form action="autenticate.php?redirect={{redirect}}" method="post" class="formCompilazione" id="form">
-                <label for="username"  class="required-label">Username </label>
-                <input type="text" name="username" id="username" value="{{username}}" minlength="4">
+                <label for="username" lang="en" class="required-label">Username </label>
+                <input type="text" name="username" id="username" value="{{username}}" aria-required="true" data-required-msg="Inserire lo username" minlength="4">
                 <span id="err_username" class="errorSuggestion" aria-live="assertive" data-ref-to="username"></span>
                 <label for="password" class="required-label">Password </label>
-                <input type="password" name="password" id="password" required minlength="4">
+                <input type="password" name="password" id="password" aria-required="true" data-required-msg="Inserire la password" minlength="4">
                 <p class="required-msg">Campi obbligatori</p>
                 <input type="submit" name="submit" value="Accedi">
             </form>

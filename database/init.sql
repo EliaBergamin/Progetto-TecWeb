@@ -75,7 +75,6 @@ INSERT INTO Mostra (nome, descrizione, data_inizio, data_fine, img_path, alt) VA
     la diversità e l'ispirazione che questo Pokémon rappresenta. Dall'elettrizzante Jolteon al misterioso Umbreon, immergiti in un universo di colori e forme in continua trasformazione.", "2025-01-14", "2025-03-24", "sun_moon.webp", ""),
   ("{ja}Yu-Gi-Oh{/ja} {en}Exhibit{/en}", "Un viaggio nel mondo di {ja}Yu-Gi-Oh{/ja} che non puoi perdere! L'esposizione include carte rare, storia del gioco e dettagli affascinanti sulle illustrazioni. Perfetta per fan di lunga data e neofiti curiosi.", "2023-06-01", "2023-06-10", "yugioh_exhibit.webp", "");
 
-
 INSERT INTO Sala (nome, descrizione, img_path) VALUES
   ("{en}Dragon Ball Battle Grounds{/en}", "Immergiti nell'universo epico di {en}Dragon Ball{/en}, dove potrai esplorare le avventure di {ja}Goku{/ja} e dei suoi amici. Scopri le Sfere del Drago, rivivi gli scontri leggendari contro i {ja}Saiyan{/ja}, {en}Freezer{/en} e {ja}Majin Bu{/ja}, e lasciati travolgere dall'energia delle trasformazioni Super {ja}Saiyan{/ja}. Oggetti iconici e ricostruzioni interattive ti aspettano per farti sentire parte di questa straordinaria saga.", "dragonball_grounds.jpg"),
   ("Pokémon {en}Card Gallery{/en}", "Entra nel fantastico mondo dei Pokémon, dove allenatori di tutte le età possono scoprire creature straordinarie. Esplora regioni come Kanto, Johto e Galar, ammira una collezione di Poké Ball, e sfida le emozionanti battaglie in un'arena virtuale. Non dimenticare di incontrare i Pokémon leggendari e mitici in una sala dedicata alla loro storia e potere.", "pokemon_gallery.jpg"),
@@ -216,8 +215,8 @@ INSERT INTO Utente (ruolo, username, nome, cognome, password_hash, email) VALUES
 
 INSERT INTO Prenotazione (id_utente, data_prenotazione, num_persone, orario) VALUES
 (3, "2025-06-15", 7, "15:00"),
-(3, "2025-07-20", 3, "12:00"),
-(2, "2025-08-05", 1, "16:30"),
+(3, "2025-07-20", 3, "13:30"),
+(2, "2025-08-06", 1, "16:30"),
 (2, "2025-09-12", 4, "10:30"),
 (3, "2024-10-01", 2, "13:30");
 
