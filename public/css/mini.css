@@ -52,6 +52,12 @@ ol.puntiniCarosello {
         min-width: 10em;
         margin: auto;
     }
+    .contenitoreCompilazione,
+    #contenitoreRecensione {
+      width: 75%;
+      padding: 1em;
+      min-width: 15em;
+    }
 }
 
 .infoMostra>img {
@@ -83,3 +89,9 @@ ol.puntiniCarosello {
         width: 80%;
     }
 }
+
+@media (max-width: 400px) {
+    #orari-museo td {
+      min-width: 6rem;
+    }
+  }
