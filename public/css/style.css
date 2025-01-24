@@ -159,8 +159,8 @@ header {
   grid-row: 2;
   grid-column: 1;
   /* background-color: var(--bgcolor); */
-  background-color: var(--headerbgcolor);
-  background-image: url('../images/logo.jpg');
+  /* background-color: #95e98a; */
+  background-image: url('../images/logo.png');
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
@@ -718,7 +718,7 @@ footer dt {
 
 footer h2 {
   flex: 1 0 18%;
-  background-image: url('../images/logo.jpg');
+  background-image: url('../images/logo.png');
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
@@ -1284,7 +1284,7 @@ main[class="opera"] {
 }
 
 #dragon a {
-  background: url("../images/sala-dragon-ball_1.png") no-repeat center;
+  background: url("../images/sala-dragon-ball.png") no-repeat center;
 }
 
 #pokemon {
@@ -1293,7 +1293,7 @@ main[class="opera"] {
 }
 
 #pokemon a {
-  background: url("../images/sala-pokemon.PNG") no-repeat center;
+  background: url("../images/sala-pokemon.png") no-repeat center;
 }
 
 #gormiti {
@@ -1311,7 +1311,7 @@ main[class="opera"] {
 }
 
 #yugioh a {
-  background: url("../images/sala-yu-gi-oh.PNG") no-repeat center;
+  background: url("../images/sala-yu-gi-oh.png") no-repeat center;
 }
 
 #virtualTour-mappa img {
