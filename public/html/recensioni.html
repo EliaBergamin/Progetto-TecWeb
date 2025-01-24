@@ -46,22 +46,20 @@
             <!-- greeting_end -->
         </ul>
     </nav>
-    <div id="bread-bar">
-        <nav id="breadcrumb" aria-label="breadcrumb">
+    <nav id="breadcrumb" aria-label="breadcrumb">
         <ol>
             <li><a href="index.php" lang="en">Home</a></li>
             <li aria-current="page">Recensioni</li>
         </ol>
     </nav>
-        <form id="theme-form">
-            <input type="radio" name="theme" id="light" checked>
-            <input type="radio" name="theme" id="dark">
-            <div class="switch">
-                <label for="light">Chiaro</label>
-                <label for="dark">Scuro</label>
-            </div>
-        </form>
-    </div>
+    <form id="theme-form">
+        <input type="radio" name="theme" id="light" checked>
+        <input type="radio" name="theme" id="dark">
+        <div class="switch">
+            <label for="light">Chiaro</label>
+            <label for="dark">Scuro</label>
+        </div>
+    </form>
     <main id="primoContenuto">
         <h1>Recensioni</h1>
         <a href="recensisci.php" id="scrivi-rev" class="util-btn">Scrivi una recensione</a>
@@ -77,7 +75,7 @@
                     <dd>
                         <label id="lbl-rev-{{id_rev}}">{{voto_recensione}} su 5</label>
                         <svg id="rev-{{id_rev}}" viewBox="0 0 128 24" aria-labelledby="lbl-rev-{{id_rev}}">
-                          {{svg_dynamic_generation}}
+                            {{svg_dynamic_generation}}
                         </svg>
                     </dd>
                     <dt>Data recensione</dt>
@@ -101,8 +99,8 @@
                     <dd>
                         <label id="lbl-rev-{{id_rev}}">{{voto_recensione}} su 5</label>
                         <svg id="rev-{{id_rev}}" viewBox="0 0 128 24" aria-labelledby="lbl-rev-{{id_rev}}">
-                        {{svg_dynamic_generation}}
-                </svg>
+                            {{svg_dynamic_generation}}
+                        </svg>
                     </dd>
                     <dt>Data recensione</dt>
                     <dd>
@@ -132,7 +130,8 @@
         </dl>
         <!--         <a href="" lang="en">Privacy Link TODO</a>
  -->
-        <p id="tab-descr" class="nascosto">La tabella contiene gli orari di apertura del museo di mattina e pomeriggio dal sabato al martedì</p>
+        <p id="tab-descr" class="nascosto">La tabella contiene gli orari di apertura del museo di mattina e pomeriggio
+            dal sabato al martedì</p>
         <table id="orari-museo" title="Orari del museo" aria-describedby="tab-descr">
             <caption>Orari del Museo</caption>
             <thead>

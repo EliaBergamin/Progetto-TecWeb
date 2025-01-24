@@ -4,7 +4,8 @@
 <head>
     <title>Il mio profilo | Leggende Animate</title>
     <meta charset="UTF-8">
-    <meta name="description" content="Qui puoi trovare i tuoi dati e gestire le tue prenotazioni al museo Leggende Animate.">
+    <meta name="description"
+        content="Qui puoi trovare i tuoi dati e gestire le tue prenotazioni al museo Leggende Animate.">
     <meta name="keywords" content="Leggende Animate,profilo,utente,prenotazioni,dati,museo">
     <link rel="stylesheet" href="css/style.css" media="screen">
     <link rel="stylesheet" href="css/middle.css" media="screen and (max-width: 1024px)">
@@ -46,22 +47,20 @@
 
         </ul>
     </nav>
-    <div id="bread-bar">
-        <nav id="breadcrumb" aria-label="breadcrumb">
+    <nav id="breadcrumb" aria-label="breadcrumb">
         <ol>
             <li><a href="index.php" lang="en">Home</a></li>
             <li aria-current="page">Il mio profilo</li>
         </ol>
     </nav>
-        <form id="theme-form">
-            <input type="radio" name="theme" id="light" checked>
-            <input type="radio" name="theme" id="dark">
-            <div class="switch">
-                <label for="light">Chiaro</label>
-                <label for="dark">Scuro</label>
-            </div>
-        </form>
-    </div>
+    <form id="theme-form">
+        <input type="radio" name="theme" id="light" checked>
+        <input type="radio" name="theme" id="dark">
+        <div class="switch">
+            <label for="light">Chiaro</label>
+            <label for="dark">Scuro</label>
+        </div>
+    </form>
     <main id="primoContenuto">
         <h1>Il mio profilo</h1>
         <h2>I tuoi dati:</h2>
@@ -97,7 +96,8 @@
                             datetime="{{data_prenotazione}}">{{string_data_prenotazione}}</time></td>
                     <td>{{num_persone}}</td>
                     <td>{{orario_prenotazione}}</td>
-                    <td class="cancella canc-pren" id="elim-{{data_prenotazione}}"><a href="#dialog-pren" aria-label="cancella prenotazione"></a></td>
+                    <td class="cancella canc-pren" id="elim-{{data_prenotazione}}"><a href="#dialog-pren"
+                            aria-label="cancella prenotazione"></a></td>
                 </tr>
                 <!-- rowprenotazione_end -->
             </tbody>
@@ -124,7 +124,8 @@
         </dl>
         <!--         <a href="" lang="en">Privacy Link TODO</a>
  -->
-        <p id="tab-descr" class="nascosto">La tabella contiene gli orari di apertura del museo di mattina e pomeriggio dal sabato al martedì</p>
+        <p id="tab-descr" class="nascosto">La tabella contiene gli orari di apertura del museo di mattina e pomeriggio
+            dal sabato al martedì</p>
         <table id="orari-museo" title="Orari del museo" aria-describedby="tab-descr">
             <caption>Orari del Museo</caption>
             <thead>
