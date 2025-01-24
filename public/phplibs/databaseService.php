@@ -300,7 +300,7 @@ class DatabaseService
 
 	public function alterMostraAdmin($id_mostra, $nome, $descrizione, $data_inizio, $data_fine, $img_path): bool
 	{
-		$query = $img_path ?
+		$query = ($img_path && !empty($img_path)) ?
 			"UPDATE Mostra SET 
                 nome = ?, 
                 descrizione = ?, 
