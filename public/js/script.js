@@ -315,6 +315,15 @@ const regole = {
     },
 
     "MatchRegex": function MatchRegex(input, regex) {
+        console.log(input, regex);
+
+        return input.trim().search(regex) == 0;
+    },
+
+    "MatchRegexOrEmpty": function MatchRegex(input, regex) {
+        if (!input || input.trim() === "") {
+            return true;
+        }
         return input.trim().search(regex) == 0;
     },
 
@@ -353,6 +362,15 @@ const regole = {
 }
 
 const checklist = {
+    /* check recensione*/
+    err_tipo: [],
+    err_voto: [],
+    err_data_visita: [
+        /* ['MatchRegex', /^\d{4}-\d{2}-\d{2}$/, 'Inserire una data valida'], */
+        ['DataNelPassato', '', 'La data della visita non può essere nel futuro']
+    ],
+    //err_descrizione comune a mostra
+
     /* check mostra*/
     err_nome_mostra: [
         ['MatchRegex', /^.{2,80}$/, 'Inserire il nome della mostra, minimo 2 caratteri, massimo 80'],
@@ -383,7 +401,6 @@ const checklist = {
         /* ['MatchRegex', /^\d{4}-\d{2}-\d{2}$/, 'Inserire una data valida'], */
         ['DataNelPassato', '', 'La data della visita non può essere nel futuro']
     ],
-    //err_descrizione comune a mostra
 
     /* check registrazione*/
     err_nome: [
@@ -414,43 +431,79 @@ const checklist = {
         ['OrarioNelFuturo', '', 'L\'orario della prenotazione non può essere nel passato']
     ],
     err_visitatori: [
+        ['MatchRegex', /^\d+$/, 'Inserire il numero di visitatori'],
         ['RangeVisitatori', '15', 'Il numero di visitatori per la data e l\'ora selezionata deve essere compreso tra 1 e 15']
     ],
 };
 
+function showErrorMsg(input, err, errName, errTxt) {
+    input.setAttribute("aria-invalid", "true");
+    input.setAttribute("aria-describedby", errName);
+    input.getAttribute('type') !== 'date' && input.focus();
+    err.classList.add("toggleOn");
+    err.classList.remove("none");
+    err.setAttribute("role", "alert");
+    err.innerHTML = errTxt;
+}
+
+function removeErrorMsg(input, err) {
+    input.removeAttribute("aria-invalid");
+    input.removeAttribute("aria-describedby");
+    err.removeAttribute("role");
+    err.classList.remove("toggleOn");
+    err.classList.add("none");
+}
 
 function validate(check, rule) {
-
     const err = document.getElementById(check);
     const input = document.getElementById(err.getAttribute("data-ref-to"));
     const valid = regole[rule[0]](input.value, rule[1]);
-
+    console.log(input, valid);
 
     if (valid) {
-        input.removeAttribute("aria-invalid");
-        input.removeAttribute("aria-describedby");
-        err.removeAttribute("role");
-        err.classList.remove("toggleOn");
-        err.classList.add("none");
+        removeErrorMsg(input, err);
         return true;
     } else {
-        input.setAttribute("aria-invalid", "true");
-        input.setAttribute("aria-describedby", check);
-        input.getAttribute('type') !== 'date' && input.focus();
-        err.classList.add("toggleOn");
-        err.classList.remove("none");
-        err.setAttribute("role", "alert");
-        err.innerHTML = rule[2];
+        showErrorMsg(input, err, check, rule[2]);
         return false;
     }
 }
 
 function validatorCheckAll() {
     for (const check in checklist) {
-        const err = document.getElementById(check) || document.getElementById(checklist[check][3]);
+        const err = document.getElementById(check);
         if (err) {
+            if (check === "err_tipo" || check === "err_voto") {
+                const selectedRadio = document.querySelector('input[name="' + err.getAttribute("data-ref-to") + '"]:checked');
+                console.log(selectedRadio);
+
+                if (!selectedRadio) {
+                    err.classList.add("toggleOn");
+                    err.classList.remove("none");
+                    err.setAttribute("role", "alert");
+                    err.innerHTML = "Selezionare un'opzione";
+
+                    const radios = document.querySelectorAll('input[name="' + err.getAttribute("data-ref-to") + '"');
+                    radios.forEach(radio => {
+                        radio.addEventListener('change', () => {
+                            err.removeAttribute("role");
+                            err.classList.remove("toggleOn");
+                            err.classList.add("none");
+                            console.log("ciao");
+                        });
+                    });
+                    return false;
+                }
+                continue;
+            }
             for (const rule of checklist[check]) {
+                const input = document.getElementById(err.getAttribute("data-ref-to"));
+                if (!input.value && input.getAttribute('aria-required') === 'true') {
+                    showErrorMsg(input, err, check, input.getAttribute('data-required-msg'));
+                    return false;
+                }
                 if (!validate(check, rule)) {
+                    //showErrorMsg(input, err, check, rule[2]);
                     document.getElementById(err.getAttribute('data-ref-to')).focus();
                     return false;
                 }
@@ -467,6 +520,8 @@ function validatorLoad() {
         if (err) {
             err.classList.add("none");
             const input = document.getElementById(err.getAttribute("data-ref-to"));
+            if (!input)
+                continue;
             if (input.getAttribute('type') !== 'file' && input.tagName !== 'SELECT')
                 input.addEventListener('blur', () => {
                     for (const rule of checklist[check]) {
@@ -495,6 +550,8 @@ function validatorLoad() {
     form && (form.onsubmit = function () { return validatorCheckAll(); })
 }
 
+////////////////////////// AJAX //////////////////////////
+
 function initAJAX() {
     document.getElementById('giorno').addEventListener('change', function () {
         document.getElementById('orario').value = "";
@@ -521,15 +578,15 @@ function initAJAX() {
 
     document.getElementById('orario').addEventListener('change', function () {
         document.getElementById('visitatori').value = "";
-
+        removeErrorMsg(document.getElementById('visitatori'), document.getElementById('err_visitatori'));
         const selectOrario = document.getElementById("orario");
         const selectedOption = selectOrario.options[selectOrario.selectedIndex];
         const postiDisponibili = selectedOption.dataset.postiDisponibili || 15;
         const maxVisitatori = postiDisponibili >= 15 ? 15 : postiDisponibili;
-        document.getElementById('visitatori').max = maxVisitatori;
+        //document.getElementById('visitatori').max = maxVisitatori;
 
-        checklist["err_visitatori"][0][1] = maxVisitatori;
-        checklist["err_visitatori"][0][2] = checklist["err_visitatori"][0][2].replace("15", maxVisitatori.toString());
+        checklist["err_visitatori"][1][1] = maxVisitatori;
+        checklist["err_visitatori"][1][2] = checklist["err_visitatori"][1][2].replace(/e \d{1,2}/, 'e ' + maxVisitatori.toString());
     });
 }
 

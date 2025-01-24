@@ -3,6 +3,8 @@ require_once "phplibs/databaseService.php";
 require_once "phplibs/templatingService.php";
 
 $redirect = $_GET['redirect'] ?? 'profile.php';
+if (isset($_GET['opera']))
+    $redirect .= "&opera={$_GET['opera']}";
 
 if (isset($_POST['submit'])) {
     $username = DatabaseService::cleanedInput($_POST['username']);
