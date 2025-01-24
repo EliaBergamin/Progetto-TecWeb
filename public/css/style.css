@@ -294,7 +294,7 @@ utile per fissare il menu in modo che non scrolli
 }
 
 #menu a:visited {
-  background: var(--breadvisitedcolor);
+  background: #95e98a;
   color: var(--menuvisitedcolor);
 }
 
