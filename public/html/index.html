@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="css/mini.css" media="screen and (max-width: 768px)">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="images/pokeball.ico" type="image/x-icon">
-    <script src="js/script.js"></script>
+    <script src="js/script.js" defer></script>
 </head>
 
 <body>
@@ -63,13 +63,13 @@
                 <li>
                     <figure>
                         <figcaption class="nascosto">{{nome1}}</figcaption>
-                        <img id="{{id1}}" src="pics/{{img1}}" alt="{{alt1}}">
+                        <img id="{{id1}}" src="pics/{{img1}}" alt="{{alt1}}" loading="lazy">
                     </figure>
                 </li>
                 <li>
                     <figure>
                         <figcaption class="nascosto">{{nome2}}</figcaption>
-                        <img id="{{id2}}" src="pics/{{img2}}" alt="{{alt2}}">
+                        <img id="{{id2}}" src="pics/{{img2}}" alt="{{alt2}}" loading="lazy">
                     </figure>
                 </li>
             </ol>
