@@ -504,27 +504,6 @@ ol li .active {
   }
 }
 
-/*trasforma la tabella e la fa diventare di una sola colonna in caso di schermi piccoli*/
-@media (max-width: 855px) {
-  #listaOpere {
-    grid-template-columns: repeat(1, 1fr);
-    max-height: fit-content;
-    width: auto;
-    margin: 0 auto;
-  }
-
-  #listaOpere li img {
-    max-height: fit-content;
-    width: auto;
-    background-size: contain;
-    margin: 0;
-    margin-top: 1em;
-    display: block;
-  }
-}
-
-
-
 #listaOpere li h3 {
   font-style: italic;
   align-self: flex-start;
@@ -659,13 +638,7 @@ footer h2 {
 }
 
 #orari-museo td {
-  min-width: 8rem;
-}
-
-@media (max-width: 400px) {
-  #orari-museo td {
-    min-width: 6rem;
-  }
+  min-width: 7.8rem;
 }
 
 #orari-museo tr:nth-child(even),
@@ -811,16 +784,6 @@ footer h2 {
 
 #contenitoreRecensione {
   min-width: 20.5em;
-}
-
-@media (max-width: 500px) {
-
-  .contenitoreCompilazione,
-  #contenitoreRecensione {
-    width: 75%;
-    padding: 1em;
-    min-width: 15em;
-  }
 }
 
 .form-errors {

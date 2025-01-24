@@ -288,12 +288,21 @@ const regole = {
         if (!input) {
             return true;
         }
-        let dataInserita = new Date(input);
-        let oggi = new Date();
+        const dataInserita = new Date(input);
+        const oggi = new Date();
         oggi.setHours(0, 0, 0, 0);
         dataInserita.setHours(0, 0, 0, 0);
 
         return dataInserita >= oggi;
+    },
+
+    "GiornoApertura": function GiornoApertura(input, params = null) {
+        if (!input) {
+            return true;
+        }
+        const dataInserita = new Date(input);
+        const giornoSettimana = dataInserita.getUTCDay();
+        return giornoSettimana !== 1 && giornoSettimana !== 2;
     },
 
     "OrarioNelFuturo": function OrarioNelFuturo(input, params = null) {
@@ -412,7 +421,8 @@ const checklist = {
 
     /* check prenotazione*/
     err_giorno: [
-        ['DataNelFuturo', '', 'La data della prenotazione non può essere nel passato']
+        ['DataNelFuturo', '', 'La data della prenotazione non può essere nel passato'],
+        ['GiornoApertura', '', 'Il museo è chiuso il lunedì e il martedì']
     ],
     err_orario: [
         ['OrarioNelFuturo', '', 'L\'orario della prenotazione non può essere nel passato']
@@ -578,8 +588,8 @@ function initAJAX() {
 }
 
 function aggiornaOrariDisponibili(slotDisponibili) {
-    const slotsId = ["09", "10_30", "12", "13_30", "15", "16_30"];
-    const slotsOrari = ["09:00:00", "10:30:00", "12:00:00", "13:30:00", "15:00:00", "16:30:00"]
+    const slotsId = ["09", "10_30",/*  "12", */ "13_30", "15", "16_30"];
+    const slotsOrari = ["09:00:00", "10:30:00",/*  "12:00:00", */ "13:30:00", "15:00:00", "16:30:00"]
     for (i = 0; i < slotsId.length; i++) {
         const idSlot = slotsId[i];
         const disponibilita = slotDisponibili[slotsOrari[i]] || 0;
