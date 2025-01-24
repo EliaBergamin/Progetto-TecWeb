@@ -2,8 +2,8 @@
 require_once "phplibs/databaseService.php";
 require_once "phplibs/templatingService.php";
 
-$numeroSalaRichiesta = isset($_GET['sala']) ? $_GET['sala'] : Templating::errCode(404);
-$operaIdRichiesta = isset($_GET['opera']) ? $_GET['opera'] : Templating::errCode(404);
+$numeroSalaRichiesta = $_GET['sala'] ?? Templating::errCode(404);
+$operaIdRichiesta = $_GET['opera'] ?? Templating::errCode(404);
 
 if (!isset($_SESSION['user_id']))
     header("Location: login.php?redirect=dettaglio_opera.php?sala=$numeroSalaRichiesta&opera=$operaIdRichiesta");
