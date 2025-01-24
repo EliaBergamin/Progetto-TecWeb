@@ -221,5 +221,5 @@ INSERT INTO Prenotazione (id_utente, data_prenotazione, num_persone, orario) VAL
 (3, "2024-10-01", 2, "13:30");
 
 INSERT INTO Recensione (id_utente, voto, data_recensione, descrizione, tipo) VALUES
-(3, 5, "2023-06-18", "Una mostra davvero unica per gli appassionati di Yu-Gi-Oh! Le carte iconiche, come il Drago Bianco Occhi Blu e il Mago Nero, sono esposte in vetrine spettacolari. Perfetta combinazione di nostalgia e scoperta!", 1),
+(3, 5, "2023-06-18", "Una mostra davvero unica per gli appassionati di {ja}Yu-Gi-Oh{/ja}! Le carte iconiche, come il Drago Bianco Occhi Blu e il Mago Nero, sono esposte in vetrine spettacolari. Perfetta combinazione di nostalgia e scoperta!", 1),
 (2, 4, "2023-08-10", "Un'esperienza magica per ogni fan di Pokémon! Le carte sono esposte in modo accattivante, con spiegazioni dettagliate sulla loro storia e rarità. Atmosfera è perfetta per immergersi nel mondo dei Pokémon. Spero di tornare presto magari per una nuova mostra!", 0);

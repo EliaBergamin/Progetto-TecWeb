@@ -288,8 +288,8 @@ const regole = {
         if (!input) {
             return true;
         }
-        let dataInserita = new Date(input);
-        let oggi = new Date();
+        const dataInserita = new Date(input);
+        const oggi = new Date();
         oggi.setHours(0, 0, 0, 0);
         dataInserita.setHours(0, 0, 0, 0);
 
