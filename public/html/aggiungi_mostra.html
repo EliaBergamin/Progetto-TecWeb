@@ -4,8 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Aggiungi mostra | Leggende Animate</title>
-  <meta name="description"
-    content="Aggiungi una nuova mostra nel sito del museo Leggende Animate.">
+  <meta name="description" content="Aggiungi una nuova mostra nel sito del museo Leggende Animate.">
   <meta name="keywords" content="Leggende Animate,mostra,aggiungi,museo,admin">
   <link rel="stylesheet" href="css/style.css" media="screen">
   <link rel="stylesheet" href="css/middle.css" media="screen and (max-width: 1024px)">
@@ -46,6 +45,7 @@
       <!-- greeting_end -->
     </ul>
   </nav>
+
   <nav id="breadcrumb" aria-label="breadcrumb">
     <ol>
       <li><a href="index.php" lang="en">Home</a></li>
@@ -53,7 +53,14 @@
       <li aria-current="page">Aggiungi mostra</li>
     </ol>
   </nav>
-
+  <form id="theme-form">
+    <input type="radio" name="theme" id="light" checked>
+    <input type="radio" name="theme" id="dark">
+    <div class="switch">
+      <label for="light">Chiaro</label>
+      <label for="dark">Scuro</label>
+    </div>
+  </form>
   <main id="primoContenuto" class="compilazione lg">
     <div class="contenitoreCompilazione">
       <h1>Aggiungi mostra</h1>

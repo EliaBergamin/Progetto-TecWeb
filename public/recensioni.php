@@ -14,6 +14,7 @@ $sectionRecensioniMuseoToModify = Templating::getContentBetweenPlaceholders($rec
 $fullcontent = "";
 foreach ($arrayRecensioniMuseo as $associativeRow) {
     $temp = $sectionRecensioniMuseoToModify;
+    Templating::replaceAnchor($temp, "id_rev", $associativeRow["id_recensione"]);
     Templating::replaceAnchor($temp, "nome_utente", $associativeRow["username"]);
     Templating::replaceAnchor($temp, "voto_recensione", $associativeRow["voto"]);
     Templating::replaceAnchor(
@@ -43,6 +44,7 @@ $sectionRecensioniVirtualTourToModify = Templating::getContentBetweenPlaceholder
 $fullcontent = "";
 foreach ($arrayRecensioniVirtualTour as $associativeRow) {
     $temp = $sectionRecensioniVirtualTourToModify;
+    Templating::replaceAnchor($temp, "id_rev", $associativeRow["id_recensione"]);
     Templating::replaceAnchor($temp, "nome_utente", $associativeRow["username"]);
     Templating::replaceAnchor($temp, "voto_recensione", $associativeRow["voto"]);
     Templating::replaceAnchor(

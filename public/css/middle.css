@@ -22,6 +22,10 @@ header {
     z-index: 50;
 }
 
+.dark header {
+    border-bottom-width: 1px;
+}
+
 #hamb {
     cursor: pointer;
     transition-duration: 0.2s;
@@ -77,6 +81,13 @@ header {
     border-top: #000 solid 1px;
     border-bottom: #000 solid 1px;
   }
+
+.switch {
+    position: fixed;
+    right: 3.2rem;
+    top: 2.54rem;
+    z-index: 100;
+}
 
 /* BREADCRUMB */
 
@@ -146,7 +157,7 @@ td[data-title]:before {
 }
 
 #tab-mostre tr:first-child {
-    border-top: 1px solid #000;
+    border-top: 1px solid var(--bordercolor);
 }
 
 #tab-mostre tr:nth-child(odd),

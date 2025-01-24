@@ -8,14 +8,13 @@
   --headercolor: #205e86;
   --bgcolor: #fff;
   --txtcolor: #000;
-  --newscolor: #F3C42B;
   --contentbgcolor: #f2f4f7;
   --breadlinkcolor: #fff;
   --breadvisitedcolor: #fbff50;
   --linkcolor: #4b7c81;
-  --visitedcolor: #000;
-  --submitcolor: #28d428;
+  --bordercolor: #000;
   --submitcolor: var(--headerbgcolor);
+  --visitedcolor: #000;
   --menuvisitedcolor: var(--headercolor);
   --disabledtxtcolor: #595959;
   --carouselcolor: var(--headercolor);
@@ -23,28 +22,36 @@
   --errorcolor: red;
   --tablebgcolor: #f2f2f2;
   --shadowcolor: rgba(0, 0, 0, 0.15);
+  --footerlinkcolor: #000;
+  --footerbgcolor: var(--headerbgcolor);
+  --footercolor: var(--headercolor);
+  --bttsrc: url(../images/back-to-top-icon.png);
 }
 
 :root.dark {
-  --headerbgcolor: #205e86;
-  --headercolor: #95e98a;
-  --menuvisitedcolor: #fbff50;
-  --bgcolor: #000;
-  --txtcolor: #fff;
-  --newscolor: #F3C42B;
-  --contentbgcolor: #343434;
-  --breadlinkcolor: #000;
-  --breadvisitedcolor: var(--headerbgcolor);
-  --linkcolor: #4b7c81;
+  --headerbgcolor: #000;
+  --headercolor: #2b7bb1;
+  --menuvisitedcolor: #000;
   --visitedcolor: #fff;
-  --submitcolor: var(--headerbgcolor);
+  --bgcolor: #000;
+  --txtcolor: #ddd;
+  --contentbgcolor: #000;
+  --breadlinkcolor: #000;
+  --breadvisitedcolor: #ddd;
+  --linkcolor: var(--headercolor);
+  --bordercolor: #fff;
+  --submitcolor: var(--headercolor);
 
   --disabledtxtcolor: #888;
   --carouselcolor: var(--headercolor);
   --carouselactivecolor: var(--headerbgcolor);
-  --errorcolor: red;
+  --errorcolor: #ff3d3d;
   --tablebgcolor: #232323;
   --shadowcolor: #fff;
+  --footerbgcolor: var(--headercolor);
+  --footercolor: #fff;
+  --bttsrc: url(../images/dark_back-to-top-icon.png);
+
 }
 
 @font-face {
@@ -86,7 +93,7 @@ html {
 body {
   max-width: 1200px;
   display: grid;
-  grid-template-columns: 1fr 8fr;
+  grid-template-columns: 1fr 8fr 1fr;
   overflow-x: hidden;
   margin: auto;
 }
@@ -135,7 +142,7 @@ strong {
 
 #top-help {
   grid-row: 1;
-  grid-column: 1/3;
+  grid-column: 1/4;
 }
 
 /*////////////*/
@@ -145,11 +152,8 @@ strong {
 header {
   grid-row: 2;
   grid-column: 1;
-  background-color: var(--headerbgcolor);
-  background-image: url('../images/logo.jpg');
-  background-position: center;
+  background: url('../images/logo.png') no-repeat center var(--headerbgcolor);
   background-size: contain;
-  background-repeat: no-repeat;
 }
 
 header h1 {
@@ -163,6 +167,70 @@ header h1 {
 
 #hamb {
   display: none;
+}
+
+/*
+==============
+THEME TOGGLE
+==============
+*/
+#theme-form {
+  grid-row: 2;
+  grid-column: 3;
+  background: var(--headerbgcolor);
+}
+
+.switch {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  top: 2.3em;
+  right: -3.6em;
+  width: 7em;
+  height: 2em; 
+  text-align: center;
+  margin: -30px 0 0 -75px;
+  background: var(--contentbgcolor);
+  transition: all 0.5s ease;
+  border-radius: 1.5em;
+  border: 1px solid var(--txtcolor);
+}
+
+input[type=radio] {
+  display: none;
+}
+
+.switch label {
+  cursor: pointer;
+  color: var(--disabledtxtcolor);
+  transition: all 0.5s ease;
+}
+
+label[for=light] {
+  position: absolute;
+  left: 0.3em;
+  cursor: default;
+  color: #000;
+}
+
+label[for=dark] {
+  position: absolute;
+  right: 0.3em;
+}
+
+.dark .switch {
+  background: #202020;
+}
+
+.dark .switch label[for=light] {
+  color: #ccc;
+  cursor: pointer;
+}
+
+.dark .switch label[for=dark] {
+  cursor: default;
+  color: #fff;
 }
 
 /* eventualmente, questo codice commentato può essere
@@ -219,6 +287,11 @@ utile per fissare il menu in modo che non scrolli
   background: var(--breadvisitedcolor);
 }
 
+.dark #menu a {
+  color: var(--headerbgcolor);
+  background: #95e98a;
+}
+
 #menu a:focus {
   border-left: var(--txtcolor) solid 1px;
   border-right: var(--txtcolor) solid 1px;
@@ -230,7 +303,12 @@ utile per fissare il menu in modo che non scrolli
 
 #menu a:visited {
   background: var(--headerbgcolor);
-  color: var(--menuvisitedcolor);
+  color: var(--headercolor);
+}
+
+.dark #menu a:visited {
+  background: var(--headerbgcolor);
+  color: var(--headercolor);
 }
 
 #menu a:hover {
@@ -244,10 +322,13 @@ utile per fissare il menu in modo che non scrolli
 
 #breadcrumb {
   grid-row: 3;
-  grid-column: 1/3;
+  grid-column: 1/4;
   background-color: var(--headercolor);
   color: var(--headerbgcolor);
   padding: 0.2rem;
+  /* display: flex;
+  justify-content: space-between; 
+  align-items: center; */
 }
 
 #breadcrumb ol {
@@ -282,7 +363,7 @@ utile per fissare il menu in modo che non scrolli
 
 main {
   grid-row: 4;
-  grid-column: 1/3;
+  grid-column: 1/4;
   margin-left: 3%;
   margin-right: 3%;
 }
@@ -315,6 +396,11 @@ main h1 {
   box-shadow: 2px 2px 20px var(--shadowcolor);
 }
 
+.dark .immaginiCarosello {
+  box-shadow: inset 0 0 10px var(--shadowcolor);
+  background: var(--bgcolor);
+}
+
 .immaginiCarosello img {
   box-sizing: content-box;
   max-width: 100%;
@@ -333,15 +419,19 @@ main h1 {
   font-size: 1em;
   text-decoration: none;
   text-align: center;
-  color: var(--headercolor);
+  color: var(--carouselcolor);
   padding: 1em 0.3em;
-  background: var(--headerbgcolor);
-  border: 1px solid var(--headercolor);
+  background: var(--carouselactivecolor);
+  border: 1px solid var(--carouselcolor);
   position: absolute;
   bottom: 13%;
   left: 38.5%;
   right: 38.5%;
   border-radius: 0.6em;
+}
+
+#carosello .more:hover {
+  color: #116297;
 }
 
 #carosello .onCarosello {
@@ -441,6 +531,9 @@ ol li .active {
   overflow: auto;
 }
 
+.dark .dettaglioSala {
+  box-shadow: inset 0 0 10px var(--shadowcolor);
+}
 
 .dettaglioSala h1 {
   text-align: center;
@@ -459,7 +552,7 @@ ol li .active {
   text-align: center;
   font-size: 2rem;
   padding: 1rem;
-
+  line-height: 1.5em;
 }
 
 #listaOpere {
@@ -485,6 +578,10 @@ ol li .active {
   box-shadow: 5px 5px 20px var(--shadowcolor);
   padding: 2em;
   margin: auto;
+}
+
+.dark #listaOpere>li {
+  box-shadow: inset 0 0 10px var(--shadowcolor);
 }
 
 #listaOpere li img {
@@ -542,6 +639,10 @@ ol li .active {
   box-shadow: 5px 5px 20px var(--shadowcolor);
 }
 
+.dark .mainSection {
+  box-shadow: inset 0 0 10px var(--shadowcolor);
+}
+
 .mainSection h1 {
   text-align: center;
   font-size: 2rem;
@@ -564,12 +665,12 @@ ol li .active {
 
 #torna-su {
   grid-row: 5;
-  grid-column: 1/3;
+  grid-column: 1/4;
   width: 100%;
   height: 3rem;
   text-indent: -999rem;
   display: block;
-  background: url(../images/back-to-top-icon.png) no-repeat center;
+  background: var(--bttsrc) no-repeat center;
   background-size: contain;
   margin: 0.5rem auto;
 }
@@ -580,23 +681,23 @@ ol li .active {
 
 footer {
   grid-row: 6;
-  grid-column: 1/3;
+  grid-column: 1/4;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  background-color: var(--headerbgcolor);
-  color: var(--headercolor);
+  background-color: var(--footerbgcolor);
+  color: var(--footercolor);
   font-size: 0.75rem;
   padding: 0 6%;
 }
 
 footer a {
-  color: var(--txtcolor);
+  color: var(--footerlinkcolor);
 }
 
 footer a:visited {
-  color: var(--headercolor);
+  color: var(--footercolor);
 }
 
 footer dl {
@@ -613,7 +714,7 @@ footer dt {
 
 footer h2 {
   flex: 1 0 18%;
-  background-image: url('../images/logo.jpg');
+  background-image: url('../images/logo.png');
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
@@ -685,6 +786,11 @@ footer h2 {
   box-shadow: 0 4px 8px var(--shadowcolor);
   background: var(--bgcolor);
   margin: 1.5em 0;
+}
+
+.dark .infoMostra {
+  border: none;
+  box-shadow: inset 0 0 10px var(--shadowcolor);
 }
 
 .infoMostra>img {
@@ -779,7 +885,7 @@ footer h2 {
   padding-top: 0.75em;
   background-color: var(--bgcolor);
   border-radius: 10px;
-  opacity: 0.93;
+  opacity: 0.96;
 }
 
 #contenitoreRecensione {
@@ -806,7 +912,7 @@ footer h2 {
 }
 
 .formCompilazione select:focus {
-  outline: none;
+  outline: var(--txtcolor) solid 2px;
 }
 
 .formCompilazione input[type="submit"],
@@ -818,7 +924,7 @@ a.button {
   margin-bottom: 0;
   color: var(--txtcolor);
   display: block;
-  border-radius: 20px;
+  border-radius: 1.25em;
   border: none;
 }
 
@@ -833,9 +939,27 @@ a.button:visited {
 
 .formCompilazione input[type="submit"]:hover,
 a.button:hover {
-  background-color: var(--txtcolor);
+  background: var(--txtcolor);
   color: var(--headerbgcolor);
   cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.dark .formCompilazione input[type="submit"],
+.dark a.button {
+  color: var(--visitedcolor);
+  border: 1px solid var(--bgcolor);
+}
+
+.dark a.button:visited {
+  color: var(--bgcolor);
+}
+
+.dark .formCompilazione input[type="submit"]:hover,
+.dark a.button:hover {
+  background: var(--headerbgcolor);
+  color: var(--headercolor);
+  border: 1px solid var(--headercolor);
 }
 
 .formCompilazione input[type="submit"]:disabled {
@@ -851,7 +975,7 @@ a.button:hover {
 }
 
 .formCompilazione .errorSuggestion {
-  color: red;
+  color: var(--errorcolor);
   font-size: 0.96rem;
   font-weight: normal;
   line-height: 0;
@@ -1003,6 +1127,11 @@ span#giudizio {
   box-shadow: 0 4px 8px var(--shadowcolor);
 }
 
+.dark .recensioni>li {
+  border: none;
+  box-shadow: inset 0 0 5px var(--shadowcolor);
+}
+
 .recensioni>li dt {
   display: none;
 }
@@ -1027,6 +1156,11 @@ span#giudizio {
   font-size: 0.7em;
 }
 
+svg {
+  fill: var(--txtcolor);
+  height: 1em;
+}
+
 /*/////////////////////////*/
 /* DETTAGLIO OPERA (CARTA) */
 /*/////////////////////////*/
@@ -1040,6 +1174,10 @@ main[class="opera"] {
   border: 1px solid var(--contentxtcolor);
   box-shadow: 0 4px 10px var(--shadowcolor);
   border-radius: 8px;
+}
+
+.dark main[class="opera"] {
+  box-shadow: inset 0 0 10px var(--shadowcolor);
 }
 
 .opera h1 {
@@ -1062,6 +1200,10 @@ main[class="opera"] {
   border-radius: 10px;
   box-shadow: 0 4px 8px var(--shadowcolor);
   max-height: 500px;
+}
+
+.dark #carta-immagine img {
+  box-shadow: 0 0 5px var(--shadowcolor);
 }
 
 #carta-descrizione {
@@ -1106,18 +1248,24 @@ main[class="opera"] {
 #virtualTour-mappa ol {
   display: grid;
   grid-template-columns: 2fr 1fr 2fr;
-  gap: 4px;
+  gap: 0.25em;
   margin: 0 auto 2em;
-  border: #ddd solid 8px;
-  background: #fff;
+  border: #ddd solid;
+  border-width: 8px;
+  background: var(--bgcolor);
   width: 90%;
   aspect-ratio: 5/3;
+}
+
+.dark #virtualTour-mappa ol {
+  border-color: #505050;
 }
 
 #virtualTour-mappa li {
   display: block;
   width: auto;
-  border: 2px solid #ccc;
+  border: solid #ccc;
+  border-width: 2px;
   border-radius: 5px;
   text-indent: -999em;
 }
@@ -1144,7 +1292,7 @@ main[class="opera"] {
 }
 
 #pokemon a {
-  background: url("../images/sala-pokemon.jpg") no-repeat center;
+  background: url("../images/sala-pokemon.png") no-repeat center;
 }
 
 #gormiti {
@@ -1162,15 +1310,15 @@ main[class="opera"] {
 }
 
 #yugioh a {
-  background: url("../images/sala-yu-gi-oh.jpeg") no-repeat center;
+  background: url("../images/sala-yu-gi-oh.png") no-repeat center;
 }
 
-#virtualTour-mappa img {
+/* #virtualTour-mappa img {
   height: auto;
   border: 2px solid #ccc;
   border-radius: 5px;
   width: 75%;
-}
+} */
 
 #virtualTour-elenco-sale {
   display: flex;
@@ -1184,7 +1332,7 @@ main[class="opera"] {
 
 #virtualTour-elenco-sale dt {
   font-weight: bold;
-  margin-top: 20px;
+  margin-top: 1.25em;
   color: var(--txtcolor);
   text-align: center;
 }
@@ -1196,6 +1344,11 @@ main[class="opera"] {
   border-radius: 10px;
   text-align: center;
   box-shadow: 0 2px 5px var(--shadowcolor);
+}
+
+.dark #virtualTour-elenco-sale dd {
+  border: none;
+  box-shadow: inset 0 0 5px var(--shadowcolor);
 }
 
 #virtualTour-elenco-sale dd p {
@@ -1287,9 +1440,10 @@ main[class="opera"] {
 #dati-utente dd {
   margin: 0 0 0.5em 6.9em;
   padding: 0.5em;
-  background-color: var(--breadvisitedcolor);
   border-left: 4px solid black;
   border-radius: 5px;
+  background-color: var(--breadvisitedcolor);
+  color: var(--menuvisitedcolor);
 }
 
 #tab-prenot {
@@ -1371,7 +1525,7 @@ dialog button {
 
 .error-title {
   grid-row: 1;
-  grid-column: 1/3;
+  grid-column: 1/4;
 }
 
 .error-descr {

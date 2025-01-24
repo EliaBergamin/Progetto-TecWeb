@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Le mostre | Leggende Animate</title>
-    <meta name="description" content="Scopri le mostre del museo Leggende Animate! Informazioni, contatti e prenotazioni per il museo sono disponibili qui.">
+    <meta name="description"
+        content="Scopri le mostre del museo Leggende Animate! Informazioni, contatti e prenotazioni per il museo sono disponibili qui.">
     <meta name="keywords" content="Leggende Animate,mostre,museo,carte,prenota,visita,cartoni">
     <link rel="stylesheet" href="css/style.css" media="screen">
     <link rel="stylesheet" href="css/middle.css" media="screen and (max-width: 1024px)">
@@ -51,6 +52,14 @@
             <li aria-current="page">Le mostre</li>
         </ol>
     </nav>
+    <form id="theme-form">
+        <input type="radio" name="theme" id="light" checked>
+        <input type="radio" name="theme" id="dark">
+        <div class="switch">
+            <label for="light">Chiaro</label>
+            <label for="dark">Scuro</label>
+        </div>
+    </form>
     <main id="mostre">
         <h1>Le mostre</h1>
         <dl>
@@ -58,7 +67,7 @@
 
             <dd>
                 <!-- nessunaMostraCorrente_start -->
-                <p  class="nomeMostra">Non ci sono mostre in corso al momento.</p>
+                <p class="nomeMostra">Non ci sono mostre in corso al momento.</p>
                 <!-- nessunaMostraCorrente_end -->
                 <dl>
                     <!-- mostrecorrenti_start -->
@@ -67,7 +76,8 @@
                         <img src="pics/{{img_path}}" alt="">
                         <p>{{descrizione}}</p>
                         <p class="giorniMostra">Da <time datetime="{{data_inizio}}">{{string_data_inizio}}</time> a
-                            <time datetime="{{data_fine}}">{{string_data_fine}}</time></p>
+                            <time datetime="{{data_fine}}">{{string_data_fine}}</time>
+                        </p>
                         <a href="prenotazione.php" class="button">Prenota visita</a>
                     </dd>
                     <!-- mostrecorrenti_end -->
@@ -76,7 +86,7 @@
 
             </dd>
             <dt class="tipoMostre">Mostre in programma</dt>
-            
+
             <dd>
                 <!-- nessunaMostraFutura_start -->
                 <p class="nomeMostra">Non sono presenti mostre future al momento.</p>
@@ -88,7 +98,8 @@
                         <img src="pics/{{img_path}}" alt="">
                         <p>{{descrizione}}</p>
                         <p class="giorniMostra">Da <time datetime="{{data_inizio}}">{{string_data_inizio}}</time> a
-                            <time datetime="{{data_fine}}">{{string_data_fine}}</time></p>
+                            <time datetime="{{data_fine}}">{{string_data_fine}}</time>
+                        </p>
                         <a href="prenotazione.php" class="button">Prenota visita</a>
                     </dd>
                     <!-- mostrefuture_end -->
@@ -97,7 +108,7 @@
             </dd>
 
             <dt><button id="accordion" class="accordion">Mostre passate</button></dt>
-            
+
             <dd class="accordion-panel">
                 <!-- nessunaMostraPassata_start -->
                 <p class="nomeMostra">Non sono presenti mostre passate registrate.</p>
@@ -109,7 +120,8 @@
                         <img src="pics/{{img_path}}" alt="" loading="lazy">
                         <p>{{descrizione}}</p>
                         <p class="giorniMostra">Da <time datetime="{{data_inizio}}">{{string_data_inizio}}</time> a
-                            <time datetime="{{data_fine}}">{{string_data_fine}}</time></p>
+                            <time datetime="{{data_fine}}">{{string_data_fine}}</time>
+                        </p>
                     </dd>
                     <!-- mostrepassate_end -->
                 </dl>

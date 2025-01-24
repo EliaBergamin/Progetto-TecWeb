@@ -48,7 +48,6 @@
             <!-- greeting_end -->
         </ul>
     </nav>
-
     <nav id="breadcrumb" aria-label="breadcrumb">
         <ol><!-- salabread_start -->
             <li><a href="index.php" lang="en">Home</a></li>
@@ -56,6 +55,14 @@
             <li aria-current="page">{{sala}}</li>
         </ol><!-- salabread_end -->
     </nav>
+    <form id="theme-form">
+        <input type="radio" name="theme" id="light" checked>
+        <input type="radio" name="theme" id="dark">
+        <div class="switch">
+            <label for="light">Chiaro</label>
+            <label for="dark">Scuro</label>
+        </div>
+    </form>
     <main id="primoContenuto">
         <!-- dettagliosala_start -->
         <section class="dettaglioSala">
@@ -66,7 +73,7 @@
         </section>
         <!-- dettagliosala_end -->
         <a class="help nascosto" href="#">Torna su</a>
-        <h2 id="titoloListaOpere">Ora la lista di tutte le opere che potrai trovare nella sala</h2>
+        <h2 id="titoloListaOpere">Ecco tutte le opere che potrai trovare nella sala</h2>
         <ul id="listaOpere">
             <!-- opere_start -->
             <li>
@@ -83,7 +90,8 @@
                         {{anno_opera}}
                     </li>
                     <li>
-                        <a href="dettaglio_opera.php?sala={{numero_sala}}&opera={{id_opera}}" aria-label="Esplora l'opera in dettaglio">Esplora</a>
+                        <a href="dettaglio_opera.php?sala={{numero_sala}}&opera={{id_opera}}"
+                            aria-label="Esplora l'opera in dettaglio">Esplora</a>
                     </li>
                 </ul>
                 <!-- TODO -->
