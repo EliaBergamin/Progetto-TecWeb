@@ -88,6 +88,16 @@ ol.puntiniCarosello {
     }
 }
 
+@media (max-width: 336px) {
+    #primoContenuto.admin {
+        margin: 0 auto;
+    }
+
+    #tab-mostre tr {
+        max-width: 94%;
+    }
+}
+
 @media (max-width: 700px) {
     #dati-utente {
         background-image: none;
@@ -102,6 +112,20 @@ ol.puntiniCarosello {
     #dati-utente dd {
         margin-left: 1em;
         width: 80%;
+    }
+}
+
+@media (max-width: 400px) {
+    #dati-utente dt {
+        width: 90%;
+    }
+
+    #dati-utente dd {
+        width: 90%;
+    }
+
+    #dati-utente {
+        margin: 0.2em 0;
     }
 }
 
@@ -121,4 +145,8 @@ ol.puntiniCarosello {
     #orari-museo td {
         min-width: 6rem;
     }
+}
+
+.dettaglioSala {
+    margin: 2% 0;
 }

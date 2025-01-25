@@ -169,8 +169,7 @@ td[data-title]:before {
     border-top: 1px solid var(--bordercolor);
 }
 
-#tab-mostre tr:nth-child(odd),
-#tab-mostre tr:nth-child(even) {
+#tab-mostre td {
     background-color: var(--tablebgcolor);
 }
 
