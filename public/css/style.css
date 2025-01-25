@@ -9,8 +9,8 @@
   --bgcolor: #fff;
   --txtcolor: #000;
   --contentbgcolor: #f2f4f7;
-  --breadlinkcolor: #fff;
-  --breadvisitedcolor: #fbff50;
+  --breadlinkcolor: #fbff50;
+  --unvisitedcolor: #fbff50;
   --linkcolor: #4b7c81;
   --bordercolor: #000;
   --submitcolor: var(--headerbgcolor);
@@ -36,8 +36,8 @@
   --bgcolor: #000;
   --txtcolor: #ddd;
   --contentbgcolor: #000;
-  --breadlinkcolor: #000;
-  --breadvisitedcolor: #ddd;
+  --breadlinkcolor: #fff;
+  --unvisitedcolor: #ddd;
   --linkcolor: var(--headercolor);
   --bordercolor: #fff;
   --submitcolor: var(--headercolor);
@@ -292,7 +292,7 @@ utile per fissare il menu in modo che non scrolli
 #menu a {
   color: var(--headercolor);
   text-decoration: none;
-  background: var(--breadvisitedcolor);
+  background: var(--unvisitedcolor);
 }
 
 .dark #menu a {
@@ -347,7 +347,7 @@ utile per fissare il menu in modo che non scrolli
 }
 
 #breadcrumb a {
-  color: var(--breadvisitedcolor);
+  color: var(--breadlinkcolor);
   padding: 0 0.2em;
   border-radius: 3px;
 }
@@ -508,7 +508,7 @@ ol li .active {
 #caroselloAvanti:hover,
 .puntiniCarosello button[class='']:hover,
 #carosello .more:hover {
-  background: var(--breadvisitedcolor);
+  background: var(--unvisitedcolor);
   transition: 0.5s ease;
   scale: 1.1;
 }
@@ -1462,7 +1462,7 @@ main[class="opera"] {
   padding: 0.5em;
   border-left: 4px solid black;
   border-radius: 5px;
-  background-color: var(--breadvisitedcolor);
+  background-color: var(--unvisitedcolor);
   color: var(--menuvisitedcolor);
 }
 
