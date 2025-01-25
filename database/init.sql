@@ -147,7 +147,7 @@ INSERT INTO Opera (id_sala, nome, autore, descrizione, anno, img_path) VALUES
   velocità e mistero, ed è amato dai fan per il suo design accattivante e i suoi incredibili poteri.
   Scopri di più su {ait}Zeraora{/ahttps://wiki.pokemoncentral.it/Zeraora}", 2018, "pokemon/zeraora.png"),
   -- dragonball
-  (1, "{en}Freezer{en}", "{ja}Akira Toriyama{/ja}", "{en}Freezer{/en} è uno dei villain più iconici della serie {en}Dragon Ball{/en}, noto per la sua crudeltà e il suo potere devastante. 
+  (1, "{en}Freezer{/en}", "{ja}Akira Toriyama{/ja}", "{en}Freezer{/en} è uno dei villain più iconici della serie {en}Dragon Ball{/en}, noto per la sua crudeltà e il suo potere devastante. 
   Questo imperatore galattico spietato domina interi pianeti e razze, eliminando chiunque osi opporsi al suo dominio. Con un aspetto alieno elegante e minaccioso, {en}Freezer{/en} 
   è capace di trasformarsi in diverse forme, ognuna più potente della precedente. Nel cartone animato, {en}Freezer{/en} è il principale antagonista nella saga di {aja}Namek{/ahttps://dragonball.fandom.com/it/wiki/Namecc}, 
   dove affronta {aja}Goku{/ahttps://dragonball.fandom.com/wiki/Goku} e i suoi amici. La sua trasformazione finale, combinata con il suo attacco 'Disco Distruttore', rappresenta una delle 

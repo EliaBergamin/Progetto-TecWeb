@@ -571,7 +571,7 @@ ol li .active {
   grid-row-gap: 2em;
 
   list-style-type: none;
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
 
 }
@@ -603,10 +603,9 @@ ol li .active {
   border: 1px solid var(--txtcolor);
 }
 
-@media (max-width: 1225px) {
+@media (max-width: 1200px) {
   #listaOpere {
     grid-template-columns: repeat(2, 1fr);
-    margin: 0 5em;
   }
 }
 
@@ -1378,7 +1377,7 @@ main[class="opera"] {
   #primoContenuto.admin {
     margin: 0 0.5%;
   }
-  
+
   #agg-mostra {
     margin-left: 3%;
   }
