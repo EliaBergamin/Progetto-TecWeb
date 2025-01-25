@@ -19,10 +19,11 @@
   <a id="top-help" class="help nascosto" href="#primoContenuto">Vai al contenuto</a>
   <header>
     <h1>Leggende Animate</h1>
-    <button id="hamb" class="hamToggle" data-hambOn="true" type="button">Menù</button>
+    <button id="hamb" class="hamToggle" data-hambOn="false" type="button" aria-label="apri menu" aria-expanded="false"
+      aria-controls="menu">Menù</button>
   </header>
 
-  <nav id="menu" class="hamToggle" data-hambOn="true" aria-label="menù principale">
+  <nav id="menu" class="hamToggle" data-hambOn="false" aria-label="menù principale">
     <ul>
       <li><a href="index.php" lang="en">Home</a></li>
       <li><a href="mostre.php">Le mostre</a></li>
@@ -40,9 +41,6 @@
       <li><a href="profile.php">Il mio profilo</a></li>
       <li><a href="logout.php">Esci</a></li>
       <!-- profile_end -->
-      <!-- greeting_start -->
-      <li><span>Ciao {{username}}!</span></li>
-      <!-- greeting_end -->
     </ul>
   </nav>
 
@@ -54,8 +52,11 @@
     </ol>
   </nav>
   <form id="theme-form">
-    <input type="radio" name="theme" id="light" checked>
-    <input type="radio" name="theme" id="dark">
+    <fieldset>
+      <legend>Scelta tema</legend>
+      <input type="radio" name="theme" id="light" checked>
+      <input type="radio" name="theme" id="dark">
+    </fieldset>
     <div class="switch">
       <label for="light">Chiaro</label>
       <label for="dark">Scuro</label>
@@ -71,16 +72,20 @@
       <form class="formCompilazione" action="alter_mostra_admin.php?id_mostra={{id_mostra}}" method="post" id="form"
         enctype="multipart/form-data">
         <label for="nome" class="required-label">Nome mostra</label>
-        <input type="text" name="nome" id="nome" value="{{nome}}" minlength="2" aria-required="true" data-required-msg="Inserire il nome">
+        <input type="text" name="nome" id="nome" value="{{nome}}" minlength="2" aria-required="true"
+          data-required-msg="Inserire il nome">
         <span id="err_nome_mostra" class="errorSuggestion" aria-live="assertive" data-ref-to="nome"></span>
         <label for="descrizione" class="required-label">Descrizione</label>
-        <textarea name="descrizione" id="descrizione" minlength="25" aria-required="true" data-required-msg="Inserire una descrizione">{{descrizione}}</textarea>
+        <textarea name="descrizione" id="descrizione" minlength="25" aria-required="true"
+          data-required-msg="Inserire una descrizione">{{descrizione}}</textarea>
         <span id="err_descrizione" class="errorSuggestion" aria-live="assertive" data-ref-to="descrizione"></span>
         <label for="data_inizio" class="required-label">Data inizio</label>
-        <input type="date" name="data_inizio" id="data_inizio" value="{{data_inizio}}" aria-required="true" data-required-msg="Inserire una data">
+        <input type="date" name="data_inizio" id="data_inizio" value="{{data_inizio}}" aria-required="true"
+          data-required-msg="Inserire una data">
         <span id="err_data_inizio" class="errorSuggestion" aria-live="assertive" data-ref-to="data_inizio"></span>
         <label for="data_fine" class="required-label">Data fine</label>
-        <input type="date" name="data_fine" id="data_fine" value="{{data_fine}}" aria-required="true" data-required-msg="Inserire una data">
+        <input type="date" name="data_fine" id="data_fine" value="{{data_fine}}" aria-required="true"
+          data-required-msg="Inserire una data">
         <span id="err_data_fine" class="errorSuggestion" aria-live="assertive" data-ref-to="data_fine"></span>
         <label for="immagine">Percorso immagine</label>
         <input type="file" name="immagine" id="immagine" accept=".jpg,.jpeg,.png,.webp" aria-required="false">
@@ -107,45 +112,47 @@
     </dl>
     <!--         <a href="" lang="en">Privacy Link TODO</a>
 -->
-    <p id="tab-descr" class="nascosto">La tabella contiene gli orari di apertura del museo di mattina e pomeriggio dal Mercoledì alla Domenica</p>
-        <table id="orari-museo" aria-describedby="tab-descr">
-            <caption>Orari del Museo</caption>
-            <thead>
-                <tr>
-                    <td></td>
-                    <th scope="col" abbr="Mat">Mattina</th>
-                    <th scope="col" abbr="Pom">Pomeriggio</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row" abbr="Mer">Mercoledì</th>
-                    <td><time datetime="09:00">09:00</time> - <time datetime="12:00">12:00</time></td>
-                    <td><time datetime="13:30">13:30</time> - <time datetime="18:00">18:00</time></td>
-                </tr>
-                <tr>
-                    <th scope="row" abbr="Gio">Giovedì</th>
-                    <td><time datetime="09:00">09:00</time> - <time datetime="12:00">12:00</time></td>
-                    <td><time datetime="13:30">13:30</time> - <time datetime="18:00">18:00</time></td>
-                </tr>
-                <tr>
-                    <th scope="row" abbr="Ven">Venerdì</th>
-                    <td><time datetime="09:00">09:00</time> - <time datetime="12:00">12:00</time></td>
-                    <td><time datetime="13:30">13:30</time> - <time datetime="18:00">18:00</time></td>
-                </tr>
-                <tr>
-                    <th scope="row" abbr="Sab">Sabato</th>
-                    <td><time datetime="09:00">09:00</time> - <time datetime="12:00">12:00</time></td>
-                    <td><time datetime="13:30">13:30</time> - <time datetime="18:00">18:00</time></td>
-                </tr>
-                <tr>
-                    <th scope="row" abbr="Dom">Domenica</th>
-                    <td><time datetime="09:00">09:00</time> - <time datetime="12:00">12:00</time></td>
-                    <td><time datetime="13:30">13:30</time> - <time datetime="18:00">18:00</time></td>
-                </tr>
-            </tbody>
+    <p id="tab-descr" class="nascosto">La tabella contiene gli orari di apertura del museo di mattina e pomeriggio dal
+      Mercoledì alla Domenica</p>
+    <table id="orari-museo" aria-describedby="tab-descr">
+      <caption>Orari del Museo</caption>
+      <thead>
+        <tr>
+          <td></td>
+          <th scope="col" abbr="Mat">Mattina</th>
+          <th scope="col" abbr="Pom">Pomeriggio</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row" abbr="Mer">Mercoledì</th>
+          <td><time datetime="09:00">09:00</time> - <time datetime="12:00">12:00</time></td>
+          <td><time datetime="13:30">13:30</time> - <time datetime="18:00">18:00</time></td>
+        </tr>
+        <tr>
+          <th scope="row" abbr="Gio">Giovedì</th>
+          <td><time datetime="09:00">09:00</time> - <time datetime="12:00">12:00</time></td>
+          <td><time datetime="13:30">13:30</time> - <time datetime="18:00">18:00</time></td>
+        </tr>
+        <tr>
+          <th scope="row" abbr="Ven">Venerdì</th>
+          <td><time datetime="09:00">09:00</time> - <time datetime="12:00">12:00</time></td>
+          <td><time datetime="13:30">13:30</time> - <time datetime="18:00">18:00</time></td>
+        </tr>
+        <tr>
+          <th scope="row" abbr="Sab">Sabato</th>
+          <td><time datetime="09:00">09:00</time> - <time datetime="12:00">12:00</time></td>
+          <td><time datetime="13:30">13:30</time> - <time datetime="18:00">18:00</time></td>
+        </tr>
+        <tr>
+          <th scope="row" abbr="Dom">Domenica</th>
+          <td><time datetime="09:00">09:00</time> - <time datetime="12:00">12:00</time></td>
+          <td><time datetime="13:30">13:30</time> - <time datetime="18:00">18:00</time></td>
+        </tr>
+      </tbody>
     </table>
   </footer>
+  <div id="overlay" onclick="hambToggle();" aria-hidden="true"></div>
 </body>
 
 </html>

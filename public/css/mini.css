@@ -1,3 +1,15 @@
+#breadcrumb li {
+    flex-shrink: 0;
+}
+
+#breadcrumb li[aria-current="page"] {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    flex-shrink: 1;
+}
+
+
 #carosello img {
     height: 200px;
 }
@@ -55,9 +67,9 @@ ol.puntiniCarosello {
 
     .contenitoreCompilazione,
     #contenitoreRecensione {
-      width: 75%;
-      padding: 1em;
-      min-width: 15em;
+        width: 75%;
+        padding: 1em;
+        min-width: 15em;
     }
 }
 
@@ -107,6 +119,6 @@ ol.puntiniCarosello {
 
 @media (max-width: 400px) {
     #orari-museo td {
-      min-width: 6rem;
+        min-width: 6rem;
     }
-  }
+}

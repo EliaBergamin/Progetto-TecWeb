@@ -202,7 +202,7 @@ class Templating
             Templating::replaceAnchor($greeting, 'username', $_SESSION['username']);
         } else {
             $log = '';
-            Templating::replaceAnchor($greeting, 'username', $_SESSION['username']);
+            $greeting = '';
         }
         Templating::replaceContentBetweenPlaceholders($htmlContent, "log", $log);
         Templating::replaceContentBetweenPlaceholders($htmlContent, "profile", $profile);

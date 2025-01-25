@@ -19,10 +19,11 @@
     <a id="top-help" class="help nascosto" href="#primoContenuto">Vai al contenuto</a>
     <header>
         <h1>Leggende Animate</h1>
-        <button id="hamb" class="hamToggle" data-hambOn="true" type="button">Menù</button>
+        <button id="hamb" class="hamToggle" data-hambOn="false" type="button" aria-label="apri menu"
+            aria-expanded="false" aria-controls="menu">Menù</button>
     </header>
 
-    <nav id="menu" class="hamToggle" data-hambOn="true" aria-label="menù principale">
+    <nav id="menu" class="hamToggle" data-hambOn="false" aria-label="menù principale">
         <ul>
             <li><a href="index.php" lang="en">Home</a></li>
             <li><a href="mostre.php">Le mostre</a></li>
@@ -40,9 +41,6 @@
             <li><a href="profile.php">Il mio profilo</a></li>
             <li><a href="logout.php">Esci</a></li>
             <!-- profile_end -->
-            <!-- greeting_start -->
-            <li><span>Ciao {{username}}!</span></li>
-            <!-- greeting_end -->
         </ul>
     </nav>
     <nav id="breadcrumb" aria-label="breadcrumb">
@@ -52,8 +50,11 @@
         </ol>
     </nav>
     <form id="theme-form">
-        <input type="radio" name="theme" id="light" checked>
-        <input type="radio" name="theme" id="dark">
+        <fieldset>
+            <legend>Scelta tema</legend>
+            <input type="radio" name="theme" id="light" checked>
+            <input type="radio" name="theme" id="dark">
+        </fieldset>
         <div class="switch">
             <label for="light">Chiaro</label>
             <label for="dark">Scuro</label>
@@ -68,22 +69,24 @@
             <!-- form_start -->
             <form action="register.php" method="post" class="formCompilazione" id="form">
                 <label for="nome" class="required-label">Nome </label>
-                <input type="text" name="nome" id="nome" value="{{nome}}" aria-required="true" data-required-msg="Inserire il nome" minlength="2" maxlength="50">
+                <input type="text" name="nome" id="nome" value="{{nome}}" aria-required="true"
+                    data-required-msg="Inserire il nome" minlength="2" maxlength="50">
                 <span id="err_nome" class="errorSuggestion" aria-live="assertive" data-ref-to="nome"></span>
                 <label for="cognome" class="required-label">Cognome </label>
-                <input type="text" name="cognome" id="cognome" value="{{cognome}}" aria-required="true" data-required-msg="Inserire il cognome" minlength="2"
-                    maxlength="50">
+                <input type="text" name="cognome" id="cognome" value="{{cognome}}" aria-required="true"
+                    data-required-msg="Inserire il cognome" minlength="2" maxlength="50">
                 <span id="err_cognome" class="errorSuggestion" aria-live="assertive" data-ref-to="cognome"></span>
                 <label for="username" class="required-label">Username </label>
-                <input type="text" name="username" id="username" value="{{username}}" aria-required="true" data-required-msg="Inserire uno username" minlength="4"
-                    maxlength="20">
+                <input type="text" name="username" id="username" value="{{username}}" aria-required="true"
+                    data-required-msg="Inserire uno username" minlength="4" maxlength="20">
                 <span id="err_username" class="errorSuggestion" aria-live="assertive" data-ref-to="username"></span>
                 <label for="email" class="required-label">Email </label>
-                <input type="email" name="email" id="email" value="{{email}}" aria-required="true" data-required-msg="Inserire l'indirizzo email"
-                    maxlength="50">
+                <input type="email" name="email" id="email" value="{{email}}" aria-required="true"
+                    data-required-msg="Inserire l'indirizzo email" maxlength="50">
                 <span id="err_email" class="errorSuggestion" aria-live="assertive" data-ref-to="email"></span>
                 <label for="password" class="required-label">Password </label>
-                <input type="password" name="password" id="password" aria-required="true" data-required-msg="Inserire una password" minlength="8" value="{{password}}">
+                <input type="password" name="password" id="password" aria-required="true"
+                    data-required-msg="Inserire una password" minlength="8" value="{{password}}">
                 <span id="err_password" class="errorSuggestion" aria-live="assertive" data-ref-to="password"></span>
                 <p class="required-msg">Campi obbligatori</p>
                 <input type="submit" name="submit" value="Registrati">
@@ -107,7 +110,8 @@
         </dl>
         <!--         <a href="" lang="en">Privacy Link TODO</a>
  -->
-        <p id="tab-descr" class="nascosto">La tabella contiene gli orari di apertura del museo di mattina e pomeriggio dal Mercoledì alla Domenica</p>
+        <p id="tab-descr" class="nascosto">La tabella contiene gli orari di apertura del museo di mattina e pomeriggio
+            dal Mercoledì alla Domenica</p>
         <table id="orari-museo" aria-describedby="tab-descr">
             <caption>Orari del Museo</caption>
             <thead>
@@ -146,6 +150,7 @@
             </tbody>
         </table>
     </footer>
+    <div id="overlay" onclick="hambToggle();" aria-hidden="true"></div>
 </body>
 
 </html>

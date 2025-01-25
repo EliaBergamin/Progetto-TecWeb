@@ -1,12 +1,12 @@
 ////////////////////////// INIZIALIZZATORI VARI //////////////////////////
 
-var hamStatus = true;
+var hamStatus = false;
 
 var currentSlideDataPrenotazione = '';
 var currentSlideIdMostra = '';
 
 document.addEventListener("DOMContentLoaded", function () {
-    hambToggle();
+    initNavMenu();
     validatorLoad();
     document.getElementById("theme-form") && initTheme();
     document.getElementById("scopridipiu") && initCarLink();
@@ -22,11 +22,29 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
+const media = window.matchMedia('(width <= 1024px)');
+
+function updateNavMenu() {
+    if (media.matches) {
+        document.getElementById("menu").setAttribute("inert", "");
+    } else {
+        document.getElementById("menu").removeAttribute("inert");
+    }
+}
+
+function initNavMenu() {
+    media.addEventListener("change", updateNavMenu);
+    updateNavMenu();
+}
+
 function hambToggle() {
     var e = document.getElementsByClassName("hamToggle");
     hamStatus = !hamStatus;
     for (var t = 0; t < e.length; t++) {
         e[t].setAttribute("data-hambOn", hamStatus.toString());
+        e[t].setAttribute("aria-expanded", hamStatus.toString());
+        e[t].setAttribute("aria-label", hamStatus ? "chiudi menu" : "apri menu");
+        document.getElementById("menu").toggleAttribute("inert", !hamStatus);
     }
 }
 
