@@ -20,6 +20,11 @@ document.addEventListener("DOMContentLoaded", function () {
     if (visitatori && visitatori.value == "") {
         visitatori.removeAttribute("value");
     }
+    document.querySelectorAll(".opera").forEach((b) => b.addEventListener("click", function () {
+        const id_opera = this.dataset.opera.toString();
+        const numero_sala = this.dataset.sala.toString();
+        window.location.href = `dettaglio_opera.php?sala=${numero_sala}&opera=${id_opera}`;
+    }));
 });
 
 const media = window.matchMedia('(width <= 1024px)');
