@@ -256,12 +256,12 @@ utile per fissare il menu in modo che non scrolli
 #menu a {
   color: var(--headercolor);
   text-decoration: none;
-  background: var(--unvisitedcolor);
+  background: var(--headerbgcolor);
 }
 
 .dark #menu a {
-  color: var(--headerbgcolor);
-  background: #95e98a;
+  background: var(--headerbgcolor);
+  color: var(--headercolor);
 }
 
 #menu a:focus {
@@ -274,13 +274,13 @@ utile per fissare il menu in modo che non scrolli
 }
 
 #menu a:visited {
-  background: var(--headerbgcolor);
+  background: var(--unvisitedcolor);
   color: var(--headercolor);
 }
 
 .dark #menu a:visited {
-  background: var(--headerbgcolor);
-  color: var(--headercolor);
+  color: var(--headerbgcolor);
+  background: #95e98a;
 }
 
 #menu a:hover,
@@ -311,7 +311,7 @@ utile per fissare il menu in modo che non scrolli
 }
 
 #breadcrumb a {
-  color: var(--breadlinkcolor);
+  color: var(--headerbgcolor);
   padding: 0 0.2em;
   border-radius: 3px;
 }
@@ -322,7 +322,7 @@ utile per fissare il menu in modo che non scrolli
 }
 
 #breadcrumb a:visited {
-  color: var(--headerbgcolor);
+  color: var(--breadlinkcolor);
   background: var(--headercolor);
 }
 
