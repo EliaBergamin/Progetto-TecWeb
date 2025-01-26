@@ -91,10 +91,9 @@ li#currentLink {
     border-bottom: #000 solid 1px;
 }
 
-.switch {
+#theme-switcher {
     position: fixed;
-    right: 3.2rem;
-    top: 0.1rem;
+    right: 3.5rem;
     z-index: 100;
 }
 

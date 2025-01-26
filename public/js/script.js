@@ -8,7 +8,7 @@ var currentSlideIdMostra = '';
 document.addEventListener("DOMContentLoaded", function () {
     initNavMenu();
     validatorLoad();
-    document.getElementById("theme-form") && initTheme();
+    document.getElementById("theme-switcher") && initTheme();
     document.getElementById("scopridipiu") && initCarLink();
     document.getElementById("accordion") && initAccordion();
     document.getElementById("giorno") && initAJAX();
@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("hamb").addEventListener("click", hambToggle);
     const visitatori = document.getElementById("visitatori");
     if (visitatori && visitatori.value == "") {
-        visitatori.removeAttribute("value");      
+        visitatori.removeAttribute("value");
     }
 });
 
@@ -61,23 +61,18 @@ function initTheme() {
 
     if (theme === 'light') {
         document.documentElement.classList.remove('dark');
-        document.getElementById("light").setAttribute("checked",'');
-        document.getElementById("dark").removeAttribute("checked");
     } else {
         document.documentElement.classList.add('dark');
-        document.getElementById("dark").setAttribute("checked",'');
-        document.getElementById("light").removeAttribute("checked");
     }
 
     // Imposta la preferenza iniziale su localStorage
     localStorage.setItem('theme', theme);
 
-    document.querySelectorAll("label[for=light], label[for=dark]").forEach((r) => {
-        r.addEventListener("click", function () {
-            document.documentElement.classList.toggle("dark");
-            const theme = document.documentElement.classList.contains("dark") ? "dark" : "light";
-            localStorage.setItem("theme", theme);            
-        });
+    document.getElementById("theme-switcher").addEventListener("click", function () {
+        console.log("ciao");
+        document.documentElement.classList.toggle("dark");
+        const theme = document.documentElement.classList.contains("dark") ? "dark" : "light";
+        localStorage.setItem("theme", theme);
     });
 }
 
@@ -112,15 +107,15 @@ function mostraSlide(n) {
     updateDiscoverMore();
 
 }
-function updateDiscoverMore(){
-    document.getElementById('scopridipiu').addEventListener('click', function(e) {
+function updateDiscoverMore() {
+    document.getElementById('scopridipiu').addEventListener('click', function (e) {
         e.preventDefault();
         // Trova l'elemento attivo del carosello
         const activeItem = document.querySelector('.onCarosello');
-    
+
         // Ottieni il link associato all'elemento attivo
         const linkId = activeItem.getAttribute('id');
-        
+
         // Reindirizza l'utente al link
         if (linkId > 0) {
             window.location.href = "mostre.php#" + linkId;  // Fa il redirect alla pagina
@@ -135,7 +130,7 @@ function initCarLink() {
     if (link.getAttribute("href").search(/\-\d/) != -1) {
         link.setAttribute("href", "virtual_tour.php");
         //console.log("virtual_tour.php");
-        
+
     }
 }
 
@@ -150,18 +145,18 @@ function initAccordion() {
         });
     });
     //con questo evento praticamente se la pagina viene ricaricata con un riferimento ad un id, apre l'accordion
-    window.addEventListener("load", function() {
+    window.addEventListener("load", function () {
         //console.log(this.window.location.hash);
         if (window.location.hash) {
-            
+
             const accordionId = window.location.hash.slice(1); // rimuove il carattere '#'
             const dtElement = document.getElementById(accordionId);
 
             // Verifica se esiste e se il suo genitore è un `dd` con classe "accordion"
             //questo in modo che l'accordione si apra solo se è un elemento del carosello
             if (dtElement) {
-                const parentDd = dtElement.closest("dd"); 
-                
+                const parentDd = dtElement.closest("dd");
+
                 if (parentDd && parentDd.classList.contains("accordion-panel")) {
                     const accordionButton = document.getElementById("accordion");
 
