@@ -210,14 +210,42 @@ INSERT INTO Utente (ruolo, username, nome, cognome, password_hash, email) VALUES
 (1, "admin", "John", "Smith", "$2y$10$hR2hqK83R1oK4k2jWfz.NOYwpnV5Laf9ClB9C0xIwKj2sXKHL0WqC", "john.smith@example.com"),
 (2, "janedoe", "Jane", "Doe", "$2y$10$vwxyzabcdefghijklmnop", "jane.doe@example.com"),
 (2, "user", "User", "Name", "$2y$10$cFX/s3yEaLujSUteGmjlT.MBH.5suXmS667v0o8OVjBxsycCdFPCS", "user.name@example.com"),
-(2, "bobloblaw", "Bob", "Loblaw", "$2y$10$mnopqrstuvwxyzabcdefg", "bob.loblaw@example.com");
+(2, "bobloblaw", "Bob", "Loblaw", "$2y$10$mnopqrstuvwxyzabcdefg", "bob.loblaw@example.com"),
+(2, "alicewonder", "Alice", "Wonderland", "$2y$10$abcdefg1234567hijklmnop", "alice.wonderland@example.com"),
+(2, "charliebrown", "Charlie", "Brown", "$2y$10$qrstuvwxyz1234567890abcd", "charlie.brown@example.com"),
+(2, "davidtennant", "David", "Tennant", "$2y$10$efghijklmnopqrstuvwx1234", "david.tennant@example.com"),
+(2, "emilybronte", "Emily", "Bronte", "$2y$10$56789abcdefg1234hijklmnop", "emily.bronte@example.com"),
+(2, "frankcastle", "Frank", "Castle", "$2y$10$abcdefg1234567hijklmnop", "frank.castle@example.com"),
+(2, "brucewayne", "Bruce", "Wayne", "$2y$10$mnopqrstuvwx1234567890", "bruce.wayne@example.com"),
+(2, "clarkkent", "Clark", "Kent", "$2y$10$qrstuvwxyzabcdefg123456", "clark.kent@example.com"),
+(2, "dianaprince", "Diana", "Prince", "$2y$10$hijklmnopqrstuvwx567890", "diana.prince@example.com"),
+(2, "barryallen", "Barry", "Allen", "$2y$10$1234567890abcdefgijklmn", "barry.allen@example.com"),
+(2, "arthurcurry", "Arthur", "Curry", "$2y$10$opqrstuvwxyzabcdefg1234", "arthur.curry@example.com"),
+(2, "haljordan", "Hal", "Jordan", "$2y$10$56789abcdefg1234hijklmn", "hal.jordan@example.com"),
+(2, "vicstone", "Vic", "Stone", "$2y$10$mnopqrstuvwx1234567890ab", "vic.stone@example.com");
 
 INSERT INTO Prenotazione (id_utente, data_prenotazione, num_persone, orario) VALUES
 (3, "2025-06-15", 7, "15:00"),
 (3, "2025-07-20", 3, "13:30"),
 (2, "2025-08-06", 1, "16:30"),
 (2, "2025-09-12", 4, "10:30"),
-(3, "2024-10-01", 2, "13:30");
+(3, "2024-10-01", 2, "13:30"),
+(2, "2025-06-15", 7, "15:00"),
+(4, "2025-06-15", 14, "15:00"),
+(5, "2025-06-15", 5, "15:00"),
+(6, "2025-06-15", 12, "15:00"),
+(7, "2025-06-15", 10, "15:00"),
+(8, "2025-06-15", 7, "15:00"),
+(9, "2025-06-15", 9, "15:00"),
+(10, "2025-06-15", 15, "15:00"),
+(2, "2025-09-12", 14, "15:00"),
+(4, "2025-09-12", 14, "15:00"),
+(5, "2025-09-12", 15, "15:00"),
+(6, "2025-09-12", 12, "15:00"),
+(7, "2025-09-12", 10, "15:00"),
+(8, "2025-09-12", 7, "15:00"),
+(9, "2025-09-12", 9, "15:00"),
+(10, "2025-09-12", 9, "15:00");
 
 INSERT INTO Recensione (id_utente, voto, data_recensione, descrizione, tipo) VALUES
 (3, 5, "2023-06-18", "Una mostra davvero unica per gli appassionati di {ja}Yu-Gi-Oh{/ja}! Le carte iconiche, come il Drago Bianco Occhi Blu e il Mago Nero, sono esposte in vetrine spettacolari. Perfetta combinazione di nostalgia e scoperta!", 1),
