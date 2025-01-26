@@ -67,9 +67,10 @@ header {
 }
 
 
-#menu[data-hambOn="true"] ~ #overlay {
+#menu[data-hambOn="true"]~#overlay {
     display: block;
 }
+
 #menu ul {
     display: block;
     height: auto;
@@ -111,6 +112,7 @@ li#currentLink {
 .immaginiCarosello img {
     height: 400px;
 }
+
 footer {
     padding: 0.5em 2%;
 }
@@ -127,6 +129,7 @@ footer dl {
 #orari-museo {
     margin: 0.4em 0;
 }
+
 /*INDEX*/
 
 /*////////////////*/
@@ -185,18 +188,22 @@ td[data-title]:before {
 
 @media (max-width: 855px) {
     #listaOpere {
-      grid-template-columns: repeat(1, 1fr);
-      max-height: fit-content;
-      width: auto;
-      margin: 0 auto;
+        grid-template-columns: repeat(1, 1fr);
+        max-height: fit-content;
+        width: auto;
+        margin: 0 auto;
     }
-  
+
     #listaOpere li img {
-      max-height: fit-content;
-      width: auto;
-      background-size: contain;
-      margin: 0;
-      margin-top: 1em;
-      display: block;
+        max-height: fit-content;
+        width: auto;
+        background-size: contain;
+        margin: 0;
+        margin-top: 1em;
+        display: block;
     }
-  }
+}
+
+.error-page {
+    grid-template-columns: 3fr 2fr;
+}

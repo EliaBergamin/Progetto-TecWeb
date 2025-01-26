@@ -150,3 +150,26 @@ ol.puntiniCarosello {
 .dettaglioSala {
     margin: 2% 0;
 }
+
+.error-page {
+    grid-template-columns: 2fr 1fr;
+}
+
+.error-descr {
+    margin: 1em 0;
+}
+
+@media (max-width: 600px) {
+    .error-page {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .error-descr {
+        margin: 0;
+    }
+
+    .error-img {
+        max-width: 120px;
+    }
+}
