@@ -1,3 +1,15 @@
+#breadcrumb li {
+    flex-shrink: 0;
+}
+
+#breadcrumb li[aria-current="page"] {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    flex-shrink: 1;
+}
+
+
 #carosello img {
     height: 200px;
 }
@@ -55,9 +67,9 @@ ol.puntiniCarosello {
 
     .contenitoreCompilazione,
     #contenitoreRecensione {
-      width: 75%;
-      padding: 1em;
-      min-width: 15em;
+        width: 75%;
+        padding: 1em;
+        min-width: 15em;
     }
 }
 
@@ -74,7 +86,19 @@ ol.puntiniCarosello {
     #tab-mostre caption {
         margin: 0.5em 0;
     }
+}
 
+@media (max-width: 336px) {
+    #primoContenuto.admin {
+        margin: 0 auto;
+    }
+
+    #tab-mostre tr {
+        max-width: 94%;
+    }
+}
+
+@media (max-width: 700px) {
     #dati-utente {
         background-image: none;
         width: 100%;
@@ -92,7 +116,60 @@ ol.puntiniCarosello {
 }
 
 @media (max-width: 400px) {
-    #orari-museo td {
-      min-width: 6rem;
+    #dati-utente dt {
+        width: 90%;
     }
-  }
+
+    #dati-utente dd {
+        width: 90%;
+    }
+
+    #dati-utente {
+        margin: 0.2em 0;
+    }
+}
+
+#virtualTour-mappa li {
+    border-width: 1px;
+}
+
+#virtualTour-mappa ol {
+    border-width: 4px;
+}
+
+#virtualTour-elenco-sale dd p {
+    margin: 0 5% 0.625rem;
+}
+
+@media (max-width: 400px) {
+    #orari-museo td {
+        min-width: 6rem;
+    }
+}
+
+.dettaglioSala {
+    margin: 2% 0;
+}
+
+.error-page {
+    grid-template-columns: 2fr 1fr;
+}
+
+.error-descr {
+    margin: 1em 0;
+}
+
+@media (max-width: 600px) {
+    .error-page {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .error-descr {
+        margin: 0;
+    }
+
+    .error-img {
+        max-width: 120px;
+    }
+}

@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Le mostre | Leggende Animate</title>
-    <meta name="description" content="Scopri le mostre del museo Leggende Animate! Informazioni, contatti e prenotazioni per il museo sono disponibili qui.">
+    <meta name="description"
+        content="Scopri le mostre del museo Leggende Animate! Informazioni, contatti e prenotazioni per il museo sono disponibili qui.">
     <meta name="keywords" content="Leggende Animate,mostre,museo,carte,prenota,visita,cartoni">
     <link rel="stylesheet" href="css/style.css" media="screen">
     <link rel="stylesheet" href="css/middle.css" media="screen and (max-width: 1024px)">
@@ -19,10 +20,11 @@
     <a id="top-help" class="help nascosto" href="#mostre">Vai al contenuto</a>
     <header>
         <h1>Leggende Animate</h1>
-        <button id="hamb" class="hamToggle" data-hambOn="true" type="button">Menù</button>
+        <button id="hamb" class="hamToggle" data-hambOn="false" type="button" aria-label="apri menu"
+            aria-expanded="false" aria-controls="menu">Menù</button>
     </header>
 
-    <nav id="menu" class="hamToggle" data-hambOn="true" aria-label="menù principale">
+    <nav id="menu" class="hamToggle" data-hambOn="false" aria-label="menù principale">
         <ul>
             <li><a href="index.php" lang="en">Home</a></li>
             <li aria-current="page" id="currentLink">Le mostre</li>
@@ -40,17 +42,20 @@
             <li><a href="profile.php">Il mio profilo</a></li>
             <li><a href="logout.php">Esci</a></li>
             <!-- profile_end -->
-            <!-- greeting_start -->
-            <li><span>Ciao {{username}}!</span></li>
-            <!-- greeting_end -->
         </ul>
     </nav>
+    <div id="theme-container">
+        <button id="theme-switcher">
+            Cambia tema
+        </button>
+    </div>
     <nav id="breadcrumb" aria-label="breadcrumb">
         <ol>
             <li><a href="index.php" lang="en">Home</a></li>
             <li aria-current="page">Le mostre</li>
         </ol>
     </nav>
+    
     <main id="mostre">
         <h1>Le mostre</h1>
         <dl>
@@ -58,7 +63,7 @@
 
             <dd>
                 <!-- nessunaMostraCorrente_start -->
-                <p  class="nomeMostra">Non ci sono mostre in corso al momento.</p>
+                <p class="nomeMostra">Non ci sono mostre in corso al momento.</p>
                 <!-- nessunaMostraCorrente_end -->
                 <dl>
                     <!-- mostrecorrenti_start -->
@@ -67,7 +72,8 @@
                         <img src="pics/{{img_path}}" alt="">
                         <p>{{descrizione}}</p>
                         <p class="giorniMostra">Da <time datetime="{{data_inizio}}">{{string_data_inizio}}</time> a
-                            <time datetime="{{data_fine}}">{{string_data_fine}}</time></p>
+                            <time datetime="{{data_fine}}">{{string_data_fine}}</time>
+                        </p>
                         <a href="prenotazione.php" class="button">Prenota visita</a>
                     </dd>
                     <!-- mostrecorrenti_end -->
@@ -76,7 +82,7 @@
 
             </dd>
             <dt class="tipoMostre">Mostre in programma</dt>
-            
+
             <dd>
                 <!-- nessunaMostraFutura_start -->
                 <p class="nomeMostra">Non sono presenti mostre future al momento.</p>
@@ -88,7 +94,8 @@
                         <img src="pics/{{img_path}}" alt="">
                         <p>{{descrizione}}</p>
                         <p class="giorniMostra">Da <time datetime="{{data_inizio}}">{{string_data_inizio}}</time> a
-                            <time datetime="{{data_fine}}">{{string_data_fine}}</time></p>
+                            <time datetime="{{data_fine}}">{{string_data_fine}}</time>
+                        </p>
                         <a href="prenotazione.php" class="button">Prenota visita</a>
                     </dd>
                     <!-- mostrefuture_end -->
@@ -97,7 +104,7 @@
             </dd>
 
             <dt><button id="accordion" class="accordion">Mostre passate</button></dt>
-            
+
             <dd class="accordion-panel">
                 <!-- nessunaMostraPassata_start -->
                 <p class="nomeMostra">Non sono presenti mostre passate registrate.</p>
@@ -109,7 +116,8 @@
                         <img src="pics/{{img_path}}" alt="" loading="lazy">
                         <p>{{descrizione}}</p>
                         <p class="giorniMostra">Da <time datetime="{{data_inizio}}">{{string_data_inizio}}</time> a
-                            <time datetime="{{data_fine}}">{{string_data_fine}}</time></p>
+                            <time datetime="{{data_fine}}">{{string_data_fine}}</time>
+                        </p>
                     </dd>
                     <!-- mostrepassate_end -->
                 </dl>
@@ -132,7 +140,8 @@
         </dl>
         <!--         <a href="" lang="en">Privacy Link TODO</a>
  -->
-        <p id="tab-descr" class="nascosto">La tabella contiene gli orari di apertura del museo di mattina e pomeriggio dal Mercoledì alla Domenica</p>
+        <p id="tab-descr" class="nascosto">La tabella contiene gli orari di apertura del museo di mattina e pomeriggio
+            dal Mercoledì alla Domenica</p>
         <table id="orari-museo" aria-describedby="tab-descr">
             <caption>Orari del Museo</caption>
             <thead>
@@ -171,6 +180,7 @@
             </tbody>
         </table>
     </footer>
+    <div id="overlay" onclick="hambToggle();" aria-hidden="true"></div>
 </body>
 
 </html>

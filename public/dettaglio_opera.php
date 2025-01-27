@@ -24,9 +24,9 @@ $dettaglioOperaHtmlContent = Templating::getHtmlWithModifiedMenu(__FILE__);
 
 //title, description, keywords
 $customMeta = Templating::getContentBetweenPlaceholders($dettaglioOperaHtmlContent, "meta");
-$cleanOpera = preg_replace('/\{.+\}(.*?)\{\/.+\}/', '$1', $operaArrayDetailed[0]["nome"]); //remove html placeholder
+$cleanOpera = preg_replace('/\{\w+\}(.*?)\{\/\w+\}/', '$1', $operaArrayDetailed[0]["nome"]); //remove html placeholder
 Templating::replaceAnchor($customMeta, "title", $cleanOpera);
-$cleanSala = preg_replace('/\{.+\}(.*?)\{\/.+\}/', '$1', $operaArrayDetailed[0]["sala"]); //remove html placeholder
+$cleanSala = preg_replace('/\{\w+\}(.*?)\{\/\w+\}/', '$1', $operaArrayDetailed[0]["sala"]); //remove html placeholder
 $fullSala = explode(' ', $cleanSala);
 $shortSala = "{$fullSala[0]} {$fullSala[1]}";
 Templating::replaceAnchor($customMeta, "sala_abbr", $shortSala);

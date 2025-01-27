@@ -22,6 +22,10 @@ header {
     z-index: 50;
 }
 
+.dark header {
+    border-bottom-width: 1px;
+}
+
 #hamb {
     cursor: pointer;
     transition-duration: 0.2s;
@@ -32,7 +36,7 @@ header {
     width: 2.8rem;
     margin: 0.2rem;
     background-image: url(../images/hamb.webp);
-    text-indent: -9999em;
+    text-indent: -999em;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -49,7 +53,7 @@ header {
     position: fixed;
     top: 3.2rem;
     right: 0;
-    width: 10rem;
+    width: 14rem;
     transition: .8s ease-in-out;
     border: 2.5px solid var(--headercolor);
     border-right: none;
@@ -58,8 +62,13 @@ header {
 #menu[data-hambOn="false"] {
     z-index: 100;
     transition: .8s ease-in-out;
-    transform: translate(11rem);
+    right: -15rem;
     position: fixed;
+}
+
+
+#menu[data-hambOn="true"]~#overlay {
+    display: block;
 }
 
 #menu ul {
@@ -70,13 +79,24 @@ header {
 #menu li {
     display: block;
     margin: 0;
+    height: 2.8rem;
+}
+
+li#currentLink {
+    display: flex;
 }
 
 #menu a:focus {
     border: none;
     border-top: #000 solid 1px;
     border-bottom: #000 solid 1px;
-  }
+}
+
+#theme-switcher {
+    position: fixed;
+    right: 3.5rem;
+    z-index: 100;
+}
 
 /* BREADCRUMB */
 
@@ -92,6 +112,7 @@ header {
 .immaginiCarosello img {
     height: 400px;
 }
+
 footer {
     padding: 0.5em 2%;
 }
@@ -108,6 +129,7 @@ footer dl {
 #orari-museo {
     margin: 0.4em 0;
 }
+
 /*INDEX*/
 
 /*////////////////*/
@@ -146,11 +168,10 @@ td[data-title]:before {
 }
 
 #tab-mostre tr:first-child {
-    border-top: 1px solid #000;
+    border-top: 1px solid var(--bordercolor);
 }
 
-#tab-mostre tr:nth-child(odd),
-#tab-mostre tr:nth-child(even) {
+#tab-mostre td {
     background-color: var(--tablebgcolor);
 }
 
@@ -167,18 +188,22 @@ td[data-title]:before {
 
 @media (max-width: 855px) {
     #listaOpere {
-      grid-template-columns: repeat(1, 1fr);
-      max-height: fit-content;
-      width: auto;
-      margin: 0 auto;
+        grid-template-columns: repeat(1, 1fr);
+        max-height: fit-content;
+        width: auto;
+        margin: 0 auto;
     }
-  
+
     #listaOpere li img {
-      max-height: fit-content;
-      width: auto;
-      background-size: contain;
-      margin: 0;
-      margin-top: 1em;
-      display: block;
+        max-height: fit-content;
+        width: auto;
+        background-size: contain;
+        margin: 0;
+        margin-top: 1em;
+        display: block;
     }
-  }
+}
+
+.error-page {
+    grid-template-columns: 3fr 2fr;
+}

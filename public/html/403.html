@@ -4,8 +4,7 @@
 <head>
     <meta charset="utf-8">
     <title>Accesso negato | Leggende Animate</title>
-    <meta name="description"
-        content="Errore 403: accesso negato.">
+    <meta name="description" content="Errore 403: accesso negato.">
     <meta name="keywords" content="Leggende Animate,museo,accesso negato,errore,403">
     <link rel="stylesheet" href="css/style.css" media="screen">
     <link rel="stylesheet" href="css/middle.css" media="screen and (max-width: 1024px)">
@@ -20,10 +19,11 @@
     <a id="top-help" class="help nascosto" href="#primoContenuto">Vai al contenuto</a>
     <header>
         <h1>Leggende Animate</h1>
-        <button id="hamb" class="hamToggle" data-hambOn="true" type="button">Menù</button>
+        <button id="hamb" class="hamToggle" data-hambOn="false" type="button" aria-label="apri menu"
+            aria-expanded="false" aria-controls="menu">Menù</button>
     </header>
 
-    <nav id="menu" class="hamToggle" data-hambOn="true" aria-label="menù principale">
+    <nav id="menu" class="hamToggle" data-hambOn="false" aria-label="menù principale">
         <ul>
             <li><a href="index.php" lang="en">Home</a></li>
             <li><a href="mostre.php">Le mostre</a></li>
@@ -41,26 +41,29 @@
             <li><a href="profile.php">Il mio profilo</a></li>
             <li><a href="logout.php">Esci</a></li>
             <!-- profile_end -->
-            <!-- greeting_start -->
-            <li><span>Ciao {{username}}!</span></li>
-            <!-- greeting_end -->
         </ul>
     </nav>
+    <div id="theme-container">
+        <button id="theme-switcher">
+            Cambia tema
+        </button>
+    </div>
     <nav id="breadcrumb" aria-label="breadcrumb">
         <ol>
             <li><a href="index.php" lang="en">Home</a></li>
             <li aria-current="page">Accesso negato</li>
         </ol>
     </nav>
+    
     <main id="primoContenuto" class="error-page">
         <h1 class="error-title">Aargh! Non hai accesso a questa pagina...</h1>
         <p class="error-descr">
             Bastiodon sta bloccando l'accesso alla pagina che stavi cercando di raggiungere!
             Per superare la barriera, combatti contro di lui, oppure <a href="login.php?redirect=admin">
-            accedi come amministratore</a>. Se preferisci, scopri di più su 
+                accedi come amministratore</a>. Se preferisci, scopri di più su
             <a href="https://wiki.pokemoncentral.it/Bastiodon" target="_blank" lang="en">Bastiodon</a>
         </p>
-        <img class="error-img" src="images/bastiodon.png"
+        <img class="error-img" src="images/bastiodon.webp"
             alt="Bastiodon ricorda un triceratopo giallo e grigio con lunghe zanne bianche">
     </main>
     <a class="help" id="torna-su" href="#">Torna su</a>
@@ -79,7 +82,8 @@
         </dl>
         <!--         <a href="" lang="en">Privacy Link TODO</a>
  -->
-        <p id="tab-descr" class="nascosto">La tabella contiene gli orari di apertura del museo di mattina e pomeriggio dal Mercoledì alla Domenica</p>
+        <p id="tab-descr" class="nascosto">La tabella contiene gli orari di apertura del museo di mattina e pomeriggio
+            dal Mercoledì alla Domenica</p>
         <table id="orari-museo" aria-describedby="tab-descr">
             <caption>Orari del Museo</caption>
             <thead>
@@ -118,6 +122,7 @@
             </tbody>
         </table>
     </footer>
+    <div id="overlay" onclick="hambToggle();" aria-hidden="true"></div>
 </body>
 
 </html>

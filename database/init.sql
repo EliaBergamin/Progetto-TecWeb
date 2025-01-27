@@ -71,8 +71,7 @@ INSERT INTO Mostra (nome, descrizione, data_inizio, data_fine, img_path, alt) VA
   ("{en}Dragon Ball{/en} Z {en}Card Battle{/en}", "Esplora l'emozionante mondo delle carte {en}Dragon Ball{/en} Z! Dai {ja}Saiyan{/ja} alle epiche battaglie, questa mostra celebra l'arte e la strategia del gioco con una collezione ricca e dinamica.", "2024-12-01", "2025-02-27", "dragonball_exhibit.webp", ""),
   ("Pokémon {en}Card Showcase{/en}", "La più grande collezione di carte Pokémon mai esposta. Dagli inizi con il {en}set{/en} base fino alle edizioni moderne, scopri le carte più rare e iconiche, e immergiti in un mondo di ricordi e sorprese.", "2024-12-01", "2024-12-31", "pokemon_exhibit.webp", ""),
   ("Gormiti {en}Card Collection{/en}", "Rivivi l'epoca d'oro dei Gormiti attraverso le loro carte! Una collezione completa e unica, che racconta storie di battaglie epiche e terre magiche con dettagli affascinanti e colorati.", "2025-11-20", "2025-12-31", "gormiti_exhibit.webp", ""),
-  ("{en}Eevolution{/en}: L'Arte della Trasformazione", "Un viaggio nell'affascinante mondo di {en}Eevee{/en}, la creatura simbolo di potenziale e adattabilità. Scopri la magia delle sue evoluzioni, ognuna unica e legata agli elementi naturali, attraverso un'esposizione che celebra la bellezza, 
-    la diversità e l'ispirazione che questo Pokémon rappresenta. Dall'elettrizzante Jolteon al misterioso Umbreon, immergiti in un universo di colori e forme in continua trasformazione.", "2025-01-14", "2025-03-24", "sun_moon.webp", ""),
+  ("{en}Eevolution{/en}: L'Arte della Trasformazione", "Un viaggio nell'affascinante mondo di {en}Eevee{/en}, la creatura simbolo di potenziale e adattabilità. Scopri la magia delle sue evoluzioni, ognuna unica e legata agli elementi naturali, attraverso un'esposizione che celebra la bellezza, la diversità e l'ispirazione che questo Pokémon rappresenta. Dall'elettrizzante Jolteon al misterioso Umbreon, immergiti in un universo di colori e forme in continua trasformazione.", "2025-01-14", "2025-03-24", "sun_moon.webp", ""),
   ("{ja}Yu-Gi-Oh{/ja} {en}Exhibit{/en}", "Un viaggio nel mondo di {ja}Yu-Gi-Oh{/ja} che non puoi perdere! L'esposizione include carte rare, storia del gioco e dettagli affascinanti sulle illustrazioni. Perfetta per fan di lunga data e neofiti curiosi.", "2023-06-01", "2023-06-10", "yugioh_exhibit.webp", "");
 
 INSERT INTO Sala (nome, descrizione, img_path) VALUES
@@ -148,7 +147,7 @@ INSERT INTO Opera (id_sala, nome, autore, descrizione, anno, img_path) VALUES
   velocità e mistero, ed è amato dai fan per il suo design accattivante e i suoi incredibili poteri.
   Scopri di più su {ait}Zeraora{/ahttps://wiki.pokemoncentral.it/Zeraora}", 2018, "pokemon/zeraora.png"),
   -- dragonball
-  (1, "{en}Freezer{en}", "{ja}Akira Toriyama{/ja}", "{en}Freezer{/en} è uno dei villain più iconici della serie {en}Dragon Ball{/en}, noto per la sua crudeltà e il suo potere devastante. 
+  (1, "{en}Freezer{/en}", "{ja}Akira Toriyama{/ja}", "{en}Freezer{/en} è uno dei villain più iconici della serie {en}Dragon Ball{/en}, noto per la sua crudeltà e il suo potere devastante. 
   Questo imperatore galattico spietato domina interi pianeti e razze, eliminando chiunque osi opporsi al suo dominio. Con un aspetto alieno elegante e minaccioso, {en}Freezer{/en} 
   è capace di trasformarsi in diverse forme, ognuna più potente della precedente. Nel cartone animato, {en}Freezer{/en} è il principale antagonista nella saga di {aja}Namek{/ahttps://dragonball.fandom.com/it/wiki/Namecc}, 
   dove affronta {aja}Goku{/ahttps://dragonball.fandom.com/wiki/Goku} e i suoi amici. La sua trasformazione finale, combinata con il suo attacco 'Disco Distruttore', rappresenta una delle 
@@ -211,14 +210,41 @@ INSERT INTO Utente (ruolo, username, nome, cognome, password_hash, email) VALUES
 (1, "admin", "John", "Smith", "$2y$10$hR2hqK83R1oK4k2jWfz.NOYwpnV5Laf9ClB9C0xIwKj2sXKHL0WqC", "john.smith@example.com"),
 (2, "janedoe", "Jane", "Doe", "$2y$10$vwxyzabcdefghijklmnop", "jane.doe@example.com"),
 (2, "user", "User", "Name", "$2y$10$cFX/s3yEaLujSUteGmjlT.MBH.5suXmS667v0o8OVjBxsycCdFPCS", "user.name@example.com"),
-(2, "bobloblaw", "Bob", "Loblaw", "$2y$10$mnopqrstuvwxyzabcdefg", "bob.loblaw@example.com");
+(2, "bobloblaw", "Bob", "Loblaw", "$2y$10$mnopqrstuvwxyzabcdefg", "bob.loblaw@example.com"),
+(2, "alicewonder", "Alice", "Wonderland", "$2y$10$abcdefg1234567hijklmnop", "alice.wonderland@example.com"),
+(2, "charliebrown", "Charlie", "Brown", "$2y$10$qrstuvwxyz1234567890abcd", "charlie.brown@example.com"),
+(2, "davidtennant", "David", "Tennant", "$2y$10$efghijklmnopqrstuvwx1234", "david.tennant@example.com"),
+(2, "emilybronte", "Emily", "Bronte", "$2y$10$56789abcdefg1234hijklmnop", "emily.bronte@example.com"),
+(2, "frankcastle", "Frank", "Castle", "$2y$10$abcdefg1234567hijklmnop", "frank.castle@example.com"),
+(2, "brucewayne", "Bruce", "Wayne", "$2y$10$mnopqrstuvwx1234567890", "bruce.wayne@example.com"),
+(2, "clarkkent", "Clark", "Kent", "$2y$10$qrstuvwxyzabcdefg123456", "clark.kent@example.com"),
+(2, "dianaprince", "Diana", "Prince", "$2y$10$hijklmnopqrstuvwx567890", "diana.prince@example.com"),
+(2, "barryallen", "Barry", "Allen", "$2y$10$1234567890abcdefgijklmn", "barry.allen@example.com"),
+(2, "arthurcurry", "Arthur", "Curry", "$2y$10$opqrstuvwxyzabcdefg1234", "arthur.curry@example.com"),
+(2, "haljordan", "Hal", "Jordan", "$2y$10$56789abcdefg1234hijklmn", "hal.jordan@example.com"),
+(2, "vicstone", "Vic", "Stone", "$2y$10$mnopqrstuvwx1234567890ab", "vic.stone@example.com");
 
 INSERT INTO Prenotazione (id_utente, data_prenotazione, num_persone, orario) VALUES
 (3, "2025-06-15", 7, "15:00"),
 (3, "2025-07-20", 3, "13:30"),
 (2, "2025-08-06", 1, "16:30"),
-(2, "2025-09-12", 4, "10:30"),
-(3, "2024-10-01", 2, "13:30");
+(3, "2024-10-01", 2, "13:30"),
+(2, "2025-06-15", 7, "15:00"),
+(4, "2025-06-15", 14, "15:00"),
+(5, "2025-06-15", 5, "15:00"),
+(6, "2025-06-15", 12, "15:00"),
+(7, "2025-06-15", 10, "15:00"),
+(8, "2025-06-15", 7, "15:00"),
+(9, "2025-06-15", 9, "15:00"),
+(10, "2025-06-15", 15, "15:00"),
+(2, "2025-09-12", 14, "15:00"),
+(4, "2025-09-12", 14, "15:00"),
+(5, "2025-09-12", 15, "15:00"),
+(6, "2025-09-12", 12, "15:00"),
+(7, "2025-09-12", 10, "15:00"),
+(8, "2025-09-12", 7, "15:00"),
+(9, "2025-09-12", 9, "15:00"),
+(10, "2025-09-12", 9, "15:00");
 
 INSERT INTO Recensione (id_utente, voto, data_recensione, descrizione, tipo) VALUES
 (3, 5, "2023-06-18", "Una mostra davvero unica per gli appassionati di {ja}Yu-Gi-Oh{/ja}! Le carte iconiche, come il Drago Bianco Occhi Blu e il Mago Nero, sono esposte in vetrine spettacolari. Perfetta combinazione di nostalgia e scoperta!", 1),

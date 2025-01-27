@@ -4,7 +4,8 @@
 <head>
     <title>Prenota una visita | Leggende Animate</title>
     <meta charset="UTF-8">
-    <meta name="description" content="Prenota una visita al museo Leggende Animate! Informazioni, contatti e prenotazioni per il museo sono disponibili qui.">
+    <meta name="description"
+        content="Prenota una visita al museo Leggende Animate! Informazioni, contatti e prenotazioni per il museo sono disponibili qui.">
     <meta name="keywords" content="Leggende Animate,prenotazione,prenota,visita,museo,mostre,carte,cartoni">
     <link rel="stylesheet" href="css/style.css" media="screen">
     <link rel="stylesheet" href="css/middle.css" media="screen and (max-width: 1024px)">
@@ -19,10 +20,11 @@
     <a id="top-help" class="help nascosto" href="#prenotazione">Vai al contenuto</a>
     <header>
         <h1>Leggende Animate</h1>
-        <button id="hamb" class="hamToggle" data-hambOn="true" type="button">Menù</button>
+        <button id="hamb" class="hamToggle" data-hambOn="false" type="button" aria-label="apri menu"
+            aria-expanded="false" aria-controls="menu">Menù</button>
     </header>
 
-    <nav id="menu" class="hamToggle" data-hambOn="true" aria-label="menù principale">
+    <nav id="menu" class="hamToggle" data-hambOn="false" aria-label="menù principale">
         <ul>
             <li><a href="index.php" lang="en">Home</a></li>
             <li><a href="mostre.php">Le mostre</a></li>
@@ -40,12 +42,13 @@
             <li><a href="profile.php">Il mio profilo</a></li>
             <li><a href="logout.php">Esci</a></li>
             <!-- profile_end -->
-            <!-- greeting_start -->
-            <li><span>Ciao {{username}}!</span></li>
-            <!-- greeting_end -->
         </ul>
     </nav>
-
+    <div id="theme-container">
+        <button id="theme-switcher">
+            Cambia tema
+        </button>
+    </div>
     <nav id="breadcrumb" aria-label="breadcrumb">
         <ol>
             <li><a href="index.php" lang="en">Home</a></li>
@@ -62,10 +65,12 @@
             <!-- form_start -->
             <form action="prenotazione_effettuata.php" method="post" id="form" class="formCompilazione">
                 <label for="giorno" class="required-label">Giorno</label>
-                <input type="date" name="giorno" id="giorno" value="{{giorno}}" aria-required="true" data-required-msg="Inserire una data">
-                    <span id="err_giorno" class="errorSuggestion" aria-live="assertive" data-ref-to="giorno"></span>
-                    <label for="orario" class="required-label">Fascia oraria</label>
-                <select name="orario" id="orario" aria-required="true" data-required-msg="Selezionare una fascia oraria">
+                <input type="date" name="giorno" id="giorno" value="{{giorno}}" aria-required="true"
+                    data-required-msg="Inserire una data">
+                <span id="err_giorno" class="errorSuggestion" aria-live="assertive" data-ref-to="giorno"></span>
+                <label for="orario" class="required-label">Fascia oraria</label>
+                <select name="orario" id="orario" aria-required="true"
+                    data-required-msg="Selezionare una fascia oraria">
                     <option value="" id="to-select" disabled selected>Seleziona</option>
                     <optgroup label="mattina">
                         <option id="09" value="09:00:00" {{o1}}>09:00 - 10:30</option>
@@ -80,8 +85,8 @@
                 </select>
                 <span id="err_orario" class="errorSuggestion" aria-live="assertive" data-ref-to="orario"></span>
                 <label for="visitatori" class="required-label">Numero di visitatori</label>
-                <input type="number" name="visitatori" id="visitatori"  aria-required="true" data-required-msg="Inserire il numero di visitatori"
-                     value="{{visitatori}}">
+                <input type="number" name="visitatori" id="visitatori" aria-required="true"
+                    data-required-msg="Inserire il numero di visitatori" value="{{visitatori}}">
                 <span id="err_visitatori" class="errorSuggestion" aria-live="assertive" data-ref-to="visitatori"></span>
                 <p class="required-msg">Campi obbligatori</p>
                 <input type="submit" name="submit" value="Prenota">
@@ -105,7 +110,8 @@
         </dl>
         <!--         <a href="" lang="en">Privacy Link TODO</a>
  -->
-        <p id="tab-descr" class="nascosto">La tabella contiene gli orari di apertura del museo di mattina e pomeriggio dal Mercoledì alla Domenica</p>
+        <p id="tab-descr" class="nascosto">La tabella contiene gli orari di apertura del museo di mattina e pomeriggio
+            dal Mercoledì alla Domenica</p>
         <table id="orari-museo" aria-describedby="tab-descr">
             <caption>Orari del Museo</caption>
             <thead>
@@ -144,6 +150,7 @@
             </tbody>
         </table>
     </footer>
+    <div id="overlay" onclick="hambToggle();" aria-hidden="true"></div>
 </body>
 
 </html>

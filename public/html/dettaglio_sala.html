@@ -22,10 +22,11 @@
     <a id="top-help" class="help nascosto" href="#primoContenuto">Vai al contenuto</a>
     <header>
         <h1>Leggende Animate</h1>
-        <button id="hamb" class="hamToggle" data-hambOn="true" type="button">Menù</button>
+        <button id="hamb" class="hamToggle" data-hambOn="false" type="button" aria-label="apri menu"
+            aria-expanded="false" aria-controls="menu">Menù</button>
     </header>
 
-    <nav id="menu" class="hamToggle" data-hambOn="true" aria-label="menù principale">
+    <nav id="menu" class="hamToggle" data-hambOn="false" aria-label="menù principale">
         <ul>
             <li><a href="index.php" lang="en">Home</a></li>
             <li><a href="mostre.php">Le mostre</a></li>
@@ -43,12 +44,13 @@
             <li><a href="profile.php">Il mio profilo</a></li>
             <li><a href="logout.php">Esci</a></li>
             <!-- profile_end -->
-            <!-- greeting_start -->
-            <li><span>Ciao {{username}}!</span></li>
-            <!-- greeting_end -->
         </ul>
     </nav>
-
+    <div id="theme-container">
+        <button id="theme-switcher">
+            Cambia tema
+        </button>
+    </div>
     <nav id="breadcrumb" aria-label="breadcrumb">
         <ol><!-- salabread_start -->
             <li><a href="index.php" lang="en">Home</a></li>
@@ -56,6 +58,7 @@
             <li aria-current="page">{{sala}}</li>
         </ol><!-- salabread_end -->
     </nav>
+    
     <main id="primoContenuto">
         <!-- dettagliosala_start -->
         <section class="dettaglioSala">
@@ -66,10 +69,10 @@
         </section>
         <!-- dettagliosala_end -->
         <a class="help nascosto" href="#">Torna su</a>
-        <h2 id="titoloListaOpere">Ora la lista di tutte le opere che potrai trovare nella sala</h2>
+        <h2 id="titoloListaOpere">Ecco tutte le opere che potrai trovare nella sala</h2>
         <ul id="listaOpere">
             <!-- opere_start -->
-            <li>
+            <li class="opera" data-opera="{{id_opera}}" data-sala="{{numero_sala}}">
                 <img src="images/{{img_path}}" alt="">
                 <h3>{{nome_opera}}</h3>
                 <ul class="miniInfoOpera">
@@ -83,7 +86,8 @@
                         {{anno_opera}}
                     </li>
                     <li>
-                        <a href="dettaglio_opera.php?sala={{numero_sala}}&opera={{id_opera}}" aria-label="Esplora l'opera in dettaglio">Esplora</a>
+                        <a href="dettaglio_opera.php?sala={{numero_sala}}&opera={{id_opera}}"
+                            aria-label="Esplora l'opera in dettaglio">Esplora</a>
                     </li>
                 </ul>
                 <!-- TODO -->
@@ -107,7 +111,8 @@
         </dl>
         <!--         <a href="" lang="en">Privacy Link TODO</a>
  -->
-        <p id="tab-descr" class="nascosto">La tabella contiene gli orari di apertura del museo di mattina e pomeriggio dal Mercoledì alla Domenica</p>
+        <p id="tab-descr" class="nascosto">La tabella contiene gli orari di apertura del museo di mattina e pomeriggio
+            dal Mercoledì alla Domenica</p>
         <table id="orari-museo" aria-describedby="tab-descr">
             <caption>Orari del Museo</caption>
             <thead>
@@ -146,6 +151,7 @@
             </tbody>
         </table>
     </footer>
+    <div id="overlay" onclick="hambToggle();" aria-hidden="true"></div>
 </body>
 
 </html>
