@@ -5,15 +5,52 @@
 
 :root {
   --headerbgcolor: #95e98a;
-  --headercolor: #205d86;
+  --headercolor: #205e86;
   --bgcolor: #fff;
   --txtcolor: #000;
-  --breadcolor: #163F77;
-  --newscolor: #F3C42B;
-  --contenttxtcolor: #000;
-  --contentbgcolor: #FFF;
-  --linkcolor: #fff;
-  --visitedcolor: #38f689;
+  --contentbgcolor: #f2f4f7;
+  --breadlinkcolor: #fbff50;
+  --unvisitedcolor: #fbff50;
+  --linkcolor: #4b7c81;
+  --bordercolor: #000;
+  --submitcolor: var(--headerbgcolor);
+  --visitedcolor: #000;
+  --menuvisitedcolor: var(--headercolor);
+  --disabledtxtcolor: #595959;
+  --carouselcolor: var(--headercolor);
+  --carouselactivecolor: var(--headerbgcolor);
+  --errorcolor: red;
+  --tablebgcolor: #f2f2f2;
+  --shadowcolor: rgba(0, 0, 0, 0.15);
+  --footerlinkcolor: #000;
+  --footerbgcolor: var(--headerbgcolor);
+  --footercolor: var(--headercolor);
+  --bttsrc: url(../images/back-to-top-icon.png);
+}
+
+:root.dark {
+  --headerbgcolor: #000;
+  --headercolor: #2b7bb1;
+  --menuvisitedcolor: #000;
+  --visitedcolor: #fff;
+  --bgcolor: #000;
+  --txtcolor: #ddd;
+  --contentbgcolor: #000;
+  --breadlinkcolor: #fff;
+  --unvisitedcolor: #ddd;
+  --linkcolor: var(--headercolor);
+  --bordercolor: #fff;
+  --submitcolor: var(--headercolor);
+
+  --disabledtxtcolor: #888;
+  --carouselcolor: var(--headercolor);
+  --carouselactivecolor: var(--headerbgcolor);
+  --errorcolor: #ff3d3d;
+  --tablebgcolor: #232323;
+  --shadowcolor: #fff;
+  --footerbgcolor: var(--headercolor);
+  --footercolor: #fff;
+  --bttsrc: url(../images/dark_back-to-top-icon.png);
 }
 
 @font-face {
@@ -24,18 +61,19 @@
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
-.nascosto {
+.none {
   display: none;
 }
 
-.help {
-  display: none;
+.nascosto {
+  position: absolute;
+  left: -999rem;
 }
 
 html {
-  font-size: 10pt;
-  font-family: 'Times New Roman', Times, serif;
-  line-height: 1.5rem;
+  font-size: 100%;
+  font-family: "Lexend", sans-serif;
+  line-height: 1.5em;
   color: var(--txtcolor);
   background-color: var(--bgcolor);
   border: 0;
@@ -46,7 +84,7 @@ html {
 body {
   max-width: 1200px;
   display: grid;
-  grid-template-columns: 1fr 8fr;
+  grid-template-columns: 1fr 9fr;
   overflow-x: hidden;
   margin: auto;
 }
@@ -56,7 +94,41 @@ ul {
   list-style: none;
 }
 
+a {
+  color: var(--linkcolor);
+}
+
+a:visited {
+  color: var(--visitedcolor);
+}
+
+a[target="_blank"]::after {
+  content: "\2197";
+  font-size: 0.9em;
+  margin-left: 0.2em;
+  padding: 0 0.2em;
+  text-decoration: none;
+  color: var(--bgcolor);
+  background: var(--headercolor);
+}
+
+strong {
+  color: var(--headercolor);
+}
+
+.util-btn {
+  display: none;
+}
+
 #top-help {
+  display: none;
+}
+
+#overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 10;
   display: none;
 }
 
@@ -66,36 +138,32 @@ ul {
 
 header {
   grid-row: 1;
-  grid-column: 1/3;
-  background-color: var(--contentbgcolor);
-  background-image: url('../images/logoMuseo2.png');
-  background-position: left;
+  grid-column: 1;
+  height: 80px;
+  width: 200px;
+  background: url('../images/logo.png') no-repeat center;
   background-size: contain;
-  background-repeat: no-repeat;
 }
 
 header h1 {
-  display: block;
-  text-align: center;
+  position: absolute;
+  text-indent: 250px;
+  margin-top: 25px;
 }
 
 #hamb {
   display: none;
 }
 
-/* eventualmente, questo codice commentato può essere
-utile per fissare il menu in modo che non scrolli
-(soprattutto in ottica mobile)*/
-/* .menu-wrapper {
-  width: 100%;
-  position: fixed;
-  display: grid;
-  grid-template-columns: 1fr 8fr;
-}
+/*
+==============
+THEME TOGGLE
+==============
+*/
 
-.shadow-box {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-} */
+#theme-container {
+  display: none;
+}
 
 /*////////////*/
 /* MENU */
@@ -105,9 +173,10 @@ utile per fissare il menu in modo che non scrolli
   display: none;
 }
 
-#currentLink {
-  background: var(--headercolor);
-  color: var(--headerbgcolor);
+#menu ul {
+  display: flex;
+  height: 3em;
+  
 }
 
 /*////////////*/
@@ -115,9 +184,33 @@ utile per fissare il menu in modo che non scrolli
 /*////////////*/
 
 #breadcrumb {
-  display: block;
   grid-row: 2;
-  grid-column: 1/3;
+  grid-column: 1/4;
+  background-color: var(--headercolor);
+  color: var(--headerbgcolor);
+  padding: 0.2rem;
+}
+
+#breadcrumb ol {
+  display: flex;
+  margin-left: 0.5em;
+  padding: 0.18rem;
+}
+
+#breadcrumb a {
+  color: var(--headerbgcolor);
+  padding: 0 0.2em;
+  border-radius: 3px;
+}
+
+#breadcrumb li+li::before {
+  content: '>';
+  margin: 0 0.5em;
+}
+
+#breadcrumb a:visited {
+  color: var(--breadlinkcolor);
+  background: var(--headercolor);
 }
 
 #home {
@@ -130,16 +223,17 @@ utile per fissare il menu in modo che non scrolli
 
 main {
   grid-row: 3;
-  grid-column: 1/3;
+  grid-column: 1/4;
   margin-left: 3%;
   margin-right: 3%;
+  margin-bottom: 20px;
 }
 
 main h1 {
-  margin: 1rem 0;
+  margin: 20px 0;
   line-height: 1.5em;
   text-align: center;
-  font-size: 2.5rem;
+  font-size: 2em;
 }
 
 /*////////////*/
@@ -154,20 +248,38 @@ main h1 {
 .immaginiCarosello {
   list-style-type: none;
   position: relative;
-  padding: 0;
+  padding: .8em;
+  background: var(--headercolor);
+  border-radius: 1em;
+  height: 30vh;
+  box-shadow: 2px 2px 20px var(--shadowcolor);
+}
+
+.dark .immaginiCarosello {
+  box-shadow: inset 0 0 10px var(--shadowcolor);
+  background: var(--bgcolor);
 }
 
 .immaginiCarosello img {
-  background-size: contain;
-  display: none;
-  width: 100%;
-  height: 250px;
+  box-sizing: content-box;
+  max-width: 100%;
+  height: 30vh;
   position: relative;
   padding: 0;
-  margin: 0;
+  margin: auto;
   z-index: 0;
   border-radius: 1em;
-  box-shadow: 7px 7px 25px rgba(0, 0, 0, 0.2);
+  box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.1);
+  display: none;
+}
+
+#carosello .onCarosello {
+  display: block;
+}
+
+#scopridipiu {
+  position: absolute;
+  text-indent: -9999px;
 }
 
 .puntiniCarosello {
@@ -185,12 +297,15 @@ main h1 {
 
 .dettaglioSala {
   margin: 2% 7% 2% 7%;
-  background-color: #f2f4f7;
+  background-color: var(--contentbgcolor);
   border-radius: 1em;
-  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 3px 3px 20px var(--shadowcolor);
   overflow: auto;
 }
 
+.dark .dettaglioSala {
+  box-shadow: inset 0 0 10px var(--shadowcolor);
+}
 
 .dettaglioSala h1 {
   text-align: center;
@@ -209,22 +324,19 @@ main h1 {
   text-align: center;
   font-size: 2rem;
   padding: 1rem;
-
+  line-height: 1.5em;
 }
 
 #listaOpere {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-column-gap: 3em;
-  grid-row-gap: 2em;
-
+  grid-column-gap: 5px;
   list-style-type: none;
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
-
 }
 
-#listaOpere li {
+#listaOpere>li {
   display: flex;
   flex-direction: column;
   /* Imposta una colonna di layout per ciascun elemento */
@@ -232,23 +344,25 @@ main h1 {
   text-align: left;
   /* Allinea il testo a sinistra */
   border-radius: 1em;
-  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
-  padding: 2em;
+  box-shadow: 5px 5px 20px var(--shadowcolor);
+  padding: 1em;
   margin: auto;
-  /* non funziona */
-  break-inside: avoid;
+  width: 200px;
+  margin-bottom: 20px;
+}
+
+.dark #listaOpere>li {
+  box-shadow: inset 0 0 10px var(--shadowcolor);
 }
 
 #listaOpere li img {
-  max-height: fit-content;
-  max-width: 17em;
+  /* min-height: fit-content; */
+  max-width: 180px;
   background-size: contain;
   margin: 0;
-  margin-top: 1em;
-}
-
-#listaOpere {
-  grid-template-columns: repeat(2, 1fr);
+  margin-bottom: 1em;
+  border-radius: 10px;
+  border: 1px solid var(--txtcolor);
 }
 
 #listaOpere li h3 {
@@ -260,8 +374,15 @@ main h1 {
 
 #listaOpere li p {
   align-self: flex-start;
+  display: -webkit-box;
+  line-clamp: 3;                  
+  box-orient: vertical;
+  -webkit-line-clamp: 4; /* Numero di righe visibili */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
   /* Allinea il titolo a sinistra */
-  margin-bottom: 0.1;
+  margin-bottom: 0.1em;
 }
 
 #listaOpere li a {
@@ -275,9 +396,13 @@ main h1 {
 
 .mainSection {
   margin: 2% 7% 2% 7%;
-  background-color: #f2f4f7;
+  background-color: var(--contentbgcolor);
   border-radius: 1em;
-  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 5px 5px 20px var(--shadowcolor);
+}
+
+.dark .mainSection {
+  box-shadow: inset 0 0 10px var(--shadowcolor);
 }
 
 .mainSection h1 {
@@ -285,12 +410,18 @@ main h1 {
   font-size: 2rem;
   padding: 1rem;
   margin-bottom: 0;
+}
 
+.mainSection h2 {
+  font-size: 1.3rem;
+  padding: 1rem;
+  margin-bottom: 0;
 }
 
 .mainSection p {
-  margin: 1em;
-  padding: 1em;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  padding-bottom: 1em;
   font-size: 1.1rem;
 }
 
@@ -303,28 +434,30 @@ main h1 {
 /*////////////*/
 
 footer {
-  grid-row: 4;
-  grid-column: 1/3;
+  grid-row: 5;
+  grid-column: 1/4;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  font-size: 0.7rem;
-  padding: 0 6%;
+  background-color: var(--footerbgcolor);
+  color: var(--footercolor);
+  font-size: 0.75rem;
+  padding: 0 10px;
 }
 
+footer a {
+  color: var(--footerlinkcolor);
+}
 
-
-/* footer a:link::after,
-footer a:visited::after {
-  content: "[" attr(href) "]";
-  display: block;
-  margin-top: 0.5px;
-} */
+footer a:visited {
+  color: var(--footercolor);
+}
 
 footer dl {
-  margin: 0.4rem 1.5%;
-  flex: 1 0 30%;
+  min-width: 14rem;
+  margin: 0;
+  flex: 1 0 20%;
   padding: 3rem 0;
 }
 
@@ -334,7 +467,13 @@ footer dt {
 }
 
 footer h2 {
-  display: none;
+  flex: 1 0 13%;
+  background-image: url('../images/logo.png');
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  text-indent: -999rem;
+  min-height: 8rem;
 }
 
 /*//////////////////////////*/
@@ -342,10 +481,9 @@ footer h2 {
 /*//////////////////////////*/
 
 #orari-museo {
+  flex: 1 0 30%;
   max-width: 30rem;
   text-align: center;
-  margin: 0.3rem 1.5%;
-  flex: 1 0 40%;
 }
 
 #orari-museo caption {
@@ -353,14 +491,10 @@ footer h2 {
   font-size: 1rem;
 }
 
-#orari-museo td {
-  min-width: 8rem;
-}
-
 #orari-museo tr:nth-child(even),
 #orari-museo thead th,
 #orari-museo thead td {
-  background-color: #f2f2f2;
+  background-color: var(--tablebgcolor);
 }
 
 #orari-museo tr:nth-child(odd) {
@@ -371,54 +505,54 @@ footer h2 {
 /*////////////*/
 /* MOSTRE */
 /*////////////*/
-
-/* per le mostre o si gestiscono gli spazi in modo preciso in modo tale da non tagliare il contenuto (ma questo sarebbe fatto ad hoc per il numero di mostre e la loro descrizione) oppure si lascia stare e il contenuto verrà tagliato tra una pagina e l'altra */
-
 #mostre h1 {
   text-align: center;
-  font-size: 3em;
+  font-size: 1.5em;
+  margin-bottom: 0;
 }
 
 .tipoMostre {
-  font-size: 2em;
+  font-size: 1em;
   font-weight: bold;
   margin: 10px 0;
 }
 
 .nomeMostra {
-  margin: 1.5em 5%;
-  font-size: 1.5em;
+  margin: 10px 5%;
   background-image: url("../images/pokeball.ico");
   background-size: 1.3em;
   background-repeat: no-repeat;
-  padding-left: 2em;
+  padding-left: 30px;
 }
 
-/* l'idea sarebbe renderla simile ad una carta ma work in progress */
 .infoMostra {
   display: flex;
   flex-direction: column;
-  padding: 1.5em;
+  padding: 10px;
   border: 2px solid #ccc;
   border-radius: 15px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  background-color: #fff;
-  margin: 1.5em 0;
-  /* questo dovrebbe evitare il taglio ma non funziona */
-  break-inside: avoid;
+  box-shadow: 0 4px 8px var(--shadowcolor);
+  background: var(--bgcolor);
+  margin: auto;
+  width: 600px;
+}
+
+.dark .infoMostra {
+  border: none;
+  box-shadow: inset 0 0 10px var(--shadowcolor);
 }
 
 .infoMostra>img {
-  display: block;
   margin: auto;
-  width: 80%;
-  max-width: 800px;
+  display: block;
+  max-width: 80%;
+  max-height: 220px;
   border-radius: 10px;
 }
 
 /* con questo vengono sommati i due margini tra bot del primo e top del secondo risolvi */
 .infoMostra>p {
-  margin: 1em 10%;
+  margin-top: 10px;
 }
 
 .giorniMostra {
@@ -430,29 +564,37 @@ footer h2 {
 }
 
 .button {
-  display: none;
+  padding: 0.6em;
+  font-size: 1em;
+  border: 2px solid var(--txtcolor);
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  color: var(--txtcolor);
+  text-decoration: none;
 }
 
 .accordion {
   width: 100%;
+  margin-top: 1em;
   padding: 0.6em;
   font-size: 1.3em;
   font-weight: bold;
-  background-color: white;
-  color: black;
+  background-color: var(--bgcolor);
+  color: var(--txtcolor);
   cursor: pointer;
-  border: 1px solid #000;
+  border: 1px solid var(--txtcolor);
   border-radius: 5px;
 }
 
 .accordion::after {
   content: "\002B";
-  color: black;
+  color: var(--txtcolor);
   font-weight: bold;
   float: right;
 }
 
-.active:after {
+.accordion.active::after {
   content: "\2212";
 }
 
@@ -460,48 +602,16 @@ footer h2 {
   display: none;
 }
 
+.accordion-panel.active {
+  display: block;
+}
+
 /*///////////////*/
 /* PRENOTAZIONI */
 /* REGISTRAZIONE */
+/* MODIFICA MOSTRA */
 /*///////////////*/
 
-/* Versione 1 senza cambiare main */
-
-/* #primoContenuto H1 {
-  text-align: center;
-}
-
-.formcompilazione {
-  margin-top: 2em;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.formcompilazione input, select {
-  margin-bottom: 1.5em;
-  box-sizing: border-box;
-  padding: 0.4em;
-  border: solid 2px #000;
-  width: 10em;
-  border-radius: 5px;
-}
-
-.formcompilazione input[type="submit"] {
-  margin-top: 1em;
-  background-color: rgb(40, 212, 40);
-  color: white;
-  padding: 0.6em;
-  width: auto;
-  font-size: 1em;
-  color: black;
-}
-
-.formcompilazione label {
-  margin-bottom: 0.5em;
-  font-size: 1.2em;
-} */
 .compilazione {
   display: flex;
   justify-content: center;
@@ -510,20 +620,30 @@ footer h2 {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  height: 40rem;
+  min-height: 40rem;
   margin-top: 1em;
   border-radius: 3em;
+  padding: 1em 0;
 }
 
 .contenitoreCompilazione {
-  width: 35%;
-  min-width: 21.5em;
+  width: 24%;
+  min-width: 16em;
   padding: 1.5em;
   padding-top: 0.75em;
-  background-color: white;
-  border-radius: 1px;
-  opacity: 0.93;
-  border: #000 solid 1px;
+  background-color: var(--bgcolor);
+  border-radius: 10px;
+  opacity: 0.96;
+}
+
+#contenitoreRecensione {
+  min-width: 20.5em;
+}
+
+.form-errors {
+  color: var(--errorcolor);
+  font-size: 1.1rem;
+  margin-bottom: 1em;
 }
 
 .formCompilazione {
@@ -531,40 +651,79 @@ footer h2 {
 }
 
 .formCompilazione input,
-select {
-  margin-bottom: 1.25em;
+.formCompilazione select {
   box-sizing: border-box;
   padding: 0.4em;
   border: solid 2px #000;
-  width: 10em;
   border-radius: 5px;
   display: block;
 }
 
-/* per un motivo sconosciuto l'input email non lo mostra */
+.formCompilazione select:focus {
+  outline: var(--txtcolor) solid 2px;
+}
 
-.formCompilazione input[type="submit"] {
+.formCompilazione input[type="submit"],
+a.button {
   display: none;
+}
+
+a.button {
+  margin: 0 10%;
+  width: auto;
+}
+
+a.button:visited {
+  color: var(--disabledtxtcolor);
+}
+
+.dark a.button:visited {
+  color: var(--bgcolor);
 }
 
 .formCompilazione label {
   display: block;
-  margin: auto;
-  margin-bottom: 0.25em;
+  margin: 1em 0 0.25em;
   font-size: 1.15rem;
-  text-align: left;
+}
+
+.formCompilazione .errorSuggestion {
+  color: var(--errorcolor);
+  font-size: 0.96rem;
+  font-weight: normal;
+  line-height: 0;
+}
+
+.formCompilazione #err_voto {
+  display: block;
+  margin-top: 1em;
+}
+
+.formCompilazione #err_voto.none {
+  display: none;
+}
+
+.required-label::after {
+  content: "*";
+  color: var(--errorcolor);
+}
+
+.required-msg::before {
+  content: "* ";
+  color: var(--errorcolor);
+}
+
+.required-msg {
+  margin: 0.5em 0;
 }
 
 /*////////////*/
 /* RECENSISCI */
+/* MODIFICA MOSTRA */
 /*////////////*/
 
-#primoContenuto[class="compilazione recensisci"] {
-  height: 60em;
-}
-
 .contenitoreCompilazione h1 {
-  font-size: 2em;
+  font-size: 1.5em;
   text-align: left;
 }
 
@@ -575,32 +734,9 @@ select {
 
 .formCompilazione fieldset input {
   display: inline;
-  width: auto;
 }
 
-.formCompilazione fieldset legend {
-  text-align: left;
-  font-size: 1.15rem;
-  width: 100%;
-  margin-bottom: 0.5em;
-  padding-top: 0.5em;
-  padding-bottom: 0.5em;
-}
-
-#rating-fs {
-  text-align: left;
-  font-size: 1.15rem;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.formCompilazione fieldset label {
-  text-align: left;
-  margin-bottom: 0;
-  padding: 0;
-}
-
+.formCompilazione fieldset legend,
 .domandaRecensione {
   text-align: left;
   font-size: 1.15rem;
@@ -609,48 +745,66 @@ select {
   padding-bottom: 0.5em;
 }
 
-.formCompilazione input[type="radio"] {
-  transform: scale(1.2);
-  margin: 0 0.3rem;
+#rating-fs {
+  text-align: left;
+  font-size: 1.15rem;
 }
+
+span#giudizio {
+  margin: 0 1em;
+}
+
+.formCompilazione fieldset label {
+  text-align: left;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+.formCompilazione input[type="radio"] {
+  transform: scale(2);
+  margin: 0 0.3rem 1em;
+  cursor: pointer;
+}
+
+.formCompilazione input[type="radio"][name="rating"] {
+  margin-bottom: 0em;
+}
+
+.rating-option {
+  display: inline;
+}
+
+
+.formCompilazione input[type="text"],
+.formCompilazione input[type="email"],
+.formCompilazione input[type="password"] {
+  width: 100%;
+  font-size: 1.0rem;
+}
+
+.formCompilazione input[type="number"] {
+  width: 25%;
+  font-size: 1.15rem;
+}
+
 
 /* .formCompilazione input[name="rating"][type="radio"] {
   margin-bottom: 3em;
 } */
 
 .formCompilazione input[type="date"] {
-  border: 1px solid black;
-  margin-bottom: 1.5em;
   font-size: 1.1rem;
 }
 
-.formCompilazione input[type="text"],
-.formCompilazione input[type="email"],
-.formCompilazione input[type="password"] {
-  width: 100%;
-}
-
-.formCompilazione input[type="number"] {
-  width: 25%;
-}
-
-#rating-fs input[type="radio"][name="rating"] {
-  margin-right: 5px;
-}
-
-#rating-fs label {
-  display: inline;
-}
-
-#giudizio {
-  display: none;
+.rating[type="radio"] {
+  margin-bottom: 2em;
 }
 
 .formCompilazione textarea {
   width: 100%;
   padding: 0.5em;
-  margin-bottom: 1.5em;
-  border: 1px solid #ccc;
+  border: 2px solid var(--txtcolor);
   border-radius: 0.5em;
   font-size: 1rem;
   box-sizing: border-box;
@@ -662,8 +816,11 @@ select {
 /* RECENSIONI */
 /*////////////*/
 
+#primoContenuto > a {
+  display: none;
+}
+
 #titolo-recens-museo {
-  margin-top: 1em;
   margin-bottom: 0.5em;
 }
 
@@ -672,12 +829,9 @@ select {
   margin-bottom: 1em;
 }
 
-a[href="#titolo-recens-virtual"] {
-  display: none;
-}
-
-#scrivi-rev {
-  display: none;
+#scrivi-rev::before {
+  content: "\270D";
+  margin-right: 0.5em;
 }
 
 .recensioni>li {
@@ -686,24 +840,41 @@ a[href="#titolo-recens-virtual"] {
   padding: 0.8em;
   border: 2px solid;
   border-radius: 15px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  /* non funziona */
-  break-inside: avoid;
+  box-shadow: 0 4px 8px var(--shadowcolor);
 }
 
-.recensioni>li>p {
-  margin-bottom: 0.5em;
-  margin-top: 0.5em;
+.dark .recensioni>li {
+  border: none;
+  box-shadow: inset 0 0 5px var(--shadowcolor);
 }
 
-.recensioni>li>label {
+.recensioni>li dt {
+  display: none;
+}
+
+.recensioni>li dt.lbl-punteggio,
+.recensioni>li dt.lbl-punteggio+dd {
+  display: inline;
+  font-weight: bold;
+}
+
+.recensioni>li dd {
+  margin: 0.3em 0;
+}
+
+.recensioni>li label {
   font-weight: bold;
   margin-right: 0.5em;
 }
 
-.recensioni>li>time {
+.recensioni>li time {
   display: block;
   font-size: 0.7em;
+}
+
+svg {
+  fill: var(--txtcolor);
+  height: 1em;
 }
 
 /*/////////////////////////*/
@@ -712,74 +883,72 @@ a[href="#titolo-recens-virtual"] {
 
 main[class="opera"] {
   color: var(--newstxtcolor);
-  background-color: var(--contentbgcolor);
-  margin: 0 auto;
+  background-color: var(--bgcolor);
+  margin: 2em auto;
   width: 70%;
-  padding: 1.75em;
+  padding: 0.5em;
   border: 1px solid var(--contentxtcolor);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 10px var(--shadowcolor);
   border-radius: 8px;
 }
 
+.dark main[class="opera"] {
+  box-shadow: inset 0 0 10px var(--shadowcolor);
+}
+
 .opera h1 {
-  padding: 0.7em;
-  padding-top: 0.1em;
   text-align: center;
-  line-height: 1em;
-  margin: 0 auto;
+  line-height: 1.5em;
 }
 
 .opera h2 {
-  padding-top: 0.7em;
-  padding-bottom: 0.7em;
   text-align: center;
 }
 
 #carta-immagine img {
   display: block;
   margin: 0 auto;
-  border: 1px solid var(--contentxtcolor);
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 150px;
-  height: 200px;
+  border: 1px solid var(--txtcolor);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px var(--shadowcolor);
+  max-height: 300px;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.dark #carta-immagine img {
+  box-shadow: 0 0 5px var(--shadowcolor);
 }
 
 #carta-descrizione {
-  margin-top: 1em;
+  margin-top: 2em;
 }
 
 #carta-descrizione p {
   text-align: justify;
-  line-height: 1.5;
+  line-height: 1.8;
   margin: 0 1em;
   font-size: 1.1em;
 }
 
 #carta-dettagli {
-  margin-top: 1em;
+  margin-top: 2em;
 }
 
 #carta-dettagli dl {
   width: 90%;
   margin: 0 auto;
-  column-count: 2;
-  column-gap: 1em;
-  font-size: 1.2em;
 }
 
 #carta-dettagli dt {
-  background-image: url('../images/pokeball.ico');
-  background-size: 1em;
-  background-repeat: no-repeat;
-  padding-left: 2.5em;
+  background: url('../images/pokeball.ico') no-repeat center left;
+  background-size: 1.25em;
+  padding: 0 0.5em 0 2em;
+  float: left;
 }
 
 #carta-dettagli dd {
-  padding: 0.5em;
-  padding-left: 2.5em;
-  margin-left: 1.5em;
-  font-size: 1em;
+  margin: 0.2em 0;
 }
 
 #carta-dettagli dd:last-child {
@@ -790,26 +959,34 @@ main[class="opera"] {
 /* VIRTUAL TOUR */
 /*/////////////////////////*/
 
-.virtualTour-mappa ol {
+#virtualTour-mappa ol {
   display: grid;
   grid-template-columns: 2fr 1fr 2fr;
-  gap: 4px;
-  margin-bottom: 20px;
-  border: #ddd solid 8px;
+  gap: 0.25em;
+  margin: 0 auto 2em;
+  border: #ddd solid;
+  border-width: 8px;
+  background: var(--bgcolor);
+  width: 90%;
+  aspect-ratio: 5/3;
 }
 
-.virtualTour-mappa li {
+.dark #virtualTour-mappa ol {
+  border-color: #505050;
+}
+
+#virtualTour-mappa li {
   display: block;
   width: auto;
-  border: 2px solid #ccc;
+  border: solid #ccc;
+  border-width: 2px;
   border-radius: 5px;
-  height: 16rem;
   text-indent: -999em;
 }
 
-.virtualTour-mappa li a {
+#virtualTour-mappa li a {
   display: block;
-  background-size: cover;
+  background-size: contain;
   width: 100%;
   height: 100%;
 }
@@ -820,8 +997,7 @@ main[class="opera"] {
 }
 
 #dragon a {
-  background: url("../images/sala-dragon-ball.png") no-repeat center;
-  background-size: contain;
+  background: url("../images/sala-dragon-ball.webp") no-repeat center;
 }
 
 #pokemon {
@@ -830,8 +1006,7 @@ main[class="opera"] {
 }
 
 #pokemon a {
-  background: url("../images/sala-pokemon.jpg") no-repeat center;
-  background-size: contain;
+  background: url("../images/sala-pokemon.webp") no-repeat center;
 }
 
 #gormiti {
@@ -840,8 +1015,7 @@ main[class="opera"] {
 }
 
 #gormiti a {
-  background: url("../images/sala-gormiti.png") no-repeat center;
-  background-size: contain;
+  background: url("../images/sala-gormiti.webp") no-repeat center;
 }
 
 #yugioh {
@@ -850,56 +1024,213 @@ main[class="opera"] {
 }
 
 #yugioh a {
-  background: url("../images/sala-yu-gi-oh.jpeg") no-repeat center;
-  background-size: contain;
+  background: url("../images/sala-yu-gi-oh.webp") no-repeat center;
 }
 
-.virtualTour-mappa img {
+/* #virtualTour-mappa img {
   height: auto;
   border: 2px solid #ccc;
   border-radius: 5px;
   width: 75%;
-}
+} */
 
-.virtualTour-elenco-sale {
+#virtualTour-elenco-sale {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.virtualTour-elenco-sale dl {
-  max-width: 600px;
-  margin: 0;
-  padding: 0;
+#virtualTour-elenco-sale dl {
+  max-width: 800px;
 }
 
-.virtualTour-elenco-sale dt {
+#virtualTour-elenco-sale dt {
   font-weight: bold;
-  margin-top: 20px;
-  color: #333;
+  margin-top: 1.25em;
+  color: var(--txtcolor);
   text-align: center;
 }
 
-.virtualTour-elenco-sale dd {
+#virtualTour-elenco-sale dd {
   margin: 5px 0 20px 0;
   padding: 15px;
   border: 2px solid #ddd;
   border-radius: 10px;
   text-align: center;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  /* non funziona */
-  break-inside: avoid;
+  box-shadow: 0 2px 5px var(--shadowcolor);
 }
 
-.virtualTour-elenco-sale dd p {
-  color: #666;
-  margin-bottom: 10px;
+.dark #virtualTour-elenco-sale dd {
+  border: none;
+  box-shadow: inset 0 0 5px var(--shadowcolor);
 }
 
-.virtualTour-elenco-sale dd a {
+#virtualTour-elenco-sale dd p {
+  color: var(--disabledtxtcolor);
+  margin: 0 10% 0.625rem;
+}
+
+#virtualTour-elenco-sale dd p.selected {
+  color: var(--txtcolor);
+}
+
+/*/////////////////////////*/
+/* PERSONALE ADMIN */
+/*/////////////////////////*/
+
+#tab-mostre {
+  width: 100%;
+  text-align: left;
+  margin-bottom: 30px;
+}
+
+#tab-mostre caption {
+  font-size: 1.5em;
+  margin-bottom: 1em;
+}
+
+#tab-mostre td,
+#tab-mostre tbody th {
+  font-weight: normal;
+  max-width: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+#tab-mostre th,
+#tab-mostre td {
+  border: 1px solid var(--txtcolor);
+  padding: 0.5em;
+}
+
+#tab-mostre tr:nth-child(even),
+#tab-mostre thead th {
+  background-color: var(--tablebgcolor);
+}
+
+#tab-mostre tr:nth-child(odd) {
+  background-color: var(--headerbgcolor);
+}
+
+#tab-mostre tr > *:nth-last-child(-n+2) {
   display: none;
 }
 
-.btn {
+/*/////////////////////////*/
+/* Il mio profilo */
+/*/////////////////////////*/
+
+#dati-utente {
+  margin: 1.5em;
+  border-radius: 8px;
+  background: url("../images/pokedex.png") no-repeat right; 
+  background-size: contain;
+  padding-right: 18%;
+}
+
+#dati-utente dt {
+  font-weight: bold;
+  margin-bottom: 0.5em;
+  padding: 0.5em;
+  width: 6em;
+  background-color: var(--headerbgcolor);
+  color: var(--headercolor);
+  border-radius: 5px;
+  float: left;
+}
+
+#dati-utente dd {
+  margin: 0 0 0.5em 6.9em;
+  padding: 0.5em;
+  border-left: 4px solid black;
+  border-radius: 5px;
+  background-color: var(--unvisitedcolor);
+  color: var(--menuvisitedcolor);
+}
+
+#tab-prenot {
+  width: 100%;
+  text-align: left;
+  margin: 1em auto;
+}
+
+#tab-prenot th,
+#tab-prenot td {
+  border: 1px solid var(--txtcolor);
+  padding: 0.5em;
+}
+
+#tab-prenot tr:nth-child(even),
+#tab-prenot thead th {
+  background-color: var(--tablebgcolor);
+}
+
+#tab-prenot tr:nth-child(odd) {
+  background-color: var(--headerbgcolor);
+}
+
+#tab-prenot tr > *:nth-last-child(-n+1) {
   display: none;
+}
+
+dialog {
+  border: 1px solid var(--txtcolor);
+  border-radius: 8px;
+  padding: 1em;
+  margin: auto;
+  font-size: 1.2em;
+}
+
+dialog button {
+  margin-right: 1em;
+  margin-top: 1em;
+  padding: 0.5em;
+  border: 1px solid var(--txtcolor);
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/*/////////////////////////*/
+/* PAGINE DI ERRORE */
+/*/////////////////////////*/
+
+.error-page {
+  display: grid;
+  grid-template-columns: 2fr 2fr;
+  text-align: center;
+  row-gap: 2em;
+}
+
+.error-title {
+  grid-row: 1;
+  grid-column: 1/3;
+}
+
+.error-descr {
+  grid-row: 2;
+  grid-column: 1;
+  margin: 5em 0;
+}
+
+.error-descr ul {
+  margin-left: 2em;
+}
+
+.error-descr li {
+  text-align: left;
+  margin: 0.5em 0;
+  background: url("../images/pokeball.ico") no-repeat top left;
+  background-size: 1.25em;
+  padding-left: 2em;
+}
+
+.error-img {
+  display: block;
+  margin: 0 auto;
+  grid-row: 2;
+  grid-column: 2;
+  max-width: 100%;
+  box-sizing: border-box;
+
 }
