@@ -61,8 +61,8 @@ Templating::replaceContentBetweenPlaceholders($modificaMostraContent, "errormsgs
 
 $formValuesToModify = Templating::getContentBetweenPlaceholders($modificaMostraContent, "form");
 Templating::replaceAnchor($formValuesToModify, "id_mostra", $id_mostra);
-Templating::replaceAnchor($formValuesToModify, "nome", $mostraToModifyInfo[0]['nome']);
-Templating::replaceAnchor($formValuesToModify, "descrizione", $mostraToModifyInfo[0]['descrizione']);
+Templating::replaceAnchor($formValuesToModify, "nome", $mostraToModifyInfo[0]['nome'], true);
+Templating::replaceAnchor($formValuesToModify, "descrizione", $mostraToModifyInfo[0]['descrizione'], true);
 Templating::replaceAnchor($formValuesToModify, "data_inizio", $mostraToModifyInfo[0]['data_inizio']);
 Templating::replaceAnchor($formValuesToModify, "data_fine", $mostraToModifyInfo[0]['data_fine']);
 Templating::replaceAnchor($formValuesToModify, "immagine", $mostraToModifyInfo[0]['img_path']);

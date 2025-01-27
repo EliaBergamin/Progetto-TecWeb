@@ -74,7 +74,6 @@ function initTheme() {
     localStorage.setItem('theme', theme);
 
     document.getElementById("theme-switcher").addEventListener("click", function () {
-        console.log("ciao");
         document.documentElement.classList.toggle("dark");
         const theme = document.documentElement.classList.contains("dark") ? "dark" : "light";
         localStorage.setItem("theme", theme);
@@ -96,7 +95,6 @@ function mostraSlide(n) {
     const slides = document.querySelectorAll(".immaginiCarosello img");
     //const links = document.querySelectorAll(".immaginiCarosello .more");
     const dots = document.querySelectorAll(".puntiniCarosello button");
-    //console.log(slides);
     if (n > slides.length) { currentSlide = 1 }
     if (n < 1) { currentSlide = slides.length }
     for (i = 0; i < slides.length; i++) {
@@ -134,7 +132,6 @@ function initCarLink() {
     const link = document.getElementById("scopridipiu");
     if (link.getAttribute("href").search(/\-\d/) != -1) {
         link.setAttribute("href", "virtual_tour.php");
-        //console.log("virtual_tour.php");
 
     }
 }
@@ -151,7 +148,6 @@ function initAccordion() {
     });
     //con questo evento praticamente se la pagina viene ricaricata con un riferimento ad un id, apre l'accordion
     window.addEventListener("load", function () {
-        //console.log(this.window.location.hash);
         if (window.location.hash) {
 
             const accordionId = window.location.hash.slice(1); // rimuove il carattere '#'
@@ -287,7 +283,6 @@ function initDialog() {
             })
                 .then(response => response.text())
                 .then(result => {
-                    //console.log('Success:', result);
                     window.location.reload();
                 })
                 .catch(error => {
@@ -308,7 +303,6 @@ function initDialog() {
             })
                 .then(response => response.text())
                 .then(result => {
-                    //console.log('Success:', result);
                     window.location.reload();
                 })
                 .catch(error => {
@@ -375,8 +369,6 @@ const regole = {
     },
 
     "MatchRegex": function MatchRegex(input, regex) {
-        console.log(input, regex);
-
         return input.trim().search(regex) == 0;
     },
 
@@ -427,11 +419,11 @@ const checklist = {
     /* check mostra*/
     err_nome_mostra: [
         ['MatchRegex', /^.{2,80}$/, 'Inserire il nome della mostra, minimo 2 caratteri, massimo 80'],
-        ['MatchRegex', /^[\p{L}\p{P}\p{N}\s<>/=]*$/u, 'Non sono ammessi caratteri speciali']
+        ['MatchRegex', /^[\p{L}\p{P}\p{N}\s\{\}\/]*$/u, 'Non sono ammessi caratteri speciali']
     ],
     err_descrizione: [
         ['MatchRegex', /^.{25,5000}$/, 'Inserire la descrizione della mostra, minimo 25 caratteri, massimo 5000'],
-        ['MatchRegex', /^[\p{L}\p{P}\p{N}\s\n<>/=]*$/u, 'Non sono ammessi caratteri speciali']
+        ['MatchRegex', /^[\p{L}\p{P}\p{N}\s\n\{\}\/]*$/u, 'Non sono ammessi caratteri speciali']
     ],
     err_data_inizio: [
         /* ['MatchRegex', /^\d{4}-\d{2}-\d{2}$/, 'Inserire una data valida'] */
@@ -506,7 +498,6 @@ function validate(check, rule) {
     const err = document.getElementById(check);
     const input = document.getElementById(err.getAttribute("data-ref-to"));
     const valid = regole[rule[0]](input.value, rule[1]);
-    console.log(input, valid);
 
     if (valid) {
         removeErrorMsg(input, err);
@@ -523,7 +514,6 @@ function validatorCheckAll() {
         if (err) {
             if (check === "err_tipo" || check === "err_voto") {
                 const selectedRadio = document.querySelector('input[name="' + err.getAttribute("data-ref-to") + '"]:checked');
-                console.log(selectedRadio);
 
                 if (!selectedRadio) {
                     err.classList.add("toggleOn");
@@ -537,7 +527,6 @@ function validatorCheckAll() {
                             err.removeAttribute("role");
                             err.classList.remove("toggleOn");
                             err.classList.add("none");
-                            console.log("ciao");
                         });
                     });
                     return false;
