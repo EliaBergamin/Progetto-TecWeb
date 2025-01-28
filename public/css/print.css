@@ -4,7 +4,7 @@
 }
 
 :root {
-  --headerbgcolor: #95e98a;
+  --headerbgcolor: #f2f2f2;
   --headercolor: #205e86;
   --bgcolor: #fff;
   --txtcolor: #000;
@@ -20,11 +20,11 @@
   --carouselcolor: var(--headercolor);
   --carouselactivecolor: var(--headerbgcolor);
   --errorcolor: red;
-  --tablebgcolor: #f2f2f2;
+  --tablebgcolor: #fff;
   --shadowcolor: rgba(0, 0, 0, 0.15);
   --footerlinkcolor: #000;
   --footerbgcolor: var(--headerbgcolor);
-  --footercolor: var(--headercolor);
+  --footercolor: var(--txtcolor);
   --bttsrc: url(../images/back-to-top-icon.png);
 }
 
@@ -46,7 +46,7 @@
 }
 
 html {
-  font-size: 100%;
+  font-size: 80%;
   font-family: "Lexend", sans-serif;
   line-height: 1.5em;
   color: var(--txtcolor);
@@ -88,7 +88,7 @@ a[target="_blank"]::after {
 }
 
 strong {
-  color: var(--headercolor);
+  color: var(--txtcolor);
 }
 
 .util-btn {
@@ -160,9 +160,10 @@ THEME TOGGLE
 #breadcrumb {
   grid-row: 2;
   grid-column: 1/4;
-  background-color: var(--headercolor);
-  color: var(--headerbgcolor);
+  color: var(--txtcolor);
   padding: 0.2rem;
+  border: 1px solid var(--bordercolor);
+  border-radius: 5px;
 }
 
 #breadcrumb ol {
@@ -172,7 +173,7 @@ THEME TOGGLE
 }
 
 #breadcrumb a {
-  color: var(--headerbgcolor);
+  color: var(--txtcolor);
   padding: 0 0.2em;
   border-radius: 3px;
 }
@@ -180,11 +181,6 @@ THEME TOGGLE
 #breadcrumb li+li::before {
   content: '>';
   margin: 0 0.5em;
-}
-
-#breadcrumb a:visited {
-  color: var(--breadlinkcolor);
-  background: var(--headercolor);
 }
 
 #home {
@@ -225,11 +221,11 @@ main h1 {
   padding: .8em;
   background: var(--headercolor);
   border-radius: 1em;
-  height: 30vh;
+  height: 25vh;
   box-shadow: 2px 2px 20px var(--shadowcolor);
 }
 
-aginiCarosello {
+.immaginiCarosello {
   box-shadow: inset 0 0 10px var(--shadowcolor);
   background: var(--bgcolor);
 }
@@ -237,7 +233,7 @@ aginiCarosello {
 .immaginiCarosello img {
   box-sizing: content-box;
   max-width: 100%;
-  height: 30vh;
+  height: 25vh;
   position: relative;
   padding: 0;
   margin: auto;
@@ -277,7 +273,7 @@ aginiCarosello {
   overflow: auto;
 }
 
-taglioSala {
+.dettaglioSala {
   box-shadow: inset 0 0 10px var(--shadowcolor);
 }
 
@@ -289,8 +285,8 @@ taglioSala {
 }
 
 .dettaglioSala p {
-  padding: 1.1rem;
-  font-size: 1.1rem;
+  padding: 1rem;
+  padding-top: 0;
   margin: 0;
 }
 
@@ -321,17 +317,20 @@ taglioSala {
   box-shadow: 5px 5px 20px var(--shadowcolor);
   padding: 1em;
   margin: auto;
-  width: 200px;
+  width: 170px;
   margin-bottom: 20px;
+  break-inside: avoid;
+  page-break-inside: avoid;
+  overflow: hidden;
 }
 
-taOpere>li {
+#listaOpere>li {
   box-shadow: inset 0 0 10px var(--shadowcolor);
 }
 
 #listaOpere li img {
   /* min-height: fit-content; */
-  max-width: 180px;
+  max-width: 100px;
   background-size: contain;
   margin: 0;
   margin-bottom: 1em;
@@ -371,25 +370,22 @@ taOpere>li {
 
 .mainSection {
   margin: 2% 7% 2% 7%;
-  background-color: var(--contentbgcolor);
+  border: 2px solid var(--headerbgcolor);
   border-radius: 1em;
   box-shadow: 5px 5px 20px var(--shadowcolor);
 }
 
-nSection {
-  box-shadow: inset 0 0 10px var(--shadowcolor);
-}
-
 .mainSection h1 {
   text-align: center;
-  font-size: 2rem;
+  font-size: 1.5rem;
   padding: 1rem;
   margin-bottom: 0;
 }
 
 .mainSection h2 {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   padding: 1rem;
+  padding-top: 0;
   margin-bottom: 0;
 }
 
@@ -397,7 +393,6 @@ nSection {
   padding-right: 1rem;
   padding-left: 1rem;
   padding-bottom: 1em;
-  font-size: 1.1rem;
 }
 
 #torna-su {
@@ -418,6 +413,10 @@ footer {
   color: var(--footercolor);
   font-size: 0.75rem;
   padding: 0 10px;
+  margin-top: 10px;
+  break-inside: avoid;
+  page-break-inside: avoid;
+  overflow: hidden;
 }
 
 footer a {
@@ -486,7 +485,6 @@ footer h2 {
 }
 
 .tipoMostre {
-  font-size: 1em;
   font-weight: bold;
   margin: 10px 0;
 }
@@ -509,11 +507,9 @@ footer h2 {
   background: var(--bgcolor);
   margin: auto;
   width: 600px;
-}
-
-oMostra {
-  border: none;
-  box-shadow: inset 0 0 10px var(--shadowcolor);
+  break-inside: avoid;
+  page-break-inside: avoid;
+  overflow: hidden;
 }
 
 .infoMostra>img {
@@ -594,8 +590,8 @@ oMostra {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  min-height: 40rem;
-  margin-top: 1em;
+  min-height: 25rem;
+  margin-top: 10px;
   border-radius: 3em;
   padding: 1em 0;
 }
@@ -603,8 +599,8 @@ oMostra {
 .contenitoreCompilazione {
   width: 24%;
   min-width: 16em;
-  padding: 1.5em;
-  padding-top: 0.75em;
+  padding: 1em;
+  padding-top: 0;
   background-color: var(--bgcolor);
   border-radius: 10px;
   opacity: 0.96;
@@ -617,11 +613,11 @@ oMostra {
 .form-errors {
   color: var(--errorcolor);
   font-size: 1.1rem;
-  margin-bottom: 1em;
+  margin-bottom: 10px;
 }
 
 .formCompilazione {
-  margin-top: 1em;
+  margin-top: 5px;
 }
 
 .formCompilazione input,
@@ -633,26 +629,13 @@ oMostra {
   display: block;
 }
 
-.formCompilazione select:focus {
-  outline: var(--txtcolor) solid 2px;
-}
-
 .formCompilazione input[type="submit"],
 a.button {
   display: none;
 }
 
-a.button {
-  margin: 0 10%;
-  width: auto;
-}
-
-a.button:visited {
-  color: var(--disabledtxtcolor);
-}
-
-tton:visited {
-  color: var(--bgcolor);
+.formCompilazione input[type="file"] {
+  width: 100%;
 }
 
 .formCompilazione label {
@@ -762,11 +745,6 @@ span#giudizio {
   font-size: 1.15rem;
 }
 
-
-/* .formCompilazione input[name="rating"][type="radio"] {
-  margin-bottom: 3em;
-} */
-
 .formCompilazione input[type="date"] {
   font-size: 1.1rem;
 }
@@ -783,7 +761,7 @@ span#giudizio {
   font-size: 1rem;
   box-sizing: border-box;
   resize: none;
-  height: 10em;
+  height: 100px;
 }
 
 /*////////////*/
@@ -812,14 +790,11 @@ span#giudizio {
   margin-top: 1em;
   margin-bottom: 2em;
   padding: 0.8em;
-  border: 2px solid;
+  border: 1px solid var(--txtcolor);
   border-radius: 15px;
-  box-shadow: 0 4px 8px var(--shadowcolor);
-}
-
-ensioni>li {
-  border: none;
-  box-shadow: inset 0 0 5px var(--shadowcolor);
+  break-inside: avoid;
+  page-break-inside: avoid;
+  overflow: hidden;
 }
 
 .recensioni>li dt {
@@ -858,21 +833,21 @@ svg {
 main[class="opera"] {
   color: var(--newstxtcolor);
   background-color: var(--bgcolor);
-  margin: 2em auto;
-  width: 70%;
+  margin: 10px auto;
+  width: 80%;
   padding: 0.5em;
   border: 1px solid var(--contentxtcolor);
   box-shadow: 0 4px 10px var(--shadowcolor);
   border-radius: 8px;
 }
 
-[class="opera"] {
+main[class="opera"] {
   box-shadow: inset 0 0 10px var(--shadowcolor);
 }
 
 .opera h1 {
   text-align: center;
-  line-height: 1.5em;
+  line-height: 1em;
 }
 
 .opera h2 {
@@ -890,7 +865,7 @@ main[class="opera"] {
   box-sizing: border-box;
 }
 
-ta-immagine img {
+#carta-immagine img {
   box-shadow: 0 0 5px var(--shadowcolor);
 }
 
@@ -900,9 +875,8 @@ ta-immagine img {
 
 #carta-descrizione p {
   text-align: justify;
-  line-height: 1.8;
-  margin: 0 1em;
-  font-size: 1.1em;
+  line-height: 1.5;
+  margin: 0 10px;
 }
 
 #carta-dettagli {
@@ -938,15 +912,11 @@ ta-immagine img {
   grid-template-columns: 2fr 1fr 2fr;
   gap: 0.25em;
   margin: 0 auto 2em;
-  border: #ddd solid;
-  border-width: 8px;
+  border: 8px solid var(--headerbgcolor);
+  border-radius: 5px;
   background: var(--bgcolor);
-  width: 90%;
+  width: 80%;
   aspect-ratio: 5/3;
-}
-
-tualTour-mappa ol {
-  border-color: #505050;
 }
 
 #virtualTour-mappa li {
@@ -1032,20 +1002,9 @@ tualTour-mappa ol {
   border-radius: 10px;
   text-align: center;
   box-shadow: 0 2px 5px var(--shadowcolor);
-}
-
-tualTour-elenco-sale dd {
-  border: none;
-  box-shadow: inset 0 0 5px var(--shadowcolor);
-}
-
-#virtualTour-elenco-sale dd p {
-  color: var(--disabledtxtcolor);
-  margin: 0 10% 0.625rem;
-}
-
-#virtualTour-elenco-sale dd p.selected {
-  color: var(--txtcolor);
+  break-inside: avoid;
+  page-break-inside: avoid;
+  overflow: hidden;
 }
 
 /*/////////////////////////*/
@@ -1066,7 +1025,6 @@ tualTour-elenco-sale dd {
 #tab-mostre td,
 #tab-mostre tbody th {
   font-weight: normal;
-  max-width: 12px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -1089,6 +1047,13 @@ tualTour-elenco-sale dd {
 
 #tab-mostre tr>*:nth-last-child(-n+2) {
   display: none;
+}
+
+#tab-mostre tr {
+  break-inside: avoid;
+  page-break-inside: avoid;
+  overflow: hidden;
+  margin-bottom: 10px;
 }
 
 /*Linearizzazione della tabella*/
@@ -1164,8 +1129,7 @@ td[data-title]:before {
   margin-bottom: 0.5em;
   padding: 0.5em;
   width: 6em;
-  background-color: var(--headerbgcolor);
-  color: var(--headercolor);
+  color: var(--txtcolor);
   border-radius: 5px;
   float: left;
 }
@@ -1173,10 +1137,10 @@ td[data-title]:before {
 #dati-utente dd {
   margin: 0 0 0.5em 6.9em;
   padding: 0.5em;
+  border: 1px solid var(--txtcolor);
   border-left: 4px solid black;
   border-radius: 5px;
-  background-color: var(--unvisitedcolor);
-  color: var(--menuvisitedcolor);
+  color: var(--txtcolor);
 }
 
 #tab-prenot {
