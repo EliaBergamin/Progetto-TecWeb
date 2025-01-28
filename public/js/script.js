@@ -422,8 +422,8 @@ const checklist = {
         ['MatchRegex', /^[\p{L}\p{P}\p{N}\s\{\}\/]*$/u, 'Non sono ammessi caratteri speciali']
     ],
     err_descrizione: [
-        ['MatchRegex', /^.{25,5000}$/, 'Inserire la descrizione della mostra, minimo 25 caratteri, massimo 5000'],
-        ['MatchRegex', /^[\p{L}\p{P}\p{N}\s\n\{\}\/]*$/u, 'Non sono ammessi caratteri speciali']
+        ['MatchRegex', /^.{25,5000}$/s, 'Inserire la descrizione della mostra, minimo 25 caratteri, massimo 5000'],
+        ['MatchRegex', /^[\p{L}\p{P}\p{N}\s\r\n\{\}\/]*$/us, 'Non sono ammessi caratteri speciali']
     ],
     err_data_inizio: [
         /* ['MatchRegex', /^\d{4}-\d{2}-\d{2}$/, 'Inserire una data valida'] */
