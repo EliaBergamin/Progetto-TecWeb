@@ -151,7 +151,6 @@ THEME TOGGLE
 #menu ul {
   display: flex;
   height: 3em;
-  
 }
 
 /*////////////*/
@@ -350,9 +349,10 @@ taOpere>li {
 #listaOpere li p {
   align-self: flex-start;
   display: -webkit-box;
-  line-clamp: 3;                  
+  line-clamp: 3;
   box-orient: vertical;
-  -webkit-line-clamp: 4; /* Numero di righe visibili */
+  -webkit-line-clamp: 4;
+  /* Numero di righe visibili */
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -790,7 +790,7 @@ span#giudizio {
 /* RECENSIONI */
 /*////////////*/
 
-#primoContenuto > a {
+#primoContenuto>a {
   display: none;
 }
 
@@ -1087,8 +1087,64 @@ tualTour-elenco-sale dd {
   background-color: var(--headerbgcolor);
 }
 
-#tab-mostre tr > *:nth-last-child(-n+2) {
+#tab-mostre tr>*:nth-last-child(-n+2) {
   display: none;
+}
+
+/*Linearizzazione della tabella*/
+
+#tab-mostre thead,
+#tab-mostre tfoot {
+  display: none;
+}
+
+#tab-mostre tr,
+#tab-mostre tbody th,
+#tab-mostre td {
+  display: block;
+  white-space: normal;
+  width: 100%;
+  max-width: none;
+  box-sizing: border-box;
+}
+
+th[data-title]:before,
+td[data-title]:before {
+  content: attr(data-title) ":\00A0";
+  font-weight: bold;
+}
+
+#tab-mostre th {
+  background-color: var(--headerbgcolor);
+  color: var(--txtcolor);
+}
+
+#tab-mostre td,
+#tab-mostre th {
+  border-top: none;
+}
+
+#tab-mostre tr {
+  border-top: 1px solid var(--bordercolor);
+}
+
+#tab-mostre tr th {
+  border-top: 1px solid var(--bordercolor);
+}
+
+#tab-mostre td {
+  background-color: var(--tablebgcolor);
+}
+
+#tab-mostre .mod-mostra,
+#tab-mostre .elim-mostra {
+  float: left;
+  width: 50%;
+  height: 2.7em;
+}
+
+#tab-mostre .mod-mostra {
+  border-right: none;
 }
 
 /*/////////////////////////*/
@@ -1098,7 +1154,7 @@ tualTour-elenco-sale dd {
 #dati-utente {
   margin: 1.5em;
   border-radius: 8px;
-  background: url("../images/pokedex.png") no-repeat right; 
+  background: url("../images/pokedex.png") no-repeat right;
   background-size: contain;
   padding-right: 18%;
 }
@@ -1144,7 +1200,7 @@ tualTour-elenco-sale dd {
   background-color: var(--headerbgcolor);
 }
 
-#tab-prenot tr > *:nth-last-child(-n+1) {
+#tab-prenot tr>*:nth-last-child(-n+1) {
   display: none;
 }
 
