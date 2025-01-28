@@ -43,6 +43,14 @@ ol.puntiniCarosello {
 }
 
 @media (max-width: 500px) {
+    #carosello {
+        margin: 2%;
+    }
+
+    .mainSection {
+        margin: 2%;
+    }
+
     #carosello img {
         height: 150px;
     }
@@ -85,6 +93,10 @@ ol.puntiniCarosello {
 @media (max-width: 600px) {
     #tab-mostre caption {
         margin: 0.5em 0;
+    }
+
+    main.opera {
+        width: 84%;
     }
 }
 

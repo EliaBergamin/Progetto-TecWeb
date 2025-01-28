@@ -14,7 +14,6 @@
 header {
     background-color: var(--headerbgcolor);
     background-position: left;
-    background-size: contain;
     min-height: 3.2rem;
     position: fixed;
     width: 100%;
@@ -45,7 +44,7 @@ header {
 }
 
 #hamb[data-hambOn="true"] {
-    background-image: url(../images/hamb_on.png);
+    background-image: url(../images/hamb_on.webp);
 }
 
 #menu {
@@ -198,8 +197,6 @@ td[data-title]:before {
         max-height: fit-content;
         width: auto;
         background-size: contain;
-        margin: 0;
-        margin-top: 1em;
         display: block;
     }
 }

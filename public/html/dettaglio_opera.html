@@ -66,25 +66,22 @@
         <h1>{{opera_name_h1}}</h1>
         <!-- operah1_end -->
 
-        <div id="carta-immagine">
+        
             <!-- operaimage_start -->
-            <img src="images/{{operaimage}}" alt="">
+            <img id="carta-immagine" src="images/{{operaimage}}" alt="">
             <!-- operaimage_end -->
-        </div>
+        
 
-        <div id="carta-descrizione">
-            <h2>Descrizione</h2>
+            <h2 id="carta-descrizione">Descrizione</h2>
             <!-- operadescription_start -->
             <p>
                 {{operadescription}}
             </p>
             <!-- operadescription_end -->
-        </div>
 
-        <div id="carta-dettagli">
-            <h2>Dettagli dell'opera</h2>
+            <h2 id="carta-dettagli">Dettagli dell'opera</h2>
             <!-- operadetails_start -->
-            <dl>
+            <dl id="lista-dettagli">
                 <!-- <dt>Personaggio:</dt>
                 <dd>{{nome}}</dd> -->
                 <dt class="details">Anno di Creazione:</dt>
@@ -93,7 +90,6 @@
                 <dd>{{operaauthor}}</dd>
             </dl>
             <!-- operadetails_end -->
-        </div>
     </main>
     <a class="help" id="torna-su" href="#primoContenuto">Torna su</a>
     <footer>

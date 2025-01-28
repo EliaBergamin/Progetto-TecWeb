@@ -67,15 +67,13 @@
       <form action="recensione_effettuata.php" method="post" class="formCompilazione" id="form">
         <fieldset>
           <legend class="required-label">Come hai visitato il museo?</legend>
-          <label>
-            <input type="radio" name="tipo" value="0" aria-required="true" data-required-msg="Selezionare un'opzione"
-              {{checkedMuseo}}>
-            Sono andato al museo
-          </label>
-          <label>
-            <input type="radio" name="tipo" value="1" {{checkedVirtual}}>
-            Ho scelto il Virtual Tour
-          </label>
+
+          <input type="radio" id="t1" name="tipo" value="0" aria-required="true"
+            data-required-msg="Selezionare un'opzione" {{checkedMuseo}}>
+          <label for="t1" class="tipo"> Sono andato al museo </label>
+          <br>
+          <input type="radio" id="t2" name="tipo" value="1" {{checkedVirtual}}>
+          <label for="t2" class="tipo"> Ho scelto il Virtual Tour </label>
           <span id="err_tipo" class="errorSuggestion" aria-live="assertive" data-ref-to="tipo"></span>
         </fieldset>
         <label for="data_visita" class="domandaRecensione required-label">Quando hai effettuato la visita?</label>
@@ -84,27 +82,17 @@
         <span id="err_data_visita" class="errorSuggestion" aria-live="assertive" data-ref-to="data_visita"></span>
         <fieldset id="rating-fs">
           <legend class="required-label">Come valuteresti la tua esperienza?</legend>
-          <div class="rating-option">
-            <input type="radio" name="rating" class="ahead" id="voto-1" value="1" {{r1}} aria-required="true"
-              data-required-msg="Selezionare un'opzione">
-            <label for="voto-1" class="nascosto">Deludente</label>
-          </div>
-          <div class="rating-option">
-            <input type="radio" name="rating" class="ahead" id="voto-2" value="2" {{r2}}>
-            <label for="voto-2" class="nascosto">Mediocre</label>
-          </div>
-          <div class="rating-option">
-            <input type="radio" name="rating" class="ahead" id="voto-3" value="3" {{r3}}>
-            <label for="voto-3" class="nascosto">Interessante</label>
-          </div>
-          <div class="rating-option">
-            <input type="radio" name="rating" class="ahead" id="voto-4" value="4" {{r4}}>
-            <label for="voto-4" class="nascosto">Soddisfacente</label>
-          </div>
-          <div class="rating-option">
-            <input type="radio" name="rating" class="ahead" id="voto-5" value="5" {{r5}}>
-            <label for="voto-5" class="nascosto">Eccellente</label>
-          </div>
+          <input type="radio" name="rating" class="ahead rating-option" id="voto-1" value="1" {{r1}}
+            aria-required="true" data-required-msg="Selezionare un'opzione">
+          <label for="voto-1" class="nascosto">Deludente</label>
+          <input type="radio" name="rating" class="ahead rating-option" id="voto-2" value="2" {{r2}}>
+          <label for="voto-2" class="nascosto">Mediocre</label>
+          <input type="radio" name="rating" class="ahead rating-option" id="voto-3" value="3" {{r3}}>
+          <label for="voto-3" class="nascosto">Interessante</label>
+          <input type="radio" name="rating" class="ahead rating-option" id="voto-4" value="4" {{r4}}>
+          <label for="voto-4" class="nascosto">Soddisfacente</label>
+          <input type="radio" name="rating" class="ahead rating-option" id="voto-5" value="5" {{r5}}>
+          <label for="voto-5" class="nascosto">Eccellente</label>
           <span id="giudizio"></span>
           <span id="err_voto" class="errorSuggestion" aria-live="assertive" data-ref-to="rating"></span>
         </fieldset>

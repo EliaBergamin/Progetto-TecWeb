@@ -15,23 +15,25 @@
   --bordercolor: #000;
   --submitcolor: var(--headerbgcolor);
   --visitedcolor: #000;
-  --menuvisitedcolor: var(--headercolor);
+  --profilecolor: #000;
   --disabledtxtcolor: #595959;
-  --carouselcolor: var(--headercolor);
-  --carouselactivecolor: var(--headerbgcolor);
+  --carouselfirst: #205e86;
+  --carouselsecond: #95e98a;
+  --carouselthird: #fbff50;
+  --carouselfourth: #205e86;
   --errorcolor: red;
   --tablebgcolor: #f2f2f2;
   --shadowcolor: rgba(0, 0, 0, 0.15);
   --footerlinkcolor: #000;
   --footerbgcolor: var(--headerbgcolor);
   --footercolor: var(--headercolor);
-  --bttsrc: url(../images/back-to-top-icon.png);
+  --bttsrc: url(../images/back-to-top-icon.webp);
 }
 
 :root.dark {
   --headerbgcolor: #000;
   --headercolor: #2b7bb1;
-  --menuvisitedcolor: #000;
+  --profilecolor: #000;
   --visitedcolor: #fff;
   --bgcolor: #000;
   --txtcolor: #ddd;
@@ -43,14 +45,16 @@
   --submitcolor: var(--headercolor);
 
   --disabledtxtcolor: #888;
-  --carouselcolor: var(--headercolor);
-  --carouselactivecolor: var(--headerbgcolor);
+  --carouselfirst: #000;
+  --carouselsecond: #2b7bb1;
+  --carouselthird: #000;
+  --carouselfourth: #2b7bb1;
   --errorcolor: #ff3d3d;
   --tablebgcolor: #232323;
   --shadowcolor: #fff;
   --footerbgcolor: var(--headercolor);
   --footercolor: #fff;
-  --bttsrc: url(../images/dark_back-to-top-icon.png);
+  --bttsrc: url(../images/dark_back-to-top-icon.webp);
 
 }
 
@@ -160,7 +164,7 @@ strong {
 header {
   grid-row: 2;
   grid-column: 1;
-  background: url('../images/logo.png') no-repeat center var(--headerbgcolor);
+  background: url('../images/logo.webp') no-repeat center var(--headerbgcolor);
   background-size: contain;
 }
 
@@ -388,23 +392,18 @@ main h1 {
 }
 
 #carosello .more{
-  display: none;
   font-size: 1em;
   text-decoration: none;
   text-align: center;
-  color: var(--carouselcolor);
+  color: var(--carouselfirst);
   padding: 1em 0.3em;
-  background: var(--carouselactivecolor);
-  border: 1px solid var(--carouselcolor);
+  background: var(--carouselsecond);
+  border: 1px solid var(--carouselfirst);
   position: absolute;
   bottom: 13%;
   left: 38.5%;
   right: 38.5%;
   border-radius: 0.6em;
-}
-
-#carosello .more:hover {
-  color: #116297;
 }
 
 #carosello .onCarosello {
@@ -420,8 +419,8 @@ main h1 {
   cursor: pointer;
   align-items: center;
   text-indent: -9999em;
-  background-color: var(--carouselactivecolor);
-  border: 2px solid var(--carouselcolor);
+  background-color: var(--carouselfirst);
+  border: 2px solid var(--carouselsecond);
   border-radius: 50%;
   height: 1.5rem;
   width: 1.5rem;
@@ -447,8 +446,8 @@ ol.puntiniCarosello {
 }
 
 ol li .active {
-  background-color: var(--carouselcolor);
-  border: 2px solid var(--carouselactivecolor);
+  background-color: var(--carouselsecond);
+  border: 2px solid var(--carouselfirst);
 }
 
 #caroselloIndietro,
@@ -457,9 +456,9 @@ ol li .active {
   height: 3rem;
   width: 3rem;
   margin: .4rem;
-  color: var(--carouselcolor);
-  background-color: var(--carouselactivecolor);
-  border: 2px solid var(--carouselcolor);
+  color: var(--carouselfirst);
+  background-color: var(--carouselsecond);
+  border: 2px solid var(--carouselfirst);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -472,9 +471,17 @@ ol li .active {
 #caroselloAvanti:hover,
 .puntiniCarosello button[class='']:hover,
 #carosello .more:hover {
-  background: var(--unvisitedcolor);
+  background: var(--carouselthird);
+  color: var(--carouselfourth);
+  border-color: var(--carouselfourth);
   transition: 0.5s ease;
   scale: 1.1;
+}
+
+.dark .puntiniCarosello button[class='']:hover {
+  background: var(--carouselfourth);
+  color: var(--carouselthird);
+  border-color: var(--carouselthird);
 }
 
 .puntiniCarosello button.active:hover {
@@ -693,7 +700,7 @@ footer dt {
 
 footer h2 {
   flex: 1 0 18%;
-  background-image: url('../images/logo.png');
+  background-image: url('../images/logo.webp');
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
@@ -953,6 +960,10 @@ a.button:hover {
   font-size: 1.15rem;
 }
 
+.formCompilazione label.tipo {
+  display: inline;
+}
+
 .formCompilazione .errorSuggestion {
   color: var(--errorcolor);
   font-size: 0.96rem;
@@ -1035,10 +1046,11 @@ span#giudizio {
 
 .formCompilazione input[type="radio"][name="rating"] {
   margin-bottom: 0em;
+  display: inline;
 }
 
-.rating-option {
-  display: inline;
+.formCompilazione input[type="radio"][name="rating"].behind {
+  background: var(--bordercolor);
 }
 
 
@@ -1172,7 +1184,7 @@ main[class="opera"] {
   text-align: center;
 }
 
-#carta-immagine img {
+#carta-immagine {
   display: block;
   margin: 0 auto;
   border: 1px solid var(--txtcolor);
@@ -1183,7 +1195,7 @@ main[class="opera"] {
   box-sizing: border-box;
 }
 
-.dark #carta-immagine img {
+.dark #carta-immagine {
   box-shadow: 0 0 5px var(--shadowcolor);
 }
 
@@ -1191,7 +1203,7 @@ main[class="opera"] {
   margin-top: 2em;
 }
 
-#carta-descrizione p {
+#carta-descrizione+p {
   text-align: justify;
   line-height: 1.8;
   margin: 0 1em;
@@ -1202,23 +1214,23 @@ main[class="opera"] {
   margin-top: 2em;
 }
 
-#carta-dettagli dl {
+#lista-dettagli {
   width: 90%;
   margin: 0 auto;
 }
 
-#carta-dettagli dt {
+#lista-dettagli dt {
   background: url('../images/pokeball.ico') no-repeat center left;
   background-size: 1.25em;
   padding: 0 0.5em 0 2em;
   float: left;
 }
 
-#carta-dettagli dd {
+#lista-dettagli dd {
   margin: 0.2em 0;
 }
 
-#carta-dettagli dd:last-child {
+#lista-dettagli dd:last-child {
   border-radius: 0 0 4px 4px;
 }
 
@@ -1412,7 +1424,7 @@ main[class="opera"] {
 #dati-utente {
   margin: 1.5em;
   border-radius: 8px;
-  background: url("../images/pokedex.png") no-repeat right; 
+  background: url("../images/pokedex.webp") no-repeat right; 
   background-size: contain;
   padding-right: 18%;
 }
@@ -1434,7 +1446,7 @@ main[class="opera"] {
   border-left: 4px solid black;
   border-radius: 5px;
   background-color: var(--unvisitedcolor);
-  color: var(--menuvisitedcolor);
+  color: var(--profilecolor);
 }
 
 #tab-prenot {
