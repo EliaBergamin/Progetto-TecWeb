@@ -27,9 +27,7 @@ $dettaglioSalaHtmlContent = Templating::getHtmlWithModifiedMenu(__FILE__);
 $customMeta = Templating::getContentBetweenPlaceholders($dettaglioSalaHtmlContent, "meta");
 $cleanName = preg_replace('/\{.+\}(.*?)\{\/.+\}/', '$1', $infoSalaRow[0]["nome"]); //remove html placeholder
 Templating::replaceAnchor($customMeta, "title", $cleanName);
-$fullName = explode(' ', $cleanName);
-$shortName = "{$fullName[0]} {$fullName[1]}";
-Templating::replaceAnchor($customMeta, "sala_abbr", $shortName);
+Templating::replaceAnchor($customMeta, "sala_abbr", $cleanName);
 Templating::replaceContentBetweenPlaceholders($dettaglioSalaHtmlContent, "meta", $customMeta);
 
 /* BREADCRUMB SALA*/

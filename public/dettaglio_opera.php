@@ -27,9 +27,7 @@ $customMeta = Templating::getContentBetweenPlaceholders($dettaglioOperaHtmlConte
 $cleanOpera = preg_replace('/\{\w+\}(.*?)\{\/\w+\}/', '$1', $operaArrayDetailed[0]["nome"]); //remove html placeholder
 Templating::replaceAnchor($customMeta, "title", $cleanOpera);
 $cleanSala = preg_replace('/\{\w+\}(.*?)\{\/\w+\}/', '$1', $operaArrayDetailed[0]["sala"]); //remove html placeholder
-$fullSala = explode(' ', $cleanSala);
-$shortSala = "{$fullSala[0]} {$fullSala[1]}";
-Templating::replaceAnchor($customMeta, "sala_abbr", $shortSala);
+Templating::replaceAnchor($customMeta, "sala_abbr", $cleanSala);
 Templating::replaceContentBetweenPlaceholders($dettaglioOperaHtmlContent, "meta", $customMeta);
 
 /* BREADCRUMB */
