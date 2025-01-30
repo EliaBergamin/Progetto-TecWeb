@@ -247,5 +247,10 @@ INSERT INTO Prenotazione (id_utente, data_prenotazione, num_persone, orario) VAL
 (10, "2025-09-12", 9, "15:00");
 
 INSERT INTO Recensione (id_utente, voto, data_recensione, descrizione, tipo) VALUES
-(3, 5, "2023-06-18", "Una mostra davvero unica per gli appassionati di {ja}Yu-Gi-Oh{/ja}! Le carte iconiche, come il Drago Bianco Occhi Blu e il Mago Nero, sono esposte in vetrine spettacolari. Perfetta combinazione di nostalgia e scoperta!", 1),
-(2, 4, "2023-08-10", "Un'esperienza magica per ogni fan di Pokémon! Le carte sono esposte in modo accattivante, con spiegazioni dettagliate sulla loro storia e rarità. Atmosfera è perfetta per immergersi nel mondo dei Pokémon. Spero di tornare presto magari per una nuova mostra!", 0);
+(3, 5, "2023-06-18", "Una mostra davvero unica per gli appassionati di {ja}Yu-Gi-Oh{/ja}! Le carte iconiche, come il Drago Bianco Occhi Blu e il Mago Nero, sono esposte in vetrine spettacolari. Perfetta combinazione di nostalgia e scoperta!", 0),
+(2, 4, "2023-08-10", "Un'esperienza magica per ogni fan di Pokémon! Le carte sono esposte in modo accattivante, con spiegazioni dettagliate sulla loro storia e rarità. Atmosfera è perfetta per immergersi nel mondo dei Pokémon. Spero di tornare presto magari per una nuova mostra!", 0),
+(4, 5, "2024-09-12", "Mostra ben organizzata e molto interessante. Le opere esposte sono di grande valore e la spiegazione è chiara e dettagliata. Consigliata a tutti gli appassionati di arte.", 0),
+(5, 3, "2024-10-05", "La mostra sui Gormiti è stata una piacevole sorpresa. Le ricostruzioni e i modelli tridimensionali sono fantastici. Un'esperienza che consiglio vivamente.", 0),
+(6, 2, "2024-11-20", "Mostra interessante ma mi aspettavo di più. Alcune opere non erano ben illuminate e la descrizione non era molto dettagliata.", 0),
+(7, 5, "2024-12-01", "Esposizione eccezionale! Le opere di Dragon Ball sono incredibili e ben presentate. Un {en}must{/en} per ogni appassionato della serie.", 1);
+(8, 3, "2025-01-01", "Discreta presentazione delle opere, specialmente approfondite le descrizioni di {en}Dragon Ball{/en} e Pokémon. Spero che aggiungiate presto nuove opere", 1);
