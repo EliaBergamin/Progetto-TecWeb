@@ -98,7 +98,7 @@ body {
   max-width: 1200px;
   display: grid;
   grid-template-columns: 1fr 9fr;
-  overflow-x: scroll;
+  overflow-x: hidden;
   margin: auto;
 }
 
@@ -209,19 +209,10 @@ THEME TOGGLE
   cursor: pointer;
 }
 
-/* eventualmente, questo codice commentato può essere
-utile per fissare il menu in modo che non scrolli
-(soprattutto in ottica mobile)*/
-/* .menu-wrapper {
-  width: 100%;
-  position: fixed;
-  display: grid;
-  grid-template-columns: 1fr 8fr;
+#theme-switcher:focus {
+  outline: var(--txtcolor) double 2px;
 }
 
-.shadow-box {
-  box-shadow: 0 4px 8px 0 --shadowcolor, 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-} */
 
 /*////////////*/
 /* MENU */
@@ -573,7 +564,7 @@ ol li .active {
 
 #listaOpere li img {
   /* min-height: fit-content; */
-  max-width: 17em;
+  max-width: min(100%, 17em);
   background-size: contain;
   margin: 0;
   margin-bottom: 1em;
@@ -783,7 +774,7 @@ footer h2 {
   margin: auto;
   display: block;
   max-width: 80%;
-  max-height: 480px;
+  max-height: 30em;
   border-radius: 10px;
   margin-bottom: 1em;
 }
@@ -1190,7 +1181,7 @@ main[class="opera"] {
   border: 1px solid var(--txtcolor);
   border-radius: 10px;
   box-shadow: 0 4px 8px var(--shadowcolor);
-  max-height: 500px;
+  max-height: 32em;
   max-width: 100%;
   box-sizing: border-box;
 }
@@ -1331,8 +1322,8 @@ main[class="opera"] {
 }
 
 #virtualTour-elenco-sale dd {
-  margin: 5px 0 20px 0;
-  padding: 15px;
+  margin: 0.3em 0 1.2em;
+  padding: 1em;
   border: 2px solid #ddd;
   border-radius: 10px;
   text-align: center;

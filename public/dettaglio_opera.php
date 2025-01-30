@@ -47,6 +47,7 @@ Templating::replaceContentBetweenPlaceholders($dettaglioOperaHtmlContent, "opera
 //immagine path
 $imageSectionToModify = Templating::getContentBetweenPlaceholders($dettaglioOperaHtmlContent, "operaimage");
 Templating::replaceAnchor($imageSectionToModify, "operaimage", $operaArrayDetailed[0]["img_path"]);
+Templating::replaceAnchor($imageSectionToModify, "opera_name", $cleanOpera);
 Templating::replaceContentBetweenPlaceholders($dettaglioOperaHtmlContent, "operaimage", $imageSectionToModify);
 
 //descrizione opera
