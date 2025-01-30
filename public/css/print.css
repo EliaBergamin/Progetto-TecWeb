@@ -39,7 +39,7 @@
 
 html {
   font-size: 80%;
-  font-family: "Lexend", sans-serif;
+  font-family: 'Times New Roman', Times, serif;
   line-height: 1.5em;
   color: var(--txtcolor);
   background-color: var(--bgcolor);
@@ -54,7 +54,6 @@ body {
   grid-template-columns: 1fr 9fr;
   overflow-x: hidden;
   margin: auto;
-  font-family: 'Times New Roman', Times, serif;
 }
 
 ol,
