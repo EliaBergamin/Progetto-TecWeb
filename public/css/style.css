@@ -11,7 +11,7 @@
   --contentbgcolor: #f2f4f7;
   --breadlinkcolor: #fbff50;
   --unvisitedcolor: #fbff50;
-  --linkcolor: #4b7c81;
+  --linkcolor: #205e86;
   --bordercolor: #000;
   --submitcolor: var(--headerbgcolor);
   --visitedcolor: #000;
@@ -22,7 +22,7 @@
   --carouselthird: #fbff50;
   --carouselfourth: #205e86;
   --errorcolor: #eb0000;
-  --tablebgcolor: #f2f2f2;
+  --tablebgcolor: #f2f4f7;
   --shadowcolor: rgba(0, 0, 0, 0.15);
   --footerlinkcolor: #000;
   --footerbgcolor: var(--headerbgcolor);
@@ -34,7 +34,7 @@
   --headerbgcolor: #000;
   --headercolor: #2b7bb1;
   --profilecolor: #000;
-  --visitedcolor: #fff;
+  --visitedcolor: #ddd;
   --bgcolor: #000;
   --txtcolor: #ddd;
   --contentbgcolor: #000;
@@ -271,6 +271,10 @@ THEME TOGGLE
 
 #menu a:visited {
   background: var(--unvisitedcolor);
+  color: var(--txtcolor);
+}
+
+.dark #menu a:visited {
   color: var(--headercolor);
 }
 
@@ -925,7 +929,7 @@ a.button:hover {
 
 .dark .formCompilazione input[type="submit"],
 .dark a.button {
-  color: var(--visitedcolor);
+  color: var(--footercolor);
   border: 1px solid var(--bgcolor);
 }
 
