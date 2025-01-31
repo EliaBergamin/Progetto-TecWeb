@@ -844,7 +844,7 @@ main[class="opera"] {
   text-align: center;
 }
 
-#carta-immagine img {
+#carta-immagine {
   display: block;
   margin: 0 auto;
   border: 1px solid var(--txtcolor);
@@ -855,7 +855,7 @@ main[class="opera"] {
   box-sizing: border-box;
 }
 
-#carta-immagine img {
+#carta-immagine {
   box-shadow: 0 0 5px var(--shadowcolor);
 }
 
@@ -863,7 +863,7 @@ main[class="opera"] {
   margin-top: 2em;
 }
 
-#carta-descrizione p {
+#carta-descrizione+p {
   text-align: justify;
   line-height: 1.5;
   margin: 0 10px;
@@ -873,23 +873,23 @@ main[class="opera"] {
   margin-top: 2em;
 }
 
-#carta-dettagli dl {
+#lista-dettagli {
   width: 90%;
   margin: 0 auto;
 }
 
-#carta-dettagli dt {
+#lista-dettagli dt {
   background: url('../images/pokeball.ico') no-repeat center left;
   background-size: 1.25em;
   padding: 0 0.5em 0 2em;
   float: left;
 }
 
-#carta-dettagli dd {
+#lista-dettagli dd {
   margin: 0.2em 0;
 }
 
-#carta-dettagli dd:last-child {
+#lista-dettagli dd:last-child {
   border-radius: 0 0 4px 4px;
 }
 
