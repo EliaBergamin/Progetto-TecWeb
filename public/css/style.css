@@ -752,9 +752,9 @@ footer h2 {
 .nomeMostra {
   margin: 1.5em 5%;
   font-size: 1.5em;
-  background-image: url("../images/pokeball.ico");
-  background-size: 1.3em;
-  background-repeat: no-repeat;
+  background: url("../images/pokeball.webp") left center no-repeat;
+  background-size: 1.1em;
+  line-height: 1.5em;
   padding-left: 2em;
 }
 
@@ -1216,7 +1216,7 @@ main[class="opera"] {
 }
 
 #lista-dettagli dt {
-  background: url('../images/pokeball.ico') no-repeat center left;
+  background: url('../images/pokeball.webp') no-repeat center left;
   background-size: 1.25em;
   padding: 0 0.5em 0 2em;
   float: left;
@@ -1540,7 +1540,7 @@ dialog button {
 .error-descr li {
   text-align: left;
   margin: 0.5em 0;
-  background: url("../images/pokeball.ico") no-repeat top left;
+  background: url("../images/pokeball.webp") no-repeat top left;
   background-size: 1.25em;
   padding-left: 2em;
 }
