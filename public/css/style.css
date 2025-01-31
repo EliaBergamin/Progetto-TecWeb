@@ -410,7 +410,7 @@ main h1 {
   justify-content: center;
 }
 .puntiniCarosello li button {
-  display: inline-flex;
+  /*display: inline-flex;*/
   justify-content: center;
   cursor: pointer;
   align-items: center;
